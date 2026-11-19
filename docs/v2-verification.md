@@ -69,3 +69,9 @@ Added a persistent device-level header selector with six complete palettes: Wood
 Passed: strict TypeScript check and the existing 42-test suite. Browser checks switched every palette and inspected changed body/card/text colours, reloaded to confirm the saved choice, navigated to another view, inspected a themed dialog and checked a 375px mobile viewport without page-wide horizontal overflow. Calculation rules, data snapshot and profile format are unchanged. No new unit tests were added for this cosmetic change.
 
 The 2.1 Windows EXE launched from its new Desktop folder with the existing profile preserved and the Theme control present. Packaged JavaScript and theme CSS matched the generated assets. The shareable ZIP verified 77 files and CRC; SHA-256: `5979df1ae67a76211cbf1504cf7cea5f136bb13d0933029e4cb0acfa9f58e746`. Previous 1.0 and 2.0 distributions remain available.
+
+## Version 2.1.1 — Slayer skull icon
+
+Extended the editable SVG icon with an original bone-white Slayer-style skull around the existing sword. The tip remains visible above the crown and the blade exits between the teeth. The green/gold shield and sword styling remain consistent. Regenerated the 512px PNG and seven-resolution Windows ICO (16, 24, 32, 48, 64, 128 and 256px); verified the ICO directory and embedded PNG signatures. Updated header/favicon asset URLs so browsers request the new artwork.
+
+The [RuneLite Slayer skill icon](https://raw.githubusercontent.com/runelite/runelite/master/runelite-client/src/main/resources/skill_icons/slayer.png) served as a visual reference; its pixel asset is not bundled. The project icon remains an editable original vector illustration. This is an asset change; calculation rules and profile format are unchanged.

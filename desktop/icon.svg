@@ -3,6 +3,7 @@
     <linearGradient id="back" x2="1" y2="1"><stop stop-color="#244c39"/><stop offset="1" stop-color="#091c16"/></linearGradient>
     <linearGradient id="gold" x2=".7" y2="1"><stop stop-color="#fff0b5"/><stop offset=".5" stop-color="#e5c271"/><stop offset="1" stop-color="#94703c"/></linearGradient>
     <linearGradient id="blade" x2="1" y2="0"><stop stop-color="#a4d6b8"/><stop offset=".48" stop-color="#f1ffed"/><stop offset=".51" stop-color="#83bfa0"/><stop offset="1" stop-color="#436d58"/></linearGradient>
+    <linearGradient id="bone" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#fffbed"/><stop offset=".55" stop-color="#e7e3ce"/><stop offset="1" stop-color="#a5ad91"/></linearGradient>
     <filter id="shadow"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-opacity=".5"/></filter>
   </defs>
   <rect x="12" y="12" width="488" height="488" rx="110" fill="url(#back)"/>
@@ -14,6 +15,21 @@
   <g filter="url(#shadow)" transform="rotate(38 256 256)">
     <path d="M256 90 281 136 272 300 256 318 240 300 231 136Z" fill="url(#blade)" stroke="#ccdeb9" stroke-width="3"/>
     <path d="M256 96V304" stroke="#f9ffe1" stroke-width="2"/>
+    <!-- The blade disappears inside the skull and exits between its teeth. -->
+    <g stroke-linejoin="round">
+      <path d="M197 240Q171 222 176 193C180 158 210 143 252 145 297 140 330 156 336 188Q343 222 317 241L313 257 294 264 287 279H225L216 263 199 257Z" fill="#091c16" stroke="#091c16" stroke-width="12"/>
+      <path d="M197 235Q176 220 181 193C185 162 214 148 251 150 291 146 323 161 330 190Q336 218 312 236L308 253 288 257 282 273H230L222 257 203 252Z" fill="url(#bone)" stroke="#78866d" stroke-width="4"/>
+      <path d="M191 189Q198 161 235 158M280 157Q310 164 319 184" fill="none" stroke="#fffef2" stroke-width="5" stroke-linecap="round"/>
+      <path d="m236 151 8 15-8 12m36-28-8 15 9 12" fill="none" stroke="#82917b" stroke-width="3"/>
+      <path d="M196 195 228 190 239 204 230 224 208 226 194 214Z" fill="#11251e" stroke="#8b9780" stroke-width="3"/>
+      <path d="m275 192 34 4 9 19-14 13-23-4-10-20Z" fill="#11251e" stroke="#8b9780" stroke-width="3"/>
+      <path d="m248 217-10 20 12 2 6-7 6 7 12-2-11-20Z" fill="#25382b"/>
+      <path d="m206 235 16 8m83-8-16 8" stroke="#8b9780" stroke-width="4" stroke-linecap="round"/>
+      <path d="M223 247Q256 239 289 247L281 263H231Z" fill="#172c22"/>
+      <path d="M224 247v15h11v-17m1 0v20h12v-21m17 0v21h12v-20m1 0v17h11v-15" fill="url(#bone)" stroke="#8b9780" stroke-width="2"/>
+      <path d="m249 257 14 0 9 43-16 18-16-18Z" fill="url(#blade)" stroke="#ccdeb9" stroke-width="2"/>
+      <path d="M256 259v46" stroke="#f9ffe1" stroke-width="2"/>
+    </g>
     <path d="M205 302Q256 288 307 302L301 324Q256 310 211 324Z" fill="url(#gold)" stroke="#6d542c" stroke-width="3"/>
     <path d="M245 317h22v64h-22Z" fill="#4c3424" stroke="#c39e57" stroke-width="4"/>
     <path d="m245 331 22 9m-22 6 22 9m-22 6 22 9" stroke="#c7a66a" stroke-width="3"/>
