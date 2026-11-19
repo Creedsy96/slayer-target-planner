@@ -49076,6 +49076,8 @@
         return result(true);
       }
       complete(l, currentMaster, p, row.entry, p.current.modifier, p.current.modifierPoints);
+      const same = plan.rows.find((r) => r.id === row.id);
+      previous = same ? { row: same, kind: p.current.modifier || "none", points: p.current.modifierPoints ?? 0, quantity: 0, target: same.isTarget } : void 0;
       add("Completed current assignment");
     }
     for (let offer = 0; offer < p.simulation.horizonOffers; offer++) {

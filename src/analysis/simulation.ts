@@ -62,7 +62,9 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const done=finishCombat(row,actual,row.isTarget,p,rng,progress);
     minutes+=row.method.travel+done.kills*row.seconds/60;progress=done.progress;
     if(done.success){add('Goal reached during current task');return result(true);}
-    complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);add('Completed current assignment');
+    complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);
+    const same=plan.rows.find(r=>r.id===row.id);previous=same?{row:same,kind:p.current.modifier||'none',points:p.current.modifierPoints??0,quantity:0,target:same.isTarget}:undefined;
+    add('Completed current assignment');
   }
   for(let offer=0;offer<p.simulation.horizonOffers;offer++){
     const boost=p.strategy.startsWith('boost')&&((l.streaks.normal||0)+1)%p.milestone!==0;

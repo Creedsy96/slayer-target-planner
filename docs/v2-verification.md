@@ -18,7 +18,7 @@ Date: 19 November 2026. Branch: `codex/planner-v2`, based on the existing Window
 
 ## Automated results
 
-Passed: TypeScript strict typecheck, deterministic catalogue regeneration and 41 Node tests (including historical workbook import fixtures). Tests cover the two original regressions, block identities/caps, explicit zero settings, eligibility OR conditions, measured timing precedence, bracelet finite boundaries, point milestones, reserve affordability, distinct weighted offers, Mortimer progression, target stopping conditions, seeded simulation/censoring, independent geometric probability, profile validation/migration/rebasing and the constrained desktop network boundary.
+Passed: TypeScript strict typecheck, deterministic catalogue regeneration and 42 Node tests (including historical workbook import fixtures). Tests cover the two original regressions, block identities/caps, explicit zero settings, eligibility OR conditions, measured timing precedence, bracelet finite boundaries, point milestones, reserve affordability, distinct weighted offers, Mortimer progression, target stopping conditions, seeded simulation/censoring, independent geometric probability, profile validation/migration/rebasing and the constrained desktop network boundary.
 
 Historical v1 fixture tests establish import parity only. They do not validate current mechanics. The new independent fixtures and captured source revisions own corrected rules. No coverage percentage, in-game validation or independent review is claimed.
 
@@ -57,3 +57,5 @@ Passed desktop delivery checks:
 - A separate direct file-URL browser check was blocked by the in-app browser's URL policy and was not worked around. Desktop packaged-file operation was observed through the authorised executable check. No clean-machine or physically disconnected-network test is claimed.
 
 Private site audience was read before deployment: owner-only custom policy, one owner, no other users/groups/editors or external visitors. Publication result is retained by the Sites service for the exact pushed source commit.
+
+Final regression: starting mid-assignment now updates the cape repeat state after that assignment completes. An independent 45% immediate-offer oracle reproduced the old 54.75% result before the fix and passes after correction. Runtime source revision is updated in the final distribution manifest.
