@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10261f">
+  <meta name="description" content="Choose a Slayer creature and compare masters, recommended blocks and point-balanced skips.">
+  <title>Slayer Target Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script><script defer src="engine.js"></script>
+  <script defer src="preferences.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon" aria-hidden="true">✧</span><span>SLAYER<span class="brand-sub">TARGET PLANNER</span></span></a>
+    <span class="header-note">A better route to your next assignment</span>
+    <a id="source-link" class="quiet-link" target="_blank" rel="noopener">Source workbook</a>
+  </header>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="eyebrow">THE HUNT</div>
+      <nav aria-label="Planner views">
+        <button class="nav-button active" data-view="overview" aria-current="page">Master comparison</button>
+        <button class="nav-button" data-view="inputs">Task inputs <span>117</span></button>
+        <button class="nav-button" data-view="method">How it works</button>
+      </nav>
+      <details id="setup-disclosure" class="setup-disclosure" open><summary class="sidebar-heading"><span>Your setup</span><span id="save-status" role="status">Saved locally</span></summary>
+      <form id="settings-form">
+        <div class="field-pair">
+          <label>Slayer level<input name="level" type="number" min="1" max="99" step="1" required></label>
+          <label>Effective DPS<input name="dps" type="number" min="0.1" max="10000" step="0.1" required></label>
+        </div>
+        <div class="field-pair">
+          <label>Block slots<input name="blocks" type="number" min="0" max="8" step="1" required></label>
+          <label>Mortimer blocks<input name="mortimerBlocks" type="number" min="0" max="2" step="1" required></label>
+        </div>
+        <p class="field-hint">Blocks maximise the chance of your chosen target. Your target is always kept.</p>
+        <label class="check-field"><input name="streak" type="checkbox"> Include streak bonuses</label>
+        <label class="check-field"><input name="threeChoices" type="checkbox"> Show Mortimer 3-choice scenario</label>
+        <details class="advanced"><summary>Timing &amp; reward assumptions</summary>
+          <label>Travel / banking per task (min)<input name="overhead" type="number" min="0" max="10000" step="0.1" required></label>
+          <label>Between-kill delay (seconds)<input name="delay" type="number" min="0" max="10000" step="0.1" required></label>
+          <label>Time per skip (seconds)<input name="skipSeconds" type="number" min="0" max="10000" step="1" required></label>
+          <label>Mortimer modifier chance (%)<input name="modifierChance" type="number" min="0" max="100" step="1" required></label>
+          <label class="check-field"><input name="extended" type="checkbox"> Use extended task quantities</label>
+        </details>
+      </form>
+      <button id="reset" class="text-button">Reset all to workbook defaults</button>
+      </details>
+      <div class="sidebar-footer">WORKBOOK SNAPSHOT<span>19 November 2026</span><small>Task data is bundled. No live game connection.</small></div>
+    </aside>
+    <main id="main-content">
+      <section id="overview-view">
+        <div class="page-heading"><div><div class="eyebrow">SLAYER MASTER COMPARISON</div><h1>Plan your next task.</h1><p>Choose your creature. Find the master that gets you there.</p></div><button id="export" class="secondary-button">Export comparison</button></div>
+        <div class="target-panel">
+          <div><label for="target">I’m hunting</label><select id="target" aria-describedby="target-description"></select></div>
+          <div class="target-description" id="target-description"></div>
+          <div class="segmented" role="group" aria-label="Skip policy"><button id="sustainable" aria-pressed="true">Sustainable skips</button><button id="no-skips" aria-pressed="false">No skips</button></div>
+        </div>
+        <div id="target-warning" class="notice" hidden></div>
+        <section id="recommendation" class="recommendation" aria-label="Recommended master" aria-live="polite"></section>
+        <div class="section-heading"><div><h2>Compare masters</h2><p id="comparison-note"></p></div><label class="check-field"><input id="show-unavailable" type="checkbox"> Show unavailable</label></div>
+        <div class="table-card"><div class="table-scroll"><table class="comparison-table"><thead><tr><th scope="col">Slayer master</th><th scope="col">Expected wait</th><th scope="col">Target / offer</th><th scope="col">Offers to target</th><th scope="col">Avg task</th><th scope="col">Blocks</th></tr></thead><tbody id="master-rows"></tbody></table></div><div class="table-footnote">Waiting ends when the target is offered, before completing it. Estimates include combat, overhead and skips.</div></div>
+        <section id="plan" class="plan-section" aria-label="Selected master plan"></section>
+      </section>
+      <section id="inputs-view" hidden>
+        <div class="eyebrow">SHARED ACROSS ALL MASTERS</div><h1>Task inputs</h1><p class="page-intro">Set your requirements and combat estimates. Changes update every master’s plan.</p>
+        <div class="input-toolbar"><label for="task-search">Find a creature<input id="task-search" type="search" placeholder="Search task or representative monster…"></label><span id="task-count"></span></div>
+        <p class="muted">“Allowed” controls manual exclusions. Slayer level still applies. HP and DPS multipliers use the source workbook’s representative monster.</p>
+        <div class="table-card table-scroll"><table class="input-table"><thead><tr><th>Creature / representative</th><th>Allowed</th><th>Min Slayer</th><th>HP</th><th>DPS multiplier</th></tr></thead><tbody id="input-rows"></tbody></table></div>
+      </section>
+      <section id="method-view" class="method" hidden>
+        <div class="eyebrow">THE CALCULATION</div><h1>How the planner works</h1>
+        <article><h2>Choose an assignment type</h2><p>The selector covers all 117 task types in the supplied workbook. A representative monster estimates kill time; variants such as Basilisk Knights use the Basilisks assignment. Update HP and the DPS multiplier to model a different variant.</p></article>
+        <article><h2>Block for assignment chance</h2><p>Exclude unmet Slayer levels and your manual requirement exclusions. Block the highest remaining weights, breaking ties by longer duration and then task name. The selected target is never blocked or skipped. Each master has its own suggested block list; these are alternative plans.</p><p>The workbook allocates no block slots to Turael / Aya, Spria, Krystilia or Mazchna / Achtryn. This app preserves that assumption.</p></article>
+        <article><h2>Estimate the time</h2><div class="formula">Kill seconds = HP ÷ (effective DPS × creature multiplier) + delay</div><p>Task minutes use the mean assignment quantity, plus travel and banking. Waiting time is the expected time spent on non-target offers divided by the target probability. It stops at the offer, before completing your target task. Expected offers include the successful offer.</p></article>
+        <article><h2>Keep skips sustainable</h2><p>Skip the longest non-target tasks first. Spend only the points funded by long-run completions, including future target tasks. A fractional boundary task is skipped on the stated percentage of its appearances. The points balance describes repeated play, not a guarantee you can afford every skip from your current balance.</p><p>Ordinary masters charge 30 points per skip. Optional streak bonuses multiply base rewards by 1.775; diary bonuses are not included. A long target task can fund more skips over repeated cycles even though its completion time is outside the waiting estimate.</p></article>
+        <article><h2>Mortimer offers</h2><p>Model two or three distinct weighted draws without replacement. Choose your target whenever present, otherwise choose the shortest task. Reroll the offer according to that task’s skip frequency. Mortimer skips cost 100 points; rewards use each task’s mean point modifier multiplied by the editable modifier chance (20% by default). The three-choice option is a separate unlock scenario.</p></article>
+        <article><h2>Data and assumptions</h2><p>Assignment weights, quantities, shared exclusions and HP values come from the supplied workbook snapshot on 19 November 2026. These values have not been independently refreshed against current game tables. Quest and combat access not explicitly excluded is assumed satisfied. DPS and delays are estimates; the Slayer cape repeat effect is not modelled.</p><p><a id="method-source" target="_blank" rel="noopener">Open the source workbook</a>. Settings stay in this browser. The desktop copy works offline.</p></article>
+      </section>
+      <footer class="main-footer"><span>SLAYER TARGET PLANNER</span><span>Built from your task comparison workbook</span></footer>
+    </main>
+  </div>
+</body>
+</html>
