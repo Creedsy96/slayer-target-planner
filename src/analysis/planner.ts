@@ -1,12 +1,13 @@
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
-import {defaultMethod} from '../state/profiles';
+import {clone,defaultMethod} from '../state/profiles';
 import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,targetAssignments} from '../rules/eligibility';
-import {basePoints,modifierKinds,meanModifierPoints,choices,canReset} from '../rules/points';
+import {basePoints,modifierKinds,meanModifierPoints,choices} from '../rules/points';
+import {resetEstimate} from './reset-estimate';
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
 import {resolveAccess} from '../rules/access';
 import {methodLocationRestriction} from '../rules/variant-additions';
-import {protectedTask,skipPreference} from '../rules/task-policy';
+import {protectedTask,skipPreference,shouldReset,paidSkipFraction} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
   return m.tasks.map(entry=>{
@@ -42,7 +43,7 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
 function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
   if(p.strategy==='none')return;
   const filler=data.masters.find(m=>m.id==='turael')!;
-  for(const row of rows)if(!protectedTask(p,row)&&skipPreference(p,row)&&!(p.strategy==='reset-turael'&&m.id!==filler.id&&canReset(m,row.id,filler)))row.skip=1;
+  for(const row of rows)if(!protectedTask(p,row)&&skipPreference(p,row)&&!shouldReset(m,row,p,filler))row.skip=1;
   if(p.objective==='points'||['boost-turael','boost-mazchna','reset-turael'].includes(p.strategy))return;
   let budget=Math.max(0,sum(rows,r=>r.probability*((1-r.skip)*r.reward-r.skip*m.skipCost)));
   const choices=rows.filter(r=>!protectedTask(p,r)&&!skipPreference(p,r))
@@ -55,6 +56,15 @@ function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
     budget=Math.max(0,budget-row.skip*cost);
   }
 }
+/** Completion method used when Konar offers the right assignment in the wrong location. */
+export function completionFallbacks(data:Catalogue,m:Master,p:Profile,rows:Row[]):Map<Row,Row>{
+  const result=new Map<Row,Row>();if(m.id!=='konar')return result;
+  const q=clone(p);q.goal.targets=[];
+  for(const row of rows.filter(r=>r.isTarget))delete q.methods[row.id];
+  const alternatives=prepareRows(data,m,q);
+  for(const row of rows){const other=alternatives.find(r=>r.id===row.id);if(other&&row.isTarget)result.set(row,other);}
+  return result;
+}
 export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration'):Plan{
   const rows=prepareRows(data,m,p),status=masterEligibility(m,p),slots=blockSlots(m,p),targets=targetAssignments(data,p);
   const conflicts:string[]=[];
@@ -64,25 +74,55 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const active=rows.filter(r=>!r.reason&&!r.blocked);
   selectionProbabilities(active,m.id==='mortimer'?choices(p):1);
   balanceSkips(active,m,p,data);
+  const fillerMaster=data.masters.find(master=>master.id==='turael')!;
+  const fallback=p.strategy==='reset-turael'?completionFallbacks(data,m,p,rows):new Map<Row,Row>();
+  const resets=(r:Row)=>p.strategy==='reset-turael'&&(!r.isTarget||r.targetFraction<1)&&shouldReset(m,fallback.get(r)||r,p,fillerMaster);
+  const rowUnknown=(r:Row):string[]=>{
+    const original=resets(r)&&!r.isTarget?[...check(r.entry.requirements,p).unknown,...(r.entry.unlockWeight&&p.unlocks[r.entry.unlockWeight.key]==null?['Frost dragon weighting reward is unknown']:[])]:r.unknown;
+    const other=fallback.get(r);
+    return [...original,...(other&&r.targetFraction<1&&!resets(r)?other.unknown:[])];
+  };
   const targetProb=sum(active,r=>r.isTarget?r.probability*r.targetFraction:0);
   const numerator=sum(active,r=>r.probability*((1-(r.isTarget?r.targetFraction:0))*(1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
   const noSkip=sum(active,r=>r.probability*(1-(r.isTarget?r.targetFraction:0))*r.minutes);
   const cycle=sum(active,r=>r.probability*((1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
   const kept=sum(active,r=>r.probability*(1-r.skip));
-  const unknown=[...new Set([...status.unknown,...active.flatMap(r=>r.unknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
+  const unknown=[...new Set([...status.unknown,...active.flatMap(rowUnknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
   let reason=status.failed.join('; ');
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
   if(!reason&&conflicts.length)reason=conflicts.join(' ');
-  if(!reason&&!targetProb)reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
+  if(!reason&&!targetProb&&!active.some(resets))reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
   if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete requirements: confirm account facts or enable a conditional scenario.';
-  if(!reason&&active.some(r=>!r.isTarget&&r.methodReason&&r.skip<1))reason='A non-target assignment has no available completion method; change the method or block/skip it.';
+  if(!reason&&active.some(r=>!r.isTarget&&r.methodReason&&r.skip<1&&!resets(r)))reason='A non-target assignment has no available completion method; change the method or block/skip it.';
   if(!reason&&p.cape)reason='Cape repeat policies require simulation; analytical ranking is unavailable.';
   const actual=p.blocks[m.group]||[],setupCost=blocks.filter(id=>!actual.includes(id)).length*m.blockCost;
   if(p.applySetup&&p.points!==null&&p.points-setupCost<p.reserve)reason='Insufficient points to apply this block list while preserving the reserve.';
-  const chance=reason?null:targetProb,hours=chance? (numerator+p.requestMinutes)/chance/60:null;
-  const spend=targetProb?sum(active,r=>r.probability*r.skip*m.skipCost)/targetProb+(p.applySetup?setupCost:0):Infinity;
-  const objectiveValue=reason?Infinity:p.objective==='chance'?-targetProb:p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
-  return {master:m,rows,blocks,setupCost,chance,hours,noSkipHours:chance?(noSkip+p.requestMinutes)/chance/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:sum(active,r=>r.probability*r.skip),pointsEarned:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
+  let chance=reason?null:targetProb,hours=chance? (numerator+p.requestMinutes)/chance/60:null;
+  let spend=targetProb?sum(active,r=>r.probability*r.skip*m.skipCost)/targetProb+(p.applySetup?setupCost:0):Infinity;
+  let reset:Plan['reset'];
+  if(active.some(resets)){
+    // Replacement tasks use the recorded beginner block list. Proposed/automatic
+    // filler blocks are not free purchases and must not change reset legality.
+    const fp={...p,strategy:'boost-turael' as const,cape:false,applySetup:false};
+    const filler=evaluate(data,fillerMaster,fp,[...(p.blocks[fillerMaster.group]||[])]);
+    reset=resetEstimate(m,active,filler,p,fallback);
+    const available=filler.rows.filter(r=>!r.reason&&!r.blocked);
+    const access=masterEligibility(fillerMaster,p);
+    unknown.push(...filler.unknown.filter(value=>!unknown.includes(value)));
+    if(!reason&&active.some(r=>r.targetFraction<1&&!resets(r)&&(fallback.get(r)||r).methodReason&&paidSkipFraction(fallback.get(r)||r,p)<1))reason='A kept assignment has no available completion method; review methods.';
+    if(!reason&&!available.length)reason='No eligible Turael replacement tasks.';
+    if(!reason&&access.failed.length)reason='Turael replacement access: '+access.failed.join('; ');
+    if(!reason&&filler.conflicts.some(c=>!c.startsWith('Target ')&&!c.startsWith('Protected ')))reason='Review the recorded Turael block list: '+filler.conflicts.join(' ');
+    if(!reason&&available.some(r=>r.methodReason&&r.targetFraction<1&&paidSkipFraction(r,p)<1))reason='A Turael replacement task has no available completion method; review Turael methods.';
+    if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete Turael replacement requirements: confirm account facts or enable a conditional scenario.';
+    if(!reason&&reset.successPerCycle<=0)reason='No compatible target from this master or Turael replacements.';
+    chance=reason?null:reset.successPerCycle/reset.requestsPerCycle;
+    hours=reason||reset.successPerCycle<=0?null:reset.cycleMinutes/reset.successPerCycle/60;
+    spend=reset.successPerCycle?reset.paidSkipsPerCycle*m.skipCost/reset.successPerCycle+(p.applySetup?setupCost:0):Infinity;
+    quality+='; reset renewal model includes recorded Turael blocks, replacement task time and both task requests; simulate finite points and streaks';
+  }
+  const objectiveValue=reason?Infinity:p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
+  return {reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:reset?null:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:reset?null:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
 }
 export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):Plan{
   const rows=prepareRows(data,m,p),targets=targetAssignments(data,p),slots=blockSlots(m,p).slots;
@@ -113,6 +153,7 @@ export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):P
     }
     best.quality=`Best found by bounded block swaps (${evaluations} evaluations); not a certified global optimum`;
   }
+  if(best.reset)best.quality+='; reset renewal model includes recorded Turael blocks and replacement tasks; simulate points and streaks';
   best.searchEvaluations=evaluations;
   if(m.id==='mortimer')best.quality+='; modifier-aware policies evaluated by simulation';
   if(p.strategy==='funded'||p.goal.kind!=='offer'||p.objective==='points')best.quality+='; analytical offer estimate only — use strategy simulation for this objective';

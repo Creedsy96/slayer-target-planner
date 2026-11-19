@@ -26,3 +26,5 @@ export * from './rules/task-policy';
 export * from './state/history';
 export * from './analysis/hunt-tools';
 export * from './state/hunts';
+
+export * from './analysis/reset-estimate';

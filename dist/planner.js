@@ -801,8 +801,8 @@
     l.earned += earned;
     return earned;
   }
-  function canReset(m, assignmentId, filler) {
-    return m.id !== "mortimer" && m.group !== "beginner" && !filler.tasks.some((t) => t.id === assignmentId);
+  function canReset(m, assignmentId, filler, blocked = []) {
+    return m.id !== "mortimer" && m.group !== "beginner" && (!filler.tasks.some((t) => t.id === assignmentId) || blocked.includes(assignmentId));
   }
 
   // src/rules/task-policy.ts
@@ -817,7 +817,7 @@
     return row.skip;
   }
   function shouldReset(master, row, p2, filler) {
-    return p2.strategy === "reset-turael" && !protectedTask(p2, row) && master.id !== filler.id && canReset(master, row.id, filler);
+    return p2.strategy === "reset-turael" && !protectedTask(p2, row) && master.id !== filler.id && canReset(master, row.id, filler, p2.blocks[filler.group] || []);
   }
 
   // data/area-access.json
@@ -1165,6 +1165,31 @@
     return new Set(p2.goal.targets.filter((t) => data.variants.some((v) => v.id === t.variantId)).map((t) => t.assignmentId));
   }
 
+  // src/analysis/reset-estimate.ts
+  var sum = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
+  function resetEstimate(master, rows, filler, p2, fallback = /* @__PURE__ */ new Map()) {
+    const replacement = filler.rows.filter((r) => !r.reason && !r.blocked);
+    const target = (r) => r.isTarget ? r.targetFraction : 0;
+    const actionMinutes = (r) => (1 - paidSkipFraction(r, p2)) * r.minutes + paidSkipFraction(r, p2) * p2.skipSeconds / 60;
+    const action2 = (r) => fallback.get(r) || r;
+    const rate = sum(rows, (r) => shouldReset(master, action2(r), p2, filler.master) ? r.probability * (1 - target(r)) : 0);
+    const directChance = sum(rows, (r) => r.probability * target(r));
+    const fillerChance = sum(replacement, (r) => r.probability * target(r));
+    const replacementMinutes = p2.requestMinutes + sum(replacement, (r) => r.probability * (1 - target(r)) * actionMinutes(r));
+    const cycleMinutes = p2.requestMinutes + sum(rows, (r) => r.probability * (1 - target(r)) * (shouldReset(master, action2(r), p2, filler.master) ? p2.skipSeconds / 60 + replacementMinutes : actionMinutes(action2(r))));
+    return {
+      rate,
+      directChance,
+      fillerChance,
+      replacementMinutes,
+      cycleMinutes,
+      successPerCycle: directChance + rate * fillerChance,
+      requestsPerCycle: 1 + rate,
+      fillerBlocks: [...filler.blocks],
+      paidSkipsPerCycle: sum(rows, (r) => r.probability * (1 - target(r)) * paidSkipFraction(action2(r), p2)) + rate * sum(replacement, (r) => r.probability * paidSkipFraction(r, p2))
+    };
+  }
+
   // src/analysis/timing.ts
   function meanKills(entry, method) {
     const lo = method.extended && entry.extendedMax ? entry.extendedMin : entry.minimum;
@@ -1328,7 +1353,7 @@
   }
 
   // src/analysis/planner.ts
-  var sum = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
+  var sum2 = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
   function prepareRows(data, m, p2) {
     return m.tasks.map((entry) => {
       const a = data.assignments.find((a2) => a2.id === entry.id);
@@ -1365,9 +1390,9 @@
   function balanceSkips(rows, m, p2, data) {
     if (p2.strategy === "none") return;
     const filler = data.masters.find((m2) => m2.id === "turael");
-    for (const row of rows) if (!protectedTask(p2, row) && skipPreference(p2, row) && !(p2.strategy === "reset-turael" && m.id !== filler.id && canReset(m, row.id, filler))) row.skip = 1;
+    for (const row of rows) if (!protectedTask(p2, row) && skipPreference(p2, row) && !shouldReset(m, row, p2, filler)) row.skip = 1;
     if (p2.objective === "points" || ["boost-turael", "boost-mazchna", "reset-turael"].includes(p2.strategy)) return;
-    let budget = Math.max(0, sum(rows, (r) => r.probability * ((1 - r.skip) * r.reward - r.skip * m.skipCost)));
+    let budget = Math.max(0, sum2(rows, (r) => r.probability * ((1 - r.skip) * r.reward - r.skip * m.skipCost)));
     const choices2 = rows.filter((r) => !protectedTask(p2, r) && !skipPreference(p2, r)).sort((a, b) => (b.minutes - p2.skipSeconds / 60) / (m.skipCost + b.reward) - (a.minutes - p2.skipSeconds / 60) / (m.skipCost + a.reward) || a.id.localeCompare(b.id));
     for (const row of choices2) {
       if (p2.strategy === "funded") {
@@ -1379,6 +1404,19 @@
       row.skip = cost > 1e-14 ? Math.min(1, Math.max(0, budget / cost)) : budget > 0 ? 1 : 0;
       budget = Math.max(0, budget - row.skip * cost);
     }
+  }
+  function completionFallbacks(data, m, p2, rows) {
+    const result = /* @__PURE__ */ new Map();
+    if (m.id !== "konar") return result;
+    const q = clone(p2);
+    q.goal.targets = [];
+    for (const row of rows.filter((r) => r.isTarget)) delete q.methods[row.id];
+    const alternatives = prepareRows(data, m, q);
+    for (const row of rows) {
+      const other = alternatives.find((r) => r.id === row.id);
+      if (other && row.isTarget) result.set(row, other);
+    }
+    return result;
   }
   function evaluate(data, m, p2, blocks, quality = "Evaluated configuration") {
     const rows = prepareRows(data, m, p2), status = masterEligibility(m, p2), slots = blockSlots(m, p2), targets = targetAssignments(data, p2);
@@ -1393,31 +1431,60 @@
     const active = rows.filter((r) => !r.reason && !r.blocked);
     selectionProbabilities(active, m.id === "mortimer" ? choices(p2) : 1);
     balanceSkips(active, m, p2, data);
-    const targetProb = sum(active, (r) => r.isTarget ? r.probability * r.targetFraction : 0);
-    const numerator = sum(active, (r) => r.probability * ((1 - (r.isTarget ? r.targetFraction : 0)) * (1 - r.skip) * r.minutes + r.skip * p2.skipSeconds / 60));
-    const noSkip = sum(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
-    const cycle = sum(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p2.skipSeconds / 60));
-    const kept = sum(active, (r) => r.probability * (1 - r.skip));
-    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p2.mortimerTasks === null ? ["Mortimer progression"] : []])];
+    const fillerMaster = data.masters.find((master) => master.id === "turael");
+    const fallback = p2.strategy === "reset-turael" ? completionFallbacks(data, m, p2, rows) : /* @__PURE__ */ new Map();
+    const resets = (r) => p2.strategy === "reset-turael" && (!r.isTarget || r.targetFraction < 1) && shouldReset(m, fallback.get(r) || r, p2, fillerMaster);
+    const rowUnknown = (r) => {
+      const original = resets(r) && !r.isTarget ? [...check(r.entry.requirements, p2).unknown, ...r.entry.unlockWeight && p2.unlocks[r.entry.unlockWeight.key] == null ? ["Frost dragon weighting reward is unknown"] : []] : r.unknown;
+      const other = fallback.get(r);
+      return [...original, ...other && r.targetFraction < 1 && !resets(r) ? other.unknown : []];
+    };
+    const targetProb = sum2(active, (r) => r.isTarget ? r.probability * r.targetFraction : 0);
+    const numerator = sum2(active, (r) => r.probability * ((1 - (r.isTarget ? r.targetFraction : 0)) * (1 - r.skip) * r.minutes + r.skip * p2.skipSeconds / 60));
+    const noSkip = sum2(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
+    const cycle = sum2(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p2.skipSeconds / 60));
+    const kept = sum2(active, (r) => r.probability * (1 - r.skip));
+    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap(rowUnknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p2.mortimerTasks === null ? ["Mortimer progression"] : []])];
     let reason = status.failed.join("; ");
     for (const id of blocks) if (!(p2.blocks[m.group] || []).includes(id) && rows.find((r) => r.id === id)?.reason) conflicts.push("Cannot newly block an ineligible assignment: " + id);
     if (!reason && conflicts.length) reason = conflicts.join(" ");
-    if (!reason && !targetProb) reason = rows.filter((r) => r.isTarget).map((r) => r.reason || r.methodReason || "No compatible target location").join("; ") || "Cannot assign any selected target";
+    if (!reason && !targetProb && !active.some(resets)) reason = rows.filter((r) => r.isTarget).map((r) => r.reason || r.methodReason || "No compatible target location").join("; ") || "Cannot assign any selected target";
     if (!reason && unknown.length && !p2.assumeUnknown) reason = "Incomplete requirements: confirm account facts or enable a conditional scenario.";
-    if (!reason && active.some((r) => !r.isTarget && r.methodReason && r.skip < 1)) reason = "A non-target assignment has no available completion method; change the method or block/skip it.";
+    if (!reason && active.some((r) => !r.isTarget && r.methodReason && r.skip < 1 && !resets(r))) reason = "A non-target assignment has no available completion method; change the method or block/skip it.";
     if (!reason && p2.cape) reason = "Cape repeat policies require simulation; analytical ranking is unavailable.";
     const actual = p2.blocks[m.group] || [], setupCost = blocks.filter((id) => !actual.includes(id)).length * m.blockCost;
     if (p2.applySetup && p2.points !== null && p2.points - setupCost < p2.reserve) reason = "Insufficient points to apply this block list while preserving the reserve.";
-    const chance = reason ? null : targetProb, hours = chance ? (numerator + p2.requestMinutes) / chance / 60 : null;
-    const spend = targetProb ? sum(active, (r) => r.probability * r.skip * m.skipCost) / targetProb + (p2.applySetup ? setupCost : 0) : Infinity;
-    const objectiveValue = reason ? Infinity : p2.objective === "chance" ? -targetProb : p2.objective === "points" ? hours !== null && hours <= p2.simulation.sessionHours ? spend + hours * 1e-9 : Infinity : hours ?? Infinity;
-    return { master: m, rows, blocks, setupCost, chance, hours, noSkipHours: chance ? (noSkip + p2.requestMinutes) / chance / 60 : null, offers: chance ? 1 / chance : null, average: kept ? sum(active, (r) => r.probability * (1 - r.skip) * r.minutes) / kept : 0, skipRate: sum(active, (r) => r.probability * r.skip), pointsEarned: cycle ? sum(active, (r) => r.probability * (1 - r.skip) * r.reward) * 60 / cycle : 0, pointsSpent: cycle ? sum(active, (r) => r.probability * r.skip * m.skipCost) * 60 / cycle : 0, boundary: active.filter((r) => r.skip > 1e-9 && r.skip < 1 - 1e-9).map((r) => `${r.name}: ${(r.skip * 100).toFixed(1)}%`).join(", "), unknown, reason, quality, objectiveValue, searchEvaluations: 1, conflicts };
+    let chance = reason ? null : targetProb, hours = chance ? (numerator + p2.requestMinutes) / chance / 60 : null;
+    let spend = targetProb ? sum2(active, (r) => r.probability * r.skip * m.skipCost) / targetProb + (p2.applySetup ? setupCost : 0) : Infinity;
+    let reset;
+    if (active.some(resets)) {
+      const fp = { ...p2, strategy: "boost-turael", cape: false, applySetup: false };
+      const filler = evaluate(data, fillerMaster, fp, [...p2.blocks[fillerMaster.group] || []]);
+      reset = resetEstimate(m, active, filler, p2, fallback);
+      const available = filler.rows.filter((r) => !r.reason && !r.blocked);
+      const access = masterEligibility(fillerMaster, p2);
+      unknown.push(...filler.unknown.filter((value) => !unknown.includes(value)));
+      if (!reason && active.some((r) => r.targetFraction < 1 && !resets(r) && (fallback.get(r) || r).methodReason && paidSkipFraction(fallback.get(r) || r, p2) < 1)) reason = "A kept assignment has no available completion method; review methods.";
+      if (!reason && !available.length) reason = "No eligible Turael replacement tasks.";
+      if (!reason && access.failed.length) reason = "Turael replacement access: " + access.failed.join("; ");
+      if (!reason && filler.conflicts.some((c) => !c.startsWith("Target ") && !c.startsWith("Protected "))) reason = "Review the recorded Turael block list: " + filler.conflicts.join(" ");
+      if (!reason && available.some((r) => r.methodReason && r.targetFraction < 1 && paidSkipFraction(r, p2) < 1)) reason = "A Turael replacement task has no available completion method; review Turael methods.";
+      if (!reason && unknown.length && !p2.assumeUnknown) reason = "Incomplete Turael replacement requirements: confirm account facts or enable a conditional scenario.";
+      if (!reason && reset.successPerCycle <= 0) reason = "No compatible target from this master or Turael replacements.";
+      chance = reason ? null : reset.successPerCycle / reset.requestsPerCycle;
+      hours = reason || reset.successPerCycle <= 0 ? null : reset.cycleMinutes / reset.successPerCycle / 60;
+      spend = reset.successPerCycle ? reset.paidSkipsPerCycle * m.skipCost / reset.successPerCycle + (p2.applySetup ? setupCost : 0) : Infinity;
+      quality += "; reset renewal model includes recorded Turael blocks, replacement task time and both task requests; simulate finite points and streaks";
+    }
+    const objectiveValue = reason ? Infinity : p2.objective === "chance" ? -(chance ?? 0) : p2.objective === "points" ? hours !== null && hours <= p2.simulation.sessionHours ? spend + hours * 1e-9 : Infinity : hours ?? Infinity;
+    return { reset, master: m, rows, blocks, setupCost, chance, hours, noSkipHours: !reason && targetProb ? (noSkip + p2.requestMinutes) / targetProb / 60 : null, offers: chance ? 1 / chance : null, average: kept ? sum2(active, (r) => r.probability * (1 - r.skip) * r.minutes) / kept : 0, skipRate: reset ? reset.paidSkipsPerCycle / reset.requestsPerCycle : sum2(active, (r) => r.probability * r.skip), pointsEarned: reset ? null : cycle ? sum2(active, (r) => r.probability * (1 - r.skip) * r.reward) * 60 / cycle : 0, pointsSpent: reset ? null : cycle ? sum2(active, (r) => r.probability * r.skip * m.skipCost) * 60 / cycle : 0, boundary: active.filter((r) => r.skip > 1e-9 && r.skip < 1 - 1e-9).map((r) => `${r.name}: ${(r.skip * 100).toFixed(1)}%`).join(", "), unknown, reason, quality, objectiveValue, searchEvaluations: 1, conflicts };
   }
 
   // src/analysis/hunt-tools.ts
   function taskAdvice(data, plan, p2, row) {
     if (row.reason) return { action: "Unavailable", detail: row.reason };
     if (row.blocked) return { action: "Block", detail: "Excluded by this proposed block list." };
+    if (row.isTarget && plan.master.id === "konar" && row.targetFraction > 0 && row.targetFraction < 1 && shouldReset(plan.master, { ...row, isTarget: false }, p2, data.masters.find((m) => m.id === "turael"))) return { action: "Check offered location", detail: `Keep this offer if its location supports your target variant (${(row.targetFraction * 100).toFixed(1)}% of locations in this scenario). Otherwise reset it through Turael under this policy. Your keep/protect preferences take priority.` };
     if (row.isTarget) return { action: "Complete target", detail: row.methodReason || "Protected hunt target. Keep the assignment; confirm its offered location can satisfy the selected variant." };
     if (p2.preferences[row.id] === "keep" || p2.preferences[row.id] === "protect") return { action: "Complete", detail: "Your keep/protect preference takes priority." };
     if (shouldReset(plan.master, row, p2, data.masters.find((m) => m.id === "turael"))) return { action: "Reset", detail: "Replace through Turael. This resets the selected master\u2019s streak; complete the replacement task." };
@@ -1433,7 +1500,7 @@
       spendable,
       affordable: spendable === null ? null : plan.master.skipCost ? Math.floor(spendable / plan.master.skipCost) : null,
       setupAffordable: p2.points === null ? null : p2.points - setup >= p2.reserve,
-      drift: plan.pointsEarned - plan.pointsSpent
+      drift: plan.pointsEarned === null || plan.pointsSpent === null ? null : plan.pointsEarned - plan.pointsSpent
     };
   }
   function blockPreview(data, plan, p2) {
@@ -1525,7 +1592,7 @@
   }
   function renderForecast(plan, p2, result) {
     const f = fundingForecast(plan, p2);
-    return `<section class="forecast"><h3>Point budget</h3><p>${f.affordable === null ? "Enter current points to calculate affordable skips." : `${f.affordable} paid skips affordable now \xB7 ${f.spendable.toFixed(0)} spendable points after ${f.setup} setup points and the ${p2.reserve} reserve.`}</p>${f.setupAffordable === false ? '<p class="error">The recorded balance would be below your reserve after planned setup.</p>' : ""}${f.drift < -1e-3 ? '<p class="notice">This policy spends more than its estimated long-run rewards. Reduce saved skip preferences or use a funded simulation.</p>' : ""}<p class="small muted">Stationary balance: ${f.drift.toFixed(1)} points/hour. This average does not guarantee your next skip.${p2.strategy.startsWith("boost") || p2.strategy === "reset-turael" ? " Boost/reset rewards and streak effects require simulation." : ""}</p>${result ? `<p>Simulated funding exhaustion: ${(result.exhaustionChance * 100).toFixed(1)}% of trials. Mean remaining points: ${result.meanRemaining.toFixed(0)}.</p>` : '<button data-action="simulate">Simulate reserve risk</button>'}</section>`;
+    return `<section class="forecast"><h3>Point budget</h3><p>${f.affordable === null ? "Enter current points to calculate affordable skips." : `${f.affordable} paid skips affordable now \xB7 ${f.spendable.toFixed(0)} spendable points after ${f.setup} setup points and the ${p2.reserve} reserve.`}</p>${f.setupAffordable === false ? '<p class="error">The recorded balance would be below your reserve after planned setup.</p>' : ""}${f.drift !== null && f.drift < -1e-3 ? '<p class="notice">This policy spends more than its estimated long-run rewards. Reduce saved skip preferences or use a funded simulation.</p>' : ""}<p class="small muted">${f.drift === null ? "Reset streak rewards require simulation; no long-run point rate is assumed." : `Stationary balance: ${f.drift.toFixed(1)} points/hour. This average does not guarantee your next skip.`}${p2.strategy.startsWith("boost") || p2.strategy === "reset-turael" ? " Boost/reset rewards and streak effects require simulation." : ""}</p>${result ? `<p>Simulated funding exhaustion: ${(result.exhaustionChance * 100).toFixed(1)}% of trials. Mean remaining points: ${result.meanRemaining.toFixed(0)}.</p>` : '<button data-action="simulate">Simulate reserve risk</button>'}</section>`;
   }
   function renderBlockChanges(data, plan, p2) {
     const b = blockPreview(data, plan, p2);
@@ -51341,8 +51408,8 @@
     l.earned += earned;
     return earned;
   }
-  function canReset(m, assignmentId, filler) {
-    return m.id !== "mortimer" && m.group !== "beginner" && !filler.tasks.some((t) => t.id === assignmentId);
+  function canReset(m, assignmentId, filler, blocked = []) {
+    return m.id !== "mortimer" && m.group !== "beginner" && (!filler.tasks.some((t) => t.id === assignmentId) || blocked.includes(assignmentId));
   }
   function resetStreak(l, m) {
     l.streaks[m.streakGroup] = 0;
@@ -51440,11 +51507,36 @@
     return row.skip;
   }
   function shouldReset(master, row, p, filler) {
-    return p.strategy === "reset-turael" && !protectedTask(p, row) && master.id !== filler.id && canReset(master, row.id, filler);
+    return p.strategy === "reset-turael" && !protectedTask(p, row) && master.id !== filler.id && canReset(master, row.id, filler, p.blocks[filler.group] || []);
+  }
+
+  // src/analysis/reset-estimate.ts
+  var sum = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
+  function resetEstimate(master, rows, filler, p, fallback = /* @__PURE__ */ new Map()) {
+    const replacement = filler.rows.filter((r) => !r.reason && !r.blocked);
+    const target = (r) => r.isTarget ? r.targetFraction : 0;
+    const actionMinutes = (r) => (1 - paidSkipFraction(r, p)) * r.minutes + paidSkipFraction(r, p) * p.skipSeconds / 60;
+    const action = (r) => fallback.get(r) || r;
+    const rate = sum(rows, (r) => shouldReset(master, action(r), p, filler.master) ? r.probability * (1 - target(r)) : 0);
+    const directChance = sum(rows, (r) => r.probability * target(r));
+    const fillerChance = sum(replacement, (r) => r.probability * target(r));
+    const replacementMinutes = p.requestMinutes + sum(replacement, (r) => r.probability * (1 - target(r)) * actionMinutes(r));
+    const cycleMinutes = p.requestMinutes + sum(rows, (r) => r.probability * (1 - target(r)) * (shouldReset(master, action(r), p, filler.master) ? p.skipSeconds / 60 + replacementMinutes : actionMinutes(action(r))));
+    return {
+      rate,
+      directChance,
+      fillerChance,
+      replacementMinutes,
+      cycleMinutes,
+      successPerCycle: directChance + rate * fillerChance,
+      requestsPerCycle: 1 + rate,
+      fillerBlocks: [...filler.blocks],
+      paidSkipsPerCycle: sum(rows, (r) => r.probability * (1 - target(r)) * paidSkipFraction(action(r), p)) + rate * sum(replacement, (r) => r.probability * paidSkipFraction(r, p))
+    };
   }
 
   // src/analysis/planner.ts
-  var sum = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
+  var sum2 = (rows, fn) => rows.reduce((s, r) => s + fn(r), 0);
   function prepareRows(data, m, p) {
     return m.tasks.map((entry) => {
       const a = data.assignments.find((a2) => a2.id === entry.id);
@@ -51481,9 +51573,9 @@
   function balanceSkips(rows, m, p, data) {
     if (p.strategy === "none") return;
     const filler = data.masters.find((m2) => m2.id === "turael");
-    for (const row of rows) if (!protectedTask(p, row) && skipPreference(p, row) && !(p.strategy === "reset-turael" && m.id !== filler.id && canReset(m, row.id, filler))) row.skip = 1;
+    for (const row of rows) if (!protectedTask(p, row) && skipPreference(p, row) && !shouldReset(m, row, p, filler)) row.skip = 1;
     if (p.objective === "points" || ["boost-turael", "boost-mazchna", "reset-turael"].includes(p.strategy)) return;
-    let budget = Math.max(0, sum(rows, (r) => r.probability * ((1 - r.skip) * r.reward - r.skip * m.skipCost)));
+    let budget = Math.max(0, sum2(rows, (r) => r.probability * ((1 - r.skip) * r.reward - r.skip * m.skipCost)));
     const choices2 = rows.filter((r) => !protectedTask(p, r) && !skipPreference(p, r)).sort((a, b) => (b.minutes - p.skipSeconds / 60) / (m.skipCost + b.reward) - (a.minutes - p.skipSeconds / 60) / (m.skipCost + a.reward) || a.id.localeCompare(b.id));
     for (const row of choices2) {
       if (p.strategy === "funded") {
@@ -51495,6 +51587,19 @@
       row.skip = cost > 1e-14 ? Math.min(1, Math.max(0, budget / cost)) : budget > 0 ? 1 : 0;
       budget = Math.max(0, budget - row.skip * cost);
     }
+  }
+  function completionFallbacks(data, m, p, rows) {
+    const result = /* @__PURE__ */ new Map();
+    if (m.id !== "konar") return result;
+    const q = clone(p);
+    q.goal.targets = [];
+    for (const row of rows.filter((r) => r.isTarget)) delete q.methods[row.id];
+    const alternatives = prepareRows(data, m, q);
+    for (const row of rows) {
+      const other = alternatives.find((r) => r.id === row.id);
+      if (other && row.isTarget) result.set(row, other);
+    }
+    return result;
   }
   function evaluate(data, m, p, blocks, quality = "Evaluated configuration") {
     const rows = prepareRows(data, m, p), status = masterEligibility(m, p), slots = blockSlots(m, p), targets = targetAssignments(data, p);
@@ -51509,25 +51614,53 @@
     const active = rows.filter((r) => !r.reason && !r.blocked);
     selectionProbabilities(active, m.id === "mortimer" ? choices(p) : 1);
     balanceSkips(active, m, p, data);
-    const targetProb = sum(active, (r) => r.isTarget ? r.probability * r.targetFraction : 0);
-    const numerator = sum(active, (r) => r.probability * ((1 - (r.isTarget ? r.targetFraction : 0)) * (1 - r.skip) * r.minutes + r.skip * p.skipSeconds / 60));
-    const noSkip = sum(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
-    const cycle = sum(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p.skipSeconds / 60));
-    const kept = sum(active, (r) => r.probability * (1 - r.skip));
-    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p.mortimerTasks === null ? ["Mortimer progression"] : []])];
+    const fillerMaster = data.masters.find((master) => master.id === "turael");
+    const fallback = p.strategy === "reset-turael" ? completionFallbacks(data, m, p, rows) : /* @__PURE__ */ new Map();
+    const resets = (r) => p.strategy === "reset-turael" && (!r.isTarget || r.targetFraction < 1) && shouldReset(m, fallback.get(r) || r, p, fillerMaster);
+    const rowUnknown = (r) => {
+      const original = resets(r) && !r.isTarget ? [...check(r.entry.requirements, p).unknown, ...r.entry.unlockWeight && p.unlocks[r.entry.unlockWeight.key] == null ? ["Frost dragon weighting reward is unknown"] : []] : r.unknown;
+      const other = fallback.get(r);
+      return [...original, ...other && r.targetFraction < 1 && !resets(r) ? other.unknown : []];
+    };
+    const targetProb = sum2(active, (r) => r.isTarget ? r.probability * r.targetFraction : 0);
+    const numerator = sum2(active, (r) => r.probability * ((1 - (r.isTarget ? r.targetFraction : 0)) * (1 - r.skip) * r.minutes + r.skip * p.skipSeconds / 60));
+    const noSkip = sum2(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
+    const cycle = sum2(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p.skipSeconds / 60));
+    const kept = sum2(active, (r) => r.probability * (1 - r.skip));
+    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap(rowUnknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p.mortimerTasks === null ? ["Mortimer progression"] : []])];
     let reason = status.failed.join("; ");
     for (const id of blocks) if (!(p.blocks[m.group] || []).includes(id) && rows.find((r) => r.id === id)?.reason) conflicts.push("Cannot newly block an ineligible assignment: " + id);
     if (!reason && conflicts.length) reason = conflicts.join(" ");
-    if (!reason && !targetProb) reason = rows.filter((r) => r.isTarget).map((r) => r.reason || r.methodReason || "No compatible target location").join("; ") || "Cannot assign any selected target";
+    if (!reason && !targetProb && !active.some(resets)) reason = rows.filter((r) => r.isTarget).map((r) => r.reason || r.methodReason || "No compatible target location").join("; ") || "Cannot assign any selected target";
     if (!reason && unknown.length && !p.assumeUnknown) reason = "Incomplete requirements: confirm account facts or enable a conditional scenario.";
-    if (!reason && active.some((r) => !r.isTarget && r.methodReason && r.skip < 1)) reason = "A non-target assignment has no available completion method; change the method or block/skip it.";
+    if (!reason && active.some((r) => !r.isTarget && r.methodReason && r.skip < 1 && !resets(r))) reason = "A non-target assignment has no available completion method; change the method or block/skip it.";
     if (!reason && p.cape) reason = "Cape repeat policies require simulation; analytical ranking is unavailable.";
     const actual = p.blocks[m.group] || [], setupCost = blocks.filter((id) => !actual.includes(id)).length * m.blockCost;
     if (p.applySetup && p.points !== null && p.points - setupCost < p.reserve) reason = "Insufficient points to apply this block list while preserving the reserve.";
-    const chance = reason ? null : targetProb, hours = chance ? (numerator + p.requestMinutes) / chance / 60 : null;
-    const spend = targetProb ? sum(active, (r) => r.probability * r.skip * m.skipCost) / targetProb + (p.applySetup ? setupCost : 0) : Infinity;
-    const objectiveValue = reason ? Infinity : p.objective === "chance" ? -targetProb : p.objective === "points" ? hours !== null && hours <= p.simulation.sessionHours ? spend + hours * 1e-9 : Infinity : hours ?? Infinity;
-    return { master: m, rows, blocks, setupCost, chance, hours, noSkipHours: chance ? (noSkip + p.requestMinutes) / chance / 60 : null, offers: chance ? 1 / chance : null, average: kept ? sum(active, (r) => r.probability * (1 - r.skip) * r.minutes) / kept : 0, skipRate: sum(active, (r) => r.probability * r.skip), pointsEarned: cycle ? sum(active, (r) => r.probability * (1 - r.skip) * r.reward) * 60 / cycle : 0, pointsSpent: cycle ? sum(active, (r) => r.probability * r.skip * m.skipCost) * 60 / cycle : 0, boundary: active.filter((r) => r.skip > 1e-9 && r.skip < 1 - 1e-9).map((r) => \`\${r.name}: \${(r.skip * 100).toFixed(1)}%\`).join(", "), unknown, reason, quality, objectiveValue, searchEvaluations: 1, conflicts };
+    let chance = reason ? null : targetProb, hours = chance ? (numerator + p.requestMinutes) / chance / 60 : null;
+    let spend = targetProb ? sum2(active, (r) => r.probability * r.skip * m.skipCost) / targetProb + (p.applySetup ? setupCost : 0) : Infinity;
+    let reset;
+    if (active.some(resets)) {
+      const fp = { ...p, strategy: "boost-turael", cape: false, applySetup: false };
+      const filler = evaluate(data, fillerMaster, fp, [...p.blocks[fillerMaster.group] || []]);
+      reset = resetEstimate(m, active, filler, p, fallback);
+      const available = filler.rows.filter((r) => !r.reason && !r.blocked);
+      const access = masterEligibility(fillerMaster, p);
+      unknown.push(...filler.unknown.filter((value) => !unknown.includes(value)));
+      if (!reason && active.some((r) => r.targetFraction < 1 && !resets(r) && (fallback.get(r) || r).methodReason && paidSkipFraction(fallback.get(r) || r, p) < 1)) reason = "A kept assignment has no available completion method; review methods.";
+      if (!reason && !available.length) reason = "No eligible Turael replacement tasks.";
+      if (!reason && access.failed.length) reason = "Turael replacement access: " + access.failed.join("; ");
+      if (!reason && filler.conflicts.some((c) => !c.startsWith("Target ") && !c.startsWith("Protected "))) reason = "Review the recorded Turael block list: " + filler.conflicts.join(" ");
+      if (!reason && available.some((r) => r.methodReason && r.targetFraction < 1 && paidSkipFraction(r, p) < 1)) reason = "A Turael replacement task has no available completion method; review Turael methods.";
+      if (!reason && unknown.length && !p.assumeUnknown) reason = "Incomplete Turael replacement requirements: confirm account facts or enable a conditional scenario.";
+      if (!reason && reset.successPerCycle <= 0) reason = "No compatible target from this master or Turael replacements.";
+      chance = reason ? null : reset.successPerCycle / reset.requestsPerCycle;
+      hours = reason || reset.successPerCycle <= 0 ? null : reset.cycleMinutes / reset.successPerCycle / 60;
+      spend = reset.successPerCycle ? reset.paidSkipsPerCycle * m.skipCost / reset.successPerCycle + (p.applySetup ? setupCost : 0) : Infinity;
+      quality += "; reset renewal model includes recorded Turael blocks, replacement task time and both task requests; simulate finite points and streaks";
+    }
+    const objectiveValue = reason ? Infinity : p.objective === "chance" ? -(chance ?? 0) : p.objective === "points" ? hours !== null && hours <= p.simulation.sessionHours ? spend + hours * 1e-9 : Infinity : hours ?? Infinity;
+    return { reset, master: m, rows, blocks, setupCost, chance, hours, noSkipHours: !reason && targetProb ? (noSkip + p.requestMinutes) / targetProb / 60 : null, offers: chance ? 1 / chance : null, average: kept ? sum2(active, (r) => r.probability * (1 - r.skip) * r.minutes) / kept : 0, skipRate: reset ? reset.paidSkipsPerCycle / reset.requestsPerCycle : sum2(active, (r) => r.probability * r.skip), pointsEarned: reset ? null : cycle ? sum2(active, (r) => r.probability * (1 - r.skip) * r.reward) * 60 / cycle : 0, pointsSpent: reset ? null : cycle ? sum2(active, (r) => r.probability * r.skip * m.skipCost) * 60 / cycle : 0, boundary: active.filter((r) => r.skip > 1e-9 && r.skip < 1 - 1e-9).map((r) => \`\${r.name}: \${(r.skip * 100).toFixed(1)}%\`).join(", "), unknown, reason, quality, objectiveValue, searchEvaluations: 1, conflicts };
   }
   function optimise(data, m, p, maxEvaluations = 700) {
     const rows = prepareRows(data, m, p), targets = targetAssignments(data, p), slots = blockSlots(m, p).slots;
@@ -51576,6 +51709,7 @@
       }
       best.quality = \`Best found by bounded block swaps (\${evaluations} evaluations); not a certified global optimum\`;
     }
+    if (best.reset) best.quality += "; reset renewal model includes recorded Turael blocks and replacement tasks; simulate points and streaks";
     best.searchEvaluations = evaluations;
     if (m.id === "mortimer") best.quality += "; modifier-aware policies evaluated by simulation";
     if (p.strategy === "funded" || p.goal.kind !== "offer" || p.objective === "points") best.quality += "; analytical offer estimate only \\u2014 use strategy simulation for this objective";
@@ -51618,20 +51752,11 @@
     const fillerId = p.strategy === "boost-mazchna" ? "mazchna" : "turael";
     const fillerMaster = data.masters.find((m) => m.id === fillerId);
     const fillerProfile = { ...clone(p), strategy: p.strategy === "none" ? "none" : "boost-turael" };
-    const filler = optimise(data, fillerMaster, fillerProfile, 1);
+    const filler = p.strategy === "reset-turael" ? evaluate(data, fillerMaster, fillerProfile, [...p.blocks[fillerMaster.group] || []]) : optimise(data, fillerMaster, fillerProfile, 1);
     if (p.strategy.startsWith("boost") && plan.master.streakGroup !== "normal") throw Error("Boosting comparison requires a master in the normal streak group.");
     if ((p.strategy.startsWith("boost") || p.strategy === "reset-turael") && filler.rows.filter((r) => !r.reason && !r.blocked).length === 0) throw Error("No eligible filler tasks.");
     const fallback = /* @__PURE__ */ new Map();
-    for (const candidate of [plan, filler]) if (candidate.master.id === "konar") {
-      const q = clone(p);
-      q.goal.targets = [];
-      for (const row of candidate.rows.filter((r) => r.isTarget)) delete q.methods[row.id];
-      const alternatives = prepareRows(data, candidate.master, q);
-      for (const row of candidate.rows) {
-        const other = alternatives.find((r) => r.id === row.id);
-        if (other) fallback.set(row, other);
-      }
-    }
+    for (const candidate of [plan, filler]) for (const [row, other] of completionFallbacks(data, candidate.master, p, candidate.rows)) fallback.set(row, other);
     const rng = random(p.simulation.seed), trials = [], count = Math.floor(p.simulation.trials);
     for (let i = 0; i < count; i++) {
       trials.push(runTrial(data, plan, filler, p, rng, i === 0, fallback));
@@ -51654,6 +51779,7 @@
     if (unresolved) notes.push(\`\${unresolved} trials did not reach the goal within \${p.simulation.horizonOffers} offers. Mean is withheld; unresolved runs are not discarded.\`);
     if (trials.some((t) => !t.success && t.hours < p.simulation.sessionHours)) notes.push("Session success is a lower bound because some unfinished trials stopped before the session ended; the displayed interval includes unresolved outcomes plus Wilson sampling uncertainty, not model error.");
     if (plan.master.id === "mortimer") notes.push(\`Mortimer rules \${MORTIMER_VERSION}: every offer has one uniformly selected unlocked modifier. Each valid five-step value is equally likely under the confirmed planning rule. Choice policy remains a time/points heuristic. Clue, XP and superior bonuses are recorded but do not simulate XP or superior loot.\`);
+    if (p.strategy === "reset-turael") notes.push("Turael replacements use the recorded actual beginner block list; no automatic or proposed filler blocks are purchased. Only the cancelled master\\u2019s streak is reset. Turael completion then increments the normal streak. Reset timing uses seconds per reset, each task request, and configured Turael combat/travel rates.");
     if (p.goal.kind === "drop") notes.push("Drop goal includes the selected direct per-kill drop only. Superior spawns and their separate drop tables are not included.");
     return { trials: count, successes: success.length, unresolved, meanHours: unresolved ? null : success.reduce((s, t) => s + t.hours, 0) / count, medianHours: quantile(0.5), p90Hours: quantile(0.9), sessionChance: hit / count, sessionInterval: [wilson(hit, count)[0], wilson(hit + trials.filter((t) => !t.success && t.hours < p.simulation.sessionHours).length, count)[1]], exhaustionChance: trials.filter((t) => t.exhausted).length / count, meanSpent: trials.reduce((s, t) => s + t.spent, 0) / count, meanRemaining: trials.reduce((s, t) => s + t.remaining, 0) / count, curve, seed: p.simulation.seed, notes, trace: trials[0]?.trace || [] };
   }
@@ -51675,26 +51801,37 @@
     if (p.current.kind === "task") {
       const currentMaster = data.masters.find((m) => m.id === p.current.masterId);
       const row = prepareRows(data, currentMaster, p).find((r) => r.id === p.current.assignmentId);
-      if (!row || row.methodReason) {
+      if (!row) {
         add("Current task has no valid completion method");
         return result(false);
       }
-      if (row.isTarget && p.goal.kind === "offer") {
-        add("Target task already assigned");
-        return result(true);
+      if (shouldReset(currentMaster, row, p, filler.master)) {
+        resetStreak(l, currentMaster);
+        minutes += p.skipSeconds / 60;
+        nextFiller = true;
+        add(\`Reset current \${row.name}; \${currentMaster.streakGroup} streak reset\`);
+      } else {
+        if (row.methodReason) {
+          add("Current task has no valid completion method");
+          return result(false);
+        }
+        if (row.isTarget && p.goal.kind === "offer") {
+          add("Target task already assigned");
+          return result(true);
+        }
+        const actual = sampleKills(p.current.remaining, row.method, rng);
+        const done = finishCombat(row, actual, row.isTarget, p, rng, progress);
+        minutes += row.method.travel + done.kills * row.seconds / 60;
+        progress = done.progress;
+        if (done.success) {
+          add("Goal reached during current task");
+          return result(true);
+        }
+        complete(l, currentMaster, p, row.entry, p.current.modifier, p.current.modifierPoints);
+        const same = plan.rows.find((r) => r.id === row.id);
+        previous = same ? { row: same, kind: p.current.modifier || "none", points: p.current.modifierPoints ?? 0, quantity: 0, target: same.isTarget } : void 0;
+        add("Completed current assignment");
       }
-      const actual = sampleKills(p.current.remaining, row.method, rng);
-      const done = finishCombat(row, actual, row.isTarget, p, rng, progress);
-      minutes += row.method.travel + done.kills * row.seconds / 60;
-      progress = done.progress;
-      if (done.success) {
-        add("Goal reached during current task");
-        return result(true);
-      }
-      complete(l, currentMaster, p, row.entry, p.current.modifier, p.current.modifierPoints);
-      const same = plan.rows.find((r) => r.id === row.id);
-      previous = same ? { row: same, kind: p.current.modifier || "none", points: p.current.modifierPoints ?? 0, quantity: 0, target: same.isTarget } : void 0;
-      add("Completed current assignment");
     }
     for (let offer = 0; offer < p.simulation.horizonOffers; offer++) {
       const boost = p.strategy.startsWith("boost") && ((l.streaks.normal || 0) + 1) % p.milestone !== 0;
@@ -51941,7 +52078,7 @@
   function renderShell() {
     const restore = preserveView();
     document.body.classList.toggle("compact-hunt", state.compact);
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc6(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.6 \xB7 ${esc6(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc6(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.6.1 \xB7 ${esc6(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -51976,17 +52113,22 @@
       html += `<div class="formgrid">${select("goal.dropId", "Sourced drop", [["", "Choose a drop"], ...drops.map((d) => [d.id, d.name])], p().goal.dropId)}${input("goal.customDropRate", "Optional custom per-kill probability (0\u20131)", p().goal.customDropRate, 0, 1, "any")}</div><p class="goalhint">Direct drops only. Custom rates are assumptions; superior spawn/drop tables are not included.</p>`;
     }
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
-    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc6(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc6(best.quality)}</p></section>`;
+    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc6(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>${best.reset ? "Target opportunity / request (incl. Turael)" : "Target opportunity / offer"}</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Requests including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc6(best.quality)}</p></section>`;
     else html += `<div class="notice">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `<section id="master-comparison"><h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc6(r.master.name)}</button><small>${esc6(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc6(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
+    html += `<section id="master-comparison"><h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>${p().strategy === "reset-turael" ? "Target / request (incl. Turael)" : "Target / offer"}</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc6(r.master.name)}</button><small>${esc6(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc6(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned === null || r.pointsSpent === null ? "Use simulation" : r.pointsEarned.toFixed(1) + " earned<br>" + r.pointsSpent.toFixed(1) + " spent"}</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
     if (current) html += planDetails(current);
     return html;
+  }
+  function renderResetEstimate(plan) {
+    const r = plan.reset;
+    if (!r) return "";
+    return `<div class="notice"><h3>Turael reset estimate</h3><p>${(r.rate * 100).toFixed(1)}% of main-master requests are reset. Each reset includes ${(p().skipSeconds / 60).toFixed(1)} minutes to change the task plus ${r.replacementMinutes.toFixed(1)} expected minutes for the Turael request and replacement action. Each main-master request adds ${p().requestMinutes.toFixed(1)} minutes.</p><p>Direct target chance at ${esc6(plan.master.name)}: ${pct(r.directChance)}. Turael target chance: ${pct(r.fillerChance)}. The table\u2019s chance averages both request types; time ends when a compatible target is offered. Incompatible Konar locations follow the reset rule.</p><p class="small muted">Uses your recorded actual Turael blocks (${r.fillerBlocks.length}), not a free automatic proposal. Set actual Turael blocks and fast replacement methods to match your route. Streak rewards and finite point balances require simulation.</p><button data-issue-route="tasks" data-issue-master="turael">Review Turael blocks and methods</button></div>`;
   }
   function planDetails(plan, compact = false) {
     const impacts = blockImpacts(catalogue, plan, p());
     const blockDetails = plan.blocks.length ? `<details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc6(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details>` : "";
     const unknownDetails = plan.unknown.length ? `<details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc6(s)}</li>`).join("")}</ul></details>` : "";
-    return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc6(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc6(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}${plan.master.id === "mortimer" ? renderMortimerSummary(p()) : ""}<p class="small muted">${esc6(plan.quality)}</p><div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc6(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(catalogue, plan, p(), state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc6(id)}</span>`).join("") || "None"}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(catalogue, plan, p())}</div></div>${renderForecast(plan, p(), state.simulations.get(plan.master.id) || null)}${blockDetails}${unknownDetails}${renderTaskHistory(catalogue, p())}</section>${compact ? "" : simulationPanel(plan)}`;
+    return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc6(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc6(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}${plan.master.id === "mortimer" ? renderMortimerSummary(p()) : ""}${renderResetEstimate(plan)}<p class="small muted">${esc6(plan.quality)}</p><div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc6(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(catalogue, plan, p(), state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc6(id)}</span>`).join("") || "None"}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(catalogue, plan, p())}</div></div>${renderForecast(plan, p(), state.simulations.get(plan.master.id) || null)}${blockDetails}${unknownDetails}${renderTaskHistory(catalogue, p())}</section>${compact ? "" : simulationPanel(plan)}`;
   }
   function simulationPanel(plan) {
     const result = state.simulation;

@@ -37,7 +37,7 @@ export function complete(l:Ledger,m:Master,p:Profile,entry:Entry,modifier='none'
   l.streaks[m.streakGroup]=next;if(m.id==='mortimer')l.mortimerTasks++;
   l.points+=earned;l.earned+=earned;return earned;
 }
-export function canReset(m:Master,assignmentId:string,filler:Master):boolean{
-  return m.id!=='mortimer'&&m.group!=='beginner'&&!filler.tasks.some(t=>t.id===assignmentId);
+export function canReset(m:Master,assignmentId:string,filler:Master,blocked:string[]=[]):boolean{
+  return m.id!=='mortimer'&&m.group!=='beginner'&&(!filler.tasks.some(t=>t.id===assignmentId)||blocked.includes(assignmentId));
 }
 export function resetStreak(l:Ledger,m:Master):void{l.streaks[m.streakGroup]=0;}

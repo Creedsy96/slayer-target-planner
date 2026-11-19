@@ -5,6 +5,7 @@ import {evaluate} from './planner';
 export function taskAdvice(data:Catalogue,plan:Plan,p:Profile,row:Row):{action:string;detail:string}{
   if(row.reason)return {action:'Unavailable',detail:row.reason};
   if(row.blocked)return {action:'Block',detail:'Excluded by this proposed block list.'};
+  if(row.isTarget&&plan.master.id==='konar'&&row.targetFraction>0&&row.targetFraction<1&&shouldReset(plan.master,{...row,isTarget:false},p,data.masters.find(m=>m.id==='turael')!))return {action:'Check offered location',detail:`Keep this offer if its location supports your target variant (${(row.targetFraction*100).toFixed(1)}% of locations in this scenario). Otherwise reset it through Turael under this policy. Your keep/protect preferences take priority.`};
   if(row.isTarget)return {action:'Complete target',detail:row.methodReason||'Protected hunt target. Keep the assignment; confirm its offered location can satisfy the selected variant.'};
   if(p.preferences[row.id]==='keep'||p.preferences[row.id]==='protect')return {action:'Complete',detail:'Your keep/protect preference takes priority.'};
   if(shouldReset(plan.master,row,p,data.masters.find(m=>m.id==='turael')!))return {action:'Reset',detail:'Replace through Turael. This resets the selected master’s streak; complete the replacement task.'};
@@ -17,7 +18,7 @@ export function fundingForecast(plan:Plan,p:Profile){
   const spendable=p.points===null?null:Math.max(0,p.points-setup-p.reserve);
   return {setup,spendable,affordable:spendable===null?null:plan.master.skipCost?Math.floor(spendable/plan.master.skipCost):null,
     setupAffordable:p.points===null?null:p.points-setup>=p.reserve,
-    drift:plan.pointsEarned-plan.pointsSpent};
+    drift:plan.pointsEarned===null||plan.pointsSpent===null?null:plan.pointsEarned-plan.pointsSpent};
 }
 export function blockPreview(data:Catalogue,plan:Plan,p:Profile){
   const actual=p.blocks[plan.master.group]||[],added=plan.blocks.filter(id=>!actual.includes(id)),removed=actual.filter(id=>!plan.blocks.includes(id));

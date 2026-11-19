@@ -13,5 +13,5 @@ export function paidSkipFraction(row:Row,p:Profile):number{
   return row.skip;
 }
 export function shouldReset(master:Master,row:Row,p:Profile,filler:Master):boolean{
-  return p.strategy==='reset-turael'&&!protectedTask(p,row)&&master.id!==filler.id&&canReset(master,row.id,filler);
+  return p.strategy==='reset-turael'&&!protectedTask(p,row)&&master.id!==filler.id&&canReset(master,row.id,filler,p.blocks[filler.group]||[]);
 }

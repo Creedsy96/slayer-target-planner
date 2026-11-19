@@ -2,7 +2,7 @@ import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types
 import {clone} from '../state/profiles';
 import {choices,complete,ledger,pay,resetStreak,type Ledger} from '../rules/points';
 import {rollMortimer,MORTIMER_VERSION} from '../rules/mortimer';
-import {optimise,prepareRows} from './planner';
+import {completionFallbacks,evaluate,optimise,prepareRows} from './planner';
 import {sampleOffer} from './offers';
 import {sampleQuantity,sampleKills} from './timing';
 import {paidSkipFraction,shouldReset} from '../rules/task-policy';
@@ -30,11 +30,11 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   const fillerMaster=data.masters.find(m=>m.id===fillerId)!;
   // Filler tasks honour explicit preferences, with automatic skips disabled.
   const fillerProfile={...clone(p),strategy:p.strategy==='none'?'none' as const:'boost-turael' as const};
-  const filler=optimise(data,fillerMaster,fillerProfile,1);
+  const filler=p.strategy==='reset-turael'?evaluate(data,fillerMaster,fillerProfile,[...(p.blocks[fillerMaster.group]||[])]):optimise(data,fillerMaster,fillerProfile,1);
   if(p.strategy.startsWith('boost')&&plan.master.streakGroup!=='normal')throw Error('Boosting comparison requires a master in the normal streak group.');
   if((p.strategy.startsWith('boost')||p.strategy==='reset-turael')&&filler.rows.filter(r=>!r.reason&&!r.blocked).length===0)throw Error('No eligible filler tasks.');
   const fallback=new Map<Row,Row>();
-  for(const candidate of [plan,filler])if(candidate.master.id==='konar'){const q=clone(p);q.goal.targets=[];for(const row of candidate.rows.filter(r=>r.isTarget))delete q.methods[row.id];const alternatives=prepareRows(data,candidate.master,q);for(const row of candidate.rows){const other=alternatives.find(r=>r.id===row.id);if(other)fallback.set(row,other);}}
+  for(const candidate of [plan,filler])for(const [row,other]of completionFallbacks(data,candidate.master,p,candidate.rows))fallback.set(row,other);
   const rng=random(p.simulation.seed),trials:Trial[]=[],count=Math.floor(p.simulation.trials);
   for(let i=0;i<count;i++){
     trials.push(runTrial(data,plan,filler,p,rng,i===0,fallback));
@@ -49,6 +49,7 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   if(unresolved)notes.push(`${unresolved} trials did not reach the goal within ${p.simulation.horizonOffers} offers. Mean is withheld; unresolved runs are not discarded.`);
   if(trials.some(t=>!t.success&&t.hours<p.simulation.sessionHours))notes.push('Session success is a lower bound because some unfinished trials stopped before the session ended; the displayed interval includes unresolved outcomes plus Wilson sampling uncertainty, not model error.');
   if(plan.master.id==='mortimer')notes.push(`Mortimer rules ${MORTIMER_VERSION}: every offer has one uniformly selected unlocked modifier. Each valid five-step value is equally likely under the confirmed planning rule. Choice policy remains a time/points heuristic. Clue, XP and superior bonuses are recorded but do not simulate XP or superior loot.`);
+  if(p.strategy==='reset-turael')notes.push('Turael replacements use the recorded actual beginner block list; no automatic or proposed filler blocks are purchased. Only the cancelled master’s streak is reset. Turael completion then increments the normal streak. Reset timing uses seconds per reset, each task request, and configured Turael combat/travel rates.');
   if(p.goal.kind==='drop')notes.push('Drop goal includes the selected direct per-kill drop only. Superior spawns and their separate drop tables are not included.');
   return {trials:count,successes:success.length,unresolved,meanHours:unresolved?null:success.reduce((s,t)=>s+t.hours,0)/count,medianHours:quantile(.5),p90Hours:quantile(.9),sessionChance:hit/count,sessionInterval:[wilson(hit,count)[0],wilson(hit+trials.filter(t=>!t.success&&t.hours<p.simulation.sessionHours).length,count)[1]],exhaustionChance:trials.filter(t=>t.exhausted).length/count,meanSpent:trials.reduce((s,t)=>s+t.spent,0)/count,meanRemaining:trials.reduce((s,t)=>s+t.remaining,0)/count,curve,seed:p.simulation.seed,notes,trace:trials[0]?.trace||[]};
 }
@@ -61,15 +62,20 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
   if(p.current.kind==='task'){
     const currentMaster=data.masters.find(m=>m.id===p.current.masterId)!;
     const row=prepareRows(data,currentMaster,p).find(r=>r.id===p.current.assignmentId);
-    if(!row||row.methodReason){add('Current task has no valid completion method');return result(false);}
-    if(row.isTarget&&p.goal.kind==='offer'){add('Target task already assigned');return result(true);}
-    const actual=sampleKills(p.current.remaining,row.method,rng);
-    const done=finishCombat(row,actual,row.isTarget,p,rng,progress);
-    minutes+=row.method.travel+done.kills*row.seconds/60;progress=done.progress;
-    if(done.success){add('Goal reached during current task');return result(true);}
-    complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);
-    const same=plan.rows.find(r=>r.id===row.id);previous=same?{row:same,kind:p.current.modifier||'none',points:p.current.modifierPoints??0,quantity:0,target:same.isTarget}:undefined;
-    add('Completed current assignment');
+    if(!row){add('Current task has no valid completion method');return result(false);}
+    if(shouldReset(currentMaster,row,p,filler.master)){
+      resetStreak(l,currentMaster);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset current ${row.name}; ${currentMaster.streakGroup} streak reset`);
+    }else{
+      if(row.methodReason){add('Current task has no valid completion method');return result(false);}
+      if(row.isTarget&&p.goal.kind==='offer'){add('Target task already assigned');return result(true);}
+      const actual=sampleKills(p.current.remaining,row.method,rng);
+      const done=finishCombat(row,actual,row.isTarget,p,rng,progress);
+      minutes+=row.method.travel+done.kills*row.seconds/60;progress=done.progress;
+      if(done.success){add('Goal reached during current task');return result(true);}
+      complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);
+      const same=plan.rows.find(r=>r.id===row.id);previous=same?{row:same,kind:p.current.modifier||'none',points:p.current.modifierPoints??0,quantity:0,target:same.isTarget}:undefined;
+      add('Completed current assignment');
+    }
   }
   for(let offer=0;offer<p.simulation.horizonOffers;offer++){
     const boost=p.strategy.startsWith('boost')&&((l.streaks.normal||0)+1)%p.milestone!==0;

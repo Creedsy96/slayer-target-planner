@@ -1,12 +1,20 @@
-# Slayer Target Planner 2.6
+# Slayer Target Planner 2.6.1
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Turael reset estimates in 2.6.1
+
+The master table now includes the time to reset and complete a Turael replacement, rather than charging the full cancelled assignment. It includes both task requests and any chance of receiving a compatible target from Turael. **Target / request (incl. Turael)** averages across both request types; the selected plan shows the direct main-master chance separately.
+
+Reset replacements use the recorded **actual** beginner block list. Automatic/proposed Turael blocks are not free purchases. Blocking a task with Turael also permits resetting that assignment from another eligible master, as described on the [Wiki](https://oldschool.runescape.wiki/w/Turael). Compatible targets and keep/protect preferences remain protected; incompatible Konar locations can be reset, and Mortimer tasks cannot be replaced. Configure fast replacement methods and travel/banking to match your route, and include reset/contact travel under seconds per reset and minutes per request.
+
+Point rates are withheld when resets change streaks; use simulation for actual point balances, paid skips and rewards. An already-assigned resettable task is now replaced immediately in simulation. Cancelling a Wilderness task resets the Wilderness streak; the Turael completion advances the separate normal streak. See [reset math and verification](docs/turael-reset-verification.md).
 
 ## Hunt tools in 2.6
 
