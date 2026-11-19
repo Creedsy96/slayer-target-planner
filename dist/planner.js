@@ -1028,6 +1028,24 @@
     return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc3(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc3(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc3(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
   }
 
+  // src/ui/visibility.ts
+  var KEY = "slayer-target-planner-show-unavailable";
+  function loadShowUnavailable() {
+    try {
+      return localStorage.getItem(KEY) !== "false";
+    } catch {
+      return true;
+    }
+  }
+  function saveShowUnavailable(value) {
+    try {
+      localStorage.setItem(KEY, String(value));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   // src/ui/rate-dialog.ts
   function measuredRateLabel(timing) {
     return timing === "kills-hour" ? "Kills per hour" : timing === "task-minutes" ? "Combat minutes per whole task" : "Measured rate (selected units)";
@@ -1067,13 +1085,13 @@
     ["daylight", "Daylight"],
     ["contrast", "High contrast"]
   ];
-  var KEY = "slayer-target-planner-theme";
+  var KEY2 = "slayer-target-planner-theme";
   function themeId(value) {
     return THEMES.some(([id]) => id === value) ? value : "woodland";
   }
   function loadTheme() {
     try {
-      return themeId(localStorage.getItem(KEY));
+      return themeId(localStorage.getItem(KEY2));
     } catch {
       return "woodland";
     }
@@ -1085,7 +1103,7 @@
   }
   function saveTheme(id) {
     try {
-      localStorage.setItem(KEY, id);
+      localStorage.setItem(KEY2, id);
       return true;
     } catch {
       return false;
@@ -25636,6 +25654,7 @@
   var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc4(path)}" ${value ? "checked" : ""}>${esc4(label)}</label>`;
   var routes = [["plan", "Hunt planner"], ["account", "Account & access"], ["tasks", "Tasks & blocks"], ["methods", "Combat methods"], ["compare", "Compare profiles"], ["data", "Data & sources"]];
   var AppState = class {
+    showUnavailable = loadShowUnavailable();
     questRequest = 0;
     questDraft = "";
     questPreview = null;
@@ -51291,7 +51310,7 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc4(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.4 \xB7 ${esc4(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc4(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.4.1 \xB7 ${esc4(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -51313,7 +51332,8 @@
     return `<div class="pagehead"><div><div class="eyebrow">${esc4(eyebrow)}</div><h1>${esc4(title)}</h1><p>${esc4(description)}</p></div></div>`;
   }
   function renderPlan() {
-    const current = state.plans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
+    const visiblePlans = state.plans.filter((r) => state.showUnavailable || r.chance !== null);
+    const current = visiblePlans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
     let html = head("YOUR NEXT HUNT", "Plan a creature hunt.", "Choose the stopping event, then compare assignment chances and legal strategies.");
     html += `<section class="card"><div class="formgrid">${select("goal.kind", "Finish when\u2026", [["offer", "A compatible target task is offered"], ["kills", "Target kill quantity is reached"], ["drop", "Selected item drops"]], p().goal.kind)}${select("objective", "Rank plans by", [["time", "Lowest estimated waiting time"], ["chance", "Highest target chance per offer"], ["points", "Lowest estimated points within session limit"]], p().objective)}${select("strategy", "Strategy", [["none", "Complete tasks without skipping"], ["sustainable", "Sustainable skips (long-run)"], ["funded", "Spend available points"], ["boost-turael", "Turael milestone boosting"], ["boost-mazchna", "Mazchna milestone boosting"], ["reset-turael", "Turael resets (streak changes)"]], p().strategy)}</div>${p().goal.targets.map((t, i) => `<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options(catalogue.assignments.map((a) => [a.id, a.name]), t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options(catalogue.variants.filter((v) => v.assignmentIds.includes(t.assignmentId)).map((v) => [v.id, v.name]), t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length === 1 ? "disabled" : ""}>Remove</button></div>`).join("")}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
     if (p().goal.kind === "kills") html += `<div class="formgrid">${input("goal.quantity", "Target kills needed", p().goal.quantity, 1, 1e7)}</div>`;
@@ -51324,7 +51344,7 @@
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
     if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc4(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc4(best.quality)}</p></section>`;
     else html += `<div class="notice">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${state.plans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc4(r.master.name)}</button><small>${esc4(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc4(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}</tbody></table></div>`;
+    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc4(r.master.name)}</button><small>${esc4(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc4(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div>`;
     if (current) html += planDetails(current);
     return html;
   }
@@ -51673,6 +51693,20 @@
   function changeInput(event) {
     const element = event.target;
     if (!element.reportValidity()) return;
+    if (element.id === "show-unavailable") {
+      state.showUnavailable = element.checked;
+      if (!state.showUnavailable && state.plans.find((r) => r.master.id === state.selected)?.chance === null) {
+        state.selected = state.plans.find((r) => r.chance !== null)?.master.id || "";
+        state.simulation = state.simulations.get(state.selected) || null;
+        state.strategyResults = [];
+      }
+      if (!saveShowUnavailable(state.showUnavailable)) {
+        state.message = "Display preference applied for this session; browser storage is unavailable.";
+        renderMessage();
+      }
+      renderContent();
+      return;
+    }
     if (element.id === "theme-select") {
       state.theme = themeId(element.value);
       applyTheme(state.theme);
