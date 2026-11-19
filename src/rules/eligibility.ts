@@ -16,9 +16,11 @@ export function check(requirements:Requirement[],p:Profile):Eligibility{
   }
   result.eligible=!result.failed.length;return result;
 }
+export function masterRequirements(master:Master,p:Profile):Requirement[]{
+  return master.requirements.filter(r=>!(r.kind==='skill'&&r.key==='combat'&&p.levels.slayer===99&&['duradel','mortimer'].includes(master.id)));
+}
 export function masterEligibility(master:Master,p:Profile):Eligibility{
-  const requirements=master.requirements.filter(r=>!(r.kind==='skill'&&r.key==='combat'&&p.levels.slayer===99&&['duradel','mortimer'].includes(master.id)));
-  return check(requirements,p);
+  return check(masterRequirements(master,p),p);
 }
 export function blockSlots(master:Master,p:Profile):{slots:number;unknown:boolean}{
   if(master.id==='mortimer')return {slots:2,unknown:false};
@@ -40,11 +42,16 @@ export function locationFraction(entry:Entry,v:Variant,method:Method,master:Mast
   if(method.locationChance!==null)return {fraction:method.locationChance,unknown:['Custom Konar location probability']};
   const all=entry.locations||[];
   const known:Record<string,string[]>= {'basilisk-knight':["Jormungand's Prison"],'demonic-gorilla':['Crash Site Cavern'],'cerberus':['Taverley Dungeon'],'kraken':['Kraken Cove'],'alchemical-hydra':['Karuulm Slayer Dungeon']};
+  // Regular hellhounds occupy all five locations in the pinned Konar pool.
+  // Sources: Slayer task/Hellhounds (15357324), Hellhound (15351778).
+  known.hellhound=['Karuulm Slayer Dungeon','Catacombs of Kourend','Stronghold Slayer Dungeon','Taverley Dungeon','Witchaven Dungeon'];
   const wanted=method.location?[method.location]:known[v.id];
   if(!wanted)return {fraction:1,unknown:['Konar location compatibility assumed; enter a location chance for this method']};
   if(!all.length)return {fraction:1,unknown:['Konar location pool is not verified for this assignment']};
   const eligible=all.filter(loc=>resolveAccess('location:'+loc,p).value!==0);
   const count=eligible.filter(loc=>wanted.some(w=>loc.toLowerCase().includes(w.toLowerCase()))).length;
-  return {fraction:eligible.length?count/eligible.length:0,unknown:eligible.some(loc=>resolveAccess('location:'+loc,p).value===null)?['Konar location access requires confirmation']:[]};
+  const unknown=eligible.some(loc=>resolveAccess('location:'+loc,p).value===null)?['Konar location access requires confirmation']:[];
+  if(v.id==='hellhound'&&!method.location&&eligible.some(loc=>!wanted.some(w=>loc.toLowerCase()===w.toLowerCase())))unknown.push('Hellhound compatibility is not reviewed for every location in this pool');
+  return {fraction:eligible.length?count/eligible.length:0,unknown};
 }
 export function targetAssignments(data:Catalogue,p:Profile):Set<string>{return new Set(p.goal.targets.filter(t=>data.variants.some(v=>v.id===t.variantId)).map(t=>t.assignmentId));}

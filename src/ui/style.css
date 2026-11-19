@@ -18,3 +18,5 @@ dialog{color:var(--text);background:var(--panel);border:1px solid var(--line);bo
 @media(max-width:700px){.header-tools{gap:0}.header-tools .topmeta{display:none}.theme-picker{min-width:135px}.theme-picker select{max-width:150px}}
 
 @media(max-width:700px){.brand{gap:9px}.brand small{letter-spacing:1px;white-space:nowrap}}
+
+.plan-issues{font-size:14px;max-width:620px}.plan-issues summary{color:var(--gold);white-space:normal}.plan-issue-list{max-height:24rem;overflow:auto;padding-left:22px}.plan-issue-list li{margin:14px 0}.plan-issue-list p{margin:5px 0 10px;white-space:normal}.plan-issue-list a{font-size:13px}.plan-issue-list .tools{gap:12px}.plan-issue-list button{font-size:13px}

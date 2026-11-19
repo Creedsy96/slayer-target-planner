@@ -124,6 +124,137 @@
     };
   }
 
+  // src/rules/eligibility.ts
+  function check(requirements, p2) {
+    const result = { eligible: true, unknown: [], failed: [] };
+    for (const r of requirements) {
+      if (r.kind === "any") {
+        const states = (r.items || []).map((item) => check([item], p2));
+        if (states.some((s) => s.eligible && !s.unknown.length)) continue;
+        if (states.some((s) => s.eligible)) {
+          result.unknown.push(r.label);
+          continue;
+        }
+        result.failed.push(r.label);
+        continue;
+      }
+      const group = r.kind === "skill" ? p2.levels : r.kind === "quest" ? p2.quests : r.kind === "unlock" ? p2.unlocks : p2.access;
+      const n = r.kind === "quest" ? questState(p2, r.key) : r.kind === "access" ? resolveAccess(r.key, p2).value : group[r.key];
+      if (n === null || n === void 0) {
+        result.unknown.push(r.label);
+        continue;
+      }
+      if (r.kind === "unlock" && r.min === 0 ? n !== 0 : n < (r.min ?? 1)) result.failed.push(`${r.label}${r.min && r.min > 2 ? " " + r.min : ""}`);
+    }
+    result.eligible = !result.failed.length;
+    return result;
+  }
+  function masterRequirements(master, p2) {
+    return master.requirements.filter((r) => !(r.kind === "skill" && r.key === "combat" && p2.levels.slayer === 99 && ["duradel", "mortimer"].includes(master.id)));
+  }
+  function masterEligibility(master, p2) {
+    return check(masterRequirements(master, p2), p2);
+  }
+  function blockSlots(master, p2) {
+    if (master.id === "mortimer") return { slots: 2, unknown: false };
+    if (p2.blockLimit !== null) return { slots: p2.blockLimit, unknown: false };
+    if (p2.questPoints === null) return { slots: 0, unknown: true };
+    return { slots: Math.min(6, Math.floor(p2.questPoints / 50)) + (p2.diaries.lumbridge === 1 ? 1 : 0), unknown: p2.diaries.lumbridge === null };
+  }
+  function variantEligibility(v, p2, master, assignmentId) {
+    const status = check(v.requirements, p2);
+    if (v.masterAssignments && (!v.masterAssignments[master.id] || assignmentId && !v.masterAssignments[master.id].includes(assignmentId))) status.failed.push("This master/assignment has no reviewed mapping to this variant");
+    if (v.id === "boss-pool" && p2.goal.targets.some((t) => t.variantId === v.id)) status.failed.push("Select a directly mapped creature assignment; specific boss secondary rolls are not supported.");
+    if (master.id === "krystilia" && ["demonic-gorilla", "tormented-demon", "cerberus", "kraken", "alchemical-hydra", "basilisk-knight", "baby-black-dragon", "baby-blue-dragon"].includes(v.id)) status.failed.push("Variant is outside the Wilderness assignment area");
+    if (master.id === "konar" && v.id === "tormented-demon") status.failed.push("Konar cannot assign the Ancient Guthixian Temple");
+    status.eligible = !status.failed.length;
+    return status;
+  }
+  function locationFraction(entry, v, method, master, p2) {
+    if (method.location && resolveAccess("location:" + method.location, p2).value === 0) return { fraction: 0, unknown: [] };
+    if (master.id !== "konar") return { fraction: 1, unknown: [] };
+    if (method.locationChance !== null) return { fraction: method.locationChance, unknown: ["Custom Konar location probability"] };
+    const all = entry.locations || [];
+    const known = { "basilisk-knight": ["Jormungand's Prison"], "demonic-gorilla": ["Crash Site Cavern"], "cerberus": ["Taverley Dungeon"], "kraken": ["Kraken Cove"], "alchemical-hydra": ["Karuulm Slayer Dungeon"] };
+    known.hellhound = ["Karuulm Slayer Dungeon", "Catacombs of Kourend", "Stronghold Slayer Dungeon", "Taverley Dungeon", "Witchaven Dungeon"];
+    const wanted = method.location ? [method.location] : known[v.id];
+    if (!wanted) return { fraction: 1, unknown: ["Konar location compatibility assumed; enter a location chance for this method"] };
+    if (!all.length) return { fraction: 1, unknown: ["Konar location pool is not verified for this assignment"] };
+    const eligible = all.filter((loc) => resolveAccess("location:" + loc, p2).value !== 0);
+    const count = eligible.filter((loc) => wanted.some((w) => loc.toLowerCase().includes(w.toLowerCase()))).length;
+    const unknown = eligible.some((loc) => resolveAccess("location:" + loc, p2).value === null) ? ["Konar location access requires confirmation"] : [];
+    if (v.id === "hellhound" && !method.location && eligible.some((loc) => !wanted.some((w) => loc.toLowerCase() === w.toLowerCase()))) unknown.push("Hellhound compatibility is not reviewed for every location in this pool");
+    return { fraction: eligible.length ? count / eligible.length : 0, unknown };
+  }
+  function targetAssignments(data, p2) {
+    return new Set(p2.goal.targets.filter((t) => data.variants.some((v) => v.id === t.variantId)).map((t) => t.assignmentId));
+  }
+
+  // src/analysis/plan-issues.ts
+  function explainPlanIssues(data, plan, p2) {
+    const issues = [], represented = /* @__PURE__ */ new Set();
+    const add = (issue) => {
+      if (!issues.some((i) => i.title === issue.title && i.assignmentId === issue.assignmentId)) issues.push(issue);
+    };
+    const facts = (requirements, source, context) => {
+      for (const r of requirements) {
+        const state2 = check([r], p2);
+        if (state2.eligible && !state2.unknown.length) continue;
+        represented.add(r.label);
+        const instruction = r.kind === "unlock" ? r.min === 0 ? "This reward must be off for this assignment." : "Record this reward as purchased only if you own it, or choose another target." : r.kind === "quest" ? `Required quest stage: ${(r.min ?? 1) >= 2 ? "completed" : "started"}. Import quests or update the manual stage.` : r.kind === "skill" ? `Required level: ${r.min ?? 1}. Check the recorded level or choose another target.` : r.kind === "access" ? "Confirm this access requirement or choose another method." : "At least one listed alternative requirement must be satisfied.";
+        add({ title: r.label, detail: `${context}: ${state2.unknown.length ? "unknown" : "not satisfied"}. ${instruction}`, route: "account", action: "Review account requirement", source, filter: r.kind === "skill" || r.kind === "any" ? "" : r.kind === "unlock" ? r.label : r.key });
+      }
+    };
+    facts(masterRequirements(plan.master, p2), plan.master.source, plan.master.name);
+    for (const row of plan.rows.filter((r) => r.isTarget || !r.reason && !r.blocked)) {
+      facts(row.entry.requirements, row.entry.source, row.name);
+      facts(row.variant.requirements, row.variant.source, row.variant.name);
+      if (row.methodReason) add({ title: `${row.name}: ${row.variant.name}`, detail: row.methodReason + ". Choose a supported variant or review this completion method.", route: row.isTarget ? "plan" : "methods", action: row.isTarget ? "Review target variant" : "Review completion method", source: row.variant.source, assignmentId: row.id, variantId: row.variant.id, field: "variantId" });
+      if (row.isTarget && plan.master.id === "konar") locationIssues(row, p2, add);
+    }
+    for (const message of plan.unknown) {
+      if (represented.has(message) || issues.some((i) => i.title === message)) continue;
+      const row = plan.rows.find((r) => r.isTarget && r.unknown.includes(message));
+      const modelling = /Konar|compatibility|uniform|estimated|modifier range/i.test(message);
+      add({ title: message, detail: modelling ? "This is a model assumption, not missing account access. Review its source; use a conditional scenario only if you accept the assumption." : "This account fact needs confirmation before an unconditional calculation.", route: row ? "methods" : modelling ? "data" : "account", action: row ? "Review target method" : modelling ? "Review model information" : "Review account facts", source: row?.entry.source ?? plan.master.source, assignmentId: row?.id, variantId: row?.variant.id, field: row ? "locationChance" : void 0 });
+    }
+    for (const conflict of plan.conflicts) add({ title: conflict, detail: "Review the actual and proposed block lists for this master. Targets cannot be blocked.", route: "tasks", action: "Review blocks", source: plan.master.source });
+    if (plan.reason && !issues.length) {
+      const method = /completion method/i.test(plan.reason), task = /block|reserve|points/i.test(plan.reason);
+      add({ title: plan.reason, detail: "Review this configuration before calculating. Master-specific assignment and variant restrictions still apply.", route: method ? "methods" : task ? "tasks" : "plan", action: method ? "Review completion methods" : task ? "Review configuration" : "Review hunt settings", source: plan.master.source });
+    }
+    return issues;
+  }
+  function locationIssues(row, p2, add) {
+    const all = row.entry.locations || [];
+    if (all.length && all.every((loc) => resolveAccess("location:" + loc, p2).value === 0)) add({ title: `${row.name}: every assigned area is marked inaccessible`, detail: `All locations in Konar's pool are closed: ${all.join(", ")}. Review the area confirmations or choose another target.`, route: "account", action: "Review area access", source: row.entry.source, filter: all[0], assignmentId: row.id });
+    if (row.method.location) {
+      const access = resolveAccess("location:" + row.method.location, p2);
+      if (access.value === 0) add({ title: `${row.method.location}: access is off`, detail: access.reason + " Review the area override or choose another method location.", route: "account", action: "Review area access", source: access.source ?? row.entry.source, filter: row.method.location, assignmentId: row.id });
+    }
+    const messages = row.unknown.filter((s) => /Konar|compatibility/i.test(s));
+    for (const message of messages) {
+      const access = message.includes("access requires confirmation");
+      const locations = (row.entry.locations || []).filter((loc) => resolveAccess("location:" + loc, p2).value === null);
+      add({ title: message, detail: access ? `${row.name}: confirm access to ${locations.join(", ")}.` : `${row.name} \u2192 ${row.variant.name}: compatible locations are not fully verified, or a custom probability is being used. Review the assigned-location source and enter a supported exact location or a measured compatibility probability. Custom probabilities remain conditional assumptions.`, route: access ? "account" : "methods", action: access ? "Review area access" : "Review Konar compatibility", source: row.entry.source, assignmentId: row.id, variantId: row.variant.id, field: access ? void 0 : "locationChance", filter: access ? locations[0] : void 0 });
+    }
+    if (row.targetFraction === 0 && !row.methodReason && !row.reason) add({ title: `${row.name}: no compatible Konar location`, detail: `The selected ${row.variant.name} method does not match any accessible location in this task's pool: ${(row.entry.locations || []).join(", ")}. Review its location or choose a different variant.`, route: "methods", action: "Review method location", source: row.entry.source, assignmentId: row.id, variantId: row.variant.id, field: "location" });
+  }
+
+  // src/ui/plan-issues.ts
+  var esc2 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  function renderPlanIssues(data, plan, p2, expanded = false) {
+    const issues = explainPlanIssues(data, plan, p2);
+    if (!issues.length) return "";
+    return `<details class="plan-issues" ${expanded ? "open" : ""}><summary>${plan.reason ? "Why unavailable?" : "Assumptions to review"} (${issues.length})</summary><ul class="plan-issue-list">${issues.map((issue) => {
+      const source = issue.source.url + (issue.source.revision ? (issue.source.url.includes("?") ? "&" : "?") + "oldid=" + issue.source.revision : "");
+      return `<li><strong>${esc2(issue.title)}</strong><p>${esc2(issue.detail)}</p><div class="tools"><button data-issue-route="${issue.route}" data-issue-master="${plan.master.id}" data-issue-assignment="${esc2(issue.assignmentId)}" data-issue-variant="${esc2(issue.variantId)}" data-issue-filter="${esc2(issue.filter)}" data-issue-field="${esc2(issue.field)}">${esc2(issue.action)}</button><a href="${esc2(source)}" target="_blank" rel="noopener">Wiki source: ${esc2(issue.source.title)}</a></div></li>`;
+    }).join("")}</ul></details>`;
+  }
+  function planIssueTooltip(plan) {
+    return [plan.reason, ...plan.unknown.slice(0, 5)].filter(Boolean).join("\n") || "Calculated from the current profile and methods.";
+  }
+
   // src/ui/rate-dialog.ts
   function measuredRateLabel(timing) {
     return timing === "kills-hour" ? "Kills per hour" : timing === "task-minutes" ? "Combat minutes per whole task" : "Measured rate (selected units)";
@@ -24504,67 +24635,6 @@
     return { profiles: next, activeId: next.some((p2) => p2.id === activeId) ? activeId : next[0].id };
   }
 
-  // src/rules/eligibility.ts
-  function check(requirements, p2) {
-    const result = { eligible: true, unknown: [], failed: [] };
-    for (const r of requirements) {
-      if (r.kind === "any") {
-        const states = (r.items || []).map((item) => check([item], p2));
-        if (states.some((s) => s.eligible && !s.unknown.length)) continue;
-        if (states.some((s) => s.eligible)) {
-          result.unknown.push(r.label);
-          continue;
-        }
-        result.failed.push(r.label);
-        continue;
-      }
-      const group = r.kind === "skill" ? p2.levels : r.kind === "quest" ? p2.quests : r.kind === "unlock" ? p2.unlocks : p2.access;
-      const n = r.kind === "quest" ? questState(p2, r.key) : r.kind === "access" ? resolveAccess(r.key, p2).value : group[r.key];
-      if (n === null || n === void 0) {
-        result.unknown.push(r.label);
-        continue;
-      }
-      if (r.kind === "unlock" && r.min === 0 ? n !== 0 : n < (r.min ?? 1)) result.failed.push(`${r.label}${r.min && r.min > 2 ? " " + r.min : ""}`);
-    }
-    result.eligible = !result.failed.length;
-    return result;
-  }
-  function masterEligibility(master, p2) {
-    const requirements = master.requirements.filter((r) => !(r.kind === "skill" && r.key === "combat" && p2.levels.slayer === 99 && ["duradel", "mortimer"].includes(master.id)));
-    return check(requirements, p2);
-  }
-  function blockSlots(master, p2) {
-    if (master.id === "mortimer") return { slots: 2, unknown: false };
-    if (p2.blockLimit !== null) return { slots: p2.blockLimit, unknown: false };
-    if (p2.questPoints === null) return { slots: 0, unknown: true };
-    return { slots: Math.min(6, Math.floor(p2.questPoints / 50)) + (p2.diaries.lumbridge === 1 ? 1 : 0), unknown: p2.diaries.lumbridge === null };
-  }
-  function variantEligibility(v, p2, master, assignmentId) {
-    const status = check(v.requirements, p2);
-    if (v.masterAssignments && (!v.masterAssignments[master.id] || assignmentId && !v.masterAssignments[master.id].includes(assignmentId))) status.failed.push("This master/assignment has no reviewed mapping to this variant");
-    if (v.id === "boss-pool" && p2.goal.targets.some((t) => t.variantId === v.id)) status.failed.push("Select a directly mapped creature assignment; specific boss secondary rolls are not supported.");
-    if (master.id === "krystilia" && ["demonic-gorilla", "tormented-demon", "cerberus", "kraken", "alchemical-hydra", "basilisk-knight", "baby-black-dragon", "baby-blue-dragon"].includes(v.id)) status.failed.push("Variant is outside the Wilderness assignment area");
-    if (master.id === "konar" && v.id === "tormented-demon") status.failed.push("Konar cannot assign the Ancient Guthixian Temple");
-    status.eligible = !status.failed.length;
-    return status;
-  }
-  function locationFraction(entry, v, method, master, p2) {
-    if (method.location && resolveAccess("location:" + method.location, p2).value === 0) return { fraction: 0, unknown: [] };
-    if (master.id !== "konar") return { fraction: 1, unknown: [] };
-    if (method.locationChance !== null) return { fraction: method.locationChance, unknown: ["Custom Konar location probability"] };
-    const all = entry.locations || [];
-    const known = { "basilisk-knight": ["Jormungand's Prison"], "demonic-gorilla": ["Crash Site Cavern"], "cerberus": ["Taverley Dungeon"], "kraken": ["Kraken Cove"], "alchemical-hydra": ["Karuulm Slayer Dungeon"] };
-    const wanted = method.location ? [method.location] : known[v.id];
-    if (!wanted) return { fraction: 1, unknown: ["Konar location compatibility assumed; enter a location chance for this method"] };
-    if (!all.length) return { fraction: 1, unknown: ["Konar location pool is not verified for this assignment"] };
-    const eligible = all.filter((loc) => resolveAccess("location:" + loc, p2).value !== 0);
-    const count = eligible.filter((loc) => wanted.some((w) => loc.toLowerCase().includes(w.toLowerCase()))).length;
-    return { fraction: eligible.length ? count / eligible.length : 0, unknown: eligible.some((loc) => resolveAccess("location:" + loc, p2).value === null) ? ["Konar location access requires confirmation"] : [] };
-  }
-  function targetAssignments(data, p2) {
-    return new Set(p2.goal.targets.filter((t) => data.variants.some((v) => v.id === t.variantId)).map((t) => t.assignmentId));
-  }
-
   // src/state/quest-import.ts
   var normal = (s) => s.normalize("NFKD").toLowerCase().replace(/[^a-z0-9]/g, "");
   var STATE = { NOT_STARTED: 0, IN_PROGRESS: 1, STARTED: 1, FINISHED: 2, COMPLETED: 2 };
@@ -24786,7 +24856,7 @@
 
   // src/ui/app.ts
   var $ = (id) => document.getElementById(id);
-  var esc2 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc3 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var pct = (v) => v === null ? "\u2014" : (v * 100).toFixed(2) + "%";
   var num = (v, d = 2) => v === null ? "Unavailable" : v.toFixed(d);
   var time = (h) => {
@@ -24794,10 +24864,10 @@
     const n = Math.round(h * 60);
     return n < 60 ? n + " min" : Math.floor(n / 60) + "h " + n % 60 + "m";
   };
-  var options = (values, value) => values.map(([key, label]) => `<option value="${esc2(key)}" ${String(value) === key ? "selected" : ""}>${esc2(label)}</option>`).join("");
-  var select = (path, label, values, value) => `<label>${esc2(label)}<select data-setting="${esc2(path)}">${options(values, value)}</select></label>`;
-  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc2(label)}<input data-setting="${esc2(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc2(path)}" ${value ? "checked" : ""}>${esc2(label)}</label>`;
+  var options = (values, value) => values.map(([key, label]) => `<option value="${esc3(key)}" ${String(value) === key ? "selected" : ""}>${esc3(label)}</option>`).join("");
+  var select = (path, label, values, value) => `<label>${esc3(label)}<select data-setting="${esc3(path)}">${options(values, value)}</select></label>`;
+  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc3(label)}<input data-setting="${esc3(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc3(path)}" ${value ? "checked" : ""}>${esc3(label)}</label>`;
   var routes = [["plan", "Hunt planner"], ["account", "Account & access"], ["tasks", "Tasks & blocks"], ["methods", "Combat methods"], ["compare", "Compare profiles"], ["data", "Data & sources"]];
   var AppState = class {
     questRequest = 0;
@@ -49029,9 +49099,11 @@
     result.eligible = !result.failed.length;
     return result;
   }
+  function masterRequirements(master, p) {
+    return master.requirements.filter((r) => !(r.kind === "skill" && r.key === "combat" && p.levels.slayer === 99 && ["duradel", "mortimer"].includes(master.id)));
+  }
   function masterEligibility(master, p) {
-    const requirements = master.requirements.filter((r) => !(r.kind === "skill" && r.key === "combat" && p.levels.slayer === 99 && ["duradel", "mortimer"].includes(master.id)));
-    return check(requirements, p);
+    return check(masterRequirements(master, p), p);
   }
   function blockSlots(master, p) {
     if (master.id === "mortimer") return { slots: 2, unknown: false };
@@ -49054,12 +49126,15 @@
     if (method.locationChance !== null) return { fraction: method.locationChance, unknown: ["Custom Konar location probability"] };
     const all = entry.locations || [];
     const known = { "basilisk-knight": ["Jormungand's Prison"], "demonic-gorilla": ["Crash Site Cavern"], "cerberus": ["Taverley Dungeon"], "kraken": ["Kraken Cove"], "alchemical-hydra": ["Karuulm Slayer Dungeon"] };
+    known.hellhound = ["Karuulm Slayer Dungeon", "Catacombs of Kourend", "Stronghold Slayer Dungeon", "Taverley Dungeon", "Witchaven Dungeon"];
     const wanted = method.location ? [method.location] : known[v.id];
     if (!wanted) return { fraction: 1, unknown: ["Konar location compatibility assumed; enter a location chance for this method"] };
     if (!all.length) return { fraction: 1, unknown: ["Konar location pool is not verified for this assignment"] };
     const eligible = all.filter((loc) => resolveAccess("location:" + loc, p).value !== 0);
     const count = eligible.filter((loc) => wanted.some((w) => loc.toLowerCase().includes(w.toLowerCase()))).length;
-    return { fraction: eligible.length ? count / eligible.length : 0, unknown: eligible.some((loc) => resolveAccess("location:" + loc, p).value === null) ? ["Konar location access requires confirmation"] : [] };
+    const unknown = eligible.some((loc) => resolveAccess("location:" + loc, p).value === null) ? ["Konar location access requires confirmation"] : [];
+    if (v.id === "hellhound" && !method.location && eligible.some((loc) => !wanted.some((w) => loc.toLowerCase() === w.toLowerCase()))) unknown.push("Hellhound compatibility is not reviewed for every location in this pool");
+    return { fraction: eligible.length ? count / eligible.length : 0, unknown };
   }
   function targetAssignments(data, p) {
     return new Set(p.goal.targets.filter((t) => data.variants.some((v) => v.id === t.variantId)).map((t) => t.assignmentId));
@@ -49694,17 +49769,17 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3.1 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc3(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3.2 \xB7 ${esc3(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
     restore();
   }
   function renderMessage() {
-    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc2(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
+    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc3(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
   }
   function renderStatus() {
-    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc2(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
+    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc3(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
   }
   function renderContent() {
     const restore = preserveView();
@@ -49713,7 +49788,7 @@
     restore();
   }
   function head(eyebrow, title, description) {
-    return `<div class="pagehead"><div><div class="eyebrow">${esc2(eyebrow)}</div><h1>${esc2(title)}</h1><p>${esc2(description)}</p></div></div>`;
+    return `<div class="pagehead"><div><div class="eyebrow">${esc3(eyebrow)}</div><h1>${esc3(title)}</h1><p>${esc3(description)}</p></div></div>`;
   }
   function renderPlan() {
     const current = state.plans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
@@ -49725,21 +49800,21 @@
       html += `<div class="formgrid">${select("goal.dropId", "Sourced drop", [["", "Choose a drop"], ...drops.map((d) => [d.id, d.name])], p().goal.dropId)}${input("goal.customDropRate", "Optional custom per-kill probability (0\u20131)", p().goal.customDropRate, 0, 1, "any")}</div><p class="goalhint">Direct drops only. Custom rates are assumptions; superior spawn/drop tables are not included.</p>`;
     }
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
-    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc2(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc2(best.quality)}</p></section>`;
+    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc3(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc3(best.quality)}</p></section>`;
     else html += `<div class="notice">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${state.plans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc2(r.master.name)}</button><small>${esc2(r.reason || r.unknown.length + " unconfirmed facts")}</small></td><td>${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}</tbody></table></div>`;
+    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${state.plans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc3(r.master.name)}</button><small>${esc3(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}</td><td title="${esc3(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}</tbody></table></div>`;
     if (current) html += planDetails(current);
     return html;
   }
   function planDetails(plan) {
     const impacts = blockImpacts(catalogue, plan, p());
-    return `<section class="card"><div class="eyebrow">SELECTED STRATEGY</div><h2>${esc2(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc2(plan.reason)}</div>` : ""}<p class="small muted">${esc2(plan.quality)}</p><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc2(id)}</span>`).join("") || "None"}</div><div class="tools"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Record proposal as actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div><h3>Skip policy</h3><p>${(plan.skipRate * 100).toFixed(1)}% of offers skipped in the stationary model.</p><p class="small muted">${esc2(plan.boundary || "No partial-frequency boundary task.")}</p><p class="small muted">Protected target assignments are never blocked or skipped.</p></div></div><details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc2(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details><details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc2(s)}</li>`).join("")}</ul></details></section>${simulationPanel(plan)}`;
+    return `<section class="card"><div class="eyebrow">SELECTED STRATEGY</div><h2>${esc3(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc3(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}<p class="small muted">${esc3(plan.quality)}</p><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc3(id)}</span>`).join("") || "None"}</div><div class="tools"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Record proposal as actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div><h3>Skip policy</h3><p>${(plan.skipRate * 100).toFixed(1)}% of offers skipped in the stationary model.</p><p class="small muted">${esc3(plan.boundary || "No partial-frequency boundary task.")}</p><p class="small muted">Protected target assignments are never blocked or skipped.</p></div></div><details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc3(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details><details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc3(s)}</li>`).join("")}</ul></details></section>${simulationPanel(plan)}`;
   }
   function simulationPanel(plan) {
     const result = state.simulation;
-    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc2(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${bool("cape", "Model 10% cape repeat (requires level 99 and previous task)", p().cape)}</details>`;
+    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc3(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${bool("cape", "Model 10% cape repeat (requires level 99 and previous task)", p().cape)}</details>`;
     if (result) {
-      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average spent ${num(result.meanSpent)}; balance ${num(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc2(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc2(result.trace.join("\n"))}</pre></details>`;
+      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average spent ${num(result.meanSpent)}; balance ${num(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc3(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc3(result.trace.join("\n"))}</pre></details>`;
     }
     return html + "</section>" + renderStrategyResults();
   }
@@ -49755,14 +49830,14 @@
   }
   function renderStrategyResults() {
     if (!state.strategyResults.length) return "";
-    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc2(r.strategy)}${r.error ? `<small>${esc2(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc3(r.strategy)}${r.error ? `<small>${esc3(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function renderAccount() {
-    const questSelect = (kind, key, label) => `<label>${esc2(label)}<select data-fact="${kind}" data-key="${esc2(key)}">${options([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
+    const questSelect = (kind, key, label) => `<label>${esc3(label)}<select data-fact="${kind}" data-key="${esc3(key)}">${options([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
     const query = state.accessSearch.toLowerCase();
     const quests = relevantQuests(catalogue);
-    const questField = (key) => `<label>${esc2(key)}<select aria-label="Quest state for ${esc2(key)}" data-fact="quests" data-key="${esc2(key)}">${options([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
-    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc2(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
+    const questField = (key) => `<label>${esc3(key)}<select aria-label="Quest state for ${esc3(key)}" data-fact="quests" data-key="${esc3(key)}">${options([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
+    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc3(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
   }
   function accessKeys() {
     return knownAccessKeys(catalogue);
@@ -49770,7 +49845,7 @@
   function renderTasks() {
     const m = catalogue.masters.find((m2) => m2.id === state.taskMaster), plan = state.plans.find((p2) => p2.master.id === m.id);
     const rows = plan?.rows.filter((r) => (r.name + " " + r.variant.name + " " + r.reason).toLowerCase().includes(state.taskSearch.toLowerCase())) || [];
-    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc2(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc2(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc2(r.name)}<small>${esc2(r.variant.name)}${r.reason ? " \xB7 " + esc2(r.reason) : ""}${r.methodReason ? " \xB7 " + esc2(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc2(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc2(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc2(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc2(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc2(r.name)}" data-preference="${esc2(r.id)}">${options([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
+    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc3(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc3(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc3(r.name)}<small>${esc3(r.variant.name)}${r.reason ? " \xB7 " + esc3(r.reason) : ""}${r.methodReason ? " \xB7 " + esc3(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc3(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc3(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc3(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc3(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc3(r.name)}" data-preference="${esc3(r.id)}">${options([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
   }
   var methodVariant = "";
   function methodKey(aid, vid) {
@@ -49785,20 +49860,20 @@
   }
   function renderMethods() {
     const { key, method: m, aid, vid } = editedMethod(), v = catalogue.variants.find((v2) => v2.id === vid), a = catalogue.assignments.find((a2) => a2.id === aid);
-    const mf = (field, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc2(label)}<input type="number" data-method="${esc2(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-    const ms = (field, label, values, value) => `<label>${esc2(label)}<select data-method="${esc2(key)}" data-method-field="${field}">${options(values, value)}</select></label>`;
-    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc2(v.name)}</h2><p>${v.hp} HP \xB7 ${esc2(v.status)} \xB7 <a href="${esc2(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p><p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc2(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc2(key)}" data-method-field="location" value="${esc2(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc2(name)}">${esc2(name)}</button>`).join("")}</div></section>`;
+    const mf = (field, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc3(label)}<input type="number" data-method="${esc3(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+    const ms = (field, label, values, value) => `<label>${esc3(label)}<select data-method="${esc3(key)}" data-method-field="${field}">${options(values, value)}</select></label>`;
+    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc3(v.name)}</h2><p>${v.hp} HP \xB7 ${esc3(v.status)} \xB7 <a href="${esc3(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p><p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc3(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc3(key)}" data-method-field="location" value="${esc3(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc3(name)}">${esc3(name)}</button>`).join("")}</div></section>`;
   }
   function renderCompare() {
     const base = state.profiles.find((p2) => p2.id === state.comparisonId);
-    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc2(p().name)}</th><th>${esc2(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
+    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc3(p().name)}</th><th>${esc3(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
       const a = state.plans.find((r) => r.master.id === m.id), b = state.comparison.find((r) => r.master.id === m.id);
-      return `<tr><td>${esc2(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
+      return `<tr><td>${esc3(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
     }).join("")}</tbody></table></div><p class="notice">${JSON.stringify(p().goal) !== JSON.stringify(base?.goal) ? "These profiles use different stopping events. Their times are not equivalent rankings." : "Comparison uses stationary offer estimates. Simulate each profile for full funded or drop goals."}</p>` : ""}`;
   }
   function renderData() {
     const count = catalogue.masters.reduce((s, m) => s + m.tasks.length, 0);
-    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc2(catalogue.version)} \xB7 Captured ${esc2(catalogue.captured)}</p><p class="small muted">${esc2(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc2(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer category milestones are sourced; uniform value distributions within modifier ranges are an explicit simulation assumption.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc2(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc2(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc2(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc3(catalogue.version)} \xB7 Captured ${esc3(catalogue.captured)}</p><p class="small muted">${esc3(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc3(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer category milestones are sourced; uniform value distributions within modifier ranges are an explicit simulation assumption.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc3(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc3(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc3(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function download(name, text, mime = "application/json") {
     const url = URL.createObjectURL(new Blob([text], { type: mime })), a = document.createElement("a");
@@ -49822,7 +49897,7 @@
   }
   async function requestName(title, value) {
     const dialog = document.createElement("dialog");
-    dialog.innerHTML = `<form method="dialog"><h2>${esc2(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc2(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
+    dialog.innerHTML = `<form method="dialog"><h2>${esc3(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc3(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
     document.body.append(dialog);
     dialog.showModal();
     const field = dialog.querySelector("input");
@@ -50014,6 +50089,26 @@
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button");
     if (!button) return;
+    if (button.dataset.issueRoute) {
+      state.route = button.dataset.issueRoute;
+      if (state.route === "methods") {
+        state.methodAssignment = button.dataset.issueAssignment || state.methodAssignment;
+        methodVariant = button.dataset.issueVariant || "";
+      }
+      if (state.route === "account") state.accessSearch = button.dataset.issueFilter || "";
+      if (state.route === "tasks") state.taskMaster = button.dataset.issueMaster || state.taskMaster;
+      const aid = button.dataset.issueAssignment, field = button.dataset.issueField;
+      renderShell();
+      let focus = null;
+      if (state.route === "methods" && field) focus = document.querySelector('[data-method-field="' + CSS.escape(field) + '"]');
+      if (state.route === "plan" && aid) {
+        const i = p().goal.targets.findIndex((t) => t.assignmentId === aid);
+        focus = document.querySelector('[data-target="' + i + '"][data-target-field="variantId"]');
+      }
+      focus?.focus({ preventScroll: true });
+      (focus || $("content")).scrollIntoView({ block: "start" });
+      return;
+    }
     if (button.dataset.route) {
       state.route = button.dataset.route;
       renderShell();

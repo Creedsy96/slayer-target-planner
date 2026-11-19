@@ -1,10 +1,10 @@
-# Slayer Target Planner 2.3.1
+# Slayer Target Planner 2.3.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.3.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.3.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
@@ -44,6 +44,10 @@ Use **Theme** in the header to choose Woodland, Midnight, Ember, Amethyst, Dayli
 The original v1 storage key is retained and backed up before migration. Missing new account facts remain unknown; old exclusions become preferences, not invented quest facts. Export the original backup from **Data & sources**. Different data snapshots require explicit review and rebasing a copy before import.
 
 ## Calculation limits
+
+If a master shows **Unavailable**, expand **Why unavailable?** beside its name. The panel names the requirement or model limitation, links its Wiki source and offers a button to the relevant account, target, method or block setting. Hover the offer estimate for a quick reason. The selected master's issue panel opens automatically. Conditional plans have an **Assumptions to review** panel.
+
+Regular hellhounds now use the five reviewed Konar locations automatically; Maxed does not need a custom location probability. Cerberus remains limited to Taverley. Unsupported variants and unreviewed locations still require review rather than inheriting access from Maxed.
 
 Exact and approximate results are labelled. Small block spaces are enumerated; larger searches use bounded swaps. Stationary single-draw no-skip offer objectives have a direct solution. Funded and multi-choice policies use seeded simulation and heuristic decisions; no global optimality claim is made. Full-hunt search tests a bounded set with up to 400 search trials, then reruns the chosen candidate with the requested trial count.
 
