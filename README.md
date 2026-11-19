@@ -1,10 +1,10 @@
-# Slayer Target Planner 2.3
+# Slayer Target Planner 2.3.1
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.3 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.3.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
@@ -12,7 +12,7 @@ For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private 
 
 Every setup includes an editable **Maxed** profile in the plan-profile selector. Fresh setups select it automatically. Existing setups keep their profiles and current selection; Maxed is added once and its later edits are preserved. Duplicate it to make an independent scenario.
 
-It sets all skills to 99, combat to 126, all supported quests/elite diaries complete, all known area/variant access enabled, and Mortimer progression to 50 tasks. Quest points use the checked 343-point snapshot. Stop the Wyvern stays off so wyvern assignments remain available. Points, reserves, streaks and combat rates remain editable planning defaults. Master/variant restrictions and unverified combat/location calculations still apply. This is a planning preset, not imported player information.
+It sets all skills to 99, combat to 126, all supported quests/elite diaries complete, all known area/variant access enabled, and Mortimer progression to 50 tasks. Slayer-point reward purchases start off; enable any purchased creature unlocks under Account & access. Quest points use the checked 343-point snapshot. Stop the Wyvern stays off so wyvern assignments remain available. Version 2.3.1 corrects the original built-in Maxed reward defaults once, preserving other fields and custom profiles; subsequent manual reward choices are retained. Points, reserves, streaks and combat rates remain editable planning defaults. Master/variant restrictions and unverified combat/location calculations still apply. This is a planning preset, not imported player information.
 
 The app supports 50 custom profiles plus Maxed. A 51-profile export needs version 2.3 or later; previous versions retain their 50-profile import limit.
 

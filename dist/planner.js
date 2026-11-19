@@ -24334,6 +24334,7 @@
     if (p2.dataVersion !== data.version) throw Error(`Profile uses data ${p2.dataVersion}. This app uses ${data.version}; review and explicitly rebase a copy before import.`);
     if (p2.areaDataVersion !== void 0 && p2.areaDataVersion !== AREA_VERSION) throw Error(`Profile uses area rules ${p2.areaDataVersion}. This app uses ${AREA_VERSION}; review and explicitly rebase a copy before import.`);
     p2.areaDataVersion = AREA_VERSION;
+    if (p2.maxedPresetVersion !== void 0 && p2.maxedPresetVersion !== 1) throw Error("Unsupported Maxed preset version.");
     const numeric = (n, min, max, label, nullable = false) => {
       if (nullable && n === null) return;
       if (typeof n !== "number" || !Number.isFinite(n) || n < min || n > max) throw Error(`${label} must be between ${min} and ${max}.`);
@@ -24455,18 +24456,20 @@
 
   // src/state/maxed-profile.ts
   var skills = "attack strength defence ranged prayer magic runecraft construction hitpoints agility herblore thieving crafting fletching slayer hunter mining smithing fishing cooking firemaking woodcutting farming sailing".split(" ");
+  var rewardNote = "Slayer-point reward purchases start off. Enable purchased creature unlocks in Account & access as needed.";
   function maxedProfile(data) {
     const p2 = newProfile(data, "Maxed");
     p2.id = MAXED_PROFILE_ID;
+    p2.maxedPresetVersion = 1;
     p2.levels = Object.fromEntries(skills.map((key) => [key, 99]));
     p2.levels.combat = 126;
     p2.quests = Object.fromEntries(relevantQuests(data).map((key) => [key, 2]));
-    p2.unlocks = Object.fromEntries(Object.keys(data.unlocks).map((key) => [key, 1]));
+    p2.unlocks = Object.fromEntries(Object.keys(data.unlocks).map((key) => [key, 0]));
     p2.access = Object.fromEntries(knownAccessKeys(data).map((key) => [key, 1]));
     const grant = (r) => {
       if (r.key && r.kind === "quest") p2.quests[r.key] = 2;
       if (r.key && r.kind === "skill") p2.levels[r.key] = r.key === "combat" ? 126 : 99;
-      if (r.key && r.kind === "unlock") p2.unlocks[r.key] = r.min === 0 ? 0 : 1;
+      if (r.key && r.kind === "unlock") p2.unlocks[r.key] = 0;
       r.items?.forEach(grant);
     };
     data.masters.forEach((m) => {
@@ -24481,13 +24484,23 @@
     p2.notes = [
       "Maxed planning preset: all skills 99, combat 126, all supported quests/diaries complete and all modelled areas/variants accessible. These are scenario settings, not imported account facts.",
       "Quest points: 343 (Wiki snapshot checked 19 November 2026). Stop the Wyvern is off to retain wyvern assignments. Mortimer progression is 50 tasks, unlocking all modelled offer options.",
-      "Points, reserves, streaks and combat rates are editable planning defaults. Master/variant mappings and uncertain combat/location models still apply."
+      "Points, reserves, streaks and combat rates are editable planning defaults. Master/variant mappings and uncertain combat/location models still apply.",
+      rewardNote
     ];
     return validateProfile(data, p2);
   }
   function withDefaultMaxedProfile(data, profiles = [], activeId = "") {
     if (customProfileCount(profiles) > MAX_CUSTOM_PROFILES) throw Error("Maximum of 50 custom profiles.");
-    const next = profiles.some((p2) => p2.id === MAXED_PROFILE_ID) ? profiles : [...profiles, maxedProfile(data)];
+    const current = profiles.find((p2) => p2.id === MAXED_PROFILE_ID);
+    let next = profiles;
+    if (!current) next = [...profiles, maxedProfile(data)];
+    else if (current.maxedPresetVersion !== 1) {
+      const updated = clone(current), keys = /* @__PURE__ */ new Set([...Object.keys(maxedProfile(data).unlocks), ...Object.keys(current.unlocks)]);
+      updated.unlocks = Object.fromEntries([...keys].map((key) => [key, 0]));
+      updated.maxedPresetVersion = 1;
+      updated.notes.push(rewardNote);
+      next = profiles.map((p2) => p2 === current ? updated : p2);
+    }
     return { profiles: next, activeId: next.some((p2) => p2.id === activeId) ? activeId : next[0].id };
   }
 
@@ -24832,11 +24845,11 @@
       } catch (error) {
         this.saveError = "Saved profile could not be loaded; original storage is untouched. " + String(error);
       }
-      const originalCount = this.profiles.length;
+      const originalProfiles = this.profiles;
       const defaults = withDefaultMaxedProfile(catalogue, this.profiles, this.activeId);
       this.profiles = defaults.profiles;
       this.activeId = defaults.activeId;
-      if (originalCount !== this.profiles.length) this.persist();
+      if (originalProfiles !== this.profiles) this.persist();
     }
     persist() {
       try {
@@ -49681,7 +49694,7 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed preset: all skills, quests, diaries and supported access enabled. Edit planning rates and points as needed." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3.1 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();

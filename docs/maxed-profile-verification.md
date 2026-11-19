@@ -1,4 +1,14 @@
-# Default Maxed profile — version 2.3
+# Default Maxed profile — versions 2.3 and 2.3.1
+
+## Current correction: 2.3.1
+
+The user corrected the preset to start with no Slayer-point reward purchases. All 13 known rewards now explicitly start at zero, including creature unlocks and Stop the Wyvern. Maxed skills, quests, diaries and area access remain enabled; a purchased creature's assignment is still gated by its reward. The sidebar and README describe this distinction.
+
+Existing reserved Maxed profiles without `maxedPresetVersion` receive the correction once on startup. Only the reward fields, the optional version marker and a note change; other profile settings and all custom profiles remain intact. The constructor saves this update even when the profile count is unchanged. Version 1 of the preset marker then preserves future manual purchases across reload/export/import. The storage schema and catalogue/area versions remain unchanged.
+
+Passed: strict TypeScript checking and all 68 tests. The two new regressions failed against the prior implementation, then passed after the correction. They verify unpurchased rewards, Basilocked gating/manual activation, one-time migration, other-field preservation and later purchase persistence. Browser observations upgraded the existing synthetic Maxed profile: all 13 rewards off, 38 quests complete and 205 access facts on. Manually enabling Basilocked survived reload; the test then returned it to off. Desktop player facts were not edited for testing.
+
+## Original 2.3 release evidence
 
 Every startup ensures the reserved `builtin-maxed` profile exists. It is selected on a fresh setup; an existing selected profile and all profile contents remain unchanged. Repeated startup/export/import retains one built-in profile without resetting its edits. Duplicates/imported copies receive ordinary independent IDs through the existing UI paths. No profile schema fields or game-data versions change.
 
