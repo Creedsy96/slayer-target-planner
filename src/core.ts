@@ -18,5 +18,6 @@ export * from './analysis/planner';
 export * from './analysis/simulation';
 export * from './analysis/explanations';
 export * from './analysis/plan-issues';
+export * from './analysis/skip-policy';
 
 export * from './analysis/hunt-search';
