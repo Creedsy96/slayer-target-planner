@@ -1,0 +1,19 @@
+{
+  "pageid": 15308,
+  "ns": 0,
+  "title": "Dorgesh-Kaan South Dungeon",
+  "revisions": [
+    {
+      "revid": 15326661,
+      "parentid": 15287283,
+      "timestamp": "2026-08-31T21:40:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs}}\n{{Infobox Location\n|name = Dorgesh-Kaan South Dungeon\n|image = [[File:Dorgesh-Kaan South Dungeon.png|300px]]\n|release = [[20 March]] [[2007]]\n|update = Dorgesh-Kaan\n|members = Yes\n|location = [[Dorgesh-Kaan]]\n|map = [[File:Dorgesh-Kaan South Dungeon map.png|300px]]\n|type = dungeon\n|leagueRegion = Misthalin\n}}\nThe '''Dorgesh-Kaan South Dungeon''' is a dungeon south of the underground city of [[Dorgesh-Kaan]] (notated by an [[Agility]] icon on the map). Entry to the dungeon requires completion of the [[Death to the Dorgeshuun]] quest. The dungeon is [[Darkness|dark]] and requires the player to have a [[light source]] or face relentless damage from stinging insects. A [[tinderbox]] is recommended (to relight the light source, just in case) but is not necessary. An [[antipoison]] potion may also be helpful, as there are several [[poisonous]] creatures in the dungeon.\n\nYou can use a [[dwarf multicannon]] in the dungeon, however it is not multicombat.\n\n==Notable features==\n*There is a two-way passage between the dungeon and the [[Kalphite Lair]], using the [[blocked tunnel]] and [[tunnel (Kalphite Lair)|tunnel]].\n*[[Fairy ring]] {{Fairycode|AJQ}} provides access to the dungeon.\n*There are two net fishing locations for [[frog spawn]]. You can also do bait fishing here to obtain [[Raw cave eel|raw cave eels]] and [[Raw slimy eel|raw slimy eels]].\n*The [[Dorgesh-Kaan Agility Course]] requires 70 [[Agility]].\n\n==Monsters==\n{{LocationMonsterTableHead|showslayer=yes|showkillrequirement=yes}}\n\n{{LocationMonsterTableLine\n|name=Cave bug\n|image=Cave bug (level 6).png\n|levels=6, 96\n|slayerlevel=7\n|slayerxp=5, 93\n|spawns=15\n}}\n\n{{LocationMonsterTableLine\n|name=Cave crawler\n|image=Cave crawler (1).png\n|levels=23\n|slayerlevel=10\n|slayerxp=22\n|spawns=5\n}}\n\n{{LocationMonsterTableLine\n|name=Cave slime\n|levels=23\n|slayerlevel=17\n|slayerxp=25\n|spawns=9\n}}\n\n{{LocationMonsterTableLine\n|name=Rockslug\n|levels=29\n|slayerlevel=20\n|slayerxp=27\n|killrequirement=[[Bag of salt]] or [[brine sabre]]\n|spawns=1\n}}\n\n{{LocationMonsterTableLine\n|name=Molanisk\n|levels=51\n|slayerlevel=39\n|slayerxp=52\n|killrequirement=[[Slayer bell]]\n|spawns=10\n}}\n\n{{LocationMonsterTableLine\n|name=Big frog\n|image=Giant frog.png\n|levels=24\n|spawns=13\n}}\n\n{{LocationMonsterTableLine\n|name=Giant frog\n|levels=99\n|spawns=3\n}}\n\n{{LocationMonsterTableBottom}}\n\n==Personalities==\n*[[Turgall]] - above in the electricity plant by the Dorgesh-Kaan Agility Course.\n*[[Zanik]] - can be found occasionally in the course after [[Another Slice of H.A.M.]] and before [[Land of the Goblins]]\n*[[Movario]] - disappears after [[While Guthix Sleeps]]\n*[[Darve]] - disappears after [[While Guthix Sleeps]]\n\n{{Dorgesh-Kaan South Dungeon}}\n{{Dorgesh-Kaan}}\n{{Slayer locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

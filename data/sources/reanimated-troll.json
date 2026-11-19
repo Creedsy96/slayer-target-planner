@@ -1,0 +1,19 @@
+{
+  "pageid": 70519,
+  "ns": 0,
+  "title": "Reanimated troll",
+  "revisions": [
+    {
+      "revid": 15406540,
+      "parentid": 15360225,
+      "timestamp": "2026-11-18T22:24:25Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the monster|the historical spell|Reanimate Troll}}\n{{Infobox Monster\n|name = Reanimated troll\n|image = [[File:Reanimated troll.png|200px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 1\n|examine = This creature has been dragged back from the grave.\n|xpbonus = \n|max hit = 11\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Crush]]\n|attack speed = 4\n|slayxp = 35\n|cat = Trolls\n|assignedby = vannaka,chaeldar,nieve,duradel\n|hitpoints = 35\n|att = 40\n|str = 75\n|def = 40\n|mage = 1\n|range = 1\n|attbns = 20\n|strbns = 20\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 10\n|dmagic = 200\n|dlight = 200\n|dstandard = 200\n|dheavy = 200\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7030\n}}\nA '''reanimated troll''' can be spawned by casting the [[Arceuus spellbook|spell]] [[Adept Reanimation]] on an [[ensouled troll head]]. Reanimation can be cast on any ensouled head within an 31x31 area where that head was dropped by a monster. This will work indefinitely, even if the [[Ensouled troll head|ensouled head]] is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has done one of these things, they will no longer be able to reanimate the creature in the area where it was killed, but can still reanimate it within range of the [[Dark Altar]]. Killing the creature will grant the player 780 [[Prayer]] [[experience]].\n\nPlayers intending to use ranged/magic should note that reanimated trolls have an atypically high 200 defence to magic and ranged (all 3 types), similar to their living counterparts. This surpasses even master-tier reanimated creatures such as the [[Reanimated dragon|dragon]]. As such, kill timings (and therefore experience rates) may improve if using a different type of ensouled head.\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated troll\n|level = 1\n|xp = 780\n|type = reanimated\n}}\n\n==Drops==\n{{DropsTableHead}}\n{{DropsLine|name=Troll bone|quantity=1|rarity=Always|raritynotes=<ref group=d>Troll bones are only dropped during [[Rag and Bone Man II]].</ref>|gemw=No}}\n{{DropsTableBottom}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

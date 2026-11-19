@@ -1,0 +1,19 @@
+{
+  "pageid": 65117,
+  "ns": 0,
+  "title": "Scorpia's guardian",
+  "revisions": [
+    {
+      "revid": 15265728,
+      "parentid": 15265723,
+      "timestamp": "2026-07-17T00:37:52Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Monster\n|name = Scorpia's guardian\n|image = [[File:Scorpia's guardian.png]]\n|release = [[13 March]] [[2014]]\n|update = Rejuvenating the Wilderness: More risk, more reward\n|members = Yes\n|combat = 47\n|size = 1\n|examine = It lives to protect its queen.\n|xpbonus = -97.5\n|max hit = 4\n|aggressive = No\n|poisonous = No\n|attack style = None\n|attack speed = N/A\n|slayxp = 70\n|cat = Scorpions\n|assignedby = turael,spria,krystilia,mazchna\n|hitpoints = 70\n|att = 1\n|str = 1\n|def = 60\n|mage = 30\n|range = 30\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 0\n|venomresistance = 0\n|elementalweaknesstype = Fire\n|elementalweaknesspercent = 35\n|id = 6617\n|leagueRegion = Wilderness\n}}\n\n'''Scorpia's guardians''' appear while fighting [[Scorpia]]. Two appear on the ''next'' attack after Scorpia reaches 99 health or lower, even if you splash. The guardians will each heal Scorpia for 8 health every 1.8 seconds, shown with a curse projectile animation, and can do so from up to 3 tiles away. If they do not heal Scorpia in 15 seconds, they will despawn. If killed they will not respawn, even if they manage to heal Scorpia back to full health.\n\nPlayers can either freeze them with [[Ice Burst|ice burst]]/[[Ice Barrage|barrage]] or [[snare]] and lure Scorpia away to cause them to despawn, or kill them.\n\n==Drops==\n===Tertiary===\n{{DropsTableHead}}\n{{DropsLineClue|type=beginner|rarity=Unknown}}\n{{DropsLine|name=Looting bag|quantity=1|rarity=1/3|gemw=No}}\n{{DropsLine|name=Ensouled scorpion head|quantity=1|rarity=1/25}}\n{{DropsTableBottom}}\n{{Reflist|group=d}}\n\n===Wilderness Slayer tertiary===\n{{WildernessSlayerDropTable|combat=47|hitpoints=70}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|change = Scorpia's guardians now have a 35% [[elemental weakness]] to [[fire spells]].\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n}}\n{{Subject changes footer}}\n\n{{Wilderness bosses}}"
+        }
+      }
+    }
+  ]
+}

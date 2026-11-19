@@ -1,0 +1,19 @@
+{
+  "pageid": 298779,
+  "ns": 0,
+  "title": "Slayer task/Bandits",
+  "revisions": [
+    {
+      "revid": 15372765,
+      "parentid": 15355981,
+      "timestamp": "2026-10-15T01:04:19Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Bandit\n|skillreq = None\n|combatreq = {{SCP|Combat|40}}\n|otherreq = None\n|krystilia = 75-125\n|id = No\n}}\n[[Bandit]] can be assigned as a [[slayer task]]. It does not have a required [[combat]] level to be assigned by [[Krystilia]]. Bandits are most commonly found in [[Bandit Camp (Wilderness)]].\n\nAlong with Bandits and [[Guard Bandit|Guard Bandits]], [[Speedy Keith]], [[Donny the lad]], and [[Black Heather]] can be killed to satisfy the task.\n\nThe bandits are guarded by [[Guard Bandit]]. These bandits are aggressive, so players should take caution when approaching the camp. However, camp leaders (like [[Donny the lad]]) are not aggressive.\n\nIf you'd like to prioritize barraging the level 130 bandits, you can setup a cannon slightly southwest of the first spear wall near the entrance. This extends the task as you'll only rarely target a single lower level bandit while being able to barrage up to 7 or 8 high level bandits. Their far aggressive range, high hitpoints and fast respawn time make it an effective task for experience. You can quickly teleport out to regain aggression.[[File:Bandit (Bandit Camp entrance) safespot.png|thumb|Safespot west of the entrance of the Bandit Camp]]\n\n== Monster Variants ==\n{| class=\"wikitable\"\n|-\n! Monster !! Combat\nLevel\n! Slayer\nXP\n! Locations !! Notes\n|-\n|[[Bandit]]|| 22, 130 || 29, 159 ||\n*[[Bandit Camp (Wilderness)]]\n*[[Wilderness Slayer Cave]]\n| Players who receive Bandits as a [[Slayer task]] may trap 5 of the level 130 Bandits in the Pizza shop house and the General Store house.\n|-\n|[[Guard Bandit]]\n|22\n|29\n|\n*[[Bandit Camp (Wilderness)]]\n|When entering The [[Bandit Camp (Wilderness)]] The [[Guard Bandit]] may attack you, be careful they are very aggressive.\n|-\n|[[Speedy Keith]]\n|34\n|37\n|\n*[[Bandit Camp (Wilderness)]]\n|Is one of the three leaders of the [[Bandit Camp (Wilderness)]]. Like the other two leaders, [[Black Heather]] and [[Donny the lad]], he is not [[aggressive]].\n|-\n|[[Donny the lad]]\n|34\n|37\n|\n*[[Bandit Camp (Wilderness)]]\n|Players cannot talk to Donny.\n|-\n|[[Black Heather]]\n|34\n|37\n|\n*[[Bandit Camp (Wilderness)]]\n|If players attempt to talk to her, they will receive a message stating, \"Black Heather is not interested in talking.\"\n|}\n\n== Safe Spot Strategy ==\n\nThis information is out of date, there are bandits on either side of the entrance to the camp to prevent safespotting\n\n== Location Comparison ==\n{| class=\"wikitable\"\n|+\n!Location\n!Maplink\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Bandit Camp (Wilderness)]]\n|{{Map|type=maplink\n|name = Bandit\n|location = [[Bandit Camp (Wilderness)]]\n|ptype = monster\n|levels = 22, 130\n|3024,3696|3029,3701|3029,3706|3031,3685|3031,3698|3032,3695|3033,3705|3035,3703|3036,3669|3037,3656|3037,3683|3038,3662|3038,3691|3040,3683|3040,3703|3044,3703\n|mtype = pin\n}}\n|16\n|{{Yes}}\n|{{Yes}}\n|{{No}}\n|This location is well populated.\n|-\n|[[Wilderness Slayer Cave]]\n|{{Map|type=maplink\n|name = Bandit\n|location = [[Wilderness Slayer Cave]]\n|ptype = monster\n|levels = 130\n|mapID = 26\n|3430,10070\n|mtype = pin\n}}\n|1\n|{{Yes}}\n|{{Yes}}\n|{{No}}\n|Not recommended.\n|}"
+        }
+      }
+    }
+  ]
+}

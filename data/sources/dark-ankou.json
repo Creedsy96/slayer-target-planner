@@ -1,0 +1,19 @@
+{
+  "pageid": 74451,
+  "ns": 0,
+  "title": "Dark Ankou",
+  "revisions": [
+    {
+      "revid": 15375068,
+      "parentid": 15266204,
+      "timestamp": "2026-10-18T14:50:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{HasTask|Ankou}}\n{{Infobox Monster\n|name = Dark Ankou\n|image = [[File:Dark Ankou.png|140px]]\n|release = [[16 June]] [[2016]]\n|update = Skotizo - The Archaic Demon\n|members = Yes\n|combat = 95\n|size = 1\n|examine = A boney ghost.\n|attributes = undead, spectral\n|xpbonus = 0\n|max hit = 8\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Crush]]\n|attack speed = 4\n|slayxp = 60\n|cat = Ankou\n|assignedby = vannaka,konar,nieve,duradel\n|hitpoints = 60\n|att = 100\n|str = 70\n|def = 100\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 100\n|venomresistance = 100\n|id = 7296\n}}\n'''Dark ankou''' are randomly and uncommonly summoned during the fight with [[Skotizo]]. They are slightly darker variants of regular [[ankou]]. If the player kills a dark ankou, Skotizo may randomly summon another. There is a limit of one dark ankou in the room at a time. If a dark ankou spawns on the opposite side of Skotizo from the player, or if the player is attacking an altar, it will wander around the room. If the dark ankou walks near the player and they are attacking Skotizo, it will become aggressive towards them.\n\nWhenever one of the four [[Awakened Altar|awakened altars]] is active, a timer of a random duration is set, which will spawn a dark ankou once it has ticked down.{{CiteTwitter|author=Mod Ash|url=https://twitter.com/JagexAsh/status/1471467629827301378|date=16 December 2021|archiveurl=https://reldo.runescape.wiki/i/103744|archivedate=24 June 2023|quote=[Do you know how the dark ankou at Skotizo works? (...)] Looks like it's off a timer on an open altar, with a random duration on that timer. So \"it's random\" might actually be the most appropriate answer.}}\n\nThere is no real benefit fighting dark ankou, so the player should instead focus on fighting Skotizo.\n\n==Prayer info==\n{{Prayer info\n|name = Dark Ankou\n|level = 40\n|xp = 12\n|type = spectral\n}}\n\n==References==\n{{Reflist}}\n\n{{Catacombs of Kourend}}"
+        }
+      }
+    }
+  ]
+}

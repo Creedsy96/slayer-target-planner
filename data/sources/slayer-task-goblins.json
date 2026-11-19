@@ -1,0 +1,19 @@
+{
+  "pageid": 298253,
+  "ns": 0,
+  "title": "Slayer task/Goblins",
+  "revisions": [
+    {
+      "revid": 14871486,
+      "parentid": 14718152,
+      "timestamp": "2025-03-26T23:05:19Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Goblins\n|skillreq = None\n|combatreq = None\n|otherreq = None\n|turael = 15-30\n|spria = 15-30\n|id = No\n}}\n\n[[Goblin]]s can be assigned as a [[slayer task]], with no [[Slayer]] level requirement by [[Turael]] (or [[Spria]] after [[A Porcine of Interest]]). [[Sergeant Strongstack]], [[Sergeant Grimspike]], and [[Sergeant Steelwill]] count, and are susceptible to the bonus from [[Slayer Helmet]]/[[Black Mask]].\n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Goblin]]\n|2\n|5\n|[[Lumbridge]], [[Observatory Dungeon]], [[Goblin Cave]], [[Goblin Village]], West of [[Fishing Guild]], [[God Wars Dungeon]], [[Clock Tower Dungeon]], Outside of [[Port Sarim]], [[Tree Gnome Village maze]]\n|Easiest variant to kill for those who are looking to quickly finish their tasks.\n|-\n|[[Goblin (Vault of War)]]\n|5\n11\n\n13\n\n16\n\n25\n|5\n7\n\n16\n\n22\n\n26\n|[[Stronghold of Security]]({{FloorNumber|uk=0}})\n|Beefier variants in the Stronghold of Security.\n|-\n|[[Cave goblin (monster)|Cave goblin]]\n|3\n|10\n|[[Lumbridge Swamp Caves]]\n|-\n|[[Cave goblin miner]]\n|11\n|10\n|[[Dorgeshuun Mines]]\n|Requires starting [[The Lost Tribe]]\n|-\n|[[Cave goblin guard]]\n|26\n|26\n|[[Dorgeshuun Mines]]\n|Requires starting [[The Lost Tribe]]\n|-\n|[[Sergeant Strongstack]], [[Sergeant Steelwill]]. [[Sergeant Grimspike]]\n|141\n142\n\n142\n|128\n127\n\n148\n|[[God Wars Dungeon]]\n|Bandos boss room, 40 kills required to enter (be aware, killing goblins may finish your task, and you might lose buffs for Sergeants).\n|}\n\n==Location Variants==\n{| class=\"wikitable sortable align-center-3\"\n!Location\n!Maplink\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Lumbridge]]\n|{{unknown}}\n|121\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|\n|-\n|[[Stronghold of Security]]\n|{{unknown}}\n|34\n|{{Yes}}\n|{{Yes}}\n|{{Yes}}\n|\n|-\n|[[Lumbridge Swamp Caves]]\n|{{unknown}}\n|4\n|{{No}}\n|{{Yes}}\n|{{No}}\n|Safespot technically possible behind the water, but impractical\n|-\n|[[Dorgeshuun Mines]]\n|{{unknown}}\n|12\n|{{Yes}}\n|{{Yes}}\n|{{No}}\n|Combination of [[Cave goblin miner]]s and [[Cave goblin guard|guards]]\n|-\n|[[Observatory Dungeon]]\n|{{unknown}}\n|31\n|{{No}}\n|{{Yes}}\n|{{No}}\n|\n|-\n|[[Goblin Cave]]\n|{{unknown}}\n|24\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|\n|-\n|[[Goblin Village]]\n|{{unknown}}\n|23\n|{{No}}\n|{{Yes}}\n|{{NA|Unknown}}\n|\n|-\n|West of [[Fishing Guild]]\n|{{unknown}}\n|23\n|{{No}}\n|{{Yes}}\n|{{NA|Unknown}}\n|\n|-\n|[[God Wars Dungeon]]\n|{{unknown}}\n|14\n|{{Yes}}\n|{{NA|Unknown}}\n|{{NA|Unknown}}\n|\n|-\n|[[Clock Tower Dungeon]]\n|{{unknown}}\n|14\n|{{No}}\n|{{NA|Unknown}}\n|{{NA|Unknown}}\n|\n|-\n|Outside of [[Port Sarim]]\n|{{unknown}}\n|12\n|{{No}}\n|{{NA|Unknown}}\n|{{NA|Unknown}}\n|\n|-\n|[[Tree Gnome Village maze]]\n|{{unknown}}\n|10\n|{{No}}\n|{{NA|Unknown}}\n|{{NA|Unknown}}\n|\n|}"
+        }
+      }
+    }
+  ]
+}

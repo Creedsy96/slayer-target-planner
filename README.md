@@ -1,50 +1,58 @@
-# Slayer Target Planner
+# Slayer Target Planner 2
 
-## Planned upgrades
+An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
-See [the implementation plan](docs/implementation-plan.md) for the proposed accuracy fixes and research upgrades 1–13, and [the glossary](CONTEXT.md) for assignment, monster variant and strategy terminology. These documents describe planned work, not features already implemented.
+## Start
 
-## Windows app
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
-The desktop distribution is in **Slayer Target Planner - Windows**, alongside this source folder on the Desktop. Open **Slayer Target Planner.exe**. Share **Slayer Target Planner - Windows.zip**; the recipient must extract the complete folder before running the EXE. It bundles Electron and the planner, with an original sword-and-shield icon, and needs no website login or Node.js installation.
+For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
-This unsigned Windows x64 build runs locally and saves preferences under `%APPDATA%/Slayer Target Planner`. Those preferences, hosting metadata and credentials are excluded from the distribution. The private hosted site's permissions are unchanged. The app does not automatically update.
+## Planning a hunt
 
-## Browser copy
+1. Create a named profile or duplicate the illustrative example. Enter skills, quest stages, purchased unlocks, diaries, points and streaks under **Account & access**. Blank facts remain unknown. A conditional scenario can assume unknown access; it is visibly labelled.
+2. Choose an assignment and desired monster variant. The catalogue has 117 assignment types, 269 variants and ten distinct masters. Receiving a Basilisk assignment does not grant Basilisk Knight access. Unsupported relationships cannot be selected as verified alternatives.
+3. Record actual blocks, edit proposed lists and keep/skip/protect preferences under **Tasks & blocks**. Beginner lists are shared by Turael/Aya and Spria. Other groups remain separate. Explicit zero slots work; ordinary caps derive from quest points and the elite Lumbridge diary, while Mortimer has two.
+4. Set measured kills/hour or combat minutes/task, or an effective-DPS estimate, under **Combat methods**. Travel is added once. Methods support extensions, bracelets, locations and reusable presets.
+5. Choose an offer, kill-count or direct-drop stopping event and acceptable targets. The master table is a stationary offer estimate. Use **Simulate** for funded points, streaks, current tasks/offers, boosts, resets, cape policies and the full hunt. **Search blocks for full hunt goal** tests a bounded set of candidates using the selected stopping event.
+6. Compare independent profiles or six strategies from the same start state. Export profiles as JSON, the master comparison as CSV, or simulation results with their profile and assumptions as JSON.
 
-Double-click **Open Planner.cmd** to open the app in your default browser. You can also open `dist/index.html` directly. The application works offline, with system fonts used when web fonts are unavailable.
+The original v1 storage key is retained and backed up before migration. Missing new account facts remain unknown; old exclusions become preferences, not invented quest facts. Export the original backup from **Data & sources**. Different data snapshots require explicit review and rebasing a copy before import.
 
-Select any of the 117 assignment types imported from the source workbook. Compare expected waiting times, assignment probabilities, recommended blocks, and sustainable skips. Select a master in the comparison to inspect its task plan. Use **Task inputs** to change shared requirements, representative HP and DPS multipliers.
+## Calculation limits
 
-Settings are saved in your current browser. The local file and hosted website have separate browser storage. **Export comparison** downloads a CSV. **Reset all to workbook defaults** resets the target, settings, and creature overrides.
+Exact and approximate results are labelled. Small block spaces are enumerated; larger searches use bounded swaps. Stationary single-draw no-skip offer objectives have a direct solution. Funded and multi-choice policies use seeded simulation and heuristic decisions; no global optimality claim is made. Full-hunt search tests a bounded set with up to 400 search trials, then reruns the chosen candidate with the requested trial count.
 
-## Data and calculation
+Points are paid before a skip/block action and awarded after completion. A target-offer goal stops before target combat/rewards. Kill and drop goals can stop during combat. Unfinished trials remain in probability denominators; censored means and unsupported quantiles are withheld. Probability intervals include sampling uncertainty and unresolved outcomes, not model error. Quantity rolls use a uniform integer range scenario; configured combat rates do not model random kill-time variation.
 
-Source: https://docs.google.com/spreadsheets/d/1HYeSbsbNKqZ2PO_eWPsYV0MXg46q9M6FnC8Ff75a_F4/edit
+Mortimer milestones and category rolls are sourced. Within-range modifier values remain an explicit uniform-in-five-step assumption. Mortimer cape modifier repeats are unavailable pending verification. Generic Boss secondary rolls are not mapped to individual bosses: the mixed Boss completion estimate cannot be used as a specific boss target. Directly mapped boss alternatives are listed separately. Newly sourced alternatives require access/repeatability confirmation. One preferred variant per assignment avoids an unverified union of overlapping location probabilities. Superior-spawn loot goals, general XP/profit outputs and recommendation 14 are outside this release.
 
-Snapshot: 19 November 2026. The app bundles the supplied data; it does not update automatically. Current game data has not been independently verified. The original workbook is unchanged.
+## Data and attribution
 
-Assignment types include representative monsters. To model a particular variant, choose its assignment type and adjust HP and DPS multiplier. Targets remain subject to Slayer level and explicit requirement exclusions, and are never recommended for blocking or skipping.
+Data snapshot: `2026-11-19.2`. `data/catalogue.json` is generated from revisioned Wiki captures in `data/sources/`, with the supplied workbook retained as `data/legacy.json`. Source revisions, conditional rules and qualifications are visible in the app. Wiki text is parsed as data; no Lua or spreadsheet code is executed. See `THIRD_PARTY_NOTICES.txt` and [verification](docs/v2-verification.md).
 
-The model preserves the workbook's highest-weight blocks, longest-first point-balanced skips, streak multiplier of 1.775, and weighted Mortimer offers without replacement. Mortimer's three-choice scenario is optional and disabled by default. Waiting ends at the target offer; target completion time is excluded. Points balance describes repeated play and does not ensure sufficient starting points. Quest/combat access not excluded is assumed satisfied. There is no Slayer cape repeat model.
+Refresh into a new candidate directory without changing active data:
+
+```text
+python tools/refresh_catalogue.py --output <new-candidate-directory> --version <new-data-version>
+```
+
+Review `review-diff.json`, source rules, migrations and tests before explicitly adopting the candidate. The app never fetches mutable rule data during a calculation. Optional public hiscores lookup imports levels only, with a timeout and manual fallback. It sends the entered RuneScape name only to the official RuneScape hiscores service.
 
 ## Development
 
-No install or build step is required. Node.js is needed only for tests and optional local serving:
+Use Node.js 22.12+ (release build: bundled Node.js 24.22.1) and Python 3.12+.
 
 ```text
+npm ci
+npm run build:data
+npm run typecheck
 npm test
 npm start
+npm run package:windows -- <new-output-directory>
+python tools/package_share.py <distribution-folder> <new-zip-path>
 ```
 
-`dist/engine.js` contains the pure calculation model, `dist/preferences.js` validates stored preferences, and `dist/app.js` owns the interface and browser storage. `dist/data.js` is the data snapshot. Tests compare all 11 master scenarios with cached source results and exercise alternate targets, requirements, empty pools and probability normalisation.
+`src/domain`, `src/rules` and `src/analysis` provide the typed shared model. `src/state` validates and migrates profiles. `src/ui` owns one application state and cancellable offline workers; generated browser assets are in `dist`. Historical v1 engines/fixtures live under `tests/fixtures/v1` and are not deployed. `desktop` contains the isolated Electron shell and a narrow, validated public-hiscores bridge. The package uses an explicit allowlist and includes no personal profiles, credentials or hosting metadata.
 
-`tools/extract_source.py` reads XLSX cell data using the Python standard library. `tools/prepare_data.py` converts that intermediate JSON into the catalogue and baseline test fixture. Neither executes spreadsheet formulas or updates the source workbook.
-
-## Desktop packaging
-
-Use Node.js 22.12+ (the initial build used the bundled Node.js 24.22.1). Run `npm ci`, then `npm run package:windows`. The pinned Electron and packager versions are in `package.json` and `package-lock.json`. Output defaults to `.desktop-build/output`; pass a new output directory to `node tools/package-windows.mjs` for a subsequent build.
-
-The build copies an explicit allowlist into `.desktop-build/app`, removes the remote font import, adds a local-only content policy and the app icon, then packages an ASAR. The renderer has no Node.js integration and runs with context isolation and sandboxing. Source links open externally only for the workbook and RuneScape Wiki domains. The original web files remain unchanged.
-
-`tools/package_share.py <distribution-folder> <new-zip-path>` creates file checksums and a ZIP, then verifies every archived file and ZIP CRC. The renderer and runtime include no personal profile or deployment access.
+See [the implementation plan](docs/implementation-plan.md), [glossary](CONTEXT.md) and [release verification](docs/v2-verification.md). This implementation branch builds on the existing Windows packaging and plan commits without rewriting their history.

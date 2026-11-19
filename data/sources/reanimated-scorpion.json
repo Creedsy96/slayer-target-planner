@@ -1,0 +1,19 @@
+{
+  "pageid": 70511,
+  "ns": 0,
+  "title": "Reanimated scorpion",
+  "revisions": [
+    {
+      "revid": 15273528,
+      "parentid": 15263441,
+      "timestamp": "2026-07-23T18:22:51Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the monster|the historical spell|Reanimate Scorpion}}\n{{Infobox Monster\n|name = Reanimated scorpion\n|image = [[File:Reanimated scorpion.png|200px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 2\n|examine = This creature has been dragged back from the grave.\n|xpbonus = \n|max hit = 5\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|slayxp = 15\n|cat = Scorpions\n|assignedby = turael,spria\n|hitpoints = 15\n|att = 11\n|str = 12\n|def = 11\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 5\n|dslash = 15\n|dcrush = 15\n|dmagic = 5\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7022\n}}\nA '''reanimated scorpion''' can be spawned by casting the [[Arceuus spellbook|spell]] [[Basic Reanimation]] on an [[ensouled scorpion head]]. Reanimation can be cast on any ensouled head within an 31x31 area where that head was dropped by a monster. This will work indefinitely, even if the ensouled head is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has done one of these things, they will no longer be able to reanimate the creature in the area where it was killed, but can still reanimate it within range of the [[Dark Altar]]. Killing the creature will grant the player 454 [[Prayer]] [[experience]].\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated scorpion\n|level = 1\n|xp = 454\n|type = reanimated\n}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

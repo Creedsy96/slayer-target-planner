@@ -1,0 +1,19 @@
+{
+  "pageid": 18183,
+  "ns": 0,
+  "title": "Duckling",
+  "revisions": [
+    {
+      "revid": 15199375,
+      "parentid": 15171251,
+      "timestamp": "2026-04-28T07:19:28Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{confuse|Ducklings}}\n{{Infobox Monster\n|name = Duckling\n|image = [[File:Duckling.png|200px]]\n|release = [[29 March]] [[2004]]\n|update = RS2 Launched!\n|members = No\n|combat = 1\n|size = 1\n|examine = Mini quackers.\n|xpbonus = 0\n|max hit = 0\n|aggressive = No\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|respawn = 25\n|slayxp = 3\n|cat = Birds\n|assignedby = turael,spria\n|hitpoints = 3\n|att = 1\n|str = 1\n|def = 1\n|mage = 1\n|range = 1\n|attbns = -47\n|strbns = -42\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = -42\n|dslash = -42\n|dcrush = -42\n|dmagic = -42\n|dlight = -42\n|dstandard = -42\n|dheavy = -42\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id = 2001\n}}\n'''Ducklings''' are smaller versions of [[duck]]s found swimming in the pond north-west of [[Lumbridge]], by [[Farmer Fred]]'s farm, and in the western wing of the [[Farming Guild]]. They will only follow [[Duck#Female|female ducks]]. Occasionally, the female duck will say: {{overhead|Quack?}}, to which any following ducklings respond with: {{overhead|Eep!}}. If the female duck they're following is killed, the ducklings will say: {{overhead|Cheep cheep!}}, followed by: {{overhead|Eep!}} and attempt to swim away.\n==Locations==\n{{LocTableHead}}\n{{LocLine\n|name = Duckling\n|location = [[Lumbridge]]\n|levels = 1\n|members = No\n|mapID = 0\n|plane = 0\n|x:3172,y:3271|x:3173,y:3271\n|mtype = pin\n|leagueRegion = misthalin\n}}\n{{LocLine\n|name = Duckling\n|location = [[Farming Guild]]\n|levels = 1\n|members = Yes\n|mapID = 0\n|plane = 0\n|x:1226,y:3729\n|mtype = pin\n|leagueRegion = kourend\n}}\n{{LocTableBottom}}\n\n==Dialogue==\n{{Hastranscript|npc}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 9 July 2007\n|update = A bird in the hand...\n|change = The NPC was graphically updated.\n}}\n{{Subject changes footer}}\n===Gallery (historical)===\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Duckling (historical).png|center|300x150px]]\n|[[File:Duckling.png|center|300x150px]]\n|-\n|29 March 2004 –<br/>9 July 2007\n|9 July 2007 –<br/>present\n|}\n[[Category:Monsters that retreat when low hitpoints]]"
+        }
+      }
+    }
+  ]
+}

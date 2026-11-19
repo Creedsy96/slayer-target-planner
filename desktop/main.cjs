@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, BrowserWindow, dialog, shell, session} = require('electron');
+const {app, BrowserWindow, dialog, shell, session, ipcMain} = require('electron');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
 const {allowedExternal, sameDocument} = require('./navigation.cjs');
@@ -8,6 +8,12 @@ const {allowedExternal, sameDocument} = require('./navigation.cjs');
 app.setName('Slayer Target Planner');
 app.setAppUserModelId('OwenWelch.SlayerTargetPlanner');
 let mainWindow;
+const {lookup}=require('./hiscores.cjs');
+ipcMain.handle('public-hiscores',async(event,name)=>{
+  const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
+  if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected))throw Error('Unknown request source.');
+  return lookup(name);
+});
 
 function openSource(url) {
   if (allowedExternal(url)) {
@@ -23,7 +29,7 @@ function createWindow() {
     minWidth: 420, minHeight: 620, backgroundColor: '#0c1512',
     icon: path.join(__dirname, 'assets', 'icon.ico'), show: false,
     autoHideMenuBar: true,
-    webPreferences: {nodeIntegration: false, contextIsolation: true, sandbox: true,
+    webPreferences: {preload:path.join(__dirname,'preload.cjs'),nodeIntegration: false, contextIsolation: true, sandbox: true,
       webSecurity: true, devTools: false, spellcheck: false},
   });
   mainWindow.setMenu(null);

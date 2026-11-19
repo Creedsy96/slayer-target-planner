@@ -1,0 +1,19 @@
+{
+  "pageid": 693611,
+  "ns": 0,
+  "title": "Slayer task/Brine rats",
+  "revisions": [
+    {
+      "revid": 15395725,
+      "parentid": 15372644,
+      "timestamp": "2026-11-06T19:56:51Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Brine rats\n|icon = [[File:Brine rat icon.png|center]]\n|skillreq = {{SCP|Slayer|47}}\n|combatreq = {{SCP|Combat|45}}\n|otherreq = [[Olaf's Quest]]\n|vannaka = 40-90\n|chaeldar = 70-130\n|konar = 120-170\n|nieve = 120-185\n|id = 11047\n}}\n'''[[Brine rat]]s''' can be assigned as a [[Slayer task]] at level 47 [[Slayer]], level 65 [[Combat level|combat]] and completion of [[Olaf's Quest]] by various [[Slayer masters]]. Brine rats have relatively low [[Defence]], but fairly high [[Strength]] and [[Attack]]. As such, it is recommended to bring [[food]] if players do not have high (~70) Defence.\n\nPlayers may instead opt to bring a number of [[Bones to Peaches]] [[Bones to peaches (tablet)|tablets]] to convert their bones drops to peaches, which heal 8 hitpoints each. Bringing [[logs]] and a [[tinderbox]] to cook and eat the [[raw rat meat]] and occasional drops of [[raw swordfish]] and [[raw shark]], may also be done, though this is significantly more time-consuming and less efficient than using peaches. Alternatively, [[Olaf]], outside the caverns, has a permanent [[fire]] located beside him, so players may cook any unnoted food drops on his fire if they are willing to exit and re-enter the caverns. A [[fish barrel]] can be used to store the unnoted raw fish, though these drops are infrequent.\n\nThere are two safespots, one being the black bones to the south-east, and the other in the north-west corner of the cave. If the brine rats are in the north half of the cave, you are able to safespot them from behind the bones in the corner.\n\n[[Rat bone weapons]] can be used to kill brine rats and have an added 10 hitpoints of damage added to the player's max hit, making these weapons incredibly effective compared to other weapons with similar stats. Even compared to the highest tier weapons, rat bone weapons might still be more effective depending on your stats and boosts, as the difference in max hit based on other weapon's strength bonuses might not be enough to reach 10 hitpoints of extra damage towards their max hit.\n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Brine rat]]\n|70\n|50\n|\n*[[Brine Rat Cavern]]  ({{Fairycode|dks}})\n|\n|}\n\n==Location comparison==\n{| class=\"wikitable sortable align-center-3\"\n!Location\n!Map\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Brine Rat Cavern]]\n|{{Map|mapID=10026|type=maplink|mtype=pin|x:2702,y:10135|x:2704,y:10131|x:2705,y:10133|x:2707,y:10137|x:2708,y:10131|x:2710,y:10134|x:2712,y:10132}}\n| 7\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|\n* Requires partial completion of [[Olaf's Quest]] to access the cavern.\n* A [[spade]] is required to access the cavern.\n|}\n\n==Safespots==\n\n{| class=\"wikitable sortable\"\n!Location\n!Safespot\n|-\n|[[Brine Rat Cavern]]\n|<gallery captionalign=\"center\" widths=\"300\" heights=\"200\">\nFile:Picture Guide - Brine Rat Safespots.png|Picture guide of brine rat safespots.\nFile:Brine rat safespot.png|Location of the brine rat safespot in the south-eastern corner.\n</gallery>\n|}"
+        }
+      }
+    }
+  ]
+}

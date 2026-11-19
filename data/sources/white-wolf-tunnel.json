@@ -1,0 +1,19 @@
+{
+  "pageid": 111534,
+  "ns": 0,
+  "title": "White Wolf Tunnel",
+  "revisions": [
+    {
+      "revid": 15211869,
+      "parentid": 15131769,
+      "timestamp": "2026-05-17T04:32:56Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Dwarven Tunnel|rsc=Dwarven tunnel}}\n{{Infobox Location\n|name = White Wolf Tunnel\n|image = [[File:White Wolf Tunnel.png|300px]]\n|release = [[28 May]] [[2002]]\n|update = Latest RuneScape News (28 May 2002)\n|aka = Dwarven Tunnel\n|members = Yes\n|location = Beneath [[White Wolf Mountain]]\n|requirement = Completion of [[Fishing Contest]]\n|music = [[Beyond]]\n|map = [[File:White_Wolf_Tunnel_map.png|300px]]\n|type = dungeon\n|leagueRegion = Kandarin,Asgarnia\n}}\n'''White Wolf Tunnel''' is a shortcut beneath [[White Wolf Mountain]] and home to a small group of [[dwarves]]. The tunnel only becomes accessible after the player helps the guards [[Austri]] and [[Vestri]] win the local [[Fishing Contest]] at [[Hemenster]], after which it becomes a convenient way to pass White Wolf Mountain while avoiding the aggressive wolves that roam the slopes.\n\nWhite Wolf Tunnel has a station for the [[Keldagrim minecart system]] manned by a [[Cart conductor (White Wolf Mountain)|cart conductor]], which can be used after starting [[The Giant Dwarf]]. The tunnel also has a small bar where [[Holoy]] runs a [[Crossbow Shop (White Wolf Mountain)|crossbow shop]].\n\n{{Map|2821:3486,title:West entrance|2877,3482,title:East entrance|mtype=pin|zoom=1|width=300|height=200|align=left|caption=The two entrances to White Wolf Tunnel.}}\n\n{{White Wolf Mountain}}"
+        }
+      }
+    }
+  ]
+}

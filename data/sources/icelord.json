@@ -1,0 +1,19 @@
+{
+  "pageid": 23472,
+  "ns": 0,
+  "title": "Icelord",
+  "revisions": [
+    {
+      "revid": 15199467,
+      "parentid": 15124346,
+      "timestamp": "2026-04-28T07:20:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Monster\n|version1 = Melee, 1\n|version2 = Melee, 2\n|version3 = Melee, 3\n|version4 = Ranged\n|name = Icelord\n|image1 = [[File:Icelord (melee).png|250px]]\n|image2 = [[File:Icelord (melee, 2).png|250px]]\n|image3 = [[File:Icelord (melee, 3).png|250px]]\n|image4 = [[File:Icelord (ranged).png|250px]]\n|release = [[29 January]] [[2007]]\n|update = What's black and white and goes green when it's finished?\n|members = Yes\n|combat = 51\n|size = 2\n|examine = Sturdy cold being.\n|xpbonus = 0\n|max hit1 = 5\n|max hit2 = 5\n|max hit3 = 5\n|max hit4 = 1\n|aggressive = Yes\n|poisonous = No\n|attack style1 = [[Crush]]\n|attack style2 = [[Crush]]\n|attack style3 = [[Crush]]\n|attack style4 = [[Ranged]]\n|attack speed = 4\n|respawn = 50\n|slayxp = 60\n|cat = Ice Warriors\n|assignedby = mazchna,vannaka\n|hitpoints = 60\n|att = 40\n|str = 40\n|def = 40\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|elementalweaknesstype = Fire\n|elementalweaknesspercent = 30\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id1 = 855\n|id2 = 854\n|id3 = 853\n|id4 = 852\n}}\nThe '''icelords''' are icy beings found inside the [[iceberg]], and are encountered during the [[Cold War]] [[Quests|quest]]. They were found when [[Pescaling Pax]] moved much of the [[penguin]] population to the iceberg to prepare for the invasion of [[Gielinor]]. Some icelords enjoy hurling large icicles at their enemies, while others prefer to use their four arms to pummel them into submission.\n\nAfter completing Cold War, icelords can be accessed by entering [[a crack]] in the ice on the iceberg, then entering the icelords' cage. Three of the icelords use [[melee]], and the one wielding icicles uses [[ranged]], with all of them having low [[magic]] defence.\n\nIcelords can be slain in place of [[ice warrior]]s for the purposes of completing a [[Slayer task]]. They have slightly more hitpoints than ice warriors as well as notably weaker offensive and defensive stats.\n\nKilling an icelord will award the player with a bonus 40 [[Attack]] experience during the Cold War quest.\n\n==Locations==\n{{LocTableHead}}\n{{LocLine\n|name = Icelord\n|location = [[Iceberg]]\n|levels = 51\n|members = Yes\n|mapID = 51\n|plane = 0\n|x:2641,y:10426,title:Ranged variant,icon:greenPin|x:2644,y:10424,title:Melee (3) variant|x:2647,y:10425,title:Melee (2) variant|x:2650,y:10423,title:Melee (1) variant\n|mtype = pin\n|leagueRegion = Fremennik\n}}\n{{LocTableBottom}}\n\n==Drops==\n===100%===\n{{DropsTableHead}}\n{{DropsLine|name=Big bones|quantity=1|rarity=Always}}\n{{DropsTableBottom}}\n\n===Tertiary===\n{{DropsTableHead}}\n{{DropsLine|name=Long bone|quantity=1|rarity=1/400|gemw=No}}\n{{DropsLine|name=Curved bone|quantity=1|rarity=1/5012.5|gemw=No}}\n{{DropsTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n|change = Icelords now have a 30% [[elemental weakness]] to [[fire spells]].\n}}\n{{Subject changes footer}}\n\n\n{{Cold War}}"
+        }
+      }
+    }
+  ]
+}

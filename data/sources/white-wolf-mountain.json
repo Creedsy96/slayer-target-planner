@@ -1,0 +1,19 @@
+{
+  "pageid": 7815,
+  "ns": 0,
+  "title": "White Wolf Mountain",
+  "revisions": [
+    {
+      "revid": 15370252,
+      "parentid": 15240354,
+      "timestamp": "2026-10-10T22:35:26Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Confuse|Ice Mountain}}\n{{Infobox Location\n|name = White Wolf Mountain\n|image = [[File:White Wolf Mountain.png|300px]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|members = Yes\n|location = [[Asgarnia]] and [[Kandarin]] (border)\n|teleport = None\n|music = [[Ice Melody]]\n|map = {{Map|name=White Wolf Mountain|zoom=1|x=2845|y=3483}}\n|leagueRegion = Asgarnia\n}}\n{{Relativelocation\n|location = White Wolf Mountain\n|north = Warriors' Guild\n|east = Heroes' Guild\n|south = Catherby\n|west = Camelot\n}}\nThe '''White Wolf Mountain''' is a natural region in the [[members]]-only area. It acts as a mountainous border between [[Taverley]] and [[Catherby]], and as a borderline between the kingdoms of [[Asgarnia]] and [[Kandarin]]. The mountain is notorious for being a dangerous area for low levelled players wishing to travel to Kandarin. The [[Ice Queen's Lair]] can be found beneath the mountain, where players can fight the [[Ice Queen]] during [[Heroes' Quest]].\n\n==Transportation==\n===White Wolf Tunnel===\n{{Main|White Wolf Tunnel}}\nOnce a player has completed the [[Fishing Contest]] [[quest]], a [[White Wolf Tunnel|tunnel]] that travels underneath the mountain becomes accessible. This tunnel features a cart station that leads to [[Keldagrim]]. The tunnel proves especially useful to low-level players because it avoids the dangerous monsters that live on White Wolf Mountain.\n\n===Glider===\nA [[gnome glider]] manned by [[Captain Bleemadge]] is located at the centre peak of the mountain, but it is only accessible to players after they have completed [[The Grand Tree]] quest.\n\n===Grapple shortcut===\nThere is a [[mithril grapple]] [[Agility]] shortcut located at the entrance of the mountain (when coming from Catherby) that requires 35 [[Strength]], 35 [[Ranged]], 32 Agility. This shortcut, however, can only be used when travelling from Catherby to Taverley.\n\n==Monsters==\n*[[White wolf]]\n*[[Ice giant]]\n*[[Ice warrior]]\n*[[Big Wolf|Big wolf]]\n*[[Wolf]]\n\n{{White Wolf Mountain}}\n{{Terrain}}\n[[Category:Asgarnia]]\n[[Category:Kandarin]]\n[[Category:Terrain]]\n[[Category:Mountains and hills]]"
+        }
+      }
+    }
+  ]
+}

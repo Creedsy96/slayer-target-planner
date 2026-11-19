@@ -1,0 +1,4634 @@
+{
+  "source": "https://docs.google.com/spreadsheets/d/1HYeSbsbNKqZ2PO_eWPsYV0MXg46q9M6FnC8Ff75a_F4/edit",
+  "snapshot": "2026-11-19",
+  "defaults": {
+    "target": "basilisks",
+    "level": 87,
+    "blocks": 6,
+    "mortimerBlocks": 2,
+    "skipSeconds": 30,
+    "extended": false,
+    "overhead": 0,
+    "delay": 3,
+    "dps": 5,
+    "modifierChance": 0.2,
+    "streak": true,
+    "threeChoices": false,
+    "sustainable": true
+  },
+  "creatures": [
+    {
+      "id": "aberrant spectres",
+      "name": "Aberrant spectres",
+      "representative": "Aberrant spectre",
+      "level": 60,
+      "excluded": false,
+      "hp": 90,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Aberrant_spectre",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "abyssal demons",
+      "name": "Abyssal demons",
+      "representative": "Abyssal demon",
+      "level": 85,
+      "excluded": false,
+      "hp": 150,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Abyssal_demon",
+      "pointsMin": 10,
+      "pointsMax": 25
+    },
+    {
+      "id": "ankou",
+      "name": "Ankou",
+      "representative": "Ankou",
+      "level": 0,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ankou",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "aquanites",
+      "name": "Aquanites",
+      "representative": "Aquanite",
+      "level": 78,
+      "excluded": true,
+      "hp": 180,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Aquanite",
+      "pointsMin": 25,
+      "pointsMax": 40
+    },
+    {
+      "id": "araxytes",
+      "name": "Araxytes",
+      "representative": "Araxyte",
+      "level": 92,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Araxyte",
+      "pointsMin": 10,
+      "pointsMax": 20
+    },
+    {
+      "id": "aviansie",
+      "name": "Aviansie",
+      "representative": "Aviansie",
+      "level": 0,
+      "excluded": true,
+      "hp": 70,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Aviansie",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "bandits",
+      "name": "Bandits",
+      "representative": "Bandit",
+      "level": 0,
+      "excluded": false,
+      "hp": 27,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Bandit",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "banshees",
+      "name": "Banshees",
+      "representative": "Banshee",
+      "level": 15,
+      "excluded": false,
+      "hp": 22,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Banshee",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "basilisks",
+      "name": "Basilisks",
+      "representative": "Basilisk Knight",
+      "level": 40,
+      "excluded": false,
+      "hp": 300,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Basilisk_Knight",
+      "pointsMin": 25,
+      "pointsMax": 40
+    },
+    {
+      "id": "bats",
+      "name": "Bats",
+      "representative": "Bat",
+      "level": 0,
+      "excluded": false,
+      "hp": 8,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Bat",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "bears",
+      "name": "Bears",
+      "representative": "Grizzly bear",
+      "level": 0,
+      "excluded": false,
+      "hp": 27,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Grizzly_bear",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "birds",
+      "name": "Birds",
+      "representative": "Chicken",
+      "level": 0,
+      "excluded": false,
+      "hp": 3,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Chicken",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "black demons",
+      "name": "Black demons",
+      "representative": "Black demon",
+      "level": 0,
+      "excluded": false,
+      "hp": 157,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Black_demon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "black dragons",
+      "name": "Black dragons",
+      "representative": "Baby black dragon",
+      "level": 0,
+      "excluded": false,
+      "hp": 80,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Baby_black_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "black knights",
+      "name": "Black knights",
+      "representative": "Black Knight",
+      "level": 0,
+      "excluded": false,
+      "hp": 42,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Black_Knight",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "bloodveld",
+      "name": "Bloodveld",
+      "representative": "Bloodveld",
+      "level": 50,
+      "excluded": false,
+      "hp": 120,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Bloodveld",
+      "pointsMin": 10,
+      "pointsMax": 15
+    },
+    {
+      "id": "blue dragons",
+      "name": "Blue dragons",
+      "representative": "Baby blue dragon",
+      "level": 0,
+      "excluded": false,
+      "hp": 50,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Baby_blue_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "boss",
+      "name": "Boss",
+      "representative": "Giant Mole",
+      "level": 0,
+      "excluded": true,
+      "hp": 200,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Giant_Mole",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "brine rats",
+      "name": "Brine rats",
+      "representative": "Brine rat",
+      "level": 47,
+      "excluded": true,
+      "hp": 50,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Brine_rat",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "catablepon",
+      "name": "Catablepon",
+      "representative": "Catablepon",
+      "level": 0,
+      "excluded": false,
+      "hp": 40,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Catablepon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "cave bugs",
+      "name": "Cave bugs",
+      "representative": "Cave bug",
+      "level": 7,
+      "excluded": false,
+      "hp": 5,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cave_bug",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "cave crawlers",
+      "name": "Cave crawlers",
+      "representative": "Cave crawler",
+      "level": 10,
+      "excluded": false,
+      "hp": 22,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cave_crawler",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "cave horrors",
+      "name": "Cave horrors",
+      "representative": "Cave horror",
+      "level": 58,
+      "excluded": false,
+      "hp": 55,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cave_horror",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "cave kraken",
+      "name": "Cave kraken",
+      "representative": "Cave kraken",
+      "level": 87,
+      "excluded": false,
+      "hp": 125,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Cave_kraken",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "cave slime",
+      "name": "Cave slime",
+      "representative": "Cave slime",
+      "level": 17,
+      "excluded": false,
+      "hp": 25,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cave_slime",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "chaos druids",
+      "name": "Chaos druids",
+      "representative": "Chaos druid",
+      "level": 0,
+      "excluded": false,
+      "hp": 20,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Chaos_druid",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "cockatrice",
+      "name": "Cockatrice",
+      "representative": "Cockatrice",
+      "level": 25,
+      "excluded": false,
+      "hp": 37,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cockatrice",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "cows",
+      "name": "Cows",
+      "representative": "Cow",
+      "level": 0,
+      "excluded": false,
+      "hp": 8,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Cow",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "crabs",
+      "name": "Crabs",
+      "representative": "Sand Crab",
+      "level": 1,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Sand_Crab",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "crawling hands",
+      "name": "Crawling hands",
+      "representative": "Crawling Hand",
+      "level": 5,
+      "excluded": false,
+      "hp": 15,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Crawling_Hand",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "crocodiles",
+      "name": "Crocodiles",
+      "representative": "Crocodile",
+      "level": 0,
+      "excluded": false,
+      "hp": 62,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Crocodile",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "custodian stalker",
+      "name": "Custodian stalker",
+      "representative": "Juvenile custodian stalker",
+      "level": 54,
+      "excluded": true,
+      "hp": 135,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Juvenile_custodian_stalker",
+      "pointsMin": 10,
+      "pointsMax": 15
+    },
+    {
+      "id": "dagannoth",
+      "name": "Dagannoth",
+      "representative": "Dagannoth",
+      "level": 0,
+      "excluded": false,
+      "hp": 70,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Dagannoth",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "dark beasts",
+      "name": "Dark beasts",
+      "representative": "Dark beast",
+      "level": 90,
+      "excluded": false,
+      "hp": 220,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Dark_beast",
+      "pointsMin": 10,
+      "pointsMax": 25
+    },
+    {
+      "id": "dark warriors",
+      "name": "Dark warriors",
+      "representative": "Dark warrior",
+      "level": 0,
+      "excluded": false,
+      "hp": 17,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Dark_warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "dogs",
+      "name": "Dogs",
+      "representative": "Guard dog",
+      "level": 0,
+      "excluded": false,
+      "hp": 49,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Guard_dog",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "drakes",
+      "name": "Drakes",
+      "representative": "Drake",
+      "level": 84,
+      "excluded": false,
+      "hp": 225,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Drake",
+      "pointsMin": 25,
+      "pointsMax": 40
+    },
+    {
+      "id": "dust devils",
+      "name": "Dust devils",
+      "representative": "Dust devil",
+      "level": 65,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Dust_devil",
+      "pointsMin": 10,
+      "pointsMax": 15
+    },
+    {
+      "id": "dwarves",
+      "name": "Dwarves",
+      "representative": "Dwarf",
+      "level": 0,
+      "excluded": false,
+      "hp": 16,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Dwarf",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "earth warriors",
+      "name": "Earth warriors",
+      "representative": "Earth warrior",
+      "level": 0,
+      "excluded": false,
+      "hp": 54,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Earth_warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "elves",
+      "name": "Elves",
+      "representative": "Elf Warrior",
+      "level": 0,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Elf_Warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "ents",
+      "name": "Ents",
+      "representative": "Ent",
+      "level": 0,
+      "excluded": false,
+      "hp": 75,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ent",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "fever spiders",
+      "name": "Fever spiders",
+      "representative": "Fever spider",
+      "level": 42,
+      "excluded": false,
+      "hp": 40,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Fever_spider",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "fire giants",
+      "name": "Fire giants",
+      "representative": "Fire giant",
+      "level": 0,
+      "excluded": false,
+      "hp": 111,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Fire_giant",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "flesh crawlers",
+      "name": "Flesh crawlers",
+      "representative": "Flesh Crawler",
+      "level": 0,
+      "excluded": false,
+      "hp": 25,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Flesh_Crawler",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "fossil island wyverns",
+      "name": "Fossil island wyverns",
+      "representative": "Spitting Wyvern",
+      "level": 66,
+      "excluded": true,
+      "hp": 200,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Spitting_Wyvern",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "frost dragons",
+      "name": "Frost dragons",
+      "representative": "Frost dragon",
+      "level": 0,
+      "excluded": true,
+      "hp": 230,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Frost_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "gargoyles",
+      "name": "Gargoyles",
+      "representative": "Gargoyle",
+      "level": 75,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Gargoyle",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "ghosts",
+      "name": "Ghosts",
+      "representative": "Ghost",
+      "level": 0,
+      "excluded": false,
+      "hp": 25,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ghost",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "ghouls",
+      "name": "Ghouls",
+      "representative": "Ghoul",
+      "level": 0,
+      "excluded": false,
+      "hp": 50,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ghoul",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "goblins",
+      "name": "Goblins",
+      "representative": "Goblin",
+      "level": 0,
+      "excluded": false,
+      "hp": 5,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Goblin",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "greater demons",
+      "name": "Greater demons",
+      "representative": "Greater demon",
+      "level": 0,
+      "excluded": false,
+      "hp": 87,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Greater_demon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "green dragons",
+      "name": "Green dragons",
+      "representative": "Green dragon",
+      "level": 0,
+      "excluded": false,
+      "hp": 75,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Green_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "gryphons",
+      "name": "Gryphons",
+      "representative": "Gryphon",
+      "level": 51,
+      "excluded": true,
+      "hp": 110,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Gryphon",
+      "pointsMin": 10,
+      "pointsMax": 25
+    },
+    {
+      "id": "harpie bug swarms",
+      "name": "Harpie bug swarms",
+      "representative": "Harpie Bug Swarm",
+      "level": 33,
+      "excluded": false,
+      "hp": 25,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Harpie_Bug_Swarm",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "hellhounds",
+      "name": "Hellhounds",
+      "representative": "Hellhound",
+      "level": 0,
+      "excluded": false,
+      "hp": 116,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Hellhound",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "hill giants",
+      "name": "Hill giants",
+      "representative": "Hill Giant",
+      "level": 0,
+      "excluded": false,
+      "hp": 35,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Hill_Giant",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "hobgoblins",
+      "name": "Hobgoblins",
+      "representative": "Hobgoblin",
+      "level": 0,
+      "excluded": false,
+      "hp": 29,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Hobgoblin",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "hydras",
+      "name": "Hydras",
+      "representative": "Hydra",
+      "level": 95,
+      "excluded": false,
+      "hp": 300,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Hydra",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "ice giants",
+      "name": "Ice giants",
+      "representative": "Ice giant",
+      "level": 0,
+      "excluded": false,
+      "hp": 70,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ice_giant",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "ice warriors",
+      "name": "Ice warriors",
+      "representative": "Ice warrior",
+      "level": 0,
+      "excluded": false,
+      "hp": 59,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ice_warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "icefiends",
+      "name": "Icefiends",
+      "representative": "Icefiend",
+      "level": 0,
+      "excluded": false,
+      "hp": 15,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Icefiend",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "infernal mages",
+      "name": "Infernal mages",
+      "representative": "Infernal Mage",
+      "level": 45,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Infernal_Mage",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "jellies",
+      "name": "Jellies",
+      "representative": "Jelly",
+      "level": 52,
+      "excluded": false,
+      "hp": 75,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Jelly",
+      "pointsMin": 10,
+      "pointsMax": 15
+    },
+    {
+      "id": "jungle horrors",
+      "name": "Jungle horrors",
+      "representative": "Jungle horror",
+      "level": 0,
+      "excluded": false,
+      "hp": 45,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Jungle_horror",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "kalphite",
+      "name": "Kalphite",
+      "representative": "Kalphite Worker",
+      "level": 0,
+      "excluded": false,
+      "hp": 40,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Kalphite_Worker",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "killerwatts",
+      "name": "Killerwatts",
+      "representative": "Killerwatt",
+      "level": 0,
+      "excluded": false,
+      "hp": 51,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Killerwatt",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "kurask",
+      "name": "Kurask",
+      "representative": "Kurask",
+      "level": 70,
+      "excluded": false,
+      "hp": 97,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Kurask",
+      "pointsMin": 25,
+      "pointsMax": 40
+    },
+    {
+      "id": "lava dragons",
+      "name": "Lava dragons",
+      "representative": "Lava dragon",
+      "level": 0,
+      "excluded": false,
+      "hp": 230,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Lava_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "lesser demons",
+      "name": "Lesser demons",
+      "representative": "Lesser demon",
+      "level": 0,
+      "excluded": false,
+      "hp": 79,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Lesser_demon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "lesser nagua",
+      "name": "Lesser nagua",
+      "representative": "Sulphur Nagua",
+      "level": 48,
+      "excluded": false,
+      "hp": 100,
+      "multiplier": 1.4,
+      "source": "https://oldschool.runescape.wiki/w/Sulphur_Nagua",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "lizardmen",
+      "name": "Lizardmen",
+      "representative": "Lizardman",
+      "level": 0,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Lizardman",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "lizards",
+      "name": "Lizards",
+      "representative": "Desert Lizard",
+      "level": 22,
+      "excluded": false,
+      "hp": 25,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Desert_Lizard",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "magic axes",
+      "name": "Magic axes",
+      "representative": "Magic axe",
+      "level": 0,
+      "excluded": false,
+      "hp": 44,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Magic_axe",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "mammoths",
+      "name": "Mammoths",
+      "representative": "Mammoth",
+      "level": 0,
+      "excluded": false,
+      "hp": 130,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Mammoth",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "metal dragons",
+      "name": "Metal dragons",
+      "representative": "Iron dragon",
+      "level": 0,
+      "excluded": false,
+      "hp": 165,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Iron_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "minotaurs",
+      "name": "Minotaurs",
+      "representative": "Minotaur",
+      "level": 0,
+      "excluded": false,
+      "hp": 10,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Minotaur",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "mogres",
+      "name": "Mogres",
+      "representative": "Mogre",
+      "level": 32,
+      "excluded": false,
+      "hp": 48,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Mogre",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "molanisks",
+      "name": "Molanisks",
+      "representative": "Molanisk",
+      "level": 39,
+      "excluded": false,
+      "hp": 52,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Molanisk",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "monkeys",
+      "name": "Monkeys",
+      "representative": "Monkey (monster)",
+      "level": 0,
+      "excluded": false,
+      "hp": 6,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Monkey_(monster)",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "moss giants",
+      "name": "Moss giants",
+      "representative": "Moss giant",
+      "level": 0,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Moss_giant",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "mutated zygomites",
+      "name": "Mutated zygomites",
+      "representative": "Zygomite",
+      "level": 57,
+      "excluded": false,
+      "hp": 65,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Zygomite",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "nechryael",
+      "name": "Nechryael",
+      "representative": "Nechryael",
+      "level": 80,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Nechryael",
+      "pointsMin": 10,
+      "pointsMax": 20
+    },
+    {
+      "id": "ogres",
+      "name": "Ogres",
+      "representative": "Ogre",
+      "level": 0,
+      "excluded": false,
+      "hp": 60,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Ogre",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "otherworldly beings",
+      "name": "Otherworldly beings",
+      "representative": "Otherworldly being",
+      "level": 0,
+      "excluded": false,
+      "hp": 66,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Otherworldly_being",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "pirates",
+      "name": "Pirates",
+      "representative": "Pirate",
+      "level": 0,
+      "excluded": false,
+      "hp": 20,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Pirate",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "pyrefiends",
+      "name": "Pyrefiends",
+      "representative": "Pyrefiend",
+      "level": 30,
+      "excluded": false,
+      "hp": 45,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Pyrefiend",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "rats",
+      "name": "Rats",
+      "representative": "Giant rat",
+      "level": 0,
+      "excluded": false,
+      "hp": 5,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Giant_rat",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "red dragons",
+      "name": "Red dragons",
+      "representative": "Baby red dragon",
+      "level": 0,
+      "excluded": true,
+      "hp": 50,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Baby_red_dragon",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "revenants",
+      "name": "Revenants",
+      "representative": "Revenant cyclops",
+      "level": 0,
+      "excluded": false,
+      "hp": 110,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Revenant_cyclops",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "rockslugs",
+      "name": "Rockslugs",
+      "representative": "Rockslug",
+      "level": 20,
+      "excluded": false,
+      "hp": 27,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Rockslug",
+      "pointsMin": 5,
+      "pointsMax": 15
+    },
+    {
+      "id": "rogues",
+      "name": "Rogues",
+      "representative": "Rogue",
+      "level": 0,
+      "excluded": false,
+      "hp": 17,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Rogue",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "scabarites",
+      "name": "Scabarites",
+      "representative": "Locust rider",
+      "level": 0,
+      "excluded": false,
+      "hp": 90,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Locust_rider",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "scorpions",
+      "name": "Scorpions",
+      "representative": "Scorpion",
+      "level": 0,
+      "excluded": false,
+      "hp": 2,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Scorpion",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "sea snakes",
+      "name": "Sea snakes",
+      "representative": "Sea Snake Hatchling",
+      "level": 40,
+      "excluded": false,
+      "hp": 50,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Sea_Snake_Hatchling",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "shades",
+      "name": "Shades",
+      "representative": "Loar Shade",
+      "level": 0,
+      "excluded": false,
+      "hp": 38,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Loar_Shade",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "shadow warriors",
+      "name": "Shadow warriors",
+      "representative": "Shadow warrior",
+      "level": 0,
+      "excluded": false,
+      "hp": 67,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Shadow_warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "skeletal wyverns",
+      "name": "Skeletal wyverns",
+      "representative": "Skeletal Wyvern",
+      "level": 72,
+      "excluded": false,
+      "hp": 200,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Skeletal_Wyvern",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "skeletons",
+      "name": "Skeletons",
+      "representative": "Skeleton",
+      "level": 0,
+      "excluded": false,
+      "hp": 24,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Skeleton",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "smoke devils",
+      "name": "Smoke devils",
+      "representative": "Smoke devil",
+      "level": 93,
+      "excluded": false,
+      "hp": 185,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Smoke_devil",
+      "pointsMin": 10,
+      "pointsMax": 20
+    },
+    {
+      "id": "sourhogs",
+      "name": "Sourhogs",
+      "representative": "Sourhog",
+      "level": 0,
+      "excluded": false,
+      "hp": 40,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Sourhog",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "spiders",
+      "name": "Spiders",
+      "representative": "Giant spider",
+      "level": 0,
+      "excluded": false,
+      "hp": 5,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Giant_spider",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "spiritual creatures",
+      "name": "Spiritual creatures",
+      "representative": "Spiritual warrior",
+      "level": 63,
+      "excluded": false,
+      "hp": 100,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Spiritual_warrior",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "suqahs",
+      "name": "Suqahs",
+      "representative": "Suqah",
+      "level": 0,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Suqah",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "terror dogs",
+      "name": "Terror dogs",
+      "representative": "Terror dog",
+      "level": 40,
+      "excluded": false,
+      "hp": 82,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Terror_dog",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "trolls",
+      "name": "Trolls",
+      "representative": "Mountain troll",
+      "level": 0,
+      "excluded": false,
+      "hp": 90,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Mountain_troll",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "turoth",
+      "name": "Turoth",
+      "representative": "Turoth",
+      "level": 55,
+      "excluded": false,
+      "hp": 76,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Turoth",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "tzhaar",
+      "name": "Tzhaar",
+      "representative": "TzHaar-Ket",
+      "level": 0,
+      "excluded": true,
+      "hp": 140,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/TzHaar-Ket",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "vampyres",
+      "name": "Vampyres",
+      "representative": "Vyrewatch Sentinel",
+      "level": 0,
+      "excluded": true,
+      "hp": 150,
+      "multiplier": 0.7,
+      "source": "https://oldschool.runescape.wiki/w/Vyrewatch_Sentinel",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "venators",
+      "name": "Venators",
+      "representative": "Venator",
+      "level": 74,
+      "excluded": false,
+      "hp": 345,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Venator",
+      "pointsMin": 10,
+      "pointsMax": 25
+    },
+    {
+      "id": "wall beasts",
+      "name": "Wall beasts",
+      "representative": "Wall beast",
+      "level": 0,
+      "excluded": false,
+      "hp": 105,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Wall_beast",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "warped creatures",
+      "name": "Warped creatures",
+      "representative": "Warped Tortoise",
+      "level": 56,
+      "excluded": true,
+      "hp": 200,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Warped_Tortoise",
+      "pointsMin": 15,
+      "pointsMax": 30
+    },
+    {
+      "id": "waterfiends",
+      "name": "Waterfiends",
+      "representative": "Waterfiend",
+      "level": 0,
+      "excluded": false,
+      "hp": 128,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Waterfiend",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "werewolves",
+      "name": "Werewolves",
+      "representative": "Werewolf",
+      "level": 0,
+      "excluded": false,
+      "hp": 100,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Werewolf",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "wolves",
+      "name": "Wolves",
+      "representative": "White wolf",
+      "level": 0,
+      "excluded": false,
+      "hp": 34,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/White_wolf",
+      "pointsMin": 0,
+      "pointsMax": 0
+    },
+    {
+      "id": "wyrms",
+      "name": "Wyrms",
+      "representative": "Wyrm",
+      "level": 62,
+      "excluded": false,
+      "hp": 120,
+      "multiplier": 0.85,
+      "source": "https://oldschool.runescape.wiki/w/Wyrm",
+      "pointsMin": 25,
+      "pointsMax": 40
+    },
+    {
+      "id": "zombies",
+      "name": "Zombies",
+      "representative": "Zombie",
+      "level": 0,
+      "excluded": false,
+      "hp": 22,
+      "multiplier": 1,
+      "source": "https://oldschool.runescape.wiki/w/Zombie",
+      "pointsMin": 0,
+      "pointsMax": 0
+    }
+  ],
+  "masters": [
+    {
+      "id": "master-0",
+      "name": "Nieve / Steve",
+      "choices": 1,
+      "blockKind": "regular",
+      "basePoints": 12,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "dagannoth",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hellhounds",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizardmen",
+          "weight": 8,
+          "minimum": 90,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "suqahs",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 186,
+          "extendedMax": 250
+        },
+        {
+          "id": "drakes",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 95,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "greater demons",
+          "weight": 7,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "nechryael",
+          "weight": 7,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "wyrms",
+          "weight": 7,
+          "minimum": 80,
+          "maximum": 145,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aberrant spectres",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "basilisks",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "black dragons",
+          "weight": 6,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 40,
+          "extendedMax": 60
+        },
+        {
+          "id": "cave kraken",
+          "weight": 6,
+          "minimum": 100,
+          "maximum": 120,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "dust devils",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gargoyles",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "spiritual creatures",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 181,
+          "extendedMax": 250
+        },
+        {
+          "id": "trolls",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ankou",
+          "weight": 5,
+          "minimum": 50,
+          "maximum": 90,
+          "extendedMin": 91,
+          "extendedMax": 150
+        },
+        {
+          "id": "cave horrors",
+          "weight": 5,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "skeletal wyverns",
+          "weight": 5,
+          "minimum": 5,
+          "maximum": 15,
+          "extendedMin": 50,
+          "extendedMax": 70
+        },
+        {
+          "id": "blue dragons",
+          "weight": 4,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "elves",
+          "weight": 4,
+          "minimum": 60,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "scabarites",
+          "weight": 4,
+          "minimum": 30,
+          "maximum": 60,
+          "extendedMin": 130,
+          "extendedMax": 170
+        },
+        {
+          "id": "kurask",
+          "weight": 3,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "turoth",
+          "weight": 3,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mutated zygomites",
+          "weight": 2,
+          "minimum": 10,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aquanites",
+          "weight": 5,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "araxytes",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aviansie",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "black demons",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "boss",
+          "weight": 8,
+          "minimum": 3,
+          "maximum": 35,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "brine rats",
+          "weight": 3,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "custodian stalker",
+          "weight": 8,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dark beasts",
+          "weight": 5,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 110,
+          "extendedMax": 135
+        },
+        {
+          "id": "fire giants",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "fossil island wyverns",
+          "weight": 5,
+          "minimum": 5,
+          "maximum": 25,
+          "extendedMin": 55,
+          "extendedMax": 75
+        },
+        {
+          "id": "frost dragons",
+          "weight": 5,
+          "minimum": 60,
+          "maximum": 100,
+          "extendedMin": 180,
+          "extendedMax": 240
+        },
+        {
+          "id": "gryphons",
+          "weight": 7,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 190,
+          "extendedMax": 250
+        },
+        {
+          "id": "kalphite",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "metal dragons",
+          "weight": 12,
+          "minimum": 30,
+          "maximum": 40,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "red dragons",
+          "weight": 5,
+          "minimum": 30,
+          "maximum": 80,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "smoke devils",
+          "weight": 7,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "tzhaar",
+          "weight": 10,
+          "minimum": 110,
+          "maximum": 180,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 6,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "warped creatures",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 185,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-1",
+      "name": "Turael / Aya",
+      "choices": 1,
+      "blockKind": "none",
+      "basePoints": 0,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "banshees",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave bugs",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave crawlers",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave slime",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cows",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crawling hands",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "icefiends",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizards",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bats",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bears",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dogs",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dwarves",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ghosts",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "goblins",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "minotaurs",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "rats",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "scorpions",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletons",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wolves",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "zombies",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "birds",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kalphite",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "monkeys",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "spiders",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-2",
+      "name": "Spria",
+      "choices": 1,
+      "blockKind": "none",
+      "basePoints": 0,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "banshees",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave bugs",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave crawlers",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave slime",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cows",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crawling hands",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "icefiends",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizards",
+          "weight": 8,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bats",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bears",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dogs",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dwarves",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ghosts",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "goblins",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "minotaurs",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "rats",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "scorpions",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletons",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wolves",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "zombies",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "birds",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kalphite",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "monkeys",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "sourhogs",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "spiders",
+          "weight": 6,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-3",
+      "name": "Krystilia",
+      "choices": 1,
+      "blockKind": "none",
+      "basePoints": 25,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "greater demons",
+          "weight": 8,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "black demons",
+          "weight": 7,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "fire giants",
+          "weight": 7,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hellhounds",
+          "weight": 7,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ice warriors",
+          "weight": 7,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "magic axes",
+          "weight": 7,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ankou",
+          "weight": 6,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 91,
+          "extendedMax": 150
+        },
+        {
+          "id": "bears",
+          "weight": 6,
+          "minimum": 65,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "earth warriors",
+          "weight": 6,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ice giants",
+          "weight": 6,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lesser demons",
+          "weight": 6,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mammoths",
+          "weight": 6,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "scorpions",
+          "weight": 6,
+          "minimum": 65,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "spiders",
+          "weight": 6,
+          "minimum": 65,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "spiritual creatures",
+          "weight": 6,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 181,
+          "extendedMax": 250
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 5,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "chaos druids",
+          "weight": 5,
+          "minimum": 50,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dust devils",
+          "weight": 5,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "ents",
+          "weight": 5,
+          "minimum": 35,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "jellies",
+          "weight": 5,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "nechryael",
+          "weight": 5,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "revenants",
+          "weight": 5,
+          "minimum": 40,
+          "maximum": 100,
+          "extendedMin": 100,
+          "extendedMax": 150
+        },
+        {
+          "id": "rogues",
+          "weight": 5,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletons",
+          "weight": 5,
+          "minimum": 65,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bandits",
+          "weight": 4,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "black dragons",
+          "weight": 4,
+          "minimum": 8,
+          "maximum": 16,
+          "extendedMin": 40,
+          "extendedMax": 60
+        },
+        {
+          "id": "bloodveld",
+          "weight": 4,
+          "minimum": 70,
+          "maximum": 110,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dark warriors",
+          "weight": 4,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "green dragons",
+          "weight": 4,
+          "minimum": 65,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "moss giants",
+          "weight": 4,
+          "minimum": 100,
+          "maximum": 150,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "black knights",
+          "weight": 3,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hill giants",
+          "weight": 3,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lava dragons",
+          "weight": 3,
+          "minimum": 35,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "pirates",
+          "weight": 3,
+          "minimum": 62,
+          "maximum": 75,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "zombies",
+          "weight": 3,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "aviansie",
+          "weight": 7,
+          "minimum": 75,
+          "maximum": 125,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "boss",
+          "weight": 8,
+          "minimum": 3,
+          "maximum": 35,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-4",
+      "name": "Mazchna / Achtryn",
+      "choices": 1,
+      "blockKind": "none",
+      "basePoints": 6,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "banshees",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "catablepon",
+          "weight": 8,
+          "minimum": 20,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave bugs",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave crawlers",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave slime",
+          "weight": 8,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cockatrice",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crabs",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crawling hands",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizards",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mogres",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "pyrefiends",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "rockslugs",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "shades",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 70,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bats",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dogs",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "flesh crawlers",
+          "weight": 7,
+          "minimum": 15,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ghosts",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ghouls",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hill giants",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hobgoblins",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ice warriors",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "scorpions",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletons",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wall beasts",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wolves",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "zombies",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "bears",
+          "weight": 6,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kalphite",
+          "weight": 6,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "killerwatts",
+          "weight": 6,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 6,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-5",
+      "name": "Vannaka",
+      "choices": 1,
+      "blockKind": "regular",
+      "basePoints": 8,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "ankou",
+          "weight": 8,
+          "minimum": 25,
+          "maximum": 35,
+          "extendedMin": 91,
+          "extendedMax": 150
+        },
+        {
+          "id": "basilisks",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "crabs",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "harpie bug swarms",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "infernal mages",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "jungle horrors",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "otherworldly beings",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "pyrefiends",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "shades",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "shadow warriors",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 80,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "blue dragons",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dagannoth",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "elves",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 70,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "fever spiders",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "fire giants",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ghouls",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 40,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hellhounds",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hill giants",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hobgoblins",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ice giants",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 80,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ice warriors",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kalphite",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kurask",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lesser demons",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mogres",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "molanisks",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "moss giants",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ogres",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "trolls",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "werewolves",
+          "weight": 7,
+          "minimum": 30,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crocodiles",
+          "weight": 6,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "sea snakes",
+          "weight": 6,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "terror dogs",
+          "weight": 6,
+          "minimum": 20,
+          "maximum": 45,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 5,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gargoyles",
+          "weight": 5,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "nechryael",
+          "weight": 5,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aberrant spectres",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "brine rats",
+          "weight": 7,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dust devils",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gryphons",
+          "weight": 10,
+          "minimum": 30,
+          "maximum": 80,
+          "extendedMin": 110,
+          "extendedMax": 160
+        },
+        {
+          "id": "jellies",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "spiritual creatures",
+          "weight": 8,
+          "minimum": 40,
+          "maximum": 90,
+          "extendedMin": 181,
+          "extendedMax": 250
+        },
+        {
+          "id": "turoth",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 200,
+          "extendedMax": 250
+        }
+      ]
+    },
+    {
+      "id": "master-6",
+      "name": "Chaeldar",
+      "choices": 1,
+      "blockKind": "regular",
+      "basePoints": 10,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "dagannoth",
+          "weight": 11,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "gargoyles",
+          "weight": 11,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "kalphite",
+          "weight": 11,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "trolls",
+          "weight": 11,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "black demons",
+          "weight": 10,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "cave horrors",
+          "weight": 10,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "jellies",
+          "weight": 10,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "jungle horrors",
+          "weight": 10,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "turoth",
+          "weight": 10,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dust devils",
+          "weight": 9,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "greater demons",
+          "weight": 9,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "hellhounds",
+          "weight": 9,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lesser demons",
+          "weight": 9,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "aberrant spectres",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "blue dragons",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crabs",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "elves",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizardmen",
+          "weight": 8,
+          "minimum": 50,
+          "maximum": 90,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "shadow warriors",
+          "weight": 8,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "basilisks",
+          "weight": 7,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "fever spiders",
+          "weight": 7,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mutated zygomites",
+          "weight": 7,
+          "minimum": 8,
+          "maximum": 15,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletal wyverns",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 50,
+          "extendedMax": 70
+        },
+        {
+          "id": "wyrms",
+          "weight": 6,
+          "minimum": 60,
+          "maximum": 100,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "lesser nagua",
+          "weight": 4,
+          "minimum": 50,
+          "maximum": 100,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 12,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aviansie",
+          "weight": 9,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 130,
+          "extendedMax": 250
+        },
+        {
+          "id": "brine rats",
+          "weight": 7,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave kraken",
+          "weight": 12,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "custodian stalker",
+          "weight": 11,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "fire giants",
+          "weight": 12,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "fossil island wyverns",
+          "weight": 7,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 55,
+          "extendedMax": 75
+        },
+        {
+          "id": "gryphons",
+          "weight": 10,
+          "minimum": 60,
+          "maximum": 100,
+          "extendedMin": 140,
+          "extendedMax": 180
+        },
+        {
+          "id": "kurask",
+          "weight": 12,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "nechryael",
+          "weight": 12,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "spiritual creatures",
+          "weight": 12,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 181,
+          "extendedMax": 250
+        },
+        {
+          "id": "tzhaar",
+          "weight": 8,
+          "minimum": 90,
+          "maximum": 150,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 6,
+          "minimum": 80,
+          "maximum": 100,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "warped creatures",
+          "weight": 6,
+          "minimum": 70,
+          "maximum": 130,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-7",
+      "name": "Konar quo Maten",
+      "choices": 1,
+      "blockKind": "regular",
+      "basePoints": 18,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "cave kraken",
+          "weight": 9,
+          "minimum": 80,
+          "maximum": 100,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "fire giants",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 175,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kalphite",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dagannoth",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "hellhounds",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizardmen",
+          "weight": 8,
+          "minimum": 90,
+          "maximum": 110,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "greater demons",
+          "weight": 7,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "nechryael",
+          "weight": 7,
+          "minimum": 110,
+          "maximum": 110,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aberrant spectres",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "black dragons",
+          "weight": 6,
+          "minimum": 10,
+          "maximum": 15,
+          "extendedMin": 40,
+          "extendedMax": 60
+        },
+        {
+          "id": "dust devils",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gargoyles",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "jellies",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "trolls",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ankou",
+          "weight": 5,
+          "minimum": 50,
+          "maximum": 50,
+          "extendedMin": 91,
+          "extendedMax": 150
+        },
+        {
+          "id": "basilisks",
+          "weight": 5,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "skeletal wyverns",
+          "weight": 5,
+          "minimum": 5,
+          "maximum": 12,
+          "extendedMin": 50,
+          "extendedMax": 70
+        },
+        {
+          "id": "blue dragons",
+          "weight": 4,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kurask",
+          "weight": 3,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "turoth",
+          "weight": 3,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lesser nagua",
+          "weight": 2,
+          "minimum": 55,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mutated zygomites",
+          "weight": 2,
+          "minimum": 10,
+          "maximum": 25,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "waterfiends",
+          "weight": 2,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aviansie",
+          "weight": 6,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "black demons",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 9,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "boss",
+          "weight": 8,
+          "minimum": 3,
+          "maximum": 35,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "brine rats",
+          "weight": 2,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "dark beasts",
+          "weight": 5,
+          "minimum": 10,
+          "maximum": 15,
+          "extendedMin": 110,
+          "extendedMax": 135
+        },
+        {
+          "id": "drakes",
+          "weight": 10,
+          "minimum": 75,
+          "maximum": 140,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "fossil island wyverns",
+          "weight": 5,
+          "minimum": 15,
+          "maximum": 30,
+          "extendedMin": 55,
+          "extendedMax": 75
+        },
+        {
+          "id": "hydras",
+          "weight": 10,
+          "minimum": 125,
+          "maximum": 190,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "metal dragons",
+          "weight": 15,
+          "minimum": 30,
+          "maximum": 40,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "red dragons",
+          "weight": 5,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "smoke devils",
+          "weight": 7,
+          "minimum": 120,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 4,
+          "minimum": 100,
+          "maximum": 160,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "warped creatures",
+          "weight": 4,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wyrms",
+          "weight": 10,
+          "minimum": 125,
+          "maximum": 190,
+          "extendedMin": 200,
+          "extendedMax": 250
+        }
+      ]
+    },
+    {
+      "id": "master-8",
+      "name": "Duradel / Kuradal",
+      "choices": 1,
+      "blockKind": "regular",
+      "basePoints": 15,
+      "skipCost": 30,
+      "tasks": [
+        {
+          "id": "black dragons",
+          "weight": 9,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 40,
+          "extendedMax": 60
+        },
+        {
+          "id": "dagannoth",
+          "weight": 9,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "greater demons",
+          "weight": 9,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "kalphite",
+          "weight": 9,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "black demons",
+          "weight": 8,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 8,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "drakes",
+          "weight": 8,
+          "minimum": 50,
+          "maximum": 110,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "gargoyles",
+          "weight": 8,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "suqahs",
+          "weight": 8,
+          "minimum": 60,
+          "maximum": 90,
+          "extendedMin": 186,
+          "extendedMax": 250
+        },
+        {
+          "id": "wyrms",
+          "weight": 8,
+          "minimum": 100,
+          "maximum": 160,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aberrant spectres",
+          "weight": 7,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "basilisks",
+          "weight": 7,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "fire giants",
+          "weight": 7,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "skeletal wyverns",
+          "weight": 7,
+          "minimum": 20,
+          "maximum": 40,
+          "extendedMin": 50,
+          "extendedMax": 70
+        },
+        {
+          "id": "spiritual creatures",
+          "weight": 7,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 181,
+          "extendedMax": 250
+        },
+        {
+          "id": "trolls",
+          "weight": 6,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "ankou",
+          "weight": 5,
+          "minimum": 50,
+          "maximum": 80,
+          "extendedMin": 91,
+          "extendedMax": 150
+        },
+        {
+          "id": "dust devils",
+          "weight": 5,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "blue dragons",
+          "weight": 4,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave horrors",
+          "weight": 4,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "elves",
+          "weight": 4,
+          "minimum": 110,
+          "maximum": 170,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kurask",
+          "weight": 4,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "mutated zygomites",
+          "weight": 2,
+          "minimum": 20,
+          "maximum": 30,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "waterfiends",
+          "weight": 2,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 12,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aquanites",
+          "weight": 5,
+          "minimum": 30,
+          "maximum": 50,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "araxytes",
+          "weight": 10,
+          "minimum": 60,
+          "maximum": 80,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aviansie",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "boss",
+          "weight": 12,
+          "minimum": 3,
+          "maximum": 35,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave kraken",
+          "weight": 9,
+          "minimum": 100,
+          "maximum": 120,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "dark beasts",
+          "weight": 11,
+          "minimum": 10,
+          "maximum": 20,
+          "extendedMin": 110,
+          "extendedMax": 135
+        },
+        {
+          "id": "fossil island wyverns",
+          "weight": 7,
+          "minimum": 20,
+          "maximum": 50,
+          "extendedMin": 55,
+          "extendedMax": 75
+        },
+        {
+          "id": "frost dragons",
+          "weight": 5,
+          "minimum": 70,
+          "maximum": 120,
+          "extendedMin": 180,
+          "extendedMax": 240
+        },
+        {
+          "id": "gryphons",
+          "weight": 7,
+          "minimum": 100,
+          "maximum": 210,
+          "extendedMin": 180,
+          "extendedMax": 290
+        },
+        {
+          "id": "hellhounds",
+          "weight": 10,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "lizardmen",
+          "weight": 10,
+          "minimum": 130,
+          "maximum": 210,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "metal dragons",
+          "weight": 14,
+          "minimum": 35,
+          "maximum": 45,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "nechryael",
+          "weight": 9,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "red dragons",
+          "weight": 8,
+          "minimum": 30,
+          "maximum": 65,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "smoke devils",
+          "weight": 9,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "tzhaar",
+          "weight": 10,
+          "minimum": 130,
+          "maximum": 199,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "vampyres",
+          "weight": 8,
+          "minimum": 100,
+          "maximum": 210,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "warped creatures",
+          "weight": 8,
+          "minimum": 130,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-9",
+      "name": "Mortimer (2 choices)",
+      "choices": 2,
+      "blockKind": "mortimer",
+      "basePoints": 0,
+      "skipCost": 100,
+      "tasks": [
+        {
+          "id": "aberrant spectres",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "banshees",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "basilisks",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "cave crawlers",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave horrors",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "cockatrice",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crawling hands",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "drakes",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "infernal mages",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "jellies",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kurask",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "pyrefiends",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "rockslugs",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "turoth",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wyrms",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dust devils",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "nechryael",
+          "weight": 8,
+          "minimum": 150,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aquanites",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "araxytes",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "custodian stalker",
+          "weight": 8,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dark beasts",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 110,
+          "extendedMax": 135
+        },
+        {
+          "id": "gargoyles",
+          "weight": 10,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gryphons",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 160,
+          "extendedMax": 200
+        },
+        {
+          "id": "hydras",
+          "weight": 10,
+          "minimum": 150,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "smoke devils",
+          "weight": 8,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "venators",
+          "weight": 10,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "warped creatures",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ]
+    },
+    {
+      "id": "master-10",
+      "name": "Mortimer (3 choices)",
+      "choices": 3,
+      "blockKind": "mortimer",
+      "basePoints": 0,
+      "skipCost": 100,
+      "tasks": [
+        {
+          "id": "aberrant spectres",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "banshees",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "basilisks",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "cave crawlers",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "cave horrors",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "cockatrice",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "crawling hands",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "drakes",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "infernal mages",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "jellies",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "kurask",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "pyrefiends",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "rockslugs",
+          "weight": 10,
+          "minimum": 35,
+          "maximum": 50,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "turoth",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "wyrms",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "abyssal demons",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "bloodveld",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dust devils",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "nechryael",
+          "weight": 8,
+          "minimum": 150,
+          "maximum": 200,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "aquanites",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 150,
+          "extendedMax": 200
+        },
+        {
+          "id": "araxytes",
+          "weight": 8,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "custodian stalker",
+          "weight": 8,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "dark beasts",
+          "weight": 10,
+          "minimum": 40,
+          "maximum": 60,
+          "extendedMin": 110,
+          "extendedMax": 135
+        },
+        {
+          "id": "gargoyles",
+          "weight": 10,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 200,
+          "extendedMax": 250
+        },
+        {
+          "id": "gryphons",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 160,
+          "extendedMax": 200
+        },
+        {
+          "id": "hydras",
+          "weight": 10,
+          "minimum": 150,
+          "maximum": 200,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "smoke devils",
+          "weight": 8,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "venators",
+          "weight": 10,
+          "minimum": 120,
+          "maximum": 180,
+          "extendedMin": 0,
+          "extendedMax": 0
+        },
+        {
+          "id": "warped creatures",
+          "weight": 10,
+          "minimum": 80,
+          "maximum": 120,
+          "extendedMin": 0,
+          "extendedMax": 0
+        }
+      ],
+      "scenario": true
+    }
+  ]
+}

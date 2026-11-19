@@ -1,0 +1,19 @@
+{
+  "pageid": 15292,
+  "ns": 0,
+  "title": "Undead chicken",
+  "revisions": [
+    {
+      "revid": 15331040,
+      "parentid": 15215965,
+      "timestamp": "2026-09-04T21:31:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{otheruses|def=no|the item|Undead chicken (item)}}\n{{HasTask|Birds|Zombies}}\n{{Infobox Monster\n|name = Undead chicken\n|image = [[File:Undead chicken.png|250x250px]]\n|release = [[15 February]] [[2005]]\n|update = Ghosts Ahoy and Slayer Update\n|members = Yes\n|combat = 1\n|size = 1\n|examine = Yep, definitely a chicken... an undead chicken.\n|attributes = undead\n|xpbonus = 0\n|max hit = 0\n|aggressive = No\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|respawn = 25\n|slayxp = 3\n|cat = Birds, Zombies\n|assignedby = turael,spria,mazchna\n|hitpoints = 3\n|att = 1\n|str = 1\n|def = 1\n|mage = 1\n|range = 1\n|attbns = -47\n|strbns = -42\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = -42\n|dslash = -42\n|dcrush = -42\n|dmagic = -42\n|dlight = -42\n|dstandard = -42\n|dheavy = -42\n|elementalweaknesstype = Fire\n|elementalweaknesspercent = 50\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id = 2993\n}}\n\n'''Undead chickens''' are the reanimated remains of the [[chicken]]s owned by farmers [[Alice]] and her now-ethereal husband. The same occurrence has happened to their [[cow]]s who are now [[undead cow]]s. They can be found at [[Alice's farm]], west of the [[Ectofuntus]] near [[Port Phasmatys]].\n\n==Locations==\n{{LocTableHead}}\n{{LocLine\n|name = Undead chicken\n|location = [[Alice's farm]], west of the [[Ectofuntus]]\n|levels = 1\n|members = yes\n|mapID = 0\n|plane = 0\n|x:3627,y:3531|x:3629,y:3530|x:3631,y:3529|x:3631,y:3531|x:3632,y:3526|x:3633,y:3525\n|mtype = pin\n|leagueRegion = Morytania\n}}\n{{LocTableBottom}}\n\n==Drops==\n{{DropLogProject|jagex=yes}}\n===100%===\n{{DropsTableHead}}\n{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n{{DropsLine|name=Raw chicken (undead)|quantity=1|rarity=Always|gemw=No}}\n{{DropsTableBottom}}\n\n===Other===\n{{DropsTableHead}}\n{{DropsLine|name=Feather|quantity=5|rarity=64/128}}\n{{DropsLine|name=Feather|quantity=15|rarity=32/128}}\n{{DropsLine|name=Nothing|rarity=32/128}}\n{{DropsTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n|change = The NPC now has a 50% elemental weakness to [[fire spells]].\n}}\n{{Subject changes\n|date = 15 October 2015\n|update = The Max Cape\n|poll = \n|change = Fixed the spacing in the examine info of an undead chicken.\n}}\n{{Subject changes\n|date = 12 December 2006\n|update = Animal Magnetism\n|change = The NPC was graphically updated with the release of Animal Magnetism.\n}}\n{{Subject changes\n|daterange = 6 – 13 November 2006\n|change = The NPC was renamed from \"Undead Chicken\" to \"Undead chicken\".\n}}\n{{Subject changes footer}}\n\n===Gallery (historical)===\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Undead chicken (historical).png|center|300x150px]]\n|[[File:Undead chicken.png|center|300x150px]]\n|-\n|15 February 2005 –<br/>12 December 2006\n|12 December 2006 –<br/>present\n|}\n\n{{Animal Magnetism}}\n{{Alice's farm}}\n[[Category:Birds]]"
+        }
+      }
+    }
+  ]
+}

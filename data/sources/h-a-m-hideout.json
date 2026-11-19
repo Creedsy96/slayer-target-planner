@@ -1,0 +1,19 @@
+{
+  "pageid": 17756,
+  "ns": 0,
+  "title": "H.A.M. Hideout",
+  "revisions": [
+    {
+      "revid": 15394468,
+      "parentid": 15302200,
+      "timestamp": "2026-11-05T07:20:56Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Spider hut}}\n{{Infobox Location\n|name = H.A.M. Hideout\n|image = [[File:H.A.M. Hideout.png|300px]]\n|release = [[22 February]] [[2005]]\n|update = Wilderness Capes, and Changes\n|members = Yes\n|floors = 2\n|location = [[Misthalin]]\n|race = [[H.A.M. members]]\n|music = [[Monster Melee]], [[H.A.M. Fisted]]\n|map = {{Map|mtype=focusarea|3137,9663|3199,9663|3199,9601|3137,9601|3137,9600|mapID=-1|zoom=2}}\n|leagueRegion = Misthalin\n}}\n{{Map|caption=The H.A.M. Hideout entrance west of the Lumbridge general store.|align=right|zoom=1|width=250|height=250|x=3200|y=3235|mtype=polygon|3162,3248|3165,3245|3170,3250|3166,3254|3164,3252|3165,3251}}\nThe '''H.A.M. Hideout''' is the base of operations for the [[Humans Against Monsters]] organisation. It is located west of the [[Lumbridge]] [[general store]]. To enter it, the player will need to pick the lock on the [[Trapdoor (H.A.M. Hideout)|trapdoor]] to get in. This can be done with the player's hand, but a [[lockpick]] will increase the player's chance of success. \n\n==Transportation==\n*The fastest way there is using a charged [[Amulet of glory|amulet of glory]] to teleport to [[Draynor Village]] and running east (~33 ticks)\n*Teleporting to [[Twiggy O'Korn]] with an [[Achievement diary cape]] and running east (~37 ticks)\n*Using [[Lumbridge Teleport]] and running west through the castle, exiting through the gate, and running north-west (~41 ticks)\n\n==Notable features==\n*With 15 [[Thieving]], a player may [[pickpocket]] [[H.A.M. members]] for [[H.A.M. clothing]] and other items (including [[Clue scroll (easy)|easy clue scrolls]]).\n*If a player is caught thieving H.A.M. members multiple times, there is a chance that said player will be either kicked out of the dungeon or be locked up in the cell with [[Jimmy the Chisel]], which will require the player to lockpick the door to exit. [[Home Teleport]] and other teleports can be used to escape.\n*If a player has a high [[Agility]] level, and/or is wearing a full set of H.A.M. robes ([[H.A.M. shirt|shirt]], [[H.A.M. robe|robe]], [[H.A.M. hood|hood]], [[H.A.M. cloak|cloak]], [[H.A.M. logo|logo]], [[H.A.M. boots|boots]], and [[H.a.m. gloves|gloves]]), the player is less likely to be kicked out when caught pickpocketing [[H.A.M._Member#Getting_thrown_out|H.A.M. Members]].\n\n==Storerooms==\n{{Main|H.A.M. Storerooms}}\nPlayers who have progressed at least halfway through [[Death to the Dorgeshuun]] can access the secret dungeon inside the hideout. The secret entrance is located just south of the podium.\n\n[[File:H.A.M. Storerooms entrance.png|200px|thumb|Secret entrance to the H.A.M. Storerooms.|none]]\n==Quests==\nAll the following quests are involved with the H.A.M. Hideout:\n*[[The Lost Tribe]]\n*[[Death to the Dorgeshuun]]\n*[[One Small Favour]]\n\n==Personalities==\n*[[Sigmund]]\n*[[H.A.M. Deacon]]\n*[[Johanhus Ulsbrecht]]\n*[[Jimmy the Chisel]]\n\n==Monsters==\n*[[H.A.M. guard]]\n\n==Trivia==\n*If you are involuntarily teleported out of the H.A.M. Hideout, such as through a [[random event]], you will receive a message saying ''\"You leave the HAM Fanatics' Camp.\"''\n\n{{Dungeons}}\n{{Humans Against Monsters}}\n{{Death to the Dorgeshuun}}\n[[Category:Quest locations]]\n[[Category:Bases and camps]]\n[[Category:Jails]]"
+        }
+      }
+    }
+  ]
+}

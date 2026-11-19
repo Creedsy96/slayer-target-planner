@@ -1,0 +1,19 @@
+{
+  "pageid": 299143,
+  "ns": 0,
+  "title": "Slayer task/Molanisks",
+  "revisions": [
+    {
+      "revid": 15358990,
+      "parentid": 15250984,
+      "timestamp": "2026-09-30T16:50:36Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Molanisks\n|icon = [[File:Molanisk_icon.png|center]]\n|skillreq = {{SCP|Slayer|39}}\n|combatreq = {{SCP|Combat|50}}\n|otherreq = Completion of [[Death to the Dorgeshuun]]\n|vannaka = 39-50\n|id = 10997\n}}\n\nMolanisks are [[Slayer monsters]] that require level 39 [[Slayer]] to kill.\n\nA [[Slayer bell]] is necessary to fight them. Players should remember to bring a [[Light sources|light source]] when fighting them, as they are only found underground. Despite what their level would suggest, Molanisks do unusually low damage, meaning a relatively mid-level player with half-decent [[armour]] should easily be able to kill several of them.\n\nMolanisks can only be [[safespot]]ted on certain rocks, notably the large one down the path south of the {{Fairycode|AJQ}} [[Fairy rings|fairy ring]].\n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Molanisk]]\n|51\n|52\n|\n*[[Dorgesh-Kaan South Dungeon]]\n|\nMolanisks are found attached to cave walls and must be lured off with a [[Slayer bell]] to allow players to attack them.\n|-\n|}\n\n==Location Comparison==\n{|class = \"wikitable sortable align-center-3\"\n!Location\n!Maplink\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Dorgesh-Kaan South Dungeon]]\n|\n|10\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|\nEntry to the dungeon requires completion of the [[Death to the Dorgeshuun]] quest.\n|-\n|}"
+        }
+      }
+    }
+  ]
+}

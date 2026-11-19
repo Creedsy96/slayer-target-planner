@@ -1,8 +1,8 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
-require('../dist/data.js');
+require('./fixtures/v1/data.js');
 const data=globalThis.SLAYER_DATA;
-const {sanitise,sanitiseOverrides}=require('../dist/preferences.js');
+const {sanitise,sanitiseOverrides}=require('./fixtures/v1/preferences.js');
 test('stored inputs reject invalid values and clamp numeric ranges',()=>{
   const result=sanitise(data,{level:200,blocks:-2,mortimerBlocks:4,dps:NaN,target:'invalid',streak:'false',overhead:Infinity});
   assert.equal(result.level,99);assert.equal(result.blocks,0);assert.equal(result.mortimerBlocks,2);

@@ -1,0 +1,19 @@
+{
+  "pageid": 70526,
+  "ns": 0,
+  "title": "Reanimated aviansie",
+  "revisions": [
+    {
+      "revid": 15302167,
+      "parentid": 15302132,
+      "timestamp": "2026-08-15T18:14:08Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the monster|the historical spell|Reanimate Aviansie}}\n{{Infobox Monster\n|name = Reanimated aviansie\n|image = [[File:Reanimated aviansie.png|250px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 2\n|examine = This creature has been dragged back from the grave.\n|attributes = flying\n|xpbonus = \n|max hit = 1\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Slash]]\n|attack speed = 5\n|slayxp = 35\n|cat = Aviansie\n|assignedby = krystilia,chaeldar,konar,nieve,duradel\n|hitpoints = 35\n|att = 71\n|str = 1\n|def = 70\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7037\n}}\nA '''reanimated aviansie''' can be spawned by casting the [[Arceuus spellbook|spell]] [[Master Reanimation]] on an [[ensouled aviansie head]]. The spell can be cast within a 31x31 area where the head was dropped by a monster. This will work indefinitely, even if the ensouled head is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has done one of these things, they will no longer be able to reanimate the aviansie in the area where it was killed, but can still reanimate it within range of the [[Dark Altar]].\n\nKilling the creature will grant the player 1,234 [[Prayer]] [[experience]]. Just like its living form, this creature is immune to melee attacks, although they only attack with melee rather than ranged.\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated aviansie\n|level = 1\n|xp = 1234\n|type = reanimated\n|facility = [[Dark Altar]] (or direct monster drop)\n}}\n\n==Drops==\n{{DropsTableHead}}\n{{DropsLine|name=Brimstone key|quantity=1|rarity={{Brimstone rarity|1|bonus=yes}}|raritynotes=<ref group=d>Brimstone keys are only dropped if killed on a [[Slayer task]] given by [[Konar quo Maten]].</ref>{{CiteDiscord|author=Mod Ash|url=https://discord.com/channels/324132423636090880/431834766325841920/1538206571740536875|date=2026-08-15|quote=They'd act like they had a combat level of 1.|archiveurl=https://reldo.runescape.wiki/i/27964357#chat-messages-431834766325841920-1538206571740536875|archivedate=2026-08-15}}|gemw=No|leagueRegion=Kourend}}\n{{DropsTableBottom}}\n\n==References==\n{{Reflist}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

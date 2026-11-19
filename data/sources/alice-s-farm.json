@@ -1,0 +1,19 @@
+{
+  "pageid": 95335,
+  "ns": 0,
+  "title": "Alice's farm",
+  "revisions": [
+    {
+      "revid": 14913062,
+      "parentid": 14857499,
+      "timestamp": "2025-06-01T10:49:41Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs=Alice's farm}}\n{{Infobox Location\n|name = Alice's farm\n|image = [[File:Alice's farm.png]]\n|release = [[11 July]] [[2005]]\n|update = Farming\n|members = Yes\n|location = [[Morytania]]\n|race = [[Alice]], [[Undead]]\n|teleport = [[Ectophial]]\n|map = {{Map|name=Alice's farm|zoom=3|x=3623|y=3524}}\n|type = farm\n|leagueRegion = Morytania\n}}\n'''Alice's farm''' is a farm located west of [[Port Phasmatys]] and east of [[Canifis]]. It's managed by [[Alice]] and her now-ethereal husband [[Malcolm]]. The farm is involved in the [[Animal Magnetism]] quest and also the locations of several [[undead chicken]]s and [[undead cow]]s. [[Alice's Farming Shop]] can be accessed by either talking or right-clicking Alice.\n\nWest of the farm, one can find two [[allotments]], a [[herb patch]], and a [[flower patch]]. Alice's daughter, [[Lyra]], attends the allotments for a payment. There's also a [[tool leprechaun]] and a [[compost bin]].\n\n==Transportation==\n* Use the [[Ectophial]] to the [[Ectofuntus]] and run west\n* [[Fairy ring]] code {{Fairycode|alq}} and run north (be careful of level 61 [[Feral Vampyre]]s)\n* [[Fenkenstrain's Castle Teleport]] from the [[Arceuus spellbook]] and run east\n* Take a [[Charter ship]] to [[Port Phasmatys]] and run west\n\n{{Animal Magnetism}}\n{{Alice's farm}}\n{{Farms}}\n[[Category:Morytania]]"
+        }
+      }
+    }
+  ]
+}

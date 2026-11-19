@@ -1,0 +1,19 @@
+{
+  "pageid": 34990,
+  "ns": 0,
+  "title": "Scarab Swarm",
+  "revisions": [
+    {
+      "revid": 15376011,
+      "parentid": 15236838,
+      "timestamp": "2026-10-19T15:53:28Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Scarab swarm}}\n{{HasTask|Scabarites}}\n{{Confuse|Scarabs}}\n{{Infobox Monster\n|version1 = Normal\n|version2 = Pyramid Plunder\n|name = Scarab Swarm\n|image = [[File:Scarab Swarm.png|250px]]\n|release1 = [[26 April]] [[2005]]\n|release2 = [[17 July]] [[2006]]\n|update1 = Desert Month Finale\n|update2 = Pyramid Plunder\n|members = Yes\n|combat = 98\n|size = 1\n|examine = I think they're some kind of beetle.\n|attributes = kalphite\n|xpbonus = 0\n|max hit = 1\n|aggressive = Yes\n|poisonous = Yes (3)\n|attack style = [[Slash]]\n|attack speed = 1\n|slayxp = 1\n|cat = Scabarites\n|assignedby = nieve\n|hitpoints = 25\n|att = 255\n|str = 5\n|def = 30\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 90\n|dslash = 90\n|dcrush = 5\n|dmagic = 90\n|dlight = 90\n|dstandard = 90\n|dheavy = 90\n|elementalweaknesstype = Fire\n|elementalweaknesspercent = 50\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id1 = 4192\n|id2 = 1782\n|leagueRegion = Desert\n}}\n'''Scarab swarms''' are swarms of [[poison]]ous scarab beetles. Although their max hit is low, they are highly accurate with an extremely fast [[attack speed]] and are very likely to poison any players that they attack. They can crawl up from the ground randomly in some pyramid areas (such as [[Sophanem Dungeon]] when stepping on the sand pit [[floor (Sophanem Dungeon)|floor trap]], and have a chance of spawning when the gold chest is opened in [[Pyramid Plunder]]. When spawning in Pyramid Plunder, the player will take an unavoidable instance of damage from failing the chest; subsequent normal attack damage from the scarab is preventable with Protect from Melee.\n\nThey are only [[Aggressiveness|aggressive]] to the player that caused them to spawn. Once that player leaves, the scarab swarm will ignore other players and eventually despawn.\n\nThe scarab swarms that spawn in the [[Ancient Pyramid]] are simply known as [[Scarabs]]. While they have a lower [[combat level]], they have the same appearance and behaviour.\n\n==Locations==\n*[[Pyramid Plunder]]\n*[[Sophanem Dungeon]]\n*[[Klenter's Pyramid]]\n\n==Drops==\n{{DropsTableHead}}\n{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n{{DropsTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 April 2022\n|update = Beneath Cursed Sands\n|change = The NPC was renamed from \"Scarab swarm\" to \"Scarab Swarm\".\n}}\n{{Subject changes\n|date = 24 September 2015\n|update = New Animations & Barbarian Assault Changes\n|change = Scarab Swarms should no longer follow you outside of Pyramid Plunder.\n}}\n{{Subject changes\n|daterange = 16 May –<br/>13 June 2006\n|change = The NPC was renamed from \"Scarabs\" to \"Scarab swarm\".\n}}\n{{Subject changes footer}}\n\n==Trivia==\n*Strangely, even though [[scarabs]] do not drop anything, and despite these swarms consisting of a group of insects, scarab swarms drop bones on death.\n\n{{Contact!}}\n{{Beneath Cursed Sands}}\n{{Pyramid Plunder}}\n{{Pyramids}}"
+        }
+      }
+    }
+  ]
+}

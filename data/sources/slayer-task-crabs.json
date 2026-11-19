@@ -1,0 +1,19 @@
+{
+  "pageid": 574430,
+  "ns": 0,
+  "title": "Slayer task/Crabs",
+  "revisions": [
+    {
+      "revid": 15375313,
+      "parentid": 15250994,
+      "timestamp": "2026-10-18T20:10:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Crabs\n|skillreq = {{SCP|Slayer|1}}\n|combatreq = {{SCP|Combat|1}}\n|otherreq = None\n|mazchna = 30-50\n|vannaka = 40-90\n|chaeldar = 70-130\n|id = 154\n}}\n\nCrabs can be assigned as a [[Slayer task]] by various [[Slayer masters]]. They have no requirements to be assigned and are found in many areas across Gielinor. Crabs are often used as popular monsters for [[combat training]], due to their low offence and high hitpoints. [[King Sand Crab]]s and [[Giant Rock Crab]]s are the exceptions, having much higher combat stats, and are only advisable to kill for a Slayer task if seeking specific drops from them (such as pieces of [[rock-shell armour]]).\n\nAs most crabs deal relatively little damage, no particular gear is required for them. Accounts with lower [[combat level]]s may need to wear armour or bring food, but at higher levels, neither are necessary. All crabs use the crush attack style, so if wearing armour, armour with the highest crush defence is advised. For example, a [[chainbody]] will offer more crush defence than a [[platebody]].\n\nAll types of crabs initially appear as unattackable \"rocks\", but will emerge when a player stands in a neighboring tile. They will be aggressive, automatically attacking the player, but will become [[tolerant]] after 10 minutes have passed, and will no longer emerge. As they must be active to fight, the player must [[Tolerance#Standard monsters|reset the crabs' aggression timer]] by leaving their immediate area and then returning.\n\nThe [[Gemstone Crab]] and [[hermit crab]]s do '''not''' count for a Slayer task.\n\n== Monster Variants ==\n{| class=\"wikitable sortable\"\n|+\n!Monster\n!Combat\nLevel\n!Slayer\nXP\n!Locations\n!Notes\n|-\n|[[Crab]]\n|21, 23\n|18, 19\n|[[Mogre Camp]]\n|Requires partial completion of [[Recipe for Disaster/Freeing Pirate Pete]]\n|-\n|[[Ammonite Crab]]\n|25\n|100\n|[[Fossil Island]]\n|Requires completion of [[Bone Voyage]]\n|-\n|[[Frost Crab]]\n|15\n|60\n|[[Ruins of Tapoyauik]]\n|\n*Has 100% [[Elemental weakness]] to [[fire spells]]\n*Requires partial completion of [[The Heart of Darkness]]\n|-\n|[[King Sand Crab]]\n|107\n|200\n|\n* [[Catacombs of Kourend]]\n* [[Crabclaw Caves]]\n|\n*Can drop [[Ancient shard]]s, [[Dark totem]] pieces, and [[clue scroll (medium)|medium clue scrolls]]\n*Most [[Slayer]] experience per kill, although it also has some defence.\n|-\n|[[Rock Crab]]\n|13\n|50\n|\n* North of [[Rellekka]]\n* [[Waterbirth Island]]\n* West of [[Mount Quidamortem]]\n* [[Waterbirth Island Dungeon]]\n* [[Brine Rat Cavern]]\n|Very plentiful spawn points\n|-\n|[[Giant Rock Crab]]\n|137\n|198\n|\n*[[Waterbirth Island Dungeon]]\n*[[Tonali Cavern]]\n|\n*Although they can be found in the Tonali Cavern, they do not count for a crab task if killing the ones there\n*Drops medium clue scrolls\n|-\n|[[Sand Crab]]\n|15\n|60\n|\n* [[Avium Savannah]]\n* [[Crabclaw Caves]]\n* [[Crabclaw Isle]]\n* East of the [[Vinery|Hosidius vinery]]\n* [[Hosidius]] - southern coast\n* [[Isle of Souls]]\n* [[Outer Fortis]]\n|Very plentiful spawnpoints\n|-\n|[[Swamp Crab]]\n|55\n|75\n|\n* [[Haunted Woods]]\n* [[Slepe]]\n|Has negative ranged defence\n|}"
+        }
+      }
+    }
+  ]
+}

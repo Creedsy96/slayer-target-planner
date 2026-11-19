@@ -1,0 +1,19 @@
+{
+  "pageid": 298057,
+  "ns": 0,
+  "title": "Slayer task/Sea snakes",
+  "revisions": [
+    {
+      "revid": 15124331,
+      "parentid": 15124330,
+      "timestamp": "2026-02-09T15:45:28Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Sea snakes\n|icon = [[File:Sea snake icon.png|center]]\n|skillreq = {{SCP|Slayer|40}}\n|combatreq = {{SCP|Combat|50}}\n|otherreq = [[Royal Trouble]]\n|vannaka = 40-90\n|id = 5089\n}}\n[[Sea snake]]s can be assigned as a [[slayer task]] by [[Vannaka]] at level 40 [[Slayer]] and level 50 [[Combat level|combat]] after the completion of [[Royal Trouble]]. They are found in the [[Miscellania and Etceteria Dungeon]], which can be entered during and after the quest. They attack with [[melee]] and are [[poison]]ous so [[antipoison]]s of any variety are strongly recommended. Both variants share the same drop table, although the hatchling drop regular [[bones]] whereas the young drop [[big bones]] (and by extension [[long bone|long]] and [[curved bone]]s).\n\n[[Dwarven multicannon]]s can be used in the dungeon, although it is in single combat.\n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Maplink\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Sea snake hatchling]]\n|{{Map|type=maplink\n|name = Sea snake hatchling\n|location = [[Miscellania and Etceteria Dungeon]]\n|ptype = monster\n|levels = 62\n|mapID = 51\n|x:2577,y:10295|x:2581,y:10297|x:2583,y:10294|x:2587,y:10294|x:2589,y:10287|x:2589,y:10291|x:2592,y:10288\n|group = 1\n|mtype = pin\n}}\n|62\n|50\n|\n*[[Miscellania and Etceteria Dungeon]]\n|\n* Weakest version of sea snake. Occupies 1x1 square. Can induce poison beginning at 5.\n|-\n|[[Sea snake young]]\n|{{Map|type=maplink\n|name = Sea snake young\n|location = [[Miscellania and Etceteria Dungeon]]\n|ptype = monster\n|levels = 90\n|mapID = 51\n|x:2595,y:10271|x:2595,y:10280|x:2597,y:10263|x:2597,y:10275|x:2598,y:10253|x:2599,y:10257|x:2599,y:10267|x:2604,y:10247|x:2605,y:10251|x:2611,y:10251\n|group = 2\n|mtype = pin\n}}\n|90\n|85\n|\n*[[Miscellania and Etceteria Dungeon]]\n|\n* Stronger version of sea snake. Occupies 2x2 square. Can induce poison beginning at 7.\n|}"
+        }
+      }
+    }
+  ]
+}

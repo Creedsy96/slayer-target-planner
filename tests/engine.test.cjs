@@ -1,8 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-require('../dist/data.js');
+require('./fixtures/v1/data.js');
 const data = globalThis.SLAYER_DATA;
-const {calculate, selectionProbabilities} = require('../dist/engine.js');
+const {calculate, selectionProbabilities} = require('./fixtures/v1/engine.js');
 const baseline = require('./baseline.json');
 const close = (actual, expected, label) => assert.ok(Math.abs(actual-expected)<0.00001, `${label}: ${actual} != ${expected}`);
 

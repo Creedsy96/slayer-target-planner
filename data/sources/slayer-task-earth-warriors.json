@@ -1,0 +1,19 @@
+{
+  "pageid": 299251,
+  "ns": 0,
+  "title": "Slayer task/Earth warriors",
+  "revisions": [
+    {
+      "revid": 15251008,
+      "parentid": 15250999,
+      "timestamp": "2026-07-04T03:22:25Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Earth warriors\n|skillreq = {{SCP|Agility|15}}\n|combatreq = {{SCP|Combat|35}}\n|otherreq = None\n|krystilia = 75-125\n|id = No\n}}\n[[Earth warriors]] are a type of humanoid earth elemental found in a dirt-lined chamber in the [[Edgeville Dungeon]]. This area is in the [[Wilderness]] so it is advised to come prepared for [[player killers]].\n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Earth warrior]]\n|51\n|54\n|\n*[[Edgeville Dungeon]] (Wilderness)\n|\n*Be careful of [[player killers]] who disguise themselves in full [[Bronze armour]] to take on the appearance of Earth warriors.\n*It is recommended to use [[crush weapons]] or [[magic]] as these are their weaknesses.\n|-\n|}\n\n==Location Comparison==\n{|class = \"wikitable sortable align-center-3\"\n!Location\n!Maplink\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Edgeville Dungeon]] (Wilderness)\n|{{Map|type=maplink\n|name = Earth warrior\n|location = [[Edgeville Dungeon]] (Wilderness)\n|ptype = monster\n|levels = 51\n|mapID = 12\n|3118,9974|3119,9971|3120,9976|3124,9974|3116,9992|3118,9989|3121,9992|3122,9996|3123,9988|3125,9994|3126,9992\n|mtype = pin\n}}\n|11\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|\n*This area can only be accessed via the monkey bars, requiring level 15 [[Agility]].\n|-\n|}\n\n==Exceptions==\n*The [[Earth Warrior Champion]] does not count as an Earth Warrior for the purpose of a [[Slayer task]]."
+        }
+      }
+    }
+  ]
+}

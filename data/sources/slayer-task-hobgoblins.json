@@ -1,0 +1,19 @@
+{
+  "pageid": 298252,
+  "ns": 0,
+  "title": "Slayer task/Hobgoblins",
+  "revisions": [
+    {
+      "revid": 15251007,
+      "parentid": 15250977,
+      "timestamp": "2026-07-04T03:22:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Hobgoblins\n|skillreq = None\n|combatreq = 20\n|otherreq = None\n|mazchna = 30-50\n|vannaka = 40-90\n|id = No\n}}\n\n[[Hobgoblins]] can be assigned as a [[slayer task]], with no [[Slayer]] level requirement, other than having a [[Combat Level]] of 20. \n\n==Monster Variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Hobgoblin]]\n|28\n|29\n|[[Bandit Camp Mine]], [[Asgarnian Ice Dungeon]], Peninsula north-east of the [[Hosidius]] [[vinery]], Peninsula west of the [[Crafting Guild]]\n|\n|-\n|[[Hobgoblin]]\n|42\n|49\n|[[Outpost]], [[Asgarnian Ice Dungeon]], [[Edgeville Dungeon]], [[The Hollows]], north of [[Rellekka]]\n|\n|-\n|[[Hobgoblin]]\n|47\n|52\n|[[God Wars Dungeon]]\n|\n|-\n|}\n\n==Location Comparison==\n{|class = \"wikitable sortable align-center-3\"\n!Location\n!Maplink\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Bandit Camp mine]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[Bandit Camp mine]] ([[Wilderness]])\n|ptype = monster\n|levels = 28\n|3075,3748|3076,3774|3078,3742|3078,3754|3078,3764|3080,3750|3080,3759|3081,3770|3083,3766|3085,3742|3085,3757|3085,3773|3087,3752|3088,3758|3088,3765|3089,3770|3092,3756|3092,3763|3094,3746|3094,3772|3096,3767|3097,3756|3097,3761|3099,3770|3105,3763|3107,3758\n|mtype = pin\n}}\n|26\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|Found inside the [[Wilderness]]\n|-\n|Peninsula north-east of the [[Hosidius]] [[vinery]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = Peninsula north-east of the [[Hosidius]] [[vinery]]\n|ptype = monster\n|levels = 28\n|1832,3599|1832,3608|1832,3618|1832,3624|1833,3605|1833,3628|1834,3615|1835,3621|1836,3608|1836,3612|1836,3631|1836,3635|1837,3628|1838,3614|1838,3617|1838,3640|1840,3636|1840,3642|1841,3633|1842,3638|1842,3641|1808,3627\n|mtype = pin\n}}\n|22\n|{{No}}\n|{{Yes}}\n|{{No}}\n|\n|-\n|[[God Wars Dungeon]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[God Wars Dungeon]]\n|ptype = monster\n|levels = 47\n|mapID = 7\n|2876,5318|2878,5317|2878,5319|2879,5318|2879,5321|2854,5313|2855,5312|2856,5314|2869,5344|2870,5343|2870,5345\n|mtype = pin\n}}\n|11\n|{{Yes}}\n|{{No}}\n|{{No}}\n|-\n|-\n|Peninsula West of the [[Crafting Guild]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[Hobgoblin Peninsula]] west of the [[Crafting Guild]]\n|ptype = monster\n|levels = 28\n|2905,3295|2906,3288|2908,3291|2909,3282|2909,3285|2909,3294|2912,3279|2915,3273|2917,3269|2920,3266\n|mtype = pin\n}}\n|10\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|Safespotting requires standing in the guild's cow field, or using cornered edges along the peninsula\n|-\n|[[Outpost]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[Outpost]]\n|ptype = monster\n|levels = 28, 42\n|2448,3329|2448,3331|2451,3330|2443,3359|2445,3359|2445,3362|2446,3357|2447,3361\n|mtype = pin\n}}\n|8\n|{{No}}\n|{{Yes}}\n|{{No}}\n|\n|-\n|[[Asgarnian Ice Dungeon]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[Asgarnian Ice Dungeon]]\n|ptype = monster\n|levels = 28, 42\n|mapID = 3\n|3010,9578|3010,9593|3010,9595|3011,9579|3016,9578|3016,9594|3019,9591\n|mtype = pin\n}}\n|7\n|{{No}}\n|{{Yes}}\n|{{No}}\n|\n|-\n|[[Edgeville Dungeon]]\n|{{Map|type=maplink\n|name = Hobgoblin\n|location = [[Edgeville Dungeon]]\n|ptype = monster\n|levels = 28, 42\n|mapID = 12\n|3118,9871|3122,9874|3123,9879|3126,9875|3128,9876\n|mtype = pin\n}}\n|5\n|{{No}}\n|{{Yes}}\n|{{Yes}}\n|Safespot between the rockslide and the fire remains by the campfire\n|}"
+        }
+      }
+    }
+  ]
+}

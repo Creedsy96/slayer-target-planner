@@ -1,0 +1,19 @@
+{
+  "pageid": 298044,
+  "ns": 0,
+  "title": "Slayer task/Banshees",
+  "revisions": [
+    {
+      "revid": 15330527,
+      "parentid": 15330526,
+      "timestamp": "2026-09-04T03:19:20Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Slayer\n|name = Banshees\n|icon = [[File:Banshee icon.png|center]]\n|skillreq = {{SCP|Slayer|15}}\n|combatreq = {{SCP|Combat|20}}\n|otherreq = [[Priest in Peril]]\n|turael = 15-30\n|spria = 15-30\n|mazchna = 30-50\n|mortimer = 35-50 (20-80)\n|id = 4135\n}}\n[[Banshee]]s can be assigned as a [[Slayer task]] at level 15 [[Slayer]] and level 20 [[Combat level|combat]] by various [[Slayer masters]]. They are found in the [[Slayer Tower]] and the [[Catacombs of Kourend]]. Players '''must''' wear [[earmuffs]] or a [[Slayer helm]] when fighting banshees. Lower levelled players who do not have access to a Slayer helm can wear a [[salve amulet]]. Note that the bonuses from the salve amulet do not stack with those from the Slayer helmet.\n\nBanshees are primarily known for their common drops of [[pure essence]], which is helpful for ironmen for [[runecrafting]].\n\nA stronger variant of banshee, the [[Twisted Banshee]], can be found in the Catacombs of Kourend. These are often killed over normal banshees as they are still easy to kill (notably being safespottable) and have much better drops; battlestaves, rune equipment, and larger quantities of herbs.\n\n==Slayer unlocks==\n{{Main|Slayer Rewards}}\n{|class=\"wikitable sortable lighttable align-center-1 align-center-3\"\n! colspan=\"2\" | Unlock\n! Points cost\n! Notes\n|-\n|[[File:Bigger and Badder.png|link=]]\n|Bigger and Badder\n|50\n|Increase the risk against certain slayer monsters with the chance of a [[Superior slayer monster|superior version]] spawning whilst on a slayer task.\n|}\n\n==Monster variants==\n{|class = \"wikitable sortable\"\n!Monster\n!Combat level\n!Slayer XP\n!Locations\n!Notes\n|-\n|[[Banshee]]\n|23\n|22\n|[[Slayer Tower]]\n|Standard banshees.\n|-\n|[[Screaming banshee]]\n|70\n|610\n|[[Slayer Tower]]\n|[[Superior slayer monster]] variant, which has a chance of spawning on a banshee's death after purchasing the ''Bigger and Badder'' unlock for 50 [[Slayer reward point]]s from any [[Slayer master]].\n|-\n|[[Twisted Banshee]]\n|89\n|100\n|[[Catacombs of Kourend]]\n|Stronger version of banshees.\n|-\n|[[Screaming twisted banshee]]\n|144\n|2,200\n|[[Catacombs of Kourend]]\n|[[Superior slayer monster]] variant, which has a chance of spawning on a Twisted Banshee's death after purchasing the ''Bigger and Badder'' unlock for 50 [[Slayer reward point]]s from any [[Slayer master]].\n|}\n\n==Location comparison==\n{|class = \"wikitable sortable align-center-3\"\n!Location\n!Map\n!Amount\n!Multicombat\n!Cannonable\n!Safespottable\n!Notes\n|-\n|[[Slayer Tower]] ({{FloorNumber|uk=0}})\n|{{Map|mapID=0|type=maplink|mtype=pin|3429,3564|3433,3552|3436,3559|3439,3539|3439,3544|3440,3560|3443,3546|3444,3537}}\n|8\n|{{No}}\n|{{No}}\n|{{Yes}}\n|\n* Safespot is possible 2 squares south of the torch at the south side of the stairs with banshees being east of the stairs.\n|-\n|[[Catacombs of Kourend]]\n|{{Map|mapID=32|type=maplink|mtype=pin|1608,9994|1608,9998|1612,9998|1620,9992|1623,9995|1625,9992}}\n|6\n|{{Yes}}\n|{{No}}\n|{{Yes}}\n|\n* Safespot is possible in the path from Ankou to Banshees and on the 3x1 bridge in the Banshee area.\n|}"
+        }
+      }
+    }
+  ]
+}

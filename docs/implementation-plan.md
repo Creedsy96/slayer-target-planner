@@ -1,6 +1,6 @@
 # Slayer Target Planner implementation plan
 
-Status: proposed implementation sequence, not implemented or verified.
+Status: implementation authorised by the user and delivered as version 2 with explicit supported-model limits. See [verification](v2-verification.md) for checks and unverified areas.
 Prepared: 19 November 2026.
 Scope: the zero-block assumption fix, monster variant accuracy, and research recommendations 1–13. Recommendation 14 (general XP, profit and Ironman outputs) is excluded. Goal-specific drop probabilities remain included under recommendation 11.
 
@@ -8,7 +8,7 @@ Scope: the zero-block assumption fix, monster variant accuracy, and research rec
 
 Deliver an offline-capable target-hunting planner that respects actual player eligibility, distinguishes assignments from monster variants, compares valid strategies against a stated objective, and explains timing, points and uncertainty. Deliver the same calculation model in the private website, local browser copy and portable Windows app.
 
-This document authorises no implementation, deployment or replacement of an existing release. The current EXE, ZIP, hosted audience and user settings remain available while these increments are developed. Each increment below is independently reviewable; acceptance means its stated checks have actually passed.
+The user subsequently authorised implementation of this plan. Version 2 is developed alongside the original release. The current EXE, ZIP, hosted audience and user settings remain available while these increments are developed. Each increment below is independently reviewable; acceptance means its stated checks have actually passed.
 
 ## Current implementation and constraints
 

@@ -1,0 +1,19 @@
+{
+  "pageid": 83364,
+  "ns": 0,
+  "title": "Jungle Wolf",
+  "revisions": [
+    {
+      "revid": 15406449,
+      "parentid": 15199942,
+      "timestamp": "2026-11-18T22:08:57Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs|rsc=Karamja Wolf}}\n{{HasTask|Wolves}}\n{{Infobox Monster\n|name = Jungle Wolf\n|image = [[File:Jungle Wolf.png|250px]]\n|release = [[20 August]] [[2003]]\n|update = New - Legends Quest!\n|members = Yes\n|combat = 64\n|size = 2\n|examine = A rare jungle wolf - specific to the Kharazi jungle.\n|xpbonus = 0\n|max hit = 6\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|respawn = 90\n|slayxp = 70\n|cat = Wolves\n|assignedby = turael,spria,mazchna\n|hitpoints = 69\n|att = 50\n|str = 55\n|def = 52\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|elementalweaknesstype = Fire\n|elementalweaknesspercent = 15\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id = 232\n}}\n\n'''Jungle wolves''' are a type of [[wolf]] found in the [[Kharazi Jungle]]. They only drop [[wolf bones]] when killed. If you get wolves as a [[Slayer]] assignment, you can slay these for the [[Slayer task|task]]. They are [[aggressive]] to all players and will start pursuing from a distance. They are similar to regular wolves, but the main differences are their colour and location.\n\nTheir location in the jungle makes them hard to reach; if one plans to hunt jungle wolves, be aware that many other native animals are [[poisonous]], so be sure to have [[antipoison]].\n\n==Locations==\n{{LocTableHead}}\n{{LocLine\n|name = Jungle Wolf\n|location = [[Kharazi Jungle]]\n|levels = 64\n|members = Yes\n|mapID = 0\n|plane = 0\n|x:2918,y:2927|x:2775,y:2913|x:2941,y:2887|x:2801,y:2899|x:2813,y:2917|x:2824,y:2896|x:2827,y:2924|x:2893,y:2893|x:2911,y:2894|x:2915,y:2906|x:2919,y:2907|x:2887,y:2929|x:2789,y:2932|x:2842,y:2899|x:2861,y:2907|x:2862,y:2899\n|mtype = pin\n|leagueRegion = karamja\n}}\n{{LocTableBottom}}\n\n==Drops==\n{{DropLogProject|jagex=yes}}\n===100%===\n{{DropsTableHead}}\n{{DropsLine|name=Wolf bones|quantity=1|rarity=Always}}\n{{DropsTableBottom}}\n\n===Tertiary===\n{{DropsTableHead}}\n{{DropsLine|name=Wolf bone|quantity=1|rarity=Always|raritynotes=<ref group=d>Wolf bones are only dropped during [[Rag and Bone Man II]].</ref>|gemw=No}}\n{{DropsTableBottom}}\n{{Reflist|group=d}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|change = Jungle Wolves now have a 15% [[elemental weakness]] to [[fire spells]].\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n}}\n{{Subject changes\n|date = 4 June 2007\n|update = Hair of the dog\n|change = The NPC was graphically updated.\n}}\n{{Subject changes footer}}\n===Gallery (historical)===\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Jungle Wolf (historical).png|center|300x150px]]\n|[[File:Jungle Wolf.png|center|300x150px]]\n|-\n|29 March 2004 –<br/>4 June 2007\n|4 June 2007 –<br/>present\n|}\n\n{{Legends' Quest}}"
+        }
+      }
+    }
+  ]
+}

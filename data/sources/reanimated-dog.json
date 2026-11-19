@@ -1,0 +1,19 @@
+{
+  "pageid": 70514,
+  "ns": 0,
+  "title": "Reanimated dog",
+  "revisions": [
+    {
+      "revid": 15273518,
+      "parentid": 15199851,
+      "timestamp": "2026-07-23T18:19:35Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the monster|the historical spell|Reanimate Dog}}\n{{Infobox Monster\n|name = Reanimated dog\n|image = [[File:Reanimated dog.png|250px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 1\n|examine = This creature has been dragged back from the grave.\n|xpbonus = \n|max hit = 6\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|slayxp = 35\n|cat = Dogs\n|assignedby = turael,spria,mazchna\n|hitpoints = 35\n|att = 53\n|str = 54\n|def = 54\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7025\n}}\nA '''reanimated dog''' can be spawned by casting the [[Arceuus spellbook|spell]] [[Adept Reanimation]] on an [[ensouled dog head]]. Reanimation can be cast on any ensouled head within an 31x31 area where that head was dropped by a monster. This will work indefinitely, even if the ensouled head is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has done one of these things, they will no longer be able to reanimate the creature in the area where it was killed, but can still reanimate it within range of the [[Dark Altar]]. Killing the creature will grant 520 [[Prayer]] [[experience]].\n\nThey count towards [[dog]] [[Slayer task]]s, giving 35 [[Slayer]] experience per kill.\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated dog\n|level = 1\n|xp = 520\n|type = reanimated\n|facility = [[Dark Altar]] (or direct monster drop)\n}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

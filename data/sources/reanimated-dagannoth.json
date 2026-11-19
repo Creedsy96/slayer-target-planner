@@ -1,0 +1,19 @@
+{
+  "pageid": 70522,
+  "ns": 0,
+  "title": "Reanimated dagannoth",
+  "revisions": [
+    {
+      "revid": 15406483,
+      "parentid": 15302166,
+      "timestamp": "2026-11-18T22:16:10Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Otheruses|def=no|the race|Dagannoth (race)}}\n{{Infobox Monster\n|name = Reanimated dagannoth\n|image = [[File:Reanimated dagannoth.png|220px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 1\n|examine = This creature has been dragged back from the grave.\n|xpbonus = \n|max hit = 10\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Ranged]]\n|attack speed = 4\n|slayxp = 35\n|cat = Dagannoth\n|assignedby = vannaka,chaeldar,nieve,duradel\n|hitpoints = 35\n|att = 78\n|str = 78\n|def = 81\n|mage = 1\n|range = 50\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|dlight = 0\n|dstandard = 0\n|dheavy = 0\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7033\n}}\nA '''reanimated dagannoth''' can be spawned by casting the [[Arceuus spellbook|Arceuus spell]] [[Expert Reanimation]] on an [[ensouled dagannoth head]]. Reanimation can be cast on any ensouled head within an 31x31 area where that head was dropped by a monster. This will work indefinitely, even if the ensouled head is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has put the head into the bank, trade screen, Grand Exchange, or price checker, the reanimation spell will only work within range of the [[Dark Altar]]. Killing the creature grants 936 [[Prayer]] [[experience]].\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated dagannoth\n|level = 1\n|xp = 936\n|type = reanimated\n|facility = [[Dark Altar]] (or direct monster drop)\n}}\n\n==Drops==\n{{DropsTableHead}}\n{{DropsLine|name=Dagannoth ribs|quantity=1|rarity=Always|raritynotes=<ref group=d>Ogre ribs are dropped only during [[Rag and Bone Man II]].</ref>|gemw=No}}\n{{DropsLine|name=Brimstone key|quantity=1|rarity={{Brimstone rarity|1|bonus=yes}}|raritynotes=<ref group=d>Brimstone keys are only dropped if killed on a [[Slayer task]] given by [[Konar quo Maten]].</ref>{{CiteDiscord|author=Mod Ash|url=https://discord.com/channels/324132423636090880/431834766325841920/1538206571740536875|date=2026-08-15|quote=They'd act like they had a combat level of 1.|archiveurl=https://reldo.runescape.wiki/i/27964357#chat-messages-431834766325841920-1538206571740536875|archivedate=2026-08-15}}|gemw=No|leagueRegion=Kourend}}\n{{DropsTableBottom}}\n\n==References==\n{{Reflist}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

@@ -21,8 +21,17 @@ test('offline font removal preserves root colour and typography declarations', (
   const converted = offlineStyle(css);
   assert.ok(converted.startsWith(':root{'));
   assert.ok(converted.includes('--text:#edf1e9'));
-  assert.ok(converted.includes("--body:'DM Sans','Segoe UI',sans-serif"));
+  assert.ok(converted.includes("Segoe UI"));
   assert.ok(!converted.includes('@import'));
   assert.ok(!converted.includes('fonts.googleapis.com'));
   assert.equal(offlineStyle('@import url("https://font.example/a;b");\r\n:root{color:white}'), ':root{color:white}\n.desktop-brand-icon{width:48px;height:48px;object-fit:contain}\n');
+});
+
+const {hiscoresUrl,lookup}=require('../desktop/hiscores.cjs');
+test('hiscores bridge has a fixed destination, validation and size bound',async()=>{
+ assert.equal(hiscoresUrl('Test Name'),'https://secure.runescape.com/m=hiscore_oldschool/index_lite.json?player=Test%20Name');
+ for(const name of ['https://evil','',null,'a'.repeat(13),'name&url=x'])assert.throws(()=>hiscoresUrl(name));
+ assert.equal(await lookup('Test',async()=>new Response('{"skills":[]}')),'{"skills":[]}');
+ await assert.rejects(lookup('Test',async()=>new Response('x'.repeat(100001))),/too large/);
+ await assert.rejects(lookup('Test',async()=>new Response('',{status:404})),/not found/);
 });

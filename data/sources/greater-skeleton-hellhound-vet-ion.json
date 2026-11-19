@@ -1,0 +1,19 @@
+{
+  "pageid": 52279,
+  "ns": 0,
+  "title": "Greater Skeleton Hellhound (Vet'ion)",
+  "revisions": [
+    {
+      "revid": 15358787,
+      "parentid": 15303624,
+      "timestamp": "2026-09-30T10:16:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|def=no|other Skeleton Hellhounds|Skeleton Hellhound (disambiguation)}}\n{{Infobox Monster\n|name = Greater Skeleton Hellhound\n|image = [[File:Greater Skeleton Hellhound (Vet'ion).png|240px]]\n|release = [[13 March]] [[2014]]\n|update = Rejuvenating the Wilderness: More risk, more reward\n|members = Yes\n|combat = 231\n|size = 2\n|examine = Can never possibly go hungry.\n|attributes = undead\n|xpbonus = 12.5\n|max hit = 32\n|aggressive = Yes\n|poisonous = No\n|attack style = [[Crush]]\n|attack speed = 4\n|slayxp = 33\n|cat = Hellhounds, Skeletons\n|assignedby = turael,spria,krystilia,mazchna,vannaka,chaeldar,nieve,duradel\n|hitpoints = 30\n|att = 228\n|str = 295\n|def = 180\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 150\n|dslash = 163\n|dcrush = 20\n|dmagic = 210\n|dlight = 275\n|dstandard = 275\n|dheavy = 275\n|elementalweaknesstype = Earth\n|elementalweaknesspercent = 40\n|poisonresistance = 0\n|venomresistance = 0\n|id = 6614\n|leagueRegion = Wilderness\n}}\nThe '''Greater Skeleton Hellhound''' is a monster summoned by [[Vet'ion]]. Two spawn during the second form of Vet'ion after half of his health has depleted and must be killed as he is immune to attacks while they are present.\n\n{{Bug|Since the [[Update:Cow Boss is Out Today!|update]] on 25 February 2026, Vet'ion can now summon 0, 1, or 2 skeletal hellhounds during phase transitions rather than always 2.}}\n\n==Drops==\n===100%===\n{{DropsTableHead}}\n{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n{{DropsTableBottom}}\n\n===Tertiary===\n{{DropsTableHead}}\n{{DropsLine|name=Looting bag|quantity=1|rarity=1/3|gemw=No}}\n{{DropsLine|name=Skeleton champion scroll|quantity=1|rarity=1/5000|raritynotes=<ref group=d>Only dropped if access to [[Champions' Guild]] is available and the [[Skeleton Champion]] hasn't been previously killed in the [[Champions' Challenge]]</ref>|gemw=No}}\n{{DropsTableBottom}}\n{{Reflist|group=d}}\n\n===Wilderness Slayer tertiary===\n{{WildernessSlayerDropTable|combat=281|hitpoints=190}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n|change = Greater Skeleton Hellhounds now has a 40% [[elemental weakness]] to [[earth spells]].\n}}\n{{Subject changes\n|date = 25 January 2023\n|update = Wilderness Boss Rework\n|change = \n* The Greater Skeleton Hellhound's combat level has been reduced from 281 to 231.\n* Greater Skeleton Hellhounds have been graphically updated.\n}}\n{{Subject changes\n|date = 18 February 2016\n|update = Dragon Claws & 3rd Birthday\n|change = The distance Vet'ion's hellhounds can move from their spawn point has been increased substantially.\n}}\n{{Subject changes footer}}\n\n===Gallery (historical)===\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Greater Skeleton Hellhound (Vet'ion) v1.png|center|300x150px]]\n|[[File:Greater Skeleton Hellhound (Vet'ion).png|300x150px]]\n|-\n|13 March 2014–<br/>25 January 2023\n|25 January 2023 –<br/>present\n|}\n\n{{Wilderness bosses}}\n\n[[Category:Monsters immune to recoil]]"
+        }
+      }
+    }
+  ]
+}

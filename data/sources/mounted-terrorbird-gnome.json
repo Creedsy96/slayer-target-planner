@@ -1,0 +1,19 @@
+{
+  "pageid": 28840,
+  "ns": 0,
+  "title": "Mounted terrorbird gnome",
+  "revisions": [
+    {
+      "revid": 15199587,
+      "parentid": 14880845,
+      "timestamp": "2026-04-28T07:21:32Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{HasTask|Birds}}\n{{Infobox Monster\n|version1 = Level 31\n|version2 = Level 49\n|name = Mounted terrorbird gnome\n|image = [[File:Mounted terrorbird gnome.png|150px]]\n|release = [[29 March]] [[2004]]\n|update = RS2 Launched!\n|members = Yes\n|combat1 = 31\n|combat2 = 49\n|size = 2\n|examine = These gnomes know how to get around!\n|xpbonus = 0\n|max hit1 = 3\n|max hit2 = 5\n|aggressive = No\n|poisonous = No\n|attack style = [[Stab]]\n|attack speed = 4\n|respawn = 30\n|slayxp1 = 36\n|slayxp2 = 55\n|cat = Birds\n|assignedby = turael,spria\n|hitpoints1 = 36\n|hitpoints2 = 55\n|att1 = 25\n|att2 = 40\n|str1 = 25\n|str2 = 40\n|def1 = 25\n|def2 = 40\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns1 = 0\n|rngbns2 = 2\n|dstab = 16\n|dslash = 16\n|dcrush = 18\n|dmagic = 15\n|dlight = 10\n|dstandard = 10\n|dheavy = 10\n|poisonresistance = 0\n|venomresistance = 0\n|immunecannon = No\n|immunethrall = No\n|id1 = 2067\n|id2 = 2068,5971,5972,5973\n}}\n'''Mounted terrorbird gnomes''' are [[gnomes]] riding [[terrorbird]]s. They are stronger than regular unmounted terrorbirds. They are found spread around and to the south of the [[Tree Gnome Stronghold]] and the [[Battlefield]]. They may be killed for the [[bird]] [[Slayer task]]. They attack with melee and have mediocre combat stats for their level, and consequently pose little threat.\n\n==Locations==\n{{LocTableHead}}\n{{LocLine\n|name = Mounted terrorbird gnome\n|location = [[Tree Gnome Stronghold]]\n|levels = 31\n|members = Yes\n|mapID = 0\n|plane = 0\n|x:2453,y:3363|x:2449,y:3421|x:2437,y:3442|x:2432,y:3387|x:2442,y:3388|x:2392,y:3405|x:2463,y:3456|x:2468,y:3456|x:2381,y:3428|x:2413,y:3397|x:2415,y:3408|x:2463,y:3375|x:2457,y:3394|x:2464,y:3394|x:2480,y:3406\n|mtype = pin\n|leagueRegion = kandarin\n}}\n{{LocLine\n|name = Mounted terrorbird gnome\n|location = [[Battlefield]]\n|levels = 49\n|members = Yes\n|mapID = 0\n|plane = 0\n|x:2524,y:3234|x:2537,y:3236|x:2530,y:3217|x:2532,y:3217|x:2534,y:3217|x:2500,y:3226\n|mtype = pin\n|leagueRegion = kandarin\n}}\n{{LocTableBottom}}\n\n==Drops==\n===100%===\n{{DropsTableHead}}\n{{DropsLine|name=Bones|quantity=1|rarity=Always}}\n{{DropsTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 9 July 2007\n|update = A bird in the hand...\n|change = The NPCs were graphically updated.\n}}\n{{Subject changes\n|date = 29 March 2004\n|update = RS2 Launched!\n|change = The NPC was permanently added with the launch of ''RuneScape 2''.\n}}\n{{Subject changes\n|date = 2 February 2004\n|update = Huge Runescape 2 update\n|change = The NPC was released ingame to the ''RuneScape 2'' Beta.\n}}\n{{Subject changes\n|date = 1 December 2003\n|update = RuneScape 2 Beta is Here!\n|change = The level 31 variant was added to the ''RuneScape 2'' Beta cache.\n}}\n{{Subject changes footer}}\n===Gallery (historical)===\n<tabber>\nLevel 31=\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Mounted terrorbird gnome (level 31) (historical).png|300x150px]]\n|[[File:Mounted terrorbird gnome.png|300x150px]]\n|-\n|29 March 2004 –<br/>9 July 2007\n|9 July 2007 –<br/>present\n|}\n|-|\nLevel 49=\n{|style=\"text-align: center\" cellpadding=\"15\"\n|[[File:Mounted terrorbird gnome (level 49) (historical).png|300x150px]]\n|[[File:Mounted terrorbird gnome (level 49).png|300x150px]]\n|-\n|29 March 2004 –<br/>9 July 2007\n|9 July 2007 –<br/>present\n|}\n</tabber>\n\n==See also==\n*[[Terrorbird]]\n*[[Gnome]]\n\n{{Battlefield}}"
+        }
+      }
+    }
+  ]
+}

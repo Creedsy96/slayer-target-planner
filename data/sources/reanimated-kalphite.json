@@ -1,0 +1,19 @@
+{
+  "pageid": 70521,
+  "ns": 0,
+  "title": "Reanimated kalphite",
+  "revisions": [
+    {
+      "revid": 15355223,
+      "parentid": 15302165,
+      "timestamp": "2026-09-24T06:22:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the monster|the historical spell|Reanimate Kalphite}}\n{{Infobox Monster\n|name = Reanimated kalphite\n|image = [[File:Reanimated kalphite.png|250px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|combat = N/A\n|size = 4\n|examine = This creature has been dragged back from the grave.\n|attributes = kalphite\n|xpbonus = \n|max hit = 12\n|aggressive = Yes\n|poisonous = Yes (6)\n|attack style = [[Crush]]\n|attack speed = 4\n|slayxp = 35\n|cat = Kalphite\n|assignedby = mazchna,chaeldar,nieve,duradel\n|hitpoints = 35\n|att = 110\n|str = 110\n|def = 110\n|mage = 1\n|range = 1\n|attbns = 0\n|strbns = 0\n|amagic = 0\n|mbns = 0\n|arange = 0\n|rngbns = 0\n|dstab = 25\n|dslash = 25\n|dcrush = 5\n|dmagic = 50\n|dlight = 50\n|dstandard = 50\n|dheavy = 50\n|poisonresistance = 0\n|venomresistance = 0\n|id = 7032\n}}\nA '''reanimated kalphite''' can be spawned by casting the [[Arceuus spellbook|spell]] [[Expert Reanimation]] on an [[ensouled kalphite head]]. Reanimation can be cast on any ensouled head within an 31x31 area where that head was dropped by a monster. This will work indefinitely, even if the ensouled head is picked up, so long as it is not put into the [[bank]], [[trade]] screen, [[Grand Exchange]], or [[price checker]]. If the player has done one of these things, they will no longer be able to reanimate the creature in the area where it was killed, but can still reanimate it within range of the [[Dark Altar]]. Killing the creature will grant the player 884 [[Prayer]] [[experience]].\n\nUnlike most other reanimated monsters, reanimated kalphites '''are''' [[poison]]ous.\n\nLike other [[kalphite]]s, they are affected by the [[keris]]' and [[keris partisan]]'s damage boosts.\n\n==Prayer info==\n{{Prayer info\n|name = Reanimated kalphite\n|level = 1\n|xp = 884\n|type = reanimated\n}}\n\n==Drops==\n{{DropsTableHead}}\n{{DropsLine|name=Brimstone key|quantity=1|rarity={{Brimstone rarity|1|bonus=yes}}|raritynotes=<ref group=d>Brimstone keys are only dropped if killed on a [[Slayer task]] given by [[Konar quo Maten]].</ref>{{CiteDiscord|author=Mod Ash|url=https://discord.com/channels/324132423636090880/431834766325841920/1538206571740536875|date=2026-08-15|quote=They'd act like they had a combat level of 1.|archiveurl=https://reldo.runescape.wiki/i/27964357#chat-messages-431834766325841920-1538206571740536875|archivedate=2026-08-15}}|gemw=No|leagueRegion=Kourend}}\n{{DropsTableBottom}}\n\n==References==\n{{Reflist}}\n\n{{Ensouled heads}}\n[[Category:Monsters with no combat level]]\n[[Category:Monster examine impossible]]"
+        }
+      }
+    }
+  ]
+}

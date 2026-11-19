@@ -1,0 +1,19 @@
+{
+  "pageid": 37101,
+  "ns": 0,
+  "title": "Slayer rewards",
+  "revisions": [
+    {
+      "revid": 14123125,
+      "parentid": 226835,
+      "timestamp": "2021-07-18T23:02:27Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "#REDIRECT [[Slayer Rewards]]"
+        }
+      }
+    }
+  ]
+}
