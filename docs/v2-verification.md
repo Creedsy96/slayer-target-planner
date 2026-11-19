@@ -47,3 +47,13 @@ The generic Boss secondary roll has no individually mapped boss probabilities an
 ## Delivery checks
 
 Desktop launch, ZIP integrity and private deployment results are appended after the actual operations complete.
+
+Passed desktop delivery checks:
+
+- Packaged with Electron 45.3.4 / application 2.0.0. Actual EXE launched from a freshly extracted ZIP. Custom icon and full generated layout inspected; local background calculations populated all master rows.
+- Duplicated a profile as `Desktop verified hunt`, restarted the extracted app and observed that same profile selected. Exported `slayer-desktop-verified-v2.json` through the native Save dialog; shared-core import validation accepted both exported profiles and the new name. Existing v1 profile remained available.
+- ZIP verified 77 files against SHA-256 and passed CRC validation. Archive: 151.2 MiB. SHA-256: `99b98ee1120555e68194a004b422e3b34c6ea5ca77ba9bedd710b10ed4c95ba0`. The clean distribution and archive contain no saved test/user profiles; those remain outside the distribution in app data. The ASAR file list was checked against the allowlist.
+- Previous version 1 folder and ZIP were preserved. Source revision for version 2 runtime: `5601a86` (full SHA in the distribution's SOURCE-REVISION.txt).
+- A separate direct file-URL browser check was blocked by the in-app browser's URL policy and was not worked around. Desktop packaged-file operation was observed through the authorised executable check. No clean-machine or physically disconnected-network test is claimed.
+
+Private site audience was read before deployment: owner-only custom policy, one owner, no other users/groups/editors or external visitors. Publication result is retained by the Sites service for the exact pushed source commit.
