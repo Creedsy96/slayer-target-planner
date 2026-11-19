@@ -35,4 +35,8 @@ Passed browser observations using synthetic fixtures in a separate profile:
 
 Live export from the user's own RuneLite character: not run. Export schemas were verified from the owning source; synthetic fixtures establish importer behaviour. Per-step quest progress is unavailable in these formats, so those rules remain conditional/manual. This release does not claim a complete audit of every area's non-quest requirements.
 
-Desktop/package and private deployment evidence are recorded after those operations complete.
+Passed Windows delivery checks: Electron 45.3.4 / app 2.2.0 launched from the new `Slayer Target Planner 2.2 - Windows` folder. Account & access visibly exposes the quest file picker and area-access controls; the existing desktop profile and theme were preserved. The packaged renderer matches the tested build byte-for-byte.
+
+The share ZIP passed CRC and all 78 file comparisons. SHA-256: `d2c3af1952d529b9aa163ef98734973341de7c3b5798fbda81cfc83401e9dd34`. The folder includes area rules, catalogue, notices and updated import instructions. Its source marker points to implementation commit `7d13133`; this evidence-only documentation update does not change the packaged runtime.
+
+Private website publication is verified by the Sites deployment result for the matching pushed source/archive; owner-only access is preserved.
