@@ -1,9 +1,10 @@
+import {AREA_VERSION} from '../rules/access';
 import type {Catalogue,Profile,Method} from '../domain/types';
 export const SCHEMA=2;
 export const STORAGE='slayer-target-planner-v2';
 export const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
 export function newProfile(data:Catalogue,name='Example hunt — assumed access'):Profile{
-  return {id:cryptoId(),name,dataVersion:data.version,levels:{slayer:87,combat:110,defence:80,magic:80,sailing:null,agility:null,strength:80,ranged:80,hitpoints:85},quests:{},unlocks:{},access:{},questPoints:300,diaries:{lumbridge:0,kourend:0,western:0},assumeUnknown:true,blockLimit:null,mortimerTasks:null,streaks:{normal:50,wilderness:0,mortimer:0},points:500,reserve:50,blocks:{},proposed:{},preferences:{},methods:{},methodPresets:{},goal:{kind:'offer',targets:[{assignmentId:'basilisks',variantId:'basilisk-knight',priority:1}],quantity:100,dropId:'basilisk-jaw',customDropRate:null},objective:'time',strategy:'sustainable',applySetup:false,milestone:10,globalDps:5,skipSeconds:30,requestMinutes:0,simulation:{trials:2000,seed:42173,horizonOffers:2000,sessionHours:4},current:{kind:'new',masterId:'',assignmentId:'',remaining:0},cape:false,previousTask:'',notes:['Example levels and points are editable planning assumptions. Unknown access is assumed only for this scenario.'],hypotheticalChoices:null};
+  return {areaDataVersion:AREA_VERSION,id:cryptoId(),name,dataVersion:data.version,levels:{slayer:87,combat:110,defence:80,magic:80,sailing:null,agility:null,strength:80,ranged:80,hitpoints:85},quests:{},unlocks:{},access:{},questPoints:300,diaries:{lumbridge:0,kourend:0,western:0},assumeUnknown:true,blockLimit:null,mortimerTasks:null,streaks:{normal:50,wilderness:0,mortimer:0},points:500,reserve:50,blocks:{},proposed:{},preferences:{},methods:{},methodPresets:{},goal:{kind:'offer',targets:[{assignmentId:'basilisks',variantId:'basilisk-knight',priority:1}],quantity:100,dropId:'basilisk-jaw',customDropRate:null},objective:'time',strategy:'sustainable',applySetup:false,milestone:10,globalDps:5,skipSeconds:30,requestMinutes:0,simulation:{trials:2000,seed:42173,horizonOffers:2000,sessionHours:4},current:{kind:'new',masterId:'',assignmentId:'',remaining:0},cape:false,previousTask:'',notes:['Example levels and points are editable planning assumptions. Unknown access is assumed only for this scenario.'],hypotheticalChoices:null};
 }
 function cryptoId():string{return 'profile-'+(typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2));}
 export function defaultMethod(data:Catalogue,p:Profile,id:string):Method{
@@ -49,6 +50,8 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   safeTree(value);const p=clone(value) as Profile;
   if(!p||typeof p!=='object'||!p.id||typeof p.id!=='string'||typeof p.name!=='string'||p.name.length>100)throw Error('Profile needs a valid ID and name (up to 100 characters).');
   if(p.dataVersion!==data.version)throw Error(`Profile uses data ${p.dataVersion}. This app uses ${data.version}; review and explicitly rebase a copy before import.`);
+  if(p.areaDataVersion!==undefined&&p.areaDataVersion!==AREA_VERSION)throw Error(`Profile uses area rules ${p.areaDataVersion}. This app uses ${AREA_VERSION}; review and explicitly rebase a copy before import.`);
+  p.areaDataVersion=AREA_VERSION;
   const numeric=(n:unknown,min:number,max:number,label:string,nullable=false)=>{if(nullable&&n===null)return;if(typeof n!=='number'||!Number.isFinite(n)||n<min||n>max)throw Error(`${label} must be between ${min} and ${max}.`);};
   const ids=new Set(data.assignments.map(a=>a.id));
   for(const group of ['levels','quests','unlocks','access','streaks','blocks','proposed','preferences','methods','methodPresets','diaries'])if(!p[group as keyof Profile]||typeof p[group as keyof Profile]!=='object'||Array.isArray(p[group as keyof Profile]))throw Error(`Missing ${group} fields.`);
@@ -81,6 +84,15 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.current.options){if(!Array.isArray(p.current.options)||p.current.options.length>3)throw Error('Supply at most three offer options.');for(const o of p.current.options){if(!ids.has(o.assignmentId)||!['none','points','quantity','clue','superior','xp'].includes(o.modifier)||typeof o.target!=='boolean')throw Error('Invalid pending offer option.');numeric(o.points,0,10000,'Modifier points');numeric(o.quantity,-1000,1000,'Quantity modifier');}}
   if(p.cape&&!ids.has(p.previousTask))throw Error('Choose the previous assignment when enabling the cape effect.');
   if(p.cape&&p.levels.slayer!==99)throw Error('The Slayer cape effect requires level 99 Slayer.');
+  if(p.questImport!==undefined){
+    const q=p.questImport;
+    if(!q||typeof q!=='object'||typeof q.format!=='string'||q.format.length>60||!q.states||typeof q.states!=='object'||Array.isArray(q.states))throw Error('Invalid imported quest data.');
+    if(q.playerName!==null&&(typeof q.playerName!=='string'||!/^[A-Za-z0-9 _-]{1,12}$/.test(q.playerName)))throw Error('Invalid imported quest account.');
+    for(const date of [q.exportedAt,q.importedAt])if(date!==null&&(typeof date!=='string'||!Number.isFinite(Date.parse(date))))throw Error('Invalid quest import date.');
+    if(Object.keys(q.states).length>1000)throw Error('Too many imported quests.');
+    for(const [name,state]of Object.entries(q.states))if(name.length>120||!name||!Number.isInteger(state)||state<0||state>2)throw Error('Invalid imported quest state.');
+    p.questImport={format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
+  }
   if(!Array.isArray(p.notes)||p.notes.some(n=>typeof n!=='string'))throw Error('Invalid migration notes.');
   return p;
 }
@@ -106,6 +118,6 @@ export function rebaseProfiles(data:Catalogue,text:string):{profiles:Profile[];a
   if(text.length>2_000_000)throw Error('Profile file exceeds 2 MB.');
   const payload=JSON.parse(text);safeTree(payload);
   if(payload.schemaVersion!==SCHEMA||!Array.isArray(payload.profiles))throw Error('Only schema v2 profiles can be rebased.');
-  for(const p of payload.profiles){const old=p.dataVersion;p.dataVersion=data.version;p.notes=[...(p.notes||[]),`Explicitly rebased from data ${old} to ${data.version}; review eligibility, weights and methods.`];}
+  for(const p of payload.profiles){const old=p.dataVersion,oldArea=p.areaDataVersion;p.dataVersion=data.version;p.areaDataVersion=AREA_VERSION;p.notes=[...(p.notes||[]),`Explicitly rebased from data ${old} to ${data.version}, area rules ${oldArea??'legacy'} to ${AREA_VERSION}; review eligibility, weights and methods.`];}
   return importProfiles(data,JSON.stringify(payload));
 }

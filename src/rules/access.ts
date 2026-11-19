@@ -1,0 +1,27 @@
+import raw from '../../data/area-access.json';
+import type {Catalogue,Fact,Profile,Source} from '../domain/types';
+
+export interface AreaRule {key:string;name:string;quest:string;states:Fact[];note:string;source:Source}
+export const AREA_VERSION=raw.version;
+export const AREA_RULES:AreaRule[]=raw.rules;
+const normalArea=(value:string)=>value.toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim();
+const rulesByKey=new Map(AREA_RULES.map(rule=>[normalArea(rule.key),rule]));
+export interface AccessResult {value:Fact;origin:'manual'|'quest'|'unknown';reason:string;source?:Source}
+
+export function questState(p:Profile,key:string):Fact {
+  return p.quests[key]??p.questImport?.states[key]??null;
+}
+
+export function resolveAccess(key:string,p:Profile):AccessResult {
+  const rule=rulesByKey.get(normalArea(key));
+  const manual=p.access[rule?.key??key]??p.access[key];
+  if(manual===0||manual===1)return {value:manual,origin:'manual',reason:'Manual access override',source:rule?.source};
+  if(!rule)return {value:null,origin:'unknown',reason:'No reviewed automatic rule; confirm access manually.'};
+  const state=questState(p,rule.quest),value=state===null?null:rule.states[state]??null;
+  const status=state===null?'unknown':state===0?'not started':state===1?'in progress':'completed';
+  return {value,origin:value===null?'unknown':'quest',reason:`${rule.quest}: ${status}. ${rule.note}`,source:rule.source};
+}
+
+export function relevantQuests(data:Catalogue):string[] {
+  return [...new Set([...data.quests,...AREA_RULES.map(r=>r.quest)])].sort();
+}

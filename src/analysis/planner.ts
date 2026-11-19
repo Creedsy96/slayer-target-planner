@@ -4,6 +4,7 @@ import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,t
 import {basePoints,modifierKinds,meanModifierPoints,choices} from '../rules/points';
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
+import {resolveAccess} from '../rules/access';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
   return m.tasks.map(entry=>{
@@ -19,6 +20,11 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
       if(available.length){v=available.reduce((best,next)=>best.hp/best.multiplier<=next.hp/next.multiplier?best:next);method={...method,...p.methods[entry.id+'::'+v.id],variantId:v.id};}
     }
     const eligibility=check(entry.requirements,p),variant=variantEligibility(v,p,m,entry.id),loc=locationFraction(entry,v,method,m,p);
+    if(m.id==='konar'&&entry.locations?.length&&entry.locations.every(l=>resolveAccess('location:'+l,p).value===0))eligibility.failed.push('No accessible assignment location');
+    const methodAccess=method.location?resolveAccess('location:'+method.location,p):null;
+    if(methodAccess?.value===0)variant.failed.push(`Method location ${method.location} is locked: ${methodAccess.reason}`);
+    if(methodAccess?.value===null)variant.unknown.push(`Method location ${method.location}: ${methodAccess.reason}`);
+    variant.eligible=!variant.failed.length;
     const timing=taskTiming(entry,v,method);
     const modifier=modifierKinds(p.mortimerTasks??0,entry);
     let reward=basePoints(m,p)*1.775;

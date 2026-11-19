@@ -1,6 +1,6 @@
 'use strict';
 
-const EXTERNAL_HOSTS = new Set(['docs.google.com', 'oldschool.runescape.wiki']);
+const EXTERNAL_HOSTS = new Set(['docs.google.com', 'oldschool.runescape.wiki', 'runelite.net']);
 
 function allowedExternal(value) {
   try {

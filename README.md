@@ -1,12 +1,24 @@
-# Slayer Target Planner 2.1.1
+# Slayer Target Planner 2.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.1.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## RuneLite quest import and area access
+
+In **Account & access**, choose **Choose quest JSON** or paste JSON, review the changes and apply them to the selected profile. The planner supports the named quest records from [Character Export](https://runelite.net/plugin-hub/show/character-export) and OSRS MCP Companion.
+
+For Character Export, enable quest exporting in RuneLite, log in to the character and use the plugin's **Sync Available / Open Folder** controls. Select `quests.json` from `.runelite/character-exporter/<Character Name>/` in your user folder. The planner does not install the plugin or contact WikiSync. Files are read locally, including on the private website; only relevant quest states, source type, account name when supplied and timestamps are retained. Other account data is ignored.
+
+The review shows old/imported/resulting states and manual conflicts. Existing manual quest overrides are kept by default; uncheck that option to replace overrides for incoming quests. A quest set to **Auto** uses its imported state. Omitted quests are unknown, not automatically incomplete. Reimporting replaces the previous imported snapshot. Source exports may omit the account name, so check the character folder. Skills, quest points, diaries, purchases and Slayer points remain unchanged.
+
+The **Area access** table explains automatic results for 20 sourced area rules. Completion can prove access; for areas unlocked partway through a quest, an in-progress state remains unknown because RuneLite exports only three quest states. Areas without a reviewed rule also remain unknown. Set **Yes / No — manual** to override an area, or **Auto** to restore derivation. Existing area overrides are preserved. These results feed Konar's eligible location pool and explicit method-location checks; they do not remove a receivable assignment merely because your chosen monster method is unavailable.
+
+Area rule version `2026-11-19.1` is recorded separately from the original catalogue. Existing profile files remain supported; imports using a different recorded area-rule version require explicit rebasing. See [quest/area verification](docs/quest-import-verification.md) for pinned exporter formats, rule sources and test evidence.
 
 ## Appearance
 

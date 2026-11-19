@@ -1,4 +1,5 @@
 import type {Catalogue,Eligibility,Master,Profile,Requirement,Variant,Entry,Method} from '../domain/types';
+import {questState,resolveAccess} from './access';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
   const result:Eligibility={eligible:true,unknown:[],failed:[]};
   for(const r of requirements){
@@ -9,7 +10,7 @@ export function check(requirements:Requirement[],p:Profile):Eligibility{
       result.failed.push(r.label);continue;
     }
     const group=r.kind==='skill'?p.levels:r.kind==='quest'?p.quests:r.kind==='unlock'?p.unlocks:p.access;
-    const n=group[r.key!];
+    const n=r.kind==='quest'?questState(p,r.key!):r.kind==='access'?resolveAccess(r.key!,p).value:group[r.key!];
     if(n===null||n===undefined){result.unknown.push(r.label);continue;}
     if(r.kind==='unlock'&&r.min===0?n!==0:n<(r.min??1))result.failed.push(`${r.label}${r.min&&r.min>2?' '+r.min:''}`);
   }
@@ -34,6 +35,7 @@ export function variantEligibility(v:Variant,p:Profile,master:Master,assignmentI
   status.eligible=!status.failed.length;return status;
 }
 export function locationFraction(entry:Entry,v:Variant,method:Method,master:Master,p:Profile):{fraction:number;unknown:string[]}{
+  if(method.location&&resolveAccess('location:'+method.location,p).value===0)return {fraction:0,unknown:[]};
   if(master.id!=='konar')return {fraction:1,unknown:[]};
   if(method.locationChance!==null)return {fraction:method.locationChance,unknown:['Custom Konar location probability']};
   const all=entry.locations||[];
@@ -41,8 +43,8 @@ export function locationFraction(entry:Entry,v:Variant,method:Method,master:Mast
   const wanted=method.location?[method.location]:known[v.id];
   if(!wanted)return {fraction:1,unknown:['Konar location compatibility assumed; enter a location chance for this method']};
   if(!all.length)return {fraction:1,unknown:['Konar location pool is not verified for this assignment']};
-  const eligible=all.filter(loc=>p.access['location:'+loc]!==0);
+  const eligible=all.filter(loc=>resolveAccess('location:'+loc,p).value!==0);
   const count=eligible.filter(loc=>wanted.some(w=>loc.toLowerCase().includes(w.toLowerCase()))).length;
-  return {fraction:eligible.length?count/eligible.length:0,unknown:eligible.some(loc=>p.access['location:'+loc]==null)?['Konar location access requires confirmation']:[]};
+  return {fraction:eligible.length?count/eligible.length:0,unknown:eligible.some(loc=>resolveAccess('location:'+loc,p).value===null)?['Konar location access requires confirmation']:[]};
 }
 export function targetAssignments(data:Catalogue,p:Profile):Set<string>{return new Set(p.goal.targets.filter(t=>data.variants.some(v=>v.id===t.variantId)).map(t=>t.assignmentId));}

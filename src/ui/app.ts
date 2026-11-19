@@ -1,5 +1,6 @@
+import {renderQuestImport,renderAreaAccess,questLabel} from './account-import';
 import {THEMES,loadTheme,themeId,applyTheme,saveTheme} from './themes';
-import {catalogue as data,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,blockImpacts,evaluate} from '../core';
+import {catalogue as data,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,blockImpacts,evaluate,AREA_RULES,relevantQuests,questState,parseQuestImport,applyQuestImport,type QuestPreview} from '../core';
 import type {Profile,Plan,Simulation,Method,Requirement} from '../domain/types';
 declare const WORKER_SOURCE:string;
 declare global {interface Window {slayerDesktop?:{hiscores:(name:string)=>Promise<string>}}}
@@ -14,7 +15,7 @@ const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<l
 const bool=(path:string,label:string,value:boolean)=>`<label class="check"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
 const routes:[string,string][]=[['plan','Hunt planner'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
 class AppState{
-  theme=loadTheme();profiles:Profile[]=[];activeId='';route='plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';message='';saveError='';busy:Record<string,{done:number;total:number}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
+  questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route='plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';message='';saveError='';busy:Record<string,{done:number;total:number}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
   get profile():Profile{return this.profiles.find(p=>p.id===this.activeId)!;}
   strategyResults:{strategy:string;result?:Simulation;error?:string}[]=[];
   constructor(){
@@ -64,7 +65,7 @@ function preserveView():()=>void{
 }
 function renderShell():void{
   const restore=preserveView();
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${label}</button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">Blank account facts stay unknown. Game eligibility and personal preferences are separate.</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.1 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${label}</button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">Blank account facts stay unknown. Game eligibility and personal preferences are separate.</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.2 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';}
@@ -122,11 +123,12 @@ function renderStrategyResults():string{
 function renderAccount():string{
   const questSelect=(kind:string,key:string,label:string)=>`<label>${esc(label)}<select data-fact="${kind}" data-key="${esc(key)}">${options([['','Unknown'],['0',kind==='quests'?'Not started':'No / off'],...(kind==='quests'?[['1','Started'],['2','Completed']] as [string,string][]:[['1','Yes / on']] as [string,string][])],(p()[kind as 'quests'|'unlocks'|'access'][key]??''))}</select></label>`;
   const query=state.accessSearch.toLowerCase();
-  const quests=[...new Set([...data.quests,...data.variants.flatMap(v=>v.requirements.filter(r=>r.kind==='quest').map(r=>r.key!))])].sort();
-  return head('PLAYER INFORMATION','Account & access','Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.')+`<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${['slayer','combat','attack','strength','defence','hitpoints','ranged','magic','agility','sailing'].map(k=>input('levels.'+k,k[0].toUpperCase()+k.slice(1),p().levels[k],k==='combat'?3:1,k==='combat'?126:99)).join('')}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('blockLimit','Optional hypothetical block-slot override',p().blockLimit,0,7)}${input('mortimerTasks','Completed Mortimer tasks',p().mortimerTasks,0,1e9)}</div>${bool('assumeUnknown','Assume unknown requirements satisfied for this scenario',p().assumeUnknown)}<p class="small muted">Derived block slots: ${data.masters.map(m=>`${m.name}: ${blockSlots(m,p()).slots}`).join(' · ')}</p><div class="formgrid">${(['lumbridge','kourend','western'] as const).map(k=>select('diaries.'+k,'Elite '+k+' diary',[['','Unknown'],['0','Not completed'],['1','Completed']],p().diaries[k]??'')).join('')}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc(state.accessSearch)}" placeholder="Filter quests or unlocks…" aria-label="Filter requirements"><h2>Quest stages</h2><div class="formgrid">${quests.filter(q=>q.toLowerCase().includes(query)).map(q=>questSelect('quests',q,q)).join('')}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(data.unlocks).filter(([k,v])=>v.toLowerCase().includes(query)).map(([k,v])=>questSelect('unlocks',k,v)).join('')}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter(k=>k.toLowerCase().includes(query)).map(k=>questSelect('access',k,k)).join('')}</div></section>`;
+  const quests=relevantQuests(data);
+  const questField=(key:string)=>`<label>${esc(key)}<select aria-label="Quest state for ${esc(key)}" data-fact="quests" data-key="${esc(key)}">${options([['','Auto: '+questLabel(p().questImport?.states[key]??null)],['0','Not started'],['1','In progress'],['2','Completed']],p().quests[key]??'')}</select><small class="muted">${p().quests[key]!=null?'Manual override':p().questImport?.states[key]!==undefined?'Imported quest state':'Not supplied'}</small></label>`;
+  return head('PLAYER INFORMATION','Account & access','Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.')+renderQuestImport(p(),state.questPreview,state.preserveQuestOverrides,state.questDraft)+`<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${['slayer','combat','attack','strength','defence','hitpoints','ranged','magic','agility','sailing'].map(k=>input('levels.'+k,k[0].toUpperCase()+k.slice(1),p().levels[k],k==='combat'?3:1,k==='combat'?126:99)).join('')}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('blockLimit','Optional hypothetical block-slot override',p().blockLimit,0,7)}${input('mortimerTasks','Completed Mortimer tasks',p().mortimerTasks,0,1e9)}</div>${bool('assumeUnknown','Assume unknown requirements satisfied for this scenario',p().assumeUnknown)}<p class="small muted">Derived block slots: ${data.masters.map(m=>`${m.name}: ${blockSlots(m,p()).slots}`).join(' · ')}</p><div class="formgrid">${(['lumbridge','kourend','western'] as const).map(k=>select('diaries.'+k,'Elite '+k+' diary',[['','Unknown'],['0','Not completed'],['1','Completed']],p().diaries[k]??'')).join('')}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc(state.accessSearch)}" placeholder="Filter quests, areas or unlocks…" aria-label="Filter requirements"></section>${renderAreaAccess(p(),accessKeys(),query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter(q=>q.toLowerCase().includes(query)).map(questField).join('')}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(data.unlocks).filter(([k,v])=>v.toLowerCase().includes(query)).map(([k,v])=>questSelect('unlocks',k,v)).join('')}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter(k=>!k.startsWith('location:')&&k.toLowerCase().includes(query)).map(k=>questSelect('access',k,k)).join('')}</div></section>`;
 }
 function accessKeys():string[]{
-  const list:string[]=[];function add(r:Requirement):void{if(r.kind==='access')list.push(r.key!);r.items?.forEach(add);}
+  const list:string[]=AREA_RULES.map(r=>r.key);function add(r:Requirement):void{if(r.kind==='access')list.push(r.key!);r.items?.forEach(add);}
   data.variants.forEach(v=>v.requirements.forEach(add));data.masters.forEach(m=>{m.requirements.forEach(add);m.tasks.forEach(t=>{t.requirements.forEach(add);t.locations?.forEach(l=>list.push('location:'+l));});});return [...new Set(list)].sort();
 }
 function renderTasks():string{
@@ -170,12 +172,17 @@ async function requestName(title:string,value:string):Promise<string|null>{
 }
 function addProfile(profile:Profile):void{
   if(state.profiles.length>=50)throw Error('Maximum of 50 profiles. Export profiles before creating more.');
-  state.profiles.push(validateProfile(data,profile));state.activeId=profile.id;state.changed();
+  state.questRequest++;state.questDraft='';state.questPreview=null;state.profiles.push(validateProfile(data,profile));state.activeId=profile.id;state.changed();
 }
 async function action(name:string):Promise<void>{
   const selected=state.plans.find(r=>r.master.id===state.selected);
   if(name==='add-offer')update(q=>(q.current.options||=[]).push({assignmentId:q.current.assignmentId||q.goal.targets[0].assignmentId,modifier:'none',points:0,quantity:0,target:true}));
   if(name.startsWith('remove-offer-'))update(q=>q.current.options?.splice(Number(name.split('-').at(-1)),1));
+  if(name==='choose-quests')($('quest-file-import')as HTMLInputElement).click();
+  if(name==='preview-quests'){state.questRequest++;state.questPreview=null;try{state.questPreview=parseQuestImport(data,($('quest-json')as HTMLTextAreaElement).value);state.questDraft='';state.preserveQuestOverrides=true;}finally{renderContent();}}
+  if(name==='apply-quests'&&state.questPreview){const valid=applyQuestImport(data,p(),state.questPreview,state.preserveQuestOverrides,new Date().toISOString());state.profiles[state.profiles.findIndex(q=>q.id===state.activeId)]=valid;state.questPreview=null;state.message='Quest import applied. Area access has been recalculated; manual area overrides were preserved.';state.changed();}
+  if(name==='cancel-quests'){state.questRequest++;state.questPreview=null;renderContent();}
+  if(name==='clear-imported-quests')update(q=>delete q.questImport);
   if(name==='dismiss'){state.message='';renderMessage();}
   if(name==='cancel'){state.cancel();state.message='Calculations cancelled. Current saved profile is unchanged.';renderMessage();renderStatus();}
   if(name==='new-profile'){const name=await requestName('New profile','New hunt');if(name){const q=newProfile(data,name);q.assumeUnknown=false;q.levels={slayer:null,combat:null};q.questPoints=null;q.points=null;q.streaks={normal:null,wilderness:null,mortimer:null};q.diaries={lumbridge:null,kourend:null,western:null};q.notes=['Enter player facts. Unknown requirements are not silently satisfied.'];addProfile(q);}}
@@ -239,7 +246,9 @@ document.addEventListener('click',event=>{
 function changeInput(event:Event):void{
   const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
   if(element.id==='theme-select'){state.theme=themeId(element.value);applyTheme(state.theme);if(!saveTheme(state.theme)){state.message='Theme applied for this session. Browser storage is unavailable.';renderMessage();}return;}
-  if(element.id==='profile-select'){state.activeId=element.value;state.selected='';state.changed();return;}
+  if(element.id==='preserve-quest-overrides'){state.preserveQuestOverrides=(element as HTMLInputElement).checked;renderContent();return;}
+  if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>{state.message=String(error);renderMessage();});return;}
+  if(element.id==='profile-select'){state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
   if(element.id==='task-master'){state.taskMaster=element.value;renderContent();return;}
   if(element.id==='method-assignment'){state.methodAssignment=element.value;methodVariant='';renderContent();return;}
   if(element.id==='method-variant'){methodVariant=element.value;renderContent();return;}
@@ -271,21 +280,29 @@ function changeInput(event:Event):void{
 document.addEventListener('change',changeInput);
 document.addEventListener('input',event=>{
   const element=event.target as HTMLInputElement;
+  if(element.id==='quest-json')state.questDraft=element.value;
   if(element.type==='number')changeInput(event);
   if(element.id==='task-search'){state.taskSearch=element.value;const cursor=element.selectionStart;renderContent();const next=$('task-search')as HTMLInputElement;next.focus();next.setSelectionRange(cursor,cursor);}
   if(element.id==='access-search'){state.accessSearch=element.value;const cursor=element.selectionStart;renderContent();const next=$('access-search')as HTMLInputElement;next.focus();next.setSelectionRange(cursor,cursor);}
 });
+async function readQuestFile(input:HTMLInputElement):Promise<void>{
+  const file=input.files?.[0];if(!file)return;const request=++state.questRequest;state.questPreview=null;renderContent();if(file.size>2_000_000)throw Error('Quest file exceeds 2 MB.');
+  const profileId=state.activeId,text=await file.text(),preview=parseQuestImport(data,text);
+  if(request!==state.questRequest)return;
+  if(state.activeId!==profileId)throw Error('Active profile changed. Select the quest file again.');
+  state.questDraft='';state.questPreview=preview;state.preserveQuestOverrides=true;renderContent();
+}
 async function readImport(input:HTMLInputElement):Promise<void>{
   const file=input.files?.[0];if(!file)return;if(file.size>2_000_000)throw Error('Profile file exceeds 2 MB.');
   const text=await file.text();let imported;
   try{imported=importProfiles(data,text);}catch(error){
     if(!String(error).includes('explicitly rebase'))throw error;
-    const payload=JSON.parse(text),versions=[...new Set(payload.profiles.map((q:any)=>q.dataVersion))];
+    const payload=JSON.parse(text),versions=[...new Set(payload.profiles.map((q:any)=>q.dataVersion+(q.areaDataVersion?' / areas '+q.areaDataVersion:'')))];
     const answer=await requestName(`Review data change: ${versions.join(', ')} to ${data.version}. Existing IDs and methods will be validated. Type REBASE to import copies.`, '');
     if(answer!=='REBASE')return;imported=rebaseProfiles(data,text);
   }
   if(state.profiles.length+imported.profiles.length>50)throw Error('Import would exceed 50 profiles.');
   for(const q of imported.profiles){if(state.profiles.some(p=>p.id===q.id)){q.id=newProfile(data).id;q.name=(q.name+' (imported)').slice(0,100);}state.profiles.push(q);}
-  state.activeId=imported.profiles[0].id;state.message='Imported profiles as copies. Existing profiles were preserved.';state.changed();
+  state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=imported.profiles[0].id;state.message='Imported profiles as copies. Existing profiles were preserved.';state.changed();
 }
 renderShell();state.run('plans','plans',p());renderStatus();
