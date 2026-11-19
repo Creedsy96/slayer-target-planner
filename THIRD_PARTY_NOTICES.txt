@@ -22,3 +22,9 @@ private planner is not affiliated with or endorsed by Jagex.
 The portable runtime is Electron 45.3.4. Electron and Chromium notices are
 included as LICENSE and LICENSES.chromium.html beside the executable.
 The original skull-on-sword shield application icon is included with this project.
+Mortimer modifier bounds, unlock thresholds and increments are attributed to
+the Old School RuneScape Wiki (Mortimer revision 15404466) and Jagex's
+"Meet Mortimer: Your Newest Slayer Master" balancing post of 27 July 2026:
+https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1
+The numeric within-range uniform model is the user's confirmed planning rule.
+

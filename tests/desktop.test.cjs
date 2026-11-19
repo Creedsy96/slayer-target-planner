@@ -4,7 +4,7 @@ const {allowedExternal, sameDocument} = require('../desktop/navigation.cjs');
 const {offlineStyle} = require('../desktop/offline-style.cjs');
 
 test('desktop links only open the supported source sites over HTTPS', () => {
-  for (const url of ['https://docs.google.com/spreadsheets/d/source', 'https://oldschool.runescape.wiki/w/Basilisk','https://runelite.net/plugin-hub/show/character-export']) assert.equal(allowedExternal(url), true);
+  for (const url of ['https://docs.google.com/spreadsheets/d/source', 'https://oldschool.runescape.wiki/w/Basilisk','https://runelite.net/plugin-hub/show/character-export','https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1']) assert.equal(allowedExternal(url), true);
   for (const url of ['file:///C:/Windows/system32/cmd.exe', 'javascript:alert(1)', 'http://docs.google.com', 'https://docs.google.com.evil.example', 'https://other.example', 'https://user:password@docs.google.com', 'https://docs.google.com:444', 'invalid']) assert.equal(allowedExternal(url), false);
 });
 

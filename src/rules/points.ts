@@ -1,4 +1,5 @@
 import type {Entry,Master,Profile} from '../domain/types';
+import {MORTIMER_RULES,mortimerKinds,modifierValues} from './mortimer';
 export interface Ledger {points:number;spent:number;earned:number;streaks:Record<string,number>;mortimerTasks:number}
 export function basePoints(m:Master,p:Profile):number{
   if(m.id==='nieve'&&p.diaries.western===1)return 15;
@@ -10,14 +11,11 @@ export function milestoneMultiplier(n:number):number{
   return 1;
 }
 export function modifierKinds(tasks:number,entry?:Entry):string[]{
-  const kinds=['points','quantity'];
-  if(tasks>=15)kinds.push('clue');if(tasks>=25)kinds.push('superior');if(tasks>=40)kinds.push('xp');
-  return kinds;
+  return mortimerKinds(tasks);
 }
-export function choices(p:Profile):number{return p.hypotheticalChoices??((p.mortimerTasks??0)>=50?3:2);}
+export function choices(p:Profile):number{return p.hypotheticalChoices??((p.mortimerTasks??0)>=MORTIMER_RULES.thirdChoiceAt?3:2);}
 export function rangeValues(bounds:number[]|undefined):number[]{
-  if(!bounds?.length)return [0];const low=Math.min(...bounds),high=Math.max(...bounds),values=[];
-  for(let n=low;n<=high;n+=5)values.push(n);return values.length?values:[low];
+  return modifierValues(bounds);
 }
 export function meanModifierPoints(entry:Entry):number{
   const values=rangeValues(entry.pointsRange);return values.reduce((a,b)=>a+b,0)/values.length;

@@ -62,7 +62,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const noSkip=sum(active,r=>r.probability*(1-(r.isTarget?r.targetFraction:0))*r.minutes);
   const cycle=sum(active,r=>r.probability*((1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
   const kept=sum(active,r=>r.probability*(1-r.skip));
-  const unknown=[...new Set([...status.unknown,...active.flatMap(r=>r.unknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'?['Mortimer modifier range values use an estimated uniform distribution']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
+  const unknown=[...new Set([...status.unknown,...active.flatMap(r=>r.unknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
   let reason=status.failed.join('; ');
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
   if(!reason&&conflicts.length)reason=conflicts.join(' ');

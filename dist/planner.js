@@ -73,9 +73,9 @@
     let html = `<section class="card"><h2>Import RuneLite quests</h2><p>Choose a local quest JSON export or paste its contents. Review it before applying it to <strong>${esc(p2.name)}</strong>. Missing quests stay unknown; imported quests can be overridden below.</p><div class="tools"><button data-action="choose-quests">Choose quest JSON</button><button data-action="export-profile">Export profile backup</button></div><details><summary>Paste quest JSON</summary><label>RuneLite quest JSON<textarea id="quest-json" rows="5" maxlength="2000000" placeholder="Paste a RuneLite quest export here">${esc(draft)}</textarea></label><button data-action="preview-quests">Review pasted quests</button></details><details><summary>How to export from RuneLite</summary><ol><li>Install <a href="https://runelite.net/plugin-hub/show/character-export" target="_blank" rel="noopener">Character Export</a> from the RuneLite Plugin Hub and enable quest exporting.</li><li>Log in to the character, use the plugin's Sync Available / Open Folder controls, and choose <strong>quests.json</strong>.</li><li>The folder is <code>.runelite/character-exporter/&lt;Character Name&gt;/</code> in your user folder.</li></ol><p class="small muted">Also accepts the quest records in an OSRS MCP Companion account JSON. Only matching quest states and source details are retained. Bank, inventory, skills and diaries are not imported by this action. No WikiSync API or account login is used by the planner.</p></details>`;
     if (saved) html += `<p class="notice">Last quest import: ${esc(saved.format)} \xB7 ${esc(saved.playerName || "Account not supplied")} \xB7 Exported ${esc(saved.exportedAt || "time unknown")} \xB7 ${Object.keys(saved.states).length} relevant quest states. <button data-action="clear-imported-quests">Remove imported quests</button></p>`;
     if (preview) {
-      const names = Object.keys(preview.states).sort(), conflicts = names.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
+      const names2 = Object.keys(preview.states).sort(), conflicts = names2.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
       const accountMismatch = preview.playerName && saved?.playerName && preview.playerName.toLowerCase() !== saved.playerName.toLowerCase();
-      html += `<div class="notice"><h3>Review quest import</h3><p>${esc(preview.format)} \xB7 ${esc(preview.playerName || "Account not supplied")} \xB7 Exported ${esc(preview.exportedAt || "time unknown")}</p><p>${names.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names.map((name) => `<tr><td>${esc(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
+      html += `<div class="notice"><h3>Review quest import</h3><p>${esc(preview.format)} \xB7 ${esc(preview.playerName || "Account not supplied")} \xB7 Exported ${esc(preview.exportedAt || "time unknown")}</p><p>${names2.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names2.map((name) => `<tr><td>${esc(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
     }
     return html + "</section>";
   }
@@ -253,6 +253,779 @@
   }
   function planIssueTooltip(plan) {
     return [plan.reason, ...plan.unknown.slice(0, 5)].filter(Boolean).join("\n") || "Calculated from the current profile and methods.";
+  }
+
+  // data/mortimer-modifiers.json
+  var mortimer_modifiers_default = {
+    schemaVersion: 1,
+    version: "2026-11-19.1",
+    step: 5,
+    guaranteedModifier: true,
+    typeDistribution: "uniform-unlocked",
+    valueDistribution: "uniform-discrete",
+    valueDistributionProvenance: "User-confirmed planning rule, 19 November 2026",
+    source: {
+      title: "Mortimer",
+      url: "https://oldschool.runescape.wiki/w/Mortimer",
+      revision: 15404466
+    },
+    officialSource: {
+      title: "Meet Mortimer: Your Newest Slayer Master",
+      url: "https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1",
+      revision: null
+    },
+    categories: [
+      {
+        kind: "points",
+        tasks: 0
+      },
+      {
+        kind: "quantity",
+        tasks: 0
+      },
+      {
+        kind: "clue",
+        tasks: 15
+      },
+      {
+        kind: "superior",
+        tasks: 25
+      },
+      {
+        kind: "xp",
+        tasks: 40
+      }
+    ],
+    thirdChoiceAt: 50,
+    tasks: [
+      {
+        id: "crawling hands",
+        name: "Crawling hands",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "cave crawlers",
+        name: "Cave crawlers",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "banshees",
+        name: "Banshees",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "rockslugs",
+        name: "Rockslugs",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "cockatrice",
+        name: "Cockatrice",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "pyrefiends",
+        name: "Pyrefiends",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "basilisks",
+        name: "Basilisks",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "infernal mages",
+        name: "Infernal mages",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "bloodveld",
+        name: "Bloodveld",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "gryphons",
+        name: "Gryphons",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          20,
+          50
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "jellies",
+        name: "Jellies",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "custodian stalker",
+        name: "Custodian stalker",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: null,
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "turoth",
+        name: "Turoth",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "warped creatures",
+        name: "Warped creatures",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "cave horrors",
+        name: "Cave horrors",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "aberrant spectres",
+        name: "Aberrant spectres",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "wyrms",
+        name: "Wyrms",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "dust devils",
+        name: "Dust devils",
+        quantity: [
+          50,
+          150
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: null,
+        xp: [
+          10,
+          20
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "kurask",
+        name: "Kurask",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "venators",
+        name: "Venators",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "gargoyles",
+        name: "Gargoyles",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "aquanites",
+        name: "Aquanites",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "nechryael",
+        name: "Nechryael",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          15,
+          30
+        ],
+        superior: [
+          70,
+          120
+        ]
+      },
+      {
+        id: "drakes",
+        name: "Drakes",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          75
+        ],
+        superior: [
+          75,
+          150
+        ]
+      },
+      {
+        id: "abyssal demons",
+        name: "Abyssal demons",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          30,
+          60
+        ]
+      },
+      {
+        id: "dark beasts",
+        name: "Dark beasts",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "araxytes",
+        name: "Araxytes",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          10,
+          25
+        ]
+      },
+      {
+        id: "smoke devils",
+        name: "Smoke devils",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          10,
+          25
+        ]
+      },
+      {
+        id: "hydras",
+        name: "Hydras",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          10,
+          30
+        ],
+        superior: [
+          75,
+          150
+        ]
+      }
+    ]
+  };
+
+  // src/rules/mortimer.ts
+  var MORTIMER_RULES = mortimer_modifiers_default;
+  var MORTIMER_VERSION = MORTIMER_RULES.version;
+  var byId = new Map(MORTIMER_RULES.tasks.map((t) => [t.id, t]));
+  function mortimerRule(id) {
+    const rule = byId.get(id);
+    if (!rule) throw Error("No reviewed Mortimer modifier ranges for " + id);
+    return rule;
+  }
+  function mortimerKinds(tasks) {
+    return MORTIMER_RULES.categories.filter((c) => tasks >= c.tasks).map((c) => c.kind);
+  }
+  function modifierValues(bounds) {
+    if (!bounds?.length) return [0];
+    const [low, high] = bounds;
+    if (bounds.length !== 2 || !Number.isInteger(low) || !Number.isInteger(high) || low > high || (high - low) % MORTIMER_RULES.step !== 0) throw Error("Invalid five-step Mortimer range.");
+    return Array.from({ length: (high - low) / MORTIMER_RULES.step + 1 }, (_, i) => low + i * MORTIMER_RULES.step);
+  }
+  function applyMortimerRules(base) {
+    return { ...base, masters: base.masters.map((m) => {
+      if (m.id !== "mortimer") return m;
+      if (m.tasks.length !== byId.size) throw Error("Mortimer task list and modifier rules disagree.");
+      return { ...m, tasks: m.tasks.map((entry) => {
+        const r = mortimerRule(entry.id);
+        return { ...entry, pointsRange: [...r.points], quantityModifier: [...r.quantity], modifierValuesStatus: "published-ranges-uniform-discrete" };
+      }) };
+    }) };
+  }
+
+  // src/ui/mortimer-rules.ts
+  var esc3 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var names = { points: "Points", quantity: "Quantity", clue: "Clue", superior: "Superior unique", xp: "Slayer XP" };
+  var percent = (value) => (value * 100).toFixed(2).replace(/\.00$/, "") + "%";
+  function renderMortimerSummary(p2) {
+    const kinds = p2.mortimerTasks === null ? null : mortimerKinds(p2.mortimerTasks);
+    return `<div class="notice"><strong>Every Mortimer option has a modifier.</strong> ${kinds ? `${kinds.length} unlocked types: ${kinds.map((k) => names[k]).join(", ")} \xB7 ${percent(1 / kinds.length)} each.` : "Enter completed Mortimer tasks to determine the unlocked types."} Values are equally likely in five-step increments. <button data-action="mortimer-rules">Modifier probabilities & ranges</button></div>`;
+  }
+  function rangeCell(bounds, kind) {
+    if (bounds === null) return '<span class="muted">N/A</span>';
+    const values = modifierValues(bounds), unit = kind === "quantity" ? " kills" : kind === "points" ? " points" : "%";
+    const number = (n) => (n < 0 ? "\u2212" : kind === "quantity" ? "+" : "") + Math.abs(n);
+    return `${number(bounds[0])} to ${number(bounds[1])}${unit}<small>${values.length} values \xB7 ${percent(1 / values.length)} each</small>`;
+  }
+  function renderMortimerRules(p2) {
+    const active = p2.mortimerTasks === null ? [] : mortimerKinds(p2.mortimerTasks);
+    const source = MORTIMER_RULES.source;
+    return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc3(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc3(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc3(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
   }
 
   // src/ui/rate-dialog.ts
@@ -24651,14 +25424,14 @@
     safe(value);
     if (!value || typeof value !== "object" || !Array.isArray(value.quests) || !value.quests.length || value.quests.length > 1e3) throw Error("Choose a RuneLite quest export containing a non-empty quests array.");
     if (value.schemaVersion !== void 0 && value.schemaVersion !== 1) throw Error("Unsupported RuneLite export schema version.");
-    const names = new Map(relevantQuests(data).map((name) => [normal(name), name]));
+    const names2 = new Map(relevantQuests(data).map((name) => [normal(name), name]));
     const states = {}, seen = /* @__PURE__ */ new Map(), ignored = [];
     for (const row of value.quests) {
       if (!row || typeof row !== "object" || typeof row.name !== "string" || typeof row.state !== "string") throw Error("Quest entries need a name and textual RuneLite state.");
       const title = typeof row.displayName === "string" ? row.displayName : row.name;
       if (!title.trim() || title.length > 120) throw Error("Invalid quest name.");
       if (!Object.hasOwn(STATE, row.state)) throw Error(`Unsupported state for ${title}: ${row.state}.`);
-      const state2 = STATE[row.state], key = normal(title), name = names.get(key) || names.get(normal(row.name));
+      const state2 = STATE[row.state], key = normal(title), name = names2.get(key) || names2.get(normal(row.name));
       if (seen.has(key) && seen.get(key) !== state2) throw Error(`Conflicting duplicate quest: ${title}.`);
       seen.set(key, state2);
       if (name) {
@@ -24691,20 +25464,13 @@
     return m.basePoints;
   }
   function modifierKinds(tasks, entry) {
-    const kinds = ["points", "quantity"];
-    if (tasks >= 15) kinds.push("clue");
-    if (tasks >= 25) kinds.push("superior");
-    if (tasks >= 40) kinds.push("xp");
-    return kinds;
+    return mortimerKinds(tasks);
   }
   function choices(p2) {
-    return p2.hypotheticalChoices ?? ((p2.mortimerTasks ?? 0) >= 50 ? 3 : 2);
+    return p2.hypotheticalChoices ?? ((p2.mortimerTasks ?? 0) >= MORTIMER_RULES.thirdChoiceAt ? 3 : 2);
   }
   function rangeValues(bounds) {
-    if (!bounds?.length) return [0];
-    const low = Math.min(...bounds), high = Math.max(...bounds), values = [];
-    for (let n = low; n <= high; n += 5) values.push(n);
-    return values.length ? values : [low];
+    return modifierValues(bounds);
   }
   function meanModifierPoints(entry) {
     const values = rangeValues(entry.pointsRange);
@@ -24826,7 +25592,7 @@
     const noSkip = sum(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
     const cycle = sum(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p2.skipSeconds / 60));
     const kept = sum(active, (r) => r.probability * (1 - r.skip));
-    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" ? ["Mortimer modifier range values use an estimated uniform distribution"] : [], ...m.id === "mortimer" && p2.mortimerTasks === null ? ["Mortimer progression"] : []])];
+    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p2.mortimerTasks === null ? ["Mortimer progression"] : []])];
     let reason = status.failed.join("; ");
     for (const id of blocks) if (!(p2.blocks[m.group] || []).includes(id) && rows.find((r) => r.id === id)?.reason) conflicts.push("Cannot newly block an ineligible assignment: " + id);
     if (!reason && conflicts.length) reason = conflicts.join(" ");
@@ -24852,11 +25618,11 @@
   }
 
   // src/core.ts
-  var catalogue = catalogue_default;
+  var catalogue = applyMortimerRules(catalogue_default);
 
   // src/ui/app.ts
   var $ = (id) => document.getElementById(id);
-  var esc3 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc4 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var pct = (v) => v === null ? "\u2014" : (v * 100).toFixed(2) + "%";
   var num = (v, d = 2) => v === null ? "Unavailable" : v.toFixed(d);
   var time = (h) => {
@@ -24864,10 +25630,10 @@
     const n = Math.round(h * 60);
     return n < 60 ? n + " min" : Math.floor(n / 60) + "h " + n % 60 + "m";
   };
-  var options = (values, value) => values.map(([key, label]) => `<option value="${esc3(key)}" ${String(value) === key ? "selected" : ""}>${esc3(label)}</option>`).join("");
-  var select = (path, label, values, value) => `<label>${esc3(label)}<select data-setting="${esc3(path)}">${options(values, value)}</select></label>`;
-  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc3(label)}<input data-setting="${esc3(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc3(path)}" ${value ? "checked" : ""}>${esc3(label)}</label>`;
+  var options = (values, value) => values.map(([key, label]) => `<option value="${esc4(key)}" ${String(value) === key ? "selected" : ""}>${esc4(label)}</option>`).join("");
+  var select = (path, label, values, value) => `<label>${esc4(label)}<select data-setting="${esc4(path)}">${options(values, value)}</select></label>`;
+  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc4(label)}<input data-setting="${esc4(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc4(path)}" ${value ? "checked" : ""}>${esc4(label)}</label>`;
   var routes = [["plan", "Hunt planner"], ["account", "Account & access"], ["tasks", "Tasks & blocks"], ["methods", "Combat methods"], ["compare", "Compare profiles"], ["data", "Data & sources"]];
   var AppState = class {
     questRequest = 0;
@@ -49019,6 +49785,766 @@
     attribution: "Game rules and data: Old School RuneScape Wiki, CC BY-NC-SA 3.0. Original planning estimates: supplied workbook. No Wiki scripts are executed."
   };
 
+  // data/mortimer-modifiers.json
+  var mortimer_modifiers_default = {
+    schemaVersion: 1,
+    version: "2026-11-19.1",
+    step: 5,
+    guaranteedModifier: true,
+    typeDistribution: "uniform-unlocked",
+    valueDistribution: "uniform-discrete",
+    valueDistributionProvenance: "User-confirmed planning rule, 19 November 2026",
+    source: {
+      title: "Mortimer",
+      url: "https://oldschool.runescape.wiki/w/Mortimer",
+      revision: 15404466
+    },
+    officialSource: {
+      title: "Meet Mortimer: Your Newest Slayer Master",
+      url: "https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1",
+      revision: null
+    },
+    categories: [
+      {
+        kind: "points",
+        tasks: 0
+      },
+      {
+        kind: "quantity",
+        tasks: 0
+      },
+      {
+        kind: "clue",
+        tasks: 15
+      },
+      {
+        kind: "superior",
+        tasks: 25
+      },
+      {
+        kind: "xp",
+        tasks: 40
+      }
+    ],
+    thirdChoiceAt: 50,
+    tasks: [
+      {
+        id: "crawling hands",
+        name: "Crawling hands",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "cave crawlers",
+        name: "Cave crawlers",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "banshees",
+        name: "Banshees",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "rockslugs",
+        name: "Rockslugs",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "cockatrice",
+        name: "Cockatrice",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "pyrefiends",
+        name: "Pyrefiends",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "basilisks",
+        name: "Basilisks",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "infernal mages",
+        name: "Infernal mages",
+        quantity: [
+          -30,
+          -15
+        ],
+        points: [
+          5,
+          15
+        ],
+        clue: null,
+        xp: [
+          25,
+          100
+        ],
+        superior: [
+          50,
+          100
+        ]
+      },
+      {
+        id: "bloodveld",
+        name: "Bloodveld",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "gryphons",
+        name: "Gryphons",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          20,
+          50
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "jellies",
+        name: "Jellies",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "custodian stalker",
+        name: "Custodian stalker",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: null,
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "turoth",
+        name: "Turoth",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "warped creatures",
+        name: "Warped creatures",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "cave horrors",
+        name: "Cave horrors",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "aberrant spectres",
+        name: "Aberrant spectres",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "wyrms",
+        name: "Wyrms",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "dust devils",
+        name: "Dust devils",
+        quantity: [
+          50,
+          150
+        ],
+        points: [
+          10,
+          15
+        ],
+        clue: null,
+        xp: [
+          10,
+          20
+        ],
+        superior: [
+          100,
+          150
+        ]
+      },
+      {
+        id: "kurask",
+        name: "Kurask",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "venators",
+        name: "Venators",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "gargoyles",
+        name: "Gargoyles",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "aquanites",
+        name: "Aquanites",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "nechryael",
+        name: "Nechryael",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          15,
+          30
+        ],
+        superior: [
+          70,
+          120
+        ]
+      },
+      {
+        id: "drakes",
+        name: "Drakes",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          25,
+          40
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          25,
+          75
+        ],
+        superior: [
+          75,
+          150
+        ]
+      },
+      {
+        id: "abyssal demons",
+        name: "Abyssal demons",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          10,
+          25
+        ],
+        superior: [
+          30,
+          60
+        ]
+      },
+      {
+        id: "dark beasts",
+        name: "Dark beasts",
+        quantity: [
+          30,
+          80
+        ],
+        points: [
+          10,
+          25
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          35,
+          75
+        ],
+        superior: [
+          200,
+          300
+        ]
+      },
+      {
+        id: "araxytes",
+        name: "Araxytes",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          10,
+          25
+        ]
+      },
+      {
+        id: "smoke devils",
+        name: "Smoke devils",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          10,
+          20
+        ],
+        clue: [
+          35,
+          75
+        ],
+        xp: [
+          5,
+          15
+        ],
+        superior: [
+          10,
+          25
+        ]
+      },
+      {
+        id: "hydras",
+        name: "Hydras",
+        quantity: [
+          50,
+          100
+        ],
+        points: [
+          15,
+          30
+        ],
+        clue: [
+          75,
+          150
+        ],
+        xp: [
+          10,
+          30
+        ],
+        superior: [
+          75,
+          150
+        ]
+      }
+    ]
+  };
+
+  // src/rules/mortimer.ts
+  var MORTIMER_RULES = mortimer_modifiers_default;
+  var MORTIMER_VERSION = MORTIMER_RULES.version;
+  var byId = new Map(MORTIMER_RULES.tasks.map((t) => [t.id, t]));
+  function mortimerRule(id) {
+    const rule = byId.get(id);
+    if (!rule) throw Error("No reviewed Mortimer modifier ranges for " + id);
+    return rule;
+  }
+  function mortimerKinds(tasks) {
+    return MORTIMER_RULES.categories.filter((c) => tasks >= c.tasks).map((c) => c.kind);
+  }
+  function modifierValues(bounds) {
+    if (!bounds?.length) return [0];
+    const [low, high] = bounds;
+    if (bounds.length !== 2 || !Number.isInteger(low) || !Number.isInteger(high) || low > high || (high - low) % MORTIMER_RULES.step !== 0) throw Error("Invalid five-step Mortimer range.");
+    return Array.from({ length: (high - low) / MORTIMER_RULES.step + 1 }, (_, i) => low + i * MORTIMER_RULES.step);
+  }
+  function rollMortimer(id, tasks, rng) {
+    const kinds = mortimerKinds(tasks), kind = kinds[Math.floor(rng() * kinds.length)];
+    const bounds = mortimerRule(id)[kind];
+    if (bounds === null) return { kind, value: null };
+    const values = modifierValues(bounds);
+    return { kind, value: values[Math.floor(rng() * values.length)] };
+  }
+  function applyMortimerRules(base) {
+    return { ...base, masters: base.masters.map((m) => {
+      if (m.id !== "mortimer") return m;
+      if (m.tasks.length !== byId.size) throw Error("Mortimer task list and modifier rules disagree.");
+      return { ...m, tasks: m.tasks.map((entry) => {
+        const r = mortimerRule(entry.id);
+        return { ...entry, pointsRange: [...r.points], quantityModifier: [...r.quantity], modifierValuesStatus: "published-ranges-uniform-discrete" };
+      }) };
+    }) };
+  }
+
   // data/area-access.json
   var area_access_default = {
     version: "2026-11-19.1",
@@ -49151,20 +50677,13 @@
     return 1;
   }
   function modifierKinds(tasks, entry) {
-    const kinds = ["points", "quantity"];
-    if (tasks >= 15) kinds.push("clue");
-    if (tasks >= 25) kinds.push("superior");
-    if (tasks >= 40) kinds.push("xp");
-    return kinds;
+    return mortimerKinds(tasks);
   }
   function choices(p) {
-    return p.hypotheticalChoices ?? ((p.mortimerTasks ?? 0) >= 50 ? 3 : 2);
+    return p.hypotheticalChoices ?? ((p.mortimerTasks ?? 0) >= MORTIMER_RULES.thirdChoiceAt ? 3 : 2);
   }
   function rangeValues(bounds) {
-    if (!bounds?.length) return [0];
-    const low = Math.min(...bounds), high = Math.max(...bounds), values = [];
-    for (let n = low; n <= high; n += 5) values.push(n);
-    return values.length ? values : [low];
+    return modifierValues(bounds);
   }
   function meanModifierPoints(entry) {
     const values = rangeValues(entry.pointsRange);
@@ -49348,7 +50867,7 @@
     const noSkip = sum(active, (r) => r.probability * (1 - (r.isTarget ? r.targetFraction : 0)) * r.minutes);
     const cycle = sum(active, (r) => r.probability * ((1 - r.skip) * r.minutes + r.skip * p.skipSeconds / 60));
     const kept = sum(active, (r) => r.probability * (1 - r.skip));
-    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" ? ["Mortimer modifier range values use an estimated uniform distribution"] : [], ...m.id === "mortimer" && p.mortimerTasks === null ? ["Mortimer progression"] : []])];
+    const unknown = [.../* @__PURE__ */ new Set([...status.unknown, ...active.flatMap((r) => r.unknown), ...slots.unknown ? ["Block-slot eligibility"] : [], ...m.id === "mortimer" && p.mortimerTasks === null ? ["Mortimer progression"] : []])];
     let reason = status.failed.join("; ");
     for (const id of blocks) if (!(p.blocks[m.group] || []).includes(id) && rows.find((r) => r.id === id)?.reason) conflicts.push("Cannot newly block an ineligible assignment: " + id);
     if (!reason && conflicts.length) reason = conflicts.join(" ");
@@ -49443,6 +50962,8 @@
     if (plan.reason && plan.reason !== "Cape repeat policies require simulation; analytical ranking is unavailable.") throw Error(plan.reason);
     if (p.streaks[plan.master.streakGroup] == null) throw Error("Enter the current " + plan.master.streakGroup + " streak before simulation.");
     if (plan.master.id === "mortimer" && p.mortimerTasks === null) throw Error("Enter completed Mortimer tasks before simulation.");
+    if (p.current.masterId === "mortimer" && p.current.kind === "task" && (!p.current.modifier || p.current.modifier === "none")) throw Error("Every Mortimer task has a modifier. Enter the actual current-task modifier.");
+    if (p.current.masterId === "mortimer" && p.current.kind === "offer" && p.current.options?.some((o) => o.modifier === "none")) throw Error("Every Mortimer offer has a modifier. Enter a modifier for each pending option.");
     if (p.current.kind === "task" && p.streaks[data.masters.find((m) => m.id === p.current.masterId).streakGroup] == null) throw Error("Enter the streak for the current task master.");
     if (p.current.kind === "task" && p.current.masterId === "mortimer" && p.current.modifier === "points" && p.current.modifierPoints === void 0) throw Error("Enter the actual point value on the current Mortimer task.");
     if (p.current.kind === "offer" && (!p.current.options?.length || p.current.masterId !== plan.master.id)) throw Error("Supply the actual pending offer options for this master.");
@@ -49485,7 +51006,7 @@
     const notes = [...plan.unknown.map((s) => "Conditional: " + s), "Task quantities use a uniform integer range scenario. Timings use configured rates; random kill-time variance is not modelled."];
     if (unresolved) notes.push(\`\${unresolved} trials did not reach the goal within \${p.simulation.horizonOffers} offers. Mean is withheld; unresolved runs are not discarded.\`);
     if (trials.some((t) => !t.success && t.hours < p.simulation.sessionHours)) notes.push("Session success is a lower bound because some unfinished trials stopped before the session ended; the displayed interval includes unresolved outcomes plus Wilson sampling uncertainty, not model error.");
-    if (plan.master.id === "mortimer") notes.push("Mortimer modifier value rolls use a uniform-in-five-step range scenario; source ranges are labelled estimates. Choice policy is a time/points heuristic, not an optimal control proof.");
+    if (plan.master.id === "mortimer") notes.push(\`Mortimer rules \${MORTIMER_VERSION}: every offer has one uniformly selected unlocked modifier. Each valid five-step value is equally likely under the confirmed planning rule. Choice policy remains a time/points heuristic. Clue, XP and superior bonuses are recorded but do not simulate XP or superior loot.\`);
     if (p.goal.kind === "drop") notes.push("Drop goal includes the selected direct per-kill drop only. Superior spawns and their separate drop tables are not included.");
     return { trials: count, successes: success.length, unresolved, meanHours: unresolved ? null : success.reduce((s, t) => s + t.hours, 0) / count, medianHours: quantile(0.5), p90Hours: quantile(0.9), sessionChance: hit / count, sessionInterval: [wilson(hit, count)[0], wilson(hit + trials.filter((t) => !t.success && t.hours < p.simulation.sessionHours).length, count)[1]], exhaustionChance: trials.filter((t) => t.exhausted).length / count, meanSpent: trials.reduce((s, t) => s + t.spent, 0) / count, meanRemaining: trials.reduce((s, t) => s + t.remaining, 0) / count, curve, seed: p.simulation.seed, notes, trace: trials[0]?.trace || [] };
   }
@@ -49549,7 +51070,7 @@
       const targets = offered.filter((o) => o.target);
       const chosen = (targets.length ? targets : offered).reduce((a, b) => score(a, p, m) < score(b, p, m) ? a : b);
       if (chosen.target && p.goal.kind === "offer") {
-        add(\`Target offered: \${chosen.row.variant.name} (\${chosen.kind})\`);
+        add(\`Target offered: \${chosen.row.variant.name} (\${modifierLabel(chosen)})\`);
         return result(true);
       }
       const skip = p.strategy !== "none" && !chosen.target && (p.preferences[chosen.row.id] === "skip" || p.preferences[chosen.row.id] === "avoid" || rng() < chosen.row.skip);
@@ -49584,7 +51105,7 @@
       }
       complete(l, m, p, chosen.row.entry, chosen.kind, chosen.points);
       previous = chosen;
-      add(\`Completed \${chosen.row.name} (\${chosen.kind})\`);
+      add(\`Completed \${chosen.row.name} (\${modifierLabel(chosen)})\`);
     }
     add("Offer horizon reached");
     return result(false);
@@ -49595,21 +51116,22 @@
     return Math.max(0.01, o.row.minutes + (o.kind === "quantity" ? o.quantity * o.row.seconds / 60 : 0)) / (1 + o.points / Math.max(1, m.skipCost));
   }
   function makeOption(row, m, p, l, rng, fallback) {
-    let kind = "none", points = 0, quantity = 0;
+    let kind = "none", points = 0, quantity = 0, modifierValue;
     if (m.id === "mortimer") {
-      const kinds = modifierKinds(l.mortimerTasks, row.entry);
-      kind = kinds[Math.floor(rng() * kinds.length)];
-      if (kind === "points") {
-        const values = rangeValues(row.entry.pointsRange);
-        points = values[Math.floor(rng() * values.length)];
-      }
-      if (kind === "quantity") {
-        const values = rangeValues(row.entry.quantityModifier);
-        quantity = values[Math.floor(rng() * values.length)];
-      }
+      const roll = rollMortimer(row.id, l.mortimerTasks, rng);
+      kind = roll.kind;
+      modifierValue = roll.value;
+      if (kind === "points") points = roll.value ?? 0;
+      if (kind === "quantity") quantity = roll.value ?? 0;
     }
     const target = row.isTarget && rng() < row.targetFraction;
-    return { row: row.isTarget && !target ? fallback.get(row) || row : row, kind, points, quantity, target };
+    return { row: row.isTarget && !target ? fallback.get(row) || row : row, kind, points, quantity, target, modifierValue };
+  }
+  function modifierLabel(o) {
+    if (o.modifierValue === void 0) return o.kind;
+    if (o.modifierValue === null) return o.kind + "; no numeric range published";
+    const unit = o.kind === "quantity" ? " kills" : o.kind === "points" ? " points" : "%";
+    return o.kind + " " + (o.modifierValue > 0 && o.kind !== "points" ? "+" : "") + o.modifierValue + unit;
   }
   function finishCombat(row, kills, target, p, rng, progress) {
     if (!target) return { success: false, kills, progress };
@@ -49664,7 +51186,7 @@
   }
 
   // src/core.ts
-  var catalogue = catalogue_default;
+  var catalogue = applyMortimerRules(catalogue_default);
 
   // src/worker.ts
   self.onmessage = (event) => {
@@ -49769,17 +51291,17 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc3(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3.2 \xB7 ${esc3(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc4(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.4 \xB7 ${esc4(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
     restore();
   }
   function renderMessage() {
-    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc3(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
+    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc4(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
   }
   function renderStatus() {
-    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc3(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
+    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc4(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
   }
   function renderContent() {
     const restore = preserveView();
@@ -49788,7 +51310,7 @@
     restore();
   }
   function head(eyebrow, title, description) {
-    return `<div class="pagehead"><div><div class="eyebrow">${esc3(eyebrow)}</div><h1>${esc3(title)}</h1><p>${esc3(description)}</p></div></div>`;
+    return `<div class="pagehead"><div><div class="eyebrow">${esc4(eyebrow)}</div><h1>${esc4(title)}</h1><p>${esc4(description)}</p></div></div>`;
   }
   function renderPlan() {
     const current = state.plans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
@@ -49800,21 +51322,21 @@
       html += `<div class="formgrid">${select("goal.dropId", "Sourced drop", [["", "Choose a drop"], ...drops.map((d) => [d.id, d.name])], p().goal.dropId)}${input("goal.customDropRate", "Optional custom per-kill probability (0\u20131)", p().goal.customDropRate, 0, 1, "any")}</div><p class="goalhint">Direct drops only. Custom rates are assumptions; superior spawn/drop tables are not included.</p>`;
     }
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
-    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc3(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc3(best.quality)}</p></section>`;
+    if (best) html += `<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc4(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc4(best.quality)}</p></section>`;
     else html += `<div class="notice">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${state.plans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc3(r.master.name)}</button><small>${esc3(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}</td><td title="${esc3(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}</tbody></table></div>`;
+    html += `<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${state.plans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc4(r.master.name)}</button><small>${esc4(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc4(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join("")}</tbody></table></div>`;
     if (current) html += planDetails(current);
     return html;
   }
   function planDetails(plan) {
     const impacts = blockImpacts(catalogue, plan, p());
-    return `<section class="card"><div class="eyebrow">SELECTED STRATEGY</div><h2>${esc3(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc3(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}<p class="small muted">${esc3(plan.quality)}</p><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc3(id)}</span>`).join("") || "None"}</div><div class="tools"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Record proposal as actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div><h3>Skip policy</h3><p>${(plan.skipRate * 100).toFixed(1)}% of offers skipped in the stationary model.</p><p class="small muted">${esc3(plan.boundary || "No partial-frequency boundary task.")}</p><p class="small muted">Protected target assignments are never blocked or skipped.</p></div></div><details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc3(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details><details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc3(s)}</li>`).join("")}</ul></details></section>${simulationPanel(plan)}`;
+    return `<section class="card"><div class="eyebrow">SELECTED STRATEGY</div><h2>${esc4(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc4(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}${plan.master.id === "mortimer" ? renderMortimerSummary(p()) : ""}<p class="small muted">${esc4(plan.quality)}</p><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc4(id)}</span>`).join("") || "None"}</div><div class="tools"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Record proposal as actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div><h3>Skip policy</h3><p>${(plan.skipRate * 100).toFixed(1)}% of offers skipped in the stationary model.</p><p class="small muted">${esc4(plan.boundary || "No partial-frequency boundary task.")}</p><p class="small muted">Protected target assignments are never blocked or skipped.</p></div></div><details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc4(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details><details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc4(s)}</li>`).join("")}</ul></details></section>${simulationPanel(plan)}`;
   }
   function simulationPanel(plan) {
     const result = state.simulation;
-    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc3(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${bool("cape", "Model 10% cape repeat (requires level 99 and previous task)", p().cape)}</details>`;
+    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc4(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${bool("cape", "Model 10% cape repeat (requires level 99 and previous task)", p().cape)}</details>`;
     if (result) {
-      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average spent ${num(result.meanSpent)}; balance ${num(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc3(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc3(result.trace.join("\n"))}</pre></details>`;
+      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average spent ${num(result.meanSpent)}; balance ${num(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc4(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc4(result.trace.join("\n"))}</pre></details>`;
     }
     return html + "</section>" + renderStrategyResults();
   }
@@ -49830,14 +51352,14 @@
   }
   function renderStrategyResults() {
     if (!state.strategyResults.length) return "";
-    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc3(r.strategy)}${r.error ? `<small>${esc3(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc4(r.strategy)}${r.error ? `<small>${esc4(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function renderAccount() {
-    const questSelect = (kind, key, label) => `<label>${esc3(label)}<select data-fact="${kind}" data-key="${esc3(key)}">${options([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
+    const questSelect = (kind, key, label) => `<label>${esc4(label)}<select data-fact="${kind}" data-key="${esc4(key)}">${options([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
     const query = state.accessSearch.toLowerCase();
     const quests = relevantQuests(catalogue);
-    const questField = (key) => `<label>${esc3(key)}<select aria-label="Quest state for ${esc3(key)}" data-fact="quests" data-key="${esc3(key)}">${options([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
-    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc3(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
+    const questField = (key) => `<label>${esc4(key)}<select aria-label="Quest state for ${esc4(key)}" data-fact="quests" data-key="${esc4(key)}">${options([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
+    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc4(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
   }
   function accessKeys() {
     return knownAccessKeys(catalogue);
@@ -49845,7 +51367,7 @@
   function renderTasks() {
     const m = catalogue.masters.find((m2) => m2.id === state.taskMaster), plan = state.plans.find((p2) => p2.master.id === m.id);
     const rows = plan?.rows.filter((r) => (r.name + " " + r.variant.name + " " + r.reason).toLowerCase().includes(state.taskSearch.toLowerCase())) || [];
-    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc3(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc3(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc3(r.name)}<small>${esc3(r.variant.name)}${r.reason ? " \xB7 " + esc3(r.reason) : ""}${r.methodReason ? " \xB7 " + esc3(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc3(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc3(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc3(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc3(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc3(r.name)}" data-preference="${esc3(r.id)}">${options([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
+    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc4(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc4(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc4(r.name)}<small>${esc4(r.variant.name)}${r.reason ? " \xB7 " + esc4(r.reason) : ""}${r.methodReason ? " \xB7 " + esc4(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc4(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc4(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc4(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc4(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc4(r.name)}" data-preference="${esc4(r.id)}">${options([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
   }
   var methodVariant = "";
   function methodKey(aid, vid) {
@@ -49860,20 +51382,20 @@
   }
   function renderMethods() {
     const { key, method: m, aid, vid } = editedMethod(), v = catalogue.variants.find((v2) => v2.id === vid), a = catalogue.assignments.find((a2) => a2.id === aid);
-    const mf = (field, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc3(label)}<input type="number" data-method="${esc3(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-    const ms = (field, label, values, value) => `<label>${esc3(label)}<select data-method="${esc3(key)}" data-method-field="${field}">${options(values, value)}</select></label>`;
-    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc3(v.name)}</h2><p>${v.hp} HP \xB7 ${esc3(v.status)} \xB7 <a href="${esc3(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p><p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc3(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc3(key)}" data-method-field="location" value="${esc3(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc3(name)}">${esc3(name)}</button>`).join("")}</div></section>`;
+    const mf = (field, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc4(label)}<input type="number" data-method="${esc4(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+    const ms = (field, label, values, value) => `<label>${esc4(label)}<select data-method="${esc4(key)}" data-method-field="${field}">${options(values, value)}</select></label>`;
+    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc4(v.name)}</h2><p>${v.hp} HP \xB7 ${esc4(v.status)} \xB7 <a href="${esc4(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p><p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc4(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc4(key)}" data-method-field="location" value="${esc4(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc4(name)}">${esc4(name)}</button>`).join("")}</div></section>`;
   }
   function renderCompare() {
     const base = state.profiles.find((p2) => p2.id === state.comparisonId);
-    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc3(p().name)}</th><th>${esc3(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
+    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc4(p().name)}</th><th>${esc4(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
       const a = state.plans.find((r) => r.master.id === m.id), b = state.comparison.find((r) => r.master.id === m.id);
-      return `<tr><td>${esc3(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
+      return `<tr><td>${esc4(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
     }).join("")}</tbody></table></div><p class="notice">${JSON.stringify(p().goal) !== JSON.stringify(base?.goal) ? "These profiles use different stopping events. Their times are not equivalent rankings." : "Comparison uses stationary offer estimates. Simulate each profile for full funded or drop goals."}</p>` : ""}`;
   }
   function renderData() {
     const count = catalogue.masters.reduce((s, m) => s + m.tasks.length, 0);
-    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc3(catalogue.version)} \xB7 Captured ${esc3(catalogue.captured)}</p><p class="small muted">${esc3(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc3(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer category milestones are sourced; uniform value distributions within modifier ranges are an explicit simulation assumption.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc3(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc3(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc3(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + renderMortimerRules(p()) + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc4(catalogue.version)} \xB7 Captured ${esc4(catalogue.captured)}</p><p class="small muted">${esc4(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc4(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer has one guaranteed modifier per offered task, uniform unlocked types and equally likely five-step values under the confirmed planning rules. The dedicated range table identifies its sources.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc4(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc4(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc4(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function download(name, text, mime = "application/json") {
     const url = URL.createObjectURL(new Blob([text], { type: mime })), a = document.createElement("a");
@@ -49897,7 +51419,7 @@
   }
   async function requestName(title, value) {
     const dialog = document.createElement("dialog");
-    dialog.innerHTML = `<form method="dialog"><h2>${esc3(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc3(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
+    dialog.innerHTML = `<form method="dialog"><h2>${esc4(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc4(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
     document.body.append(dialog);
     dialog.showModal();
     const field = dialog.querySelector("input");
@@ -49920,6 +51442,12 @@
   }
   async function action(name) {
     const selected = state.plans.find((r) => r.master.id === state.selected);
+    if (name === "mortimer-rules") {
+      state.route = "data";
+      renderShell();
+      $("mortimer-modifiers").scrollIntoView({ block: "start" });
+      return;
+    }
     if (name === "add-offer") update((q) => (q.current.options ||= []).push({ assignmentId: q.current.assignmentId || q.goal.targets[0].assignmentId, modifier: "none", points: 0, quantity: 0, target: true }));
     if (name.startsWith("remove-offer-")) update((q) => q.current.options?.splice(Number(name.split("-").at(-1)), 1));
     if (name === "choose-quests") $("quest-file-import").click();
@@ -50013,7 +51541,7 @@
       state.run("strategies", "strategies", p(), selected.master.id);
       renderStatus();
     }
-    if (name === "export-simulation") download("slayer-hunt-simulation.json", JSON.stringify({ dataVersion: catalogue.version, profile: clone(p()), masterId: state.selected, result: state.simulation }, null, 2));
+    if (name === "export-simulation") download("slayer-hunt-simulation.json", JSON.stringify({ dataVersion: catalogue.version, mortimerRulesVersion: MORTIMER_VERSION, profile: clone(p()), masterId: state.selected, result: state.simulation }, null, 2));
     if (name === "use-proposal" && selected) update((q) => q.proposed[selected.master.group] = [...selected.blocks]);
     if (name === "clear-proposal" && selected) update((q) => delete q.proposed[selected.master.group]);
     if (name === "apply-proposal" && selected) update((q) => {

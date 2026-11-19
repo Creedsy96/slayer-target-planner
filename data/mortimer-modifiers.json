@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-11-19.1",
+  "step": 5,
+  "guaranteedModifier": true,
+  "typeDistribution": "uniform-unlocked",
+  "valueDistribution": "uniform-discrete",
+  "valueDistributionProvenance": "User-confirmed planning rule, 19 November 2026",
+  "source": {
+    "title": "Mortimer",
+    "url": "https://oldschool.runescape.wiki/w/Mortimer",
+    "revision": 15404466
+  },
+  "officialSource": {
+    "title": "Meet Mortimer: Your Newest Slayer Master",
+    "url": "https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1",
+    "revision": null
+  },
+  "categories": [
+    {
+      "kind": "points",
+      "tasks": 0
+    },
+    {
+      "kind": "quantity",
+      "tasks": 0
+    },
+    {
+      "kind": "clue",
+      "tasks": 15
+    },
+    {
+      "kind": "superior",
+      "tasks": 25
+    },
+    {
+      "kind": "xp",
+      "tasks": 40
+    }
+  ],
+  "thirdChoiceAt": 50,
+  "tasks": [
+    {
+      "id": "crawling hands",
+      "name": "Crawling hands",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "cave crawlers",
+      "name": "Cave crawlers",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "banshees",
+      "name": "Banshees",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "rockslugs",
+      "name": "Rockslugs",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "cockatrice",
+      "name": "Cockatrice",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "pyrefiends",
+      "name": "Pyrefiends",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "basilisks",
+      "name": "Basilisks",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        25,
+        40
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "infernal mages",
+      "name": "Infernal mages",
+      "quantity": [
+        -30,
+        -15
+      ],
+      "points": [
+        5,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        25,
+        100
+      ],
+      "superior": [
+        50,
+        100
+      ]
+    },
+    {
+      "id": "bloodveld",
+      "name": "Bloodveld",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        15
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        5,
+        15
+      ],
+      "superior": [
+        100,
+        150
+      ]
+    },
+    {
+      "id": "gryphons",
+      "name": "Gryphons",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        25
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        20,
+        50
+      ],
+      "superior": [
+        100,
+        150
+      ]
+    },
+    {
+      "id": "jellies",
+      "name": "Jellies",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        15
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        10,
+        25
+      ],
+      "superior": [
+        100,
+        150
+      ]
+    },
+    {
+      "id": "custodian stalker",
+      "name": "Custodian stalker",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        10,
+        25
+      ],
+      "superior": [
+        100,
+        150
+      ]
+    },
+    {
+      "id": "turoth",
+      "name": "Turoth",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "warped creatures",
+      "name": "Warped creatures",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "cave horrors",
+      "name": "Cave horrors",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "aberrant spectres",
+      "name": "Aberrant spectres",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "wyrms",
+      "name": "Wyrms",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        25,
+        40
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "dust devils",
+      "name": "Dust devils",
+      "quantity": [
+        50,
+        150
+      ],
+      "points": [
+        10,
+        15
+      ],
+      "clue": null,
+      "xp": [
+        10,
+        20
+      ],
+      "superior": [
+        100,
+        150
+      ]
+    },
+    {
+      "id": "kurask",
+      "name": "Kurask",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        25,
+        40
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "venators",
+      "name": "Venators",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        25
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "gargoyles",
+      "name": "Gargoyles",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "aquanites",
+      "name": "Aquanites",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        25,
+        40
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "nechryael",
+      "name": "Nechryael",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        20
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        15,
+        30
+      ],
+      "superior": [
+        70,
+        120
+      ]
+    },
+    {
+      "id": "drakes",
+      "name": "Drakes",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        25,
+        40
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        25,
+        75
+      ],
+      "superior": [
+        75,
+        150
+      ]
+    },
+    {
+      "id": "abyssal demons",
+      "name": "Abyssal demons",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        25
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        10,
+        25
+      ],
+      "superior": [
+        30,
+        60
+      ]
+    },
+    {
+      "id": "dark beasts",
+      "name": "Dark beasts",
+      "quantity": [
+        30,
+        80
+      ],
+      "points": [
+        10,
+        25
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        35,
+        75
+      ],
+      "superior": [
+        200,
+        300
+      ]
+    },
+    {
+      "id": "araxytes",
+      "name": "Araxytes",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        20
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        5,
+        15
+      ],
+      "superior": [
+        10,
+        25
+      ]
+    },
+    {
+      "id": "smoke devils",
+      "name": "Smoke devils",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        10,
+        20
+      ],
+      "clue": [
+        35,
+        75
+      ],
+      "xp": [
+        5,
+        15
+      ],
+      "superior": [
+        10,
+        25
+      ]
+    },
+    {
+      "id": "hydras",
+      "name": "Hydras",
+      "quantity": [
+        50,
+        100
+      ],
+      "points": [
+        15,
+        30
+      ],
+      "clue": [
+        75,
+        150
+      ],
+      "xp": [
+        10,
+        30
+      ],
+      "superior": [
+        75,
+        150
+      ]
+    }
+  ]
+}

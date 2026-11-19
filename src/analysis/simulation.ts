@@ -1,13 +1,14 @@
 import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types';
 import {clone} from '../state/profiles';
-import {canReset,choices,complete,ledger,modifierKinds,pay,rangeValues,resetStreak,type Ledger} from '../rules/points';
+import {canReset,choices,complete,ledger,pay,resetStreak,type Ledger} from '../rules/points';
+import {rollMortimer,MORTIMER_VERSION} from '../rules/mortimer';
 import {optimise,prepareRows} from './planner';
 import {sampleOffer} from './offers';
 import {sampleQuantity,sampleKills} from './timing';
 export function random(seed:number):()=>number{
   let state=seed>>>0;return ()=>{state+=0x6D2B79F5;let t=state;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
 }
-interface Option {row:Row;kind:string;points:number;quantity:number;target:boolean}
+interface Option {row:Row;kind:string;points:number;quantity:number;target:boolean;modifierValue?:number|null}
 interface Trial {success:boolean;hours:number;exhausted:boolean;spent:number;remaining:number;trace:string[]}
 export function wilson(successes:number,total:number):[number,number]{
   if(!total)return [0,1];const z=1.95996398454,p=successes/total,d=1+z*z/total;
@@ -18,6 +19,8 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   if(plan.reason&&plan.reason!=='Cape repeat policies require simulation; analytical ranking is unavailable.')throw Error(plan.reason);
   if(p.streaks[plan.master.streakGroup]==null)throw Error('Enter the current '+plan.master.streakGroup+' streak before simulation.');
   if(plan.master.id==='mortimer'&&p.mortimerTasks===null)throw Error('Enter completed Mortimer tasks before simulation.');
+  if(p.current.masterId==='mortimer'&&p.current.kind==='task'&&(!p.current.modifier||p.current.modifier==='none'))throw Error('Every Mortimer task has a modifier. Enter the actual current-task modifier.');
+  if(p.current.masterId==='mortimer'&&p.current.kind==='offer'&&p.current.options?.some(o=>o.modifier==='none'))throw Error('Every Mortimer offer has a modifier. Enter a modifier for each pending option.');
   if(p.current.kind==='task'&&p.streaks[data.masters.find(m=>m.id===p.current.masterId)!.streakGroup]==null)throw Error('Enter the streak for the current task master.');
   if(p.current.kind==='task'&&p.current.masterId==='mortimer'&&p.current.modifier==='points'&&p.current.modifierPoints===undefined)throw Error('Enter the actual point value on the current Mortimer task.');
   if(p.current.kind==='offer'&&(!p.current.options?.length||p.current.masterId!==plan.master.id))throw Error('Supply the actual pending offer options for this master.');
@@ -43,7 +46,7 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   const notes=[...plan.unknown.map(s=>'Conditional: '+s),'Task quantities use a uniform integer range scenario. Timings use configured rates; random kill-time variance is not modelled.'];
   if(unresolved)notes.push(`${unresolved} trials did not reach the goal within ${p.simulation.horizonOffers} offers. Mean is withheld; unresolved runs are not discarded.`);
   if(trials.some(t=>!t.success&&t.hours<p.simulation.sessionHours))notes.push('Session success is a lower bound because some unfinished trials stopped before the session ended; the displayed interval includes unresolved outcomes plus Wilson sampling uncertainty, not model error.');
-  if(plan.master.id==='mortimer')notes.push('Mortimer modifier value rolls use a uniform-in-five-step range scenario; source ranges are labelled estimates. Choice policy is a time/points heuristic, not an optimal control proof.');
+  if(plan.master.id==='mortimer')notes.push(`Mortimer rules ${MORTIMER_VERSION}: every offer has one uniformly selected unlocked modifier. Each valid five-step value is equally likely under the confirmed planning rule. Choice policy remains a time/points heuristic. Clue, XP and superior bonuses are recorded but do not simulate XP or superior loot.`);
   if(p.goal.kind==='drop')notes.push('Drop goal includes the selected direct per-kill drop only. Superior spawns and their separate drop tables are not included.');
   return {trials:count,successes:success.length,unresolved,meanHours:unresolved?null:success.reduce((s,t)=>s+t.hours,0)/count,medianHours:quantile(.5),p90Hours:quantile(.9),sessionChance:hit/count,sessionInterval:[wilson(hit,count)[0],wilson(hit+trials.filter(t=>!t.success&&t.hours<p.simulation.sessionHours).length,count)[1]],exhaustionChance:trials.filter(t=>t.exhausted).length/count,meanSpent:trials.reduce((s,t)=>s+t.spent,0)/count,meanRemaining:trials.reduce((s,t)=>s+t.remaining,0)/count,curve,seed:p.simulation.seed,notes,trace:trials[0]?.trace||[]};
 }
@@ -78,7 +81,7 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const offered=supplied|| (repeat?[previous!]:sampleOffer(rows,m.id==='mortimer'?choices({...p,mortimerTasks:l.mortimerTasks}):1,rng).map(row=>makeOption(row,m,p,l,rng,fallback)));
     const targets=offered.filter(o=>o.target);
     const chosen=(targets.length?targets:offered).reduce((a,b)=>score(a,p,m)<score(b,p,m)?a:b);
-    if(chosen.target&&p.goal.kind==='offer'){add(`Target offered: ${chosen.row.variant.name} (${chosen.kind})`);return result(true);}
+    if(chosen.target&&p.goal.kind==='offer'){add(`Target offered: ${chosen.row.variant.name} (${modifierLabel(chosen)})`);return result(true);}
     const skip=p.strategy!=='none'&&!chosen.target&&(p.preferences[chosen.row.id]==='skip'||p.preferences[chosen.row.id]==='avoid'||rng()<chosen.row.skip);
     if(!chosen.target&&p.strategy==='reset-turael'&&m.id!==filler.master.id&&canReset(m,chosen.row.id,filler.master)){
       resetStreak(l,m);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset ${chosen.row.name}; ${m.streakGroup} streak reset`);continue;
@@ -94,7 +97,7 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     minutes+=chosen.row.method.travel+done.kills*chosen.row.seconds/60;
     if(done.success){add(`Goal reached at ${chosen.row.variant.name}`);return result(true);}
     complete(l,m,p,chosen.row.entry,chosen.kind,chosen.points);previous=chosen;
-    add(`Completed ${chosen.row.name} (${chosen.kind})`);
+    add(`Completed ${chosen.row.name} (${modifierLabel(chosen)})`);
   }
   add('Offer horizon reached');return result(false);
 }
@@ -104,14 +107,20 @@ function score(o:Option,p:Profile,m:Master):number{
   return Math.max(.01,o.row.minutes+(o.kind==='quantity'?o.quantity*o.row.seconds/60:0))/(1+o.points/Math.max(1,m.skipCost));
 }
 function makeOption(row:Row,m:Master,p:Profile,l:Ledger,rng:()=>number,fallback:Map<Row,Row>):Option{
-  let kind='none',points=0,quantity=0;
+  let kind='none',points=0,quantity=0,modifierValue:number|null|undefined;
   if(m.id==='mortimer'){
-    const kinds=modifierKinds(l.mortimerTasks,row.entry);kind=kinds[Math.floor(rng()*kinds.length)];
-    if(kind==='points'){const values=rangeValues(row.entry.pointsRange);points=values[Math.floor(rng()*values.length)];}
-    if(kind==='quantity'){const values=rangeValues(row.entry.quantityModifier);quantity=values[Math.floor(rng()*values.length)];}
+    const roll=rollMortimer(row.id,l.mortimerTasks,rng);kind=roll.kind;modifierValue=roll.value;
+    if(kind==='points')points=roll.value??0;
+    if(kind==='quantity')quantity=roll.value??0;
   }
   const target=row.isTarget&&rng()<row.targetFraction;
-  return {row:row.isTarget&&!target?(fallback.get(row)||row):row,kind,points,quantity,target};
+  return {row:row.isTarget&&!target?(fallback.get(row)||row):row,kind,points,quantity,target,modifierValue};
+}
+function modifierLabel(o:Option):string{
+  if(o.modifierValue===undefined)return o.kind;
+  if(o.modifierValue===null)return o.kind+'; no numeric range published';
+  const unit=o.kind==='quantity'?' kills':o.kind==='points'?' points':'%';
+  return o.kind+' '+(o.modifierValue>0&&o.kind!=='points'?'+':'')+o.modifierValue+unit;
 }
 function finishCombat(row:Row,kills:number,target:boolean,p:Profile,rng:()=>number,progress:number):{success:boolean;kills:number;progress:number}{
   if(!target)return {success:false,kills,progress};
