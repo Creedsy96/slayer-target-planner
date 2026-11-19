@@ -1,12 +1,16 @@
-# Slayer Target Planner 2.8.0
+# Slayer Target Planner 2.8.1
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.8.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.8.1 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Item icons and links in 2.8.1
+
+Gear items, named supplies and potion alternatives have bundled inventory icons and direct Wiki links. Each choice in a compound recommendation links separately. Generic categories use a representative icon named in its hover text; spells link to their spell page. The **How these sets are chosen** disclosure explains the curated mechanics rules, tier templates and limits. Item artwork is sourced from a pinned RuneLite cache mirror, with no Wiki calls during capture or use. See `src/ui/item-art.json` for per-image provenance.
 
 ## Standalone Creature Guide in 2.8.0
 

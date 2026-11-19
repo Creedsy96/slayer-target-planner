@@ -28,7 +28,7 @@ export function decorateCreatureText(root:ParentNode):void{
   const nodes:Text[]=[];let node:Node|null;
   while((node=walker.nextNode())){
     const text=node as Text,parent=text.parentElement;
-    if(!parent||parent.closest('select,option,textarea,input,script,style,svg,code,.creature-name,.creature-icon,[contenteditable]'))continue;
+    if(!parent||parent.closest('select,option,textarea,input,script,style,svg,code,.creature-name,.creature-icon,.item-link,[contenteditable]'))continue;
     pattern.lastIndex=0;if(pattern.test(text.data))nodes.push(text);
   }
   for(const text of nodes){const span=document.createElement('span');span.innerHTML=creatureText(text.data);text.replaceWith(...Array.from(span.childNodes));}

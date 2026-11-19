@@ -1,0 +1,789 @@
+{
+  "sourceCommit": "e60d45ed18a57c40c1d4120a1ed94c5896e49da8",
+  "references": {
+    "Abyssal whip": {
+      "item": "Abyssal whip",
+      "page": "Abyssal whip"
+    },
+    "Accursed sceptre": {
+      "item": "Accursed sceptre",
+      "page": "Accursed sceptre"
+    },
+    "Ahrim's robeskirt": {
+      "item": "Ahrim's robeskirt",
+      "page": "Ahrim's robeskirt"
+    },
+    "Ahrim's robetop": {
+      "item": "Ahrim's robetop",
+      "page": "Ahrim's robetop"
+    },
+    "Amethyst broad bolts": {
+      "item": "Amethyst broad bolts",
+      "page": "Amethyst broad bolts"
+    },
+    "Amulet of fury": {
+      "item": "Amulet of fury",
+      "page": "Amulet of fury"
+    },
+    "Amulet of glory": {
+      "item": "Amulet of glory",
+      "page": "Amulet of glory"
+    },
+    "Amulet of rancour": {
+      "item": "Amulet of rancour",
+      "page": "Amulet of rancour"
+    },
+    "Ancestral hat": {
+      "item": "Ancestral hat",
+      "page": "Ancestral hat"
+    },
+    "Ancestral robe bottom": {
+      "item": "Ancestral robe bottom",
+      "page": "Ancestral robe bottom"
+    },
+    "Ancestral robe top": {
+      "item": "Ancestral robe top",
+      "page": "Ancestral robe top"
+    },
+    "Ancient staff": {
+      "item": "Ancient staff",
+      "page": "Ancient staff"
+    },
+    "Ancient wyvern shield": {
+      "item": "Ancient wyvern shield",
+      "page": "Ancient wyvern shield"
+    },
+    "Anti-dragon shield": {
+      "item": "Anti-dragon shield",
+      "page": "Anti-dragon shield"
+    },
+    "Archers ring (i)": {
+      "item": "Archers ring (i)",
+      "page": "Archers ring (i)"
+    },
+    "Arclight": {
+      "item": "Arclight",
+      "page": "Arclight"
+    },
+    "Ava's accumulator": {
+      "item": "Ava's accumulator",
+      "page": "Ava's accumulator"
+    },
+    "Avernic defender": {
+      "item": "Avernic defender",
+      "page": "Avernic defender"
+    },
+    "Barrows gloves": {
+      "item": "Barrows gloves",
+      "page": "Barrows gloves"
+    },
+    "Berserker ring (i)": {
+      "item": "Berserker ring (i)",
+      "page": "Berserker ring (i)"
+    },
+    "Black d'hide body": {
+      "item": "Black d'hide body",
+      "page": "Black d'hide body"
+    },
+    "Black d'hide chaps": {
+      "item": "Black d'hide chaps",
+      "page": "Black d'hide chaps"
+    },
+    "Blade of saeldor": {
+      "item": "Blade of Saeldor",
+      "page": "Blade of saeldor"
+    },
+    "Blisterwood flail": {
+      "item": "Blisterwood flail",
+      "page": "Blisterwood flail"
+    },
+    "Book of darkness": {
+      "item": "Book of Darkness",
+      "page": "Book of darkness"
+    },
+    "Book of law": {
+      "item": "Book of Law",
+      "page": "Book of law"
+    },
+    "Boots of brimstone": {
+      "item": "Boots of Brimstone",
+      "page": "Boots of brimstone"
+    },
+    "Boots of stone": {
+      "item": "Boots of stone",
+      "page": "Boots of stone"
+    },
+    "Bow of faerdhinen": {
+      "item": "Bow of Faerdhinen",
+      "page": "Bow of faerdhinen"
+    },
+    "Broad bolts": {
+      "item": "Broad bolts",
+      "page": "Broad bolts"
+    },
+    "Climbing boots": {
+      "item": "Climbing boots",
+      "page": "Climbing boots"
+    },
+    "Crystal body": {
+      "item": "Crystal body",
+      "page": "Crystal body"
+    },
+    "Crystal legs": {
+      "item": "Crystal legs",
+      "page": "Crystal legs"
+    },
+    "Dark totem": {
+      "item": "Dark totem",
+      "page": "Dark totem"
+    },
+    "Diamond bolts (e)": {
+      "item": "Diamond bolts (e)",
+      "page": "Diamond bolts (e)"
+    },
+    "Diamond dragon bolts (e)": {
+      "item": "Diamond dragon bolts (e)",
+      "page": "Diamond dragon bolts (e)"
+    },
+    "Dizana's quiver": {
+      "item": "Dizana's quiver",
+      "page": "Dizana's quiver"
+    },
+    "Dragon boots": {
+      "item": "Dragon boots",
+      "page": "Dragon boots"
+    },
+    "Dragon crossbow": {
+      "item": "Dragon crossbow",
+      "page": "Dragon crossbow"
+    },
+    "Dragon defender": {
+      "item": "Dragon defender",
+      "page": "Dragon defender"
+    },
+    "Dragon hunter crossbow": {
+      "item": "Dragon hunter crossbow",
+      "page": "Dragon hunter crossbow"
+    },
+    "Dragon hunter lance": {
+      "item": "Dragon hunter lance",
+      "page": "Dragon hunter lance"
+    },
+    "Dragonfire shield": {
+      "item": "Dragonfire shield",
+      "page": "Dragonfire shield"
+    },
+    "Dragonfire ward": {
+      "item": "Dragonfire ward",
+      "page": "Dragonfire ward"
+    },
+    "Earmuffs": {
+      "item": "Earmuffs",
+      "page": "Earmuffs"
+    },
+    "Elidinis' ward (f)": {
+      "item": "Elidinis' ward (f)",
+      "page": "Elidinis' ward (f)"
+    },
+    "Emberlight": {
+      "item": "Emberlight",
+      "page": "Emberlight"
+    },
+    "Eternal boots": {
+      "item": "Eternal boots",
+      "page": "Eternal boots"
+    },
+    "Facemask": {
+      "item": "Facemask",
+      "page": "Facemask"
+    },
+    "Ferocious gloves": {
+      "item": "Ferocious gloves",
+      "page": "Ferocious gloves"
+    },
+    "Fire cape": {
+      "item": "Fire cape",
+      "page": "Fire cape"
+    },
+    "Ghrazi rapier": {
+      "item": "Ghrazi rapier",
+      "page": "Ghrazi rapier"
+    },
+    "Giant key": {
+      "item": "Giant key",
+      "page": "Giant key"
+    },
+    "Harmonised nightmare staff": {
+      "item": "Harmonised Nightmare staff",
+      "page": "Harmonised nightmare staff"
+    },
+    "Helm of Neitiznot": {
+      "item": "Helm of Neitiznot",
+      "page": "Helm of Neitiznot"
+    },
+    "Infernal cape": {
+      "item": "Infernal cape",
+      "page": "Infernal cape"
+    },
+    "Inquisitor's hauberk": {
+      "item": "Inquisitor's hauberk",
+      "page": "Inquisitor's hauberk"
+    },
+    "Inquisitor's mace": {
+      "item": "Inquisitor's mace",
+      "page": "Inquisitor's mace"
+    },
+    "Inquisitor's plateskirt": {
+      "item": "Inquisitor's plateskirt",
+      "page": "Inquisitor's plateskirt"
+    },
+    "Insulated boots": {
+      "item": "Insulated boots",
+      "page": "Insulated boots"
+    },
+    "Karil's leatherskirt": {
+      "item": "Karil's leatherskirt",
+      "page": "Karil's leatherskirt"
+    },
+    "Karil's leathertop": {
+      "item": "Karil's leathertop",
+      "page": "Karil's leathertop"
+    },
+    "Keris partisan": {
+      "item": "Keris partisan",
+      "page": "Keris partisan"
+    },
+    "Keris partisan of breaching": {
+      "item": "Keris partisan of breaching",
+      "page": "Keris partisan of breaching"
+    },
+    "Kodai wand": {
+      "item": "Kodai wand",
+      "page": "Kodai wand"
+    },
+    "Leaf-bladed battleaxe": {
+      "item": "Leaf-bladed battleaxe",
+      "page": "Leaf-bladed battleaxe"
+    },
+    "Leaf-bladed sword": {
+      "item": "Leaf-bladed sword",
+      "page": "Leaf-bladed sword"
+    },
+    "Lit bug lantern": {
+      "item": "Lit bug lantern",
+      "page": "Lit bug lantern"
+    },
+    "Magic shortbow (i)": {
+      "item": "Magic shortbow (i)",
+      "page": "Magic shortbow (i)"
+    },
+    "Magus ring": {
+      "item": "Magus ring",
+      "page": "Magus ring"
+    },
+    "Masori body (f)": {
+      "item": "Masori body (f)",
+      "page": "Masori body (f)"
+    },
+    "Masori chaps (f)": {
+      "item": "Masori chaps (f)",
+      "page": "Masori chaps (f)"
+    },
+    "Masori mask (f)": {
+      "item": "Masori mask (f)",
+      "page": "Masori mask (f)"
+    },
+    "Mind shield": {
+      "item": "Mind shield",
+      "page": "Mind shield"
+    },
+    "Mirror shield": {
+      "item": "Mirror shield",
+      "page": "Mirror shield"
+    },
+    "Monk’s robe": {
+      "item": "Monk's robe",
+      "page": "Monk’s robe"
+    },
+    "Monk’s robe top": {
+      "item": "Monk's robe top",
+      "page": "Monk’s robe top"
+    },
+    "Mossy key": {
+      "item": "Mossy key",
+      "page": "Mossy key"
+    },
+    "Mystic air staff": {
+      "item": "Mystic air staff",
+      "page": "Mystic air staff"
+    },
+    "Mystic boots": {
+      "item": "Mystic boots",
+      "page": "Mystic boots"
+    },
+    "Mystic earth staff": {
+      "item": "Mystic earth staff",
+      "page": "Mystic earth staff"
+    },
+    "Mystic fire staff": {
+      "item": "Mystic fire staff",
+      "page": "Mystic fire staff"
+    },
+    "Mystic hat": {
+      "item": "Mystic hat",
+      "page": "Mystic hat"
+    },
+    "Mystic robe bottom": {
+      "item": "Mystic robe bottom",
+      "page": "Mystic robe bottom"
+    },
+    "Mystic robe top": {
+      "item": "Mystic robe top",
+      "page": "Mystic robe top"
+    },
+    "Mystic water staff": {
+      "item": "Mystic water staff",
+      "page": "Mystic water staff"
+    },
+    "Necklace of anguish": {
+      "item": "Necklace of anguish",
+      "page": "Necklace of anguish"
+    },
+    "Neitiznot faceguard": {
+      "item": "Neitiznot faceguard",
+      "page": "Neitiznot faceguard"
+    },
+    "Nose peg": {
+      "item": "Nose peg",
+      "page": "Nose peg"
+    },
+    "Occult necklace": {
+      "item": "Occult necklace",
+      "page": "Occult necklace"
+    },
+    "Ogre bow": {
+      "item": "Ogre bow",
+      "page": "Ogre bow"
+    },
+    "Osmumten's fang": {
+      "item": "Osmumten's fang",
+      "page": "Osmumten's fang"
+    },
+    "Pegasian boots": {
+      "item": "Pegasian boots",
+      "page": "Pegasian boots"
+    },
+    "Primordial boots": {
+      "item": "Primordial boots",
+      "page": "Primordial boots"
+    },
+    "Proselyte cuisse": {
+      "item": "Proselyte cuisse",
+      "page": "Proselyte cuisse"
+    },
+    "Proselyte hauberk": {
+      "item": "Proselyte hauberk",
+      "page": "Proselyte hauberk"
+    },
+    "Reinforced goggles": {
+      "item": "Reinforced goggles",
+      "page": "Reinforced goggles"
+    },
+    "Sanguinesti staff": {
+      "item": "Sanguinesti staff",
+      "page": "Sanguinesti staff"
+    },
+    "Sarachnis cudgel": {
+      "item": "Sarachnis cudgel",
+      "page": "Sarachnis cudgel"
+    },
+    "Scythe of Vitur": {
+      "item": "Scythe of Vitur",
+      "page": "Scythe of Vitur"
+    },
+    "Seers ring (i)": {
+      "item": "Seers ring (i)",
+      "page": "Seers ring (i)"
+    },
+    "Shayzien body (5)": {
+      "item": "Shayzien body (5)",
+      "page": "Shayzien body (5)"
+    },
+    "Shayzien boots (5)": {
+      "item": "Shayzien boots (5)",
+      "page": "Shayzien boots (5)"
+    },
+    "Shayzien gloves (5)": {
+      "item": "Shayzien gloves (5)",
+      "page": "Shayzien gloves (5)"
+    },
+    "Shayzien greaves (5)": {
+      "item": "Shayzien greaves (5)",
+      "page": "Shayzien greaves (5)"
+    },
+    "Shayzien helm (5)": {
+      "item": "Shayzien helm (5)",
+      "page": "Shayzien helm (5)"
+    },
+    "Slayer bell": {
+      "item": "Slayer bell",
+      "page": "Slayer bell"
+    },
+    "Slayer helmet (i)": {
+      "item": "Slayer helmet (i)",
+      "page": "Slayer helmet (i)"
+    },
+    "Slayer's staff (e)": {
+      "item": "Slayer's staff (e)",
+      "page": "Slayer's staff (e)"
+    },
+    "Spiny helmet": {
+      "item": "Spiny helmet",
+      "page": "Spiny helmet"
+    },
+    "Staff of the dead": {
+      "item": "Staff of the Dead",
+      "page": "Staff of the dead"
+    },
+    "Sunfire fanatic chausses": {
+      "item": "Sunfire fanatic chausses",
+      "page": "Sunfire fanatic chausses"
+    },
+    "Sunfire fanatic cuirass": {
+      "item": "Sunfire fanatic cuirass",
+      "page": "Sunfire fanatic cuirass"
+    },
+    "Sunspear": {
+      "item": "Sunspear",
+      "page": "Sunspear"
+    },
+    "Torag's platebody": {
+      "item": "Torag's platebody",
+      "page": "Torag's platebody"
+    },
+    "Tormented bracelet": {
+      "item": "Tormented bracelet",
+      "page": "Tormented bracelet"
+    },
+    "Tortugan shield": {
+      "item": "Tortugan shield",
+      "page": "Tortugan shield"
+    },
+    "Torva platebody": {
+      "item": "Torva platebody",
+      "page": "Torva platebody"
+    },
+    "Torva platelegs": {
+      "item": "Torva platelegs",
+      "page": "Torva platelegs"
+    },
+    "Toxic blowpipe": {
+      "item": "Toxic blowpipe",
+      "page": "Toxic blowpipe"
+    },
+    "Trident of the seas": {
+      "item": "Trident of the Seas",
+      "page": "Trident of the seas"
+    },
+    "Trident of the swamp": {
+      "item": "Trident of the Swamp",
+      "page": "Trident of the swamp"
+    },
+    "Tumeken's shadow": {
+      "item": "Tumeken's shadow",
+      "page": "Tumeken's shadow"
+    },
+    "Twisted bow": {
+      "item": "Twisted bow",
+      "page": "Twisted bow"
+    },
+    "Twisted buckler": {
+      "item": "Twisted buckler",
+      "page": "Twisted buckler"
+    },
+    "Ultor ring": {
+      "item": "Ultor ring",
+      "page": "Ultor ring"
+    },
+    "Ursine chainmace": {
+      "item": "Ursine chainmace",
+      "page": "Ursine chainmace"
+    },
+    "V's shield": {
+      "item": "V's shield",
+      "page": "V's shield"
+    },
+    "Venator ring": {
+      "item": "Venator ring",
+      "page": "Venator ring"
+    },
+    "Verac's plateskirt": {
+      "item": "Verac's plateskirt",
+      "page": "Verac's plateskirt"
+    },
+    "Virtus robe bottom": {
+      "item": "Virtus robe bottom",
+      "page": "Virtus robe bottom"
+    },
+    "Virtus robe top": {
+      "item": "Virtus robe top",
+      "page": "Virtus robe top"
+    },
+    "Webweaver bow": {
+      "item": "Webweaver bow",
+      "page": "Webweaver bow"
+    },
+    "Witchwood icon": {
+      "item": "Witchwood icon",
+      "page": "Witchwood icon"
+    },
+    "Zamorak staff": {
+      "item": "Zamorak staff",
+      "page": "Zamorak staff"
+    },
+    "Zamorakian hasta": {
+      "item": "Zamorakian hasta",
+      "page": "Zamorakian hasta"
+    },
+    "Zaryte crossbow": {
+      "item": "Zaryte crossbow",
+      "page": "Zaryte crossbow"
+    },
+    "Zaryte vambraces": {
+      "item": "Zaryte vambraces",
+      "page": "Zaryte vambraces"
+    },
+    "Amethyst arrows": {
+      "item": "Amethyst arrow",
+      "page": "Amethyst arrow"
+    },
+    "Dragon arrows": {
+      "item": "Dragon arrow",
+      "page": "Dragon arrow"
+    },
+    "Dragon sword": {
+      "item": "Dragon shortsword",
+      "page": "Dragon shortsword"
+    },
+    "Blessed coif": {
+      "item": "Saradomin coif",
+      "page": "Blessed dragonhide armour"
+    },
+    "Blessed d'hide body": {
+      "item": "Saradomin d'hide body",
+      "page": "Blessed dragonhide armour"
+    },
+    "Blessed d'hide chaps": {
+      "item": "Saradomin chaps",
+      "page": "Blessed dragonhide armour"
+    },
+    "Blessed d'hide boots": {
+      "item": "Saradomin d'hide boots",
+      "page": "Blessed dragonhide armour"
+    },
+    "God blessing": {
+      "item": "Holy blessing",
+      "page": "Blessing"
+    },
+    "God cape": {
+      "item": "Saradomin cape",
+      "page": "God cape"
+    },
+    "Imbued god cape": {
+      "item": "Imbued saradomin cape",
+      "page": "Imbued god cape"
+    },
+    "Crystal armour": {
+      "item": "Crystal body",
+      "page": "Crystal armour"
+    },
+    "Amethyst darts": {
+      "item": "Amethyst dart",
+      "page": "Amethyst dart"
+    },
+    "Dragon darts": {
+      "item": "Dragon dart",
+      "page": "Dragon dart"
+    },
+    "Zulrah scales": {
+      "item": "Zulrah's scales",
+      "page": "Zulrah's scales"
+    },
+    "Ogre arrows": {
+      "item": "Ogre arrow",
+      "page": "Ogre arrow"
+    },
+    "Ogre composite bow": {
+      "item": "Comp ogre bow",
+      "page": "Comp ogre bow"
+    },
+    "Ogre bellows": {
+      "item": "Ogre bellows",
+      "page": "Ogre bellows"
+    },
+    "swamp toads": {
+      "item": "Bloated toad",
+      "page": "Chompy bird hunting"
+    },
+    "Rune brutal arrows": {
+      "item": "Rune brutal",
+      "page": "Rune brutal"
+    },
+    "Revenant ether": {
+      "item": "Revenant ether",
+      "page": "Revenant ether"
+    },
+    "Anti-venom+": {
+      "item": "Anti-venom+(4)",
+      "page": "Anti-venom+"
+    },
+    "extended anti-venom+": {
+      "item": "Extended anti-venom+(4)",
+      "page": "Extended anti-venom+"
+    },
+    "Antidote++": {
+      "item": "Antidote++(4)",
+      "page": "Antidote++"
+    },
+    "antipoison": {
+      "item": "Antipoison(4)",
+      "page": "Antipoison"
+    },
+    "Extended antifire": {
+      "item": "Extended antifire(4)",
+      "page": "Extended antifire"
+    },
+    "Prayer potions": {
+      "item": "Prayer potion(4)",
+      "page": "Prayer potion"
+    },
+    "super restores": {
+      "item": "Super restore(4)",
+      "page": "Super restore"
+    },
+    "Ranging potion": {
+      "item": "Ranging potion(4)",
+      "page": "Ranging potion"
+    },
+    "Magic potion": {
+      "item": "Magic potion(4)",
+      "page": "Magic potion"
+    },
+    "heart boost": {
+      "item": "Imbued heart",
+      "page": "Imbued heart"
+    },
+    "Super combat potion": {
+      "item": "Super combat potion(4)",
+      "page": "Super combat potion"
+    },
+    "super attack": {
+      "item": "Super attack(4)",
+      "page": "Super attack"
+    },
+    "super strength": {
+      "item": "Super strength(4)",
+      "page": "Super strength"
+    },
+    "Saradomin brews": {
+      "item": "Saradomin brew(4)",
+      "page": "Saradomin brew"
+    },
+    "Relicym’s balm": {
+      "item": "Relicym's balm(4)",
+      "page": "Relicym's balm"
+    },
+    "Sanfew serum": {
+      "item": "Sanfew serum(4)",
+      "page": "Sanfew serum"
+    },
+    "moonlight potions": {
+      "item": "Moonlight potion(4)",
+      "page": "Moonlight potion"
+    },
+    "Ice coolers": {
+      "item": "Ice cooler",
+      "page": "Ice cooler"
+    },
+    "Fishing explosives": {
+      "item": "Fishing explosive",
+      "page": "Fishing explosive"
+    },
+    "Bags of salt": {
+      "item": "Bag of salt",
+      "page": "Bag of salt"
+    },
+    "brine sabre": {
+      "item": "Brine sabre",
+      "page": "Brine sabre"
+    },
+    "rock thrownhammer": {
+      "item": "Rock thrownhammer",
+      "page": "Rock thrownhammer"
+    },
+    "Fungicide spray": {
+      "item": "Fungicide spray 10",
+      "page": "Fungicide spray"
+    },
+    "fungicide": {
+      "item": "Fungicide",
+      "page": "Fungicide"
+    },
+    "Ring of dueling": {
+      "item": "Ring of dueling(8)",
+      "page": "Ring of dueling"
+    },
+    "Spectral spirit shield": {
+      "item": "Spectral spirit shield",
+      "page": "Spectral spirit shield"
+    },
+    "Scorching bow": {
+      "item": "Scorching bow",
+      "page": "Scorching bow"
+    },
+    "Axe": {
+      "item": "Bronze axe",
+      "page": "Axe"
+    },
+    "secateurs": {
+      "item": "Secateurs",
+      "page": "Secateurs"
+    },
+    "Earth surge": {
+      "page": "Earth surge"
+    },
+    "Earth wave": {
+      "page": "Earth wave"
+    },
+    "Fire surge": {
+      "page": "Fire surge"
+    },
+    "Fire wave": {
+      "page": "Fire wave"
+    },
+    "Water surge": {
+      "page": "Water surge"
+    },
+    "Water wave": {
+      "page": "Water wave"
+    },
+    "Wind surge": {
+      "page": "Wind surge"
+    },
+    "Wind wave": {
+      "page": "Wind wave"
+    },
+    "Ice Barrage": {
+      "page": "Ice Barrage"
+    },
+    "Ice Burst": {
+      "page": "Ice Burst"
+    },
+    "Magic Dart": {
+      "page": "Magic Dart"
+    },
+    "Flames of Zamorak": {
+      "page": "Flames of Zamorak"
+    }
+  }
+}

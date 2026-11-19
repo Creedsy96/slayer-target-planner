@@ -41,3 +41,12 @@ Eleven bounded specialist strategy/training captures are retained in
 data/guide-sources, crediting the linked original Wiki page histories. Gear and
 route suggestions are editorial examples informed by those sources, not certified
 best-in-slot calculations. No Wiki requests occur when a creature is selected.
+
+Item inventory artwork is copyright Jagex Ltd, distributed here for this
+independent fan planner using the RuneLite static cache mirror:
+https://github.com/runelite/static.runelite.net
+The pinned source commit, item IDs, original image URLs and SHA-256 hashes are
+recorded in src/ui/item-art.json (item-art.json beside the Windows EXE).
+assets/items.png arranges the inventory sprites without changing their identity.
+Generic category recommendations can show representative art, identified in
+the item's hover text. Linked Wiki pages are not downloaded during app use.

@@ -2860,7 +2860,7 @@
     let node;
     while (node = walker.nextNode()) {
       const text = node, parent = text.parentElement;
-      if (!parent || parent.closest("select,option,textarea,input,script,style,svg,code,.creature-name,.creature-icon,[contenteditable]")) continue;
+      if (!parent || parent.closest("select,option,textarea,input,script,style,svg,code,.creature-name,.creature-icon,.item-link,[contenteditable]")) continue;
       pattern.lastIndex = 0;
       if (pattern.test(text.data)) nodes.push(text);
     }
@@ -4780,6 +4780,1956 @@
   };
   function interfaceIcon(name) {
     return `<svg class="interface-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths[name] || paths.plan}</svg>`;
+  }
+
+  // src/ui/item-art.json
+  var item_art_default = {
+    sourceCommit: "e60d45ed18a57c40c1d4120a1ed94c5896e49da8",
+    columns: 16,
+    rows: 12,
+    cell: 40,
+    entries: {
+      "542": {
+        frame: 0,
+        name: "Monk's robe",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/542.png",
+        sha256: "92780c6d7b862e2643548c1218c53280cbbc68bd6dce657af44bee7d46320abc"
+      },
+      "544": {
+        frame: 1,
+        name: "Monk's robe top",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/544.png",
+        sha256: "bbecc795b6e56f3072b9f9f8c27006b11a0b672b993f286923468e2294109c54"
+      },
+      "1351": {
+        frame: 2,
+        name: "Bronze axe",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1351.png",
+        sha256: "63fddd9f1d77d0c8532e3908b0a9b78954c6e34adeddf9032737f0d629a6387e"
+      },
+      "1401": {
+        frame: 3,
+        name: "Mystic fire staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1401.png",
+        sha256: "42843960701c893f0841abcd1dd3bf70556b92a0dec5cf0698e1f2099c08f87e"
+      },
+      "1403": {
+        frame: 4,
+        name: "Mystic water staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1403.png",
+        sha256: "1c45d15cccf7abbd971c3336e5c9f47c2e7db7ceab91ec28463483ca2951e53b"
+      },
+      "1405": {
+        frame: 5,
+        name: "Mystic air staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1405.png",
+        sha256: "33450b2fdffbb679d6eb20786f6faabc1a673251e7a0141c0144dc6777134b0c"
+      },
+      "1407": {
+        frame: 6,
+        name: "Mystic earth staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1407.png",
+        sha256: "776ad71080bbfec7cc8f9fb2ec4d1ca38bd0dd8dd7d3306fd4d0a8f99705ef90"
+      },
+      "1540": {
+        frame: 7,
+        name: "Anti-dragon shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1540.png",
+        sha256: "5ddb502f978d9229032e3cebd2691336179eb30d6c74f5fc00e51c8c711f9b80"
+      },
+      "1704": {
+        frame: 8,
+        name: "Amulet of glory",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/1704.png",
+        sha256: "918e090af3040cc0e557acbfcf54dd05567bfd17acce4ddd9cccc0da44b33ae4"
+      },
+      "2412": {
+        frame: 9,
+        name: "Saradomin cape",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2412.png",
+        sha256: "3e57fad6bf084b3882958266c9b75cf794da47584a11c700d5ff2253643c18bb"
+      },
+      "2417": {
+        frame: 10,
+        name: "Zamorak staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2417.png",
+        sha256: "ea41425841ed58652988a8fce0cc561c0d5595ae64586c0a9d665253bfceed6e"
+      },
+      "2434": {
+        frame: 11,
+        name: "Prayer potion(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2434.png",
+        sha256: "6be6f50f50247460f4d2eab6453bab556dd0bb24c9ef52ead612cd3eec301319"
+      },
+      "2436": {
+        frame: 12,
+        name: "Super attack(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2436.png",
+        sha256: "1e8e65850537b4c554a90d6d15954338b4d78f5190093ce133cfe733c768235e"
+      },
+      "2440": {
+        frame: 13,
+        name: "Super strength(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2440.png",
+        sha256: "1f3a6a922e3793e96cde9c0cfaba5271eb56f443e0f3cbcd5bb813d9a50e5aa1"
+      },
+      "2444": {
+        frame: 14,
+        name: "Ranging potion(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2444.png",
+        sha256: "0772b73fc24562ac154493bdc57d2dc62dd44eddd39fd11e896a16d9bf69e204"
+      },
+      "2446": {
+        frame: 15,
+        name: "Antipoison(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2446.png",
+        sha256: "d640e82fc4ab6ef5727dce1a1597723a4852bb41e4ebad2958a9f104506ef0fa"
+      },
+      "2497": {
+        frame: 16,
+        name: "Black d'hide chaps",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2497.png",
+        sha256: "eae98594dcdcb8c1855fae2854864a7b6b69b4a27d4a355ab56f2f93847457b6"
+      },
+      "2503": {
+        frame: 17,
+        name: "Black d'hide body",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2503.png",
+        sha256: "436d562f537c8b32c82fa7c572b4e4d6a58cd091d06d6e9b840f4d7a8bf242a6"
+      },
+      "2552": {
+        frame: 18,
+        name: "Ring of dueling(8)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2552.png",
+        sha256: "07387f4b8525b3c6dd2d006ccc6b4effd97cba5ac3610f7551e54c0ea4551264"
+      },
+      "2866": {
+        frame: 19,
+        name: "Ogre arrow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2866.png",
+        sha256: "7d12f819c55ee30b70d1e56d667577a22602734d508e43b553d878a62eff75b3"
+      },
+      "2871": {
+        frame: 20,
+        name: "Ogre bellows",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2871.png",
+        sha256: "8a3387bd2d4f19143882af7432ed718663c35853da3dbb369999dc18c04acff9"
+      },
+      "2875": {
+        frame: 21,
+        name: "Bloated toad",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2875.png",
+        sha256: "b0e1e8a3acbd84c65d3daddbf0a31e80efcea356dbbbbb5d760a069faafef75b"
+      },
+      "2883": {
+        frame: 22,
+        name: "Ogre bow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/2883.png",
+        sha256: "21dd043f5d8f24a597701a5b351ad8f08c369d2d3731fc9c079429dcad69119c"
+      },
+      "3024": {
+        frame: 23,
+        name: "Super restore(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/3024.png",
+        sha256: "e3983b8d3cba32e419e34864f1fc0c83e0474bf80a34d297ddfc388b86e78183"
+      },
+      "3040": {
+        frame: 24,
+        name: "Magic potion(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/3040.png",
+        sha256: "a49cb0c6a5ec81dcad29409fddd99d7f22f1e63d0b3b13e6ad376f8f3a14b262"
+      },
+      "3105": {
+        frame: 25,
+        name: "Climbing boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/3105.png",
+        sha256: "8f6422ad0b36fa91d27c98c34f0d41e222d7b61cc42863be30a2d892283aec67"
+      },
+      "4089": {
+        frame: 26,
+        name: "Mystic hat",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4089.png",
+        sha256: "919f1f5961058eaf29ee9a5fe97667b14552b96340173728777bfceafcb547dd"
+      },
+      "4091": {
+        frame: 27,
+        name: "Mystic robe top",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4091.png",
+        sha256: "2543a92153d828642193f527a28d35353d4703ff47af465500c605711fa8b3c4"
+      },
+      "4093": {
+        frame: 28,
+        name: "Mystic robe bottom",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4093.png",
+        sha256: "0f8c172607ea8de9a188e3cfb3c0f73f58f36aba9677f4edb01c099dbac68c95"
+      },
+      "4097": {
+        frame: 29,
+        name: "Mystic boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4097.png",
+        sha256: "bc837b01756382cdd49258e5ebd255ea7065982504a6cda4e5941a889fc526c3"
+      },
+      "4151": {
+        frame: 30,
+        name: "Abyssal whip",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4151.png",
+        sha256: "65bbade9cac1ebe18350a0edf24223c9d74c298cfde657cadf94a3c5adf12771"
+      },
+      "4156": {
+        frame: 31,
+        name: "Mirror shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4156.png",
+        sha256: "ac993d77d827a03fc0adf16908f063a6fcb1f7692abdc0a2b0e33654bc29836a"
+      },
+      "4161": {
+        frame: 32,
+        name: "Bag of salt",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4161.png",
+        sha256: "21adb460272d387c8cfccac2f0463a39382d690ac608b2fe3ec2d3d1a8c79679"
+      },
+      "4164": {
+        frame: 33,
+        name: "Facemask",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4164.png",
+        sha256: "52ab7e4fd731b0d20323ffac91844f7b59e92b53492b1b1280462d17b3cf5911"
+      },
+      "4166": {
+        frame: 34,
+        name: "Earmuffs",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4166.png",
+        sha256: "47f6691e1f0a8eeb7086e9eeb2ff81010700e461ac5926f2bbb909cc9b06446f"
+      },
+      "4168": {
+        frame: 35,
+        name: "Nose peg",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4168.png",
+        sha256: "7adadddaa82d627bf0758a7d08bc31afd71d7b98f15ee95e934d12e7386f4672"
+      },
+      "4551": {
+        frame: 36,
+        name: "Spiny helmet",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4551.png",
+        sha256: "583527815fae024ac83cc9f26355450752bbcd90cb361bb6328522660893cbda"
+      },
+      "4675": {
+        frame: 37,
+        name: "Ancient staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4675.png",
+        sha256: "dc979a50b21d4c87d5cc47bd8a659658888d0ce923359dbc87f403b69f7d0dd6"
+      },
+      "4712": {
+        frame: 38,
+        name: "Ahrim's robetop",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4712.png",
+        sha256: "6893b23868456dac38321e197c7b22f0a84dddd0dd07976b1aa6a2fff282b1a8"
+      },
+      "4714": {
+        frame: 39,
+        name: "Ahrim's robeskirt",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4714.png",
+        sha256: "d19afa86eda72c046cfb38a7b4f0b8dae097e1901aa7ca80d0edbde4b1b01642"
+      },
+      "4736": {
+        frame: 40,
+        name: "Karil's leathertop",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4736.png",
+        sha256: "16fbb0cf98ebee62c9ae57ead4e15598556fa63de037d14f8d3c6d37d6d534fc"
+      },
+      "4738": {
+        frame: 41,
+        name: "Karil's leatherskirt",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4738.png",
+        sha256: "e839a4bee7802b0f5d6f530c6f6e59db475858d223b66c8bd217f9a65efc46bf"
+      },
+      "4749": {
+        frame: 42,
+        name: "Torag's platebody",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4749.png",
+        sha256: "a56e1f715bec57b8414de3187ddc01418584fa4b7ca3260b0fddd681b0eb5b10"
+      },
+      "4759": {
+        frame: 43,
+        name: "Verac's plateskirt",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4759.png",
+        sha256: "6df43ca3699dbcecf2f8998beb7f693429af907c9bc65a20bc6a96541ea05f4c"
+      },
+      "4803": {
+        frame: 44,
+        name: "Rune brutal",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4803.png",
+        sha256: "97a9769d0347c27e07f6ec7b36439b81ffa08ce7fe3eb2df50fcdb3bce2ddc48"
+      },
+      "4827": {
+        frame: 45,
+        name: "Comp ogre bow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4827.png",
+        sha256: "5291b8a692c75d7643b75789e73ba1f6b957e115747f1cb1166f383909ff12b7"
+      },
+      "4842": {
+        frame: 46,
+        name: "Relicym's balm(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/4842.png",
+        sha256: "ab2648c52779a27f97573c9fc18c54d0d85b161dbbd374a4c37f3a855ab1131f"
+      },
+      "5329": {
+        frame: 47,
+        name: "Secateurs",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/5329.png",
+        sha256: "3f4257e1a23762a8bd4f3dbe9c1890d87a5a9d7ff7ffd1dd3a52b43789687b7c"
+      },
+      "5952": {
+        frame: 48,
+        name: "Antidote++(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/5952.png",
+        sha256: "ddc1dd91cf0e89243c360d7ce0934761d29191248ff182f8136dd854f0b88f18"
+      },
+      "6570": {
+        frame: 49,
+        name: "Fire cape",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/6570.png",
+        sha256: "93a5fba995c8a4356bee31855710e9c28ff1b2dcc3c198889bf0f9f2c95bd29a"
+      },
+      "6585": {
+        frame: 50,
+        name: "Amulet of fury",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/6585.png",
+        sha256: "54787fdd326d7d00a357c4c95caa10901d1eeb560f2fcc1d7d32a5a6b7988697"
+      },
+      "6660": {
+        frame: 51,
+        name: "Fishing explosive",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/6660.png",
+        sha256: "43e08bdfb68528b24f48c66ace05daec684429804a955a4faf21976cb2f205b0"
+      },
+      "6685": {
+        frame: 52,
+        name: "Saradomin brew(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/6685.png",
+        sha256: "82cd504983ee0077ccf3623ebb64a4dbe04a83bb65ae7bd29041b044d8d4652d"
+      },
+      "6696": {
+        frame: 53,
+        name: "Ice cooler",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/6696.png",
+        sha256: "a3a27f0dbc5af2c4f0627b040f1ae88ee5562af40f9394e43c436274db853f1d"
+      },
+      "7053": {
+        frame: 54,
+        name: "Lit bug lantern",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7053.png",
+        sha256: "2904d1c34c3ec164485fbef6d49c11cc5f29aec52e6c6722ba7be5055ee149fc"
+      },
+      "7159": {
+        frame: 55,
+        name: "Insulated boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7159.png",
+        sha256: "7ef29f208be5f9aca90e376cfdabcdee3255b90b4bb028b61a0c00713b4bd461"
+      },
+      "7421": {
+        frame: 56,
+        name: "Fungicide spray 10",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7421.png",
+        sha256: "96e0b8af10c7e94d847f7c4680d8a14aaf6d48cd2e4cbfcce00a965b7cfd4755"
+      },
+      "7432": {
+        frame: 57,
+        name: "Fungicide",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7432.png",
+        sha256: "5d0b49312fd5db65f8a72b7e2fe96e2d52e078387988d0cb0e31e3ea8324ecd5"
+      },
+      "7462": {
+        frame: 58,
+        name: "Barrows gloves",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7462.png",
+        sha256: "129f941d8a94a9c311a38d1efe66ec29cdcf6bc5d8a48e7ff8fd32c80baa0451"
+      },
+      "8923": {
+        frame: 59,
+        name: "Witchwood icon",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/8923.png",
+        sha256: "03db17fc07fe92c3ab24a65e792e2a087fc7e27f3ef8e5f118acdfc3eaa8d8b7"
+      },
+      "9243": {
+        frame: 60,
+        name: "Diamond bolts (e)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9243.png",
+        sha256: "4d03b1bbea7c1002704c262d1094b03b912e37c63274d45830f378434901a04d"
+      },
+      "9674": {
+        frame: 61,
+        name: "Proselyte hauberk",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9674.png",
+        sha256: "d620c18499e5cbd5c317f1e0ba2dfce3855c0396f26ba9c66f341be903976c57"
+      },
+      "9676": {
+        frame: 62,
+        name: "Proselyte cuisse",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9676.png",
+        sha256: "4eb1d24e9d602b307c224fd504984a0eb83ec161ce9181f89cdccb3dd101280f"
+      },
+      "9731": {
+        frame: 63,
+        name: "Mind shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9731.png",
+        sha256: "6f044febfb019c440614933d36617cf5ba9b3dca1c0661b51be44bd5fdfe7c7f"
+      },
+      "10386": {
+        frame: 64,
+        name: "Saradomin d'hide body",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10386.png",
+        sha256: "69a7d02c9b3e82fc72f188432ce4dabcf8f166d76c8b7482eeb09ef5b2b1b5d6"
+      },
+      "10388": {
+        frame: 65,
+        name: "Saradomin chaps",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10388.png",
+        sha256: "ec377adb132ac73dcfdd0642d8addc2ebcea3d8517c1b63c2b8c6466294516ca"
+      },
+      "10390": {
+        frame: 66,
+        name: "Saradomin coif",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10390.png",
+        sha256: "fc3b76925d398c415963705ae9f2aa8c553d8c6371dfcf88f99d2cff2203379a"
+      },
+      "10499": {
+        frame: 67,
+        name: "Ava's accumulator",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10499.png",
+        sha256: "be5695af6fbfd813723363cf81d997c06f66abcd99245f4407208d8a71f7db39"
+      },
+      "10828": {
+        frame: 68,
+        name: "Helm of Neitiznot",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10828.png",
+        sha256: "95cd1fb6ac4066e3d904fe754556208d07583de448c3acc99e000fbe5a93573c"
+      },
+      "10925": {
+        frame: 69,
+        name: "Sanfew serum(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10925.png",
+        sha256: "23893607530680cfef2901fdf2889e2b41f48c6fdc7698c1a92ed7dece10b1a5"
+      },
+      "10952": {
+        frame: 70,
+        name: "Slayer bell",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10952.png",
+        sha256: "27467d2557bb24ec8657f5425cce95a9e5c1f3ae15c8dd89a37e5a56af2ad1f8"
+      },
+      "11037": {
+        frame: 71,
+        name: "Brine sabre",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11037.png",
+        sha256: "ad97758d2506f1d8370917b6117987ed4a555e08115996bf61c822539453e178"
+      },
+      "11212": {
+        frame: 72,
+        name: "Dragon arrow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11212.png",
+        sha256: "be08bba0cad0d34455be5ac6310da39a48e9898ebbaefd3377d5cb042b07f5d7"
+      },
+      "11230": {
+        frame: 73,
+        name: "Dragon dart",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11230.png",
+        sha256: "f42e0b76a6446ef03883819d52e41362a69fa4d4e6803969d0afecacd2093582"
+      },
+      "11283": {
+        frame: 74,
+        name: "Dragonfire shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11283.png",
+        sha256: "bbec146e5e68902a077b3f775799dc9c95fd15cb3e761e4f6c70971a3d9af7c9"
+      },
+      "11770": {
+        frame: 75,
+        name: "Seers ring (i)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11770.png",
+        sha256: "8c2c2b9c3e7017fa9dce989d6dc61b064e5b7222db5b4d708803038736147251"
+      },
+      "11771": {
+        frame: 76,
+        name: "Archers ring (i)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11771.png",
+        sha256: "227e7dd05a7798c6418e7fc967abffefeb58f261dce1826c0bb091c3fa8310e8"
+      },
+      "11773": {
+        frame: 77,
+        name: "Berserker ring (i)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11773.png",
+        sha256: "6207ad5fc1f25d4c527118d9fe022fccc46998f53cc111aeb4fe7979e2c39f48"
+      },
+      "11791": {
+        frame: 78,
+        name: "Staff of the Dead",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11791.png",
+        sha256: "ef7cd776d71eb8163f04437a06a0e5cd113b55f099dba7870bd88f2aa8849ac7"
+      },
+      "11840": {
+        frame: 79,
+        name: "Dragon boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11840.png",
+        sha256: "48fcc8134f473d5c4e39c848f657db4c6173bc168e6c691d01bafd729191f0e8"
+      },
+      "11865": {
+        frame: 80,
+        name: "Slayer helmet (i)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11865.png",
+        sha256: "8679e3cc4dd4ac53e59333dcd536146aa90256feb8c0eb78f9b0a856870a6a30"
+      },
+      "11875": {
+        frame: 81,
+        name: "Broad bolts",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11875.png",
+        sha256: "60f84e2d509da7e08af7a69e1db3871b76993cc9224b85d2a9a5f68fba75eeeb"
+      },
+      "11889": {
+        frame: 82,
+        name: "Zamorakian hasta",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11889.png",
+        sha256: "da56a092a11f60d725a2979c30bfee151dff495a966ebe833c3e316b8008bcde"
+      },
+      "11902": {
+        frame: 83,
+        name: "Leaf-bladed sword",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11902.png",
+        sha256: "bf3a923a203ae14269f4ca62e89eafb629412c6468a22d746402307e3d952948"
+      },
+      "11907": {
+        frame: 84,
+        name: "Trident of the Seas",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11907.png",
+        sha256: "a3fd6cf9074ed064e02a9d2b8fb7d7a9dbe7512813d6d356a87b7afd23b8e39e"
+      },
+      "11951": {
+        frame: 85,
+        name: "Extended antifire(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11951.png",
+        sha256: "14d6ccd47aed8b765a345ebff2eca613b9c0dc02a56118846d0ad695179c2204"
+      },
+      "12002": {
+        frame: 86,
+        name: "Occult necklace",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12002.png",
+        sha256: "d31270ce09eb2228b880297629092ab5edfa759277175210600002c21dd1c66c"
+      },
+      "12610": {
+        frame: 87,
+        name: "Book of Law",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12610.png",
+        sha256: "80dcf8394042a82188b160c36aaa4578453ac55ce40f5155c2d0b2798690b735"
+      },
+      "12612": {
+        frame: 88,
+        name: "Book of Darkness",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12612.png",
+        sha256: "3f67005d88cac7e7f608217b10964f833769a53796a77aec9a73219397bdd460"
+      },
+      "12695": {
+        frame: 89,
+        name: "Super combat potion(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12695.png",
+        sha256: "d27c19a98445e495a594b97fb0beee7401b8a92a9b25f618aebe43d2e7e2699a"
+      },
+      "12788": {
+        frame: 90,
+        name: "Magic shortbow (i)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12788.png",
+        sha256: "1799dc59790eb59eb5ab13b2a2cb829f2030e404de9a78f6df9f48fd3da8154a"
+      },
+      "12821": {
+        frame: 91,
+        name: "Spectral spirit shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12821.png",
+        sha256: "4b78b75b5419e089334c17afc3b9511927cef7ce3fe0dbe71654ccac571fb5ca"
+      },
+      "12899": {
+        frame: 92,
+        name: "Trident of the Swamp",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12899.png",
+        sha256: "9ee1d50aff5b1192152b5725d49e3afa801a659a148b3b0690be64848e3ee0d1"
+      },
+      "12913": {
+        frame: 93,
+        name: "Anti-venom+(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12913.png",
+        sha256: "ea01818e08976c51f4c601b7620c94a07007f0385906ee8f72ae5ee9f32e0857"
+      },
+      "12926": {
+        frame: 94,
+        name: "Toxic blowpipe",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12926.png",
+        sha256: "6bb9ff44beae4d24511adec0962d084baeaa1da8bbf4d4f79f2b110940f914b7"
+      },
+      "12934": {
+        frame: 95,
+        name: "Zulrah's scales",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12934.png",
+        sha256: "f890ad3b9f00971ef4436db51a665536a2ef960ef173e85e1f2d8a287fd0bb17"
+      },
+      "12954": {
+        frame: 96,
+        name: "Dragon defender",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12954.png",
+        sha256: "4532f225b61595fd1d93fbd137f65e93f9623f70c8758b761df445eb7a3bfea0"
+      },
+      "13235": {
+        frame: 97,
+        name: "Eternal boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13235.png",
+        sha256: "a14905cdceab83fc5b024a4d3320f8582594916653efdad70edb1515eb203688"
+      },
+      "13237": {
+        frame: 98,
+        name: "Pegasian boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13237.png",
+        sha256: "3452cb76ec5ed1f1e830c69e83870f3ff0466975ffad4e2e7d1d72e7ccb26c9e"
+      },
+      "13239": {
+        frame: 99,
+        name: "Primordial boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13239.png",
+        sha256: "cc653ba73d23744b010d4f886b8e418bbcae1c28eedd2ddc66db0d4ff1c39da5"
+      },
+      "13377": {
+        frame: 100,
+        name: "Shayzien gloves (5)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13377.png",
+        sha256: "6f4a68fe1dc674bd95e37eec414f0bd723e09f40f79470e42ca7f619b305011a"
+      },
+      "13378": {
+        frame: 101,
+        name: "Shayzien boots (5)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13378.png",
+        sha256: "33eed2c483ed8e0203d60528bb6dfe91e4e3369bdf0ab813f7b2fddf498cf4b9"
+      },
+      "13379": {
+        frame: 102,
+        name: "Shayzien helm (5)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13379.png",
+        sha256: "4842e578b2937939eb816a04f0cb559ad05da8c1ed9d1b44a22ac39c134095c9"
+      },
+      "13380": {
+        frame: 103,
+        name: "Shayzien greaves (5)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13380.png",
+        sha256: "b0a6ecbf3b348428991e3dca6e06226b565cd3ecbcc63f2bac5d08b9ba1750e3"
+      },
+      "13381": {
+        frame: 104,
+        name: "Shayzien body (5)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13381.png",
+        sha256: "21599bec271e5f0ce4476e5d20ccf77fbeb92ecf8250f6c0a59cbc65e1f9577e"
+      },
+      "19544": {
+        frame: 105,
+        name: "Tormented bracelet",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19544.png",
+        sha256: "4f8ec3b0ee0f3063b6aceb747d7c3449aba4620d4a0703c7aee467906511cdcf"
+      },
+      "19547": {
+        frame: 106,
+        name: "Necklace of anguish",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19547.png",
+        sha256: "b8f1e7ed5e7c7b4223cf6be36e3b84d39950fcf11f005d5fc206c77b4d37bf8a"
+      },
+      "19675": {
+        frame: 107,
+        name: "Arclight",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19675.png",
+        sha256: "a4203905eb7d8d712d9cdc996dab6e7ad4f2c048631ceb01d4952ed9bcd8e56c"
+      },
+      "19685": {
+        frame: 108,
+        name: "Dark totem",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19685.png",
+        sha256: "95efe492f0b0ae5dbdf8de574b86cab5eabc418a5e8286fa9664b11338666236"
+      },
+      "19933": {
+        frame: 109,
+        name: "Saradomin d'hide boots",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19933.png",
+        sha256: "293e63819887b5499bd28054c63c1e99d1b0c69b27870829345a8fb0ddf68cfa"
+      },
+      "20220": {
+        frame: 110,
+        name: "Holy blessing",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20220.png",
+        sha256: "b375d4559d7bd3b2b30424659e1fd9e9a414cc321cfa66ae8fadc01a52a9a7ea"
+      },
+      "20724": {
+        frame: 111,
+        name: "Imbued heart",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20724.png",
+        sha256: "d5160a65afd788e99febb2a940154d51776c8f558019678eabd026ef5efd9055"
+      },
+      "20727": {
+        frame: 112,
+        name: "Leaf-bladed battleaxe",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20727.png",
+        sha256: "4adf220f7a4e4a817c17e9ea6b9a4006e8f0f1e33b1b51ecd4970f31c50cb0e4"
+      },
+      "20754": {
+        frame: 113,
+        name: "Giant key",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20754.png",
+        sha256: "5cff98c61da8841386f648df0c39129abfc294b7d0635f3728be12ec968704cc"
+      },
+      "20997": {
+        frame: 114,
+        name: "Twisted bow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20997.png",
+        sha256: "9766816999a5945eca520c6a2c2e6ae0c390a62777ac35caf490142dfeabf0e6"
+      },
+      "21000": {
+        frame: 115,
+        name: "Twisted buckler",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21000.png",
+        sha256: "7278aaa8acfcb399beefd97a243d5db5c319581a22ea1d32545776308cc59756"
+      },
+      "21006": {
+        frame: 116,
+        name: "Kodai wand",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21006.png",
+        sha256: "8bbb51730237acd3bfe5e89ec56be87a2970a83cd4daf48ad232e94cd4e92a8f"
+      },
+      "21009": {
+        frame: 117,
+        name: "Dragon shortsword",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21009.png",
+        sha256: "d3297b360bae42c77891f257c86e6ecddccd0856184d42a333d2113cfd9cda8c"
+      },
+      "21012": {
+        frame: 118,
+        name: "Dragon hunter crossbow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21012.png",
+        sha256: "25890510ce4f029a5c2ea49f981703604a8412a2ccd3ad9a3943884ac353cd69"
+      },
+      "21018": {
+        frame: 119,
+        name: "Ancestral hat",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21018.png",
+        sha256: "788d6e2b3501a23f8fb24236a04d516c3b070b4091b1f6b4eb6923057c6a1afc"
+      },
+      "21021": {
+        frame: 120,
+        name: "Ancestral robe top",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21021.png",
+        sha256: "6c2ffa1214b9302ca8d2aa75f4d0e736d39fb7b9823a52bbc178d3e8b15fa876"
+      },
+      "21024": {
+        frame: 121,
+        name: "Ancestral robe bottom",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21024.png",
+        sha256: "9ea7d52bfbee0e6b5af476115de03f31fbaa29553467b92c803f9f3af7d21dfa"
+      },
+      "21255": {
+        frame: 122,
+        name: "Slayer's staff (e)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21255.png",
+        sha256: "db6cf0017849b074ac77d7f16e1a162293171af17f9a3e3090f77879323323e0"
+      },
+      "21295": {
+        frame: 123,
+        name: "Infernal cape",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21295.png",
+        sha256: "59476df88ddf708273df4b5e03b96665bc52a3a23082935c3cf1f6bd36c15326"
+      },
+      "21316": {
+        frame: 124,
+        name: "Amethyst broad bolts",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21316.png",
+        sha256: "cd753d56f7c0701cacacc24b0e6ca4322ec8b11f16930735c1a89a7b6ffb42b0"
+      },
+      "21326": {
+        frame: 125,
+        name: "Amethyst arrow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21326.png",
+        sha256: "b9c47b3dc8d9ed198ff99ae02fd755ae15131476e72e6099b9065f420249f70e"
+      },
+      "21633": {
+        frame: 126,
+        name: "Ancient wyvern shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21633.png",
+        sha256: "ba6d1b780d54c792a0e4109d040e168c07cd35774f4059fd83f24fcbc64e7bba"
+      },
+      "21754": {
+        frame: 127,
+        name: "Rock thrownhammer",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21754.png",
+        sha256: "7e3b5cf82bf12c62811d475429d5bce1c13d233db72c3fd51f7e2d5a4b9b4fd9"
+      },
+      "21791": {
+        frame: 128,
+        name: "Imbued Saradomin cape",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21791.png",
+        sha256: "c6f859c609772fccc34f8c69ecf550ccf68a62322ea0e79639ac0de36c6bc73a"
+      },
+      "21820": {
+        frame: 129,
+        name: "Revenant ether",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21820.png",
+        sha256: "71e28d3e942ec2d1fc81740206b0624ea0fe63576367876a9ae1d7b2106749c7"
+      },
+      "21902": {
+        frame: 130,
+        name: "Dragon crossbow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21902.png",
+        sha256: "5fc46151180b3e15d91e9f5f40d403923c1072f83281daa516ca1ffdf8043379"
+      },
+      "21946": {
+        frame: 131,
+        name: "Diamond dragon bolts (e)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21946.png",
+        sha256: "ca8535bebe36038004a4ba98fa2f49d6abcf8740b4aa86c7a47f9c7eddf46ddc"
+      },
+      "22002": {
+        frame: 132,
+        name: "Dragonfire ward",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22002.png",
+        sha256: "6fc5b8027d8390da0507fcbbb9148c39f14d87f76dfde3c8f57b817d44113256"
+      },
+      "22322": {
+        frame: 133,
+        name: "Avernic defender",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22322.png",
+        sha256: "305e5c367e6eadb0c2c34641972ada86c83d3e8ea04742fd019c1766eb82cac6"
+      },
+      "22323": {
+        frame: 134,
+        name: "Sanguinesti staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22323.png",
+        sha256: "0c9050056b441c8716e8a9a83e34be215349318889028ea357c45ae6e59da25e"
+      },
+      "22324": {
+        frame: 135,
+        name: "Ghrazi rapier",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22324.png",
+        sha256: "72a9516734fc41315a41773f65fd836a681f0dfa8a7ecba2e03adcbf4824ea4c"
+      },
+      "22325": {
+        frame: 136,
+        name: "Scythe of Vitur",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22325.png",
+        sha256: "55782922621737d9674fd951c740273c270fe7c898212de10c194a146ad094fc"
+      },
+      "22374": {
+        frame: 137,
+        name: "Mossy key",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22374.png",
+        sha256: "661df8e98f35b98b21b5780d571e94879383c3f8c27ee45a0db312395c6c8b49"
+      },
+      "22951": {
+        frame: 138,
+        name: "Boots of Brimstone",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22951.png",
+        sha256: "173865669ab4856ef8749a8da1e8ac07540696e68d23cb42cab484fa5d065e8a"
+      },
+      "22978": {
+        frame: 139,
+        name: "Dragon hunter lance",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22978.png",
+        sha256: "187a79b0aef35f3ae2251b376843ad0576934c4418ebf6285182f443b321c2f7"
+      },
+      "22981": {
+        frame: 140,
+        name: "Ferocious gloves",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22981.png",
+        sha256: "8c0ac44a0d9248dde3384476f521bc3502e91dea4da0e1ddb18db5fc93314845"
+      },
+      "23037": {
+        frame: 141,
+        name: "Boots of stone",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23037.png",
+        sha256: "c112c503716c7c42200352aad4b25aadfc68b45260977baf685be751737941dd"
+      },
+      "23528": {
+        frame: 142,
+        name: "Sarachnis cudgel",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23528.png",
+        sha256: "e5a6542042f4623ee1c073aa8dca372474dee4f157528f6cbee802676019bc06"
+      },
+      "23975": {
+        frame: 143,
+        name: "Crystal body",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23975.png",
+        sha256: "e2e54adf3c296c686f3efa582ccff1a09b00c3ad3d143cd752d4bd5c52b759dd"
+      },
+      "23979": {
+        frame: 144,
+        name: "Crystal legs",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23979.png",
+        sha256: "bd7e303872df06bf2cb21c0c7b8172fb676c5d09665e8e0b81f348893b749372"
+      },
+      "23995": {
+        frame: 145,
+        name: "Blade of Saeldor",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23995.png",
+        sha256: "941a95804ae3f56cc4be69a2ec2b90ff213085e76cda824e1faa715d714f8404"
+      },
+      "24265": {
+        frame: 146,
+        name: "V's shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24265.png",
+        sha256: "ea02628e3797e35cc39af56b096eb792fd6ba8ba3ed512b91d310f5f4bc49050"
+      },
+      "24271": {
+        frame: 147,
+        name: "Neitiznot faceguard",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24271.png",
+        sha256: "bdc8e5acc25d66c85f174dd556b6efce982ca8b912b9f0622490c407abce8f27"
+      },
+      "24417": {
+        frame: 148,
+        name: "Inquisitor's mace",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24417.png",
+        sha256: "122c0a1ea4d3cd13bf7648d541d2d4c46178248dc99f60421c1c5d9425760a91"
+      },
+      "24420": {
+        frame: 149,
+        name: "Inquisitor's hauberk",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24420.png",
+        sha256: "c5a71abcd661fdc9f4bc7b7e28ef6299eaec17d92642ba6a67964155ffeb03cb"
+      },
+      "24421": {
+        frame: 150,
+        name: "Inquisitor's plateskirt",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24421.png",
+        sha256: "81ea2150b556443a7a06b09f2386c82e835c95099c60cd3be7e156880a87b3b4"
+      },
+      "24423": {
+        frame: 151,
+        name: "Harmonised Nightmare staff",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24423.png",
+        sha256: "9c1e067011ea713efe7fb287f4d2c9505ebe4b6bf4e32358caac53adccbe3669"
+      },
+      "24699": {
+        frame: 152,
+        name: "Blisterwood flail",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24699.png",
+        sha256: "ac5055b81699cdd0574ee2bb4a6880288bce37d99665730556a49ba943ec3884"
+      },
+      "24942": {
+        frame: 153,
+        name: "Reinforced goggles",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24942.png",
+        sha256: "61e410ecc7135de57c9065d2c39112d82da1dfac3727805181ea835551a792d2"
+      },
+      "25485": {
+        frame: 154,
+        name: "Ultor ring",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25485.png",
+        sha256: "ba157d1428b07d16857cf75b1ce912818646588b42f4c4551e0824c61786f9f9"
+      },
+      "25486": {
+        frame: 155,
+        name: "Magus ring",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25486.png",
+        sha256: "b8068242d057763a171748ebc830798494f4aaa5668c94ce29d0df603b462dcb"
+      },
+      "25487": {
+        frame: 156,
+        name: "Venator ring",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25487.png",
+        sha256: "4e91f30cefae0e9accbd5067632c083491f790764202ede6f70606807093a5ac"
+      },
+      "25849": {
+        frame: 157,
+        name: "Amethyst dart",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25849.png",
+        sha256: "dd37fd6b8c3a21b9d89c046e46b84a8b007576c747436a0a3fc7a2ebf92b954a"
+      },
+      "25865": {
+        frame: 158,
+        name: "Bow of Faerdhinen",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25865.png",
+        sha256: "d9087fca786846ca18d3867316fd1777037e8af867c74872347bc442adc971d7"
+      },
+      "25979": {
+        frame: 159,
+        name: "Keris partisan",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25979.png",
+        sha256: "703403cb3f4b5d1907af2c9e8d3ec6a1dfa374520759b99ac24993c68076b941"
+      },
+      "25981": {
+        frame: 160,
+        name: "Keris partisan of breaching",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25981.png",
+        sha256: "e372bc891adb3b93f3793657cb8e3951bc38879e2cd11f17894e6f1784e0e9da"
+      },
+      "26219": {
+        frame: 161,
+        name: "Osmumten's fang",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26219.png",
+        sha256: "19fcfa0b0ca46e388bfa513b3979012b8111bc2909318d5fce486ed8c4456f27"
+      },
+      "26235": {
+        frame: 162,
+        name: "Zaryte vambraces",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26235.png",
+        sha256: "c999edae7a924af723e6d988ec558edc2743863ad3d6f1238f3ac87e93309815"
+      },
+      "26243": {
+        frame: 163,
+        name: "Virtus robe top",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26243.png",
+        sha256: "8ca4a00b33f0da18163a135b724797214e60d00089b891d419fa11b975294460"
+      },
+      "26245": {
+        frame: 164,
+        name: "Virtus robe bottom",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26245.png",
+        sha256: "e491821b21bd3c8a572543f287733604889ffa8a1973c0a4399146a5dd8e4b4f"
+      },
+      "26374": {
+        frame: 165,
+        name: "Zaryte crossbow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26374.png",
+        sha256: "a2f04daadc884abc4888b827b2dbe25dcc7eb34f6fa83fc487fb07a03e27da16"
+      },
+      "26384": {
+        frame: 166,
+        name: "Torva platebody",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26384.png",
+        sha256: "4b8174fb1fcaac20e3cd591358af6aa8a33f3db03b8511b1ac344bc639654937"
+      },
+      "26386": {
+        frame: 167,
+        name: "Torva platelegs",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26386.png",
+        sha256: "d9ad6d302a3d239d1e07f479cd22289728ce91867d6b97e31b4a06bcfaff0c55"
+      },
+      "27235": {
+        frame: 168,
+        name: "Masori mask (f)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27235.png",
+        sha256: "e5278c79831a399008875bf5e7eae99b71e04a8358c86d9adba5b644ed8a2d40"
+      },
+      "27238": {
+        frame: 169,
+        name: "Masori body (f)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27238.png",
+        sha256: "48a7c078266fe40a2e5d424ac32d77b9687df3847f28a7f646ab4cde8ffac5a8"
+      },
+      "27241": {
+        frame: 170,
+        name: "Masori chaps (f)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27241.png",
+        sha256: "da3e80998e886abadb8425808fc0ff186ca78a4fe389a1581aa6c4e4d23310ba"
+      },
+      "27251": {
+        frame: 171,
+        name: "Elidinis' ward (f)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27251.png",
+        sha256: "5e44493e2396088eece85672fea5cdc64007a7a8b8010c3e243057b1e2cd6397"
+      },
+      "27275": {
+        frame: 172,
+        name: "Tumeken's shadow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27275.png",
+        sha256: "e35d01e45eaed7e242eda0d799f782113ea93f92aed90542d3d0985df157afa0"
+      },
+      "27655": {
+        frame: 173,
+        name: "Webweaver bow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27655.png",
+        sha256: "3e4c7036e8a2dd766b24c5c00cf781f357da5114211a81f9a253585d6f3bfc0c"
+      },
+      "27660": {
+        frame: 174,
+        name: "Ursine chainmace",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27660.png",
+        sha256: "3144a8889e7943762823ff4fecf63e83ef95fe1feaba52b502e84ba50dcd1286"
+      },
+      "27665": {
+        frame: 175,
+        name: "Accursed sceptre",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27665.png",
+        sha256: "b5b7346242e4d33b584e8b958717136681b395ebf831cfe290c2f7b8b3fbb3cd"
+      },
+      "28936": {
+        frame: 176,
+        name: "Sunfire fanatic cuirass",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28936.png",
+        sha256: "b0047b679831d007eeecace0df9975275937d506ff93ccb61449d04121ad500e"
+      },
+      "28939": {
+        frame: 177,
+        name: "Sunfire fanatic chausses",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28939.png",
+        sha256: "07d2ddacd727a5f93c2f00953a432d0dc1a72d54ccf77f8e5ebfcb392d173ecb"
+      },
+      "28951": {
+        frame: 178,
+        name: "Dizana's quiver",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28951.png",
+        sha256: "58dd7f1d6634c2cbda160475f292d737fed43245e26b1b001040c3d264369275"
+      },
+      "29080": {
+        frame: 179,
+        name: "Moonlight potion(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29080.png",
+        sha256: "cc88dc0aa026037e6c3e15e3239fa39ebf2296d5437f6a5d11a013f472ce7543"
+      },
+      "29589": {
+        frame: 180,
+        name: "Emberlight",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29589.png",
+        sha256: "86551d75233116a1aa90556fa7e10bb213588b9468f81ba8c1329c8b1967dde9"
+      },
+      "29591": {
+        frame: 181,
+        name: "Scorching bow",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29591.png",
+        sha256: "3c6f75f031ae915972a3a2ff079e54b6137b5e880e77cb2516b51324db09810b"
+      },
+      "29801": {
+        frame: 182,
+        name: "Amulet of rancour",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29801.png",
+        sha256: "d27f923dbffeed54edd9a778efe1f472f92cbec2dd250327db667a3a02292d85"
+      },
+      "29824": {
+        frame: 183,
+        name: "Extended anti-venom+(4)",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29824.png",
+        sha256: "89a379782e57ae58caaf72a9d4df4a8826662d496fbd1168ff74fe02117ab38a"
+      },
+      "31398": {
+        frame: 184,
+        name: "Tortugan shield",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/31398.png",
+        sha256: "f6c30920c4a34f5dd51059c5c546d6029e04e1494402f7b36b885a1e20000a40"
+      },
+      "33722": {
+        frame: 185,
+        name: "Sunspear",
+        source: "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/33722.png",
+        sha256: "9361b1dba0e920f3cbaf2678e43b4c56e27af24ae0ef99d37caf59f35595d6d4"
+      }
+    },
+    aliases: {
+      "Abyssal whip": {
+        page: "Abyssal whip",
+        itemId: 4151
+      },
+      "Accursed sceptre": {
+        page: "Accursed sceptre",
+        itemId: 27665
+      },
+      "Ahrim's robeskirt": {
+        page: "Ahrim's robeskirt",
+        itemId: 4714
+      },
+      "Ahrim's robetop": {
+        page: "Ahrim's robetop",
+        itemId: 4712
+      },
+      "Amethyst broad bolts": {
+        page: "Amethyst broad bolts",
+        itemId: 21316
+      },
+      "Amulet of fury": {
+        page: "Amulet of fury",
+        itemId: 6585
+      },
+      "Amulet of glory": {
+        page: "Amulet of glory",
+        itemId: 1704
+      },
+      "Amulet of rancour": {
+        page: "Amulet of rancour",
+        itemId: 29801
+      },
+      "Ancestral hat": {
+        page: "Ancestral hat",
+        itemId: 21018
+      },
+      "Ancestral robe bottom": {
+        page: "Ancestral robe bottom",
+        itemId: 21024
+      },
+      "Ancestral robe top": {
+        page: "Ancestral robe top",
+        itemId: 21021
+      },
+      "Ancient staff": {
+        page: "Ancient staff",
+        itemId: 4675
+      },
+      "Ancient wyvern shield": {
+        page: "Ancient wyvern shield",
+        itemId: 21633
+      },
+      "Anti-dragon shield": {
+        page: "Anti-dragon shield",
+        itemId: 1540
+      },
+      "Archers ring (i)": {
+        page: "Archers ring (i)",
+        itemId: 11771
+      },
+      Arclight: {
+        page: "Arclight",
+        itemId: 19675
+      },
+      "Ava's accumulator": {
+        page: "Ava's accumulator",
+        itemId: 10499
+      },
+      "Avernic defender": {
+        page: "Avernic defender",
+        itemId: 22322
+      },
+      "Barrows gloves": {
+        page: "Barrows gloves",
+        itemId: 7462
+      },
+      "Berserker ring (i)": {
+        page: "Berserker ring (i)",
+        itemId: 11773
+      },
+      "Black d'hide body": {
+        page: "Black d'hide body",
+        itemId: 2503
+      },
+      "Black d'hide chaps": {
+        page: "Black d'hide chaps",
+        itemId: 2497
+      },
+      "Blade of saeldor": {
+        page: "Blade of saeldor",
+        itemId: 23995
+      },
+      "Blisterwood flail": {
+        page: "Blisterwood flail",
+        itemId: 24699
+      },
+      "Book of darkness": {
+        page: "Book of darkness",
+        itemId: 12612
+      },
+      "Book of law": {
+        page: "Book of law",
+        itemId: 12610
+      },
+      "Boots of brimstone": {
+        page: "Boots of brimstone",
+        itemId: 22951
+      },
+      "Boots of stone": {
+        page: "Boots of stone",
+        itemId: 23037
+      },
+      "Bow of faerdhinen": {
+        page: "Bow of faerdhinen",
+        itemId: 25865
+      },
+      "Broad bolts": {
+        page: "Broad bolts",
+        itemId: 11875
+      },
+      "Climbing boots": {
+        page: "Climbing boots",
+        itemId: 3105
+      },
+      "Crystal body": {
+        page: "Crystal body",
+        itemId: 23975
+      },
+      "Crystal legs": {
+        page: "Crystal legs",
+        itemId: 23979
+      },
+      "Dark totem": {
+        page: "Dark totem",
+        itemId: 19685
+      },
+      "Diamond bolts (e)": {
+        page: "Diamond bolts (e)",
+        itemId: 9243
+      },
+      "Diamond dragon bolts (e)": {
+        page: "Diamond dragon bolts (e)",
+        itemId: 21946
+      },
+      "Dizana's quiver": {
+        page: "Dizana's quiver",
+        itemId: 28951
+      },
+      "Dragon boots": {
+        page: "Dragon boots",
+        itemId: 11840
+      },
+      "Dragon crossbow": {
+        page: "Dragon crossbow",
+        itemId: 21902
+      },
+      "Dragon defender": {
+        page: "Dragon defender",
+        itemId: 12954
+      },
+      "Dragon hunter crossbow": {
+        page: "Dragon hunter crossbow",
+        itemId: 21012
+      },
+      "Dragon hunter lance": {
+        page: "Dragon hunter lance",
+        itemId: 22978
+      },
+      "Dragonfire shield": {
+        page: "Dragonfire shield",
+        itemId: 11283
+      },
+      "Dragonfire ward": {
+        page: "Dragonfire ward",
+        itemId: 22002
+      },
+      Earmuffs: {
+        page: "Earmuffs",
+        itemId: 4166
+      },
+      "Elidinis' ward (f)": {
+        page: "Elidinis' ward (f)",
+        itemId: 27251
+      },
+      Emberlight: {
+        page: "Emberlight",
+        itemId: 29589
+      },
+      "Eternal boots": {
+        page: "Eternal boots",
+        itemId: 13235
+      },
+      Facemask: {
+        page: "Facemask",
+        itemId: 4164
+      },
+      "Ferocious gloves": {
+        page: "Ferocious gloves",
+        itemId: 22981
+      },
+      "Fire cape": {
+        page: "Fire cape",
+        itemId: 6570
+      },
+      "Ghrazi rapier": {
+        page: "Ghrazi rapier",
+        itemId: 22324
+      },
+      "Giant key": {
+        page: "Giant key",
+        itemId: 20754
+      },
+      "Harmonised nightmare staff": {
+        page: "Harmonised nightmare staff",
+        itemId: 24423
+      },
+      "Helm of Neitiznot": {
+        page: "Helm of Neitiznot",
+        itemId: 10828
+      },
+      "Infernal cape": {
+        page: "Infernal cape",
+        itemId: 21295
+      },
+      "Inquisitor's hauberk": {
+        page: "Inquisitor's hauberk",
+        itemId: 24420
+      },
+      "Inquisitor's mace": {
+        page: "Inquisitor's mace",
+        itemId: 24417
+      },
+      "Inquisitor's plateskirt": {
+        page: "Inquisitor's plateskirt",
+        itemId: 24421
+      },
+      "Insulated boots": {
+        page: "Insulated boots",
+        itemId: 7159
+      },
+      "Karil's leatherskirt": {
+        page: "Karil's leatherskirt",
+        itemId: 4738
+      },
+      "Karil's leathertop": {
+        page: "Karil's leathertop",
+        itemId: 4736
+      },
+      "Keris partisan": {
+        page: "Keris partisan",
+        itemId: 25979
+      },
+      "Keris partisan of breaching": {
+        page: "Keris partisan of breaching",
+        itemId: 25981
+      },
+      "Kodai wand": {
+        page: "Kodai wand",
+        itemId: 21006
+      },
+      "Leaf-bladed battleaxe": {
+        page: "Leaf-bladed battleaxe",
+        itemId: 20727
+      },
+      "Leaf-bladed sword": {
+        page: "Leaf-bladed sword",
+        itemId: 11902
+      },
+      "Lit bug lantern": {
+        page: "Lit bug lantern",
+        itemId: 7053
+      },
+      "Magic shortbow (i)": {
+        page: "Magic shortbow (i)",
+        itemId: 12788
+      },
+      "Magus ring": {
+        page: "Magus ring",
+        itemId: 25486
+      },
+      "Masori body (f)": {
+        page: "Masori body (f)",
+        itemId: 27238
+      },
+      "Masori chaps (f)": {
+        page: "Masori chaps (f)",
+        itemId: 27241
+      },
+      "Masori mask (f)": {
+        page: "Masori mask (f)",
+        itemId: 27235
+      },
+      "Mind shield": {
+        page: "Mind shield",
+        itemId: 9731
+      },
+      "Mirror shield": {
+        page: "Mirror shield",
+        itemId: 4156
+      },
+      "Monk\u2019s robe": {
+        page: "Monk\u2019s robe",
+        itemId: 542
+      },
+      "Monk\u2019s robe top": {
+        page: "Monk\u2019s robe top",
+        itemId: 544
+      },
+      "Mossy key": {
+        page: "Mossy key",
+        itemId: 22374
+      },
+      "Mystic air staff": {
+        page: "Mystic air staff",
+        itemId: 1405
+      },
+      "Mystic boots": {
+        page: "Mystic boots",
+        itemId: 4097
+      },
+      "Mystic earth staff": {
+        page: "Mystic earth staff",
+        itemId: 1407
+      },
+      "Mystic fire staff": {
+        page: "Mystic fire staff",
+        itemId: 1401
+      },
+      "Mystic hat": {
+        page: "Mystic hat",
+        itemId: 4089
+      },
+      "Mystic robe bottom": {
+        page: "Mystic robe bottom",
+        itemId: 4093
+      },
+      "Mystic robe top": {
+        page: "Mystic robe top",
+        itemId: 4091
+      },
+      "Mystic water staff": {
+        page: "Mystic water staff",
+        itemId: 1403
+      },
+      "Necklace of anguish": {
+        page: "Necklace of anguish",
+        itemId: 19547
+      },
+      "Neitiznot faceguard": {
+        page: "Neitiznot faceguard",
+        itemId: 24271
+      },
+      "Nose peg": {
+        page: "Nose peg",
+        itemId: 4168
+      },
+      "Occult necklace": {
+        page: "Occult necklace",
+        itemId: 12002
+      },
+      "Ogre bow": {
+        page: "Ogre bow",
+        itemId: 2883
+      },
+      "Osmumten's fang": {
+        page: "Osmumten's fang",
+        itemId: 26219
+      },
+      "Pegasian boots": {
+        page: "Pegasian boots",
+        itemId: 13237
+      },
+      "Primordial boots": {
+        page: "Primordial boots",
+        itemId: 13239
+      },
+      "Proselyte cuisse": {
+        page: "Proselyte cuisse",
+        itemId: 9676
+      },
+      "Proselyte hauberk": {
+        page: "Proselyte hauberk",
+        itemId: 9674
+      },
+      "Reinforced goggles": {
+        page: "Reinforced goggles",
+        itemId: 24942
+      },
+      "Sanguinesti staff": {
+        page: "Sanguinesti staff",
+        itemId: 22323
+      },
+      "Sarachnis cudgel": {
+        page: "Sarachnis cudgel",
+        itemId: 23528
+      },
+      "Scythe of Vitur": {
+        page: "Scythe of Vitur",
+        itemId: 22325
+      },
+      "Seers ring (i)": {
+        page: "Seers ring (i)",
+        itemId: 11770
+      },
+      "Shayzien body (5)": {
+        page: "Shayzien body (5)",
+        itemId: 13381
+      },
+      "Shayzien boots (5)": {
+        page: "Shayzien boots (5)",
+        itemId: 13378
+      },
+      "Shayzien gloves (5)": {
+        page: "Shayzien gloves (5)",
+        itemId: 13377
+      },
+      "Shayzien greaves (5)": {
+        page: "Shayzien greaves (5)",
+        itemId: 13380
+      },
+      "Shayzien helm (5)": {
+        page: "Shayzien helm (5)",
+        itemId: 13379
+      },
+      "Slayer bell": {
+        page: "Slayer bell",
+        itemId: 10952
+      },
+      "Slayer helmet (i)": {
+        page: "Slayer helmet (i)",
+        itemId: 11865
+      },
+      "Slayer's staff (e)": {
+        page: "Slayer's staff (e)",
+        itemId: 21255
+      },
+      "Spiny helmet": {
+        page: "Spiny helmet",
+        itemId: 4551
+      },
+      "Staff of the dead": {
+        page: "Staff of the dead",
+        itemId: 11791
+      },
+      "Sunfire fanatic chausses": {
+        page: "Sunfire fanatic chausses",
+        itemId: 28939
+      },
+      "Sunfire fanatic cuirass": {
+        page: "Sunfire fanatic cuirass",
+        itemId: 28936
+      },
+      Sunspear: {
+        page: "Sunspear",
+        itemId: 33722
+      },
+      "Torag's platebody": {
+        page: "Torag's platebody",
+        itemId: 4749
+      },
+      "Tormented bracelet": {
+        page: "Tormented bracelet",
+        itemId: 19544
+      },
+      "Tortugan shield": {
+        page: "Tortugan shield",
+        itemId: 31398
+      },
+      "Torva platebody": {
+        page: "Torva platebody",
+        itemId: 26384
+      },
+      "Torva platelegs": {
+        page: "Torva platelegs",
+        itemId: 26386
+      },
+      "Toxic blowpipe": {
+        page: "Toxic blowpipe",
+        itemId: 12926
+      },
+      "Trident of the seas": {
+        page: "Trident of the seas",
+        itemId: 11907
+      },
+      "Trident of the swamp": {
+        page: "Trident of the swamp",
+        itemId: 12899
+      },
+      "Tumeken's shadow": {
+        page: "Tumeken's shadow",
+        itemId: 27275
+      },
+      "Twisted bow": {
+        page: "Twisted bow",
+        itemId: 20997
+      },
+      "Twisted buckler": {
+        page: "Twisted buckler",
+        itemId: 21e3
+      },
+      "Ultor ring": {
+        page: "Ultor ring",
+        itemId: 25485
+      },
+      "Ursine chainmace": {
+        page: "Ursine chainmace",
+        itemId: 27660
+      },
+      "V's shield": {
+        page: "V's shield",
+        itemId: 24265
+      },
+      "Venator ring": {
+        page: "Venator ring",
+        itemId: 25487
+      },
+      "Verac's plateskirt": {
+        page: "Verac's plateskirt",
+        itemId: 4759
+      },
+      "Virtus robe bottom": {
+        page: "Virtus robe bottom",
+        itemId: 26245
+      },
+      "Virtus robe top": {
+        page: "Virtus robe top",
+        itemId: 26243
+      },
+      "Webweaver bow": {
+        page: "Webweaver bow",
+        itemId: 27655
+      },
+      "Witchwood icon": {
+        page: "Witchwood icon",
+        itemId: 8923
+      },
+      "Zamorak staff": {
+        page: "Zamorak staff",
+        itemId: 2417
+      },
+      "Zamorakian hasta": {
+        page: "Zamorakian hasta",
+        itemId: 11889
+      },
+      "Zaryte crossbow": {
+        page: "Zaryte crossbow",
+        itemId: 26374
+      },
+      "Zaryte vambraces": {
+        page: "Zaryte vambraces",
+        itemId: 26235
+      },
+      "Amethyst arrows": {
+        page: "Amethyst arrow",
+        itemId: 21326
+      },
+      "Dragon arrows": {
+        page: "Dragon arrow",
+        itemId: 11212
+      },
+      "Dragon sword": {
+        page: "Dragon shortsword",
+        itemId: 21009
+      },
+      "Blessed coif": {
+        page: "Blessed dragonhide armour",
+        itemId: 10390
+      },
+      "Blessed d'hide body": {
+        page: "Blessed dragonhide armour",
+        itemId: 10386
+      },
+      "Blessed d'hide chaps": {
+        page: "Blessed dragonhide armour",
+        itemId: 10388
+      },
+      "Blessed d'hide boots": {
+        page: "Blessed dragonhide armour",
+        itemId: 19933
+      },
+      "God blessing": {
+        page: "Blessing",
+        itemId: 20220
+      },
+      "God cape": {
+        page: "God cape",
+        itemId: 2412
+      },
+      "Imbued god cape": {
+        page: "Imbued god cape",
+        itemId: 21791
+      },
+      "Crystal armour": {
+        page: "Crystal armour",
+        itemId: 23975
+      },
+      "Amethyst darts": {
+        page: "Amethyst dart",
+        itemId: 25849
+      },
+      "Dragon darts": {
+        page: "Dragon dart",
+        itemId: 11230
+      },
+      "Zulrah scales": {
+        page: "Zulrah's scales",
+        itemId: 12934
+      },
+      "Ogre arrows": {
+        page: "Ogre arrow",
+        itemId: 2866
+      },
+      "Ogre composite bow": {
+        page: "Comp ogre bow",
+        itemId: 4827
+      },
+      "Ogre bellows": {
+        page: "Ogre bellows",
+        itemId: 2871
+      },
+      "swamp toads": {
+        page: "Chompy bird hunting",
+        itemId: 2875
+      },
+      "Rune brutal arrows": {
+        page: "Rune brutal",
+        itemId: 4803
+      },
+      "Revenant ether": {
+        page: "Revenant ether",
+        itemId: 21820
+      },
+      "Anti-venom+": {
+        page: "Anti-venom+",
+        itemId: 12913
+      },
+      "extended anti-venom+": {
+        page: "Extended anti-venom+",
+        itemId: 29824
+      },
+      "Antidote++": {
+        page: "Antidote++",
+        itemId: 5952
+      },
+      antipoison: {
+        page: "Antipoison",
+        itemId: 2446
+      },
+      "Extended antifire": {
+        page: "Extended antifire",
+        itemId: 11951
+      },
+      "Prayer potions": {
+        page: "Prayer potion",
+        itemId: 2434
+      },
+      "super restores": {
+        page: "Super restore",
+        itemId: 3024
+      },
+      "Ranging potion": {
+        page: "Ranging potion",
+        itemId: 2444
+      },
+      "Magic potion": {
+        page: "Magic potion",
+        itemId: 3040
+      },
+      "heart boost": {
+        page: "Imbued heart",
+        itemId: 20724
+      },
+      "Super combat potion": {
+        page: "Super combat potion",
+        itemId: 12695
+      },
+      "super attack": {
+        page: "Super attack",
+        itemId: 2436
+      },
+      "super strength": {
+        page: "Super strength",
+        itemId: 2440
+      },
+      "Saradomin brews": {
+        page: "Saradomin brew",
+        itemId: 6685
+      },
+      "Relicym\u2019s balm": {
+        page: "Relicym's balm",
+        itemId: 4842
+      },
+      "Sanfew serum": {
+        page: "Sanfew serum",
+        itemId: 10925
+      },
+      "moonlight potions": {
+        page: "Moonlight potion",
+        itemId: 29080
+      },
+      "Ice coolers": {
+        page: "Ice cooler",
+        itemId: 6696
+      },
+      "Fishing explosives": {
+        page: "Fishing explosive",
+        itemId: 6660
+      },
+      "Bags of salt": {
+        page: "Bag of salt",
+        itemId: 4161
+      },
+      "brine sabre": {
+        page: "Brine sabre",
+        itemId: 11037
+      },
+      "rock thrownhammer": {
+        page: "Rock thrownhammer",
+        itemId: 21754
+      },
+      "Fungicide spray": {
+        page: "Fungicide spray",
+        itemId: 7421
+      },
+      fungicide: {
+        page: "Fungicide",
+        itemId: 7432
+      },
+      "Ring of dueling": {
+        page: "Ring of dueling",
+        itemId: 2552
+      },
+      "Spectral spirit shield": {
+        page: "Spectral spirit shield",
+        itemId: 12821
+      },
+      "Scorching bow": {
+        page: "Scorching bow",
+        itemId: 29591
+      },
+      Axe: {
+        page: "Axe",
+        itemId: 1351
+      },
+      secateurs: {
+        page: "Secateurs",
+        itemId: 5329
+      },
+      "Earth surge": {
+        page: "Earth surge",
+        itemId: null
+      },
+      "Earth wave": {
+        page: "Earth wave",
+        itemId: null
+      },
+      "Fire surge": {
+        page: "Fire surge",
+        itemId: null
+      },
+      "Fire wave": {
+        page: "Fire wave",
+        itemId: null
+      },
+      "Water surge": {
+        page: "Water surge",
+        itemId: null
+      },
+      "Water wave": {
+        page: "Water wave",
+        itemId: null
+      },
+      "Wind surge": {
+        page: "Wind surge",
+        itemId: null
+      },
+      "Wind wave": {
+        page: "Wind wave",
+        itemId: null
+      },
+      "Ice Barrage": {
+        page: "Ice Barrage",
+        itemId: null
+      },
+      "Ice Burst": {
+        page: "Ice Burst",
+        itemId: null
+      },
+      "Magic Dart": {
+        page: "Magic Dart",
+        itemId: null
+      },
+      "Flames of Zamorak": {
+        page: "Flames of Zamorak",
+        itemId: null
+      }
+    }
+  };
+
+  // src/ui/item-links.ts
+  var aliases2 = Object.fromEntries(Object.entries(item_art_default.aliases).map(([name, ref]) => [name.toLowerCase(), ref]));
+  var entries2 = item_art_default.entries;
+  var esc2 = (text) => text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var names3 = Object.keys(aliases2).sort((a, b) => b.length - a.length);
+  var pattern2 = new RegExp(`(?<![\\w])(${names3.map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w])`, "gi");
+  function itemWikiUrl(page) {
+    return "https://oldschool.runescape.wiki/w/" + encodeURIComponent(page.replaceAll(" ", "_"));
+  }
+  function itemText(text) {
+    let cursor = 0, html = "";
+    pattern2.lastIndex = 0;
+    for (const match of text.matchAll(pattern2)) {
+      const index = match.index, ref = aliases2[match[0].toLowerCase()], entry = ref.itemId === null ? void 0 : entries2[ref.itemId];
+      const icon = entry ? `<span class="item-icon" aria-hidden="true" style="--item-col:${entry.frame % item_art_default.columns};--item-row:${Math.floor(entry.frame / item_art_default.columns)};--item-cols:${item_art_default.columns};--item-rows:${item_art_default.rows}"></span>` : "";
+      const hint = entry ? `Open ${ref.page} on the Wiki. Icon: ${entry.name}.` : `Open ${ref.page} on the Wiki.`;
+      html += esc2(text.slice(cursor, index)) + `<a class="item-link" href="${esc2(itemWikiUrl(ref.page))}" target="_blank" rel="noopener noreferrer" title="${esc2(hint)}">${icon}<span>${esc2(match[0])}</span></a>`;
+      cursor = index + match[0].length;
+    }
+    return html + esc2(text.slice(cursor));
+  }
+  function hasItemIcon(text) {
+    pattern2.lastIndex = 0;
+    return [...text.matchAll(pattern2)].some((match) => aliases2[match[0].toLowerCase()].itemId !== null);
   }
 
   // src/guide/encounters.ts
@@ -42395,9 +44345,9 @@
   }
 
   // src/ui/creature-guide.ts
-  var esc2 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc3 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var num = (v) => v === null ? "\u2014" : v.toLocaleString();
-  var options = (values, selected) => values.map(([id, label]) => `<option value="${esc2(id)}" ${id === selected ? "selected" : ""}>${esc2(label)}</option>`).join("");
+  var options = (values, selected) => values.map(([id, label]) => `<option value="${esc3(id)}" ${id === selected ? "selected" : ""}>${esc3(label)}</option>`).join("");
   var field = (id, label, values, selected) => `<label>${label}<select id="${id}">${options(values, selected)}</select></label>`;
   var guideState;
   try {
@@ -42465,7 +44415,7 @@
     const max = Math.max(1, ...rows.map(([, key]) => Math.abs(Number(form[key]) || 0)));
     const weakest = leastDefended(form, ["dstab", "dslash", "dcrush"]);
     const desc = rows.map(([label, key]) => `${label}: ${form[key] ?? "unknown"}`).join("; ");
-    return `<svg class="guide-defence-chart" viewBox="0 0 500 250" role="img" aria-label="Equipment defensive bonuses. ${esc2(desc)}"><line x1="260" y1="5" x2="260" y2="242" stroke="var(--line)"/>${rows.map(([label, key], i) => {
+    return `<svg class="guide-defence-chart" viewBox="0 0 500 250" role="img" aria-label="Equipment defensive bonuses. ${esc3(desc)}"><line x1="260" y1="5" x2="260" y2="242" stroke="var(--line)"/>${rows.map(([label, key], i) => {
       const value = typeof form[key] === "number" ? form[key] : null, width = value === null ? 0 : Math.abs(value) / max * 155, y = 22 + i * 32;
       return `<text x="2" y="${y + 4}" fill="var(--muted)">${label}</text><rect x="${value !== null && value < 0 ? 260 - width : 260}" y="${y - 9}" width="${width}" height="16" rx="4" fill="${weakest.includes(key) ? "var(--green)" : "var(--gold)"}" opacity="${weakest.includes(key) ? ".9" : ".45"}"/><text x="485" y="${y + 4}" text-anchor="end" fill="var(--text)">${value === null ? "\u2014" : value}</text>`;
     }).join("")}</svg><p class="small muted">Lower bonuses are easier to penetrate within that damage type. These bars exclude combat levels, weapon accuracy and special mechanics; they do not rank overall DPS.</p>`;
@@ -42479,10 +44429,10 @@
     return `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="${paths2[slot] || paths2.Body}"/></svg>`;
   }
   function renderGear(set) {
-    return `<article class="guide-gear-set ${set.tier}"><div class="guide-gear-title"><span class="badge">${set.tier === "mid" ? "70\u201385 combat stats" : "99 combat stats"}</span><h3>${set.title}</h3><p>${esc2(set.offence)}</p></div><div class="guide-equipment" aria-label="${set.tier === "mid" ? "Mid-level" : "High-end"} equipment">${set.slots.map((row) => `<div class="guide-slot slot-${row.slot.toLowerCase().replaceAll(" ", "-")}">${gearIcon(row.slot)}<small>${row.slot}</small><strong>${esc2(row.item)}</strong></div>`).join("")}</div>${set.switches.length ? `<div class="notice"><strong>Required style switch</strong><p>${set.switches.map(esc2).join("<br>")}</p></div>` : ""}<details><summary>Setup notes and substitutions</summary><ul>${set.notes.map((note) => `<li>${esc2(note)}</li>`).join("")}</ul></details></article>`;
+    return `<article class="guide-gear-set ${set.tier}"><div class="guide-gear-title"><span class="badge">${set.tier === "mid" ? "70\u201385 combat stats" : "99 combat stats"}</span><h3>${set.title}</h3><p>${esc3(set.offence)}</p></div><div class="guide-equipment" aria-label="${set.tier === "mid" ? "Mid-level" : "High-end"} equipment">${set.slots.map((row) => `<div class="guide-slot slot-${row.slot.toLowerCase().replaceAll(" ", "-")}">${hasItemIcon(row.item) ? "" : gearIcon(row.slot)}<small>${row.slot}</small><strong>${itemText(row.item)}</strong></div>`).join("")}</div>${set.switches.length ? `<div class="notice"><strong>Required style switch</strong><p>${set.switches.map(itemText).join("<br>")}</p></div>` : ""}<details><summary>Setup notes and substitutions</summary><ul>${set.notes.map((note) => `<li>${esc3(note)}</li>`).join("")}</ul></details></article>`;
   }
   function renderLocation(location, index, selected) {
-    return `<article class="guide-location ${selected === location.name ? "chosen" : ""} ${location.available ? "" : "limited"}"><div class="location-rank" aria-label="Rank ${index + 1}">${index + 1}</div><div class="location-body"><h3>${esc2(location.name)}</h3><div class="guide-tags"><span class="badge">${location.wilderness ? "Wilderness / risky approach" : location.riskKnown ? "Non-Wilderness listing" : "PvP status unconfirmed"}</span><span class="badge">Cannon: ${location.cannon === null ? "unconfirmed" : location.cannon ? "yes" : "no"}</span><span class="badge">Multi: ${location.multi === null ? "unconfirmed" : location.multi ? "yes" : "no"}</span>${!location.reviewed ? '<span class="badge">Route unreviewed</span>' : ""}${!location.available ? '<span class="badge">Limited / task access</span>' : ""}</div><ul class="location-reasons">${location.reasons.map((r) => `<li>${esc2(r)}</li>`).join("")}</ul><div class="guide-route" aria-label="Travel route">${location.travel.map((step, i) => `<span>${i ? '<i aria-hidden="true"></i>' : ""}${esc2(step)}</span>`).join("")}</div>${location.fastRoute ? `<p class="guide-fast-route"><strong>Optional faster route:</strong> ${esc2(location.fastRoute)}</p>` : ""}${location.requires.length ? `<details ${selected === location.name ? "open" : ""}><summary>Requirements and caveats (${location.requires.length})</summary><ul>${location.requires.map((r) => `<li>${esc2(r)}</li>`).join("")}</ul></details>` : ""}<div class="tools"><button data-guide-location="${esc2(location.name)}" aria-pressed="${selected === location.name}" ${location.available ? "" : "disabled"}>${selected === location.name ? "Planning for this location" : "Use this location"}</button><a href="${esc2(location.sourceUrl)}" target="_blank" rel="noreferrer">Location source</a></div></div></article>`;
+    return `<article class="guide-location ${selected === location.name ? "chosen" : ""} ${location.available ? "" : "limited"}"><div class="location-rank" aria-label="Rank ${index + 1}">${index + 1}</div><div class="location-body"><h3>${esc3(location.name)}</h3><div class="guide-tags"><span class="badge">${location.wilderness ? "Wilderness / risky approach" : location.riskKnown ? "Non-Wilderness listing" : "PvP status unconfirmed"}</span><span class="badge">Cannon: ${location.cannon === null ? "unconfirmed" : location.cannon ? "yes" : "no"}</span><span class="badge">Multi: ${location.multi === null ? "unconfirmed" : location.multi ? "yes" : "no"}</span>${!location.reviewed ? '<span class="badge">Route unreviewed</span>' : ""}${!location.available ? '<span class="badge">Limited / task access</span>' : ""}</div><ul class="location-reasons">${location.reasons.map((r) => `<li>${esc3(r)}</li>`).join("")}</ul><div class="guide-route" aria-label="Travel route">${location.travel.map((step, i) => `<span>${i ? '<i aria-hidden="true"></i>' : ""}${esc3(step)}</span>`).join("")}</div>${location.fastRoute ? `<p class="guide-fast-route"><strong>Optional faster route:</strong> ${esc3(location.fastRoute)}</p>` : ""}${location.requires.length ? `<details ${selected === location.name ? "open" : ""}><summary>Requirements and caveats (${location.requires.length})</summary><ul>${location.requires.map((r) => `<li>${esc3(r)}</li>`).join("")}</ul></details>` : ""}<div class="tools"><button data-guide-location="${esc3(location.name)}" aria-pressed="${selected === location.name}" ${location.available ? "" : "disabled"}>${selected === location.name ? "Planning for this location" : "Use this location"}</button><a href="${esc3(location.sourceUrl)}" target="_blank" rel="noreferrer">Location source</a></div></div></article>`;
   }
   function renderCreatureGuide(data) {
     const s = guideState, record = GUIDE.records[s.variantId], form = guideForm(record, s), location = selectedLocation(record, form, s), ranked = rankLocations(record, form, s), plan = fightPlan(record, form, s, location);
@@ -42491,14 +44441,14 @@
     const required = record.requirements.filter((r) => r.kind === "quest" || r.kind === "skill" && (r.min || 0) > 0).map((r) => r.kind === "skill" ? `${r.label} ${r.min}` : `${r.label}${r.min === 1 ? " started" : " completed"}`);
     const speed = form["attack speed"] === null ? form.attackSpeedText : form["attack speed"] + " ticks \xB7 " + (form["attack speed"] * 0.6).toFixed(1) + " seconds";
     return `<section class="guide-intro"><div><div class="eyebrow">STANDALONE CREATURE FIELD GUIDE</div><h1>Know your next opponent.</h1><p class="muted">Stats, equipment and routes in one place. Guide choices are saved separately from hunt profiles.</p></div><span class="badge">${Object.keys(GUIDE.records).length} creatures \xB7 offline facts</span></section>
-  ${saveNotice ? `<p class="notice">${esc2(saveNotice)}</p>` : ""}
+  ${saveNotice ? `<p class="notice">${esc3(saveNotice)}</p>` : ""}
   <section class="card guide-controls ${record.forms.length === 1 ? "single-form" : ""}"><div class="formgrid">${field("guide-assignment", "Assignment filter", [["", "All assignment types"], ...data.assignments.filter((a) => Object.values(GUIDE.records).some((v) => v.assignmentIds.includes(a.id))).map((a) => [a.id, a.name])], s.assignmentId)}${field("guide-variant", "Creature variant", variants.map((v) => [v.id, v.name]), s.variantId)}${record.forms.length > 1 ? field("guide-form", "Source form / spawn", record.forms.map((f) => [f.id, `${f.label}${f.combat !== null ? " \xB7 level " + f.combat : ""}`]), form.id) : ""}</div></section>
-  <section class="card guide-creature-hero"><div class="guide-portrait">${creatureIcon(record.id, true)}</div><div class="guide-creature-heading"><div class="eyebrow">CREATURE DOSSIER</div><h2>${esc2(record.name)}</h2><p class="muted">${esc2(form.label.toLowerCase() === record.name.toLowerCase() ? "Standard form" : form.label)} \xB7 ${esc2(form["attack style"] || "Attack style not recorded")}</p><div class="guide-tags">${required.map((r) => `<span class="badge">${esc2(r)}</span>`).join("")}</div></div><div class="guide-vitals">${[["Hitpoints", num(form.hitpoints)], ["Combat", num(form.combat)], ["Max hit", form["max hit"] || "\u2014"], ["Attack interval", speed || "\u2014"]].map(([k, v]) => `<div><small>${k}</small><strong>${esc2(v)}</strong></div>`).join("")}</div></section>
-  <div class="guide-analysis-grid"><section class="card"><div class="section-heading">${interfaceIcon("account")}<h2>Combat profile</h2></div>${statBars(form)}<div class="guide-facts"><p><strong>Aggressive:</strong> ${esc2(form.aggressive || "Not recorded")}</p><p><strong>Poison / venom:</strong> ${esc2(form.poisonous || "Not recorded")}</p><p><strong>Attributes:</strong> ${esc2(form.attributes || "Not recorded")}</p><p><strong>Cannon immunity:</strong> ${esc2(form.immunecannon || "Not recorded")} <small>(placement rules are separate)</small></p></div></section><section class="card"><div class="section-heading">${interfaceIcon("methods")}<h2>Defences & weaknesses</h2></div>${defenceChart(form)}${elementalChart(form)}</section></div>
-  <section class="card guide-fight-plan" id="guide-setup" tabindex="-1" aria-labelledby="guide-setup-title"><div class="section-heading">${interfaceIcon("plan")}<div><h2 id="guide-setup-title">Prepare your setup</h2><p class="muted small">Approximate loadouts, not a live-price or best-in-slot calculation.</p></div></div><div class="guide-plan-settings">${field("guide-approach", "Prepared approach", [["auto", "Recommended approach"], ...APPROACHES.filter((a) => a !== "auto" && allowed.includes(a.split("-")[0]) && (!["kraken", "thermonuclear-smoke-devil"].includes(record.id) || a.endsWith("-tank"))).map((a) => [a, a[0].toUpperCase() + a.slice(1).replace("-", " \xB7 ")])], s.approach)}<label class="check"><input id="guide-on-task" type="checkbox" ${s.onTask ? "checked" : ""}>On a suitable Slayer task (Slayer headgear where allowed)</label></div><div class="guide-plan-summary"><div><span class="eyebrow">SUGGESTED TYPE</span><h3>${esc2(plan.name)}</h3><p>${esc2(plan.reason)}</p><span class="badge">Offence: ${esc2(offenceName(plan.attack))}</span></div><div><strong>Protection plan</strong><p>${esc2(plan.protection)}</p><strong>Offensive prayer</strong><p>${esc2(plan.offensivePrayer)}</p></div></div>${plan.notes.length ? `<div class="notice ${plan.mechanics.boss ? "guide-boss-note" : ""}"><strong>Creature mechanics come first</strong><ul>${plan.notes.map((note) => `<li>${esc2(note)}</li>`).join("")}</ul></div>` : ""}${location ? `<p class="small muted">Gear prepared for <strong>${esc2(location.name)}</strong>. Selecting another location below updates location-dependent protection.</p>` : ""}<div class="guide-gear-grid">${renderGear(gearSet(record, form, plan, s, location, "mid"))}${renderGear(gearSet(record, form, plan, s, location, "max"))}</div></section>
-  <section class="card"><div class="section-heading">${interfaceIcon("supplies")}<div><h2>Potions & trip kit</h2><p class="small muted">Protection first; boosts are optional. Quantities depend on your stats and trip length.</p></div></div><div class="guide-supplies">${supplies(record, form, plan, location).map((supply, i) => `<label class="guide-supply"><input type="checkbox" aria-label="Pack ${esc2(supply.item)}"><span><strong>${esc2(supply.item)}</strong><small>${esc2(supply.purpose)}</small></span><span class="badge">${supply.essential ? "Protection / required kit" : supply.kind}</span></label>`).join("")}</div></section>
+  <section class="card guide-creature-hero"><div class="guide-portrait">${creatureIcon(record.id, true)}</div><div class="guide-creature-heading"><div class="eyebrow">CREATURE DOSSIER</div><h2>${esc3(record.name)}</h2><p class="muted">${esc3(form.label.toLowerCase() === record.name.toLowerCase() ? "Standard form" : form.label)} \xB7 ${esc3(form["attack style"] || "Attack style not recorded")}</p><div class="guide-tags">${required.map((r) => `<span class="badge">${esc3(r)}</span>`).join("")}</div></div><div class="guide-vitals">${[["Hitpoints", num(form.hitpoints)], ["Combat", num(form.combat)], ["Max hit", form["max hit"] || "\u2014"], ["Attack interval", speed || "\u2014"]].map(([k, v]) => `<div><small>${k}</small><strong>${esc3(v)}</strong></div>`).join("")}</div></section>
+  <div class="guide-analysis-grid"><section class="card"><div class="section-heading">${interfaceIcon("account")}<h2>Combat profile</h2></div>${statBars(form)}<div class="guide-facts"><p><strong>Aggressive:</strong> ${esc3(form.aggressive || "Not recorded")}</p><p><strong>Poison / venom:</strong> ${esc3(form.poisonous || "Not recorded")}</p><p><strong>Attributes:</strong> ${esc3(form.attributes || "Not recorded")}</p><p><strong>Cannon immunity:</strong> ${esc3(form.immunecannon || "Not recorded")} <small>(placement rules are separate)</small></p></div></section><section class="card"><div class="section-heading">${interfaceIcon("methods")}<h2>Defences & weaknesses</h2></div>${defenceChart(form)}${elementalChart(form)}</section></div>
+  <section class="card guide-fight-plan" id="guide-setup" tabindex="-1" aria-labelledby="guide-setup-title"><div class="section-heading">${interfaceIcon("plan")}<div><h2 id="guide-setup-title">Prepare your setup</h2><p class="muted small">Approximate loadouts, not a live-price or best-in-slot calculation.</p></div></div><div class="guide-plan-settings">${field("guide-approach", "Prepared approach", [["auto", "Recommended approach"], ...APPROACHES.filter((a) => a !== "auto" && allowed.includes(a.split("-")[0]) && (!["kraken", "thermonuclear-smoke-devil"].includes(record.id) || a.endsWith("-tank"))).map((a) => [a, a[0].toUpperCase() + a.slice(1).replace("-", " \xB7 ")])], s.approach)}<label class="check"><input id="guide-on-task" type="checkbox" ${s.onTask ? "checked" : ""}>On a suitable Slayer task (Slayer headgear where allowed)</label></div><div class="guide-plan-summary"><div><span class="eyebrow">SUGGESTED TYPE</span><h3>${esc3(plan.name)}</h3><p>${esc3(plan.reason)}</p><span class="badge">Offence: ${esc3(offenceName(plan.attack))}</span></div><div><strong>Protection plan</strong><p>${esc3(plan.protection)}</p><strong>Offensive prayer</strong><p>${esc3(plan.offensivePrayer)}</p></div></div>${plan.notes.length ? `<div class="notice ${plan.mechanics.boss ? "guide-boss-note" : ""}"><strong>Creature mechanics come first</strong><ul>${plan.notes.map((note) => `<li>${esc3(note)}</li>`).join("")}</ul></div>` : ""}${location ? `<p class="small muted">Gear prepared for <strong>${esc3(location.name)}</strong>. Selecting another location below updates location-dependent protection.</p>` : ""}<details class="guide-methodology"><summary>How these sets are chosen</summary><p>These are curated examples: creature-specific rules take priority, then a template supplies the remaining slots for your chosen combat style, tank/prayer approach and tier.</p><ul><li>Mandatory shields, special weapons, hazard protection and style switches override ordinary upgrades. The selected location can change the kit.</li><li>Source defensive bonuses suggest a subtype within a style. This is not a full accuracy/DPS calculation across styles, and bosses need their specialist strategy.</li><li>Mid-level uses roughly 70\u201385 stats and practical Barrows/whip/trident-level equipment. Max uses 99s and high-end examples. Unlocks are assumed; your account, owned items and current prices are not checked.</li><li>The general templates are planner suggestions informed by the linked sources, not copied best-in-slot tables. Generic categories use a representative icon; hover the link to see which item is pictured.</li></ul></details><div class="guide-gear-grid">${renderGear(gearSet(record, form, plan, s, location, "mid"))}${renderGear(gearSet(record, form, plan, s, location, "max"))}</div></section>
+  <section class="card"><div class="section-heading">${interfaceIcon("supplies")}<div><h2>Potions & trip kit</h2><p class="small muted">Protection first; boosts are optional. Quantities depend on your stats and trip length.</p></div></div><div class="guide-supplies">${supplies(record, form, plan, location).map((supply, i) => `<div class="guide-supply"><input type="checkbox" aria-label="Pack ${esc3(supply.item)}"><span><strong>${itemText(supply.item)}</strong><small>${esc3(supply.purpose)}</small></span><span class="badge">${supply.essential ? "Protection / required kit" : supply.kind}</span></div>`).join("")}</div></section>
   <section class="card" id="guide-locations"><div class="section-heading">${interfaceIcon("route")}<div><h2>Ranked locations</h2><p class="small muted">Editorial route ranking, not measured kills/hour. Special access and room rules still apply.</p></div></div><div class="guide-plan-settings">${field("guide-priority", "Prioritise", [["balanced", "All-round convenience & safety"], ["cannon", "Cannon-friendly rooms"], ["barrage", "Multi-target spell rooms"], ["access", "Fewer known requirements"]], s.priority)}<label class="check"><input id="guide-fast-travel" type="checkbox" ${s.fastTravel ? "checked" : ""}>Rank assuming the listed fast travel is unlocked</label></div>${ranked.length ? ranked.slice(0, 3).map((loc, i) => renderLocation(loc, i, location?.name || "")).join("") : '<p class="notice">No matching location row was captured for this source form. Use the creature source to confirm its spawn; no location has been invented.</p>'}${ranked.length > 3 ? `<details><summary>More listed locations (${ranked.length - 3})</summary>${ranked.slice(3).map((loc, i) => renderLocation(loc, i + 3, location?.name || "")).join("")}</details>` : ""}</section>
-  <section class="guide-sources"><h3>Sources & confidence</h3><p class="small muted">Stats and listed locations are parsed from the saved Wiki revision. Gear, route order and conservative protection choices are planner suggestions. Missing data stays unknown. Multi-stage bosses, quest appearances and identical-level forms still need their encounter guide.</p><ul>${guideSources(record).map((source) => `<li><a href="${esc2(source.url + (source.revision ? "?oldid=" + source.revision : ""))}" target="_blank" rel="noreferrer">${esc2(source.title)}</a> <span class="muted small">${source.revision ? "revision " + source.revision : ""}</span></li>`).join("")}</ul><p class="small muted">Guide data ${GUIDE.version}. Selection makes no Wiki requests. ${GUIDE.records[record.id].source.timestamp.slice(0, 10)} creature snapshot.</p></section>`;
+  <section class="guide-sources"><h3>Sources & confidence</h3><p class="small muted">Stats and listed locations are parsed from the saved Wiki revision. Gear, route order and conservative protection choices are planner suggestions. Missing data stays unknown. Multi-stage bosses, quest appearances and identical-level forms still need their encounter guide.</p><ul>${guideSources(record).map((source) => `<li><a href="${esc3(source.url + (source.revision ? "?oldid=" + source.revision : ""))}" target="_blank" rel="noreferrer">${esc3(source.title)}</a> <span class="muted small">${source.revision ? "revision " + source.revision : ""}</span></li>`).join("")}</ul><p class="small muted">Guide data ${GUIDE.version}. Selection makes no Wiki requests. ${GUIDE.records[record.id].source.timestamp.slice(0, 10)} creature snapshot.</p></section>`;
   }
 
   // src/ui/hunt-actions.ts
@@ -42620,17 +44570,17 @@
   };
 
   // src/ui/account-import.ts
-  var esc3 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc4 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var questLabel = (n) => n === null ? "Unknown" : n === 0 ? "Not started" : n === 1 ? "In progress" : "Completed";
   var accessLabel = (n) => n === null ? "Unknown" : n === 1 ? "Accessible" : "Unavailable";
   function renderQuestImport(p2, preview, preserve, draft) {
     const saved = p2.questImport;
-    let html = `<section class="card"><h2>Import RuneLite quests</h2><p>Choose a local quest JSON export or paste its contents. Review it before applying it to <strong>${esc3(p2.name)}</strong>. Missing quests stay unknown; imported quests can be overridden below.</p><div class="tools"><button data-action="choose-quests">Choose quest JSON</button><button data-action="export-profile">Export profile backup</button></div><details><summary>Paste quest JSON</summary><label>RuneLite quest JSON<textarea id="quest-json" rows="5" maxlength="2000000" placeholder="Paste a RuneLite quest export here">${esc3(draft)}</textarea></label><button data-action="preview-quests">Review pasted quests</button></details><details><summary>How to export from RuneLite</summary><ol><li>Install <a href="https://runelite.net/plugin-hub/show/character-export" target="_blank" rel="noopener">Character Export</a> from the RuneLite Plugin Hub and enable quest exporting.</li><li>Log in to the character, use the plugin's Sync Available / Open Folder controls, and choose <strong>quests.json</strong>.</li><li>The folder is <code>.runelite/character-exporter/&lt;Character Name&gt;/</code> in your user folder.</li></ol><p class="small muted">Also accepts the quest records in an OSRS MCP Companion account JSON. Only matching quest states and source details are retained. Bank, inventory, skills and diaries are not imported by this action. No WikiSync API or account login is used by the planner.</p></details>`;
-    if (saved) html += `<p class="notice">Last quest import: ${esc3(saved.format)} \xB7 ${esc3(saved.playerName || "Account not supplied")} \xB7 Exported ${esc3(saved.exportedAt || "time unknown")} \xB7 ${Object.keys(saved.states).length} relevant quest states. <button data-action="clear-imported-quests">Remove imported quests</button></p>`;
+    let html = `<section class="card"><h2>Import RuneLite quests</h2><p>Choose a local quest JSON export or paste its contents. Review it before applying it to <strong>${esc4(p2.name)}</strong>. Missing quests stay unknown; imported quests can be overridden below.</p><div class="tools"><button data-action="choose-quests">Choose quest JSON</button><button data-action="export-profile">Export profile backup</button></div><details><summary>Paste quest JSON</summary><label>RuneLite quest JSON<textarea id="quest-json" rows="5" maxlength="2000000" placeholder="Paste a RuneLite quest export here">${esc4(draft)}</textarea></label><button data-action="preview-quests">Review pasted quests</button></details><details><summary>How to export from RuneLite</summary><ol><li>Install <a href="https://runelite.net/plugin-hub/show/character-export" target="_blank" rel="noopener">Character Export</a> from the RuneLite Plugin Hub and enable quest exporting.</li><li>Log in to the character, use the plugin's Sync Available / Open Folder controls, and choose <strong>quests.json</strong>.</li><li>The folder is <code>.runelite/character-exporter/&lt;Character Name&gt;/</code> in your user folder.</li></ol><p class="small muted">Also accepts the quest records in an OSRS MCP Companion account JSON. Only matching quest states and source details are retained. Bank, inventory, skills and diaries are not imported by this action. No WikiSync API or account login is used by the planner.</p></details>`;
+    if (saved) html += `<p class="notice">Last quest import: ${esc4(saved.format)} \xB7 ${esc4(saved.playerName || "Account not supplied")} \xB7 Exported ${esc4(saved.exportedAt || "time unknown")} \xB7 ${Object.keys(saved.states).length} relevant quest states. <button data-action="clear-imported-quests">Remove imported quests</button></p>`;
     if (preview) {
-      const names4 = Object.keys(preview.states).sort(), conflicts = names4.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
+      const names5 = Object.keys(preview.states).sort(), conflicts = names5.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
       const accountMismatch = preview.playerName && saved?.playerName && preview.playerName.toLowerCase() !== saved.playerName.toLowerCase();
-      html += `<div class="notice"><h3>Review quest import</h3><p>${esc3(preview.format)} \xB7 ${esc3(preview.playerName || "Account not supplied")} \xB7 Exported ${esc3(preview.exportedAt || "time unknown")}</p><p>${names4.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc3(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names4.map((name) => `<tr><td>${esc3(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc3(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
+      html += `<div class="notice"><h3>Review quest import</h3><p>${esc4(preview.format)} \xB7 ${esc4(preview.playerName || "Account not supplied")} \xB7 Exported ${esc4(preview.exportedAt || "time unknown")}</p><p>${names5.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc4(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names5.map((name) => `<tr><td>${esc4(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc4(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
     }
     return html + "</section>";
   }
@@ -42638,7 +44588,7 @@
     const locations = keys.filter((key) => key.startsWith("location:") && key.toLowerCase().includes(query));
     return `<section class="card"><h2>Area access</h2><p class="small muted">Derived from imported or manually entered quests using area rules ${AREA_VERSION}. Partial quest steps and other unverified access stay unknown. Manual Yes/No overrides take priority; choose Auto to restore derivation. Equipment, travel shortcuts and individual monster requirements are separate.</p><div class="tablewrap data-list"><table><thead><tr><th>Area</th><th>Effective access</th><th>Override</th><th>Reason</th></tr></thead><tbody>${locations.map((key) => {
       const result = resolveAccess(key, p2), rule = AREA_RULES.find((r) => r.key === key), manual = p2.access[key] === 0 || p2.access[key] === 1;
-      return `<tr><td>${esc3(key.slice(9))}</td><td>${accessLabel(result.value)}<small>${result.origin === "manual" ? "Manual override" : result.origin === "quest" ? "Derived from quest" : "Needs confirmation"}</small></td><td><select aria-label="Access override for ${esc3(key.slice(9))}" data-fact="access" data-key="${esc3(key)}"><option value="" ${!manual ? "selected" : ""}>Auto</option><option value="1" ${p2.access[key] === 1 ? "selected" : ""}>Yes \u2014 manual</option><option value="0" ${p2.access[key] === 0 ? "selected" : ""}>No \u2014 manual</option></select></td><td>${esc3(result.reason)}${rule ? ` <a href="${esc3(rule.source.url)}?oldid=${rule.source.revision}" target="_blank" rel="noopener">Source</a>` : ""}</td></tr>`;
+      return `<tr><td>${esc4(key.slice(9))}</td><td>${accessLabel(result.value)}<small>${result.origin === "manual" ? "Manual override" : result.origin === "quest" ? "Derived from quest" : "Needs confirmation"}</small></td><td><select aria-label="Access override for ${esc4(key.slice(9))}" data-fact="access" data-key="${esc4(key)}"><option value="" ${!manual ? "selected" : ""}>Auto</option><option value="1" ${p2.access[key] === 1 ? "selected" : ""}>Yes \u2014 manual</option><option value="0" ${p2.access[key] === 0 ? "selected" : ""}>No \u2014 manual</option></select></td><td>${esc4(result.reason)}${rule ? ` <a href="${esc4(rule.source.url)}?oldid=${rule.source.revision}" target="_blank" rel="noopener">Source</a>` : ""}</td></tr>`;
     }).join("")}</tbody></table></div></section>`;
   }
 
@@ -42713,16 +44663,16 @@
   }
 
   // src/ui/skip-policy.ts
-  var esc4 = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc5 = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   function renderSkipPolicy(data, plan, p2) {
     if (plan.reason && plan.reason !== "Cape repeat policies require simulation; analytical ranking is unavailable.") return '<h3>Skip policy</h3><p class="small muted">Resolve the plan issues above to see skip recommendations.</p>';
     const { full, partial, resets } = skipRecommendations(data, plan, p2);
-    const explanation = (row) => esc4(taskAdvice(data, plan, p2, row).detail);
+    const explanation = (row) => esc5(taskAdvice(data, plan, p2, row).detail);
     return `<div class="skip-policy"><h3>Skip policy</h3><p>${(plan.skipRate * 100).toFixed(1)}% of offers skipped in the stationary model.</p>
     <h4>Skip whenever affordable (${full.length})</h4>
-    ${full.length ? `<ul class="skip-list">${full.map(({ row, manual }) => `<li><details class="skip-explanation"><summary title="${explanation(row)}">${esc4(row.name)}${manual ? ' <span class="badge">Saved preference</span>' : ""}</summary><p>${explanation(row)}</p></details></li>`).join("")}</ul>` : '<p class="small muted">No fully skipped tasks.</p>'}
-    ${partial.length ? `<h4>Sometimes skip (${partial.length})</h4><ul class="skip-list">${partial.map(({ row, fraction }) => `<li><details class="skip-explanation"><summary title="${explanation(row)}">${esc4(row.name)} <strong>${(fraction * 100).toFixed(1)}%</strong> of its offers</summary><p>${explanation(row)}</p></details></li>`).join("")}</ul><p class="small muted">These frequencies balance the long-run point budget; complete the remaining offers.</p>` : ""}
-    ${resets.length ? `<h4>Reset through Turael (${resets.length})</h4><ul class="skip-list">${resets.map((row) => `<li>${esc4(row.name)}</li>`).join("")}</ul><p class="small muted">Resets change the selected master's streak. Complete the replacement Turael task.</p>` : ""}
+    ${full.length ? `<ul class="skip-list">${full.map(({ row, manual }) => `<li><details class="skip-explanation"><summary title="${explanation(row)}">${esc5(row.name)}${manual ? ' <span class="badge">Saved preference</span>' : ""}</summary><p>${explanation(row)}</p></details></li>`).join("")}</ul>` : '<p class="small muted">No fully skipped tasks.</p>'}
+    ${partial.length ? `<h4>Sometimes skip (${partial.length})</h4><ul class="skip-list">${partial.map(({ row, fraction }) => `<li><details class="skip-explanation"><summary title="${explanation(row)}">${esc5(row.name)} <strong>${(fraction * 100).toFixed(1)}%</strong> of its offers</summary><p>${explanation(row)}</p></details></li>`).join("")}</ul><p class="small muted">These frequencies balance the long-run point budget; complete the remaining offers.</p>` : ""}
+    ${resets.length ? `<h4>Reset through Turael (${resets.length})</h4><ul class="skip-list">${resets.map((row) => `<li>${esc5(row.name)}</li>`).join("")}</ul><p class="small muted">Resets change the selected master's streak. Complete the replacement Turael task.</p>` : ""}
     ${!full.length && !partial.length && !resets.length ? "<p>No tasks to skip under this policy.</p>" : ""}
     <p class="small muted">Paid skips must preserve your point reserve. Protected target assignments are never skipped. Saved preferences use the same paid-skip rules in estimates and simulation.${p2.strategy.startsWith("boost") ? " This list covers the selected master; simulate to review filler-master actions between milestones." : ""}${plan.master.id === "mortimer" ? " With multiple choices, choose a compatible target first; otherwise the simulation compares the offered options." : ""}</p></div>`;
   }
@@ -42780,13 +44730,13 @@
   }
 
   // src/ui/plan-issues.ts
-  var esc5 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc6 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   function renderPlanIssues(data, plan, p2, expanded = false) {
     const issues = explainPlanIssues(data, plan, p2);
     if (!issues.length) return "";
     return `<details class="plan-issues" ${expanded ? "open" : ""}><summary>${plan.reason ? "Why unavailable?" : "Assumptions to review"} (${issues.length})</summary><ul class="plan-issue-list">${issues.map((issue) => {
       const source = issue.source.url + (issue.source.revision ? (issue.source.url.includes("?") ? "&" : "?") + "oldid=" + issue.source.revision : "");
-      return `<li><strong>${esc5(issue.title)}</strong><p>${esc5(issue.detail)}</p><div class="tools"><button data-issue-route="${issue.route}" data-issue-master="${plan.master.id}" data-issue-assignment="${esc5(issue.assignmentId)}" data-issue-variant="${esc5(issue.variantId)}" data-issue-filter="${esc5(issue.filter)}" data-issue-field="${esc5(issue.field)}">${esc5(issue.action)}</button><a href="${esc5(source)}" target="_blank" rel="noopener">Wiki source: ${esc5(issue.source.title)}</a></div></li>`;
+      return `<li><strong>${esc6(issue.title)}</strong><p>${esc6(issue.detail)}</p><div class="tools"><button data-issue-route="${issue.route}" data-issue-master="${plan.master.id}" data-issue-assignment="${esc6(issue.assignmentId)}" data-issue-variant="${esc6(issue.variantId)}" data-issue-filter="${esc6(issue.filter)}" data-issue-field="${esc6(issue.field)}">${esc6(issue.action)}</button><a href="${esc6(source)}" target="_blank" rel="noopener">Wiki source: ${esc6(issue.source.title)}</a></div></li>`;
     }).join("")}</ul></details>`;
   }
   function planIssueTooltip(plan) {
@@ -42794,12 +44744,12 @@
   }
 
   // src/ui/mortimer-rules.ts
-  var esc6 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-  var names3 = { points: "Points", quantity: "Quantity", clue: "Clue", superior: "Superior unique", xp: "Slayer XP" };
+  var esc7 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var names4 = { points: "Points", quantity: "Quantity", clue: "Clue", superior: "Superior unique", xp: "Slayer XP" };
   var percent = (value) => (value * 100).toFixed(2).replace(/\.00$/, "") + "%";
   function renderMortimerSummary(p2) {
     const kinds = p2.mortimerTasks === null ? null : mortimerKinds(p2.mortimerTasks);
-    return `<div class="notice"><strong>Every Mortimer option has a modifier.</strong> ${kinds ? `${kinds.length} unlocked types: ${kinds.map((k) => names3[k]).join(", ")} \xB7 ${percent(1 / kinds.length)} each.` : "Enter completed Mortimer tasks to determine the unlocked types."} Values are equally likely in five-step increments. <button data-action="mortimer-rules">Modifier probabilities & ranges</button></div>`;
+    return `<div class="notice"><strong>Every Mortimer option has a modifier.</strong> ${kinds ? `${kinds.length} unlocked types: ${kinds.map((k) => names4[k]).join(", ")} \xB7 ${percent(1 / kinds.length)} each.` : "Enter completed Mortimer tasks to determine the unlocked types."} Values are equally likely in five-step increments. <button data-action="mortimer-rules">Modifier probabilities & ranges</button></div>`;
   }
   function rangeCell(bounds, kind) {
     if (bounds === null) return '<span class="muted">N/A</span>';
@@ -42810,7 +44760,7 @@
   function renderMortimerRules(p2) {
     const active = p2.mortimerTasks === null ? [] : mortimerKinds(p2.mortimerTasks);
     const source = MORTIMER_RULES.source;
-    return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names3[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc6(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc6(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc6(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
+    return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names4[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc7(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc7(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc7(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
   }
 
   // src/ui/visibility.ts
@@ -67041,14 +68991,14 @@
     safe(value);
     if (!value || typeof value !== "object" || !Array.isArray(value.quests) || !value.quests.length || value.quests.length > 1e3) throw Error("Choose a RuneLite quest export containing a non-empty quests array.");
     if (value.schemaVersion !== void 0 && value.schemaVersion !== 1) throw Error("Unsupported RuneLite export schema version.");
-    const names4 = new Map(relevantQuests(data).map((name) => [normal(name), name]));
+    const names5 = new Map(relevantQuests(data).map((name) => [normal(name), name]));
     const states = {}, seen = /* @__PURE__ */ new Map(), ignored = [];
     for (const row of value.quests) {
       if (!row || typeof row !== "object" || typeof row.name !== "string" || typeof row.state !== "string") throw Error("Quest entries need a name and textual RuneLite state.");
       const title = typeof row.displayName === "string" ? row.displayName : row.name;
       if (!title.trim() || title.length > 120) throw Error("Invalid quest name.");
       if (!Object.hasOwn(STATE, row.state)) throw Error(`Unsupported state for ${title}: ${row.state}.`);
-      const state2 = STATE[row.state], key = normal(title), name = names4.get(key) || names4.get(normal(row.name));
+      const state2 = STATE[row.state], key = normal(title), name = names5.get(key) || names5.get(normal(row.name));
       if (seen.has(key) && seen.get(key) !== state2) throw Error(`Conflicting duplicate quest: ${title}.`);
       seen.set(key, state2);
       if (name) {
@@ -67088,7 +69038,7 @@
 
   // src/ui/app.ts
   var $ = (id) => document.getElementById(id);
-  var esc7 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var esc8 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var pct = (v) => v === null ? "\u2014" : (v * 100).toFixed(2) + "%";
   var num2 = (v, d = 2) => v === null ? "Unavailable" : v.toFixed(d);
   var time = (h) => {
@@ -67096,10 +69046,10 @@
     const n = Math.round(h * 60);
     return n < 60 ? n + " min" : Math.floor(n / 60) + "h " + n % 60 + "m";
   };
-  var options2 = (values, value) => values.map(([key, label]) => `<option value="${esc7(key)}" ${String(value) === key ? "selected" : ""}>${esc7(label)}</option>`).join("");
-  var select = (path, label, values, value) => `<label>${esc7(label)}<select data-setting="${esc7(path)}">${options2(values, value)}</select></label>`;
-  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc7(label)}<input data-setting="${esc7(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc7(path)}" ${value ? "checked" : ""}>${esc7(label)}</label>`;
+  var options2 = (values, value) => values.map(([key, label]) => `<option value="${esc8(key)}" ${String(value) === key ? "selected" : ""}>${esc8(label)}</option>`).join("");
+  var select = (path, label, values, value) => `<label>${esc8(label)}<select data-setting="${esc8(path)}">${options2(values, value)}</select></label>`;
+  var input = (path, label, value, min = 0, max = 1e9, step = "1") => `<label>${esc8(label)}<input data-setting="${esc8(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+  var bool = (path, label, value) => `<label class="check"><input type="checkbox" data-setting="${esc8(path)}" ${value ? "checked" : ""}>${esc8(label)}</label>`;
   var routes = [["plan", "Hunt planner"], ["guide", "Creature guide"], ["account", "Account & access"], ["tasks", "Tasks & blocks"], ["methods", "Combat methods"], ["compare", "Compare profiles"], ["data", "Data & sources"]];
   var AppState = class {
     history = new History();
@@ -93164,18 +95114,18 @@
     const restore = preserveView();
     document.body.classList.toggle("compact-hunt", state.compact);
     document.body.classList.toggle("field-guide", state.route === "guide");
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options2(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc7(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options2(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${interfaceIcon(id)}<span>${label}</span></button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.8.0 \xB7 ${esc7(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options2(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc8(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options2(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${interfaceIcon(id)}<span>${label}</span></button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.8.1 \xB7 ${esc8(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
     restore();
   }
   function renderMessage() {
-    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc7(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
+    $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc8(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
     decorateCreatureText($("message"));
   }
   function renderStatus() {
-    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc7(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
+    $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc8(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
   }
   function renderContent() {
     const restore = preserveView();
@@ -93190,16 +95140,16 @@
     if (routeChanged && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) content.animate([{ opacity: 0, transform: "translateY(7px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 220, easing: "ease-out" });
   }
   function head(eyebrow, title, description) {
-    return `<div class="pagehead"><div><div class="eyebrow">${esc7(eyebrow)}</div><h1>${esc7(title)}</h1><p>${esc7(description)}</p></div></div>`;
+    return `<div class="pagehead"><div><div class="eyebrow">${esc8(eyebrow)}</div><h1>${esc8(title)}</h1><p>${esc8(description)}</p></div></div>`;
   }
   function renderPlan() {
     const visiblePlans = state.plans.filter((r) => state.showUnavailable || r.chance !== null);
     const current = visiblePlans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
     const nav = renderHuntNav(catalogue, p(), visiblePlans, state.selected, state.compact, state.history.canUndo, state.history.canRedo, state.selectedPresetId, !!window.slayerDesktop, state.pin);
-    if (state.compact) return nav + `<p class="small muted">Hunting: ${p().goal.targets.map((t) => esc7(catalogue.variants.find((v) => v.id === t.variantId)?.name)).join(", ")}</p>` + (current ? planDetails(current, true) : "<p>Calculating hunt\u2026</p>");
+    if (state.compact) return nav + `<p class="small muted">Hunting: ${p().goal.targets.map((t) => esc8(catalogue.variants.find((v) => v.id === t.variantId)?.name)).join(", ")}</p>` + (current ? planDetails(current, true) : "<p>Calculating hunt\u2026</p>");
     let html = '<div class="hunt-intro">' + head("THE HUNT STARTS HERE", "Your next hunt", "Choose a creature. Find your master. Make every task count.");
     const targets = p().goal.targets.map((t) => catalogue.variants.find((v) => v.id === t.variantId)).filter((v) => !!v);
-    html += `<div class="hunt-targets" aria-label="Current hunt targets">${targets.map((v) => `<div class="target-emblem">${creatureIcon(v.id, true)}<div><span class="eyebrow">HUNTING</span><strong>${esc7(v.name)}</strong></div></div>`).join("")}</div></div>`;
+    html += `<div class="hunt-targets" aria-label="Current hunt targets">${targets.map((v) => `<div class="target-emblem">${creatureIcon(v.id, true)}<div><span class="eyebrow">HUNTING</span><strong>${esc8(v.name)}</strong></div></div>`).join("")}</div></div>`;
     html += nav;
     html += `<div class="plan-grid"><section class="card plan-setup"><div class="section-heading">${interfaceIcon("plan")}<div><h2>Hunt setup</h2><p class="small muted">Your target, your stopping point, your strategy.</p></div></div><div class="formgrid">${select("goal.kind", "Finish when\u2026", [["offer", "A compatible target task is offered"], ["kills", "Target kill quantity is reached"], ["drop", "Selected item drops"]], p().goal.kind)}${select("objective", "Rank plans by", [["time", "Lowest estimated waiting time"], ["chance", "Highest target chance per offer"], ["points", "Lowest estimated points within session limit"]], p().objective)}${select("strategy", "Strategy", [["none", "Complete tasks without skipping"], ["sustainable", "Sustainable skips (long-run)"], ["funded", "Spend available points"], ["boost-turael", "Turael milestone boosting"], ["boost-mazchna", "Mazchna milestone boosting"], ["reset-turael", "Turael resets (streak changes)"]], p().strategy)}</div>${p().goal.targets.map((t, i) => `<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options2(catalogue.assignments.map((a) => [a.id, a.name]), t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options2(catalogue.variants.filter((v) => v.assignmentIds.includes(t.assignmentId)).map((v) => [v.id, v.name]), t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length === 1 ? "disabled" : ""}>Remove</button></div>`).join("")}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
     if (p().goal.kind === "kills") html += `<div class="formgrid">${input("goal.quantity", "Target kills needed", p().goal.quantity, 1, 1e7)}</div>`;
@@ -93209,28 +95159,28 @@
     }
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
     if (p().strategy === "funded") html += `<div class="notice funded-note">The table is an unlimited-funds offer benchmark. Your starting points and reserve can force tasks to be completed instead of skipped; simulate the full hunt for its actual time and rewards.</div>`;
-    if (best) html += `<section class="card hero"><div class="eyebrow">${p().strategy === "funded" ? "UNLIMITED-FUNDS BENCHMARK" : "RECOMMENDED MASTER"}</div><h2>${esc7(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>${offerTimeLabel(p())}</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>${best.boost ? "Effective target / request" : best.reset ? "Target opportunity / request (incl. Turael)" : "Target opportunity / offer"}</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Requests including success</small><strong>${num2(best.offers, 1)}</strong></div></div><p class="small muted">${esc7(best.quality)}</p></section>`;
+    if (best) html += `<section class="card hero"><div class="eyebrow">${p().strategy === "funded" ? "UNLIMITED-FUNDS BENCHMARK" : "RECOMMENDED MASTER"}</div><h2>${esc8(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>${offerTimeLabel(p())}</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>${best.boost ? "Effective target / request" : best.reset ? "Target opportunity / request (incl. Turael)" : "Target opportunity / offer"}</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Requests including success</small><strong>${num2(best.offers, 1)}</strong></div></div><p class="small muted">${esc8(best.quality)}</p></section>`;
     else html += `<div class="notice plan-pending">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `</div><section id="master-comparison"><div class="section-heading">${interfaceIcon("compare")}<div><h2>Compare your masters</h2><p class="small muted">Find the best route to your next assignment.</p></div></div><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>${p().strategy === "funded" ? "Unlimited-funds benchmark" : p().strategy.startsWith("boost") ? "Boost offer estimate" : "Offer estimate"}</th><th>${p().strategy.startsWith("boost") ? "Effective target / request" : p().strategy === "reset-turael" ? "Target / request (incl. Turael)" : "Target / offer"}</th><th>Blocks</th><th>Setup cost</th><th>Long-run points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}" aria-pressed="${r.master.id === state.selected}">${esc7(r.master.name)}</button><small>${esc7(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc7(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned === null || r.pointsSpent === null ? "Use simulation" : r.pointsEarned.toFixed(1) + " earned<br>" + r.pointsSpent.toFixed(1) + " spent"}</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
+    html += `</div><section id="master-comparison"><div class="section-heading">${interfaceIcon("compare")}<div><h2>Compare your masters</h2><p class="small muted">Find the best route to your next assignment.</p></div></div><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>${p().strategy === "funded" ? "Unlimited-funds benchmark" : p().strategy.startsWith("boost") ? "Boost offer estimate" : "Offer estimate"}</th><th>${p().strategy.startsWith("boost") ? "Effective target / request" : p().strategy === "reset-turael" ? "Target / request (incl. Turael)" : "Target / offer"}</th><th>Blocks</th><th>Setup cost</th><th>Long-run points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}" aria-pressed="${r.master.id === state.selected}">${esc8(r.master.name)}</button><small>${esc8(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc8(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned === null || r.pointsSpent === null ? "Use simulation" : r.pointsEarned.toFixed(1) + " earned<br>" + r.pointsSpent.toFixed(1) + " spent"}</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
     if (current) html += planDetails(current);
     return html;
   }
   function renderResetEstimate(plan) {
     const r = plan.reset;
     if (!r) return "";
-    return `<div class="notice"><h3>Turael reset estimate</h3><p>${(r.rate * 100).toFixed(1)}% of main-master requests are reset. Each reset includes ${(p().skipSeconds / 60).toFixed(1)} minutes to change the task plus ${r.replacementMinutes.toFixed(1)} expected minutes for the Turael request and replacement action. Each main-master request adds ${p().requestMinutes.toFixed(1)} minutes.</p><p>Direct target chance at ${esc7(plan.master.name)}: ${pct(r.directChance)}. Turael target chance: ${pct(r.fillerChance)}. The table\u2019s chance averages both request types; time ends when a compatible target is offered. Incompatible Konar locations follow the reset rule.</p><p class="small muted">Uses your recorded actual Turael blocks (${r.fillerBlocks.length}), not a free automatic proposal. Set actual Turael blocks and fast replacement methods to match your route. Streak rewards and finite point balances require simulation.</p><button data-issue-route="tasks" data-issue-master="turael">Review Turael blocks and methods</button></div>`;
+    return `<div class="notice"><h3>Turael reset estimate</h3><p>${(r.rate * 100).toFixed(1)}% of main-master requests are reset. Each reset includes ${(p().skipSeconds / 60).toFixed(1)} minutes to change the task plus ${r.replacementMinutes.toFixed(1)} expected minutes for the Turael request and replacement action. Each main-master request adds ${p().requestMinutes.toFixed(1)} minutes.</p><p>Direct target chance at ${esc8(plan.master.name)}: ${pct(r.directChance)}. Turael target chance: ${pct(r.fillerChance)}. The table\u2019s chance averages both request types; time ends when a compatible target is offered. Incompatible Konar locations follow the reset rule.</p><p class="small muted">Uses your recorded actual Turael blocks (${r.fillerBlocks.length}), not a free automatic proposal. Set actual Turael blocks and fast replacement methods to match your route. Streak rewards and finite point balances require simulation.</p><button data-issue-route="tasks" data-issue-master="turael">Review Turael blocks and methods</button></div>`;
   }
   function planDetails(plan, compact = false) {
     const impacts = blockImpacts(catalogue, plan, p());
-    const blockDetails = plan.blocks.length ? `<details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc7(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num2(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details>` : "";
-    const unknownDetails = plan.unknown.length ? `<details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc7(s)}</li>`).join("")}</ul></details>` : "";
-    return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc7(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc7(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}${plan.master.id === "mortimer" ? renderMortimerSummary(p()) : ""}${renderResetEstimate(plan)}${renderBoostEstimate(catalogue, plan)}<p class="small muted">${esc7(plan.quality)}</p><div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc7(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(catalogue, plan, p(), state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc7(id)}</span>`).join("") || "None"}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(catalogue, plan, p())}</div></div>${renderForecast(plan, p(), state.simulations.get(plan.master.id) || null)}${blockDetails}${unknownDetails}${renderTaskHistory(catalogue, p())}</section>${compact ? "" : simulationPanel(plan)}`;
+    const blockDetails = plan.blocks.length ? `<details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map((i) => `<tr><td>${esc8(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num2(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join("")}</tbody></table></div></details>` : "";
+    const unknownDetails = plan.unknown.length ? `<details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map((s) => `<li>${esc8(s)}</li>`).join("")}</ul></details>` : "";
+    return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc8(plan.master.name)}</h2>${plan.reason ? `<div class="notice error">${esc8(plan.reason)}</div>` : ""}${renderPlanIssues(catalogue, plan, p(), !!plan.reason)}${plan.master.id === "mortimer" ? renderMortimerSummary(p()) : ""}${renderResetEstimate(plan)}${renderBoostEstimate(catalogue, plan)}<p class="small muted">${esc8(plan.quality)}</p><div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc8(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(catalogue, plan, p(), state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map((id) => `<span class="chip">${esc8(id)}</span>`).join("") || "None"}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(catalogue, plan, p())}</div></div>${renderForecast(plan, p(), state.simulations.get(plan.master.id) || null)}${blockDetails}${unknownDetails}${renderTaskHistory(catalogue, p())}</section>${compact ? "" : simulationPanel(plan)}`;
   }
   function simulationPanel(plan) {
     const result = state.simulation;
-    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc7(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("current.targetCompatible", "Current Konar task supports the target variant?", [["", "Unknown / not applicable"], ["yes", "Yes"], ["no", "No"]], p().current.targetCompatible === void 0 ? "" : p().current.targetCompatible ? "yes" : "no")}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${select("previousMasterId", "Actual previous task master for cape", [["", "Choose previous master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().previousMasterId || "")}${select("previousTargetCompatible", "Previous Konar task supports the target variant?", [["", "Unknown / not applicable"], ["yes", "Yes"], ["no", "No"]], p().previousTargetCompatible === void 0 ? "" : p().previousTargetCompatible ? "yes" : "no")}${bool("cape", "Always accept cape repeats when offered (10%; requires 99 Slayer)", p().cape)}</details>`;
+    let html = `<section class="card"><h2>Simulate the full hunt</h2><div class="formgrid">${input("simulation.trials", "Trials", p().simulation.trials, 100, 2e4)}${input("simulation.horizonOffers", "Maximum offers per trial", p().simulation.horizonOffers, 10, 1e4)}${input("simulation.seed", "Reproducible seed", p().simulation.seed, 0, 4294967295)}${input("simulation.sessionHours", "Session hours", p().simulation.sessionHours, 0.01, 1e4, ".1")}</div><div class="tools" style="margin-top:18px"><button data-action="simulate" ${state.busy.sim ? "disabled" : ""}>Simulate ${esc8(plan.master.name)}</button><button class="secondary" data-action="search-hunt">Search blocks for full hunt goal</button><button class="secondary" data-action="simulate-strategies">Compare strategies for this master</button>${result ? '<button class="secondary" data-action="export-simulation">Export simulation</button>' : ""}</div><details><summary>Current assignment and cape state</summary><div class="formgrid">${select("current.kind", "Starting situation", [["new", "Requesting a new offer"], ["task", "Already assigned a task"], ["offer", "Pending offer (enter actual options below)"]], p().current.kind)}${select("current.masterId", "Current task master", [["", "Choose master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().current.masterId)}${select("current.assignmentId", "Current assignment", [["", "Choose assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().current.assignmentId)}${input("current.remaining", "Assignment count remaining", p().current.remaining, 0, 1e4)}${select("current.targetCompatible", "Current Konar task supports the target variant?", [["", "Unknown / not applicable"], ["yes", "Yes"], ["no", "No"]], p().current.targetCompatible === void 0 ? "" : p().current.targetCompatible ? "yes" : "no")}${select("previousTask", "Previous assignment for cape", [["", "Choose previous assignment"], ...catalogue.assignments.map((a) => [a.id, a.name])], p().previousTask)}</div>${pendingOfferEditor()}${select("current.modifier", "Current task modifier", [["none", "None"], ["points", "Points"], ["quantity", "Quantity"], ["clue", "Clue"], ["superior", "Superior"], ["xp", "XP"]], p().current.modifier || "none")}${input("current.modifierPoints", "Actual current-task point modifier", p().current.modifierPoints ?? 0, 0, 1e4)}${select("previousMasterId", "Actual previous task master for cape", [["", "Choose previous master"], ...catalogue.masters.map((m) => [m.id, m.name])], p().previousMasterId || "")}${select("previousTargetCompatible", "Previous Konar task supports the target variant?", [["", "Unknown / not applicable"], ["yes", "Yes"], ["no", "No"]], p().previousTargetCompatible === void 0 ? "" : p().previousTargetCompatible ? "yes" : "no")}${bool("cape", "Always accept cape repeats when offered (10%; requires 99 Slayer)", p().cape)}</details>`;
     if (result) {
-      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average earned ${num2(result.meanEarned)}; spent ${num2(result.meanSpent)}; balance ${num2(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc7(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc7(result.trace.join("\n"))}</pre></details>`;
+      html += `<div class="metrics"><div class="metric"><small>Mean goal time</small><strong>${time(result.meanHours)}</strong></div><div class="metric"><small>Median</small><strong>${time(result.medianHours)}</strong></div><div class="metric"><small>90th percentile</small><strong>${time(result.p90Hours)}</strong></div><div class="metric"><small>Success within session</small><strong>${pct(result.sessionChance)}</strong><span>95% interval ${pct(result.sessionInterval[0])}\u2013${pct(result.sessionInterval[1])}</span></div></div><p class="small muted">${result.successes}/${result.trials} trials reached the goal. ${result.unresolved} unfinished. Skip funding exhausted in ${pct(result.exhaustionChance)} of trials. Average earned ${num2(result.meanEarned)}; spent ${num2(result.meanSpent)}; balance ${num2(result.meanRemaining)}.</p>${successChart(result)}<details><summary>Curve data</summary><table><thead><tr><th>Hours</th><th>Success chance</th><th>95% interval</th></tr></thead><tbody>${result.curve.map((x) => `<tr><td>${x.hours.toFixed(2)}</td><td>${pct(x.chance)}</td><td>${pct(x.low)}\u2013${pct(x.high)}</td></tr>`).join("")}</tbody></table></details><ul class="small muted">${result.notes.map((n) => `<li>${esc8(n)}</li>`).join("")}</ul><details><summary>Example trial action and points trace</summary><pre>${esc8(result.trace.join("\n"))}</pre></details>`;
     }
     return html + "</section>" + renderStrategyResults();
   }
@@ -93246,14 +95196,14 @@
   }
   function renderStrategyResults() {
     if (!state.strategyResults.length) return "";
-    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc7(r.strategy)}${r.error ? `<small>${esc7(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num2(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map((r) => `<tr><td>${esc8(r.strategy)}${r.error ? `<small>${esc8(r.error)}</small>` : ""}</td><td>${r.result ? time(r.result.medianHours) : "Unavailable"}</td><td>${r.result ? time(r.result.p90Hours) : "\u2014"}</td><td>${r.result ? pct(r.result.sessionChance) : "\u2014"}</td><td>${r.result ? num2(r.result.meanSpent) : "\u2014"}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function renderAccount() {
-    const questSelect = (kind, key, label) => `<label>${esc7(label)}<select data-fact="${kind}" data-key="${esc7(key)}">${options2([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
+    const questSelect = (kind, key, label) => `<label>${esc8(label)}<select data-fact="${kind}" data-key="${esc8(key)}">${options2([["", "Unknown"], ["0", kind === "quests" ? "Not started" : "No / off"], ...kind === "quests" ? [["1", "Started"], ["2", "Completed"]] : [["1", "Yes / on"]]], p()[kind][key] ?? "")}</select></label>`;
     const query = state.accessSearch.toLowerCase();
     const quests = relevantQuests(catalogue);
-    const questField = (key) => `<label>${esc7(key)}<select aria-label="Quest state for ${esc7(key)}" data-fact="quests" data-key="${esc7(key)}">${options2([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
-    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc7(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
+    const questField = (key) => `<label>${esc8(key)}<select aria-label="Quest state for ${esc8(key)}" data-fact="quests" data-key="${esc8(key)}">${options2([["", "Auto: " + questLabel(p().questImport?.states[key] ?? null)], ["0", "Not started"], ["1", "In progress"], ["2", "Completed"]], p().quests[key] ?? "")}</select><small class="muted">${p().quests[key] != null ? "Manual override" : p().questImport?.states[key] !== void 0 ? "Imported quest state" : "Not supplied"}</small></label>`;
+    return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc8(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
   }
   function accessKeys() {
     return knownAccessKeys(catalogue);
@@ -93261,7 +95211,7 @@
   function renderTasks() {
     const m = catalogue.masters.find((m2) => m2.id === state.taskMaster), plan = state.plans.find((p2) => p2.master.id === m.id);
     const rows = plan?.rows.filter((r) => (r.name + " " + r.variant.name + " " + r.reason).toLowerCase().includes(state.taskSearch.toLowerCase())) || [];
-    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options2(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc7(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc7(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc7(r.name)}<small>${esc7(r.variant.name)}${r.reason ? " \xB7 " + esc7(r.reason) : ""}${r.methodReason ? " \xB7 " + esc7(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc7(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc7(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc7(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc7(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc7(r.name)}" data-preference="${esc7(r.id)}">${options2([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
+    return head("YOUR IN-GAME LISTS", "Tasks & blocks", "Record existing blocks and edit a proposed list. Keep, skip and protect preferences do not change assignment eligibility.") + `<div class="card"><div class="formgrid"><label>Master<select id="task-master">${options2(catalogue.masters.map((m2) => [m2.id, m2.name]), m.id)}</select></label><label>Find a task<input id="task-search" type="search" value="${esc8(state.taskSearch)}" placeholder="Task, variant or reason"></label></div><p class="small muted">Block group: ${esc8(m.group)} \xB7 ${blockSlots(m, p()).slots} slots \xB7 ${m.blockCost} points per new block. Turael/Aya and Spria share the beginner list.</p><div class="tablewrap"><table><thead><tr><th>Assignment / method</th><th>Eligible weight</th><th>Actual block</th><th>Proposed block</th><th>Preference</th><th>Minutes</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc8(r.name)}<small>${esc8(r.variant.name)}${r.reason ? " \xB7 " + esc8(r.reason) : ""}${r.methodReason ? " \xB7 " + esc8(r.methodReason) : ""}</small></td><td>${r.reason ? "\u2014" : r.weight}</td><td><input aria-label="Actual block ${esc8(r.name)}" type="checkbox" data-block="actual" data-master-id="${m.id}" data-assignment="${esc8(r.id)}" ${(p().blocks[m.group] || []).includes(r.id) ? "checked" : ""}></td><td><input aria-label="Proposed block ${esc8(r.name)}" type="checkbox" data-block="proposed" data-master-id="${m.id}" data-assignment="${esc8(r.id)}" ${(p().proposed[m.group] || plan?.blocks || []).includes(r.id) ? "checked" : ""}></td><td><select aria-label="Preference for ${esc8(r.name)}" data-preference="${esc8(r.id)}">${options2([["", "Automatic"], ["keep", "Always keep"], ["skip", "Prefer skipping"], ["protect", "Protect from blocks/skips"], ["avoid", "Avoid (skip; keep in pool)"]], p().preferences[r.id] || "")}</select></td><td>${r.minutes.toFixed(1)}</td></tr>`).join("")}</tbody></table></div><button data-action="clear-group-proposal">Use automatic proposal for this group</button></div>`;
   }
   var methodVariant = "";
   function methodKey(aid, vid) {
@@ -93276,20 +95226,20 @@
   }
   function renderMethods() {
     const { key, method: m, aid, vid } = editedMethod(), v = catalogue.variants.find((v2) => v2.id === vid), a = catalogue.assignments.find((a2) => a2.id === aid);
-    const mf = (field2, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc7(label)}<input type="number" data-method="${esc7(key)}" data-method-field="${field2}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
-    const ms = (field2, label, values, value) => `<label>${esc7(label)}<select data-method="${esc7(key)}" data-method-field="${field2}">${options2(values, value)}</select></label>`;
-    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options2(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options2(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc7(v.name)}</h2>${renderTimingSuggestion(p(), aid, vid)}<p>${v.hp} HP \xB7 ${esc7(v.status)} \xB7 <a href="${esc7(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p>${v.masterLocations ? `<p class="small muted">${Object.entries(v.masterLocations).map(([id, locations]) => esc7(catalogue.masters.find((master) => master.id === id)?.name || id) + ": " + locations.map(esc7).join(" or ")).join(" \xB7 ")}</p>` : ""}<p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc7(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc7(key)}" data-method-field="location" value="${esc7(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc7(name)}">${esc7(name)}</button>`).join("")}</div></section>`;
+    const mf = (field2, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc8(label)}<input type="number" data-method="${esc8(key)}" data-method-field="${field2}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
+    const ms = (field2, label, values, value) => `<label>${esc8(label)}<select data-method="${esc8(key)}" data-method-field="${field2}">${options2(values, value)}</select></label>`;
+    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options2(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options2(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc8(v.name)}</h2>${renderTimingSuggestion(p(), aid, vid)}<p>${v.hp} HP \xB7 ${esc8(v.status)} \xB7 <a href="${esc8(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p>${v.masterLocations ? `<p class="small muted">${Object.entries(v.masterLocations).map(([id, locations]) => esc8(catalogue.masters.find((master) => master.id === id)?.name || id) + ": " + locations.map(esc8).join(" or ")).join(" \xB7 ")}</p>` : ""}<p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc8(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc8(key)}" data-method-field="location" value="${esc8(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc8(name)}">${esc8(name)}</button>`).join("")}</div></section>`;
   }
   function renderCompare() {
     const base = state.profiles.find((p2) => p2.id === state.comparisonId);
-    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options2([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc7(p().name)}</th><th>${esc7(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
+    return head("INDEPENDENT SCENARIOS", "Compare profiles", "Each profile is evaluated with its own methods, goals, block lists and assumptions.") + `<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options2([["", "Choose a saved profile"], ...state.profiles.filter((q) => q.id !== p().id).map((q) => [q.id, q.name])], state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base ? "disabled" : ""}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length ? `<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc8(p().name)}</th><th>${esc8(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${catalogue.masters.map((m) => {
       const a = state.plans.find((r) => r.master.id === m.id), b = state.comparison.find((r) => r.master.id === m.id);
-      return `<tr><td>${esc7(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
+      return `<tr><td>${esc8(m.name)}</td><td>${time(a?.hours ?? null)}<small>${pct(a?.chance ?? null)}</small></td><td>${time(b?.hours ?? null)}<small>${pct(b?.chance ?? null)}</small></td><td>${a?.hours !== null && a?.hours !== void 0 && b?.hours !== null && b?.hours !== void 0 ? ((a.hours - b.hours) * 60).toFixed(1) + " min" : "\u2014"}</td></tr>`;
     }).join("")}</tbody></table></div><p class="notice">${JSON.stringify(p().goal) !== JSON.stringify(base?.goal) ? "These profiles use different stopping events. Their times are not equivalent rankings." : "Comparison uses stationary offer estimates. Simulate each profile for full funded or drop goals."}</p>` : ""}`;
   }
   function renderData() {
     const count = catalogue.masters.reduce((s, m) => s + m.tasks.length, 0);
-    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + renderMortimerRules(p()) + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc7(catalogue.version)} \xB7 Captured ${esc7(catalogue.captured)}</p><p class="small muted">${esc7(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc7(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer has one guaranteed modifier per offered task, uniform unlocked types and equally likely five-step values under the confirmed planning rules. The dedicated range table identifies its sources.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc7(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc7(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc7(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
+    return head("RULES AND ASSUMPTIONS", "Data & sources", "Reviewed source snapshots and explicit planning estimates are kept separate.") + renderMortimerRules(p()) + `<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${catalogue.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${catalogue.variants.length}</strong></div></div><p>Data version ${esc8(catalogue.version)} \xB7 Captured ${esc8(catalogue.captured)}</p><p class="small muted">${esc8(catalogue.attribution)}</p><h3>Known data qualifications</h3><ul>${catalogue.audit.map((a) => `<li>${esc8(a.master + " / " + a.assignment + ": " + a.issue)}</li>`).join("") || "<li>All current master rows were extracted from captured source tables.</li>"}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer has one guaranteed modifier per offered task, uniform unlocked types and equally likely five-step values under the confirmed planning rules. The dedicated range table identifies its sources.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map((n) => `<li>${esc8(n)}</li>`).join("")}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${catalogue.sources.filter((s) => s.revision).map((s) => `<tr><td><a href="${esc8(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc8(s.title)}</a></td><td>${s.revision}</td></tr>`).join("")}</tbody></table></div></section>`;
   }
   function download(name, text, mime = "application/json") {
     const url = URL.createObjectURL(new Blob([text], { type: mime })), a = document.createElement("a");
@@ -93313,7 +95263,7 @@
   }
   async function requestName(title, value) {
     const dialog = document.createElement("dialog");
-    dialog.innerHTML = `<form method="dialog"><h2>${esc7(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc7(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
+    dialog.innerHTML = `<form method="dialog"><h2>${esc8(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc8(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
     document.body.append(dialog);
     dialog.showModal();
     const field2 = dialog.querySelector("input");
