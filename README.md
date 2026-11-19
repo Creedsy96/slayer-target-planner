@@ -1,10 +1,10 @@
-# Slayer Target Planner 2.4.1
+# Slayer Target Planner 2.4.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.4.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.4.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
@@ -47,7 +47,7 @@ The original v1 storage key is retained and backed up before migration. Missing 
 
 Mortimer's **Modifier rules & ranges** button opens the full 29-task table in **Data & sources**. Every option receives one uniformly chosen unlocked modifier; values within a modifier range are equally likely in steps of five under the confirmed planning rule. The table shows valid outcome counts and conditional per-value chances. Quantity modifiers are flat kills, including negative reductions. The corrected ranges are reproducibly generated in `data/mortimer-modifiers.json` and overlaid by the shared core without changing account facts or the base catalogue. Simulations and exports identify the applied Mortimer rule version.
 
-The **Show unavailable masters** checkbox above Master comparison filters unavailable rows and remembers the display choice on this device. When hidden, an empty result explains how to reveal the issues. If a master shows **Unavailable**, expand **Why unavailable?** beside its name. The panel names the requirement or model limitation, links its Wiki source and offers a button to the relevant account, target, method or block setting. Hover the offer estimate for a quick reason. The selected master's issue panel opens automatically. Conditional plans have an **Assumptions to review** panel.
+The **Show unavailable masters** checkbox above Master comparison filters unavailable rows and remembers the display choice on this device. When hidden, an empty result explains how to reveal the issues. If a master shows **Unavailable**, expand **Why unavailable?** beside its name. The panel names the requirement or model limitation, links its Wiki source and offers a button to the relevant account, target, method or block setting. Hover the offer estimate for a quick reason. The selected master's issue panel opens automatically. Conditional plans have an **Assumptions to review** panel. Empty unconfirmed-requirement and block-explanation dropdowns are hidden; they appear when there are actual items to review.
 
 Regular hellhounds now use the five reviewed Konar locations automatically; Maxed does not need a custom location probability. Cerberus remains limited to Taverley. Unsupported variants and unreviewed locations still require review rather than inheriting access from Maxed.
 
