@@ -61,3 +61,9 @@ Private site audience was read before deployment: owner-only custom policy, one 
 Final regression: starting mid-assignment now updates the cape repeat state after that assignment completes. An independent 45% immediate-offer oracle reproduced the old 54.75% result before the fix and passes after correction. Runtime source revision is updated in the final distribution manifest.
 
 After the cape regression fix, the final ZIP was regenerated, verified (77 files plus checksums/CRC), freshly extracted and launched again. Its archived planner bundle matches the tested generated bundle byte-for-byte. The SHA above is for this final archive.
+
+## Version 2.1 — theme selector
+
+Added a persistent device-level header selector with six complete palettes: Woodland (the existing default), Midnight, Ember, Amethyst, Daylight and High contrast. Theme changes apply immediately without restarting calculations or modifying hunt profiles. Browser storage failures retain the session choice; invalid saved IDs fall back to Woodland. Native form colour schemes and browser theme-colour metadata follow the selected theme.
+
+Passed: strict TypeScript check and the existing 42-test suite. Browser checks switched every palette and inspected changed body/card/text colours, reloaded to confirm the saved choice, navigated to another view, inspected a themed dialog and checked a 375px mobile viewport without page-wide horizontal overflow. Calculation rules, data snapshot and profile format are unchanged. No new unit tests were added for this cosmetic change.
