@@ -1,10 +1,10 @@
-# Slayer Target Planner 2.5.1
+# Slayer Target Planner 2.5.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.5.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.5.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
@@ -41,7 +41,7 @@ Use **Theme** in the header to choose Woodland, Midnight, Ember, Amethyst, Dayli
 5. Choose an offer, kill-count or direct-drop stopping event and acceptable targets. The master table is a stationary offer estimate. Use **Simulate** for funded points, streaks, current tasks/offers, boosts, resets, cape policies and the full hunt. **Search blocks for full hunt goal** tests a bounded set of candidates using the selected stopping event.
 6. Compare independent profiles or six strategies from the same start state. Export profiles as JSON, the master comparison as CSV, or simulation results with their profile and assumptions as JSON.
 
-The selected master’s **Skip policy** shows every fully skipped assignment, any partial-skip percentages, and Turael reset tasks directly in the hunt view. Saved skip/avoid preferences are labelled; funded actions still respect the point reserve.
+Clicking a master scrolls directly to its blocks and skip list. The selected master’s **Skip policy** shows every fully skipped assignment, any partial-skip percentages, and Turael reset tasks directly in the hunt view. Saved skip/avoid preferences are labelled; funded actions still respect the point reserve.
 
 The original v1 storage key is retained and backed up before migration. Missing new account facts remain unknown; old exclusions become preferences, not invented quest facts. Export the original backup from **Data & sources**. Different data snapshots require explicit review and rebasing a copy before import.
 
