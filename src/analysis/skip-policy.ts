@@ -1,5 +1,5 @@
 import type {Catalogue,Plan,Profile,Row} from '../domain/types';
-import {canReset} from '../rules/points';
+import {paidSkipFraction,shouldReset,skipPreference} from '../rules/task-policy';
 
 export interface SkipRecommendation {row:Row;fraction:number;manual:boolean}
 export interface SkipRecommendations {full:SkipRecommendation[];partial:SkipRecommendation[];resets:Row[]}
@@ -11,11 +11,11 @@ export function skipRecommendations(data:Catalogue,plan:Plan,p:Profile):SkipReco
   const filler=data.masters.find(m=>m.id==='turael')!;
   for(const row of plan.rows){
     if(row.reason||row.blocked||row.isTarget)continue;
-    if(p.strategy==='reset-turael'&&plan.master.id!==filler.id&&canReset(plan.master,row.id,filler)){
+    if(shouldReset(plan.master,row,p,filler)){
       result.resets.push(row);continue;
     }
-    const manual=p.preferences[row.id]==='skip'||p.preferences[row.id]==='avoid';
-    const fraction=manual?1:row.skip;
+    const manual=skipPreference(p,row);
+    const fraction=paidSkipFraction(row,p);
     if(fraction<=1e-9)continue;
     const item={row,fraction,manual};
     (fraction>=1-1e-9?result.full:result.partial).push(item);

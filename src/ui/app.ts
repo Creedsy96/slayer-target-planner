@@ -1,3 +1,6 @@
+import {renderHuntNav,renderLookup,renderForecast,renderTaskHistory,renderTimingSuggestion} from './hunt-tools';
+import {saveHuntDialog,applyHunt,deleteHuntDialog,reviewBlocks,recordTaskDialog,applyTimingDialog,type HuntContext} from './hunt-actions';
+import {History} from '../state/history';
 import {renderQuestImport,renderAreaAccess,questLabel} from './account-import';
 import {preserveView} from './view';
 import {renderSkipPolicy} from './skip-policy';
@@ -9,7 +12,7 @@ import {THEMES,loadTheme,themeId,applyTheme,saveTheme} from './themes';
 import {catalogue as data,MORTIMER_VERSION,VARIANT_VERSION,withDefaultMaxedProfile,knownAccessKeys,customProfileCount,MAX_CUSTOM_PROFILES,MAXED_PROFILE_ID,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,blockImpacts,evaluate,AREA_RULES,relevantQuests,questState,parseQuestImport,applyQuestImport,type QuestPreview} from '../core';
 import type {Profile,Plan,Simulation,Method,Requirement} from '../domain/types';
 declare const WORKER_SOURCE:string;
-declare global {interface Window {slayerDesktop?:{hiscores:(name:string)=>Promise<string>}}}
+declare global {interface Window {slayerDesktop?:{hiscores:(name:string)=>Promise<string>;compact?:(enabled:boolean,pin:boolean)=>Promise<void>}}}
 const $=(id:string)=>document.getElementById(id)!;
 const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const pct=(v:number|null)=>v===null?'—':(v*100).toFixed(2)+'%';
@@ -21,6 +24,7 @@ const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<l
 const bool=(path:string,label:string,value:boolean)=>`<label class="check"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
 const routes:[string,string][]=[['plan','Hunt planner'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
 class AppState{
+  history=new History<{profiles:Profile[];activeId:string}>();compact=false;pin=false;huntSearch='';selectedPresetId='';
   showUnavailable=loadShowUnavailable();questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route='plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';message='';saveError='';busy:Record<string,{done:number;total:number}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
   get profile():Profile{return this.profiles.find(p=>p.id===this.activeId)!;}
   strategyResults:{strategy:string;result?:Simulation;error?:string}[]=[];
@@ -38,6 +42,7 @@ class AppState{
     const defaults=withDefaultMaxedProfile(data,this.profiles,this.activeId);
     this.profiles=defaults.profiles;this.activeId=defaults.activeId;
     if(originalProfiles!==this.profiles)this.persist();
+    this.history.record({profiles:this.profiles,activeId:this.activeId});
   }
   persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your profile to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
@@ -52,23 +57,24 @@ class AppState{
       if(result.kind==='error'){this.message=result.message;renderContent();renderMessage();renderStatus();return;}
       if(channel==='plans'){
         this.plans=result.plans.sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
-        if(!this.plans.some(p=>p.master.id===this.selected&&p.chance!==null))this.selected=this.plans.find(p=>p.chance!==null)?.master.id||this.plans[0]?.master.id||'';
+        if(!this.plans.some(p=>p.master.id===this.selected&&(this.showUnavailable||p.chance!==null)))this.selected=this.plans.find(p=>p.chance!==null)?.master.id||this.plans[0]?.master.id||'';
       }else if(channel==='compare')this.comparison=result.plans;
       else if(channel==='strategies')this.strategyResults=result.results;
       else {if(result.plan){this.plans=this.plans.map(p=>p.master.id===result.masterId?result.plan:p);}this.simulation=result.result;this.simulations.set(result.masterId,result.result);}
       renderContent();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the profile before trying again.';renderMessage();renderStatus();};
-    worker.postMessage({id,kind,profile:clone(profile),masterId});
+    worker.postMessage({id,kind,profile:clone(profile),masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
-  changed():void{this.cancel();this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();}
+  changed(record=true,key=''):void{if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);this.cancel();this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();}
 }
 const state=new AppState();
 const p=()=>state.profile;
 function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)=>v?.[k],p());}
 function renderShell():void{
   const restore=preserveView();
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${label}</button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.5.2 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+  document.body.classList.toggle('compact-hunt',state.compact);
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${label}</button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.6 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';}
@@ -84,8 +90,11 @@ function head(eyebrow:string,title:string,description:string):string{return `<di
 function renderPlan():string{
   const visiblePlans=state.plans.filter(r=>state.showUnavailable||r.chance!==null);
   const current=visiblePlans.find(r=>r.master.id===state.selected),best=state.plans.find(r=>r.chance!==null);
+  const nav=renderHuntNav(data,p(),visiblePlans,state.selected,state.compact,state.history.canUndo,state.history.canRedo,state.selectedPresetId,!!window.slayerDesktop,state.pin);
+  if(state.compact)return nav+`<p class="small muted">Hunting: ${p().goal.targets.map(t=>esc(data.variants.find(v=>v.id===t.variantId)?.name)).join(', ')}</p>`+(current?planDetails(current,true):'<p>Calculating hunt…</p>');
   let html=head('YOUR NEXT HUNT','Plan a creature hunt.','Choose the stopping event, then compare assignment chances and legal strategies.');
-  html+=`<section class="card"><div class="formgrid">${select('goal.kind','Finish when…',[['offer','A compatible target task is offered'],['kills','Target kill quantity is reached'],['drop','Selected item drops']],p().goal.kind)}${select('objective','Rank plans by',[['time','Lowest estimated waiting time'],['chance','Highest target chance per offer'],['points','Lowest estimated points within session limit']],p().objective)}${select('strategy','Strategy',[['none','Complete tasks without skipping'],['sustainable','Sustainable skips (long-run)'],['funded','Spend available points'],['boost-turael','Turael milestone boosting'],['boost-mazchna','Mazchna milestone boosting'],['reset-turael','Turael resets (streak changes)']],p().strategy)}</div>${p().goal.targets.map((t,i)=>`<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options(data.assignments.map(a=>[a.id,a.name]),t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options(data.variants.filter(v=>v.assignmentIds.includes(t.assignmentId)).map(v=>[v.id,v.name]),t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length===1?'disabled':''}>Remove</button></div>`).join('')}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
+  html+=nav;
+  html+=`<section class="card plan-setup"><div class="formgrid">${select('goal.kind','Finish when…',[['offer','A compatible target task is offered'],['kills','Target kill quantity is reached'],['drop','Selected item drops']],p().goal.kind)}${select('objective','Rank plans by',[['time','Lowest estimated waiting time'],['chance','Highest target chance per offer'],['points','Lowest estimated points within session limit']],p().objective)}${select('strategy','Strategy',[['none','Complete tasks without skipping'],['sustainable','Sustainable skips (long-run)'],['funded','Spend available points'],['boost-turael','Turael milestone boosting'],['boost-mazchna','Mazchna milestone boosting'],['reset-turael','Turael resets (streak changes)']],p().strategy)}</div>${p().goal.targets.map((t,i)=>`<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options(data.assignments.map(a=>[a.id,a.name]),t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options(data.variants.filter(v=>v.assignmentIds.includes(t.assignmentId)).map(v=>[v.id,v.name]),t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length===1?'disabled':''}>Remove</button></div>`).join('')}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
   if(p().goal.kind==='kills')html+=`<div class="formgrid">${input('goal.quantity','Target kills needed',p().goal.quantity,1,1e7)}</div>`;
   if(p().goal.kind==='drop'){
     const drops=data.variants.filter(v=>p().goal.targets.some(t=>t.variantId===v.id)).flatMap(v=>v.drops);
@@ -94,15 +103,15 @@ function renderPlan():string{
   html+=`<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input('points','Starting points',p().points)}${input('reserve','Minimum point reserve',p().reserve)}${input('streaks.normal','Normal streak',p().streaks.normal)}${input('streaks.mortimer','Mortimer streak',p().streaks.mortimer)}${input('streaks.wilderness','Wilderness streak',p().streaks.wilderness)}${input('mortimerTasks','Mortimer tasks completed',p().mortimerTasks)}${input('milestone','Boost milestone (10 / 50 / 100 / 250 / 1000)',p().milestone,10,1000)}${input('simulation.sessionHours','Session / point-objective time limit (hours)',p().simulation.sessionHours,.01,10000,'.1')}${input('skipSeconds','Seconds per skip / reset',p().skipSeconds,0,10000)}${input('requestMinutes','Minutes per task request',p().requestMinutes,0,10000,'.1')}</div>${bool('applySetup','Pay for new blocks before the hunt',p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
   if(best)html+=`<section class="card hero"><div class="eyebrow">BEST ANALYTICAL OFFER ESTIMATE</div><h2>${esc(best.master.name)} ${best.unknown.length?'<span class="badge">Conditional scenario</span>':''}</h2><div class="metrics"><div class="metric"><small>Stationary time to target offer</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>Target opportunity / offer</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Offers including success</small><strong>${num(best.offers,1)}</strong></div></div><p class="small muted">${esc(best.quality)}</p></section>`;
   else html+=`<div class="notice">${state.plans.length?'No unconditional plan is available. Review account requirements, target method and block conflicts.':'Calculating master plans…'}</div>`;
-  html+=`<h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable?'checked':''}>Show unavailable masters (${state.plans.filter(r=>r.chance===null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${visiblePlans.map(r=>`<tr class="${r.master.id===state.selected?'selected':''}"><td><button data-master="${r.master.id}">${esc(r.master.name)}</button><small>${esc(r.reason||r.unknown.length+' unconfirmed facts')}</small>${renderPlanIssues(data,r,p())}${r.master.id==='mortimer'?'<button data-action="mortimer-rules">Modifier rules & ranges</button>':''}</td><td title="${esc(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join('')}${state.plans.length&&!visiblePlans.length?'<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>':''}</tbody></table></div>`;
+  html+=`<section id="master-comparison"><h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable?'checked':''}>Show unavailable masters (${state.plans.filter(r=>r.chance===null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>Offer estimate</th><th>Target / offer</th><th>Blocks</th><th>Setup cost</th><th>Points / h</th></tr></thead><tbody>${visiblePlans.map(r=>`<tr class="${r.master.id===state.selected?'selected':''}"><td><button data-master="${r.master.id}">${esc(r.master.name)}</button><small>${esc(r.reason||r.unknown.length+' unconfirmed facts')}</small>${renderPlanIssues(data,r,p())}${r.master.id==='mortimer'?'<button data-action="mortimer-rules">Modifier rules & ranges</button>':''}</td><td title="${esc(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned.toFixed(1)} earned<br>${r.pointsSpent.toFixed(1)} spent</td></tr>`).join('')}${state.plans.length&&!visiblePlans.length?'<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>':''}</tbody></table></div></section>`;
   if(current)html+=planDetails(current);
   return html;
 }
-function planDetails(plan:Plan):string{
+function planDetails(plan:Plan,compact=false):string{
   const impacts=blockImpacts(data,plan,p());
   const blockDetails=plan.blocks.length?`<details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map(i=>`<tr><td>${esc(i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join('')}</tbody></table></div></details>`:'';
   const unknownDetails=plan.unknown.length?`<details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></details>`:'';
-  return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc(plan.master.name)}</h2>${plan.reason?`<div class="notice error">${esc(plan.reason)}</div>`:''}${renderPlanIssues(data,plan,p(),!!plan.reason)}${plan.master.id==='mortimer'?renderMortimerSummary(p()):''}<p class="small muted">${esc(plan.quality)}</p><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map(id=>`<span class="chip">${esc(id)}</span>`).join('')||'None'}</div><div class="tools"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Record proposal as actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(data,plan,p())}</div></div>${blockDetails}${unknownDetails}</section>${simulationPanel(plan)}`;
+  return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc(plan.master.name)}</h2>${plan.reason?`<div class="notice error">${esc(plan.reason)}</div>`:''}${renderPlanIssues(data,plan,p(),!!plan.reason)}${plan.master.id==='mortimer'?renderMortimerSummary(p()):''}<p class="small muted">${esc(plan.quality)}</p><div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(data,plan,p(),state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map(id=>`<span class="chip">${esc(id)}</span>`).join('')||'None'}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(data,plan,p())}</div></div>${renderForecast(plan,p(),state.simulations.get(plan.master.id)||null)}${blockDetails}${unknownDetails}${renderTaskHistory(data,p())}</section>${compact?'':simulationPanel(plan)}`;
 }
 function simulationPanel(plan:Plan):string{
   const result=state.simulation;
@@ -153,7 +162,7 @@ function renderMethods():string{
   const {key,method:m,aid,vid}=editedMethod(),v=data.variants.find(v=>v.id===vid)!,a=data.assignments.find(a=>a.id===aid)!;
   const mf=(field:string,label:string,value:unknown,min=0,max=1e6,step='any')=>`<label>${esc(label)}<input type="number" data-method="${esc(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value??''}"></label>`;
   const ms=(field:string,label:string,values:[string,string][],value:unknown)=>`<label>${esc(label)}<select data-method="${esc(key)}" data-method-field="${field}">${options(values,value)}</select></label>`;
-  return head('MONSTER-SPECIFIC ESTIMATES','Completion methods','Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.')+`<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(data.assignments.map(a=>[a.id,a.name]),aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map(id=>[id,data.variants.find(v=>v.id===id)!.name]),vid)}</select></label></div><h2 class="group-title">${esc(v.name)}</h2><p>${v.hp} HP · ${esc(v.status)} · <a href="${esc(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p>${v.masterLocations?`<p class="small muted">${Object.entries(v.masterLocations).map(([id,locations])=>esc(data.masters.find(master=>master.id===id)?.name||id)+': '+locations.map(esc).join(' or ')).join(' · ')}</p>`:''}<p class="small muted">Eligibility: ${v.requirements.map(r=>`${r.label} ${r.min}`).join(' · ')||'Assignment rules apply'}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms('timing','Timing source',[['dps','HP / effective DPS + delay'],['kills-hour','Measured kills per hour'],['task-minutes','Measured combat minutes per whole task']],m.timing)}${mf('rate',measuredRateLabel(m.timing),m.rate,0)}${mf('dps','Effective DPS',m.dps,.1,10000)}${mf('delay','Between-kill delay (seconds)',m.delay,0)}${mf('travel','Travel / banking per task (minutes)',m.travel,0)}${ms('bracelet','Bracelet',[['none','None'],['slaughter','Slaughter'],['expeditious','Expeditious']],m.bracelet)}${mf('locationChance','Optional Konar-compatible location chance (0–1)',m.locationChance,0,1)}</div><label class="check"><input type="checkbox" data-method="${esc(key)}" data-method-field="extended" ${m.extended?'checked':''}>Use this assignment’s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc(key)}" data-method-field="location" value="${esc(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar’s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map(name=>`<button data-load-preset="${esc(name)}">${esc(name)}</button>`).join('')}</div></section>`;
+  return head('MONSTER-SPECIFIC ESTIMATES','Completion methods','Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.')+`<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(data.assignments.map(a=>[a.id,a.name]),aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map(id=>[id,data.variants.find(v=>v.id===id)!.name]),vid)}</select></label></div><h2 class="group-title">${esc(v.name)}</h2>${renderTimingSuggestion(p(),aid,vid)}<p>${v.hp} HP · ${esc(v.status)} · <a href="${esc(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p>${v.masterLocations?`<p class="small muted">${Object.entries(v.masterLocations).map(([id,locations])=>esc(data.masters.find(master=>master.id===id)?.name||id)+': '+locations.map(esc).join(' or ')).join(' · ')}</p>`:''}<p class="small muted">Eligibility: ${v.requirements.map(r=>`${r.label} ${r.min}`).join(' · ')||'Assignment rules apply'}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms('timing','Timing source',[['dps','HP / effective DPS + delay'],['kills-hour','Measured kills per hour'],['task-minutes','Measured combat minutes per whole task']],m.timing)}${mf('rate',measuredRateLabel(m.timing),m.rate,0)}${mf('dps','Effective DPS',m.dps,.1,10000)}${mf('delay','Between-kill delay (seconds)',m.delay,0)}${mf('travel','Travel / banking per task (minutes)',m.travel,0)}${ms('bracelet','Bracelet',[['none','None'],['slaughter','Slaughter'],['expeditious','Expeditious']],m.bracelet)}${mf('locationChance','Optional Konar-compatible location chance (0–1)',m.locationChance,0,1)}</div><label class="check"><input type="checkbox" data-method="${esc(key)}" data-method-field="extended" ${m.extended?'checked':''}>Use this assignment’s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc(key)}" data-method-field="location" value="${esc(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar’s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map(name=>`<button data-load-preset="${esc(name)}">${esc(name)}</button>`).join('')}</div></section>`;
 }
 function renderCompare():string{
   const base=state.profiles.find(p=>p.id===state.comparisonId);
@@ -166,8 +175,8 @@ function renderData():string{
 function download(name:string,text:string,mime='application/json'):void{
   const url=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-function update(mutate:(profile:Profile)=>void):void{
-  try{const copy=clone(p());mutate(copy);const valid=validateProfile(data,copy);state.profiles[state.profiles.findIndex(p=>p.id===state.activeId)]=valid;state.message='';state.changed();}
+function update(mutate:(profile:Profile)=>void,key=''):void{
+  try{const copy=clone(p());mutate(copy);const valid=validateProfile(data,copy);state.profiles[state.profiles.findIndex(p=>p.id===state.activeId)]=valid;state.message='';state.changed(true,key?state.activeId+':'+key:'');}
   catch(error){state.message=error instanceof Error?error.message:String(error);renderMessage();}
 }
 async function requestName(title:string,value:string):Promise<string|null>{
@@ -211,7 +220,7 @@ async function action(name:string):Promise<void>{
   if(name==='export-simulation')download('slayer-hunt-simulation.json',JSON.stringify({dataVersion:data.version,mortimerRulesVersion:MORTIMER_VERSION,variantRulesVersion:VARIANT_VERSION,profile:clone(p()),masterId:state.selected,result:state.simulation},null,2));
   if(name==='use-proposal'&&selected)update(q=>q.proposed[selected.master.group]=[...selected.blocks]);
   if(name==='clear-proposal'&&selected)update(q=>delete q.proposed[selected.master.group]);
-  if(name==='apply-proposal'&&selected)update(q=>{q.blocks[selected.master.group]=[...selected.blocks];q.notes.push('Recorded proposed blocks as the actual in-game list. Confirm your current points separately.');});
+  if(name==='apply-proposal'&&selected)await reviewBlocks(huntContext());
   if(name==='clear-group-proposal'){const m=data.masters.find(m=>m.id===state.taskMaster)!;update(q=>delete q.proposed[m.group]);}
   if(name==='save-preset'){
     const {method}=editedMethod(),name=($('preset-name')as HTMLInputElement).value.trim();if(!name)throw Error('Enter a preset name.');update(q=>q.methodPresets[name]=clone(method));
@@ -241,6 +250,43 @@ function setSetting(q:Profile,path:string,value:unknown):void{
   const parts=path.split('.');let object:any=q;for(const part of parts.slice(0,-1))object=object[part];object[parts.at(-1)!]=value;
   if(path==='current.kind'&&value!=='new'){const master=data.masters.find(m=>m.id===q.current.masterId)||data.masters.find(m=>m.id===state.selected)||data.masters[0];q.current.masterId=master.id;if(!master.tasks.some(t=>t.id===q.current.assignmentId))q.current.assignmentId=master.tasks[0].id;}
 }
+
+function scrollSection(id:string):void{
+  const target=document.getElementById(id);if(!target)return;
+  target.focus({preventScroll:true});const nav=document.querySelector('.hunt-nav');
+  const offset=nav&&getComputedStyle(nav).position==='sticky'?nav.getBoundingClientRect().height:0;
+  window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
+function selectMaster(id:string):void{
+  state.selected=id;state.simulation=state.simulations.get(id)||null;state.strategyResults=[];renderContent();scrollSection('selected-plan');
+}
+function restoreHistory(redo=false):void{
+  const saved=redo?state.history.redo():state.history.undo();if(!saved)return;
+  state.questRequest++;state.questPreview=null;state.questDraft='';
+  state.profiles=saved.profiles;state.activeId=saved.activeId;state.message=redo?'Change redone.':'Change undone.';state.changed(false);
+}
+function huntContext():HuntContext{return {data,profile:p,plan:()=>state.plans.find(r=>r.master.id===state.selected),commit:profile=>update(q=>Object.assign(q,profile)),select:id=>{state.selected=id;}};}
+async function huntAction(name:string,button:HTMLButtonElement):Promise<void>{
+  if(name==='undo'){restoreHistory();return;}if(name==='redo'){restoreHistory(true);return;}
+  if(name==='comparison'){state.compact=false;await window.slayerDesktop?.compact?.(false,false);renderShell();scrollSection('master-comparison');return;}
+  if(name==='compact'||name==='pin'){
+    if(name==='compact')state.compact=!state.compact;else state.pin=!state.pin;
+    await window.slayerDesktop?.compact?.(state.compact,state.pin);renderShell();scrollSection('selected-plan');return;
+  }
+  const ctx=huntContext();
+  if(name==='save-hunt')await saveHuntDialog(ctx);
+  if(name==='delete-hunt')await deleteHuntDialog(ctx,state.selectedPresetId);
+  if(name==='record-task')await recordTaskDialog(ctx,button.dataset.task!,button.dataset.recordAction as 'complete'|'skip');
+  if(name==='apply-timing')await applyTimingDialog(ctx,button.dataset.assignment!,button.dataset.variant!);
+}
+document.addEventListener('keydown',event=>{
+  if(!(event.ctrlKey||event.metaKey)||event.altKey||document.querySelector('dialog[open]'))return;
+  const target=event.target as HTMLElement;
+  if(target.closest('input,textarea,select,[contenteditable="true"]'))return;
+  if(event.key.toLowerCase()==='z'){event.preventDefault();restoreHistory(event.shiftKey);}
+  if(event.key.toLowerCase()==='y'){event.preventDefault();restoreHistory(true);}
+});
+
 document.addEventListener('click',event=>{
   const button=(event.target as HTMLElement).closest('button');if(!button)return;
   if(button.dataset.issueRoute){
@@ -256,17 +302,16 @@ document.addEventListener('click',event=>{
     focus?.focus({preventScroll:true});(focus||$('content')).scrollIntoView({block:'start'});return;
   }
   if(button.dataset.route){state.route=button.dataset.route;renderShell();return;}
-  if(button.dataset.master){
-    state.selected=button.dataset.master;state.simulation=state.simulations.get(state.selected)||null;state.strategyResults=[];renderContent();
-    const details=$('selected-plan');details.focus({preventScroll:true});
-    details.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});return;
-  }
+  if(button.dataset.master){selectMaster(button.dataset.master);return;}
+  if(button.dataset.qol){huntAction(button.dataset.qol,button).catch(error=>{state.message=String(error instanceof Error?error.message:error);renderMessage();});return;}
   if(button.dataset.removeTarget!==undefined){update(q=>q.goal.targets.splice(Number(button.dataset.removeTarget),1));return;}
   if(button.dataset.loadPreset){try{const preset=p().methodPresets[button.dataset.loadPreset],a=data.assignments.find(a=>a.id===state.methodAssignment)!;if(!a.variantIds.includes(preset.variantId))throw Error('This preset is for a different assignment variant.');methodVariant=preset.variantId;update(q=>q.methods[methodKey(a.id,preset.variantId)]=clone(preset));}catch(error){state.message=String(error);renderMessage();}return;}
   if(button.dataset.action)action(button.dataset.action).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});
 });
 function changeInput(event:Event):void{
   const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
+  if(element.id==='hunt-master'){selectMaster(element.value);return;}
+  if(element.id==='hunt-preset'){state.selectedPresetId=element.value;if(element.value){try{applyHunt(huntContext(),element.value);}catch(error){state.message=String(error);renderMessage();}}return;}
   if(element.id==='show-unavailable'){
     state.showUnavailable=(element as HTMLInputElement).checked;
     if(!state.showUnavailable&&state.plans.find(r=>r.master.id===state.selected)?.chance===null){
@@ -299,13 +344,13 @@ function changeInput(event:Event):void{
   if(element.dataset.method){
     const {method}=editedMethod(),field=element.dataset.methodField!;
     if(field==='timing'&&(element.value==='kills-hour'||element.value==='task-minutes')&&method.rate<=0){const timing=element.value;requestRate(timing).then(rate=>{if(rate!==null)update(q=>q.methods[element.dataset.method!]={...method,timing,rate});else renderContent();});return;}
-    update(q=>{const m=clone(q.methods[element.dataset.method!]||method)as any;m[field]=element.type==='checkbox'?(element as HTMLInputElement).checked:element.type==='number'?(element.value===''?null:Number(element.value)):element.value;q.methods[element.dataset.method!]=m;});return;
+    update(q=>{const m=clone(q.methods[element.dataset.method!]||method)as any;m[field]=element.type==='checkbox'?(element as HTMLInputElement).checked:element.type==='number'?(element.value===''?null:Number(element.value)):element.value;q.methods[element.dataset.method!]=m;},element.type==='number'?element.dataset.method+':'+field:'');return;
   }
   if(element.dataset.setting){
     const key=element.dataset.setting,current=fieldValue(key);let value:unknown=element.value;
     if(element.type==='checkbox')value=(element as HTMLInputElement).checked;
     else if(element.type==='number'||typeof current==='number'||key.startsWith('diaries.'))value=element.value===''?null:Number(element.value);
-    update(q=>setSetting(q,key,value));
+    update(q=>setSetting(q,key,value),element.type==='number'?key:'');
   }
 }
 document.addEventListener('change',event=>{
@@ -316,6 +361,7 @@ document.addEventListener('change',event=>{
 document.addEventListener('input',event=>{
   const element=event.target as HTMLInputElement;
   if(element.id==='quest-json')state.questDraft=element.value;
+  if(element.id==='hunt-task-search'){state.huntSearch=element.value;const plan=state.plans.find(r=>r.master.id===state.selected);if(plan)$('hunt-task-results').innerHTML=renderLookup(data,plan,p(),state.huntSearch);return;}
   if(element.type==='number')changeInput(event);
   if(element.id==='task-search'){state.taskSearch=element.value;const cursor=element.selectionStart;renderContent();const next=$('task-search')as HTMLInputElement;next.focus();next.setSelectionRange(cursor,cursor);}
   if(element.id==='access-search'){state.accessSearch=element.value;const cursor=element.selectionStart;renderContent();const next=$('access-search')as HTMLInputElement;next.focus();next.setSelectionRange(cursor,cursor);}

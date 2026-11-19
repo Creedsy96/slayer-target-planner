@@ -1,11 +1,12 @@
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
 import {defaultMethod} from '../state/profiles';
 import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,targetAssignments} from '../rules/eligibility';
-import {basePoints,modifierKinds,meanModifierPoints,choices} from '../rules/points';
+import {basePoints,modifierKinds,meanModifierPoints,choices,canReset} from '../rules/points';
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
 import {resolveAccess} from '../rules/access';
 import {methodLocationRestriction} from '../rules/variant-additions';
+import {protectedTask,skipPreference} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
   return m.tasks.map(entry=>{
@@ -38,10 +39,13 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
     return {entry,id:entry.id,name:a.name,variant:v,method,weight,...timing,meanKills:timing.kills,reward,probability:0,skip:0,targetFraction:target&&variant.eligible?loc.fraction:0,isTarget:!!target,blocked:false,reason:eligibility.failed.join('; '),unknown:[...eligibility.unknown,...variant.unknown,...weightUnknown,...(target?loc.unknown:[])],methodReason:variant.failed.join('; '),modifierKinds:modifier};
   });
 }
-function balanceSkips(rows:Row[],m:Master,p:Profile):void{
-  if(p.objective==='points'||['none','boost-turael','boost-mazchna','reset-turael'].includes(p.strategy))return;
-  let budget=sum(rows,r=>r.probability*r.reward);
-  const choices=rows.filter(r=>!r.isTarget&&p.preferences[r.id]!=='keep'&&p.preferences[r.id]!=='protect')
+function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
+  if(p.strategy==='none')return;
+  const filler=data.masters.find(m=>m.id==='turael')!;
+  for(const row of rows)if(!protectedTask(p,row)&&skipPreference(p,row)&&!(p.strategy==='reset-turael'&&m.id!==filler.id&&canReset(m,row.id,filler)))row.skip=1;
+  if(p.objective==='points'||['boost-turael','boost-mazchna','reset-turael'].includes(p.strategy))return;
+  let budget=Math.max(0,sum(rows,r=>r.probability*((1-r.skip)*r.reward-r.skip*m.skipCost)));
+  const choices=rows.filter(r=>!protectedTask(p,r)&&!skipPreference(p,r))
     .sort((a,b)=>(b.minutes-p.skipSeconds/60)/(m.skipCost+b.reward)-(a.minutes-p.skipSeconds/60)/(m.skipCost+a.reward)||a.id.localeCompare(b.id));
   for(const row of choices){
     if(p.strategy==='funded'){row.skip=row.minutes>p.skipSeconds/60?1:0;continue;}
@@ -59,7 +63,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   rows.forEach(r=>r.blocked=blocks.includes(r.id));
   const active=rows.filter(r=>!r.reason&&!r.blocked);
   selectionProbabilities(active,m.id==='mortimer'?choices(p):1);
-  balanceSkips(active,m,p);
+  balanceSkips(active,m,p,data);
   const targetProb=sum(active,r=>r.isTarget?r.probability*r.targetFraction:0);
   const numerator=sum(active,r=>r.probability*((1-(r.isTarget?r.targetFraction:0))*(1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
   const noSkip=sum(active,r=>r.probability*(1-(r.isTarget?r.targetFraction:0))*r.minutes);

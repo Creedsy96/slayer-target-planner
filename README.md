@@ -1,12 +1,32 @@
-# Slayer Target Planner 2.5.2
+# Slayer Target Planner 2.6
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.5.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Hunt tools in 2.6
+
+The hunt toolbar stays available while scrolling. Switch masters there, return to the comparison, or open **Compact hunt**. The Windows app shrinks to a 440 × 720 window; **Keep on top** is optional, and leaving compact mode restores the prior bounds.
+
+Search **Look up an offered task** to see Block, Skip, Sometimes skip, Reset or Complete, with its reason, estimated time saving and point cost. Expand any task in the skip list for the same explanation. Targets and keep/protect preferences stay protected. Saved skip/avoid preferences now feed the analytical estimate as well as simulation; sustainable calculations allocate their point cost before automatic skips. A negative long-run budget is flagged and still needs funded simulation. Reset actions are separate from paid skips.
+
+**Review & record actual list** compares proposed blocks with the recorded actual list: additions, removals, purchase cost, target chance and stationary time change. The review offers to deduct new-block costs while preserving the reserve. Uncheck deduction only when the recorded points already reflect the purchases. The planner records your in-game changes; it does not make them in RuneScape.
+
+**Undo / Redo** restores profile changes, including methods, blocks, imports, hunt presets and task records. History contains up to 40 states for this session; it is not a persistent backup. Repeated edits of one numeric field are grouped. Ctrl/Cmd+Z and Ctrl/Cmd+Shift+Z or Ctrl+Y work outside input fields; text fields retain their normal editing shortcuts.
+
+Use **Save hunt** for up to 30 named hunt presets within one account profile. They save targets, strategy, objective, proposed blocks, preferences, methods and the boost milestone. Loading a hunt leaves account facts, actual blocks, balances, current assignments and logs unchanged. Reusing a name offers replacement; deletion can be undone.
+
+The **Point budget** shows affordable paid skips after setup/reserve, stationary point drift and, after simulation, the funding-exhaustion frequency and mean remaining balance. A long-run average does not guarantee the next skip is affordable.
+
+Task lookup offers **Record completed task** and **Record paid skip**. Review the actual variant, Mortimer modifier where applicable, optional actual kills and combat duration, then review point/streak changes before recording. Completion rewards use the actual next streak milestone. Skips never credit future rewards. Task records and optional timing samples stay local and travel with profile exports. The latest 200 records are retained; the log table shows the latest 30. Undo reverses the complete recorded action in this session.
+
+After recording actual kills and combat minutes, **Combat methods** offers a measured kills/hour suggestion for that assignment and variant. It uses total kills divided by total combat time, excludes travel/banking, and requires review before changing the method. Check that sampled equipment and locations match the method you intend to use. No RuneLite task telemetry or game account mutation is performed. Profile JSON imports retain their existing 2 MB limit; undo history is not exported.
+
+See [implementation and verification](docs/hunt-quality-of-life.md).
 
 ## Maxed profile
 

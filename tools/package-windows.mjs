@@ -15,7 +15,7 @@ await mkdir(path.join(stage, 'assets'), {recursive: true});
 for (const file of ['planner.js','data-manifest.json']) {
   await copyFile(path.join(root, 'dist', file), path.join(web, file));
 }
-for(const file of ['main.cjs','preload.cjs','hiscores.cjs'])await copyFile(path.join(root,'desktop',file),path.join(stage,file));
+for(const file of ['main.cjs','preload.cjs','hiscores.cjs','compact.cjs'])await copyFile(path.join(root,'desktop',file),path.join(stage,file));
 await copyFile(path.join(root, 'desktop', 'navigation.cjs'), path.join(stage, 'navigation.cjs'));
 await copyFile(path.join(root, 'desktop', 'icon.ico'), path.join(stage, 'assets', 'icon.ico'));
 await copyFile(path.join(root, 'desktop', 'icon.png'), path.join(web, 'app-icon.png'));

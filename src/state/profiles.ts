@@ -98,6 +98,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
     p.questImport={format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
   }
   if(!Array.isArray(p.notes)||p.notes.some(n=>typeof n!=='string'))throw Error('Invalid migration notes.');
+  validateHuntExtras(data,p);
   return p;
 }
 function validateMethod(data:Catalogue,m:Method,aid?:string):void{
@@ -125,4 +126,29 @@ export function rebaseProfiles(data:Catalogue,text:string):{profiles:Profile[];a
   if(payload.schemaVersion!==SCHEMA||!Array.isArray(payload.profiles))throw Error('Only schema v2 profiles can be rebased.');
   for(const p of payload.profiles){const old=p.dataVersion,oldArea=p.areaDataVersion;p.dataVersion=data.version;p.areaDataVersion=AREA_VERSION;p.notes=[...(p.notes||[]),`Explicitly rebased from data ${old} to ${data.version}, area rules ${oldArea??'legacy'} to ${AREA_VERSION}; review eligibility, weights and methods.`];}
   return importProfiles(data,JSON.stringify(payload));
+}
+
+function validateHuntExtras(data:Catalogue,p:Profile):void{
+  if(p.huntPresets!==undefined){
+    if(!Array.isArray(p.huntPresets)||p.huntPresets.length>30)throw Error('Maximum 30 hunt presets.');
+    const seen=new Set<string>();
+    for(const h of p.huntPresets){
+      if(!h||typeof h.id!=='string'||!h.id||seen.has(h.id)||typeof h.name!=='string'||!h.name.trim()||h.name.length>100||!data.masters.some(m=>m.id===h.masterId))throw Error('Invalid hunt preset.');
+      seen.add(h.id);
+      validateProfile(data,{...p,...Object.fromEntries(['goal','strategy','objective','proposed','preferences','methods','milestone'].map(k=>[k,(h as any)[k]])),huntPresets:[],taskHistory:[]});
+    }
+  }
+  if(p.taskHistory!==undefined){
+    if(!Array.isArray(p.taskHistory)||p.taskHistory.length>200)throw Error('Maximum 200 task records.');
+    const seen=new Set<string>();
+    for(const r of p.taskHistory){
+      const m=data.masters.find(m=>m.id===r?.masterId);
+      if(!r||typeof r.id!=='string'||!r.id||seen.has(r.id)||typeof r.at!=='string'||!Number.isFinite(Date.parse(r.at))||!m?.tasks.some(t=>t.id===r.assignmentId)||!['complete','skip'].includes(r.action)||!['none','points','quantity','clue','superior','xp'].includes(r.modifier))throw Error('Invalid task record.');
+      seen.add(r.id);validateMethod(data,r.method,r.assignmentId);
+      if(r.method.variantId!==r.variantId)throw Error('Task record variant differs from its method.');
+      for(const n of [r.pointsBefore,r.pointsAfter,r.streakBefore,r.streakAfter,r.modifierPoints])if(typeof n!=='number'||!Number.isFinite(n)||n<0||n>1e9)throw Error('Invalid recorded point/streak value.');
+      for(const n of [r.kills,r.combatMinutes])if(n!==null&&(typeof n!=='number'||!Number.isFinite(n)||n<=0||n>1e7))throw Error('Invalid task timing sample.');
+      if(r.kills!==null&&!Number.isInteger(r.kills))throw Error('Recorded kills must be whole numbers.');
+    }
+  }
 }

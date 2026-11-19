@@ -15,7 +15,7 @@ test('selected hunt exposes every full skip and its partial budget boundary',()=
   const html=ui.exports.renderSkipPolicy(d,plan,p);
   for(const {row} of [...list.full,...list.partial])assert.ok(html.includes(row.name));
   assert.ok(html.includes((list.partial[0].fraction*100).toFixed(1)+'%'));
-  assert.ok(!html.includes('<details'));assert.match(html,/Skip whenever affordable/);
+  assert.ok(html.indexOf('Skip whenever affordable')<html.indexOf('<details'));assert.match(html,/Time saved per point/);
 });
 test('blocked, ineligible, target and kept tasks do not enter calculated skip lists',()=>{
   const {p,plan}=fixture(),ids=plan.rows.filter(r=>!r.isTarget&&!r.reason).slice(0,4).map(r=>r.id);
@@ -27,9 +27,10 @@ test('blocked, ineligible, target and kept tasks do not enter calculated skip li
 test('saved skip preferences are explicit and disabled by complete-without-skipping',()=>{
   const {p,plan}=fixture(),row=plan.rows.find(r=>!r.isTarget&&!r.reason&&r.skip===0);
   p.preferences[row.id]='skip';p.preferences.hellhounds='skip';
-  assert.ok(c.skipRecommendations(d,plan,p).full.some(i=>i.row===row&&i.manual));
+  const preferred=c.evaluate(d,master,p,[]);
+  assert.ok(c.skipRecommendations(d,preferred,p).full.some(i=>i.row.id===row.id&&i.manual));
   assert.ok(!c.skipRecommendations(d,plan,p).full.some(i=>i.row.isTarget));
-  assert.match(ui.exports.renderSkipPolicy(d,plan,p),/Saved preference/);
+  assert.match(ui.exports.renderSkipPolicy(d,preferred,p),/Saved preference/);
   p.strategy='none';const next=c.evaluate(d,master,p,[]);
   assert.deepEqual(c.skipRecommendations(d,next,p),{full:[],partial:[],resets:[]});
   assert.match(ui.exports.renderSkipPolicy(d,next,p),/No tasks to skip/);

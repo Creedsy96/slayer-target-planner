@@ -1,10 +1,11 @@
 import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types';
 import {clone} from '../state/profiles';
-import {canReset,choices,complete,ledger,pay,resetStreak,type Ledger} from '../rules/points';
+import {choices,complete,ledger,pay,resetStreak,type Ledger} from '../rules/points';
 import {rollMortimer,MORTIMER_VERSION} from '../rules/mortimer';
 import {optimise,prepareRows} from './planner';
 import {sampleOffer} from './offers';
 import {sampleQuantity,sampleKills} from './timing';
+import {paidSkipFraction,shouldReset} from '../rules/task-policy';
 export function random(seed:number):()=>number{
   let state=seed>>>0;return ()=>{state+=0x6D2B79F5;let t=state;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
 }
@@ -27,7 +28,8 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   if(p.cape&&plan.master.id==='mortimer')throw Error('Mortimer cape repeat modifier behaviour is not verified; disable the cape for this scenario.');
   const fillerId=p.strategy==='boost-mazchna'?'mazchna':'turael';
   const fillerMaster=data.masters.find(m=>m.id===fillerId)!;
-  const fillerProfile={...clone(p),strategy:'none' as const};
+  // Filler tasks honour explicit preferences, with automatic skips disabled.
+  const fillerProfile={...clone(p),strategy:p.strategy==='none'?'none' as const:'boost-turael' as const};
   const filler=optimise(data,fillerMaster,fillerProfile,1);
   if(p.strategy.startsWith('boost')&&plan.master.streakGroup!=='normal')throw Error('Boosting comparison requires a master in the normal streak group.');
   if((p.strategy.startsWith('boost')||p.strategy==='reset-turael')&&filler.rows.filter(r=>!r.reason&&!r.blocked).length===0)throw Error('No eligible filler tasks.');
@@ -82,8 +84,9 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const targets=offered.filter(o=>o.target);
     const chosen=(targets.length?targets:offered).reduce((a,b)=>score(a,p,m)<score(b,p,m)?a:b);
     if(chosen.target&&p.goal.kind==='offer'){add(`Target offered: ${chosen.row.variant.name} (${modifierLabel(chosen)})`);return result(true);}
-    const skip=p.strategy!=='none'&&!chosen.target&&(p.preferences[chosen.row.id]==='skip'||p.preferences[chosen.row.id]==='avoid'||rng()<chosen.row.skip);
-    if(!chosen.target&&p.strategy==='reset-turael'&&m.id!==filler.master.id&&canReset(m,chosen.row.id,filler.master)){
+    const fraction=paidSkipFraction(chosen.row,p);
+    const skip=!chosen.target&&fraction>0&&(fraction>=1||rng()<fraction);
+    if(!chosen.target&&shouldReset(m,chosen.row,p,filler.master)){
       resetStreak(l,m);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset ${chosen.row.name}; ${m.streakGroup} streak reset`);continue;
     }
     if(skip){

@@ -1,7 +1,7 @@
-import {catalogue,optimise,simulate,searchHunt} from './core';
+import {catalogue,evaluate,optimise,simulate,searchHunt} from './core';
 import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
-  const {id,kind,profile,masterId}=event.data as {id:number;kind:string;profile:Profile;masterId?:string};
+  const {id,kind,profile,masterId,blocks}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[]};
   try{
     if(kind==='plans'){
       const plans=[];
@@ -19,7 +19,7 @@ self.onmessage=(event:MessageEvent)=>{
       self.postMessage({id,kind:'strategies',results});
     }else{
       const master=catalogue.masters.find(m=>m.id===masterId)!;
-      const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250);
+      const plan=blocks?evaluate(catalogue,master,profile,blocks):optimise(catalogue,master,profile,master.id==='mortimer'?60:250);
       const result=simulate(catalogue,plan,profile,done=>self.postMessage({id,kind:'progress',done,total:profile.simulation.trials}));
       self.postMessage({id,kind:'simulation',result,masterId});
     }

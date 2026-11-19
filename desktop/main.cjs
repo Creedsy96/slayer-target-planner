@@ -8,6 +8,13 @@ const {allowedExternal, sameDocument} = require('./navigation.cjs');
 app.setName('Slayer Target Planner');
 app.setAppUserModelId('OwenWelch.SlayerTargetPlanner');
 let mainWindow;
+let normalWindowState=null;
+const {compactWindow}=require('./compact.cjs');
+ipcMain.handle('compact-mode',(event,enabled,pin)=>{
+  const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
+  if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected))throw Error('Unknown request source.');
+  normalWindowState=compactWindow(mainWindow,enabled,pin,normalWindowState);
+});
 const {lookup}=require('./hiscores.cjs');
 ipcMain.handle('public-hiscores',async(event,name)=>{
   const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
