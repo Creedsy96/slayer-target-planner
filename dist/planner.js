@@ -47,6 +47,22 @@
   function relevantQuests(data) {
     return [.../* @__PURE__ */ new Set([...data.quests, ...AREA_RULES.map((r) => r.quest)])].sort();
   }
+  function knownAccessKeys(data) {
+    const keys = new Set(AREA_RULES.map((r) => r.key));
+    const add = (r) => {
+      if (r.kind === "access" && r.key) keys.add(r.key);
+      r.items?.forEach(add);
+    };
+    data.variants.forEach((v) => v.requirements.forEach(add));
+    data.masters.forEach((m) => {
+      m.requirements.forEach(add);
+      m.tasks.forEach((t) => {
+        t.requirements.forEach(add);
+        t.locations?.forEach((l) => keys.add("location:" + l));
+      });
+    });
+    return [...keys].sort();
+  }
 
   // src/ui/account-import.ts
   var esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -24255,6 +24271,9 @@
   // src/state/profiles.ts
   var SCHEMA = 2;
   var STORAGE = "slayer-target-planner-v2";
+  var MAXED_PROFILE_ID = "builtin-maxed";
+  var MAX_CUSTOM_PROFILES = 50;
+  var customProfileCount = (profiles) => profiles.filter((p2) => p2.id !== MAXED_PROFILE_ID).length;
   var clone = (value) => JSON.parse(JSON.stringify(value));
   function newProfile(data, name = "Example hunt \u2014 assumed access") {
     return { areaDataVersion: AREA_VERSION, id: cryptoId(), name, dataVersion: data.version, levels: { slayer: 87, combat: 110, defence: 80, magic: 80, sailing: null, agility: null, strength: 80, ranged: 80, hitpoints: 85 }, quests: {}, unlocks: {}, access: {}, questPoints: 300, diaries: { lumbridge: 0, kourend: 0, western: 0 }, assumeUnknown: true, blockLimit: null, mortimerTasks: null, streaks: { normal: 50, wilderness: 0, mortimer: 0 }, points: 500, reserve: 50, blocks: {}, proposed: {}, preferences: {}, methods: {}, methodPresets: {}, goal: { kind: "offer", targets: [{ assignmentId: "basilisks", variantId: "basilisk-knight", priority: 1 }], quantity: 100, dropId: "basilisk-jaw", customDropRate: null }, objective: "time", strategy: "sustainable", applySetup: false, milestone: 10, globalDps: 5, skipSeconds: 30, requestMinutes: 0, simulation: { trials: 2e3, seed: 42173, horizonOffers: 2e3, sessionHours: 4 }, current: { kind: "new", masterId: "", assignmentId: "", remaining: 0 }, cape: false, previousTask: "", notes: ["Example levels and points are editable planning assumptions. Unknown access is assumed only for this scenario."], hypotheticalChoices: null };
@@ -24413,8 +24432,9 @@
     if (text.length > 2e6) throw Error("Profile file exceeds 2 MB.");
     const payload = JSON.parse(text);
     safeTree(payload);
-    if (payload.schemaVersion !== SCHEMA || !Array.isArray(payload.profiles) || payload.profiles.length < 1 || payload.profiles.length > 50) throw Error("Unsupported profile format or count.");
+    if (payload.schemaVersion !== SCHEMA || !Array.isArray(payload.profiles) || payload.profiles.length < 1 || payload.profiles.length > MAX_CUSTOM_PROFILES + 1) throw Error("Unsupported profile format or count.");
     const profiles = payload.profiles.map((p2) => validateProfile(data, p2));
+    if (customProfileCount(profiles) > MAX_CUSTOM_PROFILES) throw Error("Maximum of 50 custom profiles plus the built-in Maxed profile.");
     if (new Set(profiles.map((p2) => p2.id)).size !== profiles.length) throw Error("Duplicate profile IDs.");
     if (!profiles.some((p2) => p2.id === payload.activeId)) throw Error("Active profile is missing.");
     return { profiles, activeId: payload.activeId };
@@ -24431,6 +24451,44 @@
       p2.notes = [...p2.notes || [], `Explicitly rebased from data ${old} to ${data.version}, area rules ${oldArea ?? "legacy"} to ${AREA_VERSION}; review eligibility, weights and methods.`];
     }
     return importProfiles(data, JSON.stringify(payload));
+  }
+
+  // src/state/maxed-profile.ts
+  var skills = "attack strength defence ranged prayer magic runecraft construction hitpoints agility herblore thieving crafting fletching slayer hunter mining smithing fishing cooking firemaking woodcutting farming sailing".split(" ");
+  function maxedProfile(data) {
+    const p2 = newProfile(data, "Maxed");
+    p2.id = MAXED_PROFILE_ID;
+    p2.levels = Object.fromEntries(skills.map((key) => [key, 99]));
+    p2.levels.combat = 126;
+    p2.quests = Object.fromEntries(relevantQuests(data).map((key) => [key, 2]));
+    p2.unlocks = Object.fromEntries(Object.keys(data.unlocks).map((key) => [key, 1]));
+    p2.access = Object.fromEntries(knownAccessKeys(data).map((key) => [key, 1]));
+    const grant = (r) => {
+      if (r.key && r.kind === "quest") p2.quests[r.key] = 2;
+      if (r.key && r.kind === "skill") p2.levels[r.key] = r.key === "combat" ? 126 : 99;
+      if (r.key && r.kind === "unlock") p2.unlocks[r.key] = r.min === 0 ? 0 : 1;
+      r.items?.forEach(grant);
+    };
+    data.masters.forEach((m) => {
+      m.requirements.forEach(grant);
+      m.tasks.forEach((t) => t.requirements.forEach(grant));
+    });
+    data.variants.forEach((v) => v.requirements.forEach(grant));
+    p2.questPoints = 343;
+    p2.diaries = { lumbridge: 1, kourend: 1, western: 1 };
+    p2.mortimerTasks = 50;
+    p2.assumeUnknown = false;
+    p2.notes = [
+      "Maxed planning preset: all skills 99, combat 126, all supported quests/diaries complete and all modelled areas/variants accessible. These are scenario settings, not imported account facts.",
+      "Quest points: 343 (Wiki snapshot checked 19 November 2026). Stop the Wyvern is off to retain wyvern assignments. Mortimer progression is 50 tasks, unlocking all modelled offer options.",
+      "Points, reserves, streaks and combat rates are editable planning defaults. Master/variant mappings and uncertain combat/location models still apply."
+    ];
+    return validateProfile(data, p2);
+  }
+  function withDefaultMaxedProfile(data, profiles = [], activeId = "") {
+    if (customProfileCount(profiles) > MAX_CUSTOM_PROFILES) throw Error("Maximum of 50 custom profiles.");
+    const next = profiles.some((p2) => p2.id === MAXED_PROFILE_ID) ? profiles : [...profiles, maxedProfile(data)];
+    return { profiles: next, activeId: next.some((p2) => p2.id === activeId) ? activeId : next[0].id };
   }
 
   // src/rules/eligibility.ts
@@ -24774,8 +24832,11 @@
       } catch (error) {
         this.saveError = "Saved profile could not be loaded; original storage is untouched. " + String(error);
       }
-      if (!this.profiles.length) this.profiles = [newProfile(catalogue)];
-      if (!this.activeId) this.activeId = this.profiles[0].id;
+      const originalCount = this.profiles.length;
+      const defaults = withDefaultMaxedProfile(catalogue, this.profiles, this.activeId);
+      this.profiles = defaults.profiles;
+      this.activeId = defaults.activeId;
+      if (originalCount !== this.profiles.length) this.persist();
     }
     persist() {
       try {
@@ -48927,6 +48988,9 @@
     return { variantId: a.variantIds[0], timing: "dps", rate: 0, dps: p.globalDps, delay: 3, travel: 0, bracelet: "none", extended: false, location: "", locationChance: null };
   }
 
+  // src/state/maxed-profile.ts
+  var skills = "attack strength defence ranged prayer magic runecraft construction hitpoints agility herblore thieving crafting fletching slayer hunter mining smithing fishing cooking firemaking woodcutting farming sailing".split(" ");
+
   // src/rules/eligibility.ts
   function check(requirements, p) {
     const result = { eligible: true, unknown: [], failed: [] };
@@ -49617,7 +49681,7 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">Blank account facts stay unknown. Game eligibility and personal preferences are separate.</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.2.2 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed preset: all skills, quests, diaries and supported access enabled. Edit planning rates and points as needed." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.3 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -49688,20 +49752,7 @@
     return head("PLAYER INFORMATION", "Account & access", "Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.") + renderQuestImport(p(), state.questPreview, state.preserveQuestOverrides, state.questDraft) + `<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${["slayer", "combat", "attack", "strength", "defence", "hitpoints", "ranged", "magic", "agility", "sailing"].map((k) => input("levels." + k, k[0].toUpperCase() + k.slice(1), p().levels[k], k === "combat" ? 3 : 1, k === "combat" ? 126 : 99)).join("")}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("blockLimit", "Optional hypothetical block-slot override", p().blockLimit, 0, 7)}${input("mortimerTasks", "Completed Mortimer tasks", p().mortimerTasks, 0, 1e9)}</div>${bool("assumeUnknown", "Assume unknown requirements satisfied for this scenario", p().assumeUnknown)}<p class="small muted">Derived block slots: ${catalogue.masters.map((m) => `${m.name}: ${blockSlots(m, p()).slots}`).join(" \xB7 ")}</p><div class="formgrid">${["lumbridge", "kourend", "western"].map((k) => select("diaries." + k, "Elite " + k + " diary", [["", "Unknown"], ["0", "Not completed"], ["1", "Completed"]], p().diaries[k] ?? "")).join("")}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc2(state.accessSearch)}" placeholder="Filter quests, areas or unlocks\u2026" aria-label="Filter requirements"></section>${renderAreaAccess(p(), accessKeys(), query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter((q) => q.toLowerCase().includes(query)).map(questField).join("")}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(catalogue.unlocks).filter(([k, v]) => v.toLowerCase().includes(query)).map(([k, v]) => questSelect("unlocks", k, v)).join("")}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter((k) => !k.startsWith("location:") && k.toLowerCase().includes(query)).map((k) => questSelect("access", k, k)).join("")}</div></section>`;
   }
   function accessKeys() {
-    const list = AREA_RULES.map((r) => r.key);
-    function add(r) {
-      if (r.kind === "access") list.push(r.key);
-      r.items?.forEach(add);
-    }
-    catalogue.variants.forEach((v) => v.requirements.forEach(add));
-    catalogue.masters.forEach((m) => {
-      m.requirements.forEach(add);
-      m.tasks.forEach((t) => {
-        t.requirements.forEach(add);
-        t.locations?.forEach((l) => list.push("location:" + l));
-      });
-    });
-    return [...new Set(list)].sort();
+    return knownAccessKeys(catalogue);
   }
   function renderTasks() {
     const m = catalogue.masters.find((m2) => m2.id === state.taskMaster), plan = state.plans.find((p2) => p2.master.id === m.id);
@@ -49771,7 +49822,7 @@
     }, { once: true }));
   }
   function addProfile(profile) {
-    if (state.profiles.length >= 50) throw Error("Maximum of 50 profiles. Export profiles before creating more.");
+    if (customProfileCount(state.profiles) >= MAX_CUSTOM_PROFILES) throw Error("Maximum of 50 custom profiles. Export profiles before creating more.");
     state.questRequest++;
     state.questDraft = "";
     state.questPreview = null;
@@ -50168,7 +50219,7 @@
       if (answer !== "REBASE") return;
       imported = rebaseProfiles(catalogue, text);
     }
-    if (state.profiles.length + imported.profiles.length > 50) throw Error("Import would exceed 50 profiles.");
+    if (customProfileCount(state.profiles) + imported.profiles.length > MAX_CUSTOM_PROFILES) throw Error("Import would exceed 50 custom profiles.");
     for (const q of imported.profiles) {
       if (state.profiles.some((p2) => p2.id === q.id)) {
         q.id = newProfile(catalogue).id;

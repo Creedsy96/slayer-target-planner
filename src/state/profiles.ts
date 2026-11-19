@@ -2,6 +2,9 @@ import {AREA_VERSION} from '../rules/access';
 import type {Catalogue,Profile,Method} from '../domain/types';
 export const SCHEMA=2;
 export const STORAGE='slayer-target-planner-v2';
+export const MAXED_PROFILE_ID='builtin-maxed';
+export const MAX_CUSTOM_PROFILES=50;
+export const customProfileCount=(profiles:readonly {id:string}[]):number=>profiles.filter(p=>p.id!==MAXED_PROFILE_ID).length;
 export const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
 export function newProfile(data:Catalogue,name='Example hunt — assumed access'):Profile{
   return {areaDataVersion:AREA_VERSION,id:cryptoId(),name,dataVersion:data.version,levels:{slayer:87,combat:110,defence:80,magic:80,sailing:null,agility:null,strength:80,ranged:80,hitpoints:85},quests:{},unlocks:{},access:{},questPoints:300,diaries:{lumbridge:0,kourend:0,western:0},assumeUnknown:true,blockLimit:null,mortimerTasks:null,streaks:{normal:50,wilderness:0,mortimer:0},points:500,reserve:50,blocks:{},proposed:{},preferences:{},methods:{},methodPresets:{},goal:{kind:'offer',targets:[{assignmentId:'basilisks',variantId:'basilisk-knight',priority:1}],quantity:100,dropId:'basilisk-jaw',customDropRate:null},objective:'time',strategy:'sustainable',applySetup:false,milestone:10,globalDps:5,skipSeconds:30,requestMinutes:0,simulation:{trials:2000,seed:42173,horizonOffers:2000,sessionHours:4},current:{kind:'new',masterId:'',assignmentId:'',remaining:0},cape:false,previousTask:'',notes:['Example levels and points are editable planning assumptions. Unknown access is assumed only for this scenario.'],hypotheticalChoices:null};
@@ -107,8 +110,9 @@ function validateMethod(data:Catalogue,m:Method,aid?:string):void{
 export function exportProfiles(profiles:Profile[],activeId:string):string{return JSON.stringify({schemaVersion:SCHEMA,activeId,profiles},null,2);}
 export function importProfiles(data:Catalogue,text:string):{profiles:Profile[];activeId:string}{
   if(text.length>2_000_000)throw Error('Profile file exceeds 2 MB.');const payload=JSON.parse(text);safeTree(payload);
-  if(payload.schemaVersion!==SCHEMA||!Array.isArray(payload.profiles)||payload.profiles.length<1||payload.profiles.length>50)throw Error('Unsupported profile format or count.');
+  if(payload.schemaVersion!==SCHEMA||!Array.isArray(payload.profiles)||payload.profiles.length<1||payload.profiles.length>MAX_CUSTOM_PROFILES+1)throw Error('Unsupported profile format or count.');
   const profiles:Profile[]=payload.profiles.map((p:unknown)=>validateProfile(data,p));
+  if(customProfileCount(profiles)>MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom profiles plus the built-in Maxed profile.');
   if(new Set(profiles.map(p=>p.id)).size!==profiles.length)throw Error('Duplicate profile IDs.');
   if(!profiles.some(p=>p.id===payload.activeId))throw Error('Active profile is missing.');return {profiles,activeId:payload.activeId};
 }

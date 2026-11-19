@@ -1,5 +1,5 @@
 import raw from '../../data/area-access.json';
-import type {Catalogue,Fact,Profile,Source} from '../domain/types';
+import type {Catalogue,Fact,Profile,Source,Requirement} from '../domain/types';
 
 export interface AreaRule {key:string;name:string;quest:string;states:Fact[];note:string;source:Source}
 export const AREA_VERSION=raw.version;
@@ -24,4 +24,15 @@ export function resolveAccess(key:string,p:Profile):AccessResult {
 
 export function relevantQuests(data:Catalogue):string[] {
   return [...new Set([...data.quests,...AREA_RULES.map(r=>r.quest)])].sort();
+}
+
+export function knownAccessKeys(data:Catalogue):string[]{
+  const keys=new Set(AREA_RULES.map(r=>r.key));
+  const add=(r:Requirement):void=>{if(r.kind==='access'&&r.key)keys.add(r.key);r.items?.forEach(add);};
+  data.variants.forEach(v=>v.requirements.forEach(add));
+  data.masters.forEach(m=>{
+    m.requirements.forEach(add);
+    m.tasks.forEach(t=>{t.requirements.forEach(add);t.locations?.forEach(l=>keys.add('location:'+l));});
+  });
+  return [...keys].sort();
 }

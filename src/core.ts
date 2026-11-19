@@ -3,6 +3,7 @@ import type {Catalogue} from './domain/types';
 export const catalogue=raw as unknown as Catalogue;
 export * from './domain/types';
 export * from './state/profiles';
+export * from './state/maxed-profile';
 export * from './rules/eligibility';
 export * from './rules/access';
 export * from './state/quest-import';
