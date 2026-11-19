@@ -1,0 +1,86 @@
+import type {Catalogue} from '../domain/types';
+import {creatureIcon} from './creature-art';
+import {interfaceIcon} from './interface-icons';
+import {encounter} from '../guide/encounters';
+import {APPROACHES,GUIDE,GUIDE_KEY,parseGuideState,guideForm,fightPlan,gearSet,guideSources,leastDefended,rankLocations,selectedLocation,supplies,offenceName} from '../guide';
+import type {GearSet,GuideForm,GuideRecord,GuideState,LocationPlan} from '../guide';
+
+const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
+const num=(v:number|null)=>v===null?'—':v.toLocaleString();
+const options=(values:[string,string][],selected:string)=>values.map(([id,label])=>`<option value="${esc(id)}" ${id===selected?'selected':''}>${esc(label)}</option>`).join('');
+const field=(id:string,label:string,values:[string,string][],selected:string)=>`<label>${label}<select id="${id}">${options(values,selected)}</select></label>`;
+export let guideState:GuideState;
+try{guideState=parseGuideState(localStorage.getItem(GUIDE_KEY));}catch{guideState=parseGuideState(null);}
+let saveNotice='';
+function save():void{try{localStorage.setItem(GUIDE_KEY,JSON.stringify(guideState));saveNotice='';}catch{saveNotice='Guide choices are saved for this session only.';}}
+export function changeGuide(element:HTMLInputElement|HTMLSelectElement):boolean{
+  if(!element.id.startsWith('guide-'))return false;
+  const key=element.id.slice(6),record=GUIDE.records[guideState.variantId];
+  if(key==='variant'&&GUIDE.records[element.value]){
+    const chosen=GUIDE.records[element.value];guideState.variantId=chosen.id;guideState.formId=chosen.defaultForm;guideState.approach='auto';guideState.location='';
+    if(!chosen.assignmentIds.includes(guideState.assignmentId))guideState.assignmentId='';
+  }
+  if(key==='assignment'){
+    guideState.assignmentId=element.value;
+    if(element.value&&!record.assignmentIds.includes(element.value)){
+      const first=Object.values(GUIDE.records).find(r=>r.assignmentIds.includes(element.value));
+      if(first){guideState.variantId=first.id;guideState.formId=first.defaultForm;guideState.approach='auto';guideState.location='';}
+    }
+  }
+  if(key==='form'&&record.forms.some(f=>f.id===element.value)){guideState.formId=element.value;guideState.location='';}
+  if(key==='approach'&&APPROACHES.includes(element.value as GuideState['approach']))guideState.approach=element.value as GuideState['approach'];
+  if(key==='priority'&&['balanced','cannon','barrage','access'].includes(element.value))guideState.priority=element.value as GuideState['priority'];
+  if(key==='on-task')guideState.onTask=(element as HTMLInputElement).checked;
+  if(key==='fast-travel')guideState.fastTravel=(element as HTMLInputElement).checked;
+  save();return true;
+}
+export function chooseGuideLocation(name:string):void{
+  const record=GUIDE.records[guideState.variantId],form=guideForm(record,guideState);
+  if(rankLocations(record,form,guideState).some(loc=>loc.name===name&&loc.available)){guideState.location=name;save();}
+}
+
+function statBars(form:GuideForm):string{
+  const pairs:[string,number|null][]=[['Attack',form.att],['Strength',form.str],['Defence',form.def],['Magic',form.mage],['Ranged',form.range]];
+  const max=Math.max(100,...pairs.map(([,v])=>v||0));
+  return `<div class="guide-stat-bars" role="img" aria-label="Source combat levels: ${pairs.map(([k,v])=>k+' '+num(v)).join(', ')}">${pairs.map(([label,value])=>`<div><span>${label}</span><div class="guide-level-track"><i style="width:${value===null?0:value/max*100}%"></i></div><strong>${num(value)}</strong></div>`).join('')}</div>`;
+}
+function defenceChart(form:GuideForm):string{
+  const rows:[string,keyof GuideForm][]=[['Stab','dstab'],['Slash','dslash'],['Crush','dcrush'],['Magic','dmagic'],['Light ammo','dlight'],['Standard ammo','dstandard'],['Heavy ammo','dheavy']];
+  const max=Math.max(1,...rows.map(([,key])=>Math.abs(Number(form[key])||0)));
+  const weakest=leastDefended(form,['dstab','dslash','dcrush']);
+  const desc=rows.map(([label,key])=>`${label}: ${form[key]??'unknown'}`).join('; ');
+  return `<svg class="guide-defence-chart" viewBox="0 0 500 250" role="img" aria-label="Equipment defensive bonuses. ${esc(desc)}"><line x1="260" y1="5" x2="260" y2="242" stroke="var(--line)"/>${rows.map(([label,key],i)=>{
+    const value=typeof form[key]==='number'?form[key] as number:null,width=value===null?0:Math.abs(value)/max*155,y=22+i*32;
+    return `<text x="2" y="${y+4}" fill="var(--muted)">${label}</text><rect x="${value!==null&&value<0?260-width:260}" y="${y-9}" width="${width}" height="16" rx="4" fill="${weakest.includes(key)?'var(--green)':'var(--gold)'}" opacity="${weakest.includes(key)?'.9':'.45'}"/><text x="485" y="${y+4}" text-anchor="end" fill="var(--text)">${value===null?'—':value}</text>`;
+  }).join('')}</svg><p class="small muted">Lower bonuses are easier to penetrate within that damage type. These bars exclude combat levels, weapon accuracy and special mechanics; they do not rank overall DPS.</p>`;
+}
+function elementalChart(form:GuideForm):string{
+  const element=(form.elementalweaknesstype||'').toLowerCase(),amount=form.elementalweaknesspercent;
+  return `<div class="guide-elements" aria-label="Source elemental weakness">${['air','water','earth','fire'].map(k=>`<div class="${k===element?'active':''}"><span aria-hidden="true">${({air:'≋',water:'◒',earth:'◆',fire:'♨'} as Record<string,string>)[k]}</span><strong>${k[0].toUpperCase()+k.slice(1)}</strong><small>${k===element&&amount!==null?amount+'% weakness':'Not listed'}</small></div>`).join('')}</div><p class="small muted">Elemental bonuses apply to matching elemental spells, not automatically to powered staves or Ancient Magicks.</p>`;
+}
+function gearIcon(slot:string):string{
+  const paths:Record<string,string>={Head:'M5 17V9a7 7 0 0 1 14 0v8h-5v-5h-4v5Z',Body:'m7 3-5 5 4 4 2-2v11h8V10l2 2 4-4-5-5-5 3Z',Legs:'M6 3h12l1 18h-6l-1-10-1 10H5Z',Weapon:'m6 19 13-13V2l-4 0L3 16m0-4 9 9', 'Off-hand':'M4 3h16v9c0 5-8 10-8 10S4 17 4 12Z',Feet:'M7 3h7v10l6 3v5H4v-7h3Z',Neck:'M5 3v8a7 7 0 0 0 14 0V3m-7 11-3 4 3 4 3-4Z',Ring:'M12 5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-4-2 4-2 4 2-4 5Z',Hands:'M5 14V8h3v5-9h3v9-10h3v10-8h3v11l-4 6H8Z',Cape:'m8 2 4 2 4-2 5 20H3Z',Ammo:'m4 20 16-16M4 15v5h5M15 4h5v5',Spell:'m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z'};
+  return `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="${paths[slot]||paths.Body}"/></svg>`;
+}
+function renderGear(set:GearSet):string{
+  return `<article class="guide-gear-set ${set.tier}"><div class="guide-gear-title"><span class="badge">${set.tier==='mid'?'70–85 combat stats':'99 combat stats'}</span><h3>${set.title}</h3><p>${esc(set.offence)}</p></div><div class="guide-equipment" aria-label="${set.tier==='mid'?'Mid-level':'High-end'} equipment">${set.slots.map(row=>`<div class="guide-slot slot-${row.slot.toLowerCase().replaceAll(' ','-')}">${gearIcon(row.slot)}<small>${row.slot}</small><strong>${esc(row.item)}</strong></div>`).join('')}</div>${set.switches.length?`<div class="notice"><strong>Required style switch</strong><p>${set.switches.map(esc).join('<br>')}</p></div>`:''}<details><summary>Setup notes and substitutions</summary><ul>${set.notes.map(note=>`<li>${esc(note)}</li>`).join('')}</ul></details></article>`;
+}
+function renderLocation(location:LocationPlan,index:number,selected:string):string{
+  return `<article class="guide-location ${selected===location.name?'chosen':''} ${location.available?'':'limited'}"><div class="location-rank" aria-label="Rank ${index+1}">${index+1}</div><div class="location-body"><h3>${esc(location.name)}</h3><div class="guide-tags"><span class="badge">${location.wilderness?'Wilderness / risky approach':location.riskKnown?'Non-Wilderness listing':'PvP status unconfirmed'}</span><span class="badge">Cannon: ${location.cannon===null?'unconfirmed':location.cannon?'yes':'no'}</span><span class="badge">Multi: ${location.multi===null?'unconfirmed':location.multi?'yes':'no'}</span>${!location.reviewed?'<span class="badge">Route unreviewed</span>':''}${!location.available?'<span class="badge">Limited / task access</span>':''}</div><ul class="location-reasons">${location.reasons.map(r=>`<li>${esc(r)}</li>`).join('')}</ul><div class="guide-route" aria-label="Travel route">${location.travel.map((step,i)=>`<span>${i?'<i aria-hidden="true"></i>':''}${esc(step)}</span>`).join('')}</div>${location.fastRoute?`<p class="guide-fast-route"><strong>Optional faster route:</strong> ${esc(location.fastRoute)}</p>`:''}${location.requires.length?`<details ${selected===location.name?'open':''}><summary>Requirements and caveats (${location.requires.length})</summary><ul>${location.requires.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></details>`:''}<div class="tools"><button data-guide-location="${esc(location.name)}" aria-pressed="${selected===location.name}" ${location.available?'':'disabled'}>${selected===location.name?'Planning for this location':'Use this location'}</button><a href="${esc(location.sourceUrl)}" target="_blank" rel="noreferrer">Location source</a></div></div></article>`;
+}
+export function renderCreatureGuide(data:Catalogue):string{
+  const s=guideState,record=GUIDE.records[s.variantId],form=guideForm(record,s),location=selectedLocation(record,form,s),ranked=rankLocations(record,form,s),plan=fightPlan(record,form,s,location);
+  const allowed=encounter(record).allowed||['melee','ranged','magic'];
+  const variants=Object.values(GUIDE.records).filter(r=>!s.assignmentId||r.assignmentIds.includes(s.assignmentId)).sort((a,b)=>a.name.localeCompare(b.name));
+  const required=record.requirements.filter(r=>r.kind==='quest'||r.kind==='skill'&&(r.min||0)>0).map(r=>r.kind==='skill'?`${r.label} ${r.min}`:`${r.label}${r.min===1?' started':' completed'}`);
+  const speed=form['attack speed']===null?form.attackSpeedText:form['attack speed']+' ticks · '+(form['attack speed']*.6).toFixed(1)+' seconds';
+  return `<section class="guide-intro"><div><div class="eyebrow">STANDALONE CREATURE FIELD GUIDE</div><h1>Know your next opponent.</h1><p class="muted">Stats, equipment and routes in one place. Guide choices are saved separately from hunt profiles.</p></div><span class="badge">${Object.keys(GUIDE.records).length} creatures · offline facts</span></section>
+  ${saveNotice?`<p class="notice">${esc(saveNotice)}</p>`:''}
+  <section class="card guide-controls ${record.forms.length===1?'single-form':''}"><div class="formgrid">${field('guide-assignment','Assignment filter',[['','All assignment types'],...data.assignments.filter(a=>Object.values(GUIDE.records).some(v=>v.assignmentIds.includes(a.id))).map(a=>[a.id,a.name] as [string,string])],s.assignmentId)}${field('guide-variant','Creature variant',variants.map(v=>[v.id,v.name]),s.variantId)}${record.forms.length>1?field('guide-form','Source form / spawn',record.forms.map(f=>[f.id,`${f.label}${f.combat!==null?' · level '+f.combat:''}`]),form.id):''}</div></section>
+  <section class="card guide-creature-hero"><div class="guide-portrait">${creatureIcon(record.id,true)}</div><div class="guide-creature-heading"><div class="eyebrow">CREATURE DOSSIER</div><h2>${esc(record.name)}</h2><p class="muted">${esc(form.label.toLowerCase()===record.name.toLowerCase()?'Standard form':form.label)} · ${esc(form['attack style']||'Attack style not recorded')}</p><div class="guide-tags">${required.map(r=>`<span class="badge">${esc(r)}</span>`).join('')}</div></div><div class="guide-vitals">${[['Hitpoints',num(form.hitpoints)],['Combat',num(form.combat)],['Max hit',form['max hit']||'—'],['Attack interval',speed||'—']].map(([k,v])=>`<div><small>${k}</small><strong>${esc(v)}</strong></div>`).join('')}</div></section>
+  <div class="guide-analysis-grid"><section class="card"><div class="section-heading">${interfaceIcon('account')}<h2>Combat profile</h2></div>${statBars(form)}<div class="guide-facts"><p><strong>Aggressive:</strong> ${esc(form.aggressive||'Not recorded')}</p><p><strong>Poison / venom:</strong> ${esc(form.poisonous||'Not recorded')}</p><p><strong>Attributes:</strong> ${esc(form.attributes||'Not recorded')}</p><p><strong>Cannon immunity:</strong> ${esc(form.immunecannon||'Not recorded')} <small>(placement rules are separate)</small></p></div></section><section class="card"><div class="section-heading">${interfaceIcon('methods')}<h2>Defences & weaknesses</h2></div>${defenceChart(form)}${elementalChart(form)}</section></div>
+  <section class="card guide-fight-plan" id="guide-setup" tabindex="-1" aria-labelledby="guide-setup-title"><div class="section-heading">${interfaceIcon('plan')}<div><h2 id="guide-setup-title">Prepare your setup</h2><p class="muted small">Approximate loadouts, not a live-price or best-in-slot calculation.</p></div></div><div class="guide-plan-settings">${field('guide-approach','Prepared approach',[['auto','Recommended approach'],...APPROACHES.filter(a=>a!=='auto'&&allowed.includes(a.split('-')[0] as 'melee'|'ranged'|'magic')&&(!['kraken','thermonuclear-smoke-devil'].includes(record.id)||a.endsWith('-tank'))).map(a=>[a,a[0].toUpperCase()+a.slice(1).replace('-',' · ')] as [string,string])],s.approach)}<label class="check"><input id="guide-on-task" type="checkbox" ${s.onTask?'checked':''}>On a suitable Slayer task (Slayer headgear where allowed)</label></div><div class="guide-plan-summary"><div><span class="eyebrow">SUGGESTED TYPE</span><h3>${esc(plan.name)}</h3><p>${esc(plan.reason)}</p><span class="badge">Offence: ${esc(offenceName(plan.attack))}</span></div><div><strong>Protection plan</strong><p>${esc(plan.protection)}</p><strong>Offensive prayer</strong><p>${esc(plan.offensivePrayer)}</p></div></div>${plan.notes.length?`<div class="notice ${plan.mechanics.boss?'guide-boss-note':''}"><strong>Creature mechanics come first</strong><ul>${plan.notes.map(note=>`<li>${esc(note)}</li>`).join('')}</ul></div>`:''}${location?`<p class="small muted">Gear prepared for <strong>${esc(location.name)}</strong>. Selecting another location below updates location-dependent protection.</p>`:''}<div class="guide-gear-grid">${renderGear(gearSet(record,form,plan,s,location,'mid'))}${renderGear(gearSet(record,form,plan,s,location,'max'))}</div></section>
+  <section class="card"><div class="section-heading">${interfaceIcon('supplies')}<div><h2>Potions & trip kit</h2><p class="small muted">Protection first; boosts are optional. Quantities depend on your stats and trip length.</p></div></div><div class="guide-supplies">${supplies(record,form,plan,location).map((supply,i)=>`<label class="guide-supply"><input type="checkbox" aria-label="Pack ${esc(supply.item)}"><span><strong>${esc(supply.item)}</strong><small>${esc(supply.purpose)}</small></span><span class="badge">${supply.essential?'Protection / required kit':supply.kind}</span></label>`).join('')}</div></section>
+  <section class="card" id="guide-locations"><div class="section-heading">${interfaceIcon('route')}<div><h2>Ranked locations</h2><p class="small muted">Editorial route ranking, not measured kills/hour. Special access and room rules still apply.</p></div></div><div class="guide-plan-settings">${field('guide-priority','Prioritise',[['balanced','All-round convenience & safety'],['cannon','Cannon-friendly rooms'],['barrage','Multi-target spell rooms'],['access','Fewer known requirements']],s.priority)}<label class="check"><input id="guide-fast-travel" type="checkbox" ${s.fastTravel?'checked':''}>Rank assuming the listed fast travel is unlocked</label></div>${ranked.length?ranked.slice(0,3).map((loc,i)=>renderLocation(loc,i,location?.name||'')).join(''):'<p class="notice">No matching location row was captured for this source form. Use the creature source to confirm its spawn; no location has been invented.</p>'}${ranked.length>3?`<details><summary>More listed locations (${ranked.length-3})</summary>${ranked.slice(3).map((loc,i)=>renderLocation(loc,i+3,location?.name||'')).join('')}</details>`:''}</section>
+  <section class="guide-sources"><h3>Sources & confidence</h3><p class="small muted">Stats and listed locations are parsed from the saved Wiki revision. Gear, route order and conservative protection choices are planner suggestions. Missing data stays unknown. Multi-stage bosses, quest appearances and identical-level forms still need their encounter guide.</p><ul>${guideSources(record).map(source=>`<li><a href="${esc(source.url+(source.revision?'?oldid='+source.revision:''))}" target="_blank" rel="noreferrer">${esc(source.title)}</a> <span class="muted small">${source.revision?'revision '+source.revision:''}</span></li>`).join('')}</ul><p class="small muted">Guide data ${GUIDE.version}. Selection makes no Wiki requests. ${GUIDE.records[record.id].source.timestamp.slice(0,10)} creature snapshot.</p></section>`;
+}

@@ -33,3 +33,11 @@ the Old School RuneScape Wiki (Mortimer revision 15404466) and Jagex's
 "Meet Mortimer: Your Newest Slayer Master" balancing post of 27 July 2026:
 https://secure.runescape.com/m=news/meet-mortimer-your-newest-slayer-master?oldschool=1
 The numeric within-range uniform model is the user's confirmed planning rule.
+
+The Creature Guide's creature-guide.json is a further adapted extract of the
+revisioned monster and location data, under the same CC BY-NC-SA 3.0 terms.
+Individual page URLs and revisions are included in that file and the guide UI.
+Eleven bounded specialist strategy/training captures are retained in
+data/guide-sources, crediting the linked original Wiki page histories. Gear and
+route suggestions are editorial examples informed by those sources, not certified
+best-in-slot calculations. No Wiki requests occur when a creature is selected.

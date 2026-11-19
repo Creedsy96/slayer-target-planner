@@ -2,6 +2,7 @@ import {offerTimeLabel,renderBoostEstimate} from './strategy-summary';
 import {creatureIcon,decorateCreatureText} from './creature-art';
 import {enhanceCreaturePickers} from './creature-picker';
 import {interfaceIcon} from './interface-icons';
+import {renderCreatureGuide,changeGuide,chooseGuideLocation} from './creature-guide';
 import {renderHuntNav,renderLookup,renderForecast,renderTaskHistory,renderTimingSuggestion} from './hunt-tools';
 import {saveHuntDialog,applyHunt,deleteHuntDialog,reviewBlocks,recordTaskDialog,applyTimingDialog,type HuntContext} from './hunt-actions';
 import {History} from '../state/history';
@@ -26,10 +27,10 @@ const options=(values:[string,string][],value:unknown)=>values.map(([key,label])
 const select=(path:string,label:string,values:[string,string][],value:unknown)=>`<label>${esc(label)}<select data-setting="${esc(path)}">${options(values,value)}</select></label>`;
 const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<label>${esc(label)}<input data-setting="${esc(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value??''}"></label>`;
 const bool=(path:string,label:string,value:boolean)=>`<label class="check"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
-const routes:[string,string][]=[['plan','Hunt planner'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
+const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
 class AppState{
   history=new History<{profiles:Profile[];activeId:string}>();compact=false;pin=false;huntSearch='';selectedPresetId='';
-  showUnavailable=loadShowUnavailable();questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route='plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';message='';saveError='';busy:Record<string,{done:number;total:number}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
+  showUnavailable=loadShowUnavailable();questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route=window.location.hash==='#creature-guide'?'guide':'plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';message='';saveError='';busy:Record<string,{done:number;total:number}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
   get profile():Profile{return this.profiles.find(p=>p.id===this.activeId)!;}
   strategyResults:{strategy:string;result?:Simulation;error?:string}[]=[];
   constructor(){
@@ -79,7 +80,8 @@ function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)
 function renderShell():void{
   const restore=preserveView();
   document.body.classList.toggle('compact-hunt',state.compact);
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.7.0 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+  document.body.classList.toggle('field-guide',state.route==='guide');
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id,name])=>[id,name]),state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.8.0 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';decorateCreatureText($('message'));}
@@ -88,7 +90,7 @@ function renderStatus():void{
 }
 function renderContent():void{
   const restore=preserveView();
-  const renderers:Record<string,()=>string>={plan:renderPlan,account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
+  const renderers:Record<string,()=>string>={plan:renderPlan,guide:()=>renderCreatureGuide(data),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
   const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
   content.innerHTML=renderers[state.route]();content.dataset.view=state.route;
   decorateCreatureText(document.getElementById('app')!);enhanceCreaturePickers(document.getElementById('app')!);restore();
@@ -300,7 +302,7 @@ async function huntAction(name:string,button:HTMLButtonElement):Promise<void>{
   if(name==='apply-timing')await applyTimingDialog(ctx,button.dataset.assignment!,button.dataset.variant!);
 }
 document.addEventListener('keydown',event=>{
-  if(!(event.ctrlKey||event.metaKey)||event.altKey||document.querySelector('dialog[open]'))return;
+  if(state.route==='guide'||!(event.ctrlKey||event.metaKey)||event.altKey||document.querySelector('dialog[open]'))return;
   const target=event.target as HTMLElement;
   if(target.closest('input,textarea,select,[contenteditable="true"]'))return;
   if(event.key.toLowerCase()==='z'){event.preventDefault();restoreHistory(event.shiftKey);}
@@ -309,6 +311,7 @@ document.addEventListener('keydown',event=>{
 
 document.addEventListener('click',event=>{
   const button=(event.target as HTMLElement).closest('button');if(!button)return;
+  if(button.dataset.guideLocation){chooseGuideLocation(button.dataset.guideLocation);renderContent();$('guide-setup').focus({preventScroll:true});$('guide-setup').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
   if(button.dataset.issueRoute){
     state.route=button.dataset.issueRoute;
     if(state.route==='methods'){state.methodAssignment=button.dataset.issueAssignment||state.methodAssignment;methodVariant=button.dataset.issueVariant||'';}
@@ -331,6 +334,7 @@ document.addEventListener('click',event=>{
 });
 function changeInput(event:Event):void{
   const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
+  if(changeGuide(element)){renderContent();return;}
   if(element.id==='hunt-master'){selectMaster(element.value);return;}
   if(element.id==='hunt-preset'){state.selectedPresetId=element.value;if(element.value){try{applyHunt(huntContext(),element.value);}catch(error){state.message=String(error);renderMessage();}}return;}
   if(element.id==='show-unavailable'){

@@ -1,7 +1,8 @@
 {
+  "creatureGuide": "2026-11-19.1",
   "variantAdditions": "2026-11-19.1",
   "mortimerRules": "2026-11-19.1",
   "areaRules": "2026-11-19.1",
   "version": "2026-11-19.2",
-  "application": "2.7.0"
+  "application": "2.8.0"
 }

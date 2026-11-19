@@ -1,12 +1,22 @@
-# Slayer Target Planner 2.7.0
+# Slayer Target Planner 2.8.0
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.7.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.8.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Standalone Creature Guide in 2.8.0
+
+Open **Creature guide** in the navigation, or use the website's `#creature-guide` link. Search 270 individual creatures, optionally filter by assignment, and select the source form/spawn where one page describes several. The mixed Boss timing scenario is excluded. The dossier shows source combat stats, defensive-bonus bars, elemental weaknesses and attack information for 584 forms.
+
+Each selection offers an approximate fighting style and protection plan, mid-level equipment for roughly 70–85 combat stats, and a high-end example for 99s. Choose another supported approach or toggle suitable-task headgear. Required shields, special weapons, armour and supplies override ordinary upgrades. Bosses include essential mechanics and style-switch notes, with links to their specialist source where captured. These examples assume the listed item/spell/prayer unlocks; they are not a live-price, DPS or best-in-slot calculation.
+
+Ranked location cards show basic travel diagrams, optional faster teleports with unlock caveats, cannon/multi-combat status and Wilderness risk. Change the ranking priority or select a location to update location-dependent equipment. Unknown routes and room rules remain explicitly unreviewed. Potion and trip-kit checkboxes serve as a temporary packing list; quantities depend on your trip. Guide selections persist separately from hunter profiles and do not alter targets, blocks, methods, balances or undo history.
+
+The guide reuses existing revisioned creature captures offline. Eleven specialist pages were captured in five bounded API requests, eight seconds apart. Selection and ordinary builds make no Wiki requests. See [guide verification and limits](docs/creature-guide-verification.md). Regenerate its dataset with `python tools/build_creature_guide.py`; deliberate specialist refreshes require the explicit `--fetch` option in `tools/capture_guide_sources.py`.
 
 ## Creature artwork and interface refresh in 2.7.0
 
