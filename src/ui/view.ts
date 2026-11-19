@@ -1,6 +1,7 @@
 const fieldAttributes=[
   'data-setting','data-target','data-target-field',
   'data-method','data-method-field','data-offer','data-offer-field',
+  'data-picker-for',
 ];
 const rememberedOpen=new Set<string>();
 

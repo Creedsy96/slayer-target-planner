@@ -22,6 +22,12 @@ private planner is not affiliated with or endorsed by Jagex.
 The portable runtime is Electron 45.3.4. Electron and Chromium notices are
 included as LICENSE and LICENSES.chromium.html beside the executable.
 The original skull-on-sword shield application icon is included with this project.
+Creature artwork is copyright Jagex Ltd and is sourced from the Old School
+RuneScape Wiki for this independent fan planner. These game images are separate
+from the Wiki text/data licence. Per-image source pages, image timestamps and
+download hashes are recorded in src/ui/creature-art.json (creature-art.json beside
+the EXE in the Windows distribution). The local sprite sheet
+in assets/creatures.png only crops, scales and arranges those sourced images.
 Mortimer modifier bounds, unlock thresholds and increments are attributed to
 the Old School RuneScape Wiki (Mortimer revision 15404466) and Jagex's
 "Meet Mortimer: Your Newest Slayer Master" balancing post of 27 July 2026:

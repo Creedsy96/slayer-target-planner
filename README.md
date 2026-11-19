@@ -1,12 +1,22 @@
-# Slayer Target Planner 2.6.2
+# Slayer Target Planner 2.7.0
 
-An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
+An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.7.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Creature artwork and interface refresh in 2.7.0
+
+Creature names have small game-art badges throughout the planner, tasks, blocks, skips, combat methods, guidance, logs and review dialogs. All 271 supported variants are bundled in a local sprite sheet. Assignment categories use a representative creature. The artwork works offline and makes no requests to the Wiki during use; image provenance is retained in `src/ui/creature-art.json`.
+
+Creature selectors open an illustrated search dialog. Type part of a name, browse with Up/Down, and press Enter to choose. Escape or Cancel returns without changing the selection. Focus returns to the selector after choosing, including after background calculations finish.
+
+The six themes share updated navigation icons, target portraits, consistent controls, clearer setup/recommendation cards and improved block/skip presentation. **Saved hunts** is grouped in the hunt toolbar. Short view, dialog and hover transitions respect the system's reduced-motion preference. Compact hunt keeps the same creature badges and controls.
+
+See [interface verification](docs/ui-refresh-verification.md) for checks and limits. Artwork is credited in `THIRD_PARTY_NOTICES.txt`; recalculating or rebuilding the app does not fetch artwork. To deliberately refresh artwork, run `python tools/build_creature_art.py` with Pillow installed, review the changed sources/assets, then rebuild.
 
 ## Strategy and reward audit in 2.6.2
 

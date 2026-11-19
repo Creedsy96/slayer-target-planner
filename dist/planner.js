@@ -1,5 +1,3015 @@
 "use strict";
 (() => {
+  // src/ui/creature-art.json
+  var creature_art_default = {
+    columns: 16,
+    rows: 17,
+    entries: {
+      "aberrant-spectre": {
+        frame: 0,
+        name: "Aberrant spectre",
+        file: "Aberrant spectre icon.png",
+        source: "https://oldschool.runescape.wiki/w/Aberrant_spectre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Aberrant_spectre_icon.png",
+        originalSha256: "6696c53f3f3552ac0450b3a9772e1aad43f1bbd0efb1b1680d8876f542cc4ba9",
+        imageTimestamp: "2014-01-06T22:42:04Z"
+      },
+      "abyssal-demon": {
+        frame: 1,
+        name: "Abyssal demon",
+        file: "Abyssal demon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Abyssal_demon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Abyssal_demon_icon.png",
+        originalSha256: "155a7124e86255aec130c32b7bd35a7ca743a42dc214c2bf9d3203c0aa729c01",
+        imageTimestamp: "2014-01-06T22:42:05Z"
+      },
+      ankou: {
+        frame: 2,
+        name: "Ankou",
+        file: "Ankou icon.png",
+        source: "https://oldschool.runescape.wiki/w/Ankou",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ankou_icon.png",
+        originalSha256: "8d1610a4f3355cf70fb45a9dd772d4da6e3ab7971c68f9560891e0b77cf8f5ab",
+        imageTimestamp: "2014-01-23T15:26:18Z"
+      },
+      aquanite: {
+        frame: 3,
+        name: "Aquanite",
+        file: "Aquanite icon.png",
+        source: "https://oldschool.runescape.wiki/w/Aquanite",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Aquanite_icon.png",
+        originalSha256: "ab3d71155256e37c2294f3fd4fda1ce950607927eb7ad2a3291ae47f0a320dfc",
+        imageTimestamp: "2025-11-21T19:02:32Z"
+      },
+      araxyte: {
+        frame: 4,
+        name: "Araxyte",
+        file: "Araxyte (lv 96).png",
+        source: "https://oldschool.runescape.wiki/w/Araxyte",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Araxyte_(lv_96).png",
+        originalSha256: "0a2052224a127e0e371019733501c87259b2919783ad41b05394e787f4f60bb0",
+        imageTimestamp: "2024-08-28T09:48:06Z"
+      },
+      aviansie: {
+        frame: 5,
+        name: "Aviansie",
+        file: "Aviansie icon.png",
+        source: "https://oldschool.runescape.wiki/w/Aviansie",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Aviansie_icon.png",
+        originalSha256: "4c02f11452c7c67d4d3e8600e627091992afbf6d98a7427965761b68d0f561b9",
+        imageTimestamp: "2014-01-30T14:20:27Z"
+      },
+      bandit: {
+        frame: 6,
+        name: "Bandit",
+        file: "Bandit.png",
+        source: "https://oldschool.runescape.wiki/w/Bandit",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bandit.png",
+        originalSha256: "a130abaf4f4af1c9d6c86340f7bfc3b58578522a6fc3eed387fe44bb067f3498",
+        imageTimestamp: "2019-06-06T13:39:47Z"
+      },
+      banshee: {
+        frame: 7,
+        name: "Banshee",
+        file: "Banshee icon.png",
+        source: "https://oldschool.runescape.wiki/w/Banshee",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Banshee_icon.png",
+        originalSha256: "2073eeb644d4b9ed9a0a1750302369ba5e442fe416bb7722ac1a2727094ba867",
+        imageTimestamp: "2014-01-06T22:42:05Z"
+      },
+      "basilisk-knight": {
+        frame: 8,
+        name: "Basilisk Knight",
+        file: "Basilisk Knight icon.png",
+        source: "https://oldschool.runescape.wiki/w/Basilisk_Knight",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Basilisk_Knight_icon.png",
+        originalSha256: "db77d0ba5090563493612e1fb996f847bb0f7eeca42ced7cb057c5f3a75df93d",
+        imageTimestamp: "2019-10-02T11:00:10Z"
+      },
+      bat: {
+        frame: 9,
+        name: "Bat",
+        file: "Bat.png",
+        source: "https://oldschool.runescape.wiki/w/Bat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bat.png",
+        originalSha256: "03b6c775b1ec23c1b7b6831949dff38b17e81cdbfabc5f554cf0f098cd8b02f2",
+        imageTimestamp: "2020-08-02T07:47:57Z"
+      },
+      "grizzly-bear": {
+        frame: 10,
+        name: "Grizzly bear",
+        file: "Grizzly bear (level 21).png",
+        source: "https://oldschool.runescape.wiki/w/Grizzly_bear",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Grizzly_bear_(level_21).png",
+        originalSha256: "b666463f0423fa98a09b7a1f2eb3864f65a106890cf33d75cddf68a5b9955db8",
+        imageTimestamp: "2020-12-02T04:27:00Z"
+      },
+      chicken: {
+        frame: 11,
+        name: "Chicken",
+        file: "Chicken (1).png",
+        source: "https://oldschool.runescape.wiki/w/Chicken",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Chicken_(1).png",
+        originalSha256: "a5c8f18c4ff4c6db7e0c6b52758110ce2b6867b95abe25b533ce8f0d92cdc0ad",
+        imageTimestamp: "2019-06-22T14:05:48Z"
+      },
+      "black-demon": {
+        frame: 12,
+        name: "Black demon",
+        file: "Black demon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Black_demon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Black_demon_icon.png",
+        originalSha256: "04334e3d93ef991b1e74969c95d47ac070c550671da6e2dbaa157fd5876b20f3",
+        imageTimestamp: "2014-01-23T15:27:07Z"
+      },
+      "baby-black-dragon": {
+        frame: 13,
+        name: "Baby black dragon",
+        file: "Baby black dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Baby_black_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Baby_black_dragon.png",
+        originalSha256: "47d25fffba4fb0e8951bd6315a39cfe8df48dbcfa6752f3be01e250bf2fb5ea6",
+        imageTimestamp: "2019-05-14T01:08:43Z"
+      },
+      "black-knight": {
+        frame: 14,
+        name: "Black Knight",
+        file: "Black Knight (male).png",
+        source: "https://oldschool.runescape.wiki/w/Black_Knight",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Black_Knight_(male).png",
+        originalSha256: "01cce283a65ddf200db29a6d6cd3498ca57fb2a06ef9276dadd6831e8f3dfbf8",
+        imageTimestamp: "2019-06-22T13:17:31Z"
+      },
+      bloodveld: {
+        frame: 15,
+        name: "Bloodveld",
+        file: "Bloodveld icon.png",
+        source: "https://oldschool.runescape.wiki/w/Bloodveld",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bloodveld_icon.png",
+        originalSha256: "434017da8fbae741ac188a75ec4bf98441ee5b83b33bc7d59769a1b2ae77c746",
+        imageTimestamp: "2014-01-06T22:42:06Z"
+      },
+      "baby-blue-dragon": {
+        frame: 16,
+        name: "Baby blue dragon",
+        file: "Baby blue dragon (1).png",
+        source: "https://oldschool.runescape.wiki/w/Baby_blue_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Baby_blue_dragon_(1).png",
+        originalSha256: "403e1d8f23b2c5bad15f547caa571f92eaefcb81ca8a6000940adead4304f1ac",
+        imageTimestamp: "2019-05-14T01:08:43Z"
+      },
+      "brine-rat": {
+        frame: 17,
+        name: "Brine rat",
+        file: "Brine rat icon.png",
+        source: "https://oldschool.runescape.wiki/w/Brine_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Brine_rat_icon.png",
+        originalSha256: "6c73272a8c51f5169937d255ee91c8291d48da7cbbc820df668178886c2daf14",
+        imageTimestamp: "2014-01-06T22:42:06Z"
+      },
+      catablepon: {
+        frame: 18,
+        name: "Catablepon",
+        file: "Catablepon.png",
+        source: "https://oldschool.runescape.wiki/w/Catablepon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Catablepon.png",
+        originalSha256: "66cbaf2b2c9ede0999c1f56e2df08f5c9853021abbbf2378cb946defcfbf6c86",
+        imageTimestamp: "2019-05-14T01:21:55Z"
+      },
+      "cave-bug": {
+        frame: 19,
+        name: "Cave bug",
+        file: "Cave bug icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cave_bug",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_bug_icon.png",
+        originalSha256: "85f478fc799c235ec4e7949b34d96976dc7083ffa77bfc55c533702bd027c984",
+        imageTimestamp: "2014-01-06T22:42:07Z"
+      },
+      "cave-crawler": {
+        frame: 20,
+        name: "Cave crawler",
+        file: "Cave crawler icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cave_crawler",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_crawler_icon.png",
+        originalSha256: "49cad3bb82392503661dac5a9a7541a12ed00b6ce57c6a5052f398ff1bb548b1",
+        imageTimestamp: "2014-01-06T22:42:07Z"
+      },
+      "cave-horror": {
+        frame: 21,
+        name: "Cave horror",
+        file: "Cave horror icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cave_horror",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_horror_icon.png",
+        originalSha256: "2fc8f21c6abd91d1984008b087c8896097e73feb8e251ca13a48d017979d5dab",
+        imageTimestamp: "2014-01-06T22:42:07Z"
+      },
+      "cave-kraken": {
+        frame: 22,
+        name: "Cave kraken",
+        file: "Cave kraken icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cave_kraken",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_kraken_icon.png",
+        originalSha256: "ca2bcf9e8f7e2e3d782b813d9dc5297bc40cd67d3f95c1fd3d5c2244cb197d39",
+        imageTimestamp: "2014-01-30T13:26:56Z"
+      },
+      "cave-slime": {
+        frame: 23,
+        name: "Cave slime",
+        file: "Cave slime icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cave_slime",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_slime_icon.png",
+        originalSha256: "94844a2367f0dcef78c65023062fecfb0883b49c8a7debf5ac83d734b8cfd31b",
+        imageTimestamp: "2014-01-06T22:42:07Z"
+      },
+      "chaos-druid": {
+        frame: 24,
+        name: "Chaos druid",
+        file: "Chaos druid.png",
+        source: "https://oldschool.runescape.wiki/w/Chaos_druid",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Chaos_druid.png",
+        originalSha256: "582715ac076c473dc7372845db1038ae34e0daa2f98ed000048672319ab058a5",
+        imageTimestamp: "2019-06-22T13:56:14Z"
+      },
+      cockatrice: {
+        frame: 25,
+        name: "Cockatrice",
+        file: "Cockatrice icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cockatrice",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cockatrice_icon.png",
+        originalSha256: "1344adb021c2d1d0cd1334b977d9249b9fb6d7656a3269ca40c2dad18ddb8208",
+        imageTimestamp: "2014-01-06T22:42:08Z"
+      },
+      cow: {
+        frame: 26,
+        name: "Cow",
+        file: "Cow (1).png",
+        source: "https://oldschool.runescape.wiki/w/Cow",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cow_(1).png",
+        originalSha256: "ad9c8a4d5d3f5fafacc2e2f2229114dcd050c6ed4d2cd0bdaa394f221eb4ff5f",
+        imageTimestamp: "2019-05-14T01:21:57Z"
+      },
+      "sand-crab": {
+        frame: 27,
+        name: "Sand Crab",
+        file: "Sand Crab.png",
+        source: "https://oldschool.runescape.wiki/w/Sand_Crab",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sand_Crab.png",
+        originalSha256: "622ba61e6985d4afbbf43b0e409a60bbfebaff43b00b8f66093ec9f82081c047",
+        imageTimestamp: "2026-01-16T21:57:51Z"
+      },
+      "crawling-hand": {
+        frame: 28,
+        name: "Crawling Hand",
+        file: "Crawling Hand icon.png",
+        source: "https://oldschool.runescape.wiki/w/Crawling_Hand",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Crawling_Hand_icon.png",
+        originalSha256: "4f7414d79e85f3f389630b3b333b0a5c4aab14485dc1da77382642ed6e2ef4e1",
+        imageTimestamp: "2014-01-06T22:42:08Z"
+      },
+      crocodile: {
+        frame: 29,
+        name: "Crocodile",
+        file: "Crocodile.png",
+        source: "https://oldschool.runescape.wiki/w/Crocodile",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Crocodile.png",
+        originalSha256: "6711cf38638ec66370cfd19f2d7476e45562aab415a8f8bd49e24804664e9a7e",
+        imageTimestamp: "2019-05-14T01:21:58Z"
+      },
+      "juvenile-custodian-stalker": {
+        frame: 30,
+        name: "Juvenile custodian stalker",
+        file: "Juvenile custodian stalker icon.png",
+        source: "https://oldschool.runescape.wiki/w/Juvenile_custodian_stalker",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Juvenile_custodian_stalker_icon.png",
+        originalSha256: "d988fe872e43f0170b9c73a8d8217ca236c8a3b2d58a50c083c30b337c227c89",
+        imageTimestamp: "2025-07-25T17:50:21Z"
+      },
+      dagannoth: {
+        frame: 31,
+        name: "Dagannoth",
+        file: "Dagannoth.png",
+        source: "https://oldschool.runescape.wiki/w/Dagannoth",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dagannoth.png",
+        originalSha256: "fda581bfbcc44a06795abbd8872652d2bdff5f988d19322cf8e0fbc2608cdedb",
+        imageTimestamp: "2019-05-14T01:28:18Z"
+      },
+      "dark-beast": {
+        frame: 32,
+        name: "Dark beast",
+        file: "Dark beast icon.png",
+        source: "https://oldschool.runescape.wiki/w/Dark_beast",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dark_beast_icon.png",
+        originalSha256: "f75d1686502753d3b766ee410a0e885db92bc57f34d8986f1943b61293a4797a",
+        imageTimestamp: "2014-01-06T22:42:09Z"
+      },
+      "dark-warrior": {
+        frame: 33,
+        name: "Dark warrior",
+        file: "Dark warrior.png",
+        source: "https://oldschool.runescape.wiki/w/Dark_warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dark_warrior.png",
+        originalSha256: "48e014a0f80d80701794d6df2572e34ae4b290c2434a687852135978989236dc",
+        imageTimestamp: "2019-01-26T16:35:00Z"
+      },
+      "guard-dog": {
+        frame: 34,
+        name: "Guard dog",
+        file: "Guard dog.png",
+        source: "https://oldschool.runescape.wiki/w/Guard_dog",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Guard_dog.png",
+        originalSha256: "eaeef7133edf28f8ee699cf2ea1dde245736e67a4ac7b090e22b75683c2cc60a",
+        imageTimestamp: "2019-01-30T21:46:51Z"
+      },
+      drake: {
+        frame: 35,
+        name: "Drake",
+        file: "Drake icon.png",
+        source: "https://oldschool.runescape.wiki/w/Drake",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Drake_icon.png",
+        originalSha256: "a3bb1c94cdb8c388d65121216f20ee0f8e8e2c00862295f6ab6a0c69dc7b2909",
+        imageTimestamp: "2019-01-10T12:58:22Z"
+      },
+      "dust-devil": {
+        frame: 36,
+        name: "Dust devil",
+        file: "Dust devil icon.png",
+        source: "https://oldschool.runescape.wiki/w/Dust_devil",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dust_devil_icon.png",
+        originalSha256: "87cfd8c1dc0607fc2a132ba1f4765dee213c3ec60e0bd9b6c8545848413ef7a9",
+        imageTimestamp: "2025-05-08T10:58:14Z"
+      },
+      dwarf: {
+        frame: 37,
+        name: "Dwarf",
+        file: "Dwarf.png",
+        source: "https://oldschool.runescape.wiki/w/Dwarf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dwarf.png",
+        originalSha256: "3ca3da614cb1285840045dea81521bc280c9e1f35fdf1fe71d368093d87b50e8",
+        imageTimestamp: "2025-12-19T20:56:41Z"
+      },
+      "earth-warrior": {
+        frame: 38,
+        name: "Earth warrior",
+        file: "Earth warrior.png",
+        source: "https://oldschool.runescape.wiki/w/Earth_warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Earth_warrior.png",
+        originalSha256: "1c37ab5fae96d88dc6551096e09021cc923463a49baa2ce97bdf17f8f2b1b149",
+        imageTimestamp: "2021-09-12T06:37:32Z"
+      },
+      "elf-warrior": {
+        frame: 39,
+        name: "Elf Warrior",
+        file: "Elf Warrior (1).png",
+        source: "https://oldschool.runescape.wiki/w/Elf_Warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Elf_Warrior_(1).png",
+        originalSha256: "055d6a523db869f4423da3d94ba89737ea7b9f2228fed5572d045fea017fc34f",
+        imageTimestamp: "2019-07-27T02:32:05Z"
+      },
+      ent: {
+        frame: 40,
+        name: "Ent",
+        file: "Ent (lv 86).png",
+        source: "https://oldschool.runescape.wiki/w/Ent",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ent_(lv_86).png",
+        originalSha256: "cea67d45fab57634c78aea2463895f154c87722be2b72c88fc5c813bc91f1c79",
+        imageTimestamp: "2019-01-21T22:50:29Z"
+      },
+      "fever-spider": {
+        frame: 41,
+        name: "Fever spider",
+        file: "Fever spider icon.png",
+        source: "https://oldschool.runescape.wiki/w/Fever_spider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fever_spider_icon.png",
+        originalSha256: "41c4df25a74ad6716958f0e341fcebe3b52534ba6f3192e6313aba85ea4eef2e",
+        imageTimestamp: "2014-01-06T22:42:09Z"
+      },
+      "fire-giant": {
+        frame: 42,
+        name: "Fire giant",
+        file: "Fire giant.png",
+        source: "https://oldschool.runescape.wiki/w/Fire_giant",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fire_giant.png",
+        originalSha256: "35894b9bedca0ef0d48095a2d953a560a734a19e89da0542b1a39254d86dcb94",
+        imageTimestamp: "2019-01-22T02:45:03Z"
+      },
+      "flesh-crawler": {
+        frame: 43,
+        name: "Flesh Crawler",
+        file: "Flesh Crawler.png",
+        source: "https://oldschool.runescape.wiki/w/Flesh_Crawler",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Flesh_Crawler.png",
+        originalSha256: "b5a3b6d67f4ff267388defddf6d2c707000299e7d0098a337eb2815e825ec65f",
+        imageTimestamp: "2019-01-26T16:00:17Z"
+      },
+      "spitting-wyvern": {
+        frame: 44,
+        name: "Spitting Wyvern",
+        file: "Fossil Island wyverns icon.png",
+        source: "https://oldschool.runescape.wiki/w/Spitting_Wyvern",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fossil_Island_wyverns_icon.png",
+        originalSha256: "8c686b57203c1659a68db7fe4f6ed291963d5b3ea8f7f2c14fac967f50722458",
+        imageTimestamp: "2017-09-07T14:32:37Z"
+      },
+      "frost-dragon": {
+        frame: 45,
+        name: "Frost dragon",
+        file: "Frost dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Frost_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Frost_dragon.png",
+        originalSha256: "18dfa7be5988bb41bce6587b3252b9e134cd680f12a59424d925ac4a99cdae7c",
+        imageTimestamp: "2025-11-20T19:29:09Z"
+      },
+      gargoyle: {
+        frame: 46,
+        name: "Gargoyle",
+        file: "Gargoyle icon.png",
+        source: "https://oldschool.runescape.wiki/w/Gargoyle",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Gargoyle_icon.png",
+        originalSha256: "63f6b8101a1e1de313e8aa18ba82a047a5b5363217ee7d5f496912b94525e777",
+        imageTimestamp: "2014-01-06T22:42:10Z"
+      },
+      ghost: {
+        frame: 47,
+        name: "Ghost",
+        file: "Ghost.png",
+        source: "https://oldschool.runescape.wiki/w/Ghost",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ghost.png",
+        originalSha256: "5023233386785d2ca5369a5b74031a91298f00a657791974e24597d4aa8b3341",
+        imageTimestamp: "2019-01-29T15:26:55Z"
+      },
+      ghoul: {
+        frame: 48,
+        name: "Ghoul",
+        file: "Ghoul.png",
+        source: "https://oldschool.runescape.wiki/w/Ghoul",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ghoul.png",
+        originalSha256: "005556088a67a2f201d5061423e932bd072618a3c4de2cbdc9743a3d3c5caf25",
+        imageTimestamp: "2024-01-02T07:55:36Z"
+      },
+      goblin: {
+        frame: 49,
+        name: "Goblin",
+        file: "Goblin.png",
+        source: "https://oldschool.runescape.wiki/w/Goblin",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Goblin.png",
+        originalSha256: "9900e2d97b7994d35e1b99e747893dce97864b6bde377a31e3ffaf557f5cdbf2",
+        imageTimestamp: "2025-07-27T10:25:15Z"
+      },
+      "greater-demon": {
+        frame: 50,
+        name: "Greater demon",
+        file: "Greater demon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Greater_demon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Greater_demon_icon.png",
+        originalSha256: "d817bd261599637318790b95178c1c355859410369ac9eb1c918611269ed2e71",
+        imageTimestamp: "2014-01-23T15:27:01Z"
+      },
+      "green-dragon": {
+        frame: 51,
+        name: "Green dragon",
+        file: "Green dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Green_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Green_dragon.png",
+        originalSha256: "ca3c26363f887c507b8903234b0d261afc29e8b7a992f81c40f28b5618afea28",
+        imageTimestamp: "2019-05-14T01:28:29Z"
+      },
+      gryphon: {
+        frame: 52,
+        name: "Gryphon",
+        file: "Gryphon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Gryphon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Gryphon_icon.png",
+        originalSha256: "6138c9ad662a27040edc68a3983f83d57810147b2d8a0d13a13553836a91a54c",
+        imageTimestamp: "2025-11-21T19:02:26Z"
+      },
+      "harpie-bug-swarm": {
+        frame: 53,
+        name: "Harpie Bug Swarm",
+        file: "Harpie Bug Swarm icon.png",
+        source: "https://oldschool.runescape.wiki/w/Harpie_Bug_Swarm",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Harpie_Bug_Swarm_icon.png",
+        originalSha256: "8843357934888951c6c1ac1efd041db0395f345c69d8d9d79c98680323ce389e",
+        imageTimestamp: "2014-01-06T22:42:10Z"
+      },
+      hellhound: {
+        frame: 54,
+        name: "Hellhound",
+        file: "Hellhound.png",
+        source: "https://oldschool.runescape.wiki/w/Hellhound",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Hellhound.png",
+        originalSha256: "b85bb711479ae748243a0350706c07f43298c6e0209d866def1ebc5bea86f73f",
+        imageTimestamp: "2020-10-23T17:56:43Z"
+      },
+      "hill-giant": {
+        frame: 55,
+        name: "Hill Giant",
+        file: "Hill Giant.png",
+        source: "https://oldschool.runescape.wiki/w/Hill_Giant",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Hill_Giant.png",
+        originalSha256: "735cdf4f951033cd8f1112fdc975c197a6bc1384dba62d22361cf224739460ef",
+        imageTimestamp: "2019-05-14T01:33:52Z"
+      },
+      hobgoblin: {
+        frame: 56,
+        name: "Hobgoblin",
+        file: "Hobgoblin.png",
+        source: "https://oldschool.runescape.wiki/w/Hobgoblin",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Hobgoblin.png",
+        originalSha256: "1396394466d05d9fc484742d07cd7d0013f0c5128b2af6d2fdcacce79394f00b",
+        imageTimestamp: "2024-09-28T22:28:07Z"
+      },
+      hydra: {
+        frame: 57,
+        name: "Hydra",
+        file: "Hydra icon.png",
+        source: "https://oldschool.runescape.wiki/w/Hydra",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Hydra_icon.png",
+        originalSha256: "425322d2bb6ef02962e41adc099ba3517212008a7c0eaab77b860a265165bc13",
+        imageTimestamp: "2019-01-10T12:58:33Z"
+      },
+      "ice-giant": {
+        frame: 58,
+        name: "Ice giant",
+        file: "Ice giant.png",
+        source: "https://oldschool.runescape.wiki/w/Ice_giant",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ice_giant.png",
+        originalSha256: "0fade8583fab40fc324b9a27cc80e5d7d33984b337be4e6b13bdfb84927e0241",
+        imageTimestamp: "2024-09-29T08:39:40Z"
+      },
+      "ice-warrior": {
+        frame: 59,
+        name: "Ice warrior",
+        file: "Ice warrior.png",
+        source: "https://oldschool.runescape.wiki/w/Ice_warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ice_warrior.png",
+        originalSha256: "4e940fedd9107f19e74387a0a9eadd7d8c9298dc01b10624ac522f17ce5ddbf7",
+        imageTimestamp: "2021-10-30T13:47:07Z"
+      },
+      icefiend: {
+        frame: 60,
+        name: "Icefiend",
+        file: "Icefiend.png",
+        source: "https://oldschool.runescape.wiki/w/Icefiend",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Icefiend.png",
+        originalSha256: "423754a638ffd4b97d8f59d932ff1c28f5dc395f99004d4a559f7b9ef1dc1056",
+        imageTimestamp: "2023-04-30T04:19:54Z"
+      },
+      "infernal-mage": {
+        frame: 61,
+        name: "Infernal Mage",
+        file: "Infernal Mage icon.png",
+        source: "https://oldschool.runescape.wiki/w/Infernal_Mage",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Infernal_Mage_icon.png",
+        originalSha256: "a93a6ad06194e6eacc091dbd232a503b58490c5db7393ad37d483677c4e1960c",
+        imageTimestamp: "2014-01-06T22:42:10Z"
+      },
+      jelly: {
+        frame: 62,
+        name: "Jelly",
+        file: "Jelly icon.png",
+        source: "https://oldschool.runescape.wiki/w/Jelly",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Jelly_icon.png",
+        originalSha256: "f1553c7cb1083248dd478e8805d98e640222dba97f070e4b389372d1a65075ec",
+        imageTimestamp: "2014-01-06T22:42:11Z"
+      },
+      "jungle-horror": {
+        frame: 63,
+        name: "Jungle horror",
+        file: "Jungle horror.png",
+        source: "https://oldschool.runescape.wiki/w/Jungle_horror",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Jungle_horror.png",
+        originalSha256: "3046e4ceacd22a573df68d6163715367022e9ecbf0c1751a6774c383bf699f46",
+        imageTimestamp: "2022-10-03T02:29:48Z"
+      },
+      "kalphite-worker": {
+        frame: 64,
+        name: "Kalphite Worker",
+        file: "Kalphite Worker.png",
+        source: "https://oldschool.runescape.wiki/w/Kalphite_Worker",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kalphite_Worker.png",
+        originalSha256: "fcba5d24a3fab68c8d4fa80e3ef7c555bcc7236c917fba1fa0a9837db3aeba44",
+        imageTimestamp: "2020-10-23T18:21:48Z"
+      },
+      killerwatt: {
+        frame: 65,
+        name: "Killerwatt",
+        file: "Killerwatt icon.png",
+        source: "https://oldschool.runescape.wiki/w/Killerwatt",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Killerwatt_icon.png",
+        originalSha256: "6cd25f9d7b5c60942702dd47b5258e7ab2f076164eb22bc264681be9f8380776",
+        imageTimestamp: "2014-01-06T22:42:35Z"
+      },
+      kurask: {
+        frame: 66,
+        name: "Kurask",
+        file: "Kurask icon.png",
+        source: "https://oldschool.runescape.wiki/w/Kurask",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kurask_icon.png",
+        originalSha256: "c6de57a01c8db4375811394e8173ed74ab43402296d80a3ef1638e0f9cd5cdf6",
+        imageTimestamp: "2014-01-06T22:42:35Z"
+      },
+      "lava-dragon": {
+        frame: 67,
+        name: "Lava dragon",
+        file: "Lava dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Lava_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lava_dragon.png",
+        originalSha256: "4b8a8f98e4cd323b7f8ef3e2738de873978ee725736987b2384eb721cf02120f",
+        imageTimestamp: "2024-02-07T12:12:41Z"
+      },
+      "lesser-demon": {
+        frame: 68,
+        name: "Lesser demon",
+        file: "Lesser demon.png",
+        source: "https://oldschool.runescape.wiki/w/Lesser_demon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lesser_demon.png",
+        originalSha256: "458a22166365204ed69ac188bf61a74ad7161ff7ebb7eaac753eaaf8cfe3965b",
+        imageTimestamp: "2019-05-29T04:52:12Z"
+      },
+      "sulphur-nagua": {
+        frame: 69,
+        name: "Sulphur Nagua",
+        file: "Lesser nagua icon.png",
+        source: "https://oldschool.runescape.wiki/w/Sulphur_Nagua",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lesser_nagua_icon.png",
+        originalSha256: "f4f6de3eb22df46a3d3ef300b77a03c9738117f2862310f0b5ad55b6e90dc9f1",
+        imageTimestamp: "2024-03-20T15:09:09Z"
+      },
+      lizardman: {
+        frame: 70,
+        name: "Lizardman",
+        file: "Lizardmen icon.png",
+        source: "https://oldschool.runescape.wiki/w/Lizardman",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lizardmen_icon.png",
+        originalSha256: "ef9024295dd79a5d68e35f51478985ed7070309d5ee39cbab80bf23ad7254e51",
+        imageTimestamp: "2016-03-24T14:04:14Z"
+      },
+      "desert-lizard": {
+        frame: 71,
+        name: "Desert Lizard",
+        file: "Desert Lizard icon.png",
+        source: "https://oldschool.runescape.wiki/w/Desert_Lizard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Desert_Lizard_icon.png",
+        originalSha256: "ef8fad7149d942228fd540323f2903e98c0b4ca15fb7a0c094985d5bcbb4e91b",
+        imageTimestamp: "2014-01-06T22:42:09Z"
+      },
+      "magic-axe": {
+        frame: 72,
+        name: "Magic axe",
+        file: "Magic axe.png",
+        source: "https://oldschool.runescape.wiki/w/Magic_axe",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Magic_axe.png",
+        originalSha256: "264adc83bdaa34f282a1f5c29bab57191dc641f3ba5d8a02ff87881c61ba8cdd",
+        imageTimestamp: "2019-05-14T01:33:59Z"
+      },
+      mammoth: {
+        frame: 73,
+        name: "Mammoth",
+        file: "Mammoth.png",
+        source: "https://oldschool.runescape.wiki/w/Mammoth",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mammoth.png",
+        originalSha256: "f20e3e2e6908e83afda88f73d4fbddd8fe2e170aa444601f1321118c1db8c9ab",
+        imageTimestamp: "2019-05-14T01:33:59Z"
+      },
+      "iron-dragon": {
+        frame: 74,
+        name: "Iron dragon",
+        file: "Iron dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Iron_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Iron_dragon.png",
+        originalSha256: "07c5b2972a4eb762b015b30ddced84affaf2c10f23836712651651ca261f5c94",
+        imageTimestamp: "2019-05-14T01:33:53Z"
+      },
+      minotaur: {
+        frame: 75,
+        name: "Minotaur",
+        file: "Minotaur.png",
+        source: "https://oldschool.runescape.wiki/w/Minotaur",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Minotaur.png",
+        originalSha256: "a43ce1abe070784fd4919cbfeff315719022c2bf0d6686f0073ea0db12709417",
+        imageTimestamp: "2019-01-20T09:13:14Z"
+      },
+      mogre: {
+        frame: 76,
+        name: "Mogre",
+        file: "Mogre icon.png",
+        source: "https://oldschool.runescape.wiki/w/Mogre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mogre_icon.png",
+        originalSha256: "922ad6dbfde711b1dbd0d0eb4ee462a7ca7b08686e65dd684de51be4887ea337",
+        imageTimestamp: "2013-09-30T22:03:04Z"
+      },
+      molanisk: {
+        frame: 77,
+        name: "Molanisk",
+        file: "Molanisk icon.png",
+        source: "https://oldschool.runescape.wiki/w/Molanisk",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Molanisk_icon.png",
+        originalSha256: "62ebb505dbbd105508911623c9df5a81544f4ab25e2b8734820accbe1e937dc7",
+        imageTimestamp: "2014-01-06T22:42:36Z"
+      },
+      "monkey-monster": {
+        frame: 78,
+        name: "Monkey (monster)",
+        file: "Monkey.png",
+        source: "https://oldschool.runescape.wiki/w/Monkey_%28monster%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Monkey.png",
+        originalSha256: "dae45cf4728a5a90654f5badf5c7ffeef6cdc4442182966ac5585390b11abf36",
+        imageTimestamp: "2019-02-13T09:50:33Z"
+      },
+      "moss-giant": {
+        frame: 79,
+        name: "Moss giant",
+        file: "Moss giant.png",
+        source: "https://oldschool.runescape.wiki/w/Moss_giant",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Moss_giant.png",
+        originalSha256: "f6339e59ff8caec19c229fc5d2e9d6e0ed9dfff65471094ed609b6bd3cd5ebb7",
+        imageTimestamp: "2016-11-30T15:21:52Z"
+      },
+      zygomite: {
+        frame: 80,
+        name: "Zygomite",
+        file: "Mutated zygomite icon.png",
+        source: "https://oldschool.runescape.wiki/w/Zygomite",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mutated_zygomite_icon.png",
+        originalSha256: "66c24c3c30f13df995109ab441972db3024545ce7e2bab0e44bf380edf49672f",
+        imageTimestamp: "2014-01-06T22:42:36Z"
+      },
+      nechryael: {
+        frame: 81,
+        name: "Nechryael",
+        file: "Nechryael icon.png",
+        source: "https://oldschool.runescape.wiki/w/Nechryael",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Nechryael_icon.png",
+        originalSha256: "9e862e4da373f3817910d3934abcda10832d87744957cf69511b3db0e808ab3b",
+        imageTimestamp: "2014-01-06T22:42:36Z"
+      },
+      ogre: {
+        frame: 82,
+        name: "Ogre",
+        file: "Ogre.png",
+        source: "https://oldschool.runescape.wiki/w/Ogre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ogre.png",
+        originalSha256: "c1a669aa8f7bb3f2e247ea34c935b78c17729cee77927d8a90fac6912d384173",
+        imageTimestamp: "2018-11-08T02:28:15Z"
+      },
+      "otherworldly-being": {
+        frame: 83,
+        name: "Otherworldly being",
+        file: "Otherworldly being.png",
+        source: "https://oldschool.runescape.wiki/w/Otherworldly_being",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Otherworldly_being.png",
+        originalSha256: "7b34d9153d9e15027abd43f6856a9e0d7619e61a1a6837d13d38788931dc57b1",
+        imageTimestamp: "2021-05-08T11:45:30Z"
+      },
+      pirate: {
+        frame: 84,
+        name: "Pirate",
+        file: "Pirate (Brimhaven).png",
+        source: "https://oldschool.runescape.wiki/w/Pirate",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Pirate_(Brimhaven).png",
+        originalSha256: "312cb526af97e824735f8bb69b0aa52dc1c962c0e46fea67745d82e0c30876d2",
+        imageTimestamp: "2021-07-03T15:56:53Z"
+      },
+      pyrefiend: {
+        frame: 85,
+        name: "Pyrefiend",
+        file: "Pyrefiend icon.png",
+        source: "https://oldschool.runescape.wiki/w/Pyrefiend",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Pyrefiend_icon.png",
+        originalSha256: "6703b260b0843d5c2cd535c621f43ecf34c85b3c7d10ee904eea0cbb79169c0e",
+        imageTimestamp: "2014-01-06T22:42:37Z"
+      },
+      "giant-rat": {
+        frame: 86,
+        name: "Giant rat",
+        file: "Giant rat.png",
+        source: "https://oldschool.runescape.wiki/w/Giant_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Giant_rat.png",
+        originalSha256: "82d0e75edfeba94079cdfed888b369b40cb551aa42fc6d12b3c20ba6c814d8ab",
+        imageTimestamp: "2026-07-10T20:31:37Z"
+      },
+      "baby-red-dragon": {
+        frame: 87,
+        name: "Baby red dragon",
+        file: "Baby red dragon (1).png",
+        source: "https://oldschool.runescape.wiki/w/Baby_red_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Baby_red_dragon_(1).png",
+        originalSha256: "3691721ca3c4ab073fa947f16b367a48be01bb1c09e6d3aa17498c50760457c4",
+        imageTimestamp: "2019-05-14T01:08:44Z"
+      },
+      "revenant-cyclops": {
+        frame: 88,
+        name: "Revenant cyclops",
+        file: "Revenant cyclops.png",
+        source: "https://oldschool.runescape.wiki/w/Revenant_cyclops",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Revenant_cyclops.png",
+        originalSha256: "995e9d97377a7dbe52d49e0b0ff26d544c13ed983e3523618915a2701d793048",
+        imageTimestamp: "2019-05-14T01:50:12Z"
+      },
+      rockslug: {
+        frame: 89,
+        name: "Rockslug",
+        file: "Rockslug icon.png",
+        source: "https://oldschool.runescape.wiki/w/Rockslug",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Rockslug_icon.png",
+        originalSha256: "21f4f37fc42d63bab3b9b0c1cd0ef54c47c4fde49509ff2d2ef06a2c26b25f0d",
+        imageTimestamp: "2014-01-06T22:42:37Z"
+      },
+      rogue: {
+        frame: 90,
+        name: "Rogue",
+        file: "Rogue.png",
+        source: "https://oldschool.runescape.wiki/w/Rogue",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Rogue.png",
+        originalSha256: "d920a2beb13dcef5fb885f507de1e266ef46110004553eec046b7a26e38ad38a",
+        imageTimestamp: "2019-01-26T16:18:35Z"
+      },
+      "locust-rider": {
+        frame: 91,
+        name: "Locust rider",
+        file: "Locust rider icon.png",
+        source: "https://oldschool.runescape.wiki/w/Locust_rider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Locust_rider_icon.png",
+        originalSha256: "dfa579e1b8d95212f347cb07e90f95ce5af32224b4888349aae3b7eba3bb6fdb",
+        imageTimestamp: "2016-09-15T10:24:16Z"
+      },
+      scorpion: {
+        frame: 92,
+        name: "Scorpion",
+        file: "Scorpion (Sailing).png",
+        source: "https://oldschool.runescape.wiki/w/Scorpion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scorpion_(Sailing).png",
+        originalSha256: "34e3684cda08c0b30efcf341d32af66395170084f9ce4a501b223466358819e3",
+        imageTimestamp: "2025-09-08T00:29:46Z"
+      },
+      "sea-snake-hatchling": {
+        frame: 93,
+        name: "Sea Snake Hatchling",
+        file: "Sea snake icon.png",
+        source: "https://oldschool.runescape.wiki/w/Sea_Snake_Hatchling",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sea_snake_icon.png",
+        originalSha256: "186b1fbf0b1c5e4242023af9a42fa04cec9c7348c0f4877ddd285124659d02e3",
+        imageTimestamp: "2015-05-15T11:56:17Z"
+      },
+      "loar-shade": {
+        frame: 94,
+        name: "Loar Shade",
+        file: "Loar Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Loar_Shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Loar_Shade.png",
+        originalSha256: "80c8ae0bd1aab26cf7fdf9f6ff27b5db0e2269c88bdbf49d5fa2b5990b4ab8c9",
+        imageTimestamp: "2019-01-29T06:01:43Z"
+      },
+      "shadow-warrior": {
+        frame: 95,
+        name: "Shadow warrior",
+        file: "Shadow warrior.png",
+        source: "https://oldschool.runescape.wiki/w/Shadow_warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Shadow_warrior.png",
+        originalSha256: "f76c74269a2f582236ce76b284a579d73a0a7faa3027dac039979681fcc9a22b",
+        imageTimestamp: "2019-01-20T09:17:12Z"
+      },
+      "skeletal-wyvern": {
+        frame: 96,
+        name: "Skeletal Wyvern",
+        file: "Skeletal Wyvern icon.png",
+        source: "https://oldschool.runescape.wiki/w/Skeletal_Wyvern",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skeletal_Wyvern_icon.png",
+        originalSha256: "a25967af77425ce7c61b293d190218f009788430642289fc809f7a3e5929abac",
+        imageTimestamp: "2014-01-06T22:42:37Z"
+      },
+      skeleton: {
+        frame: 97,
+        name: "Skeleton",
+        file: "Skeleton (level 21, 1).png",
+        source: "https://oldschool.runescape.wiki/w/Skeleton",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skeleton_(level_21,_1).png",
+        originalSha256: "2455f9aa06ba20caddb4871ef56816b8ffeb57193654b3b3c2044c712890f77d",
+        imageTimestamp: "2019-01-29T20:29:38Z"
+      },
+      "smoke-devil": {
+        frame: 98,
+        name: "Smoke devil",
+        file: "Smoke devil icon.png",
+        source: "https://oldschool.runescape.wiki/w/Smoke_devil",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Smoke_devil_icon.png",
+        originalSha256: "ce45b3aaa0269a02df41cae8a1a92ca3e04e4d5d17823eea00fe7df9e918cf8e",
+        imageTimestamp: "2014-04-10T17:24:35Z"
+      },
+      sourhog: {
+        frame: 99,
+        name: "Sourhog",
+        file: "Sourhog.png",
+        source: "https://oldschool.runescape.wiki/w/Sourhog",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sourhog.png",
+        originalSha256: "3c7db79737913be9fa72038b377549a84f0dd88a48e348e6d924a7c0493bd243",
+        imageTimestamp: "2020-09-10T10:43:10Z"
+      },
+      "giant-spider": {
+        frame: 100,
+        name: "Giant spider",
+        file: "Giant spider (Level 2).png",
+        source: "https://oldschool.runescape.wiki/w/Giant_spider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Giant_spider_(Level_2).png",
+        originalSha256: "8f02c5013b64b3bdeadf80f7d0fc4d21a4340e81f2dde3cf1d43b775d1298c4b",
+        imageTimestamp: "2019-02-02T18:49:20Z"
+      },
+      "spiritual-warrior": {
+        frame: 101,
+        name: "Spiritual warrior",
+        file: "Spiritual warrior icon.png",
+        source: "https://oldschool.runescape.wiki/w/Spiritual_warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Spiritual_warrior_icon.png",
+        originalSha256: "f69d02ccc7eb776bdf59664b18b8b2d877c184d48e018b86fdfc130c850293c1",
+        imageTimestamp: "2014-01-06T22:42:38Z"
+      },
+      suqah: {
+        frame: 102,
+        name: "Suqah",
+        file: "Suqah icon.png",
+        source: "https://oldschool.runescape.wiki/w/Suqah",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Suqah_icon.png",
+        originalSha256: "519d3431246f93ba68606d68493e2c1bfea4e2638a5eb4e466d1b759373a93dc",
+        imageTimestamp: "2016-02-04T05:02:09Z"
+      },
+      "terror-dog": {
+        frame: 103,
+        name: "Terror dog",
+        file: "Terror dog icon.png",
+        source: "https://oldschool.runescape.wiki/w/Terror_dog",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Terror_dog_icon.png",
+        originalSha256: "f70060bf4d0d00839394cf0a2657347bb11a3041469526aa4adab81756edaec8",
+        imageTimestamp: "2025-05-08T10:58:20Z"
+      },
+      "mountain-troll": {
+        frame: 104,
+        name: "Mountain troll",
+        file: "Mountain troll.png",
+        source: "https://oldschool.runescape.wiki/w/Mountain_troll",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mountain_troll.png",
+        originalSha256: "00d59f379a91c3519cf64e398e07a9399827e3f33abed02a3af23a1cc62d8ddf",
+        imageTimestamp: "2020-05-02T18:07:37Z"
+      },
+      turoth: {
+        frame: 105,
+        name: "Turoth",
+        file: "Turoth icon.png",
+        source: "https://oldschool.runescape.wiki/w/Turoth",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Turoth_icon.png",
+        originalSha256: "5f91fe71630000e1989666ec04c0ca34fe806bfcbdf8d51f7bf44392b75df880",
+        imageTimestamp: "2025-05-08T10:58:21Z"
+      },
+      "tzhaar-ket": {
+        frame: 106,
+        name: "TzHaar-Ket",
+        file: "TzHaar-Ket (level 149).png",
+        source: "https://oldschool.runescape.wiki/w/TzHaar-Ket",
+        imagePage: "https://oldschool.runescape.wiki/w/File:TzHaar-Ket_(level_149).png",
+        originalSha256: "8ed0a31b3d6382e78c6e1ebd8a06bde2c1dce6fb02c1064bcf70f8e1c11193fd",
+        imageTimestamp: "2017-08-09T07:02:48Z"
+      },
+      "vyrewatch-sentinel": {
+        frame: 107,
+        name: "Vyrewatch Sentinel",
+        file: "Vampyre icon.png",
+        source: "https://oldschool.runescape.wiki/w/Vyrewatch_Sentinel",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Vampyre_icon.png",
+        originalSha256: "37776e6a2506a6a38f1ba450bb941b7a58461c42e1a585f137f20ec29e75da90",
+        imageTimestamp: "2020-06-04T11:10:26Z"
+      },
+      venator: {
+        frame: 108,
+        name: "Venator",
+        file: "Venator slayer icon.png",
+        source: "https://oldschool.runescape.wiki/w/Venator",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Venator_slayer_icon.png",
+        originalSha256: "3b79263fc474b34bcc5102aa0e619888492487eedf32ea1506690bec6cf9b83b",
+        imageTimestamp: "2026-07-01T13:13:41Z"
+      },
+      "wall-beast": {
+        frame: 109,
+        name: "Wall beast",
+        file: "Wall beast icon.png",
+        source: "https://oldschool.runescape.wiki/w/Wall_beast",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wall_beast_icon.png",
+        originalSha256: "ed66d4f9b69fc6a83831efb6831f2d9bcb99047aeecf0f8e2b3d7d90947212a9",
+        imageTimestamp: "2014-01-06T22:42:39Z"
+      },
+      "warped-tortoise": {
+        frame: 110,
+        name: "Warped Tortoise",
+        file: "Warped Tortoise icon.png",
+        source: "https://oldschool.runescape.wiki/w/Warped_Tortoise",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Warped_Tortoise_icon.png",
+        originalSha256: "fbbf1fbc4e59ab9b093ff6b29e45258833dc533aa8d1cd113a6843e2e5d65170",
+        imageTimestamp: "2023-09-12T21:58:53Z"
+      },
+      waterfiend: {
+        frame: 111,
+        name: "Waterfiend",
+        file: "Waterfiend.png",
+        source: "https://oldschool.runescape.wiki/w/Waterfiend",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Waterfiend.png",
+        originalSha256: "3b9a5a0a12ee2441fbb95b55cfb963303655a0e05df7852c6393e41e50e1b68c",
+        imageTimestamp: "2019-03-17T03:32:05Z"
+      },
+      werewolf: {
+        frame: 112,
+        name: "Werewolf",
+        file: "Werewolf (Boris).png",
+        source: "https://oldschool.runescape.wiki/w/Werewolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Werewolf_(Boris).png",
+        originalSha256: "669eaee20da32f6af77b1b210ed0562f76875fcd5232fb50c9ff25abb3caea87",
+        imageTimestamp: "2023-02-03T10:14:41Z"
+      },
+      "white-wolf": {
+        frame: 113,
+        name: "White wolf",
+        file: "White wolf.png",
+        source: "https://oldschool.runescape.wiki/w/White_wolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:White_wolf.png",
+        originalSha256: "4f7b68ad21c646e4064b3181c8ea5eed6286dd36891f7404fa754ae82ee728b8",
+        imageTimestamp: "2019-05-14T02:18:17Z"
+      },
+      wyrm: {
+        frame: 114,
+        name: "Wyrm",
+        file: "Wyrm icon.png",
+        source: "https://oldschool.runescape.wiki/w/Wyrm",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wyrm_icon.png",
+        originalSha256: "c21b8a98d4b4fbd4fe7ff3b82e00899bdb10eaff66001336f18ba664ed20e6b8",
+        imageTimestamp: "2019-01-10T12:58:11Z"
+      },
+      zombie: {
+        frame: 115,
+        name: "Zombie",
+        file: "Zombie (Level 13).png",
+        source: "https://oldschool.runescape.wiki/w/Zombie",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Zombie_(Level_13).png",
+        originalSha256: "96a507ec89e423f70b0c6096f60b0dcb4f079c079a414ba3c70c0a4a6acf32e3",
+        imageTimestamp: "2019-02-12T09:11:35Z"
+      },
+      basilisk: {
+        frame: 116,
+        name: "Basilisk",
+        file: "Basilisk icon.png",
+        source: "https://oldschool.runescape.wiki/w/Basilisk",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Basilisk_icon.png",
+        originalSha256: "49fd92fd9560d7a1c2efb72f741eb6090205f74e05104ad9a15fb62f4823caac",
+        imageTimestamp: "2014-01-06T22:42:05Z"
+      },
+      "demonic-gorilla": {
+        frame: 117,
+        name: "Demonic gorilla",
+        file: "Demonic gorilla.png",
+        source: "https://oldschool.runescape.wiki/w/Demonic_gorilla",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Demonic_gorilla.png",
+        originalSha256: "5af74b03e52b8436978c5104ee41e8ee724c939b31f8aaff2513ad3107e0c25a",
+        imageTimestamp: "2026-03-25T03:45:51Z"
+      },
+      "tormented-demon": {
+        frame: 118,
+        name: "Tormented demon",
+        file: "Tormented Demon (1).png",
+        source: "https://oldschool.runescape.wiki/w/Tormented_demon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Tormented_Demon_(1).png",
+        originalSha256: "7b7a1971c08d9da8affa492a6e02eea26ab40e9c71450bbec73175a7fc37a2a8",
+        imageTimestamp: "2024-07-10T09:43:36Z"
+      },
+      cerberus: {
+        frame: 119,
+        name: "Cerberus",
+        file: "Cerberus icon.png",
+        source: "https://oldschool.runescape.wiki/w/Cerberus",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cerberus_icon.png",
+        originalSha256: "6359ac3463abf372ecda1b307d771d34dd260d49f5f4008105ca6261cfab3582",
+        imageTimestamp: "2022-01-19T13:16:38Z"
+      },
+      kraken: {
+        frame: 120,
+        name: "Kraken",
+        file: "Cave kraken icon.png",
+        source: "https://oldschool.runescape.wiki/w/Kraken",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_kraken_icon.png",
+        originalSha256: "ca2bcf9e8f7e2e3d782b813d9dc5297bc40cd67d3f95c1fd3d5c2244cb197d39",
+        imageTimestamp: "2014-01-30T13:26:56Z"
+      },
+      "alchemical-hydra": {
+        frame: 121,
+        name: "Alchemical Hydra",
+        file: "Hydra icon.png",
+        source: "https://oldschool.runescape.wiki/w/Alchemical_Hydra",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Hydra_icon.png",
+        originalSha256: "425322d2bb6ef02962e41adc099ba3517212008a7c0eaab77b860a265165bc13",
+        imageTimestamp: "2019-01-10T12:58:33Z"
+      },
+      "deviant-spectre": {
+        frame: 122,
+        name: "Deviant spectre",
+        file: "Aberrant spectre icon.png",
+        source: "https://oldschool.runescape.wiki/w/Deviant_spectre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Aberrant_spectre_icon.png",
+        originalSha256: "6696c53f3f3552ac0450b3a9772e1aad43f1bbd0efb1b1680d8876f542cc4ba9",
+        imageTimestamp: "2014-01-06T22:42:04Z"
+      },
+      "abyssal-sire": {
+        frame: 123,
+        name: "Abyssal sire",
+        file: "Abyssal demon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Abyssal_sire",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Abyssal_demon_icon.png",
+        originalSha256: "155a7124e86255aec130c32b7bd35a7ca743a42dc214c2bf9d3203c0aa729c01",
+        imageTimestamp: "2014-01-06T22:42:05Z"
+      },
+      "dark-ankou": {
+        frame: 124,
+        name: "Dark Ankou",
+        file: "Dark Ankou.png",
+        source: "https://oldschool.runescape.wiki/w/Dark_Ankou",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dark_Ankou.png",
+        originalSha256: "b10eeb7ce09391ed86413eb59c103bb581513ce7cf456ef3a86e6d7226221774",
+        imageTimestamp: "2019-01-20T09:22:22Z"
+      },
+      araxxor: {
+        frame: 125,
+        name: "Araxxor",
+        file: "Araxxor.png",
+        source: "https://oldschool.runescape.wiki/w/Araxxor",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Araxxor.png",
+        originalSha256: "352ab6712529592e26ed0066280d3713948cb4b4b7a5db2853fd8d59b78f7df8",
+        imageTimestamp: "2024-08-28T09:48:05Z"
+      },
+      "kree-arra": {
+        frame: 126,
+        name: "Kree'arra",
+        file: "Kree'arra.png",
+        source: "https://oldschool.runescape.wiki/w/Kree%27arra",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kree%27arra.png",
+        originalSha256: "7e1f11483b94db54e66acb6599c877f4bcd4683fcffa249a8009ac4232456b9d",
+        imageTimestamp: "2022-01-16T18:10:51Z"
+      },
+      "flight-kilisa": {
+        frame: 127,
+        name: "Flight Kilisa",
+        file: "Flight Kilisa.png",
+        source: "https://oldschool.runescape.wiki/w/Flight_Kilisa",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Flight_Kilisa.png",
+        originalSha256: "e3cee3c31bb116caa2b463615164d8b0292072da29d68294834bfcf98d2ef613",
+        imageTimestamp: "2018-11-21T06:35:33Z"
+      },
+      "flockleader-geerin": {
+        frame: 128,
+        name: "Flockleader Geerin",
+        file: "Flockleader Geerin.png",
+        source: "https://oldschool.runescape.wiki/w/Flockleader_Geerin",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Flockleader_Geerin.png",
+        originalSha256: "4fe2100b772ae1a60ff75d4f0e70571c5c7ed0f530a42764fa7a8ea561f34a83",
+        imageTimestamp: "2018-11-21T06:35:34Z"
+      },
+      "wingman-skree": {
+        frame: 129,
+        name: "Wingman Skree",
+        file: "Wingman Skree.png",
+        source: "https://oldschool.runescape.wiki/w/Wingman_Skree",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wingman_Skree.png",
+        originalSha256: "107e578836ff4243c0281e86bf498f0bddf04bb269334b48ddca818c08a7dea3",
+        imageTimestamp: "2018-11-21T06:35:34Z"
+      },
+      "reanimated-aviansie": {
+        frame: 130,
+        name: "Reanimated aviansie",
+        file: "Reanimated aviansie.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_aviansie",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_aviansie.png",
+        originalSha256: "ae4cf588aefa23b6c2874c03787d5d5c0f5ebde20f2b75b27aed9faf4c608978",
+        imageTimestamp: "2019-05-14T01:46:04Z"
+      },
+      "balfrug-kreeyath": {
+        frame: 131,
+        name: "Balfrug Kreeyath",
+        file: "Balfrug Kreeyath.png",
+        source: "https://oldschool.runescape.wiki/w/Balfrug_Kreeyath",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Balfrug_Kreeyath.png",
+        originalSha256: "e91774e2d1e5a639c175cf5a69156279a574fff503aa36db96a52a2377ea6a8b",
+        imageTimestamp: "2019-06-04T17:45:03Z"
+      },
+      porazdir: {
+        frame: 132,
+        name: "Porazdir",
+        file: "Porazdir.png",
+        source: "https://oldschool.runescape.wiki/w/Porazdir",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Porazdir.png",
+        originalSha256: "8319579fb6e67701886a014a71bb2342edb69f697f8e6c756fb35724fc5e1f73",
+        imageTimestamp: "2018-02-08T17:06:24Z"
+      },
+      skotizo: {
+        frame: 133,
+        name: "Skotizo",
+        file: "Skotizo.png",
+        source: "https://oldschool.runescape.wiki/w/Skotizo",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skotizo.png",
+        originalSha256: "fe6f5c5f2a7c7b808f9d5544e4bb09be2eba7f604d3a89b8c87afebe40a5871d",
+        imageTimestamp: "2019-05-14T02:05:36Z"
+      },
+      "king-black-dragon": {
+        frame: 134,
+        name: "King Black Dragon",
+        file: "King Black Dragon.png",
+        source: "https://oldschool.runescape.wiki/w/King_Black_Dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:King_Black_Dragon.png",
+        originalSha256: "a7307b182eb45a0e17b51abcf4455e96da61c1557cabd05fd588379a2d5232fd",
+        imageTimestamp: "2019-05-14T01:33:55Z"
+      },
+      "brutal-black-dragon": {
+        frame: 135,
+        name: "brutal black dragon",
+        file: "Brutal black dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/brutal_black_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Brutal_black_dragon_icon.png",
+        originalSha256: "c978086153ec3f028f8d7cdf2485cbb46f101a0bfb7c58e5ce4757df5e3ab9e4",
+        imageTimestamp: "2017-07-29T15:11:25Z"
+      },
+      "mutated-bloodveld": {
+        frame: 136,
+        name: "Mutated Bloodveld",
+        file: "Mutated Bloodveld.png",
+        source: "https://oldschool.runescape.wiki/w/Mutated_Bloodveld",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mutated_Bloodveld.png",
+        originalSha256: "639c949b6219ccdd11b75f9461f8ddfa07fb05a2292c96e854d76530d7d05970",
+        imageTimestamp: "2020-05-04T16:29:00Z"
+      },
+      "brutal-blue-dragon": {
+        frame: 137,
+        name: "brutal blue dragon",
+        file: "Brutal blue dragon.png",
+        source: "https://oldschool.runescape.wiki/w/brutal_blue_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Brutal_blue_dragon.png",
+        originalSha256: "8c2a5a73d8d77cdd6d5ccb9836787da4b9e720dfa5d05b8a34efec04fd5e9536",
+        imageTimestamp: "2019-05-14T01:21:54Z"
+      },
+      "mature-custodian-stalker": {
+        frame: 138,
+        name: "Mature custodian stalker",
+        file: "Mature custodian stalker icon.png",
+        source: "https://oldschool.runescape.wiki/w/Mature_custodian_stalker",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mature_custodian_stalker_icon.png",
+        originalSha256: "89d4c502f901707bdda9e2899d1493392d17bbb03d8d9d9a9a2436fed13e8b03",
+        imageTimestamp: "2025-07-25T17:50:21Z"
+      },
+      "elder-custodian-stalker": {
+        frame: 139,
+        name: "Elder custodian stalker",
+        file: "Elder custodian stalker icon.png",
+        source: "https://oldschool.runescape.wiki/w/Elder_custodian_stalker",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Elder_custodian_stalker_icon.png",
+        originalSha256: "279d2a8b92f683f5d9b456fca4f14749d3be019993926b6738639426166a8184",
+        imageTimestamp: "2025-07-25T17:50:21Z"
+      },
+      "dagannoth-spawn": {
+        frame: 140,
+        name: "Dagannoth spawn",
+        file: "Dagannoth spawn.png",
+        source: "https://oldschool.runescape.wiki/w/Dagannoth_spawn",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dagannoth_spawn.png",
+        originalSha256: "990cbf8395031ebe384de12358cb1045665ffba0f343f6ec602a4eeb3bec150f",
+        imageTimestamp: "2019-05-14T01:22:00Z"
+      },
+      "dagannoth-fledgeling": {
+        frame: 141,
+        name: "Dagannoth fledgeling",
+        file: "Dagannoth fledgeling.png",
+        source: "https://oldschool.runescape.wiki/w/Dagannoth_fledgeling",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dagannoth_fledgeling.png",
+        originalSha256: "d57d12816bf9eab40b2d81789e8eacaf44c4c45d62ab12bbd6607c8817795e68",
+        imageTimestamp: "2019-05-14T01:21:58Z"
+      },
+      "guard-prifddinas": {
+        frame: 142,
+        name: "Guard (Prifddinas)",
+        file: "Guard (Prifddinas, 1).png",
+        source: "https://oldschool.runescape.wiki/w/Guard_%28Prifddinas%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Guard_(Prifddinas,_1).png",
+        originalSha256: "99a9bbe71b61975c0696ec47d7c5f85ffdb65f44b5f774d6b39d05b1f8f178e8",
+        imageTimestamp: "2019-07-29T02:28:39Z"
+      },
+      "reanimated-elf": {
+        frame: 143,
+        name: "Reanimated elf",
+        file: "Reanimated elf.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_elf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_elf.png",
+        originalSha256: "952136fe73600c350c00d315308d45081b73966a5fc73b00b2aeff90469dd95d",
+        imageTimestamp: "2019-11-07T16:12:55Z"
+      },
+      "branda-the-fire-queen": {
+        frame: 144,
+        name: "Branda the Fire Queen",
+        file: "Branda the Fire Queen.png",
+        source: "https://oldschool.runescape.wiki/w/Branda_the_Fire_Queen",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Branda_the_Fire_Queen.png",
+        originalSha256: "09f092927b9209073e41992ced95b77540ee419fee14d4a45f2d43139aa99eb2",
+        imageTimestamp: "2025-02-05T12:08:54Z"
+      },
+      "taloned-wyvern": {
+        frame: 145,
+        name: "Taloned Wyvern",
+        file: "Fossil Island wyverns icon.png",
+        source: "https://oldschool.runescape.wiki/w/Taloned_Wyvern",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fossil_Island_wyverns_icon.png",
+        originalSha256: "8c686b57203c1659a68db7fe4f6ed291963d5b3ea8f7f2c14fac967f50722458",
+        imageTimestamp: "2017-09-07T14:32:37Z"
+      },
+      "long-tailed-wyvern": {
+        frame: 146,
+        name: "Long-tailed Wyvern",
+        file: "Fossil Island wyverns icon.png",
+        source: "https://oldschool.runescape.wiki/w/Long-tailed_Wyvern",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fossil_Island_wyverns_icon.png",
+        originalSha256: "8c686b57203c1659a68db7fe4f6ed291963d5b3ea8f7f2c14fac967f50722458",
+        imageTimestamp: "2017-09-07T14:32:37Z"
+      },
+      "ancient-wyvern": {
+        frame: 147,
+        name: "Ancient Wyvern",
+        file: "Ancient Wyvern icon.png",
+        source: "https://oldschool.runescape.wiki/w/Ancient_Wyvern",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ancient_Wyvern_icon.png",
+        originalSha256: "52dd704c7383ce672a13b5c94e29a18127fb3ccaad433cc0d7e666821a2f2428",
+        imageTimestamp: "2017-09-07T14:32:38Z"
+      },
+      "k-ril-tsutsaroth": {
+        frame: 148,
+        name: "K'ril Tsutsaroth",
+        file: "K'ril Tsutsaroth.png",
+        source: "https://oldschool.runescape.wiki/w/K%27ril_Tsutsaroth",
+        imagePage: "https://oldschool.runescape.wiki/w/File:K%27ril_Tsutsaroth.png",
+        originalSha256: "29dfc25df862eac91e1fbdb1987bf7dfcc8e60efdfe86bf09c9a2fd7ef42628d",
+        imageTimestamp: "2021-08-30T07:49:42Z"
+      },
+      "tstanon-karlak": {
+        frame: 149,
+        name: "Tstanon Karlak",
+        file: "Tstanon Karlak.png",
+        source: "https://oldschool.runescape.wiki/w/Tstanon_Karlak",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Tstanon_Karlak.png",
+        originalSha256: "d208d99be33102574d09b7751d89c1d8235fa31be1fda35824b60838297dce1d",
+        imageTimestamp: "2021-08-30T08:02:45Z"
+      },
+      "shellbane-gryphon": {
+        frame: 150,
+        name: "Shellbane gryphon",
+        file: "Shellbane gryphon.png",
+        source: "https://oldschool.runescape.wiki/w/Shellbane_gryphon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Shellbane_gryphon.png",
+        originalSha256: "4b9e52087b626c9d65bc499a7b6d0b86ab2a20c987d9a0b829e8ee51f5123b15",
+        imageTimestamp: "2025-11-19T16:11:43Z"
+      },
+      "skeleton-hellhound-vet-ion": {
+        frame: 151,
+        name: "Skeleton Hellhound (Vet'ion)",
+        file: "Skeleton Hellhound (Vet'ion).png",
+        source: "https://oldschool.runescape.wiki/w/Skeleton_Hellhound_%28Vet%27ion%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skeleton_Hellhound_(Vet%27ion).png",
+        originalSha256: "03e3995957c99e6772ebf677e29a658c77046f99b1ac76e575edf1dcf2f96a72",
+        imageTimestamp: "2023-01-25T10:49:07Z"
+      },
+      "greater-skeleton-hellhound-vet-ion": {
+        frame: 152,
+        name: "Greater Skeleton Hellhound (Vet'ion)",
+        file: "Greater Skeleton Hellhound (Vet'ion).png",
+        source: "https://oldschool.runescape.wiki/w/Greater_Skeleton_Hellhound_%28Vet%27ion%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Greater_Skeleton_Hellhound_(Vet%27ion).png",
+        originalSha256: "576fc1a992aa3d16b01867d471b53dd02f47077b7f808d08ae735ec579c00a8b",
+        imageTimestamp: "2023-01-25T10:49:06Z"
+      },
+      "kalphite-soldier": {
+        frame: 153,
+        name: "Kalphite soldier",
+        file: "Kalphite Soldier.png",
+        source: "https://oldschool.runescape.wiki/w/Kalphite_soldier",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kalphite_Soldier.png",
+        originalSha256: "cc016a27bcdde05de7e5f4a656a140473d101e72fc54f8f0906b5fb558766b12",
+        imageTimestamp: "2020-10-23T18:21:32Z"
+      },
+      "kalphite-guardian": {
+        frame: 154,
+        name: "Kalphite guardian",
+        file: "Kalphite Guardian.png",
+        source: "https://oldschool.runescape.wiki/w/Kalphite_guardian",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kalphite_Guardian.png",
+        originalSha256: "deec55ccfd09907c19649072ea3741d02e3a79f7ceebf1f40744c17d29be2616",
+        imageTimestamp: "2020-10-23T18:24:34Z"
+      },
+      "kalphite-queen": {
+        frame: 155,
+        name: "Kalphite Queen",
+        file: "Kalphite Queen.png",
+        source: "https://oldschool.runescape.wiki/w/Kalphite_Queen",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Kalphite_Queen.png",
+        originalSha256: "932b1c148702dff4f3ad15df858d41d11f6648e5207690eba67083613cef6be1",
+        imageTimestamp: "2019-05-27T22:22:26Z"
+      },
+      "lizardman-brute": {
+        frame: 156,
+        name: "Lizardman brute",
+        file: "Lizardmen icon.png",
+        source: "https://oldschool.runescape.wiki/w/Lizardman_brute",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lizardmen_icon.png",
+        originalSha256: "ef9024295dd79a5d68e35f51478985ed7070309d5ee39cbab80bf23ad7254e51",
+        imageTimestamp: "2016-03-24T14:04:14Z"
+      },
+      "lizardman-shaman": {
+        frame: 157,
+        name: "Lizardman shaman",
+        file: "Lizardmen icon.png",
+        source: "https://oldschool.runescape.wiki/w/Lizardman_shaman",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lizardmen_icon.png",
+        originalSha256: "ef9024295dd79a5d68e35f51478985ed7070309d5ee39cbab80bf23ad7254e51",
+        imageTimestamp: "2016-03-24T14:04:14Z"
+      },
+      "bronze-dragon": {
+        frame: 158,
+        name: "Bronze dragon",
+        file: "Bronze dragon.png",
+        source: "https://oldschool.runescape.wiki/w/Bronze_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bronze_dragon.png",
+        originalSha256: "58c200edd72f710fc6a375c80fab731d7bbae55bb174b57e37354fad7675495e",
+        imageTimestamp: "2019-05-14T01:21:53Z"
+      },
+      "mithril-dragon": {
+        frame: 159,
+        name: "Mithril dragon",
+        file: "Mithril dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Mithril_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mithril_dragon_icon.png",
+        originalSha256: "b94c1ee720400bd36d13bac60ddd36ce12593e287ec03a920f85ce6c9950a522",
+        imageTimestamp: "2014-01-30T14:20:27Z"
+      },
+      "adamant-dragon": {
+        frame: 160,
+        name: "Adamant dragon",
+        file: "Adamant dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Adamant_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Adamant_dragon_icon.png",
+        originalSha256: "83f50d6d5cd08231edb422e34fa914d31119f62d37313a3cbfe276a62e2f3777",
+        imageTimestamp: "2018-01-13T04:09:14Z"
+      },
+      "rune-dragon": {
+        frame: 161,
+        name: "Rune dragon",
+        file: "Rune dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Rune_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Rune_dragon_icon.png",
+        originalSha256: "9aee82e6603929b9ff1ca45b287353748af9fc6bf4614605c2142009c32517b9",
+        imageTimestamp: "2025-06-16T17:05:27Z"
+      },
+      "ancient-zygomite": {
+        frame: 162,
+        name: "Ancient Zygomite",
+        file: "Mutated zygomite icon.png",
+        source: "https://oldschool.runescape.wiki/w/Ancient_Zygomite",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Mutated_zygomite_icon.png",
+        originalSha256: "66c24c3c30f13df995109ab441972db3024545ce7e2bab0e44bf380edf49672f",
+        imageTimestamp: "2014-01-06T22:42:36Z"
+      },
+      "greater-nechryael": {
+        frame: 163,
+        name: "Greater Nechryael",
+        file: "Nechryael icon.png",
+        source: "https://oldschool.runescape.wiki/w/Greater_Nechryael",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Nechryael_icon.png",
+        originalSha256: "9e862e4da373f3817910d3934abcda10832d87744957cf69511b3db0e808ab3b",
+        imageTimestamp: "2014-01-06T22:42:36Z"
+      },
+      "brutal-red-dragon": {
+        frame: 164,
+        name: "brutal red dragon",
+        file: "Brutal red dragon.png",
+        source: "https://oldschool.runescape.wiki/w/brutal_red_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Brutal_red_dragon.png",
+        originalSha256: "7323ca9f325fe27cf19d53bdbfbf022ac876710ea3f7dd190843eb447e963dbe",
+        imageTimestamp: "2019-05-14T01:21:54Z"
+      },
+      scarabs: {
+        frame: 165,
+        name: "Scarabs",
+        file: "Scarabs.png",
+        source: "https://oldschool.runescape.wiki/w/Scarabs",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scarabs.png",
+        originalSha256: "da42f46ed35c04965ca7fed66afa69a9b56a5a802c91ef6b484ff6d4dae96e36",
+        imageTimestamp: "2023-06-12T03:45:48Z"
+      },
+      "scarab-swarm": {
+        frame: 166,
+        name: "scarab swarm",
+        file: "Scarab Swarm.png",
+        source: "https://oldschool.runescape.wiki/w/scarab_swarm",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scarab_Swarm.png",
+        originalSha256: "2a5645af55d6102fe8bc87f46410bd3d148c1a49abf12015339db219492ee2fb",
+        imageTimestamp: "2020-07-14T18:05:41Z"
+      },
+      "thermonuclear-smoke-devil": {
+        frame: 167,
+        name: "Thermonuclear smoke devil",
+        file: "Smoke devil icon.png",
+        source: "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Smoke_devil_icon.png",
+        originalSha256: "ce45b3aaa0269a02df41cae8a1a92ca3e04e4d5d17823eea00fe7df9e918cf8e",
+        imageTimestamp: "2014-04-10T17:24:35Z"
+      },
+      "troll-general": {
+        frame: 168,
+        name: "Troll general",
+        file: "Troll general (sword).png",
+        source: "https://oldschool.runescape.wiki/w/Troll_general",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Troll_general_(sword).png",
+        originalSha256: "1736af71c12c15f3841dc4237010872360ed40dc8ea393736ea1f66018d82961",
+        imageTimestamp: "2019-04-14T12:54:24Z"
+      },
+      "tztok-jad": {
+        frame: 169,
+        name: "TzTok-Jad",
+        file: "TzTok-Jad.png",
+        source: "https://oldschool.runescape.wiki/w/TzTok-Jad",
+        imagePage: "https://oldschool.runescape.wiki/w/File:TzTok-Jad.png",
+        originalSha256: "b0bd6cea8d893ad5805409cfa69dcf24834048d3e74fcb9d712bd586da4a8429",
+        imageTimestamp: "2026-01-31T20:41:38Z"
+      },
+      "tzkal-zuk": {
+        frame: 170,
+        name: "TzKal-Zuk",
+        file: "TzKal-Zuk.png",
+        source: "https://oldschool.runescape.wiki/w/TzKal-Zuk",
+        imagePage: "https://oldschool.runescape.wiki/w/File:TzKal-Zuk.png",
+        originalSha256: "1c876e32b7976fb3de8d9d72779838263af68b59416c351c98e0983b8fb4d71b",
+        imageTimestamp: "2020-07-10T20:46:14Z"
+      },
+      "lava-strykewyrm": {
+        frame: 171,
+        name: "Lava Strykewyrm",
+        file: "Wyrm icon.png",
+        source: "https://oldschool.runescape.wiki/w/Lava_Strykewyrm",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wyrm_icon.png",
+        originalSha256: "c21b8a98d4b4fbd4fe7ff3b82e00899bdb10eaff66001336f18ba664ed20e6b8",
+        imageTimestamp: "2019-01-10T12:58:11Z"
+      },
+      wyrmling: {
+        frame: 172,
+        name: "Wyrmling",
+        file: "Wyrm icon.png",
+        source: "https://oldschool.runescape.wiki/w/Wyrmling",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wyrm_icon.png",
+        originalSha256: "c21b8a98d4b4fbd4fe7ff3b82e00899bdb10eaff66001336f18ba664ed20e6b8",
+        imageTimestamp: "2019-01-10T12:58:11Z"
+      },
+      "twisted-banshee": {
+        frame: 173,
+        name: "Twisted Banshee",
+        file: "Banshee icon.png",
+        source: "https://oldschool.runescape.wiki/w/Twisted_Banshee",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Banshee_icon.png",
+        originalSha256: "2073eeb644d4b9ed9a0a1750302369ba5e442fe416bb7722ac1a2727094ba867",
+        imageTimestamp: "2014-01-06T22:42:05Z"
+      },
+      "giant-bat": {
+        frame: 174,
+        name: "Giant bat",
+        file: "Giant bat.png",
+        source: "https://oldschool.runescape.wiki/w/Giant_bat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Giant_bat.png",
+        originalSha256: "7de665436ded00e44fbc9b9a2ced078c5ffa5a954570082012e6ebc7f2dc8d97",
+        imageTimestamp: "2019-05-14T01:28:27Z"
+      },
+      "albino-bat": {
+        frame: 175,
+        name: "Albino bat",
+        file: "Albino bat.png",
+        source: "https://oldschool.runescape.wiki/w/Albino_bat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Albino_bat.png",
+        originalSha256: "7c784791774da2c2d713675b6342f2294700ecf8da0db3ba36c5b1634f2ae9e4",
+        imageTimestamp: "2019-05-18T16:33:39Z"
+      },
+      "death-wing": {
+        frame: 176,
+        name: "Death wing",
+        file: "Death wing.png",
+        source: "https://oldschool.runescape.wiki/w/Death_wing",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Death_wing.png",
+        originalSha256: "0418b2604e892388e59495d2a52896930871feef2a4391ba5fafb5944ea28509",
+        imageTimestamp: "2022-01-16T18:04:27Z"
+      },
+      "grizzly-bear-cub": {
+        frame: 177,
+        name: "Grizzly bear cub",
+        file: "Grizzly bear cub (level 33).png",
+        source: "https://oldschool.runescape.wiki/w/Grizzly_bear_cub",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Grizzly_bear_cub_(level_33).png",
+        originalSha256: "5a7121f27b9ae0707f7045f4e8b828797538a1689f74830cc294926e7f40a6a8",
+        imageTimestamp: "2025-02-13T22:11:48Z"
+      },
+      "bear-cub": {
+        frame: 178,
+        name: "Bear cub",
+        file: "Bear Cub (1).png",
+        source: "https://oldschool.runescape.wiki/w/Bear_cub",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bear_Cub_(1).png",
+        originalSha256: "c96311099d031b4c7c8a4a2c1e108c02fcebf1efdea2853639c4f1aafe4db72b",
+        imageTimestamp: "2019-06-16T15:42:23Z"
+      },
+      "reanimated-bear": {
+        frame: 179,
+        name: "Reanimated bear",
+        file: "Reanimated bear.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_bear",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_bear.png",
+        originalSha256: "33769e5fa3eb4a1f5eab4455c7502dd57fa9906da49e55b4e6254f908317bb8b",
+        imageTimestamp: "2019-05-14T01:46:05Z"
+      },
+      callisto: {
+        frame: 180,
+        name: "Callisto",
+        file: "Callisto.png",
+        source: "https://oldschool.runescape.wiki/w/Callisto",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Callisto.png",
+        originalSha256: "cc3a91ea77fde7b420245a0c807716eb5b2be640b63cfe1e603bcfbb754ff550",
+        imageTimestamp: "2023-01-25T10:49:05Z"
+      },
+      artio: {
+        frame: 181,
+        name: "Artio",
+        file: "Artio.png",
+        source: "https://oldschool.runescape.wiki/w/Artio",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Artio.png",
+        originalSha256: "6e6d6b03f3660d79b11b193c13489078c966f5b240d1b8e411283588d442f2a7",
+        imageTimestamp: "2023-01-25T10:49:05Z"
+      },
+      terrorbird: {
+        frame: 182,
+        name: "Terrorbird",
+        file: "Terrorbird.png",
+        source: "https://oldschool.runescape.wiki/w/Terrorbird",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Terrorbird.png",
+        originalSha256: "9e2bde66aaba3f1b3a2616c8f2c5de561d2c51abc930a460f7bb264ff765f66a",
+        imageTimestamp: "2019-05-14T02:12:40Z"
+      },
+      "chompy-bird": {
+        frame: 183,
+        name: "Chompy bird",
+        file: "Chompy bird.png",
+        source: "https://oldschool.runescape.wiki/w/Chompy_bird",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Chompy_bird.png",
+        originalSha256: "2d5a4287105c581d1974b1d25c8eb977a6871fa1485a67d2e3a5737c6efae6d6",
+        imageTimestamp: "2019-06-22T14:16:55Z"
+      },
+      "penguin-monster": {
+        frame: 184,
+        name: "Penguin (monster)",
+        file: "Penguin (monster).png",
+        source: "https://oldschool.runescape.wiki/w/Penguin_%28monster%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Penguin_(monster).png",
+        originalSha256: "52da2c3f4c09b3d28bc90e769f3339ad3cd21260184ae72bde96c9c5a1d8e43d",
+        imageTimestamp: "2021-09-14T14:32:45Z"
+      },
+      duck: {
+        frame: 185,
+        name: "Duck",
+        file: "Duck.png",
+        source: "https://oldschool.runescape.wiki/w/Duck",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Duck.png",
+        originalSha256: "6c4ca1ae7aa5732046c015c940aa3cb08376ad8f0f3827f4a64f22d56708a0fd",
+        imageTimestamp: "2026-04-09T05:27:07Z"
+      },
+      duckling: {
+        frame: 186,
+        name: "Duckling",
+        file: "Duckling.png",
+        source: "https://oldschool.runescape.wiki/w/Duckling",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Duckling.png",
+        originalSha256: "d3ccc41f4e1d8a6f6eae86e871e2ded7b73a587ebacd7beb7ff195a6163e156d",
+        imageTimestamp: "2019-05-14T01:28:22Z"
+      },
+      brutus: {
+        frame: 187,
+        name: "Brutus",
+        file: "Brutus.png",
+        source: "https://oldschool.runescape.wiki/w/Brutus",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Brutus.png",
+        originalSha256: "adc4db243e91ac14dfba7b5dc42b4e95cb02b7a8ace3faccabd9f4bbe3f450c1",
+        imageTimestamp: "2026-02-25T20:26:03Z"
+      },
+      buffalo: {
+        frame: 188,
+        name: "Buffalo",
+        file: "Buffalo.png",
+        source: "https://oldschool.runescape.wiki/w/Buffalo",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Buffalo.png",
+        originalSha256: "51cffcba4bd664e1d77bdf8dd0cdd427b42107b0fb0e775db03bb548436eabaf",
+        imageTimestamp: "2024-03-21T15:50:02Z"
+      },
+      "cow-calf": {
+        frame: 189,
+        name: "Cow calf",
+        file: "Cow calf.png",
+        source: "https://oldschool.runescape.wiki/w/Cow_calf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cow_calf.png",
+        originalSha256: "832084c90be2a3eb0dbb9ae60e5c737bc8af05e7e4da33ee4cc44ce6c608d016",
+        imageTimestamp: "2019-06-24T17:00:49Z"
+      },
+      "undead-cow": {
+        frame: 190,
+        name: "Undead cow",
+        file: "Undead cow.png",
+        source: "https://oldschool.runescape.wiki/w/Undead_cow",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Undead_cow.png",
+        originalSha256: "4bf72d3868d9ab77515864bfd5ce7fa5342bf694f8840bff26565ff856cd7f30",
+        imageTimestamp: "2019-05-14T02:18:12Z"
+      },
+      jackal: {
+        frame: 191,
+        name: "Jackal",
+        file: "Jackal.png",
+        source: "https://oldschool.runescape.wiki/w/Jackal",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Jackal.png",
+        originalSha256: "7c317e6bbd8fc1d86ea8d7aa1a400b5ee37b109fda6f2fcc78063ffe51f9e431",
+        imageTimestamp: "2019-05-14T01:33:53Z"
+      },
+      "wild-dog": {
+        frame: 192,
+        name: "Wild dog",
+        file: "Wild dog.png",
+        source: "https://oldschool.runescape.wiki/w/Wild_dog",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Wild_dog.png",
+        originalSha256: "140d391a7d1a9c048ec12aef6a8592f88675ffe7ccddab50bfcfa25202fee093",
+        imageTimestamp: "2019-05-14T02:18:18Z"
+      },
+      "reanimated-dog": {
+        frame: 193,
+        name: "Reanimated dog",
+        file: "Reanimated dog.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_dog",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_dog.png",
+        originalSha256: "bbeb707a90b2ab33ec05506f968d377e3f68983957e619125b1e3d869bfe5f84",
+        imageTimestamp: "2019-05-14T01:46:05Z"
+      },
+      "black-guard": {
+        frame: 194,
+        name: "Black Guard",
+        file: "Black Guard (level 25, 1).png",
+        source: "https://oldschool.runescape.wiki/w/Black_Guard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Black_Guard_(level_25,_1).png",
+        originalSha256: "a6f3cb0efb13c348e0869224ebbfa83768ec102b0d82d62ebe747d2d6a2fa60e",
+        imageTimestamp: "2019-06-16T20:09:11Z"
+      },
+      "chaos-dwarf": {
+        frame: 195,
+        name: "Chaos Dwarf",
+        file: "Chaos dwarf.png",
+        source: "https://oldschool.runescape.wiki/w/Chaos_Dwarf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Chaos_dwarf.png",
+        originalSha256: "9a26c854751810bdc432781f5ed0f880515ea8e356121a03dd7a17965314ce36",
+        imageTimestamp: "2019-01-29T06:25:54Z"
+      },
+      "tortured-soul": {
+        frame: 196,
+        name: "Tortured soul",
+        file: "Tortured soul.png",
+        source: "https://oldschool.runescape.wiki/w/Tortured_soul",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Tortured_soul.png",
+        originalSha256: "436344c7a1f94242851498bd5275b3d9eae9f76af20deae4aba65f4a44f34304",
+        imageTimestamp: "2019-01-27T20:20:18Z"
+      },
+      "forgotten-soul": {
+        frame: 197,
+        name: "Forgotten Soul",
+        file: "Forgotten Soul.png",
+        source: "https://oldschool.runescape.wiki/w/Forgotten_Soul",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Forgotten_Soul.png",
+        originalSha256: "4097be544e7e1fa044d0c7e4dfbb9965a4ae506b260262e4b09732bafa3c8517",
+        imageTimestamp: "2021-01-08T14:00:39Z"
+      },
+      "cave-goblin-guard": {
+        frame: 198,
+        name: "Cave goblin guard",
+        file: "Cave goblin guard (level 24).png",
+        source: "https://oldschool.runescape.wiki/w/Cave_goblin_guard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Cave_goblin_guard_(level_24).png",
+        originalSha256: "795ffca93dab561458b6e401fcc90436298e04ff2164f5fed38892f3fd6cc85e",
+        imageTimestamp: "2019-01-20T08:31:34Z"
+      },
+      "sergeant-strongstack": {
+        frame: 199,
+        name: "Sergeant Strongstack",
+        file: "Sergeant Strongstack.png",
+        source: "https://oldschool.runescape.wiki/w/Sergeant_Strongstack",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sergeant_Strongstack.png",
+        originalSha256: "76a4e304072db4097c22a01d71740d2c5dcfb13c574f3b314102d5f074883d44",
+        imageTimestamp: "2018-11-21T06:50:03Z"
+      },
+      "sergeant-steelwill": {
+        frame: 200,
+        name: "Sergeant Steelwill",
+        file: "Sergeant Steelwill.png",
+        source: "https://oldschool.runescape.wiki/w/Sergeant_Steelwill",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sergeant_Steelwill.png",
+        originalSha256: "15bf7799fb4a0f67e69617390c58299eb256568366dccdf3a231a32e0489fe84",
+        imageTimestamp: "2018-11-21T06:50:03Z"
+      },
+      "sergeant-grimspike": {
+        frame: 201,
+        name: "Sergeant Grimspike",
+        file: "Sergeant Grimspike.png",
+        source: "https://oldschool.runescape.wiki/w/Sergeant_Grimspike",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sergeant_Grimspike.png",
+        originalSha256: "46c187c470379b6325a3ea9ee61bd6222a3a6e1ef2bb971aea9f41ab06882fed",
+        imageTimestamp: "2018-11-21T06:50:03Z"
+      },
+      "small-lizard": {
+        frame: 202,
+        name: "Small Lizard",
+        file: "Small Lizard (green).png",
+        source: "https://oldschool.runescape.wiki/w/Small_Lizard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Small_Lizard_(green).png",
+        originalSha256: "69e52f97629fa0dc6659068d32c5f683192eabfd4d2be3d3f403a6275db4669b",
+        imageTimestamp: "2021-09-13T15:00:41Z"
+      },
+      "sulphur-lizard": {
+        frame: 203,
+        name: "Sulphur Lizard",
+        file: "Sulphur Lizard icon.png",
+        source: "https://oldschool.runescape.wiki/w/Sulphur_Lizard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sulphur_Lizard_icon.png",
+        originalSha256: "3435ddc55cd1503640687eb7c08eaa294b4c3123e6862208a8c5dc334528499a",
+        imageTimestamp: "2019-01-10T12:57:59Z"
+      },
+      "grimy-lizard": {
+        frame: 204,
+        name: "Grimy Lizard",
+        file: "Grimy Lizard.png",
+        source: "https://oldschool.runescape.wiki/w/Grimy_Lizard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Grimy_Lizard.png",
+        originalSha256: "25962dc5f52c6f1e769883d58277aea55bfd3c529fcc02bc243c91ed67880040",
+        imageTimestamp: "2024-03-20T20:25:43Z"
+      },
+      "monkey-guard": {
+        frame: 205,
+        name: "Monkey Guard",
+        file: "Monkey Guard.png",
+        source: "https://oldschool.runescape.wiki/w/Monkey_Guard",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Monkey_Guard.png",
+        originalSha256: "6bd51e366fa6815abcbe6fa04056d27dd69b91067b7f0ad64740ee3a00865fb9",
+        imageTimestamp: "2020-10-23T18:00:41Z"
+      },
+      "monkey-archer": {
+        frame: 206,
+        name: "Monkey Archer",
+        file: "Monkey Archer.png",
+        source: "https://oldschool.runescape.wiki/w/Monkey_Archer",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Monkey_Archer.png",
+        originalSha256: "e06cc8e06adf7e56b0e78fe9c63494d0090f135b4c22a5f4d5e13446f75e03c4",
+        imageTimestamp: "2020-08-02T07:35:25Z"
+      },
+      "dungeon-rat": {
+        frame: 207,
+        name: "Dungeon rat",
+        file: "Dungeon rat.png",
+        source: "https://oldschool.runescape.wiki/w/Dungeon_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dungeon_rat.png",
+        originalSha256: "db561b694db284719a388d8a69eacb9b9436f0afe9811b4a7f1f243e41177a36",
+        imageTimestamp: "2018-11-22T04:36:16Z"
+      },
+      "crypt-rat": {
+        frame: 208,
+        name: "Crypt rat",
+        file: "Crypt rat.png",
+        source: "https://oldschool.runescape.wiki/w/Crypt_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Crypt_rat.png",
+        originalSha256: "794e6dc0f1c802af6b0637ed5d487602f2ef400608b61bcfe0121f158ad62c4d",
+        imageTimestamp: "2018-10-31T16:31:28Z"
+      },
+      "giant-crypt-rat": {
+        frame: 209,
+        name: "Giant crypt rat",
+        file: "Giant crypt rat.png",
+        source: "https://oldschool.runescape.wiki/w/Giant_crypt_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Giant_crypt_rat.png",
+        originalSha256: "834f43a5f5904f1ce7f3ca260c543aa279649dc2ce7f2a3800c5d570b9d57d33",
+        imageTimestamp: "2018-10-31T16:31:29Z"
+      },
+      "king-scorpion": {
+        frame: 210,
+        name: "King Scorpion",
+        file: "King Scorpion.png",
+        source: "https://oldschool.runescape.wiki/w/King_Scorpion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:King_Scorpion.png",
+        originalSha256: "b72093a94b4ecb630a7dfae252c060c9d452a83bc299ef5cf432f74b25c1af71",
+        imageTimestamp: "2016-11-29T23:01:45Z"
+      },
+      "poison-scorpion": {
+        frame: 211,
+        name: "Poison Scorpion",
+        file: "Poison Scorpion.png",
+        source: "https://oldschool.runescape.wiki/w/Poison_Scorpion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Poison_Scorpion.png",
+        originalSha256: "26fc2f1a39e0ae267a5e70f19c443140472321ca042c0bed703568dc0fc1a85d",
+        imageTimestamp: "2019-02-05T21:29:19Z"
+      },
+      "pit-scorpion": {
+        frame: 212,
+        name: "Pit Scorpion",
+        file: "Pit Scorpion.png",
+        source: "https://oldschool.runescape.wiki/w/Pit_Scorpion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Pit_Scorpion.png",
+        originalSha256: "2a6cc9ab25c5c3d4087ccb9b55fc90224cddb20c814285487686838c14437dc7",
+        imageTimestamp: "2019-01-28T16:27:03Z"
+      },
+      scorpia: {
+        frame: 213,
+        name: "Scorpia",
+        file: "Scorpia.png",
+        source: "https://oldschool.runescape.wiki/w/Scorpia",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scorpia.png",
+        originalSha256: "5ad383d0398dbce0a5e42265e4ff2aab771881119230e8e955df80e0b1e5e266",
+        imageTimestamp: "2018-11-09T03:56:38Z"
+      },
+      lobstrosity: {
+        frame: 214,
+        name: "Lobstrosity",
+        file: "Lobstrosity.png",
+        source: "https://oldschool.runescape.wiki/w/Lobstrosity",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Lobstrosity.png",
+        originalSha256: "388de14258aa6c7af43128ac16d0a65490ff3b484203635b148e299b71469c8b",
+        imageTimestamp: "2018-05-11T05:50:48Z"
+      },
+      "reanimated-scorpion": {
+        frame: 215,
+        name: "Reanimated scorpion",
+        file: "Reanimated scorpion.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_scorpion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_scorpion.png",
+        originalSha256: "832b13dade705cc71603b1dc2a817a1ea122bbb11cb5fbfb23a5181e57a18010",
+        imageTimestamp: "2019-05-14T01:46:07Z"
+      },
+      "scorpia-s-offspring-monster": {
+        frame: 216,
+        name: "Scorpia's offspring (monster)",
+        file: "Scorpia's offspring (monster).png",
+        source: "https://oldschool.runescape.wiki/w/Scorpia%27s_offspring_%28monster%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scorpia%27s_offspring_(monster).png",
+        originalSha256: "66c970366bbc81ebc54f8a0935047ace081a198de2769dad6bbafc584fde03b7",
+        imageTimestamp: "2019-05-14T02:00:12Z"
+      },
+      "scorpia-s-guardian": {
+        frame: 217,
+        name: "Scorpia's guardian",
+        file: "Scorpia's guardian.png",
+        source: "https://oldschool.runescape.wiki/w/Scorpia%27s_guardian",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Scorpia%27s_guardian.png",
+        originalSha256: "8fa530055246ee48526ce4e6c11fe331197fd0286b2c43812341154d5d9b8601",
+        imageTimestamp: "2019-05-14T01:57:25Z"
+      },
+      "vet-ion": {
+        frame: 218,
+        name: "Vet'ion",
+        file: "Vet'ion.png",
+        source: "https://oldschool.runescape.wiki/w/Vet%27ion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Vet%27ion.png",
+        originalSha256: "09c8b5dfa5f07e39f714448786dcaef7d08decef94761ff7416b83cb9dbb65f6",
+        imageTimestamp: "2023-01-25T10:49:10Z"
+      },
+      skogre: {
+        frame: 219,
+        name: "Skogre",
+        file: "Skogre (1).png",
+        source: "https://oldschool.runescape.wiki/w/Skogre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skogre_(1).png",
+        originalSha256: "b0bd4bdc5b1d35408ef5fc6439bf4c9146743596d7369d42baa185cc47b5efbc",
+        imageTimestamp: "2019-01-19T21:14:35Z"
+      },
+      "skeleton-shayzien-crypts": {
+        frame: 220,
+        name: "Skeleton (Shayzien Crypts)",
+        file: "Skeleton (Shayzien Crypts, melee).png",
+        source: "https://oldschool.runescape.wiki/w/Skeleton_%28Shayzien_Crypts%29",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Skeleton_(Shayzien_Crypts,_melee).png",
+        originalSha256: "621aa587f6c5374ef72298c0cd6f9b8fcaca689b0ded24959acbdd35b0630092",
+        imageTimestamp: "2025-05-21T23:42:18Z"
+      },
+      "calvar-ion": {
+        frame: 221,
+        name: "Calvar'ion",
+        file: "Calvar'ion.png",
+        source: "https://oldschool.runescape.wiki/w/Calvar%27ion",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Calvar%27ion.png",
+        originalSha256: "09c8b5dfa5f07e39f714448786dcaef7d08decef94761ff7416b83cb9dbb65f6",
+        imageTimestamp: "2023-01-25T10:49:06Z"
+      },
+      "shadow-spider": {
+        frame: 222,
+        name: "Shadow spider",
+        file: "Shadow spider.png",
+        source: "https://oldschool.runescape.wiki/w/Shadow_spider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Shadow_spider.png",
+        originalSha256: "23f065404fa96419183ad0ef9df165f8b25bc6943e1c5175431c890e009842f2",
+        imageTimestamp: "2019-02-02T18:58:58Z"
+      },
+      "giant-crypt-spider": {
+        frame: 223,
+        name: "Giant crypt spider",
+        file: "Giant crypt spider.png",
+        source: "https://oldschool.runescape.wiki/w/Giant_crypt_spider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Giant_crypt_spider.png",
+        originalSha256: "e8c42a81daee3dd921676fd014225817d900e7c6427a322e8aae4b57a992e9cf",
+        imageTimestamp: "2019-02-02T18:47:58Z"
+      },
+      sarachnis: {
+        frame: 224,
+        name: "Sarachnis",
+        file: "Sarachnis.png",
+        source: "https://oldschool.runescape.wiki/w/Sarachnis",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sarachnis.png",
+        originalSha256: "d3486d272cae7a005070d7064076cd1fdb162836e964722917277b1f110b863f",
+        imageTimestamp: "2019-07-04T11:44:19Z"
+      },
+      "temple-spider": {
+        frame: 225,
+        name: "Temple Spider",
+        file: "Temple Spider.png",
+        source: "https://oldschool.runescape.wiki/w/Temple_Spider",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Temple_Spider.png",
+        originalSha256: "94213968bfdbd9605f8ce3f2bfea19a37bff676b029774b4e72b71226169bac8",
+        imageTimestamp: "2019-07-04T11:46:39Z"
+      },
+      venenatis: {
+        frame: 226,
+        name: "Venenatis",
+        file: "Venenatis.png",
+        source: "https://oldschool.runescape.wiki/w/Venenatis",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Venenatis.png",
+        originalSha256: "0828c45f8ae8acc15474bcae4840c1a6ee69c13d69ebb5bf144eebb031df5d89",
+        imageTimestamp: "2023-01-25T10:49:08Z"
+      },
+      spindel: {
+        frame: 227,
+        name: "Spindel",
+        file: "Spindel.png",
+        source: "https://oldschool.runescape.wiki/w/Spindel",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Spindel.png",
+        originalSha256: "0828c45f8ae8acc15474bcae4840c1a6ee69c13d69ebb5bf144eebb031df5d89",
+        imageTimestamp: "2023-01-25T10:49:07Z"
+      },
+      "big-wolf": {
+        frame: 228,
+        name: "Big Wolf",
+        file: "Big Wolf.png",
+        source: "https://oldschool.runescape.wiki/w/Big_Wolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Big_Wolf.png",
+        originalSha256: "40b8fad09da62d2f8ef3413a05389d25280b8a2e6cb6cfacfbb3a0beb1f9bb97",
+        imageTimestamp: "2019-05-14T01:08:46Z"
+      },
+      "desert-wolf": {
+        frame: 229,
+        name: "Desert Wolf",
+        file: "Desert Wolf.png",
+        source: "https://oldschool.runescape.wiki/w/Desert_Wolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Desert_Wolf.png",
+        originalSha256: "25a3abdfa2bb7a3d9e2dd4901332be977e85d605a7992a18a1a74e59602cc8c9",
+        imageTimestamp: "2019-05-14T01:28:20Z"
+      },
+      "ice-wolf": {
+        frame: 230,
+        name: "Ice wolf",
+        file: "Ice wolf (level 96).png",
+        source: "https://oldschool.runescape.wiki/w/Ice_wolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ice_wolf_(level_96).png",
+        originalSha256: "6ac527282f32b6400361f1f13ebb9b139e6aed8aabd529891830774237c0d84f",
+        imageTimestamp: "2021-10-01T11:56:08Z"
+      },
+      "jungle-wolf": {
+        frame: 231,
+        name: "Jungle wolf",
+        file: "Jungle Wolf.png",
+        source: "https://oldschool.runescape.wiki/w/Jungle_wolf",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Jungle_Wolf.png",
+        originalSha256: "aa98815236b3cdada3215d36b09d331f545d95c4016f0e568dddbf7764ca4034",
+        imageTimestamp: "2017-01-14T14:01:00Z"
+      },
+      "undead-chicken": {
+        frame: 232,
+        name: "Undead chicken",
+        file: "Undead chicken.png",
+        source: "https://oldschool.runescape.wiki/w/Undead_chicken",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Undead_chicken.png",
+        originalSha256: "8937085d3cc0d971890d097a28e5c4f29091293c2ce74e0dc5ecb254c8aa40bb",
+        imageTimestamp: "2019-05-14T02:18:12Z"
+      },
+      "undead-druid": {
+        frame: 233,
+        name: "Undead Druid",
+        file: "Undead Druid.png",
+        source: "https://oldschool.runescape.wiki/w/Undead_Druid",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Undead_Druid.png",
+        originalSha256: "49b47367f25f0accf65a5a2669349524af3347901153a059021776b080e72cc6",
+        imageTimestamp: "2019-07-04T15:28:25Z"
+      },
+      "zombie-rat": {
+        frame: 234,
+        name: "Zombie rat",
+        file: "Zombie rat (1).png",
+        source: "https://oldschool.runescape.wiki/w/Zombie_rat",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Zombie_rat_(1).png",
+        originalSha256: "54e95ac3562beb6ca66b18768ef151e9bf5147938951a4419bf9a1506f4f643d",
+        imageTimestamp: "2019-06-07T06:18:21Z"
+      },
+      zogre: {
+        frame: 235,
+        name: "Zogre",
+        file: "Zogre (1).png",
+        source: "https://oldschool.runescape.wiki/w/Zogre",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Zogre_(1).png",
+        originalSha256: "97c9420abdbe315045b7db86eba029d00b0fffe252c70c97cfde7dee8ba8057b",
+        imageTimestamp: "2019-06-16T21:13:36Z"
+      },
+      "moonlight-cockatrice": {
+        frame: 236,
+        name: "Moonlight Cockatrice",
+        file: "Moonlight Cockatrice.png",
+        source: "https://oldschool.runescape.wiki/w/Moonlight_Cockatrice",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Moonlight_Cockatrice.png",
+        originalSha256: "3cce53ea0f96af0eaf0a90770dee3eed1a312d58f9b3213be9e3879191ae1827",
+        imageTimestamp: "2024-03-21T14:05:10Z"
+      },
+      "ammonite-crab": {
+        frame: 237,
+        name: "Ammonite crab",
+        file: "Ammonite Crab.png",
+        source: "https://oldschool.runescape.wiki/w/Ammonite_crab",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ammonite_Crab.png",
+        originalSha256: "11858b3bb527d66dbdf7f9b8f738edc03f86b45bc30b91fa884679b59d15de3e",
+        imageTimestamp: "2017-09-07T18:35:19Z"
+      },
+      "frost-crab": {
+        frame: 238,
+        name: "Frost crab",
+        file: "Frost Crab.png",
+        source: "https://oldschool.runescape.wiki/w/Frost_crab",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Frost_Crab.png",
+        originalSha256: "f1e113e4e7f899d55a0201fc5b31e44dc651844e7e8be594beab8fe93a8f065c",
+        imageTimestamp: "2024-09-27T22:49:03Z"
+      },
+      "rock-crab": {
+        frame: 239,
+        name: "Rock crab",
+        file: "Rock crab (exposed).png",
+        source: "https://oldschool.runescape.wiki/w/Rock_crab",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Rock_crab_(exposed).png",
+        originalSha256: "3adaf0458c224ca144d5efd789c63596f76268d887785cf32899cb3a64d99255",
+        imageTimestamp: "2019-01-26T17:15:55Z"
+      },
+      "swamp-crab": {
+        frame: 240,
+        name: "Swamp crab",
+        file: "Swamp Crab.png",
+        source: "https://oldschool.runescape.wiki/w/Swamp_crab",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Swamp_Crab.png",
+        originalSha256: "ec17b0ab0c16f23c233e47998f3310a9ca994fcae52dca09c46e7d1aebbb91d8",
+        imageTimestamp: "2018-05-25T03:45:40Z"
+      },
+      obor: {
+        frame: 241,
+        name: "Obor",
+        file: "Obor.png",
+        source: "https://oldschool.runescape.wiki/w/Obor",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Obor.png",
+        originalSha256: "8c0eca2b20ee305c7213ab1018c7ac172bf6065f3ec4baa23e38e43f518acb9b",
+        imageTimestamp: "2024-02-04T01:19:12Z"
+      },
+      icelord: {
+        frame: 242,
+        name: "Icelord",
+        file: "Icelord (melee).png",
+        source: "https://oldschool.runescape.wiki/w/Icelord",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Icelord_(melee).png",
+        originalSha256: "e8ef28b4bd5b33f55abe0e2c5dfd17326ff8d37ea735ed9523c4b84fe8ee9253",
+        imageTimestamp: "2025-03-05T17:27:53Z"
+      },
+      pyrelord: {
+        frame: 243,
+        name: "Pyrelord",
+        file: "Pyrefiend icon.png",
+        source: "https://oldschool.runescape.wiki/w/Pyrelord",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Pyrefiend_icon.png",
+        originalSha256: "6703b260b0843d5c2cd535c621f43ecf34c85b3c7d10ee904eea0cbb79169c0e",
+        imageTimestamp: "2014-01-06T22:42:37Z"
+      },
+      "phrin-shade": {
+        frame: 244,
+        name: "Phrin Shade",
+        file: "Phrin Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Phrin_Shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Phrin_Shade.png",
+        originalSha256: "58b328be5085b0993186d877056b9026fe24f33235d70da866c37aa641d8be5f",
+        imageTimestamp: "2019-01-29T06:01:43Z"
+      },
+      "riyl-shade": {
+        frame: 245,
+        name: "Riyl shade",
+        file: "Riyl Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Riyl_shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Riyl_Shade.png",
+        originalSha256: "82ab8d31a25a356ef6e44ec8d75b91ecaabaf79afe8795ec454b197fc7020795",
+        imageTimestamp: "2019-01-29T06:01:44Z"
+      },
+      "asyn-shade": {
+        frame: 246,
+        name: "Asyn shade",
+        file: "Asyn Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Asyn_shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Asyn_Shade.png",
+        originalSha256: "0ef03dce2de2cd74e70b7883a5152b95149d12badd2feee665c71b9405dc4c38",
+        imageTimestamp: "2019-01-29T06:01:37Z"
+      },
+      "fiyr-shade": {
+        frame: 247,
+        name: "Fiyr shade",
+        file: "Fiyr Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Fiyr_shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Fiyr_Shade.png",
+        originalSha256: "b7aa7c4cf06b484ea2d2b25e4e51705c8c74354d6092aac98f6dffac95d5d32a",
+        imageTimestamp: "2019-01-29T06:01:40Z"
+      },
+      "urium-shade": {
+        frame: 248,
+        name: "Urium Shade",
+        file: "Urium Shade.png",
+        source: "https://oldschool.runescape.wiki/w/Urium_Shade",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Urium_Shade.png",
+        originalSha256: "e27147b5ff4991e09b3ec4b6707196f6b05dbc0f5457996d631930233984793f",
+        imageTimestamp: "2021-01-27T12:23:23Z"
+      },
+      "eldric-the-ice-king": {
+        frame: 249,
+        name: "Eldric the Ice King",
+        file: "Eldric the Ice King.png",
+        source: "https://oldschool.runescape.wiki/w/Eldric_the_Ice_King",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Eldric_the_Ice_King.png",
+        originalSha256: "a244554e04fa446db5371bbde8257a41c055d0e45832152df6be3c587d2d5259",
+        imageTimestamp: "2025-02-05T13:26:56Z"
+      },
+      "warped-jelly": {
+        frame: 250,
+        name: "Warped Jelly",
+        file: "Jelly icon.png",
+        source: "https://oldschool.runescape.wiki/w/Warped_Jelly",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Jelly_icon.png",
+        originalSha256: "f1553c7cb1083248dd478e8805d98e640222dba97f070e4b389372d1a65075ec",
+        imageTimestamp: "2014-01-06T22:42:11Z"
+      },
+      "chilled-jelly": {
+        frame: 251,
+        name: "Chilled jelly",
+        file: "Chilled jelly.png",
+        source: "https://oldschool.runescape.wiki/w/Chilled_jelly",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Chilled_jelly.png",
+        originalSha256: "70323613dc568ff54805d1ddde053a3597b2bb618acc7d7900f741ce2b4eae18",
+        imageTimestamp: "2024-09-29T18:50:47Z"
+      },
+      "zakl-n-gritch": {
+        frame: 252,
+        name: "Zakl'n Gritch",
+        file: "Zakl'n Gritch.png",
+        source: "https://oldschool.runescape.wiki/w/Zakl%27n_Gritch",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Zakl%27n_Gritch.png",
+        originalSha256: "a52b2e46e49923583f380d177b13b2ff41d5c3d79533751cd984845881caa716",
+        imageTimestamp: "2018-11-21T06:50:17Z"
+      },
+      bryophyta: {
+        frame: 253,
+        name: "Bryophyta",
+        file: "Bryophyta.png",
+        source: "https://oldschool.runescape.wiki/w/Bryophyta",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Bryophyta.png",
+        originalSha256: "80cae6e10172ee7daa49bd05654a2ac980d7458ed2fb78d28fc4319b4692979a",
+        imageTimestamp: "2024-02-04T01:19:12Z"
+      },
+      "ogress-shaman": {
+        frame: 254,
+        name: "Ogress Shaman",
+        file: "Ogress Shaman.png",
+        source: "https://oldschool.runescape.wiki/w/Ogress_Shaman",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ogress_Shaman.png",
+        originalSha256: "ba93601b26f998b64989698dc31858dec2c0e4096d35d24c93786d025c6ac703",
+        imageTimestamp: "2019-12-10T18:30:47Z"
+      },
+      "ogress-warrior": {
+        frame: 255,
+        name: "Ogress Warrior",
+        file: "Ogress Warrior (1).png",
+        source: "https://oldschool.runescape.wiki/w/Ogress_Warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ogress_Warrior_(1).png",
+        originalSha256: "14df16705e960f860cad74468f616484986c566de6a135039d062821159f2a9d",
+        imageTimestamp: "2021-08-31T09:53:29Z"
+      },
+      "sea-snake-young": {
+        frame: 256,
+        name: "Sea Snake Young",
+        file: "Sea snake icon.png",
+        source: "https://oldschool.runescape.wiki/w/Sea_Snake_Young",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Sea_snake_icon.png",
+        originalSha256: "186b1fbf0b1c5e4242023af9a42fa04cec9c7348c0f4877ddd285124659d02e3",
+        imageTimestamp: "2015-05-15T11:56:17Z"
+      },
+      "reanimated-horror": {
+        frame: 257,
+        name: "Reanimated horror",
+        file: "Reanimated horror.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_horror",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_horror.png",
+        originalSha256: "88d5f0be15a85899e08bf6eecc18beddebce8166f87d337c03048da158815922",
+        imageTimestamp: "2019-05-14T01:46:06Z"
+      },
+      "reanimated-abyssal": {
+        frame: 258,
+        name: "Reanimated abyssal",
+        file: "Reanimated abyssal.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_abyssal",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_abyssal.png",
+        originalSha256: "e717cf3764002ef95baba33a5ea9c30b60bf3a0d732f104ea255d32ba06bf859",
+        imageTimestamp: "2019-05-14T01:46:04Z"
+      },
+      "reanimated-bloodveld": {
+        frame: 259,
+        name: "Reanimated bloodveld",
+        file: "Reanimated bloodveld.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_bloodveld",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_bloodveld.png",
+        originalSha256: "e6e102cc8f0b7ca7d8bee483ca102ce050ba489fbb7163cfe9a41ae4eaf840c4",
+        imageTimestamp: "2019-05-14T01:46:05Z"
+      },
+      "reanimated-dagannoth": {
+        frame: 260,
+        name: "Reanimated dagannoth",
+        file: "Reanimated dagannoth.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_dagannoth",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_dagannoth.png",
+        originalSha256: "c2cfa13f37433560f70cb30c02a26eeca970702fc6006b94d0e5aae69e0c56d9",
+        imageTimestamp: "2019-05-14T01:46:06Z"
+      },
+      "iorwerth-warrior": {
+        frame: 261,
+        name: "Iorwerth Warrior",
+        file: "Iorwerth Warrior (2).png",
+        source: "https://oldschool.runescape.wiki/w/Iorwerth_Warrior",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Iorwerth_Warrior_(2).png",
+        originalSha256: "e8c23f0a58701a297f944645e08f1c84fc203c212c4cdda86f47b367c016a4f6",
+        imageTimestamp: "2019-09-05T13:31:15Z"
+      },
+      "reanimated-hellhound": {
+        frame: 262,
+        name: "Reanimated hellhound",
+        file: "Reanimated hellhound.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_hellhound",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_hellhound.png",
+        originalSha256: "36b0c836515fb7faf5f91068abb6f38ea85d285ee6319c03322fe846f45f1811",
+        imageTimestamp: "2022-05-18T11:20:35Z"
+      },
+      "reanimated-kalphite": {
+        frame: 263,
+        name: "Reanimated kalphite",
+        file: "Reanimated kalphite.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_kalphite",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_kalphite.png",
+        originalSha256: "8ed8d6bac0e68dcb9783b58e47249ff99752ccddcc27b40afef4128b98c583fa",
+        imageTimestamp: "2019-05-14T01:46:07Z"
+      },
+      "reanimated-troll": {
+        frame: 264,
+        name: "Reanimated troll",
+        file: "Reanimated troll.png",
+        source: "https://oldschool.runescape.wiki/w/Reanimated_troll",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Reanimated_troll.png",
+        originalSha256: "39b3375abc73c8a93bcabe5b3b7168041a89361b52429d2ba0d56edce4113223",
+        imageTimestamp: "2019-05-14T01:46:07Z"
+      },
+      dad: {
+        frame: 265,
+        name: "Dad",
+        file: "Dad.png",
+        source: "https://oldschool.runescape.wiki/w/Dad",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Dad.png",
+        originalSha256: "3c1517117b7bd1fad69def5969277d5a2097ea3edec202814dd46ec3fe0a0145",
+        imageTimestamp: "2020-05-02T18:09:43Z"
+      },
+      "ice-troll-king": {
+        frame: 266,
+        name: "Ice Troll King",
+        file: "Ice Troll King.png",
+        source: "https://oldschool.runescape.wiki/w/Ice_Troll_King",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Ice_Troll_King.png",
+        originalSha256: "ba1823187017bc8589b1d206d721b81205ec7222c5495a5947c294fdb3ee7841",
+        imageTimestamp: "2021-03-08T15:54:54Z"
+      },
+      arrg: {
+        frame: 267,
+        name: "Arrg",
+        file: "Arrg.png",
+        source: "https://oldschool.runescape.wiki/w/Arrg",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Arrg.png",
+        originalSha256: "f5fd5a4650ad116b249bfc3641460bc12cbdcd448c217ed75d5ce3221ae188b8",
+        imageTimestamp: "2019-05-23T21:43:14Z"
+      },
+      "boss-pool": {
+        frame: 268,
+        name: "Mixed boss assignment (timing scenario)",
+        file: "Slayer icon.png",
+        source: "https://oldschool.runescape.wiki/w/Module:SlayerConsts/MasterTables",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Slayer_icon.png",
+        originalSha256: "ae1fbab5e1a60e8e102a014a10e6bd2f9f3d80d504eaa802fa1615773fa34ac8",
+        imageTimestamp: "2018-04-24T01:10:38Z"
+      },
+      "black-dragon": {
+        frame: 269,
+        name: "Black dragon (level 227)",
+        file: "Black dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Black_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Black_dragon_icon.png",
+        originalSha256: "759ad652ac7e5adb7d0942d06479ae9bc6f44efb5f599c85a4c09ed85f87df5d",
+        imageTimestamp: "2014-01-23T15:26:48Z"
+      },
+      "black-dragon-wilderness-slayer-cave": {
+        frame: 270,
+        name: "Black dragon (Wilderness Slayer Cave)",
+        file: "Black dragon icon.png",
+        source: "https://oldschool.runescape.wiki/w/Black_dragon",
+        imagePage: "https://oldschool.runescape.wiki/w/File:Black_dragon_icon.png",
+        originalSha256: "759ad652ac7e5adb7d0942d06479ae9bc6f44efb5f599c85a4c09ed85f87df5d",
+        imageTimestamp: "2014-01-23T15:26:48Z"
+      }
+    },
+    aliases: {
+      "aberrant spectre": "aberrant-spectre",
+      "abyssal demon": "abyssal-demon",
+      ankou: "ankou",
+      aquanite: "aquanite",
+      araxyte: "araxyte",
+      aviansie: "aviansie",
+      bandit: "bandit",
+      banshee: "banshee",
+      "basilisk knight": "basilisk-knight",
+      bat: "bat",
+      "grizzly bear": "grizzly-bear",
+      chicken: "chicken",
+      "black demon": "black-demon",
+      "baby black dragon": "baby-black-dragon",
+      "black knight": "black-knight",
+      bloodveld: "bloodveld",
+      "baby blue dragon": "baby-blue-dragon",
+      "brine rat": "brine-rat",
+      catablepon: "catablepon",
+      "cave bug": "cave-bug",
+      "cave crawler": "cave-crawler",
+      "cave horror": "cave-horror",
+      "cave kraken": "cave-kraken",
+      "cave slime": "cave-slime",
+      "chaos druid": "chaos-druid",
+      cockatrice: "cockatrice",
+      cow: "cow",
+      "sand crab": "sand-crab",
+      "crawling hand": "crawling-hand",
+      crocodile: "crocodile",
+      "juvenile custodian stalker": "juvenile-custodian-stalker",
+      dagannoth: "dagannoth",
+      "dark beast": "dark-beast",
+      "dark warrior": "dark-warrior",
+      "guard dog": "guard-dog",
+      drake: "drake",
+      "dust devil": "dust-devil",
+      dwarf: "dwarf",
+      "earth warrior": "earth-warrior",
+      "elf warrior": "elf-warrior",
+      ent: "ent",
+      "fever spider": "fever-spider",
+      "fire giant": "fire-giant",
+      "flesh crawler": "flesh-crawler",
+      "spitting wyvern": "spitting-wyvern",
+      "frost dragon": "frost-dragon",
+      gargoyle: "gargoyle",
+      ghost: "ghost",
+      ghoul: "ghoul",
+      goblin: "goblin",
+      "greater demon": "greater-demon",
+      "green dragon": "green-dragon",
+      gryphon: "gryphon",
+      "harpie bug swarm": "harpie-bug-swarm",
+      hellhound: "hellhound",
+      "hill giant": "hill-giant",
+      hobgoblin: "hobgoblin",
+      hydra: "hydra",
+      "ice giant": "ice-giant",
+      "ice warrior": "ice-warrior",
+      icefiend: "icefiend",
+      "infernal mage": "infernal-mage",
+      jelly: "jelly",
+      "jungle horror": "jungle-horror",
+      "kalphite worker": "kalphite-worker",
+      killerwatt: "killerwatt",
+      kurask: "kurask",
+      "lava dragon": "lava-dragon",
+      "lesser demon": "lesser-demon",
+      "sulphur nagua": "sulphur-nagua",
+      lizardman: "lizardman",
+      "desert lizard": "desert-lizard",
+      "magic axe": "magic-axe",
+      mammoth: "mammoth",
+      "iron dragon": "iron-dragon",
+      minotaur: "minotaur",
+      mogre: "mogre",
+      molanisk: "molanisk",
+      "monkey (monster)": "monkey-monster",
+      "moss giant": "moss-giant",
+      zygomite: "zygomite",
+      nechryael: "nechryael",
+      ogre: "ogre",
+      "otherworldly being": "otherworldly-being",
+      pirate: "pirate",
+      pyrefiend: "pyrefiend",
+      "giant rat": "giant-rat",
+      "baby red dragon": "baby-red-dragon",
+      "revenant cyclops": "revenant-cyclops",
+      rockslug: "rockslug",
+      rogue: "rogue",
+      "locust rider": "locust-rider",
+      scorpion: "scorpion",
+      "sea snake hatchling": "sea-snake-hatchling",
+      "loar shade": "loar-shade",
+      "shadow warrior": "shadow-warrior",
+      "skeletal wyvern": "skeletal-wyvern",
+      skeleton: "skeleton",
+      "smoke devil": "smoke-devil",
+      sourhog: "sourhog",
+      "giant spider": "giant-spider",
+      "spiritual warrior": "spiritual-warrior",
+      suqah: "suqah",
+      "terror dog": "terror-dog",
+      "mountain troll": "mountain-troll",
+      turoth: "turoth",
+      "tzhaar-ket": "tzhaar-ket",
+      "vyrewatch sentinel": "vyrewatch-sentinel",
+      venator: "venator",
+      "wall beast": "wall-beast",
+      "warped tortoise": "warped-tortoise",
+      waterfiend: "waterfiend",
+      werewolf: "werewolf",
+      "white wolf": "white-wolf",
+      wyrm: "wyrm",
+      zombie: "zombie",
+      basilisk: "basilisk",
+      "demonic gorilla": "demonic-gorilla",
+      "tormented demon": "tormented-demon",
+      cerberus: "cerberus",
+      kraken: "kraken",
+      "alchemical hydra": "alchemical-hydra",
+      "deviant spectre": "deviant-spectre",
+      "abyssal sire": "abyssal-sire",
+      "dark ankou": "dark-ankou",
+      araxxor: "araxxor",
+      "kree'arra": "kree-arra",
+      "flight kilisa": "flight-kilisa",
+      "flockleader geerin": "flockleader-geerin",
+      "wingman skree": "wingman-skree",
+      "reanimated aviansie": "reanimated-aviansie",
+      "balfrug kreeyath": "balfrug-kreeyath",
+      porazdir: "porazdir",
+      skotizo: "skotizo",
+      "king black dragon": "king-black-dragon",
+      "brutal black dragon": "brutal-black-dragon",
+      "mutated bloodveld": "mutated-bloodveld",
+      "brutal blue dragon": "brutal-blue-dragon",
+      "mature custodian stalker": "mature-custodian-stalker",
+      "elder custodian stalker": "elder-custodian-stalker",
+      "dagannoth spawn": "dagannoth-spawn",
+      "dagannoth fledgeling": "dagannoth-fledgeling",
+      "guard (prifddinas)": "guard-prifddinas",
+      "reanimated elf": "reanimated-elf",
+      "branda the fire queen": "branda-the-fire-queen",
+      "taloned wyvern": "taloned-wyvern",
+      "long-tailed wyvern": "long-tailed-wyvern",
+      "ancient wyvern": "ancient-wyvern",
+      "k'ril tsutsaroth": "k-ril-tsutsaroth",
+      "tstanon karlak": "tstanon-karlak",
+      "shellbane gryphon": "shellbane-gryphon",
+      "skeleton hellhound (vet'ion)": "skeleton-hellhound-vet-ion",
+      "greater skeleton hellhound (vet'ion)": "greater-skeleton-hellhound-vet-ion",
+      "kalphite soldier": "kalphite-soldier",
+      "kalphite guardian": "kalphite-guardian",
+      "kalphite queen": "kalphite-queen",
+      "lizardman brute": "lizardman-brute",
+      "lizardman shaman": "lizardman-shaman",
+      "bronze dragon": "bronze-dragon",
+      "mithril dragon": "mithril-dragon",
+      "adamant dragon": "adamant-dragon",
+      "rune dragon": "rune-dragon",
+      "ancient zygomite": "ancient-zygomite",
+      "greater nechryael": "greater-nechryael",
+      "brutal red dragon": "brutal-red-dragon",
+      scarabs: "scarabs",
+      "scarab swarm": "scarab-swarm",
+      "thermonuclear smoke devil": "thermonuclear-smoke-devil",
+      "troll general": "troll-general",
+      "tztok-jad": "tztok-jad",
+      "tzkal-zuk": "tzkal-zuk",
+      "lava strykewyrm": "lava-strykewyrm",
+      wyrmling: "wyrmling",
+      "twisted banshee": "twisted-banshee",
+      "giant bat": "giant-bat",
+      "albino bat": "albino-bat",
+      "death wing": "death-wing",
+      "grizzly bear cub": "grizzly-bear-cub",
+      "bear cub": "bear-cub",
+      "reanimated bear": "reanimated-bear",
+      callisto: "callisto",
+      artio: "artio",
+      terrorbird: "terrorbird",
+      "chompy bird": "chompy-bird",
+      "penguin (monster)": "penguin-monster",
+      duck: "duck",
+      duckling: "duckling",
+      brutus: "brutus",
+      buffalo: "buffalo",
+      "cow calf": "cow-calf",
+      "undead cow": "undead-cow",
+      jackal: "jackal",
+      "wild dog": "wild-dog",
+      "reanimated dog": "reanimated-dog",
+      "black guard": "black-guard",
+      "chaos dwarf": "chaos-dwarf",
+      "tortured soul": "tortured-soul",
+      "forgotten soul": "forgotten-soul",
+      "cave goblin guard": "cave-goblin-guard",
+      "sergeant strongstack": "sergeant-strongstack",
+      "sergeant steelwill": "sergeant-steelwill",
+      "sergeant grimspike": "sergeant-grimspike",
+      "small lizard": "small-lizard",
+      "sulphur lizard": "sulphur-lizard",
+      "grimy lizard": "grimy-lizard",
+      "monkey guard": "monkey-guard",
+      "monkey archer": "monkey-archer",
+      "dungeon rat": "dungeon-rat",
+      "crypt rat": "crypt-rat",
+      "giant crypt rat": "giant-crypt-rat",
+      "king scorpion": "king-scorpion",
+      "poison scorpion": "poison-scorpion",
+      "pit scorpion": "pit-scorpion",
+      scorpia: "scorpia",
+      lobstrosity: "lobstrosity",
+      "reanimated scorpion": "reanimated-scorpion",
+      "scorpia's offspring (monster)": "scorpia-s-offspring-monster",
+      "scorpia's guardian": "scorpia-s-guardian",
+      "vet'ion": "vet-ion",
+      skogre: "skogre",
+      "skeleton (shayzien crypts)": "skeleton-shayzien-crypts",
+      "calvar'ion": "calvar-ion",
+      "shadow spider": "shadow-spider",
+      "giant crypt spider": "giant-crypt-spider",
+      sarachnis: "sarachnis",
+      "temple spider": "temple-spider",
+      venenatis: "venenatis",
+      spindel: "spindel",
+      "big wolf": "big-wolf",
+      "desert wolf": "desert-wolf",
+      "ice wolf": "ice-wolf",
+      "jungle wolf": "jungle-wolf",
+      "undead chicken": "undead-chicken",
+      "undead druid": "undead-druid",
+      "zombie rat": "zombie-rat",
+      zogre: "zogre",
+      "moonlight cockatrice": "moonlight-cockatrice",
+      "ammonite crab": "ammonite-crab",
+      "frost crab": "frost-crab",
+      "rock crab": "rock-crab",
+      "swamp crab": "swamp-crab",
+      obor: "obor",
+      icelord: "icelord",
+      pyrelord: "pyrelord",
+      "phrin shade": "phrin-shade",
+      "riyl shade": "riyl-shade",
+      "asyn shade": "asyn-shade",
+      "fiyr shade": "fiyr-shade",
+      "urium shade": "urium-shade",
+      "eldric the ice king": "eldric-the-ice-king",
+      "warped jelly": "warped-jelly",
+      "chilled jelly": "chilled-jelly",
+      "zakl'n gritch": "zakl-n-gritch",
+      bryophyta: "bryophyta",
+      "ogress shaman": "ogress-shaman",
+      "ogress warrior": "ogress-warrior",
+      "sea snake young": "sea-snake-young",
+      "reanimated horror": "reanimated-horror",
+      "reanimated abyssal": "reanimated-abyssal",
+      "reanimated bloodveld": "reanimated-bloodveld",
+      "reanimated dagannoth": "reanimated-dagannoth",
+      "iorwerth warrior": "iorwerth-warrior",
+      "reanimated hellhound": "reanimated-hellhound",
+      "reanimated kalphite": "reanimated-kalphite",
+      "reanimated troll": "reanimated-troll",
+      dad: "dad",
+      "ice troll king": "ice-troll-king",
+      arrg: "arrg",
+      "mixed boss assignment (timing scenario)": "boss-pool",
+      "black dragon (level 227)": "black-dragon",
+      "black dragon (wilderness slayer cave)": "black-dragon-wilderness-slayer-cave",
+      "aberrant spectres": "aberrant-spectre",
+      "abyssal demons": "abyssal-demon",
+      aquanites: "aquanite",
+      araxytes: "araxyte",
+      bandits: "bandit",
+      banshees: "banshee",
+      basilisks: "basilisk-knight",
+      bats: "bat",
+      bears: "grizzly-bear",
+      birds: "chicken",
+      "black demons": "black-demon",
+      "black dragons": "baby-black-dragon",
+      "black knights": "black-knight",
+      "blue dragons": "baby-blue-dragon",
+      boss: "boss-pool",
+      "brine rats": "brine-rat",
+      "cave bugs": "cave-bug",
+      "cave crawlers": "cave-crawler",
+      "cave horrors": "cave-horror",
+      "chaos druids": "chaos-druid",
+      cows: "cow",
+      crabs: "sand-crab",
+      "crawling hands": "crawling-hand",
+      crocodiles: "crocodile",
+      "custodian stalker": "juvenile-custodian-stalker",
+      "dark beasts": "dark-beast",
+      "dark warriors": "dark-warrior",
+      dogs: "guard-dog",
+      drakes: "drake",
+      "dust devils": "dust-devil",
+      dwarves: "dwarf",
+      "earth warriors": "earth-warrior",
+      elves: "elf-warrior",
+      ents: "ent",
+      "fever spiders": "fever-spider",
+      "fire giants": "fire-giant",
+      "flesh crawlers": "flesh-crawler",
+      "fossil island wyverns": "spitting-wyvern",
+      "frost dragons": "frost-dragon",
+      gargoyles: "gargoyle",
+      ghosts: "ghost",
+      ghouls: "ghoul",
+      goblins: "goblin",
+      "greater demons": "greater-demon",
+      "green dragons": "green-dragon",
+      gryphons: "gryphon",
+      "harpie bug swarms": "harpie-bug-swarm",
+      hellhounds: "hellhound",
+      "hill giants": "hill-giant",
+      hobgoblins: "hobgoblin",
+      hydras: "hydra",
+      "ice giants": "ice-giant",
+      "ice warriors": "ice-warrior",
+      icefiends: "icefiend",
+      "infernal mages": "infernal-mage",
+      jellies: "jelly",
+      "jungle horrors": "jungle-horror",
+      kalphite: "kalphite-worker",
+      killerwatts: "killerwatt",
+      "lava dragons": "lava-dragon",
+      "lesser demons": "lesser-demon",
+      "lesser nagua": "sulphur-nagua",
+      lizardmen: "lizardman",
+      lizards: "desert-lizard",
+      "magic axes": "magic-axe",
+      mammoths: "mammoth",
+      "metal dragons": "iron-dragon",
+      minotaurs: "minotaur",
+      mogres: "mogre",
+      molanisks: "molanisk",
+      monkeys: "monkey-monster",
+      "moss giants": "moss-giant",
+      "mutated zygomites": "zygomite",
+      ogres: "ogre",
+      "otherworldly beings": "otherworldly-being",
+      pirates: "pirate",
+      pyrefiends: "pyrefiend",
+      rats: "giant-rat",
+      "red dragons": "baby-red-dragon",
+      revenants: "revenant-cyclops",
+      rockslugs: "rockslug",
+      rogues: "rogue",
+      scabarites: "locust-rider",
+      scorpions: "scorpion",
+      "sea snakes": "sea-snake-hatchling",
+      shades: "loar-shade",
+      "shadow warriors": "shadow-warrior",
+      "skeletal wyverns": "skeletal-wyvern",
+      skeletons: "skeleton",
+      "smoke devils": "smoke-devil",
+      sourhogs: "sourhog",
+      spiders: "giant-spider",
+      "spiritual creatures": "spiritual-warrior",
+      suqahs: "suqah",
+      "terror dogs": "terror-dog",
+      trolls: "mountain-troll",
+      tzhaar: "tzhaar-ket",
+      vampyres: "vyrewatch-sentinel",
+      venators: "venator",
+      "wall beasts": "wall-beast",
+      "warped creatures": "warped-tortoise",
+      waterfiends: "waterfiend",
+      werewolves: "werewolf",
+      wolves: "white-wolf",
+      wyrms: "wyrm",
+      zombies: "zombie"
+    }
+  };
+
+  // src/ui/creature-art.ts
+  var entries = creature_art_default.entries;
+  var aliases = creature_art_default.aliases;
+  var escape = (value) => value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var names = Object.keys(aliases).sort((a, b) => b.length - a.length);
+  var pattern = new RegExp(`(?<![\\w])(${names.map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w])`, "gi");
+  function creatureId(name) {
+    return aliases[name.trim().toLowerCase()];
+  }
+  function creatureIcon(id, large = false) {
+    const entry = entries[id];
+    if (!entry) return "";
+    return `<span class="creature-icon${large ? " creature-icon--large" : ""}" aria-hidden="true" style="--sprite-col:${entry.frame % creature_art_default.columns};--sprite-row:${Math.floor(entry.frame / creature_art_default.columns)};--sprite-cols:${creature_art_default.columns};--sprite-rows:${creature_art_default.rows}"></span>`;
+  }
+  function creatureName(name) {
+    const id = creatureId(name);
+    return id ? `<span class="creature-name">${creatureIcon(id)}<span>${escape(name)}</span></span>` : escape(name);
+  }
+  function creatureText(text) {
+    let cursor = 0, html = "";
+    pattern.lastIndex = 0;
+    for (const match of text.matchAll(pattern)) {
+      const index = match.index;
+      html += escape(text.slice(cursor, index)) + creatureName(match[0]);
+      cursor = index + match[0].length;
+    }
+    return html + escape(text.slice(cursor));
+  }
+  function decorateCreatureText(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      const text = node, parent = text.parentElement;
+      if (!parent || parent.closest("select,option,textarea,input,script,style,svg,code,.creature-name,.creature-icon,[contenteditable]")) continue;
+      pattern.lastIndex = 0;
+      if (pattern.test(text.data)) nodes.push(text);
+    }
+    for (const text of nodes) {
+      const span = document.createElement("span");
+      span.innerHTML = creatureText(text.data);
+      text.replaceWith(...Array.from(span.childNodes));
+    }
+  }
+
+  // src/ui/creature-picker.ts
+  var sequence = 0;
+  function enhanceCreaturePickers(root) {
+    root.querySelectorAll("select:not([data-creature-enhanced])").forEach((select2) => {
+      const choices2 = Array.from(select2.options);
+      if (!choices2.length || choices2.filter((o) => creatureId(o.text)).length < choices2.length / 2) return;
+      select2.dataset.creatureEnhanced = "true";
+      const label = select2.getAttribute("aria-label") || select2.labels?.[0]?.childNodes[0]?.textContent?.trim() || "Creature";
+      const key = select2.id || select2.dataset.setting || [select2.dataset.target, select2.dataset.targetField, select2.dataset.offer, select2.dataset.offerField, select2.name].join(":");
+      const trigger = document.createElement("button");
+      trigger.type = "button";
+      trigger.className = "creature-trigger";
+      trigger.dataset.pickerFor = key;
+      trigger.setAttribute("aria-label", label + ": " + (select2.selectedOptions[0]?.text || "Choose creature"));
+      trigger.setAttribute("aria-haspopup", "dialog");
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.disabled = select2.disabled;
+      trigger.innerHTML = creatureName(select2.selectedOptions[0]?.text || "Choose creature") + '<span class="picker-chevron" aria-hidden="true"></span>';
+      select2.after(trigger);
+      select2.hidden = true;
+      trigger.addEventListener("click", () => openPicker(select2, trigger, label, key));
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          openPicker(select2, trigger, label, key);
+        }
+      });
+      select2.labels?.forEach((label2) => label2.addEventListener("click", (event) => {
+        if (event.target === label2) {
+          event.preventDefault();
+          trigger.focus();
+        }
+      }));
+    });
+  }
+  function openPicker(select2, trigger, label, key) {
+    const dialog = document.createElement("dialog");
+    dialog.className = "creature-dialog";
+    const id = "creature-options-" + ++sequence;
+    dialog.setAttribute("aria-label", "Choose " + label.toLowerCase());
+    const heading = document.createElement("h2");
+    heading.textContent = "Choose " + label.toLowerCase();
+    const intro = document.createElement("p");
+    intro.className = "small muted";
+    intro.textContent = "Search by name, or use the arrow keys to browse.";
+    const search = document.createElement("input");
+    search.type = "search";
+    search.placeholder = "Search creatures\u2026";
+    search.setAttribute("aria-label", "Search " + label.toLowerCase());
+    search.setAttribute("role", "combobox");
+    search.setAttribute("aria-controls", id);
+    search.setAttribute("aria-expanded", "true");
+    search.setAttribute("aria-autocomplete", "list");
+    const list = document.createElement("div");
+    list.id = id;
+    list.className = "creature-options";
+    list.setAttribute("role", "listbox");
+    list.setAttribute("aria-label", label);
+    const count = document.createElement("p");
+    count.className = "picker-count small muted";
+    count.setAttribute("role", "status");
+    const cancel = document.createElement("button");
+    cancel.type = "button";
+    cancel.className = "secondary";
+    cancel.textContent = "Cancel";
+    cancel.onclick = () => dialog.close();
+    dialog.append(heading, intro, search, count, list, cancel);
+    document.body.append(dialog);
+    const all = Array.from(select2.options).map((o) => ({ value: o.value, name: o.text, disabled: o.disabled }));
+    let matches = all, active = Math.max(0, all.findIndex((o) => o.value === select2.value));
+    const setActive = (index, scroll = false) => {
+      active = Math.max(0, Math.min(index, matches.length - 1));
+      list.querySelectorAll("[role=option]").forEach((item, i) => {
+        item.classList.toggle("active", i === active);
+        item.setAttribute("aria-selected", String(i === active));
+        if (i === active && scroll) item.scrollIntoView({ block: "nearest" });
+      });
+      if (matches.length) search.setAttribute("aria-activedescendant", id + "-" + active);
+      else search.removeAttribute("aria-activedescendant");
+    };
+    const choose = (index) => {
+      if (!matches[index] || matches[index].disabled) return;
+      select2.value = matches[index].value;
+      dialog.close();
+      select2.dispatchEvent(new Event("change", { bubbles: true }));
+      document.querySelector(`button[data-picker-for="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
+    };
+    const render = () => {
+      list.replaceChildren();
+      count.textContent = matches.length ? `${matches.length} ${matches.length === 1 ? "creature" : "creatures"}` : "No matching creatures. Try another name.";
+      matches.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = id + "-" + index;
+        button.tabIndex = -1;
+        button.setAttribute("role", "option");
+        button.disabled = option.disabled;
+        button.innerHTML = creatureName(option.name);
+        button.onclick = () => choose(index);
+        list.append(button);
+      });
+      setActive(active);
+    };
+    search.oninput = () => {
+      matches = all.filter((o) => o.name.toLowerCase().includes(search.value.trim().toLowerCase()));
+      active = 0;
+      render();
+    };
+    search.onkeydown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        dialog.close();
+        return;
+      }
+      if (["ArrowDown", "ArrowUp", "Home", "End", "Enter"].includes(event.key)) {
+        if ((event.key === "Home" || event.key === "End") && search.value) return;
+        event.preventDefault();
+        if (event.key === "Enter") choose(active);
+        else setActive(event.key === "Home" ? 0 : event.key === "End" ? matches.length - 1 : active + (event.key === "ArrowDown" ? 1 : -1), true);
+      }
+    };
+    dialog.addEventListener("close", () => {
+      trigger.setAttribute("aria-expanded", "false");
+      dialog.remove();
+      if (trigger.isConnected) trigger.focus({ preventScroll: true });
+    }, { once: true });
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        const r = dialog.getBoundingClientRect();
+        if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+      }
+    });
+    trigger.setAttribute("aria-expanded", "true");
+    render();
+    dialog.showModal();
+    search.focus();
+    setActive(active, true);
+  }
+
   // data/mortimer-modifiers.json
   var mortimer_modifiers_default = {
     schemaVersion: 1,
@@ -1691,10 +4701,10 @@
   var escapeHtml = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   var esc = escapeHtml;
   var taskName = (data, id) => data.assignments.find((a) => a.id === id)?.name || id;
-  var names = (data, ids) => ids.map((id) => esc(taskName(data, id))).join(", ") || "None";
+  var names2 = (data, ids) => ids.map((id) => esc(taskName(data, id))).join(", ") || "None";
   function renderHuntNav(data, p2, plans, selected, compact, undo, redo, presetId, desktop, pin) {
     if (compact) return `<div class="hunt-nav compact-nav"><label>Master<select id="hunt-master">${plans.map((plan) => `<option value="${esc(plan.master.id)}" ${plan.master.id === selected ? "selected" : ""}>${esc(plan.master.name)}</option>`).join("")}</select></label><button data-qol="compact">Full planner</button>${desktop ? `<button data-qol="pin" aria-pressed="${pin}">${pin ? "Unpin window" : "Keep on top"}</button>` : ""}<button data-qol="undo" ${undo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${redo ? "" : "disabled"}>Redo</button></div>`;
-    return `<div class="hunt-nav" aria-label="Hunt controls"><label>Master<select id="hunt-master">${plans.map((plan) => `<option value="${esc(plan.master.id)}" ${plan.master.id === selected ? "selected" : ""}>${esc(plan.master.name)}${plan.reason ? " \u2014 review issues" : ""}</option>`).join("")}</select></label><button data-qol="comparison">Back to comparison</button><button data-qol="compact">${compact ? "Full planner" : "Compact hunt"}</button><button data-qol="undo" ${undo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${redo ? "" : "disabled"}>Redo</button><label>Saved hunt<select id="hunt-preset"><option value="">Choose a hunt\u2026</option>${(p2.huntPresets || []).map((h) => `<option value="${esc(h.id)}" ${h.id === presetId ? "selected" : ""}>${esc(h.name)}</option>`).join("")}</select></label><button data-qol="save-hunt">Save hunt</button><button data-qol="delete-hunt">Delete saved hunt</button></div>`;
+    return `<div class="hunt-nav" aria-label="Hunt controls"><label>Master<select id="hunt-master">${plans.map((plan) => `<option value="${esc(plan.master.id)}" ${plan.master.id === selected ? "selected" : ""}>${esc(plan.master.name)}${plan.reason ? " \u2014 review issues" : ""}</option>`).join("")}</select></label><button data-qol="comparison">Back to comparison</button><button data-qol="compact">Compact hunt</button><button data-qol="undo" ${undo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${redo ? "" : "disabled"}>Redo</button><details class="toolbar-saved"><summary>Saved hunts</summary><div class="saved-hunt-menu"><label>Saved hunt<select id="hunt-preset"><option value="">Choose a hunt\u2026</option>${(p2.huntPresets || []).map((h) => `<option value="${esc(h.id)}" ${h.id === presetId ? "selected" : ""}>${esc(h.name)}</option>`).join("")}</select></label><div class="tools"><button data-qol="save-hunt">Save hunt</button><button data-qol="delete-hunt">Delete saved hunt</button></div></div></details></div>`;
   }
   function renderLookup(data, plan, p2, query) {
     if (!query.trim()) return '<p class="small muted">Search an offered assignment or monster variant to see what to do.</p>';
@@ -1712,7 +4722,7 @@
   }
   function renderBlockChanges(data, plan, p2) {
     const b = blockPreview(data, plan, p2);
-    return `<h3>Review block changes</h3><p><strong>Add:</strong> ${names(data, b.added)}<br><strong>Remove:</strong> ${names(data, b.removed)}<br><strong>New cost:</strong> ${b.cost} points. Removals give no refund.</p><p>${b.minutesSaved === null ? "Time comparison unavailable for one configuration." : `${b.minutesSaved.toFixed(1)} estimated minutes saved per target offer.`} ${b.chanceGain === null ? "" : `${(b.chanceGain * 100).toFixed(2)} percentage-point change in target chance.`}</p><p class="small muted">Compared with your recorded actual list, using the same methods and policy. Full funded hunts require simulation.</p>`;
+    return `<h3>Review block changes</h3><p><strong>Add:</strong> ${names2(data, b.added)}<br><strong>Remove:</strong> ${names2(data, b.removed)}<br><strong>New cost:</strong> ${b.cost} points. Removals give no refund.</p><p>${b.minutesSaved === null ? "Time comparison unavailable for one configuration." : `${b.minutesSaved.toFixed(1)} estimated minutes saved per target offer.`} ${b.chanceGain === null ? "" : `${(b.chanceGain * 100).toFixed(2)} percentage-point change in target chance.`}</p><p class="small muted">Compared with your recorded actual list, using the same methods and policy. Full funded hunts require simulation.</p>`;
   }
   function renderTaskHistory(data, p2) {
     const records = p2.taskHistory || [];
@@ -1727,6 +4737,8 @@
     dialog.className = "review-dialog";
     dialog.innerHTML = `<form method="dialog"><h2>${esc(title)}</h2>${body}<p class="dialog-error" role="alert"></p><div class="tools"><button value="save">${esc(commit)}</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
     document.body.append(dialog);
+    decorateCreatureText(dialog);
+    enhanceCreaturePickers(dialog);
     dialog.showModal();
     return new Promise((resolve) => dialog.addEventListener("close", () => {
       const fields = dialog.returnValue === "save" ? new FormData(dialog.querySelector("form")) : null;
@@ -1744,6 +4756,19 @@
     if (!b) return "";
     const filler = data.masters.find((m) => m.id === b.fillerId)?.name || b.fillerId;
     return `<div class="notice"><h3>Boost schedule and rewards</h3><p>From a fresh request at normal streak ${b.startStreak}: Complete ${b.fillerCompletionsBeforeMain} ${escapeHtml(filler)} tasks before the next ${escapeHtml(plan.master.name)} request, for completion #${b.nextMainCompletion}. Completing that milestone task awards <strong>${b.nextMainReward} points</strong>; merely receiving it earns none.</p><p>The estimate includes filler requests, combat/travel and the current completion-count phase. Paid skips do not advance the schedule. Filler blocks: ${b.fillerBlocks.length} recorded actual blocks${plan.master.group === data.masters.find((m) => m.id === b.fillerId)?.group ? " (shared with this proposed list)" : ""}.</p><p class="small muted">The point-farming rate covers both masters over a full 1,000-completion reward cycle (${b.rewardPer1000.toFixed(0)} points). It excludes the first four unrewarded tasks of a fresh streak. Simulate for actual funds, the current task, cape effects and the selected hunt stopping event.</p><button data-issue-route="tasks" data-issue-master="${escapeHtml(b.fillerId)}">Review filler blocks and methods</button></div>`;
+  }
+
+  // src/ui/interface-icons.ts
+  var paths = {
+    plan: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>',
+    account: '<circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3M4 4l2-2m12 0 2 2"/>',
+    tasks: '<path d="M9 6h11M9 12h11M9 18h11M3 6l1 1 2-2m-3 7 1 1 2-2m-3 7 1 1 2-2"/>',
+    methods: '<path d="m14 3 7 0 0 7-11 11-7-7L14 3Zm-4 11 4-4M3 21l4-4m-4-4 8 8"/>',
+    compare: '<rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><path d="M6 9h1m-1 4h1m10-4h1m-1 4h1"/>',
+    data: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/>'
+  };
+  function interfaceIcon(name) {
+    return `<svg class="interface-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths[name] || paths.plan}</svg>`;
   }
 
   // src/ui/hunt-actions.ts
@@ -1873,9 +4898,9 @@
     let html = `<section class="card"><h2>Import RuneLite quests</h2><p>Choose a local quest JSON export or paste its contents. Review it before applying it to <strong>${esc2(p2.name)}</strong>. Missing quests stay unknown; imported quests can be overridden below.</p><div class="tools"><button data-action="choose-quests">Choose quest JSON</button><button data-action="export-profile">Export profile backup</button></div><details><summary>Paste quest JSON</summary><label>RuneLite quest JSON<textarea id="quest-json" rows="5" maxlength="2000000" placeholder="Paste a RuneLite quest export here">${esc2(draft)}</textarea></label><button data-action="preview-quests">Review pasted quests</button></details><details><summary>How to export from RuneLite</summary><ol><li>Install <a href="https://runelite.net/plugin-hub/show/character-export" target="_blank" rel="noopener">Character Export</a> from the RuneLite Plugin Hub and enable quest exporting.</li><li>Log in to the character, use the plugin's Sync Available / Open Folder controls, and choose <strong>quests.json</strong>.</li><li>The folder is <code>.runelite/character-exporter/&lt;Character Name&gt;/</code> in your user folder.</li></ol><p class="small muted">Also accepts the quest records in an OSRS MCP Companion account JSON. Only matching quest states and source details are retained. Bank, inventory, skills and diaries are not imported by this action. No WikiSync API or account login is used by the planner.</p></details>`;
     if (saved) html += `<p class="notice">Last quest import: ${esc2(saved.format)} \xB7 ${esc2(saved.playerName || "Account not supplied")} \xB7 Exported ${esc2(saved.exportedAt || "time unknown")} \xB7 ${Object.keys(saved.states).length} relevant quest states. <button data-action="clear-imported-quests">Remove imported quests</button></p>`;
     if (preview) {
-      const names3 = Object.keys(preview.states).sort(), conflicts = names3.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
+      const names4 = Object.keys(preview.states).sort(), conflicts = names4.filter((k) => p2.quests[k] != null && p2.quests[k] !== preview.states[k]);
       const accountMismatch = preview.playerName && saved?.playerName && preview.playerName.toLowerCase() !== saved.playerName.toLowerCase();
-      html += `<div class="notice"><h3>Review quest import</h3><p>${esc2(preview.format)} \xB7 ${esc2(preview.playerName || "Account not supplied")} \xB7 Exported ${esc2(preview.exportedAt || "time unknown")}</p><p>${names3.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc2(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names3.map((name) => `<tr><td>${esc2(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc2(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
+      html += `<div class="notice"><h3>Review quest import</h3><p>${esc2(preview.format)} \xB7 ${esc2(preview.playerName || "Account not supplied")} \xB7 Exported ${esc2(preview.exportedAt || "time unknown")}</p><p>${names4.length} matching quests of ${preview.total} records. ${preview.ignored.length} outside this planner's requirements; ${conflicts.length} differ from manual quest overrides.</p>${preview.warnings.map((w) => `<p>${esc2(w)}</p>`).join("")}${accountMismatch ? "<p>The account differs from the previous import. Applying this file replaces its imported quest snapshot.</p>" : ""}<label class="check"><input type="checkbox" id="preserve-quest-overrides" ${preserve ? "checked" : ""}>Keep existing manual quest overrides</label><p class="small">Applying replaces the imported quest snapshot. Area overrides, levels, diaries, points and purchased unlocks are preserved.</p><div class="tablewrap data-list"><table><thead><tr><th>Quest</th><th>Current</th><th>Imported</th><th>After applying</th></tr></thead><tbody>${names4.map((name) => `<tr><td>${esc2(name)}</td><td>${questLabel(questState(p2, name))}</td><td>${questLabel(preview.states[name])}</td><td>${questLabel(preserve && p2.quests[name] != null ? p2.quests[name] : preview.states[name])}${preserve && p2.quests[name] != null ? " (manual)" : ""}</td></tr>`).join("")}</tbody></table></div><div class="tools"><button data-action="apply-quests">Apply quests to ${esc2(p2.name)}</button><button data-action="cancel-quests">Cancel import</button></div></div>`;
     }
     return html + "</section>";
   }
@@ -1895,7 +4920,8 @@
     "data-method",
     "data-method-field",
     "data-offer",
-    "data-offer-field"
+    "data-offer-field",
+    "data-picker-for"
   ];
   var rememberedOpen = /* @__PURE__ */ new Set();
   function fieldSelector(active) {
@@ -2039,11 +5065,11 @@
 
   // src/ui/mortimer-rules.ts
   var esc5 = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-  var names2 = { points: "Points", quantity: "Quantity", clue: "Clue", superior: "Superior unique", xp: "Slayer XP" };
+  var names3 = { points: "Points", quantity: "Quantity", clue: "Clue", superior: "Superior unique", xp: "Slayer XP" };
   var percent = (value) => (value * 100).toFixed(2).replace(/\.00$/, "") + "%";
   function renderMortimerSummary(p2) {
     const kinds = p2.mortimerTasks === null ? null : mortimerKinds(p2.mortimerTasks);
-    return `<div class="notice"><strong>Every Mortimer option has a modifier.</strong> ${kinds ? `${kinds.length} unlocked types: ${kinds.map((k) => names2[k]).join(", ")} \xB7 ${percent(1 / kinds.length)} each.` : "Enter completed Mortimer tasks to determine the unlocked types."} Values are equally likely in five-step increments. <button data-action="mortimer-rules">Modifier probabilities & ranges</button></div>`;
+    return `<div class="notice"><strong>Every Mortimer option has a modifier.</strong> ${kinds ? `${kinds.length} unlocked types: ${kinds.map((k) => names3[k]).join(", ")} \xB7 ${percent(1 / kinds.length)} each.` : "Enter completed Mortimer tasks to determine the unlocked types."} Values are equally likely in five-step increments. <button data-action="mortimer-rules">Modifier probabilities & ranges</button></div>`;
   }
   function rangeCell(bounds, kind) {
     if (bounds === null) return '<span class="muted">N/A</span>';
@@ -2054,7 +5080,7 @@
   function renderMortimerRules(p2) {
     const active = p2.mortimerTasks === null ? [] : mortimerKinds(p2.mortimerTasks);
     const source = MORTIMER_RULES.source;
-    return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names2[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc5(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc5(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc5(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
+    return `<section class="card" id="mortimer-modifiers"><h2>Mortimer modifier rules</h2>${renderMortimerSummary(p2)}<p>Each offered task receives one modifier. The type is chosen equally from the unlocked categories; different options can have the same type. A third task choice unlocks at ${MORTIMER_RULES.thirdChoiceAt} completed tasks.</p><div class="chips">${MORTIMER_RULES.categories.map((c) => `<span class="chip">${names3[c.kind]} \xB7 ${c.tasks} tasks \xB7 ${p2.mortimerTasks === null ? "progress unknown" : active.includes(c.kind) ? percent(1 / active.length) : "locked"}</span>`).join("")}</div><p>Ranges below use increments of ${MORTIMER_RULES.step}. The per-value probabilities are <strong>within that modifier type</strong>; multiply by the type's chance for the probability on an offered task. Quantity changes are flat kills. Percentage columns are bonus percentages.</p><p class="small muted">Value model: equally likely discrete values, as confirmed for this planner. N/A is retained where no numeric bonus range is published; it does not create a new modifier exclusion rule. Simulations apply quantity and point rolls; XP, clue and superior bonus values are recorded but do not add XP or superior-loot calculations.</p><p><a href="${esc5(source.url)}?oldid=${source.revision}" target="_blank" rel="noopener">Wiki range table (revision ${source.revision})</a> \xB7 <a href="${esc5(MORTIMER_RULES.officialSource.url)}" target="_blank" rel="noopener">Jagex rules and balancing update</a></p><div class="tablewrap data-list"><table><thead><tr><th>Task</th><th>Quantity adjustment</th><th>Reward points</th><th>Clue bonus</th><th>Slayer XP bonus</th><th>Superior unique bonus</th></tr></thead><tbody>${MORTIMER_RULES.tasks.map((t) => `<tr><td>${esc5(t.name)}</td>${["quantity", "points", "clue", "xp", "superior"].map((k) => `<td>${rangeCell(t[k], k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="small muted">Mortimer rules ${MORTIMER_RULES.version}. The July 27 Venator superior-bonus update (200\u2013300%) takes precedence over the older table in the same Jagex post and matches the pinned Wiki row.</p></section>`;
   }
 
   // src/ui/visibility.ts
@@ -26285,14 +29311,14 @@
     safe(value);
     if (!value || typeof value !== "object" || !Array.isArray(value.quests) || !value.quests.length || value.quests.length > 1e3) throw Error("Choose a RuneLite quest export containing a non-empty quests array.");
     if (value.schemaVersion !== void 0 && value.schemaVersion !== 1) throw Error("Unsupported RuneLite export schema version.");
-    const names3 = new Map(relevantQuests(data).map((name) => [normal(name), name]));
+    const names4 = new Map(relevantQuests(data).map((name) => [normal(name), name]));
     const states = {}, seen = /* @__PURE__ */ new Map(), ignored = [];
     for (const row of value.quests) {
       if (!row || typeof row !== "object" || typeof row.name !== "string" || typeof row.state !== "string") throw Error("Quest entries need a name and textual RuneLite state.");
       const title = typeof row.displayName === "string" ? row.displayName : row.name;
       if (!title.trim() || title.length > 120) throw Error("Invalid quest name.");
       if (!Object.hasOwn(STATE, row.state)) throw Error(`Unsupported state for ${title}: ${row.state}.`);
-      const state2 = STATE[row.state], key = normal(title), name = names3.get(key) || names3.get(normal(row.name));
+      const state2 = STATE[row.state], key = normal(title), name = names4.get(key) || names4.get(normal(row.name));
       if (seen.has(key) && seen.get(key) !== state2) throw Error(`Conflicting duplicate quest: ${title}.`);
       seen.set(key, state2);
       if (name) {
@@ -52406,7 +55432,7 @@
   function renderShell() {
     const restore = preserveView();
     document.body.classList.toggle("compact-hunt", state.compact);
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc6(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.6.2 \xB7 ${esc6(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc6(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo ? "" : "disabled"}>Undo</button><button data-qol="redo" ${state.history.canRedo ? "" : "disabled"}>Redo</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${interfaceIcon(id)}<span>${label}</span></button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.7.0 \xB7 ${esc6(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -52414,6 +55440,7 @@
   }
   function renderMessage() {
     $("message").innerHTML = state.message || state.saveError ? `<div class="notice ${state.saveError ? "error" : ""}">${esc6(state.message || state.saveError)} <button data-action="dismiss">Dismiss</button></div>` : "";
+    decorateCreatureText($("message"));
   }
   function renderStatus() {
     $("status").innerHTML = Object.keys(state.busy).length ? `<span>${Object.entries(state.busy).map(([k, v]) => `${esc6(k)}: ${v.done}/${v.total}`).join(" \xB7 ")}</span><button data-action="cancel">Cancel calculations</button>` : `<span>${state.plans.length} master plans \xB7 ${p().assumeUnknown ? "Conditional assumptions enabled" : "Confirmed facts required"}</span>`;
@@ -52421,8 +55448,13 @@
   function renderContent() {
     const restore = preserveView();
     const renderers = { plan: renderPlan, account: renderAccount, tasks: renderTasks, methods: renderMethods, compare: renderCompare, data: renderData };
-    $("content").innerHTML = renderers[state.route]();
+    const content = $("content"), routeChanged = content.dataset.view !== state.route;
+    content.innerHTML = renderers[state.route]();
+    content.dataset.view = state.route;
+    decorateCreatureText(document.getElementById("app"));
+    enhanceCreaturePickers(document.getElementById("app"));
     restore();
+    if (routeChanged && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) content.animate([{ opacity: 0, transform: "translateY(7px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 220, easing: "ease-out" });
   }
   function head(eyebrow, title, description) {
     return `<div class="pagehead"><div><div class="eyebrow">${esc6(eyebrow)}</div><h1>${esc6(title)}</h1><p>${esc6(description)}</p></div></div>`;
@@ -52432,19 +55464,21 @@
     const current = visiblePlans.find((r) => r.master.id === state.selected), best = state.plans.find((r) => r.chance !== null);
     const nav = renderHuntNav(catalogue, p(), visiblePlans, state.selected, state.compact, state.history.canUndo, state.history.canRedo, state.selectedPresetId, !!window.slayerDesktop, state.pin);
     if (state.compact) return nav + `<p class="small muted">Hunting: ${p().goal.targets.map((t) => esc6(catalogue.variants.find((v) => v.id === t.variantId)?.name)).join(", ")}</p>` + (current ? planDetails(current, true) : "<p>Calculating hunt\u2026</p>");
-    let html = head("YOUR NEXT HUNT", "Plan a creature hunt.", "Choose the stopping event, then compare assignment chances and legal strategies.");
+    let html = '<div class="hunt-intro">' + head("THE HUNT STARTS HERE", "Your next hunt", "Choose a creature. Find your master. Make every task count.");
+    const targets = p().goal.targets.map((t) => catalogue.variants.find((v) => v.id === t.variantId)).filter((v) => !!v);
+    html += `<div class="hunt-targets" aria-label="Current hunt targets">${targets.map((v) => `<div class="target-emblem">${creatureIcon(v.id, true)}<div><span class="eyebrow">HUNTING</span><strong>${esc6(v.name)}</strong></div></div>`).join("")}</div></div>`;
     html += nav;
-    html += `<section class="card plan-setup"><div class="formgrid">${select("goal.kind", "Finish when\u2026", [["offer", "A compatible target task is offered"], ["kills", "Target kill quantity is reached"], ["drop", "Selected item drops"]], p().goal.kind)}${select("objective", "Rank plans by", [["time", "Lowest estimated waiting time"], ["chance", "Highest target chance per offer"], ["points", "Lowest estimated points within session limit"]], p().objective)}${select("strategy", "Strategy", [["none", "Complete tasks without skipping"], ["sustainable", "Sustainable skips (long-run)"], ["funded", "Spend available points"], ["boost-turael", "Turael milestone boosting"], ["boost-mazchna", "Mazchna milestone boosting"], ["reset-turael", "Turael resets (streak changes)"]], p().strategy)}</div>${p().goal.targets.map((t, i) => `<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options(catalogue.assignments.map((a) => [a.id, a.name]), t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options(catalogue.variants.filter((v) => v.assignmentIds.includes(t.assignmentId)).map((v) => [v.id, v.name]), t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length === 1 ? "disabled" : ""}>Remove</button></div>`).join("")}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
+    html += `<div class="plan-grid"><section class="card plan-setup"><div class="section-heading">${interfaceIcon("plan")}<div><h2>Hunt setup</h2><p class="small muted">Your target, your stopping point, your strategy.</p></div></div><div class="formgrid">${select("goal.kind", "Finish when\u2026", [["offer", "A compatible target task is offered"], ["kills", "Target kill quantity is reached"], ["drop", "Selected item drops"]], p().goal.kind)}${select("objective", "Rank plans by", [["time", "Lowest estimated waiting time"], ["chance", "Highest target chance per offer"], ["points", "Lowest estimated points within session limit"]], p().objective)}${select("strategy", "Strategy", [["none", "Complete tasks without skipping"], ["sustainable", "Sustainable skips (long-run)"], ["funded", "Spend available points"], ["boost-turael", "Turael milestone boosting"], ["boost-mazchna", "Mazchna milestone boosting"], ["reset-turael", "Turael resets (streak changes)"]], p().strategy)}</div>${p().goal.targets.map((t, i) => `<div class="targetrow"><label>Assignment<select data-target="${i}" data-target-field="assignmentId">${options(catalogue.assignments.map((a) => [a.id, a.name]), t.assignmentId)}</select></label><label>Desired monster variant<select data-target="${i}" data-target-field="variantId">${options(catalogue.variants.filter((v) => v.assignmentIds.includes(t.assignmentId)).map((v) => [v.id, v.name]), t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length === 1 ? "disabled" : ""}>Remove</button></div>`).join("")}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
     if (p().goal.kind === "kills") html += `<div class="formgrid">${input("goal.quantity", "Target kills needed", p().goal.quantity, 1, 1e7)}</div>`;
     if (p().goal.kind === "drop") {
       const drops = catalogue.variants.filter((v) => p().goal.targets.some((t) => t.variantId === v.id)).flatMap((v) => v.drops);
       html += `<div class="formgrid">${select("goal.dropId", "Sourced drop", [["", "Choose a drop"], ...drops.map((d) => [d.id, d.name])], p().goal.dropId)}${input("goal.customDropRate", "Optional custom per-kill probability (0\u20131)", p().goal.customDropRate, 0, 1, "any")}</div><p class="goalhint">Direct drops only. Custom rates are assumptions; superior spawn/drop tables are not included.</p>`;
     }
     html += `<details><summary>Points, streak and session assumptions</summary><div class="formgrid">${input("points", "Starting points", p().points)}${input("reserve", "Minimum point reserve", p().reserve)}${input("streaks.normal", "Normal streak", p().streaks.normal)}${input("streaks.mortimer", "Mortimer streak", p().streaks.mortimer)}${input("streaks.wilderness", "Wilderness streak", p().streaks.wilderness)}${input("mortimerTasks", "Mortimer tasks completed", p().mortimerTasks)}${input("milestone", "Boost milestone (10 / 50 / 100 / 250 / 1000)", p().milestone, 10, 1e3)}${input("simulation.sessionHours", "Session / point-objective time limit (hours)", p().simulation.sessionHours, 0.01, 1e4, ".1")}${input("skipSeconds", "Seconds per skip / reset", p().skipSeconds, 0, 1e4)}${input("requestMinutes", "Minutes per task request", p().requestMinutes, 0, 1e4, ".1")}</div>${bool("applySetup", "Pay for new blocks before the hunt", p().applySetup)}<p class="small muted">Funded simulation never spends future rewards. Long-run sustainability is a separate model.</p></details></section>`;
-    if (p().strategy === "funded") html += `<div class="notice">The table is an unlimited-funds offer benchmark. Your starting points and reserve can force tasks to be completed instead of skipped; simulate the full hunt for its actual time and rewards.</div>`;
-    if (best) html += `<section class="card hero"><div class="eyebrow">${p().strategy === "funded" ? "UNLIMITED-FUNDS BENCHMARK" : "BEST ANALYTICAL OFFER ESTIMATE"}</div><h2>${esc6(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>${offerTimeLabel(p())}</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>${best.boost ? "Effective target / request" : best.reset ? "Target opportunity / request (incl. Turael)" : "Target opportunity / offer"}</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Requests including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc6(best.quality)}</p></section>`;
-    else html += `<div class="notice">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
-    html += `<section id="master-comparison"><h2>Master comparison</h2><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>${p().strategy === "funded" ? "Unlimited-funds benchmark" : p().strategy.startsWith("boost") ? "Boost offer estimate" : "Offer estimate"}</th><th>${p().strategy.startsWith("boost") ? "Effective target / request" : p().strategy === "reset-turael" ? "Target / request (incl. Turael)" : "Target / offer"}</th><th>Blocks</th><th>Setup cost</th><th>Long-run points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}">${esc6(r.master.name)}</button><small>${esc6(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc6(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned === null || r.pointsSpent === null ? "Use simulation" : r.pointsEarned.toFixed(1) + " earned<br>" + r.pointsSpent.toFixed(1) + " spent"}</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
+    if (p().strategy === "funded") html += `<div class="notice funded-note">The table is an unlimited-funds offer benchmark. Your starting points and reserve can force tasks to be completed instead of skipped; simulate the full hunt for its actual time and rewards.</div>`;
+    if (best) html += `<section class="card hero"><div class="eyebrow">${p().strategy === "funded" ? "UNLIMITED-FUNDS BENCHMARK" : "RECOMMENDED MASTER"}</div><h2>${esc6(best.master.name)} ${best.unknown.length ? '<span class="badge">Conditional scenario</span>' : ""}</h2><div class="metrics"><div class="metric"><small>${offerTimeLabel(p())}</small><strong>${time(best.hours)}</strong><span>Before target combat; not the full funded hunt</span></div><div class="metric"><small>${best.boost ? "Effective target / request" : best.reset ? "Target opportunity / request (incl. Turael)" : "Target opportunity / offer"}</small><strong>${pct(best.chance)}</strong></div><div class="metric"><small>Requests including success</small><strong>${num(best.offers, 1)}</strong></div></div><p class="small muted">${esc6(best.quality)}</p></section>`;
+    else html += `<div class="notice plan-pending">${state.plans.length ? "No unconditional plan is available. Review account requirements, target method and block conflicts." : "Calculating master plans\u2026"}</div>`;
+    html += `</div><section id="master-comparison"><div class="section-heading">${interfaceIcon("compare")}<div><h2>Compare your masters</h2><p class="small muted">Find the best route to your next assignment.</p></div></div><p class="small muted">Analytical estimates compare stationary task offers. Simulate funded, boosting, reset, cape, kill and drop goals for their full result.</p><div class="tools"><label class="check"><input id="show-unavailable" type="checkbox" ${state.showUnavailable ? "checked" : ""}>Show unavailable masters (${state.plans.filter((r) => r.chance === null).length})</label><span class="small muted">Showing ${visiblePlans.length} of ${state.plans.length} masters</span></div><div class="tablewrap"><table><thead><tr><th>Master</th><th>${p().strategy === "funded" ? "Unlimited-funds benchmark" : p().strategy.startsWith("boost") ? "Boost offer estimate" : "Offer estimate"}</th><th>${p().strategy.startsWith("boost") ? "Effective target / request" : p().strategy === "reset-turael" ? "Target / request (incl. Turael)" : "Target / offer"}</th><th>Blocks</th><th>Setup cost</th><th>Long-run points / h</th></tr></thead><tbody>${visiblePlans.map((r) => `<tr class="${r.master.id === state.selected ? "selected" : ""}"><td><button data-master="${r.master.id}" aria-pressed="${r.master.id === state.selected}">${esc6(r.master.name)}</button><small>${esc6(r.reason || r.unknown.length + " unconfirmed facts")}</small>${renderPlanIssues(catalogue, r, p())}${r.master.id === "mortimer" ? '<button data-action="mortimer-rules">Modifier rules & ranges</button>' : ""}</td><td title="${esc6(planIssueTooltip(r))}">${time(r.hours)}</td><td>${pct(r.chance)}</td><td>${r.blocks.length}</td><td>${r.setupCost}</td><td>${r.pointsEarned === null || r.pointsSpent === null ? "Use simulation" : r.pointsEarned.toFixed(1) + " earned<br>" + r.pointsSpent.toFixed(1) + " spent"}</td></tr>`).join("")}${state.plans.length && !visiblePlans.length ? '<tr><td colspan="6">No available masters for this setup. Tick Show unavailable masters to review the reasons and fixes.</td></tr>' : ""}</tbody></table></div></section>`;
     if (current) html += planDetails(current);
     return html;
   }
@@ -52846,6 +55880,7 @@
         const i = p().goal.targets.findIndex((t) => t.assignmentId === aid);
         focus = document.querySelector('[data-target="' + i + '"][data-target-field="variantId"]');
       }
+      if (focus instanceof HTMLSelectElement && focus.dataset.creatureEnhanced) focus = focus.nextElementSibling;
       focus?.focus({ preventScroll: true });
       (focus || $("content")).scrollIntoView({ block: "start" });
       return;
@@ -53058,6 +56093,7 @@
       state.huntSearch = element.value;
       const plan = state.plans.find((r) => r.master.id === state.selected);
       if (plan) $("hunt-task-results").innerHTML = renderLookup(catalogue, plan, p(), state.huntSearch);
+      decorateCreatureText($("hunt-task-results"));
       return;
     }
     if (element.type === "number") changeInput(event);

@@ -46,6 +46,12 @@ test('duplicated numeric settings restore the main editor without moving it into
   assert.equal(f.focuses[0].field,f.active);
 });
 
+test('creature picker focus follows the visible replacement control after worker refresh',()=>{
+  const f=fixture({'data-picker-for':'0:variantId'});f.active.type='button';
+  const restore=f.preserve(),replacement=f.field('Cerberus');replacement.type='button';f.fields[0]=replacement;restore();
+  assert.equal(f.focuses[0].field,replacement);assert.equal(f.fields[0],replacement);
+});
+
 test('worker content refresh leaves an already-connected editor in place and removed fields stay removed',()=>{
   const f=fixture({'data-setting':'points'}),restore=f.preserve();
   f.active.replaceWith=()=>assert.fail('Connected editor must not move');restore();

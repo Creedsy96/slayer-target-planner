@@ -1,4 +1,6 @@
 import type {Catalogue,Plan,Profile,Simulation} from '../domain/types';
+import {decorateCreatureText} from './creature-art';
+import {enhanceCreaturePickers} from './creature-picker';
 import {blockPreview,fundingForecast,taskAdvice} from '../analysis/hunt-tools';
 import {timingSuggestion} from '../state/hunts';
 export const escapeHtml=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
@@ -8,7 +10,7 @@ const names=(data:Catalogue,ids:string[])=>ids.map(id=>esc(taskName(data,id))).j
 
 export function renderHuntNav(data:Catalogue,p:Profile,plans:Plan[],selected:string,compact:boolean,undo:boolean,redo:boolean,presetId:string,desktop:boolean,pin:boolean):string{
   if(compact)return `<div class="hunt-nav compact-nav"><label>Master<select id="hunt-master">${plans.map(plan=>`<option value="${esc(plan.master.id)}" ${plan.master.id===selected?'selected':''}>${esc(plan.master.name)}</option>`).join('')}</select></label><button data-qol="compact">Full planner</button>${desktop?`<button data-qol="pin" aria-pressed="${pin}">${pin?'Unpin window':'Keep on top'}</button>`:''}<button data-qol="undo" ${undo?'':'disabled'}>Undo</button><button data-qol="redo" ${redo?'':'disabled'}>Redo</button></div>`;
-  return `<div class="hunt-nav" aria-label="Hunt controls"><label>Master<select id="hunt-master">${plans.map(plan=>`<option value="${esc(plan.master.id)}" ${plan.master.id===selected?'selected':''}>${esc(plan.master.name)}${plan.reason?' — review issues':''}</option>`).join('')}</select></label><button data-qol="comparison">Back to comparison</button><button data-qol="compact">${compact?'Full planner':'Compact hunt'}</button><button data-qol="undo" ${undo?'':'disabled'}>Undo</button><button data-qol="redo" ${redo?'':'disabled'}>Redo</button><label>Saved hunt<select id="hunt-preset"><option value="">Choose a hunt…</option>${(p.huntPresets||[]).map(h=>`<option value="${esc(h.id)}" ${h.id===presetId?'selected':''}>${esc(h.name)}</option>`).join('')}</select></label><button data-qol="save-hunt">Save hunt</button><button data-qol="delete-hunt">Delete saved hunt</button></div>`;
+  return `<div class="hunt-nav" aria-label="Hunt controls"><label>Master<select id="hunt-master">${plans.map(plan=>`<option value="${esc(plan.master.id)}" ${plan.master.id===selected?'selected':''}>${esc(plan.master.name)}${plan.reason?' — review issues':''}</option>`).join('')}</select></label><button data-qol="comparison">Back to comparison</button><button data-qol="compact">Compact hunt</button><button data-qol="undo" ${undo?'':'disabled'}>Undo</button><button data-qol="redo" ${redo?'':'disabled'}>Redo</button><details class="toolbar-saved"><summary>Saved hunts</summary><div class="saved-hunt-menu"><label>Saved hunt<select id="hunt-preset"><option value="">Choose a hunt…</option>${(p.huntPresets||[]).map(h=>`<option value="${esc(h.id)}" ${h.id===presetId?'selected':''}>${esc(h.name)}</option>`).join('')}</select></label><div class="tools"><button data-qol="save-hunt">Save hunt</button><button data-qol="delete-hunt">Delete saved hunt</button></div></div></details></div>`;
 }
 export function renderLookup(data:Catalogue,plan:Plan,p:Profile,query:string):string{
   if(!query.trim())return '<p class="small muted">Search an offered assignment or monster variant to see what to do.</p>';
@@ -40,6 +42,6 @@ export function renderTimingSuggestion(p:Profile,aid:string,vid:string):string{
 export function reviewDialog(title:string,body:string,commit='Apply'):Promise<FormData|null>{
   const dialog=document.createElement('dialog');dialog.className='review-dialog';
   dialog.innerHTML=`<form method="dialog"><h2>${esc(title)}</h2>${body}<p class="dialog-error" role="alert"></p><div class="tools"><button value="save">${esc(commit)}</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
-  document.body.append(dialog);dialog.showModal();
+  document.body.append(dialog);decorateCreatureText(dialog);enhanceCreaturePickers(dialog);dialog.showModal();
   return new Promise(resolve=>dialog.addEventListener('close',()=>{const fields=dialog.returnValue==='save'?new FormData(dialog.querySelector('form')!):null;dialog.remove();resolve(fields);},{once:true}));
 }
