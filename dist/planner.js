@@ -71,6 +71,43 @@
     }).join("")}</tbody></table></div></section>`;
   }
 
+  // src/ui/view.ts
+  var fieldAttributes = [
+    "data-setting",
+    "data-target",
+    "data-target-field",
+    "data-method",
+    "data-method-field",
+    "data-offer",
+    "data-offer-field"
+  ];
+  function fieldSelector(active) {
+    if (!active) return null;
+    if (active.id) return "#" + CSS.escape(active.id);
+    return fieldAttributes.filter((key) => active.hasAttribute(key)).map((key) => "[" + key + '="' + CSS.escape(active.getAttribute(key)) + '"]').join("") || null;
+  }
+  function preserveView() {
+    const opened = Array.from(document.querySelectorAll("details[open]")).map((e) => e.querySelector("summary")?.textContent);
+    const active = document.activeElement;
+    const selector = fieldSelector(active);
+    const index = selector ? Array.from(document.querySelectorAll(selector)).indexOf(active) : -1;
+    const y = window.scrollY;
+    return () => {
+      document.querySelectorAll("details").forEach((e) => {
+        if (opened.includes(e.querySelector("summary")?.textContent)) e.open = true;
+      });
+      if (selector) {
+        let next = document.querySelectorAll(selector)[index];
+        if (next && active?.type === "number" && next !== active) {
+          next.replaceWith(active);
+          next = active;
+        }
+        next?.focus({ preventScroll: true });
+      }
+      window.scrollTo({ top: y });
+    };
+  }
+
   // src/ui/themes.ts
   var THEMES = [
     ["woodland", "Woodland"],
@@ -49548,21 +49585,9 @@
   function fieldValue(path) {
     return path.split(".").reduce((v, k) => v?.[k], p());
   }
-  function preserveView() {
-    const opened = Array.from(document.querySelectorAll("details[open]")).map((e) => e.querySelector("summary")?.textContent), active = document.activeElement;
-    const selector = active?.id ? "#" + CSS.escape(active.id) : active?.dataset.setting ? '[data-setting="' + CSS.escape(active.dataset.setting) + '"]' : null;
-    const y = window.scrollY;
-    return () => {
-      document.querySelectorAll("details").forEach((e) => {
-        if (opened.includes(e.querySelector("summary")?.textContent)) e.open = true;
-      });
-      if (selector) document.querySelector(selector)?.focus({ preventScroll: true });
-      window.scrollTo({ top: y });
-    };
-  }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">Blank account facts stay unknown. Game eligibility and personal preferences are separate.</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.2 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc2(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">Blank account facts stay unknown. Game eligibility and personal preferences are separate.</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.2.1 \xB7 ${esc2(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -50059,7 +50084,9 @@
       update((q) => setSetting(q, key, value));
     }
   }
-  document.addEventListener("change", changeInput);
+  document.addEventListener("change", (event) => {
+    if (event.target.type !== "number") changeInput(event);
+  });
   document.addEventListener("input", (event) => {
     const element = event.target;
     if (element.id === "quest-json") state.questDraft = element.value;
