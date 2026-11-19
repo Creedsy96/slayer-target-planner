@@ -1,0 +1,44 @@
+import {packager} from '@electron/packager';
+import {mkdir, readFile, writeFile, copyFile, access} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import offline from '../desktop/offline-style.cjs';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, '.desktop-build', 'output');
+const stage = path.join(root, '.desktop-build', 'app');
+const manifest = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
+const web = path.join(stage, 'web');
+await mkdir(web, {recursive: true});
+await mkdir(path.join(stage, 'assets'), {recursive: true});
+// Deliberate allowlist: no Git, hosting credentials, test output or browser data.
+for (const file of ['data.js', 'engine.js', 'preferences.js', 'app.js']) {
+  await copyFile(path.join(root, 'dist', file), path.join(web, file));
+}
+await copyFile(path.join(root, 'desktop', 'main.cjs'), path.join(stage, 'main.cjs'));
+await copyFile(path.join(root, 'desktop', 'navigation.cjs'), path.join(stage, 'navigation.cjs'));
+await copyFile(path.join(root, 'desktop', 'icon.ico'), path.join(stage, 'assets', 'icon.ico'));
+await copyFile(path.join(root, 'desktop', 'icon.png'), path.join(web, 'app-icon.png'));
+let html = await readFile(path.join(root, 'dist', 'index.html'), 'utf8');
+const policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
+html = html.replace('<head>', `<head>\n  <meta http-equiv="Content-Security-Policy" content="${policy}">\n  <link rel="icon" href="app-icon.png">`)
+  .replace('<span class="brand-icon" aria-hidden="true">✧</span>', '<img class="desktop-brand-icon" src="app-icon.png" alt="">')
+  .replace('A better route to your next assignment', 'Private desktop edition')
+  .replace('The desktop copy works offline.', 'This desktop edition works offline.');
+await writeFile(path.join(web, 'index.html'), html);
+const css = offline.offlineStyle(await readFile(path.join(root, 'dist', 'style.css'), 'utf8'));
+await writeFile(path.join(web, 'style.css'), css);
+await writeFile(path.join(stage, 'package.json'), JSON.stringify({
+  name: 'slayer-target-planner', productName: 'Slayer Target Planner', version: manifest.version,
+  description: 'Offline Slayer master comparison and creature target planner', main: 'main.cjs',
+  author: 'Owen Welch', private: true,
+}, null, 2));
+await access(path.join(root, 'desktop', 'icon.ico'));
+const folders = await packager({
+  dir: stage, name: 'Slayer Target Planner', executableName: 'Slayer Target Planner',
+  platform: 'win32', arch: 'x64', electronVersion: manifest.devDependencies.electron,
+  asar: true, prune: false, out: output, overwrite: false,
+  icon: path.join(root, 'desktop', 'icon.ico'), appVersion: manifest.version,
+  win32metadata: {CompanyName: 'Owen Welch', FileDescription: 'Slayer Target Planner', ProductName: 'Slayer Target Planner'},
+});
+console.log(JSON.stringify({folders, electron:manifest.devDependencies.electron, version:manifest.version}));
