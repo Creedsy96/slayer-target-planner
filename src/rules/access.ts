@@ -29,7 +29,10 @@ export function relevantQuests(data:Catalogue):string[] {
 export function knownAccessKeys(data:Catalogue):string[]{
   const keys=new Set(AREA_RULES.map(r=>r.key));
   const add=(r:Requirement):void=>{if(r.kind==='access'&&r.key)keys.add(r.key);r.items?.forEach(add);};
-  data.variants.forEach(v=>v.requirements.forEach(add));
+  data.variants.forEach(v=>{
+    v.requirements.forEach(add);
+    Object.values(v.masterLocations||{}).flat().forEach(location=>keys.add('location:'+location));
+  });
   data.masters.forEach(m=>{
     m.requirements.forEach(add);
     m.tasks.forEach(t=>{t.requirements.forEach(add);t.locations?.forEach(l=>keys.add('location:'+l));});

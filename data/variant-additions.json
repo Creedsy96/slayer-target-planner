@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-11-19.1",
+  "variants": [
+    {
+      "id": "black-dragon",
+      "name": "Black dragon (level 227)",
+      "assignmentIds": [
+        "black dragons"
+      ],
+      "hp": 190,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Black dragon",
+        "url": "https://oldschool.runescape.wiki/w/Black_dragon",
+        "revision": 15286221
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "krystilia": [
+          "black dragons"
+        ],
+        "konar": [
+          "black dragons"
+        ],
+        "nieve": [
+          "black dragons"
+        ],
+        "duradel": [
+          "black dragons"
+        ]
+      },
+      "masterLocations": {
+        "krystilia": [
+          "Lava Maze Dungeon"
+        ]
+      }
+    },
+    {
+      "id": "black-dragon-wilderness-slayer-cave",
+      "name": "Black dragon (Wilderness Slayer Cave)",
+      "assignmentIds": [
+        "black dragons"
+      ],
+      "hp": 250,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Black dragon",
+        "url": "https://oldschool.runescape.wiki/w/Black_dragon",
+        "revision": 15286221
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "krystilia": [
+          "black dragons"
+        ],
+        "nieve": [
+          "black dragons"
+        ],
+        "duradel": [
+          "black dragons"
+        ]
+      },
+      "masterLocations": {
+        "krystilia": [
+          "Wilderness Slayer Cave"
+        ]
+      }
+    }
+  ]
+}

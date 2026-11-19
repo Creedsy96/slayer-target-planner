@@ -1,10 +1,10 @@
-# Slayer Target Planner 2.4.2
+# Slayer Target Planner 2.5
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.4.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.5 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
 
@@ -35,7 +35,7 @@ Use **Theme** in the header to choose Woodland, Midnight, Ember, Amethyst, Dayli
 ## Planning a hunt
 
 1. Create a named profile or duplicate the illustrative example. Enter skills, quest stages, purchased unlocks, diaries, points and streaks under **Account & access**. Blank facts remain unknown. A conditional scenario can assume unknown access; it is visibly labelled.
-2. Choose an assignment and desired monster variant. The catalogue has 117 assignment types, 269 variants and ten distinct masters. Receiving a Basilisk assignment does not grant Basilisk Knight access. Unsupported relationships cannot be selected as verified alternatives.
+2. Choose an assignment and desired monster variant. The catalogue has 117 assignment types, 271 variants and ten distinct masters. Receiving a Basilisk assignment does not grant Basilisk Knight access. Unsupported relationships cannot be selected as verified alternatives.
 3. Record actual blocks, edit proposed lists and keep/skip/protect preferences under **Tasks & blocks**. Beginner lists are shared by Turael/Aya and Spria. Other groups remain separate. Explicit zero slots work; ordinary caps derive from quest points and the elite Lumbridge diary, while Mortimer has two.
 4. Set measured kills/hour or combat minutes/task, or an effective-DPS estimate, under **Combat methods**. Travel is added once. Methods support extensions, bracelets, locations and reusable presets.
 5. Choose an offer, kill-count or direct-drop stopping event and acceptable targets. The master table is a stationary offer estimate. Use **Simulate** for funded points, streaks, current tasks/offers, boosts, resets, cape policies and the full hunt. **Search blocks for full hunt goal** tests a bounded set of candidates using the selected stopping event.
@@ -44,6 +44,8 @@ Use **Theme** in the header to choose Woodland, Midnight, Ember, Amethyst, Dayli
 The original v1 storage key is retained and backed up before migration. Missing new account facts remain unknown; old exclusions become preferences, not invented quest facts. Export the original backup from **Data & sources**. Different data snapshots require explicit review and rebasing a copy before import.
 
 ## Calculation limits
+
+Krystilia's default Black dragons completion method now uses reviewed regular Wilderness-compatible dragons. The level-227 variant has 190 HP and the Wilderness Slayer Cave variant 250 HP. Cerberus remains outside her assignment area. Issue panels distinguish target restrictions from incompatible methods on other assignments; saved method choices remain editable. The two additive variants and their pinned source are in `data/variant-additions.json` and `data/variant-sources/`.
 
 Mortimer's **Modifier rules & ranges** button opens the full 29-task table in **Data & sources**. Every option receives one uniformly chosen unlocked modifier; values within a modifier range are equally likely in steps of five under the confirmed planning rule. The table shows valid outcome counts and conditional per-value chances. Quantity modifiers are flat kills, including negative reductions. The corrected ranges are reproducibly generated in `data/mortimer-modifiers.json` and overlaid by the shared core without changing account facts or the base catalogue. Simulations and exports identify the applied Mortimer rule version.
 
@@ -77,6 +79,7 @@ Use Node.js 22.12+ (release build: bundled Node.js 24.22.1) and Python 3.12+.
 npm ci
 npm run build:data
 python tools/build_mortimer_modifiers.py
+python tools/build_variant_additions.py
 npm run typecheck
 npm test
 npm start

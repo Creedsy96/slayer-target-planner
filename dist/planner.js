@@ -53,7 +53,10 @@
       if (r.kind === "access" && r.key) keys.add(r.key);
       r.items?.forEach(add);
     };
-    data.variants.forEach((v) => v.requirements.forEach(add));
+    data.variants.forEach((v) => {
+      v.requirements.forEach(add);
+      Object.values(v.masterLocations || {}).flat().forEach((location) => keys.add("location:" + location));
+    });
     data.masters.forEach((m) => {
       m.requirements.forEach(add);
       m.tasks.forEach((t) => {
@@ -206,10 +209,11 @@
       }
     };
     facts(masterRequirements(plan.master, p2), plan.master.source, plan.master.name);
-    for (const row of plan.rows.filter((r) => r.isTarget || !r.reason && !r.blocked)) {
+    const relevantRows = plan.rows.filter((r) => r.isTarget || !r.reason && !r.blocked).sort((a, b) => Number(b.isTarget) - Number(a.isTarget));
+    for (const row of relevantRows) {
       facts(row.entry.requirements, row.entry.source, row.name);
       facts(row.variant.requirements, row.variant.source, row.variant.name);
-      if (row.methodReason) add({ title: `${row.name}: ${row.variant.name}`, detail: row.methodReason + ". Choose a supported variant or review this completion method.", route: row.isTarget ? "plan" : "methods", action: row.isTarget ? "Review target variant" : "Review completion method", source: row.variant.source, assignmentId: row.id, variantId: row.variant.id, field: "variantId" });
+      if (row.methodReason && (row.isTarget || row.skip < 1)) add({ title: `${row.isTarget ? "Target method" : "Non-target method"}: ${row.name} \u2192 ${row.variant.name}`, detail: row.methodReason + ". " + (row.isTarget ? "Choose a supported target variant." : "This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment."), route: row.isTarget ? "plan" : "methods", action: row.isTarget ? "Review target variant" : "Review completion method", source: row.variant.source, assignmentId: row.id, variantId: row.variant.id, field: "variantId" });
       if (row.isTarget && plan.master.id === "konar") locationIssues(row, p2, add);
     }
     for (const message of plan.unknown) {
@@ -25190,6 +25194,119 @@
     attribution: "Game rules and data: Old School RuneScape Wiki, CC BY-NC-SA 3.0. Original planning estimates: supplied workbook. No Wiki scripts are executed."
   };
 
+  // data/variant-additions.json
+  var variant_additions_default = {
+    schemaVersion: 1,
+    version: "2026-11-19.1",
+    variants: [
+      {
+        id: "black-dragon",
+        name: "Black dragon (level 227)",
+        assignmentIds: [
+          "black dragons"
+        ],
+        hp: 190,
+        multiplier: 1,
+        requirements: [
+          {
+            kind: "skill",
+            key: "slayer",
+            min: 0,
+            label: "Slayer"
+          }
+        ],
+        source: {
+          title: "Black dragon",
+          url: "https://oldschool.runescape.wiki/w/Black_dragon",
+          revision: 15286221
+        },
+        status: "reviewed-variant",
+        drops: [],
+        masterAssignments: {
+          krystilia: [
+            "black dragons"
+          ],
+          konar: [
+            "black dragons"
+          ],
+          nieve: [
+            "black dragons"
+          ],
+          duradel: [
+            "black dragons"
+          ]
+        },
+        masterLocations: {
+          krystilia: [
+            "Lava Maze Dungeon"
+          ]
+        }
+      },
+      {
+        id: "black-dragon-wilderness-slayer-cave",
+        name: "Black dragon (Wilderness Slayer Cave)",
+        assignmentIds: [
+          "black dragons"
+        ],
+        hp: 250,
+        multiplier: 1,
+        requirements: [
+          {
+            kind: "skill",
+            key: "slayer",
+            min: 0,
+            label: "Slayer"
+          }
+        ],
+        source: {
+          title: "Black dragon",
+          url: "https://oldschool.runescape.wiki/w/Black_dragon",
+          revision: 15286221
+        },
+        status: "reviewed-variant",
+        drops: [],
+        masterAssignments: {
+          krystilia: [
+            "black dragons"
+          ],
+          nieve: [
+            "black dragons"
+          ],
+          duradel: [
+            "black dragons"
+          ]
+        },
+        masterLocations: {
+          krystilia: [
+            "Wilderness Slayer Cave"
+          ]
+        }
+      }
+    ]
+  };
+
+  // src/rules/variant-additions.ts
+  var VARIANT_ADDITIONS = variant_additions_default.variants;
+  var VARIANT_VERSION = variant_additions_default.version;
+  function applyVariantAdditions(base) {
+    const existing = new Set(base.variants.map((v) => v.id));
+    for (const v of VARIANT_ADDITIONS) {
+      if (existing.has(v.id)) throw Error("Reviewed variant addition conflicts with catalogue: " + v.id);
+      for (const id of v.assignmentIds) if (!base.assignments.some((a) => a.id === id)) throw Error("Unknown reviewed variant assignment: " + id);
+    }
+    return {
+      ...base,
+      variants: [...base.variants, ...VARIANT_ADDITIONS],
+      assignments: base.assignments.map((a) => ({ ...a, variantIds: [...a.variantIds, ...VARIANT_ADDITIONS.filter((v) => v.assignmentIds.includes(a.id)).map((v) => v.id)] })),
+      sources: [...base.sources, ...VARIANT_ADDITIONS.map((v) => v.source).filter((s, i, all) => all.findIndex((other) => other.url === s.url && other.revision === s.revision) === i && !base.sources.some((other) => other.url === s.url && other.revision === s.revision))]
+    };
+  }
+  function methodLocationRestriction(v, master, location) {
+    const allowed = v.masterLocations?.[master.id];
+    if (!location || !allowed || allowed.some((l) => l.toLowerCase() === location.trim().toLowerCase())) return null;
+    return `${master.name} requires ${v.name} at ${allowed.join(" or ")}. The selected method location (${location}) is not valid for this master.`;
+  }
+
   // src/state/profiles.ts
   var SCHEMA = 2;
   var STORAGE = "slayer-target-planner-v2";
@@ -25567,6 +25684,8 @@
       const methodAccess = method.location ? resolveAccess("location:" + method.location, p2) : null;
       if (methodAccess?.value === 0) variant.failed.push(`Method location ${method.location} is locked: ${methodAccess.reason}`);
       if (methodAccess?.value === null) variant.unknown.push(`Method location ${method.location}: ${methodAccess.reason}`);
+      const locationRestriction = methodLocationRestriction(v, m, method.location);
+      if (locationRestriction) variant.failed.push(locationRestriction);
       variant.eligible = !variant.failed.length;
       const timing = taskTiming(entry, v, method);
       const modifier = modifierKinds(p2.mortimerTasks ?? 0, entry);
@@ -25636,7 +25755,7 @@
   }
 
   // src/core.ts
-  var catalogue = applyMortimerRules(catalogue_default);
+  var catalogue = applyVariantAdditions(applyMortimerRules(catalogue_default));
 
   // src/ui/app.ts
   var $ = (id) => document.getElementById(id);
@@ -50564,6 +50683,119 @@
     }) };
   }
 
+  // data/variant-additions.json
+  var variant_additions_default = {
+    schemaVersion: 1,
+    version: "2026-11-19.1",
+    variants: [
+      {
+        id: "black-dragon",
+        name: "Black dragon (level 227)",
+        assignmentIds: [
+          "black dragons"
+        ],
+        hp: 190,
+        multiplier: 1,
+        requirements: [
+          {
+            kind: "skill",
+            key: "slayer",
+            min: 0,
+            label: "Slayer"
+          }
+        ],
+        source: {
+          title: "Black dragon",
+          url: "https://oldschool.runescape.wiki/w/Black_dragon",
+          revision: 15286221
+        },
+        status: "reviewed-variant",
+        drops: [],
+        masterAssignments: {
+          krystilia: [
+            "black dragons"
+          ],
+          konar: [
+            "black dragons"
+          ],
+          nieve: [
+            "black dragons"
+          ],
+          duradel: [
+            "black dragons"
+          ]
+        },
+        masterLocations: {
+          krystilia: [
+            "Lava Maze Dungeon"
+          ]
+        }
+      },
+      {
+        id: "black-dragon-wilderness-slayer-cave",
+        name: "Black dragon (Wilderness Slayer Cave)",
+        assignmentIds: [
+          "black dragons"
+        ],
+        hp: 250,
+        multiplier: 1,
+        requirements: [
+          {
+            kind: "skill",
+            key: "slayer",
+            min: 0,
+            label: "Slayer"
+          }
+        ],
+        source: {
+          title: "Black dragon",
+          url: "https://oldschool.runescape.wiki/w/Black_dragon",
+          revision: 15286221
+        },
+        status: "reviewed-variant",
+        drops: [],
+        masterAssignments: {
+          krystilia: [
+            "black dragons"
+          ],
+          nieve: [
+            "black dragons"
+          ],
+          duradel: [
+            "black dragons"
+          ]
+        },
+        masterLocations: {
+          krystilia: [
+            "Wilderness Slayer Cave"
+          ]
+        }
+      }
+    ]
+  };
+
+  // src/rules/variant-additions.ts
+  var VARIANT_ADDITIONS = variant_additions_default.variants;
+  var VARIANT_VERSION = variant_additions_default.version;
+  function applyVariantAdditions(base) {
+    const existing = new Set(base.variants.map((v) => v.id));
+    for (const v of VARIANT_ADDITIONS) {
+      if (existing.has(v.id)) throw Error("Reviewed variant addition conflicts with catalogue: " + v.id);
+      for (const id of v.assignmentIds) if (!base.assignments.some((a) => a.id === id)) throw Error("Unknown reviewed variant assignment: " + id);
+    }
+    return {
+      ...base,
+      variants: [...base.variants, ...VARIANT_ADDITIONS],
+      assignments: base.assignments.map((a) => ({ ...a, variantIds: [...a.variantIds, ...VARIANT_ADDITIONS.filter((v) => v.assignmentIds.includes(a.id)).map((v) => v.id)] })),
+      sources: [...base.sources, ...VARIANT_ADDITIONS.map((v) => v.source).filter((s, i, all) => all.findIndex((other) => other.url === s.url && other.revision === s.revision) === i && !base.sources.some((other) => other.url === s.url && other.revision === s.revision))]
+    };
+  }
+  function methodLocationRestriction(v, master, location) {
+    const allowed = v.masterLocations?.[master.id];
+    if (!location || !allowed || allowed.some((l) => l.toLowerCase() === location.trim().toLowerCase())) return null;
+    return \`\${master.name} requires \${v.name} at \${allowed.join(" or ")}. The selected method location (\${location}) is not valid for this master.\`;
+  }
+
   // data/area-access.json
   var area_access_default = {
     version: "2026-11-19.1",
@@ -50843,6 +51075,8 @@
       const methodAccess = method.location ? resolveAccess("location:" + method.location, p) : null;
       if (methodAccess?.value === 0) variant.failed.push(\`Method location \${method.location} is locked: \${methodAccess.reason}\`);
       if (methodAccess?.value === null) variant.unknown.push(\`Method location \${method.location}: \${methodAccess.reason}\`);
+      const locationRestriction = methodLocationRestriction(v, m, method.location);
+      if (locationRestriction) variant.failed.push(locationRestriction);
       variant.eligible = !variant.failed.length;
       const timing = taskTiming(entry, v, method);
       const modifier = modifierKinds(p.mortimerTasks ?? 0, entry);
@@ -51205,7 +51439,7 @@
   }
 
   // src/core.ts
-  var catalogue = applyMortimerRules(catalogue_default);
+  var catalogue = applyVariantAdditions(applyMortimerRules(catalogue_default));
 
   // src/worker.ts
   self.onmessage = (event) => {
@@ -51310,7 +51544,7 @@
   }
   function renderShell() {
     const restore = preserveView();
-    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc4(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.4.2 \xB7 ${esc4(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
+    $("app").innerHTML = `<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><label class="theme-picker">Theme<select id="theme-select">${options(THEMES.map(([id, name]) => [id, name]), state.theme)}</select></label><div class="topmeta">Offline-capable hunt planning<br>Data ${esc4(catalogue.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map((p2) => [p2.id, p2.name]), state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button></div><nav aria-label="Planner views">${routes.map(([id, label]) => `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`).join("")}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input("levels.slayer", "Slayer", p().levels.slayer, 1, 99)}${input("levels.combat", "Combat", p().levels.combat, 3, 126)}${input("questPoints", "Quest points", p().questPoints, 0, 1e3)}${input("globalDps", "Default DPS", p().globalDps, 0.1, 1e4, ".1")}${input("points", "Current points", p().points, 0, 1e9)}${input("reserve", "Reserve", p().reserve, 0, 1e9)}</div></details>${bool("assumeUnknown", "Assume unknown requirements satisfied (conditional scenario)", p().assumeUnknown)}<p class="small muted">${p().id === MAXED_PROFILE_ID ? "Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access." : "Blank account facts stay unknown. Game eligibility and personal preferences are separate."}</p></div><div class="save">${state.saveError ? "Session only \u2014 export a backup" : "Saved on this device"}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.5 \xB7 ${esc4(catalogue.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden>`;
     renderMessage();
     renderStatus();
     renderContent();
@@ -51406,7 +51640,7 @@
     const { key, method: m, aid, vid } = editedMethod(), v = catalogue.variants.find((v2) => v2.id === vid), a = catalogue.assignments.find((a2) => a2.id === aid);
     const mf = (field, label, value, min = 0, max = 1e6, step = "any") => `<label>${esc4(label)}<input type="number" data-method="${esc4(key)}" data-method-field="${field}" min="${min}" max="${max}" step="${step}" value="${value ?? ""}"></label>`;
     const ms = (field, label, values, value) => `<label>${esc4(label)}<select data-method="${esc4(key)}" data-method-field="${field}">${options(values, value)}</select></label>`;
-    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc4(v.name)}</h2><p>${v.hp} HP \xB7 ${esc4(v.status)} \xB7 <a href="${esc4(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p><p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc4(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc4(key)}" data-method-field="location" value="${esc4(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc4(name)}">${esc4(name)}</button>`).join("")}</div></section>`;
+    return head("MONSTER-SPECIFIC ESTIMATES", "Completion methods", "Keep measured rates separate from DPS estimates. Methods are saved per assignment and monster variant.") + `<section class="card"><div class="formgrid"><label>Assignment<select id="method-assignment">${options(catalogue.assignments.map((a2) => [a2.id, a2.name]), aid)}</select></label><label>Monster variant<select id="method-variant">${options(a.variantIds.map((id) => [id, catalogue.variants.find((v2) => v2.id === id).name]), vid)}</select></label></div><h2 class="group-title">${esc4(v.name)}</h2><p>${v.hp} HP \xB7 ${esc4(v.status)} \xB7 <a href="${esc4(v.source.url)}" target="_blank" rel="noopener">Wiki source</a></p>${v.masterLocations ? `<p class="small muted">${Object.entries(v.masterLocations).map(([id, locations]) => esc4(catalogue.masters.find((master) => master.id === id)?.name || id) + ": " + locations.map(esc4).join(" or ")).join(" \xB7 ")}</p>` : ""}<p class="small muted">Eligibility: ${v.requirements.map((r) => `${r.label} ${r.min}`).join(" \xB7 ") || "Assignment rules apply"}. DPS multipliers and time estimates are planning inputs.</p><div class="formgrid">${ms("timing", "Timing source", [["dps", "HP / effective DPS + delay"], ["kills-hour", "Measured kills per hour"], ["task-minutes", "Measured combat minutes per whole task"]], m.timing)}${mf("rate", measuredRateLabel(m.timing), m.rate, 0)}${mf("dps", "Effective DPS", m.dps, 0.1, 1e4)}${mf("delay", "Between-kill delay (seconds)", m.delay, 0)}${mf("travel", "Travel / banking per task (minutes)", m.travel, 0)}${ms("bracelet", "Bracelet", [["none", "None"], ["slaughter", "Slaughter"], ["expeditious", "Expeditious"]], m.bracelet)}${mf("locationChance", "Optional Konar-compatible location chance (0\u20131)", m.locationChance, 0, 1)}</div><label class="check"><input type="checkbox" data-method="${esc4(key)}" data-method-field="extended" ${m.extended ? "checked" : ""}>Use this assignment\u2019s extended quantity</label><label>Specific compatible Konar location (optional)<input type="text" data-method="${esc4(key)}" data-method-field="location" value="${esc4(m.location)}" placeholder="Exact location name"></label><div class="notice">Konar\u2019s location roll is separate from task weight. Unknown compatibility is a conditional assumption. A custom probability is labelled as an estimate.</div><div class="inline-form"><label>Preset name<input id="preset-name" type="text" maxlength="100" placeholder="e.g. Ranged Basilisk Knights"></label><button data-action="save-preset">Save method preset</button></div><div class="tools">${Object.keys(p().methodPresets).map((name) => `<button data-load-preset="${esc4(name)}">${esc4(name)}</button>`).join("")}</div></section>`;
   }
   function renderCompare() {
     const base = state.profiles.find((p2) => p2.id === state.comparisonId);
@@ -51563,7 +51797,7 @@
       state.run("strategies", "strategies", p(), selected.master.id);
       renderStatus();
     }
-    if (name === "export-simulation") download("slayer-hunt-simulation.json", JSON.stringify({ dataVersion: catalogue.version, mortimerRulesVersion: MORTIMER_VERSION, profile: clone(p()), masterId: state.selected, result: state.simulation }, null, 2));
+    if (name === "export-simulation") download("slayer-hunt-simulation.json", JSON.stringify({ dataVersion: catalogue.version, mortimerRulesVersion: MORTIMER_VERSION, variantRulesVersion: VARIANT_VERSION, profile: clone(p()), masterId: state.selected, result: state.simulation }, null, 2));
     if (name === "use-proposal" && selected) update((q) => q.proposed[selected.master.group] = [...selected.blocks]);
     if (name === "clear-proposal" && selected) update((q) => delete q.proposed[selected.master.group]);
     if (name === "apply-proposal" && selected) update((q) => {

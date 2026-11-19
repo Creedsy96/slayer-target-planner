@@ -22,10 +22,11 @@ export function explainPlanIssues(data:Catalogue,plan:Plan,p:Profile):PlanIssue[
     }
   };
   facts(masterRequirements(plan.master,p),plan.master.source,plan.master.name);
-  for(const row of plan.rows.filter(r=>r.isTarget||(!r.reason&&!r.blocked))){
+  const relevantRows=plan.rows.filter(r=>r.isTarget||(!r.reason&&!r.blocked)).sort((a,b)=>Number(b.isTarget)-Number(a.isTarget));
+  for(const row of relevantRows){
     facts(row.entry.requirements,row.entry.source,row.name);
     facts(row.variant.requirements,row.variant.source,row.variant.name);
-    if(row.methodReason)add({title:`${row.name}: ${row.variant.name}`,detail:row.methodReason+'. Choose a supported variant or review this completion method.',route:row.isTarget?'plan':'methods',action:row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:'variantId'});
+    if(row.methodReason&&(row.isTarget||row.skip<1))add({title:`${row.isTarget?'Target method':'Non-target method'}: ${row.name} → ${row.variant.name}`,detail:row.methodReason+'. '+(row.isTarget?'Choose a supported target variant.':'This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment.'),route:row.isTarget?'plan':'methods',action:row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:'variantId'});
     if(row.isTarget&&plan.master.id==='konar')locationIssues(row,p,add);
   }
   for(const message of plan.unknown){

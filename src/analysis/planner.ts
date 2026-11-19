@@ -5,6 +5,7 @@ import {basePoints,modifierKinds,meanModifierPoints,choices} from '../rules/poin
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
 import {resolveAccess} from '../rules/access';
+import {methodLocationRestriction} from '../rules/variant-additions';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
   return m.tasks.map(entry=>{
@@ -24,6 +25,8 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
     const methodAccess=method.location?resolveAccess('location:'+method.location,p):null;
     if(methodAccess?.value===0)variant.failed.push(`Method location ${method.location} is locked: ${methodAccess.reason}`);
     if(methodAccess?.value===null)variant.unknown.push(`Method location ${method.location}: ${methodAccess.reason}`);
+    const locationRestriction=methodLocationRestriction(v,m,method.location);
+    if(locationRestriction)variant.failed.push(locationRestriction);
     variant.eligible=!variant.failed.length;
     const timing=taskTiming(entry,v,method);
     const modifier=modifierKinds(p.mortimerTasks??0,entry);

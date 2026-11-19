@@ -1,7 +1,9 @@
 import raw from '../data/catalogue.json';
 import type {Catalogue} from './domain/types';
 import {applyMortimerRules} from './rules/mortimer';
-export const catalogue=applyMortimerRules(raw as unknown as Catalogue);
+import {applyVariantAdditions} from './rules/variant-additions';
+export const catalogue=applyVariantAdditions(applyMortimerRules(raw as unknown as Catalogue));
+export * from './rules/variant-additions';
 export * from './rules/mortimer';
 export * from './domain/types';
 export * from './state/profiles';

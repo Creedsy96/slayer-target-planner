@@ -4,7 +4,7 @@ export interface PendingOption {assignmentId:string;modifier:string;points:numbe
 export interface Source {title:string;url:string;revision:number|null}
 export interface Requirement {kind:'skill'|'quest'|'unlock'|'access'|'any';key?:string;min?:number;label:string;items?:Requirement[]}
 export interface Entry {id:string;weight:number;minimum:number;maximum:number;extendedMin:number;extendedMax:number;requirements:Requirement[];source:Source;locations?:string[];status?:string;pointsRange?:number[];quantityModifier?:number[];modifierValuesStatus?:string;unlockWeight?:{key:string;weight:number}}
-export interface Variant {masterAssignments?:Record<string,string[]>;id:string;name:string;assignmentIds:string[];hp:number;multiplier:number;requirements:Requirement[];source:Source;status:string;drops:{id:string;name:string;onTask:number;offTask:number;source:Source}[]}
+export interface Variant {masterLocations?:Record<string,string[]>;masterAssignments?:Record<string,string[]>;id:string;name:string;assignmentIds:string[];hp:number;multiplier:number;requirements:Requirement[];source:Source;status:string;drops:{id:string;name:string;onTask:number;offTask:number;source:Source}[]}
 export interface Assignment {id:string;name:string;variantIds:string[];source:Source}
 export interface Master {id:string;name:string;legacyIds:string[];group:string;blockCost:number;basePoints:number;skipCost:number;streakGroup:string;requirements:Requirement[];tasks:Entry[];source:Source}
 export interface Catalogue {schemaVersion:number;version:string;captured:string;masters:Master[];assignments:Assignment[];variants:Variant[];quests:string[];unlocks:Record<string,string>;sources:Source[];audit:{master:string;assignment:string;issue:string}[];attribution:string}
