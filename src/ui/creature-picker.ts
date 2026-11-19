@@ -1,6 +1,13 @@
 import {creatureId,creatureName} from './creature-art';
 
 let sequence=0;
+/** A worker can replace the view while its dialog stays open. Commit through
+ * the current native control, never the detached control captured on opening. */
+export function chooseCreature(root:ParentNode,key:string,value:string):boolean{
+  const current=root.querySelector<HTMLSelectElement>(`select[data-picker-source="${CSS.escape(key)}"]`);
+  if(!current||!Array.from(current.options).some(o=>o.value===value&&!o.disabled))return false;
+  current.value=value;current.dispatchEvent(new Event('change',{bubbles:true}));return true;
+}
 /** Enhance only creature selectors. The native control remains the form/state
  * owner; choosing a result dispatches its existing change event. */
 export function enhanceCreaturePickers(root:ParentNode):void{
@@ -10,6 +17,7 @@ export function enhanceCreaturePickers(root:ParentNode):void{
     select.dataset.creatureEnhanced='true';
     const label=select.getAttribute('aria-label')||select.labels?.[0]?.childNodes[0]?.textContent?.trim()||'Creature';
     const key=select.id||select.dataset.setting||[select.dataset.target,select.dataset.targetField,select.dataset.offer,select.dataset.offerField,select.name].join(':');
+    select.dataset.pickerSource=key;
     const trigger=document.createElement('button');trigger.type='button';trigger.className='creature-trigger';trigger.dataset.pickerFor=key;
     trigger.setAttribute('aria-label',label+': '+(select.selectedOptions[0]?.text||'Choose creature'));
     trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');trigger.disabled=select.disabled;
@@ -42,7 +50,7 @@ function openPicker(select:HTMLSelectElement,trigger:HTMLButtonElement,label:str
   };
   const choose=(index:number)=>{
     if(!matches[index]||matches[index].disabled)return;
-    select.value=matches[index].value;dialog.close();select.dispatchEvent(new Event('change',{bubbles:true}));
+    const value=matches[index].value;dialog.close();chooseCreature(document,key,value);
     document.querySelector<HTMLButtonElement>(`button[data-picker-for="${CSS.escape(key)}"]`)?.focus({preventScroll:true});
   };
   const render=()=>{

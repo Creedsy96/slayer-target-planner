@@ -74,6 +74,7 @@ class AppState{
 }
 const state=new AppState();
 const p=()=>state.profile;
+let renderedRoute='';
 function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)=>v?.[k],p());}
 function renderShell():void{
   const restore=preserveView();
@@ -88,7 +89,7 @@ function renderStatus():void{
 function renderContent():void{
   const restore=preserveView();
   const renderers:Record<string,()=>string>={plan:renderPlan,account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
-  const content=$('content'),routeChanged=content.dataset.view!==state.route;
+  const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
   content.innerHTML=renderers[state.route]();content.dataset.view=state.route;
   decorateCreatureText(document.getElementById('app')!);enhanceCreaturePickers(document.getElementById('app')!);restore();
   if(routeChanged&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)content.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});

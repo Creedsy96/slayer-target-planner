@@ -45,3 +45,22 @@ test('longest creature names get one specific badge instead of overlapping gener
   assert.equal(creatureId('  CERBERUS '),'cerberus');
   assert.ok(creatureIcon('cerberus',true).includes('creature-icon--large'));
 });
+
+const pickerCode=buildSync({entryPoints:['src/ui/creature-picker.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text;
+const pickerContext={module:{exports:{}},Event,CSS:{escape:v=>v}};vm.runInNewContext(pickerCode,pickerContext);
+const {chooseCreature}=pickerContext.module.exports;
+test('an open picker commits through the live selector after a worker replaces the original view',()=>{
+  const events=[];
+  const current={value:'hellhounds',options:[{value:'hellhounds',disabled:false},{value:'basilisks',disabled:false}],dispatchEvent:event=>events.push(event)};
+  const root={querySelector:selector=>{assert.equal(selector,'select[data-picker-source="0:assignmentId"]');return current;}};
+  assert.equal(chooseCreature(root,'0:assignmentId','basilisks'),true);
+  assert.equal(current.value,'basilisks');assert.equal(events.length,1);
+  assert.equal(events[0].type,'change');assert.equal(events[0].bubbles,true);
+});
+test('a stale or disabled picker option cannot commit an unsupported selection',()=>{
+  const current={value:'hellhounds',options:[{value:'basilisks',disabled:true}],dispatchEvent:()=>assert.fail('Must not emit change')};
+  assert.equal(chooseCreature({querySelector:()=>current},'target','basilisks'),false);
+  assert.equal(chooseCreature({querySelector:()=>current},'target','unknown'),false);
+  assert.equal(chooseCreature({querySelector:()=>null},'target','hellhounds'),false);
+  assert.equal(current.value,'hellhounds');
+});

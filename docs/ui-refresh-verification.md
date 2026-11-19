@@ -8,7 +8,7 @@ The build copies one local sprite atlas to the website and Windows package. Icon
 
 ## Verification
 
-- Passed: strict TypeScript check, production build and 145 automated tests. New checks cover complete artwork coverage, atlas geometry, source attribution, escaping and whole-name matching, plus picker focus across background refreshes.
+- Passed: strict TypeScript check, production build and 147 automated tests. New checks cover complete artwork coverage, atlas geometry, source attribution, escaping and whole-name matching, picker focus, and committing a selection after a worker replaces the underlying control. Stale or disabled options cannot be committed. Entrance animations run on route changes, not routine profile edits.
 - Passed: browser checks of illustrated search, no-match feedback, Enter selection, Escape cancellation with a non-empty search, Undo, and focus return. Escape left zero open dialogs and returned focus to the assignment selector. Creature badges were visually checked in target controls, task tables, completion methods, proposed blocks and requirement guidance. No browser console errors were recorded.
 - Passed: Daylight, Woodland and High contrast browser layouts, Ember Windows layout, and Windows compact mode at its actual 440-pixel window width. The full Windows planner was observed again after compact mode. Native account fields were not edited for these tests.
 - Passed: local Windows startup from the 2.7.0 package. Final archive hashes and site/release publication are delivered separately from this source record.

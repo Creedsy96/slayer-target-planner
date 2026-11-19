@@ -2873,6 +2873,13 @@
 
   // src/ui/creature-picker.ts
   var sequence = 0;
+  function chooseCreature(root, key, value) {
+    const current = root.querySelector(`select[data-picker-source="${CSS.escape(key)}"]`);
+    if (!current || !Array.from(current.options).some((o) => o.value === value && !o.disabled)) return false;
+    current.value = value;
+    current.dispatchEvent(new Event("change", { bubbles: true }));
+    return true;
+  }
   function enhanceCreaturePickers(root) {
     root.querySelectorAll("select:not([data-creature-enhanced])").forEach((select2) => {
       const choices2 = Array.from(select2.options);
@@ -2880,6 +2887,7 @@
       select2.dataset.creatureEnhanced = "true";
       const label = select2.getAttribute("aria-label") || select2.labels?.[0]?.childNodes[0]?.textContent?.trim() || "Creature";
       const key = select2.id || select2.dataset.setting || [select2.dataset.target, select2.dataset.targetField, select2.dataset.offer, select2.dataset.offerField, select2.name].join(":");
+      select2.dataset.pickerSource = key;
       const trigger = document.createElement("button");
       trigger.type = "button";
       trigger.className = "creature-trigger";
@@ -2953,9 +2961,9 @@
     };
     const choose = (index) => {
       if (!matches[index] || matches[index].disabled) return;
-      select2.value = matches[index].value;
+      const value = matches[index].value;
       dialog.close();
-      select2.dispatchEvent(new Event("change", { bubbles: true }));
+      chooseCreature(document, key, value);
       document.querySelector(`button[data-picker-for="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
     };
     const render = () => {
@@ -55426,6 +55434,7 @@
   };
   var state = new AppState();
   var p = () => state.profile;
+  var renderedRoute = "";
   function fieldValue(path) {
     return path.split(".").reduce((v, k) => v?.[k], p());
   }
@@ -55448,7 +55457,8 @@
   function renderContent() {
     const restore = preserveView();
     const renderers = { plan: renderPlan, account: renderAccount, tasks: renderTasks, methods: renderMethods, compare: renderCompare, data: renderData };
-    const content = $("content"), routeChanged = content.dataset.view !== state.route;
+    const content = $("content"), routeChanged = renderedRoute !== state.route;
+    renderedRoute = state.route;
     content.innerHTML = renderers[state.route]();
     content.dataset.view = state.route;
     decorateCreatureText(document.getElementById("app"));
