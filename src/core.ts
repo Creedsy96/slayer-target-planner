@@ -28,3 +28,6 @@ export * from './analysis/hunt-tools';
 export * from './state/hunts';
 
 export * from './analysis/reset-estimate';
+
+export * from './analysis/boost-estimate';
+export * from './analysis/offer-moments';

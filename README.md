@@ -1,12 +1,26 @@
-# Slayer Target Planner 2.6.1
+# Slayer Target Planner 2.6.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app. The original workbook and version 1 distribution are preserved.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6.1 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.6.2 - Windows** folder on the Desktop. To share it, send the matching ZIP; extract the complete folder before running the EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Strategy and reward audit in 2.6.2
+
+Turael and Mazchna boosting now include filler tasks between milestones and start from the recorded normal streak. At streak 53 with every tenth task at Nieve, complete six filler tasks before requesting task 60. The selected panel shows the next completion reward; receiving the offer earns none. Wilderness and Mortimer counters cannot be used for normal-streak boosting.
+
+Fillers use recorded actual blocks. Shared block groups use the proposed list with one setup payment. Filler access and methods are checked, and paid skips do not advance the schedule. Ordinary rewards use the highest milestone multiplier, with no points for the first four completions. Mortimer uses only its actual points modifier. Unknown elite-diary bonuses stay conditional; actual task recording requires confirmation.
+
+**Long-run points / h** includes requests, combat/travel, filler rewards and the full 1,000-completion reward cycle. It describes continued point farming, not rewards received before this hunt ends. Warm-up and goal stopping events are handled in simulation. Mortimer and cape point rates require simulation instead of an unreliable analytical rate.
+
+**Spend available points** explicitly labels the table as an **unlimited-funds offer benchmark**. Simulate for actual points, reserve and unaffordable-skip fallbacks. Results show points **earned**, **spent** and **remaining**. A kill/drop goal on the last kill receives the completion reward; stopping earlier does not. An already-observed compatible target offer stops without unnecessary setup purchases.
+
+Pending offers use their actual master even when off the boost schedule. Under **Current assignment and cape state**, confirm partial Konar compatibility and the actual previous master when needed. Cape repeats use the last assigned task, including after a paid skip, and only the same master can repeat it. The checkbox models always accepting repeats; optimal accept/decline decisions and Mortimer cape choices remain unsupported. Existing profiles still load; missing master/location details are requested before relevant simulations.
+
+See the [strategy audit and verification](docs/strategy-reward-audit.md) for the mathematics, sources and limits.
 
 ## Turael reset estimates in 2.6.1
 

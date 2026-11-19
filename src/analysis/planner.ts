@@ -1,7 +1,9 @@
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
 import {clone,defaultMethod} from '../state/profiles';
 import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,targetAssignments} from '../rules/eligibility';
-import {basePoints,modifierKinds,meanModifierPoints,choices} from '../rules/points';
+import {basePoints,modifierKinds,meanModifierPoints,choices,pointRewardUnknown} from '../rules/points';
+import {boostEstimate} from './boost-estimate';
+import {offerMoments} from './offer-moments';
 import {resetEstimate} from './reset-estimate';
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
@@ -58,24 +60,40 @@ function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
 }
 /** Completion method used when Konar offers the right assignment in the wrong location. */
 export function completionFallbacks(data:Catalogue,m:Master,p:Profile,rows:Row[]):Map<Row,Row>{
-  const result=new Map<Row,Row>();if(m.id!=='konar')return result;
+  const result=new Map<Row,Row>();if(!rows.some(r=>r.isTarget&&r.targetFraction<1))return result;
   const q=clone(p);q.goal.targets=[];
   for(const row of rows.filter(r=>r.isTarget))delete q.methods[row.id];
   const alternatives=prepareRows(data,m,q);
-  for(const row of rows){const other=alternatives.find(r=>r.id===row.id);if(other&&row.isTarget)result.set(row,other);}
+  for(const row of rows){const other=alternatives.find(r=>r.id===row.id);if(other&&row.isTarget&&row.targetFraction<1)result.set(row,other);}
   return result;
 }
-export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration'):Plan{
+export function buildFillerPlan(data:Catalogue,m:Master,p:Profile,blocks:string[]):Plan{
+  const id=p.strategy==='boost-mazchna'?'mazchna':'turael',master=data.masters.find(m=>m.id===id);
+  if(!master)throw Error('The filler master is missing from this catalogue.');
+  const scenario={...p,strategy:p.strategy==='none'?'none' as const:'boost-turael' as const,cape:false,applySetup:false};
+  return evaluate(data,master,scenario,master.group===m.group?[...blocks]:[...(p.blocks[master.group]||[])],'Recorded filler block list',true);
+}
+export function fillerIssue(data:Catalogue,filler:Plan,p:Profile):string{
+  const status=masterEligibility(filler.master,p),rows=filler.rows.filter(r=>!r.reason&&!r.blocked);
+  if(status.failed.length)return filler.master.name+' access: '+status.failed.join('; ');
+  if(!rows.length)return 'No eligible '+filler.master.name+' filler tasks.';
+  if(filler.unknown.length&&!p.assumeUnknown)return 'Confirm '+filler.master.name+' filler requirements: '+filler.unknown.join('; ');
+  const fallback=completionFallbacks(data,filler.master,p,filler.rows);
+  if(rows.some(r=>(fallback.get(r)||r).methodReason&&r.targetFraction<1&&paidSkipFraction(fallback.get(r)||r,p)<1))return 'A '+filler.master.name+' filler task has no available completion method.';
+  return '';
+}
+export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration',asFiller=false):Plan{
   const rows=prepareRows(data,m,p),status=masterEligibility(m,p),slots=blockSlots(m,p),targets=targetAssignments(data,p);
   const conflicts:string[]=[];
   if(blocks.length>slots.slots)conflicts.push(`Block list exceeds ${slots.slots} slots.`);
-  for(const id of blocks){if(targets.has(id))conflicts.push(`Target ${id} is blocked.`);if(p.preferences[id]==='protect')conflicts.push(`Protected task ${id} is blocked.`);if(!m.tasks.some(t=>t.id===id))conflicts.push(`Master cannot assign ${id}.`);}
+  for(const id of blocks){if(targets.has(id))conflicts.push(`Target ${id} is blocked.`);if(p.preferences[id]==='protect')conflicts.push(`Protected task ${id} is blocked.`);if(!m.tasks.some(t=>t.id===id)&&!asFiller&&!(p.blocks[m.group]||[]).includes(id))conflicts.push(`Master cannot assign ${id}.`);}
   rows.forEach(r=>r.blocked=blocks.includes(r.id));
   const active=rows.filter(r=>!r.reason&&!r.blocked);
   selectionProbabilities(active,m.id==='mortimer'?choices(p):1);
   balanceSkips(active,m,p,data);
   const fillerMaster=data.masters.find(master=>master.id==='turael')!;
-  const fallback=p.strategy==='reset-turael'?completionFallbacks(data,m,p,rows):new Map<Row,Row>();
+  const fallback=completionFallbacks(data,m,p,rows);
+  const boosting=p.strategy.startsWith('boost')&&!asFiller;
   const resets=(r:Row)=>p.strategy==='reset-turael'&&(!r.isTarget||r.targetFraction<1)&&shouldReset(m,fallback.get(r)||r,p,fillerMaster);
   const rowUnknown=(r:Row):string[]=>{
     const original=resets(r)&&!r.isTarget?[...check(r.entry.requirements,p).unknown,...(r.entry.unlockWeight&&p.unlocks[r.entry.unlockWeight.key]==null?['Frost dragon weighting reward is unknown']:[])]:r.unknown;
@@ -83,15 +101,17 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
     return [...original,...(other&&r.targetFraction<1&&!resets(r)?other.unknown:[])];
   };
   const targetProb=sum(active,r=>r.isTarget?r.probability*r.targetFraction:0);
-  const numerator=sum(active,r=>r.probability*((1-(r.isTarget?r.targetFraction:0))*(1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
+  const moments=offerMoments(active,p,fallback);
+  const numerator=moments.beforeTarget-p.requestMinutes;
   const noSkip=sum(active,r=>r.probability*(1-(r.isTarget?r.targetFraction:0))*r.minutes);
-  const cycle=sum(active,r=>r.probability*((1-r.skip)*r.minutes+r.skip*p.skipSeconds/60));
+  const cycle=moments.full;
   const kept=sum(active,r=>r.probability*(1-r.skip));
-  const unknown=[...new Set([...status.unknown,...active.flatMap(rowUnknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
+  const unknown=[...new Set([...status.unknown,...pointRewardUnknown(m,p),...active.flatMap(rowUnknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
   let reason=status.failed.join('; ');
+  if(!reason&&boosting&&m.streakGroup!=='normal')reason='Boosting requires a milestone master in the normal streak group.';
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
   if(!reason&&conflicts.length)reason=conflicts.join(' ');
-  if(!reason&&!targetProb&&!active.some(resets))reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
+  if(!reason&&!targetProb&&!active.some(resets)&&!boosting)reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
   if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete requirements: confirm account facts or enable a conditional scenario.';
   if(!reason&&active.some(r=>!r.isTarget&&r.methodReason&&r.skip<1&&!resets(r)))reason='A non-target assignment has no available completion method; change the method or block/skip it.';
   if(!reason&&p.cape)reason='Cape repeat policies require simulation; analytical ranking is unavailable.';
@@ -104,7 +124,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
     // Replacement tasks use the recorded beginner block list. Proposed/automatic
     // filler blocks are not free purchases and must not change reset legality.
     const fp={...p,strategy:'boost-turael' as const,cape:false,applySetup:false};
-    const filler=evaluate(data,fillerMaster,fp,[...(p.blocks[fillerMaster.group]||[])]);
+    const filler=evaluate(data,fillerMaster,fp,[...(p.blocks[fillerMaster.group]||[])],'Recorded Turael blocks',true);
     reset=resetEstimate(m,active,filler,p,fallback);
     const available=filler.rows.filter(r=>!r.reason&&!r.blocked);
     const access=masterEligibility(fillerMaster,p);
@@ -121,8 +141,25 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
     spend=reset.successPerCycle?reset.paidSkipsPerCycle*m.skipCost/reset.successPerCycle+(p.applySetup?setupCost:0):Infinity;
     quality+='; reset renewal model includes recorded Turael blocks, replacement task time and both task requests; simulate finite points and streaks';
   }
+  let boost:Plan['boost'],simulationOnly=false;
+  if(boosting&&m.streakGroup==='normal'){
+    const filler=buildFillerPlan(data,m,p,blocks),issue=fillerIssue(data,filler,p);
+    unknown.push(...filler.unknown.filter(value=>!unknown.includes(value)));
+    if(!reason&&issue)reason=issue;
+    if(!reason&&!Number.isInteger(p.streaks.normal))reason='Enter a whole-number normal streak for the boosting schedule.';
+    if(!reason||reason==='Cape repeat policies require simulation; analytical ranking is unavailable.'){
+      const main={master:m,rows} as Plan;
+      boost=boostEstimate(main,filler,p,new Map([...fallback,...completionFallbacks(data,filler.master,p,filler.rows)]));
+      if(!reason&&boost.mainChance+boost.fillerChance<=0)reason='No compatible target from the milestone or filler master.';
+      if(!reason&&boost.minutes===null){reason='Unlimited paid skipping stalls this boosting schedule; simulate with your actual point balance.';simulationOnly=true;}
+      chance=reason||!boost.requests?null:1/boost.requests;
+      hours=reason||boost.minutes===null?null:boost.minutes/60;
+      spend=boost.paidSkips===null?Infinity:boost.paidSkips*m.skipCost+(p.applySetup?setupCost:0);
+    }
+  }
+  const pointsRateReason=pointRewardUnknown(m,p).length&&!p.assumeUnknown?'Confirm the elite diary point bonus.':reset?'Reset streak rewards require simulation.':p.cape?'Cape repeat point rates require simulation.':m.id==='mortimer'?'Mortimer modifier-aware rewards require simulation.':undefined;
   const objectiveValue=reason?Infinity:p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
-  return {reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:reset?null:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:reset?null:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
+  return {boost,simulationOnly,pointsRateReason,reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:boost&&boost.requests&&boost.paidSkips!==null?boost.paidSkips/boost.requests:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:pointsRateReason?null:boost?boost.pointsEarnedPerHour:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:pointsRateReason?null:boost?boost.pointsSpentPerHour:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
 }
 export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):Plan{
   const rows=prepareRows(data,m,p),targets=targetAssignments(data,p),slots=blockSlots(m,p).slots;
@@ -153,6 +190,7 @@ export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):P
     }
     best.quality=`Best found by bounded block swaps (${evaluations} evaluations); not a certified global optimum`;
   }
+  if(best.boost)best.quality+='; periodic boosting estimate includes filler tasks and current streak; point rates use a 1000-completion cycle';
   if(best.reset)best.quality+='; reset renewal model includes recorded Turael blocks and replacement tasks; simulate points and streaks';
   best.searchEvaluations=evaluations;
   if(m.id==='mortimer')best.quality+='; modifier-aware policies evaluated by simulation';

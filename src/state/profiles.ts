@@ -86,7 +86,9 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.current.kind==='task'&&!data.masters.find(m=>m.id===p.current.masterId)?.tasks.some(t=>t.id===p.current.assignmentId))throw Error('Current master cannot assign this task.');
   if(p.current.modifierPoints!==undefined)numeric(p.current.modifierPoints,0,10000,'Current modifier points');
   if(p.current.options){if(!Array.isArray(p.current.options)||p.current.options.length>3)throw Error('Supply at most three offer options.');for(const o of p.current.options){if(!ids.has(o.assignmentId)||!['none','points','quantity','clue','superior','xp'].includes(o.modifier)||typeof o.target!=='boolean')throw Error('Invalid pending offer option.');numeric(o.points,0,10000,'Modifier points');numeric(o.quantity,-1000,1000,'Quantity modifier');}}
-  if(p.cape&&!ids.has(p.previousTask))throw Error('Choose the previous assignment when enabling the cape effect.');
+  if(p.previousMasterId!==undefined&&!data.masters.some(m=>m.id===p.previousMasterId))throw Error('Choose a valid previous task master.');
+  for(const value of [p.previousTargetCompatible,p.current.targetCompatible])if(value!==undefined&&typeof value!=='boolean')throw Error('Invalid actual target-location confirmation.');
+  if(p.cape&&p.current.kind==='new'&&!ids.has(p.previousTask))throw Error('Choose the previous assignment when enabling the cape effect.');
   if(p.cape&&p.levels.slayer!==99)throw Error('The Slayer cape effect requires level 99 Slayer.');
   if(p.questImport!==undefined){
     const q=p.questImport;

@@ -2,6 +2,7 @@ const fieldAttributes=[
   'data-setting','data-target','data-target-field',
   'data-method','data-method-field','data-offer','data-offer-field',
 ];
+const rememberedOpen=new Set<string>();
 
 function fieldSelector(active:HTMLElement|null):string|null{
   if(!active)return null;
@@ -12,16 +13,22 @@ function fieldSelector(active:HTMLElement|null):string|null{
 }
 
 export function preserveView():()=>void{
-  const opened=Array.from(document.querySelectorAll('details[open]'))
-    .map(e=>e.querySelector('summary')?.textContent);
+  // Worker recalculation temporarily removes the selected plan. Retain its
+  // disclosures while absent, and honour explicit closes while they exist.
+  document.querySelectorAll('details').forEach(e=>{
+    const title=e.querySelector('summary')?.textContent;
+    if(title){if(e.open)rememberedOpen.add(title);else rememberedOpen.delete(title);}
+  });
+  const opened=[...rememberedOpen];
   const active=document.activeElement as HTMLInputElement|null;
   const selector=fieldSelector(active);
   // The same setting can appear in both Quick setup and the main account form.
   const index=selector?Array.from(document.querySelectorAll(selector)).indexOf(active!):-1;
   const y=window.scrollY;
   return ()=>{
+    for(const title of opened)rememberedOpen.add(title);
     document.querySelectorAll('details').forEach(e=>{
-      if(opened.includes(e.querySelector('summary')?.textContent))e.open=true;
+      if(opened.includes(e.querySelector('summary')?.textContent||''))e.open=true;
     });
     if(selector){
       let next=document.querySelectorAll(selector)[index]as HTMLElement|undefined;

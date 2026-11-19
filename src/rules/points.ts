@@ -1,9 +1,14 @@
 import type {Entry,Master,Profile} from '../domain/types';
 import {MORTIMER_RULES,mortimerKinds,modifierValues} from './mortimer';
 export interface Ledger {points:number;spent:number;earned:number;streaks:Record<string,number>;mortimerTasks:number}
+export function pointRewardUnknown(m:Master,p:Profile):string[]{
+  if(m.id==='nieve'&&p.diaries.western==null)return ['Western elite diary point bonus'];
+  if(m.id==='konar'&&p.diaries.kourend==null)return ['Kourend elite diary point bonus'];
+  return [];
+}
 export function basePoints(m:Master,p:Profile):number{
-  if(m.id==='nieve'&&p.diaries.western===1)return 15;
-  if(m.id==='konar'&&p.diaries.kourend===1)return 20;
+  if(m.id==='nieve'&&(p.diaries.western===1||p.diaries.western==null&&p.assumeUnknown))return 15;
+  if(m.id==='konar'&&(p.diaries.kourend===1||p.diaries.kourend==null&&p.assumeUnknown))return 20;
   return m.basePoints;
 }
 export function milestoneMultiplier(n:number):number{
@@ -21,8 +26,14 @@ export function meanModifierPoints(entry:Entry):number{
   const values=rangeValues(entry.pointsRange);return values.reduce((a,b)=>a+b,0)/values.length;
 }
 export function completionReward(m:Master,p:Profile,streak:number,entry?:Entry,modifier='none',pointsValue?:number):number{
-  if(m.id==='mortimer')return modifier==='points'?pointsValue??meanModifierPoints(entry!):0;
-  if(streak<5)return 0;return basePoints(m,p)*milestoneMultiplier(streak);
+  if(m.id==='mortimer'){
+    if(modifier!=='points')return 0;
+    if(!entry?.pointsRange||pointsValue===undefined||!rangeValues(entry.pointsRange).includes(pointsValue))throw Error('Enter a valid actual Mortimer point modifier; a mean is not a received reward.');
+    return pointsValue;
+  }
+  if(streak<5)return 0;
+  const unknown=pointRewardUnknown(m,p);if(unknown.length&&!p.assumeUnknown)throw Error('Confirm '+unknown.join(', ')+' before calculating received points.');
+  return basePoints(m,p)*milestoneMultiplier(streak);
 }
 export function ledger(p:Profile):Ledger{
   if(p.points===null)throw Error('Enter your current points for a funded plan.');
@@ -33,6 +44,7 @@ export function pay(l:Ledger,cost:number,reserve:number):boolean{
   if(l.points-cost<reserve)return false;l.points-=cost;l.spent+=cost;return true;
 }
 export function complete(l:Ledger,m:Master,p:Profile,entry:Entry,modifier='none',pointsValue?:number):number{
+  if(m.id==='mortimer'&&!modifierKinds(l.mortimerTasks,entry).includes(modifier))throw Error('Choose an unlocked actual Mortimer modifier.');
   const next=(l.streaks[m.streakGroup]||0)+1;const earned=completionReward(m,p,next,entry,modifier,pointsValue);
   l.streaks[m.streakGroup]=next;if(m.id==='mortimer')l.mortimerTasks++;
   l.points+=earned;l.earned+=earned;return earned;

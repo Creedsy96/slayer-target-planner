@@ -1,6 +1,6 @@
 {
   "name": "slayer-target-planner",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "private": true,
   "scripts": {
     "test": "node tools/build.mjs && node --test",

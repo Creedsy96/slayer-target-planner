@@ -1,7 +1,7 @@
 import type {Catalogue,HuntPreset,Profile,TaskRecord} from '../domain/types';
 import {clone,validateProfile} from './profiles';
 import {prepareRows} from '../analysis/planner';
-import {complete,ledger,pay,modifierKinds,rangeValues} from '../rules/points';
+import {complete,ledger,pay,modifierKinds,rangeValues,pointRewardUnknown} from '../rules/points';
 import {masterEligibility} from '../rules/eligibility';
 
 export function saveHunt(p:Profile,name:string,masterId:string,id:string):Profile{
@@ -37,12 +37,16 @@ export function recordTask(data:Catalogue,p:Profile,input:TaskInput,at:string,id
     if(input.modifier==='points'&&!rangeValues(row.entry.pointsRange).includes(input.modifierPoints))throw Error('Enter a valid five-step point modifier from this task’s range.');
   }
   const l=ledger(q),before=l.points,streakBefore=l.streaks[m.streakGroup];
+  if(input.action==='complete'&&streakBefore+1>=5&&pointRewardUnknown(m,q).length)throw Error('Confirm the elite diary point bonus before recording actual completion points.');
   if(input.action==='skip'){if(!pay(l,m.skipCost,q.reserve))throw Error('This skip would spend the point reserve.');}
   else complete(l,m,q,row.entry,input.modifier,input.modifierPoints);
   q.points=l.points;q.streaks=l.streaks;if(m.id==='mortimer')q.mortimerTasks=l.mortimerTasks;
   const record:TaskRecord={...input,id,at,variantId:row.variant.id,pointsBefore:before,pointsAfter:l.points,streakBefore,streakAfter:l.streaks[m.streakGroup],method:clone(row.method)};
   q.taskHistory=[...(q.taskHistory||[]),record].slice(-200);
-  if(input.action==='complete')q.previousTask=row.id;
+  q.previousTask=row.id;q.previousMasterId=m.id;
+  if(input.action==='complete')q.previousTargetCompatible=row.isTarget;
+  else if(q.current.masterId===m.id&&q.current.assignmentId===row.id)q.previousTargetCompatible=q.current.targetCompatible;
+  else delete q.previousTargetCompatible;
   if(q.current.masterId===m.id&&q.current.assignmentId===row.id)q.current={kind:'new',masterId:'',assignmentId:'',remaining:0};
   return validateProfile(data,q);
 }

@@ -15,3 +15,12 @@ export function paidSkipFraction(row:Row,p:Profile):number{
 export function shouldReset(master:Master,row:Row,p:Profile,filler:Master):boolean{
   return p.strategy==='reset-turael'&&!protectedTask(p,row)&&master.id!==filler.id&&canReset(master,row.id,filler,p.blocks[filler.group]||[]);
 }
+export function actualTargetCompatibility(row:Row,confirmation:boolean|undefined,which:string):boolean{
+  if(!row.isTarget)return false;
+  if(row.targetFraction>0&&confirmation!==undefined)return confirmation;
+  if(row.targetFraction>0&&row.targetFraction<1){
+    if(confirmation===undefined)throw Error('Confirm whether the '+which+' task location supports the target variant.');
+    return confirmation;
+  }
+  return row.targetFraction===1;
+}

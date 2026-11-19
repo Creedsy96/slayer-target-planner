@@ -52,3 +52,11 @@ test('worker content refresh leaves an already-connected editor in place and rem
   assert.equal(f.fields[0],f.active);
   f.fields.length=0;restore();assert.equal(f.fields.length,0);
 });
+test('advanced sections remain open across a temporarily missing worker result and explicit closing still wins',()=>{
+  const detail=()=>({open:false,querySelector:()=>({textContent:'Current assignment and cape state'})});
+  let current=[detail()];current[0].open=true;
+  const context={module:{exports:{}},document:{activeElement:null,querySelectorAll:()=>current},window:{scrollY:0,scrollTo(){}},CSS:{escape:v=>v}};
+  vm.runInNewContext(code,context);const preserve=context.module.exports.preserveView;
+  let restore=preserve();current=[];restore();restore=preserve();current=[detail()];restore();assert.equal(current[0].open,true);
+  current[0].open=false;restore=preserve();current=[];restore();restore=preserve();current=[detail()];restore();assert.equal(current[0].open,false);
+});
