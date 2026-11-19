@@ -1,5 +1,9 @@
 # Slayer Target Planner
 
+## Planned upgrades
+
+See [the implementation plan](docs/implementation-plan.md) for the proposed accuracy fixes and research upgrades 1–13, and [the glossary](CONTEXT.md) for assignment, monster variant and strategy terminology. These documents describe planned work, not features already implemented.
+
 ## Windows app
 
 The desktop distribution is in **Slayer Target Planner - Windows**, alongside this source folder on the Desktop. Open **Slayer Target Planner.exe**. Share **Slayer Target Planner - Windows.zip**; the recipient must extract the complete folder before running the EXE. It bundles Electron and the planner, with an original sword-and-shield icon, and needs no website login or Node.js installation.
