@@ -1,12 +1,20 @@
-# Slayer Target Planner 2.9.4
+# Slayer Target Planner 2.9.5
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.4 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.5 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Custom-account planning fixes in 2.9.5
+
+A zero-block plan no longer requires confirmation of the account's maximum block capacity. With unknown quest points/Lumbridge Elite status, the optimiser uses confirmed capacity and labels the result as a baseline; proposed blocks beyond that capacity still require confirmation. Enter the missing facts to optimise additional slots.
+
+Automatic non-target completion methods favour a confirmed usable ordinary creature over an unconfirmed specialist spawn. Explicit method choices retain their requirements. Missing quests, unlock purchases and unsupported methods remain unknown rather than being granted automatically.
+
+If every master is unavailable and the table hides them, **What needs attention** now shows named requirements for a relevant master, account-review links and sources. See [verification and limits](docs/custom-profile-planning.md).
 
 ## Reusing combat results in 2.9.4
 

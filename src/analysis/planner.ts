@@ -23,8 +23,10 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:nu
     let method=configuredMethod(data,p,entry.id,variantId);
     let v=data.variants.find(v=>v.id===method.variantId)!;
     if(!target&&!p.methods[entry.id]&&!p.methods[entry.id+'::'+variantId]){
-      const available=a.variantIds.map(id=>data.variants.find(v=>v.id===id)!).filter(v=>variantEligibility(v,p,m,entry.id).eligible);
-      if(available.length){v=available.reduce((best,next)=>best.hp/best.multiplier<=next.hp/next.multiplier?best:next);method={...method,...p.methods[entry.id+'::'+v.id],variantId:v.id};}
+      const available=a.variantIds.map(id=>data.variants.find(v=>v.id===id)!).map(variant=>({variant,status:variantEligibility(variant,p,m,entry.id)})).filter(choice=>choice.status.eligible);
+      const confirmed=available.filter(choice=>!choice.status.unknown.length),choices=confirmed.length?confirmed:available;
+      // A low-HP unreviewed spawn must not displace a confirmed ordinary method.
+      if(choices.length){v=choices.map(choice=>choice.variant).reduce((best,next)=>best.hp/best.multiplier<=next.hp/next.multiplier?best:next);method={...method,...p.methods[entry.id+'::'+v.id],variantId:v.id};}
     }
     const eligibility=check(entry.requirements,p),variant=variantEligibility(v,p,m,entry.id),loc=locationFraction(entry,v,method,m,p);
     if(m.id==='konar'&&entry.locations?.length&&entry.locations.every(l=>resolveAccess('location:'+l,p).value===0))eligibility.failed.push('No accessible assignment location');
@@ -91,7 +93,8 @@ export function fillerIssue(data:Catalogue,filler:Plan,p:Profile):string{
 export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration',asFiller=false,baseRows?:Row[]):Plan{
   const rows=baseRows?structuredClone(baseRows):prepareRows(data,m,p),status=masterEligibility(m,p),slots=blockSlots(m,p),targets=targetAssignments(data,p);
   const conflicts:string[]=[];
-  if(blocks.length>slots.slots)conflicts.push(`Block list exceeds ${slots.slots} slots.`);
+  if(blocks.length>slots.slots&&!slots.unknown)conflicts.push(`Block list exceeds ${slots.slots} slots.`);
+  if(blocks.length>7)conflicts.push('Block list exceeds the maximum of 7 slots.');
   for(const id of blocks){if(targets.has(id))conflicts.push(`Target ${id} is blocked.`);if(p.preferences[id]==='protect')conflicts.push(`Protected task ${id} is blocked.`);if(!m.tasks.some(t=>t.id===id)&&!asFiller&&!(p.blocks[m.group]||[]).includes(id))conflicts.push(`Master cannot assign ${id}.`);}
   rows.forEach(r=>r.blocked=blocks.includes(r.id));
   const active=rows.filter(r=>!r.reason&&!r.blocked);
@@ -112,7 +115,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const noSkip=sum(active,r=>r.probability*(1-(r.isTarget?r.targetFraction:0))*r.minutes);
   const cycle=moments.full;
   const kept=sum(active,r=>r.probability*(1-r.skip));
-  const unknown=[...new Set([...status.unknown,...pointRewardUnknown(m,p),...active.flatMap(rowUnknown),...(slots.unknown?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
+  const unknown=[...new Set([...status.unknown,...pointRewardUnknown(m,p),...active.flatMap(rowUnknown),...(slots.unknown&&blocks.length>slots.slots?['Block-slot eligibility']:[]),...(m.id==='mortimer'&&p.mortimerTasks===null?['Mortimer progression']:[])])];
   let reason=status.failed.join('; ');
   if(!reason&&boosting&&m.streakGroup!=='normal')reason='Boosting requires a milestone master in the normal streak group.';
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
@@ -201,6 +204,7 @@ export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700,pr
   if(best.boost)best.quality+='; periodic boosting estimate includes filler tasks and current streak; point rates use a 1000-completion cycle';
   if(best.reset)best.quality+='; reset renewal model includes recorded Turael blocks and replacement tasks; simulate points and streaks';
   best.searchEvaluations=evaluations;
+  if(blockSlots(m,p).unknown)best.quality+='; baseline uses confirmed block capacity only — enter quest points and Lumbridge Elite status to optimise additional slots';
   if(m.id==='mortimer')best.quality+='; modifier-aware policies evaluated by simulation';
   if(p.strategy==='funded'||p.goal.kind!=='offer'||p.objective==='points')best.quality+='; analytical offer estimate only — use strategy simulation for this objective';
   return best;
