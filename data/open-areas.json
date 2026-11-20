@@ -1,0 +1,216 @@
+{
+  "version": "2026-11-20.1",
+  "scope": "Ordinary entrance on a normal members world; not every wing, activity, creature or teleport.",
+  "areas": [
+    {
+      "key": "location:Asgarnian Ice Dungeon",
+      "name": "Asgarnian Ice Dungeon",
+      "note": "Wyverns, Royal Titans and shortcuts retain their own requirements.",
+      "source": {
+        "title": "Asgarnian Ice Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Asgarnian_Ice_Dungeon",
+        "revision": 15376429
+      }
+    },
+    {
+      "key": "location:Battlefront",
+      "name": "Battlefront",
+      "note": "Ordinary Kourend travel; fast teleports remain separate.",
+      "source": {
+        "title": "Battlefront",
+        "url": "https://oldschool.runescape.wiki/w/Battlefront",
+        "revision": 14774322
+      }
+    },
+    {
+      "key": "location:Catacombs of Kourend",
+      "name": "Catacombs of Kourend",
+      "note": "Use the main statue entrance. Other entrances need their vines unlocked.",
+      "source": {
+        "title": "Catacombs of Kourend",
+        "url": "https://oldschool.runescape.wiki/w/Catacombs_of_Kourend",
+        "revision": 15366360
+      }
+    },
+    {
+      "key": "location:Chasm of Fire",
+      "name": "Chasm of Fire",
+      "note": "Normal demon floors; Yama and shortcuts are separate encounters/access.",
+      "source": {
+        "title": "Chasm of Fire",
+        "url": "https://oldschool.runescape.wiki/w/Chasm_of_Fire",
+        "revision": 15309985
+      }
+    },
+    {
+      "key": "location:Forthos Dungeon",
+      "name": "Forthos Dungeon",
+      "note": "Ordinary stairs; altar/door unlocks and shortcuts are separate.",
+      "source": {
+        "title": "Forthos Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Forthos_Dungeon",
+        "revision": 15371373
+      }
+    },
+    {
+      "key": "location:Fremennik Slayer Dungeon",
+      "name": "Fremennik Slayer Dungeon",
+      "note": "Entrance is open; each monster retains its Slayer/equipment requirements.",
+      "source": {
+        "title": "Fremennik Slayer Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Fremennik_Slayer_Dungeon",
+        "revision": 15373588
+      }
+    },
+    {
+      "key": "location:Giants' Den",
+      "name": "Giants' Den",
+      "note": "Ordinary entrance; no Slayer task needed for the giants.",
+      "source": {
+        "title": "Giants' Den",
+        "url": "https://oldschool.runescape.wiki/w/Giants%27_Den",
+        "revision": 15386670
+      }
+    },
+    {
+      "key": "location:Isle of Souls Dungeon",
+      "name": "Isle of Souls Dungeon",
+      "note": "Travel to the island is separate from Soul Wars activity eligibility.",
+      "source": {
+        "title": "Isle of Souls Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Isle_of_Souls_Dungeon",
+        "revision": 15373662
+      }
+    },
+    {
+      "key": "location:Kalphite Cave",
+      "name": "Kalphite Cave",
+      "note": "Entry is open, but killing the monsters requires a matching task.",
+      "source": {
+        "title": "Kalphite Cave",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Cave",
+        "revision": 15320730
+      }
+    },
+    {
+      "key": "location:Kalphite Lair",
+      "name": "Kalphite Lair",
+      "note": "Bring entrance ropes; the Queen and deeper room need separate preparation.",
+      "source": {
+        "title": "Kalphite Lair",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Lair",
+        "revision": 15392929
+      }
+    },
+    {
+      "key": "location:Kebos Swamp",
+      "name": "Kebos Swamp",
+      "note": "Ordinary overland access; creatures/activities retain separate requirements.",
+      "source": {
+        "title": "Kebos Swamp",
+        "url": "https://oldschool.runescape.wiki/w/Kebos_Swamp",
+        "revision": 15362643
+      }
+    },
+    {
+      "key": "location:Lava Maze Dungeon",
+      "name": "Lava Maze Dungeon",
+      "note": "Wilderness danger; specific entrances and tools still matter.",
+      "source": {
+        "title": "Lava Maze Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Lava_Maze_Dungeon",
+        "revision": 15210121
+      }
+    },
+    {
+      "key": "location:Lizardman Canyon",
+      "name": "Lizardman Canyon",
+      "note": "No Kourend favour requirement; shaman protection and western access route still matter.",
+      "source": {
+        "title": "Lizardman Canyon",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Canyon",
+        "revision": 14841789
+      }
+    },
+    {
+      "key": "location:Lizardman Settlement",
+      "name": "Lizardman Settlement",
+      "note": "Area entry is open; shaman equipment and movement remain separate.",
+      "source": {
+        "title": "Lizardman Settlement",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Settlement",
+        "revision": 14941866
+      }
+    },
+    {
+      "key": "location:Molch",
+      "name": "Molch",
+      "note": "Area entry is open; aerial fishing and individual cave methods have separate rules.",
+      "source": {
+        "title": "Molch",
+        "url": "https://oldschool.runescape.wiki/w/Molch",
+        "revision": 15367080
+      }
+    },
+    {
+      "key": "location:Stronghold Slayer Cave",
+      "name": "Stronghold Slayer Cave",
+      "note": "Anyone can enter; attacks require an appropriate current Slayer task.",
+      "source": {
+        "title": "Stronghold Slayer Cave",
+        "url": "https://oldschool.runescape.wiki/w/Stronghold_Slayer_Cave",
+        "revision": 15372062
+      }
+    },
+    {
+      "key": "location:Stronghold of Security",
+      "name": "Stronghold of Security",
+      "note": "Door/security questions and dangerous floors still apply.",
+      "source": {
+        "title": "Stronghold of Security",
+        "url": "https://oldschool.runescape.wiki/w/Stronghold_of_Security",
+        "revision": 15402845
+      }
+    },
+    {
+      "key": "location:Taverley Dungeon",
+      "name": "Taverley Dungeon",
+      "note": "Ordinary entrance only. Deeper gates require keys, combat actions or shortcuts.",
+      "source": {
+        "title": "Taverley Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Taverley_Dungeon",
+        "revision": 15405402
+      }
+    },
+    {
+      "key": "location:Waterbirth Island",
+      "name": "Waterbirth Island",
+      "note": "Jarvald costs 1,000 coins without Fremennik Trials; deeper dungeon doors/rooms remain separate.",
+      "source": {
+        "title": "Waterbirth Island",
+        "url": "https://oldschool.runescape.wiki/w/Waterbirth_Island",
+        "revision": 15240570
+      }
+    },
+    {
+      "key": "location:Wilderness Slayer Cave",
+      "name": "Wilderness Slayer Cave",
+      "note": "Open entry does not imply safety or meeting a creature/task requirement.",
+      "source": {
+        "title": "Wilderness Slayer Cave",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_Slayer_Cave",
+        "revision": 15351480
+      }
+    },
+    {
+      "key": "location:Stronghold Slayer Dungeon",
+      "name": "Stronghold Slayer Dungeon",
+      "note": "Anyone can enter; attacks require an appropriate current Slayer task.",
+      "source": {
+        "title": "Stronghold Slayer Cave",
+        "url": "https://oldschool.runescape.wiki/w/Stronghold_Slayer_Cave",
+        "revision": 15372062
+      }
+    }
+  ]
+}

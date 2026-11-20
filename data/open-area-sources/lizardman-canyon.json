@@ -1,0 +1,19 @@
+{
+  "pageid": 68988,
+  "ns": 0,
+  "title": "Lizardman Canyon",
+  "revisions": [
+    {
+      "revid": 14841789,
+      "parentid": 14774201,
+      "timestamp": "2025-01-24T04:15:27Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Lizardman Canyon\n|image = [[File:Lizardman Canyon.png|300px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|location = [[Great Kourend]]\n|music = [[March of the Shayzien]]\n|map = {{Map|name=Lizardman Canyon|x=1503|y=3704|height=300|width=300|zoom=2}}\n|leagueRegion = Kourend\n}}\n\nThe '''Lizardman Canyon''' is a valley in the west portion of [[Great Kourend]], between [[Lovakengj]] and [[Shayzien]]. The valley is where [[lizardmen]] and [[lizardman brute]]s reside, and is the responsibility of the Shayzien soldiers to keep them contained.\n\nA wounded soldier overlooking both canyons can inform players of how many people are inside either canyon.\n\nThe easiest way to get there is by using the [[fairy ring]] with the code {{fairycode|DJR}}.\n\n==Features==\nThe Lizardman canyon contains two valleys; the east and west.\n\nThe eastern canyon contains only lizardmen and lizardmen brutes. In the middle of this canyon there is a single-combat zone, while the rest is multi-combat. Soldiers are always engaging the lizardmen in battle, and it is a popular choice with slayers seeking to complete their task but not tackle the more dangerous [[lizardman shaman]]s.\n\nThe western canyon is accessible via the [[Handholds (Lizardman Canyon)|handholds]] and contains all three lizardmen types including the dangerous shamans. Three shamans can be found in the western canyon, one spawn in the north-west, east and south-west quadrants. The south-eastern quadrant of this canyon contains both lizardmen and lizardmen brutes fighting a small group of soldiers.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 10 January 2024\n|update = Children of the Sun\n|poll = Varlamore Activities & Kourend Changes\n|change = As [[Kourend Favour]] has been removed, accessing either side of the canyon no longer requires it.\n}}\n{{Subject changes\n|date = 18 February 2016\n|update = Dragon Claws & 3rd Birthday\n|change = Some of the decor in the Lizardman Shaman area has been changed to allow the player and NPCs to walk over it to reduce safe-spotting.\n}}\n{{Subject changes footer}}\n\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,28 @@
 SLAYER TARGET PLANNER - THIRD-PARTY NOTICES
 
+Application code is distributed under GNU GPL version 3; see COPYING-GPL-3.txt
+in the Windows distribution and LICENSE in the corresponding source/ directory.
+Copyright 2026 Owen Welch. No warranty is provided. The bundled Wiki-derived
+data and Jagex artwork retain their separate terms below.
+
+The OSRS Wiki DPS calculator is used under GPL-3.0:
+https://github.com/weirdgloop/osrs-dps-calc
+Pinned commit: 3da927f4280c73154fa59e4e90eb374af5123d32.
+Copyright and contributor details are retained in vendor/osrs-dps/source and
+vendor/osrs-dps/LICENSE. The distribution's source/ directory includes the
+application, engine source, pinned datasets and reproducible build scripts.
+Alias indexing and UI-image stripping are documented in PROVENANCE.md.
+
+Equipment skill requirements, noted IDs and placeholder IDs are extracted from
+osrsbox/osrsbox-db (GPL-3.0), commit dae12e3400add0c71465f07a334f9d8f86bebce8:
+https://github.com/osrsbox/osrsbox-db
+The extraction tool and dataset retain the original input checksum.
+Unknown/new equipment requirements are explicitly unreviewed.
+
+Bundled calculation dependencies include axios and lodash.mergewith (MIT),
+d3-array and internmap (ISC). Their full licence texts and those of bundled
+transitive dependencies are included in dependency-licences/ beside the EXE.
+
 Game rules, task tables and monster properties are derived from the Old School
 RuneScape Wiki, https://oldschool.runescape.wiki/ , under Creative Commons
 Attribution-NonCommercial-ShareAlike 3.0 Unported:
@@ -50,3 +73,10 @@ recorded in src/ui/item-art.json (item-art.json beside the Windows EXE).
 assets/items.png arranges the inventory sprites without changing their identity.
 Generic category recommendations can show representative art, identified in
 the item's hover text. Linked Wiki pages are not downloaded during app use.
+
+Owned-item names reuse the RuneLite static cache mirror at commit
+e60d45ed18a57c40c1d4120a1ed94c5896e49da8. Additional owned-equipment inventory
+art is copyright Jagex Ltd, taken from the pinned OSRS Wiki DPS repository
+cdn/equipment files. assets/owned-items.png arranges these images locally;
+src/ui/owned-art.json records source commit, filenames and SHA-256 hashes.
+No inventory art or item-name requests are made while using the application.

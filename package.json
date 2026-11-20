@@ -1,7 +1,8 @@
 {
   "name": "slayer-target-planner",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "private": true,
+  "license": "GPL-3.0-only",
   "scripts": {
     "test": "node tools/build.mjs && node --test",
     "start": "node tools/serve.cjs",
@@ -15,5 +16,10 @@
     "electron": "45.3.4",
     "esbuild": "0.28.2",
     "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "axios": "1.21.1",
+    "d3-array": "3.2.5",
+    "lodash.mergewith": "4.6.2"
   }
 }

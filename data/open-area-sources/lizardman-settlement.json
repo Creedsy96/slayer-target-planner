@@ -1,0 +1,19 @@
+{
+  "pageid": 82646,
+  "ns": 0,
+  "title": "Lizardman Settlement",
+  "revisions": [
+    {
+      "revid": 14941866,
+      "parentid": 14941865,
+      "timestamp": "2025-07-22T01:06:46Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Lizardman Settlement\n|image = [[File:Lizardman Settlement.png|300px]]\n|release = [[5 January]] [[2017]]\n|update = Chambers of Xeric\n|members = Yes\n|location = [[Kebos Lowlands]]\n|race = [[Lizardman]]\n|map = {{Map|name=Lizardman Settlement|x=1324|y=3556|height=350|width=300|zoom=2}}\n|type = settlement\n|leagueRegion = Kourend\n}}\n{{Relativelocation\n|location = Lizardman Settlement\n|north = Kebos Swamp\n|west = Mount Quidamortem\n|south = The Stranglewood\n|east = Shayziens' Wall\n}}\n\nThe '''Lizardman Settlement''' is an area in the [[Kebos Lowlands]] inhabited by [[Lizardmen]], between [[Mount Quidamortem]] and [[Shayziens' Wall]]. In the north is [[Xeric's Shrine]].\n\nPlayers going to the [[Chambers of Xeric]] for the first time will need to pass through this area. It is recommended to bring [[antipoison]] while moving through this area since the lizardmen can [[poison]] you.\n\n[[Dwarf multicannon]]s can't be placed in the area or inside [[Lizardman Caves]] where [[lizardman shaman]]s can be fought during slayer tasks. A message will appear with the text \"There's something in the swampy atmosphere around here that inteferes with your cannon.\"\n\n==Transportation==\nThe Lizardman Settlement can be reached by various methods:\n\n* Using the [[fairy ring]] (code {{Fairycode|BLS}}) and running north-east towards the bridge and continue into the swamp\n* The [[skills necklace]] or [[Farming cape]] provide teleports to the [[Farming Guild]] then running south through the [[River Molch]] towards [[Xeric's Shrine]], then continue south\n\n{{Lizardman Settlement}}\n{{Kebos Lowlands}}"
+        }
+      }
+    }
+  ]
+}

@@ -15,7 +15,7 @@ test('ordinary hellhounds calculate for strict Maxed at all five reviewed Konar 
 test('Cerberus remains restricted to Taverley; blocked locations and unsupported variants stay restricted',()=>{
   const p=profile('cerberus'),plan=c.evaluate(d,konar,p,[]);
   assert.equal(plan.rows.find(r=>r.id==='hellhounds').targetFraction,1/5);
-  p.access['location:Taverley Dungeon']=0;
+  p.restrictBasicAccess=true;p.access['location:Taverley Dungeon']=0;
   assert.equal(c.evaluate(d,konar,p,[]).chance,null);
   p.goal.targets[0].variantId='skeleton-hellhound-vet-ion';
   assert.match(c.evaluate(d,konar,p,[]).reason,/no reviewed mapping/);
@@ -36,7 +36,7 @@ test('reward gates and closed locations show named requirements with relevant co
   const plan=c.evaluate(d,d.masters.find(m=>m.id==='nieve'),p,[]);
   const reward=c.explainPlanIssues(d,plan,p).find(i=>i.title==='Basilocked');
   assert.equal(reward.route,'account');assert.equal(reward.filter,'Basilocked');assert.match(reward.detail,/purchased only if you own/);
-  const closed=profile();for(const loc of konar.tasks.find(t=>t.id==='hellhounds').locations)closed.access['location:'+loc]=0;
+  const closed=profile();closed.restrictBasicAccess=true;for(const loc of konar.tasks.find(t=>t.id==='hellhounds').locations)closed.access['location:'+loc]=0;
   const access=c.explainPlanIssues(d,c.evaluate(d,konar,closed,[]),closed).find(i=>i.title.includes('every assigned area'));
   assert.equal(access.route,'account');assert.ok(access.filter);assert.match(access.detail,/Taverley Dungeon/);
 });

@@ -1,0 +1,19 @@
+{
+  "pageid": 200589,
+  "ns": 0,
+  "title": "Molch",
+  "revisions": [
+    {
+      "revid": 15367080,
+      "parentid": 15366286,
+      "timestamp": "2026-10-06T19:47:54Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Molch\n|image = [[File:Molch.png|300px]]\n|release = [[10 January]] [[2019]]\n|update = The Kebos Lowlands\n|members = Yes\n|location = [[Kebos Lowlands]]\n|race = [[Lizardman]]\n|teleport = None\n|music = [[Servants of Strife]]\n|map = {{Map|name=Molch|x=1304|y=3663}}\n|leagueRegion = Kourend\n}}\n'''Molch''' is a small settlement found in the [[Kebos Swamp]], a swamp in the [[Kebos Lowlands]]. It is inhabited by [[lizardmen]]. A lizardman shaman named [[Ek'ans Chan]] can be seen chanting. In addition, two enclosures containing unattackable [[swamp frog]]s can be found, suggesting the lizardmen use them as a source of food.\n\nA {{WP|step pyramid}} can be found here with an [[Altar (Xeric)|altar]] dedicated to [[Xeric]]. In addition, there are four [[lizard dwelling|entrances]] to the [[Lizardman Temple]], containing six [[lizardman shaman]]s in a single-way combat area.\n\nA quick way to travel to Molch is to use a [[Skills necklace]] to teleport to the [[Farming Guild]] and run south across the bridge and through the swamp. Another quick way is to use the [[fairy ring]] code {{Fairycode|DJR}}, running south-west and taking the [[Boaty]] directly to Molch.\n[[File:Molch step pyramid.png|thumb|left|The step pyramid just west of the village.]]\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 4 June 2020\n|update = Darkmeyer\n|change = Fixed a blank tile in the Molch area.\n}}\n{{Subject changes\n|date = 8 August 2019\n|update = Smithing and Silver Crafting Interfaces\n|change = Some tiles in Molch now correctly allow items to appear when dropped there.\n}}\n{{Subject changes footer}}\n\n{{Molch}}\n{{Kebos Lowlands}}"
+        }
+      }
+    }
+  ]
+}

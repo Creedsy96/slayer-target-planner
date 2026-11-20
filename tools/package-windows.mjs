@@ -12,7 +12,7 @@ const web = path.join(stage, 'web');
 await mkdir(web, {recursive: true});
 await mkdir(path.join(stage, 'assets'), {recursive: true});
 // Deliberate allowlist: no Git, hosting credentials, test output or browser data.
-for (const file of ['planner.js','data-manifest.json','creatures.png','items.png']) {
+for (const file of ['planner.js','data-manifest.json','creatures.png','items.png','owned-items.png']) {
   await copyFile(path.join(root, 'dist', file), path.join(web, file));
 }
 for(const file of ['main.cjs','preload.cjs','hiscores.cjs','compact.cjs'])await copyFile(path.join(root,'desktop',file),path.join(stage,file));

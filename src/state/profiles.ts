@@ -1,4 +1,5 @@
 import {AREA_VERSION} from '../rules/access';
+import {validateBank,validateCombat} from './bank';
 import type {Catalogue,Profile,Method} from '../domain/types';
 export const SCHEMA=2;
 export const STORAGE='slayer-target-planner-v2';
@@ -100,10 +101,15 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
     p.questImport={format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
   }
   if(!Array.isArray(p.notes)||p.notes.some(n=>typeof n!=='string'))throw Error('Invalid migration notes.');
+  if(p.bank!==undefined)p.bank=validateBank(p.bank);
+  if(p.combat!==undefined)p.combat=validateCombat(p.combat);
+  if(p.restrictBasicAccess!==undefined&&typeof p.restrictBasicAccess!=='boolean')throw Error('Invalid access restriction mode.');
   validateHuntExtras(data,p);
   return p;
 }
 function validateMethod(data:Catalogue,m:Method,aid?:string):void{
+  delete m.calculated;delete m.combatNote;
+  if(m.manualCombat!==undefined&&typeof m.manualCombat!=='boolean')throw Error('Invalid manual combat override.');
   const v=data.variants.find(v=>v.id===m.variantId);if(!v||aid&&!v.assignmentIds.includes(aid))throw Error('Invalid method variant.');
   if(!['dps','kills-hour','task-minutes'].includes(m.timing)||!['none','slaughter','expeditious'].includes(m.bracelet))throw Error('Invalid timing method.');
   for(const k of ['rate','dps','delay','travel']as const)if(typeof m[k]!=='number'||!Number.isFinite(m[k])||m[k]<0||m[k]>1e6)throw Error('Invalid method rates.');

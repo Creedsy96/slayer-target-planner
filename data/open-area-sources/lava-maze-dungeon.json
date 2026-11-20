@@ -1,0 +1,19 @@
+{
+  "pageid": 43447,
+  "ns": 0,
+  "title": "Lava Maze Dungeon",
+  "revisions": [
+    {
+      "revid": 15210121,
+      "parentid": 15010502,
+      "timestamp": "2026-05-13T03:20:05Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Lava Maze dungeon}}\n{{Infobox Location\n|name = Lava Maze Dungeon\n|image = [[File:Lava Maze Dungeon.png|300px]]\n|release = [[9 April]] [[2002]]\n|update = New members quest online!\n|members = Yes\n|floors = One\n|location = [[Wilderness]]\n|race = [[Demon]]s, [[spider]]s, [[dragon (race)|dragons]]\n|music = [[Attack 3]]\n|map = {{Map|name=Lava Maze Dungeon|3040,10266|mapID=26|height=250}}\n|type = dungeon\n|leagueRegion = Wilderness\n}}\nThe '''Lava Maze Dungeon''' is a dungeon beneath the [[Lava Maze]] in high level [[Wilderness]]. The dungeon is entirely [[single-way combat]] and has two ladder entrances.\n\nThe dungeon's western entrance is west of the Lava Maze, level 42 Wilderness in a metal fenced area containing [[lesser demon]]s. This entrance leads to a small area containing only [[poison spider]]s and the lever to enter the [[King Black Dragon]]'s [[King Black Dragon Lair|lair]]. This part of the dungeon covers level 42 to 43 Wilderness.\n\nThe dungeon's eastern entrance is in the centre of the Lava Maze, level 42 to 43 Wilderness in a metal fenced area. This entrance leads to an [[Lava Maze Dungeon mine|area]] containing more monsters and a single [[Runite rocks|Runite rock]]. This part of the dungeon covers level 41 to 47 Wilderness.\n\nPlayers who are on a [[black dragon]] or [[greater demon]] Wilderness [[Slayer task]] given by [[Krystilia]] may opt to kill them here as their other locations in the Wilderness are [[multicombat area]]s. However, it is only recommended to do so with 82 [[Agility]] given the massive distance and lack of a bank in the area.\n[[File:Lava Maze navigation.png|thumb|left|The path to the dungeon.]]\n{{Clear|left}}\n\n==Monsters==\n*[[Greater demon]]\n*[[Poison spider]]\n*[[Black dragon]]\n\n==Trivia==\n*Although the western surface entrance is used to reach the [[poison spider]] area and lever to the [[King Black Dragon Lair]], on the map, this area appears to be in the eastern part of the dungeon. Similarly, eastern surface entrance appears to lead to the western part of the dungeon. This reversal is similar to some of the entrances to the [[Ardougne Sewers]]. This is due to an error with the ''RuneScape Classic'' map editor inverting maps and when some dungeons were remade in ''RuneScape 2'' they were made according to how they were originally oriented in the map editor, and so the Lava Maze lines up properly in ''RuneScape Classic'' compared to the overworld, but not in ''RuneScape 2''.\n\n{{Lava Maze}}\n{{Dungeons}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

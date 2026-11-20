@@ -1,4 +1,6 @@
 const paths:Record<string,string>={
+  settings:'<circle cx="12" cy="12" r="4"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4M5 5l3 3m8 8 3 3M5 19l3-3M16 8l3-3"/>',
+  bank:'<path d="M3 7h18v14H3ZM2 7l10-5 10 5M7 10v8m5-8v8m5-8v8"/>',
   guide:'<path d="M3 4h6a4 4 0 0 1 3 2 4 4 0 0 1 3-2h6v16h-6a4 4 0 0 0-3 2 4 4 0 0 0-3-2H3Z M12 6v16M6 8h3m-3 4h3m6-4h3m-3 4h3"/>',
   supplies:'<path d="M9 2h6M10 2v7L4 19a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L14 9V2M7 14h10"/>',
   route:'<circle cx="6" cy="5" r="3"/><circle cx="18" cy="19" r="3"/><path d="M6 8v4a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V8"/>',

@@ -1,5 +1,5 @@
 import type {Catalogue,Profile} from '../domain/types';
-import {AREA_RULES,AREA_VERSION,questState,resolveAccess} from '../rules/access';
+import {AREA_RULES,AREA_VERSION,questState,resolveAccess,isOpenArea} from '../rules/access';
 import type {QuestPreview} from '../state/quest-import';
 
 const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
@@ -19,9 +19,9 @@ export function renderQuestImport(p:Profile,preview:QuestPreview|null,preserve:b
 }
 
 export function renderAreaAccess(p:Profile,keys:string[],query:string):string {
-  const locations=keys.filter(key=>key.startsWith('location:')&&key.toLowerCase().includes(query));
+  const locations=keys.filter(key=>key.startsWith('location:')&&key.toLowerCase().includes(query)&&(p.restrictBasicAccess||!isOpenArea(key)));
   return `<section class="card"><h2>Area access</h2><p class="small muted">Derived from imported or manually entered quests using area rules ${AREA_VERSION}. Partial quest steps and other unverified access stay unknown. Manual Yes/No overrides take priority; choose Auto to restore derivation. Equipment, travel shortcuts and individual monster requirements are separate.</p><div class="tablewrap data-list"><table><thead><tr><th>Area</th><th>Effective access</th><th>Override</th><th>Reason</th></tr></thead><tbody>${locations.map(key=>{
     const result=resolveAccess(key,p),rule=AREA_RULES.find(r=>r.key===key),manual=p.access[key]===0||p.access[key]===1;
-    return `<tr><td>${esc(key.slice(9))}</td><td>${accessLabel(result.value)}<small>${result.origin==='manual'?'Manual override':result.origin==='quest'?'Derived from quest':'Needs confirmation'}</small></td><td><select aria-label="Access override for ${esc(key.slice(9))}" data-fact="access" data-key="${esc(key)}"><option value="" ${!manual?'selected':''}>Auto</option><option value="1" ${p.access[key]===1?'selected':''}>Yes — manual</option><option value="0" ${p.access[key]===0?'selected':''}>No — manual</option></select></td><td>${esc(result.reason)}${rule?` <a href="${esc(rule.source.url)}?oldid=${rule.source.revision}" target="_blank" rel="noopener">Source</a>`:''}</td></tr>`;
+    return `<tr><td>${esc(key.slice(9))}</td><td>${accessLabel(result.value)}<small>${result.origin==='manual'?'Manual override':result.origin==='quest'?'Derived from quest':result.origin==='baseline'?'Default open entrance':'Needs confirmation'}</small></td><td><select aria-label="Access override for ${esc(key.slice(9))}" data-fact="access" data-key="${esc(key)}"><option value="" ${!manual?'selected':''}>Auto</option><option value="1" ${p.access[key]===1?'selected':''}>Yes — manual</option><option value="0" ${p.access[key]===0?'selected':''}>No — manual</option></select></td><td>${esc(result.reason)}${rule?` <a href="${esc(rule.source.url)}?oldid=${rule.source.revision}" target="_blank" rel="noopener">Source</a>`:''}</td></tr>`;
   }).join('')}</tbody></table></div></section>`;
 }

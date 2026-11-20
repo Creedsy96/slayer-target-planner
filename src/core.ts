@@ -6,6 +6,13 @@ export const catalogue=applyVariantAdditions(applyMortimerRules(raw as unknown a
 export * from './rules/variant-additions';
 export * from './rules/mortimer';
 export * from './domain/types';
+export * from './state/bank';
+export * from './combat/types';
+export * from './combat/equipment';
+export * from './combat/calculate';
+export * from './combat/optimise';
+export * from './combat/timing';
+export * from './combat/kill-time';
 export * from './state/profiles';
 export * from './state/maxed-profile';
 export * from './rules/eligibility';

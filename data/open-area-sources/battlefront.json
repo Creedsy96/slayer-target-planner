@@ -1,0 +1,19 @@
+{
+  "pageid": 202651,
+  "ns": 0,
+  "title": "Battlefront",
+  "revisions": [
+    {
+      "revid": 14774322,
+      "parentid": 14528652,
+      "timestamp": "2024-10-13T04:45:48Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Battlefront\n|image = [[File:Battlefront.png|300px]]\n|release = [[10 January]] [[2019]]\n|update = The Kebos Lowlands\n|members = Yes\n|location = [[Kebos Lowlands]]\n|map = {{Map|name=Battlefront|x=1368|y=3716|height=400|width=300|zoom=2}}\n|leagueRegion = Kourend\n}}\n{{Relative location\n|north = Mount Karuulm\n|west = Farming Guild\n|location = Battlefront\n|east = Lizardman Canyon\n|south = Lake Molch\n}}\nThe '''Battlefront''' is a large battlefield just outside the western border of [[Great Kourend]]. It is where the majority of [[Shayzien]] soldiers fight the [[lizardmen]] to keep Kourend safe. Players can reach the Battlefront by casting [[Battlefront Teleport]], or running south-east from the [[fairy ring]] (code {{Fairycode|CIR}}).\n\nThe army here consists of [[Soldier (Battlefront)|soldiers]], [[Ranger (Shayzien)|rangers]] and [[doyen]]s led by [[General Vir]], with [[Lovakengj Engineer]]s helping to keep the siege weapons running. In addition, they have one on-field nurse, [[Nurse Emma Gentsy]], next to Vir's quarters in the north side. An ancient grave is located by the fountain, as well as several yew trees.\n\nUnlike the [[Lizardman Canyon]], the battlefield is single-combat.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 17 January 2019\n|update = Kebos Graphical Changes and Other Fixes\n|change = The fountain by the ancient grave now has a [[Icon#Training|water source icon]] on the [[world map]].\n}}\n{{Subject changes footer}}\n\n{{Battlefront}}\n{{Kebos Lowlands}}"
+        }
+      }
+    }
+  ]
+}

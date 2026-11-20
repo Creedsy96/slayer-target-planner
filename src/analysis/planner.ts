@@ -1,3 +1,4 @@
+import {withCalculatedTiming} from '../combat/timing';
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
 import {clone,defaultMethod} from '../state/profiles';
 import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,targetAssignments} from '../rules/eligibility';
@@ -32,6 +33,7 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
     const locationRestriction=methodLocationRestriction(v,m,method.location);
     if(locationRestriction)variant.failed.push(locationRestriction);
     variant.eligible=!variant.failed.length;
+    method=withCalculatedTiming(p,v,method);
     const timing=taskTiming(entry,v,method);
     const modifier=modifierKinds(p.mortimerTasks??0,entry);
     let reward=basePoints(m,p)*1.775;

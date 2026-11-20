@@ -1,13 +1,15 @@
+import './build_dps_engine.mjs';
 import {build} from 'esbuild';
 import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
 await mkdir('dist',{recursive:true});await mkdir('.desktop-build',{recursive:true});
-const worker=await build({entryPoints:['src/worker.ts'],bundle:true,write:false,format:'iife',target:'es2022'});
+const worker=await build({entryPoints:['src/worker.ts'],bundle:true,write:false,format:'iife',target:'es2022',minify:true});
 await build({entryPoints:['src/core.ts'],bundle:true,format:'cjs',platform:'node',target:'node20',outfile:'.desktop-build/core.cjs'});
 await build({entryPoints:['src/guide/index.ts'],bundle:true,format:'cjs',platform:'node',target:'node20',outfile:'.desktop-build/guide.cjs'});
-await build({entryPoints:['src/ui/app.ts'],bundle:true,format:'iife',target:'es2022',outfile:'dist/planner.js',define:{WORKER_SOURCE:JSON.stringify(worker.outputFiles[0].text)}});
+await build({entryPoints:['src/ui/app.ts'],bundle:true,format:'iife',target:'es2022',minify:true,outfile:'dist/planner.js',define:{WORKER_SOURCE:JSON.stringify(worker.outputFiles[0].text)}});
 await copyFile('src/ui/index.html','dist/index.html');await copyFile('src/ui/style.css','dist/style.css');await copyFile('desktop/icon.png','dist/app-icon.png');
 await copyFile('assets/creatures.png','dist/creatures.png');
 await copyFile('assets/items.png','dist/items.png');
+await copyFile('assets/owned-items.png','dist/owned-items.png');
 const guideData=JSON.parse(await readFile('data/creature-guide.json','utf8'));
-await writeFile('dist/data-manifest.json',JSON.stringify({creatureGuide:guideData.version,variantAdditions:JSON.parse(await readFile('data/variant-additions.json','utf8')).version,mortimerRules:JSON.parse(await readFile('data/mortimer-modifiers.json','utf8')).version,areaRules:JSON.parse(await readFile('data/area-access.json','utf8')).version,version:JSON.parse(await readFile('data/catalogue.json','utf8')).version,application:JSON.parse(await readFile('package.json','utf8')).version},null,2));
+await writeFile('dist/data-manifest.json',JSON.stringify({combatEngine:"3da927f4280c73154fa59e4e90eb374af5123d32",equipmentRequirements:JSON.parse(await readFile("data/equipment-requirements.json","utf8")).commit,openAreas:JSON.parse(await readFile("data/open-areas.json","utf8")).version,creatureGuide:guideData.version,variantAdditions:JSON.parse(await readFile('data/variant-additions.json','utf8')).version,mortimerRules:JSON.parse(await readFile('data/mortimer-modifiers.json','utf8')).version,areaRules:JSON.parse(await readFile('data/area-access.json','utf8')).version,version:JSON.parse(await readFile('data/catalogue.json','utf8')).version,application:JSON.parse(await readFile('package.json','utf8')).version},null,2));
 console.log('Built shared core, offline worker, browser UI and data manifest.');

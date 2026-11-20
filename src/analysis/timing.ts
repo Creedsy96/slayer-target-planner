@@ -13,7 +13,7 @@ export function expectedKills(n:number,bracelet:Method['bracelet']):number{
 export function taskTiming(entry:Entry,v:Variant,method:Method):{kills:number;seconds:number;minutes:number}{
   const kills=meanKills(entry,method);
   if(method.timing==='task-minutes')return {kills,seconds:method.rate*60/kills,minutes:method.rate+method.travel};
-  const seconds=method.timing==='kills-hour'?3600/method.rate:v.hp/(method.dps*v.multiplier)+method.delay;
+  const seconds=method.timing==='kills-hour'?3600/method.rate:(method.calculated?.ttk??v.hp/(method.dps*v.multiplier))+method.delay;
   return {kills,seconds,minutes:kills*seconds/60+method.travel};
 }
 export function sampleQuantity(entry:Entry,method:Method,rng:()=>number,modifier=0):number{

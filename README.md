@@ -1,12 +1,30 @@
-# Slayer Target Planner 2.8.1
+# Slayer Target Planner 2.9.0
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.8.1 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Owned gear, DPS and Settings in 2.9.0
+
+**Bank & gear** imports local `bank.json`, `inventory.json` and `equipment.json` snapshots from RuneLite’s [Character Export](https://runelite.net/plugin-hub/show/character-export). Include `character.json` to import base skill levels; boosted levels are ignored. Review the character folder and import preview before applying. Snapshots stay in the active local profile and travel with profile backups. No bank lookup by username or game-account credentials are involved.
+
+Character Export does **not** export Group Storage. You can add group items manually or import an explicitly identified `group_storage` snapshot using the same `items: [{id, quantity}]` format. Group items are separate and excluded until **Include group items** is enabled. They represent gear available to borrow, not exclusive ownership.
+
+Search an item by name or ID to add newly obtained gear. The table’s manual quantity is an absolute total for that personal/group source: zero removes availability, and **Clear manual** restores the imported quantity. Refreshing a container preserves other containers and manual quantities. Use exports taken together to avoid counting an item both in the bank and in worn equipment.
+
+All three guide sets use the OSRS worn-equipment layout. **Best in your Slots** searches owned usable equipment for the selected creature, form, attack approach and location, enforcing necessary protection, weapon/shield constraints, ammunition and known skill requirements. It is the best found by a bounded DPS search, with full-set seeds; it is not a certified global optimum. Mid-level and max sets remain curated examples. DPS for all three uses the active profile’s actual levels and selected assumptions, rather than silently assuming 99s.
+
+The pinned [OSRS Wiki DPS engine](https://github.com/weirdgloop/osrs-dps-calc) supplies attack rolls, max hits, attack speeds and hit distributions. Expected kill time includes misses, overkill and supported HP-dependent damage. **Settings → Combat and timing** controls offensive prayers, potions, spellbook, attack uptime and using owned-gear times throughout the hunter. Import previews enable this by default; first manual entry enables it when the profile has no combat settings. Estimates, skip/block ranking, reset/boost fillers and full simulations share these times. Uptime, between-kill delay and travel are applied separately, and legacy creature multipliers are not reapplied to calculated DPS.
+
+Measured kills/hour and full task-duration methods retain priority. Boss/phase/switch encounters, missing required equipment and unsupported setups keep configured timing with a visible reason in the hunter and Combat methods. Continuous DPS excludes healing, movement and travel. Replenishable runes, ammunition and charges are assumed; bank quantity is not a trip-supply budget. Item quest/diary unlocks still need review. Unreviewed equipment skill requirements are excluded unless explicitly accepted in Settings. Specials are not included.
+
+**Settings** also owns themes, animation control, optional guide sections, sidebar Quick setup and secondary navigation. Twenty reviewed ordinary entrances (21 access flags) default to Yes and are hidden from Account & access. This refers to normal members-world entrances, not every room, creature, teleport or activity. Money, tools, task and combat requirements still apply. **Restricted accounts and Leagues** exposes the original pickers and stored overrides; quest/skill-gated locations retain their usual controls. Sources and entrance caveats are listed there.
+
+Everything works offline after loading. Item art and equipment metadata are bundled; guide selection and calculations make no Wiki requests. The new entrance review used four bounded API requests, at least eight seconds apart. See [implementation, verification and limits](docs/bank-dps-implementation.md). Application/DPS code is GPL-3.0 with corresponding source in the Windows `source/` folder; Wiki data and game artwork retain the separate terms in `THIRD_PARTY_NOTICES.txt`.
 
 ## Item icons and links in 2.8.1
 
@@ -96,7 +114,7 @@ Area rule version `2026-11-19.1` is recorded separately from the original catalo
 
 ## Appearance
 
-Use **Theme** in the header to choose Woodland, Midnight, Ember, Amethyst, Daylight or High contrast. The choice applies instantly to every view and is saved on this device separately from hunt profiles. All themes work offline.
+Use **Theme** in Settings to choose Woodland, Midnight, Ember, Amethyst, Daylight or High contrast. The choice applies instantly to every view and is saved on this device separately from hunt profiles. All themes work offline.
 
 ## Planning a hunt
 
@@ -152,6 +170,7 @@ npm run typecheck
 npm test
 npm start
 npm run package:windows -- <new-output-directory>
+python tools/assemble_windows_share.py <distribution-folder>
 python tools/package_share.py <distribution-folder> <new-zip-path>
 ```
 

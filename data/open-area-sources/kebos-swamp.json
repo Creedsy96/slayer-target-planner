@@ -1,0 +1,19 @@
+{
+  "pageid": 202647,
+  "ns": 0,
+  "title": "Kebos Swamp",
+  "revisions": [
+    {
+      "revid": 15362643,
+      "parentid": 15358183,
+      "timestamp": "2026-10-03T14:44:26Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Kebos Swamp\n|image = [[File:Kebos Swamp.png|300px]]\n|release = [[10 January]] [[2019]]\n|update = The Kebos Lowlands\n|members = Yes\n|location = [[Kebos Lowlands]]\n|teleport = None\n|music = [[Stuck in the Mire]]\n|map = {{Map|name=Kebos Swamp|x=1270|y=3616|height=350|width=300|zoom=2}}\n|leagueRegion = Kourend\n}}\nThe '''Kebos Swamp''' is a swamp located in the [[Kebos Lowlands]] north of [[Mount Quidamortem]]. Here, players can find the [[lizardman]] village of [[Molch]], as well as [[Xeric's Shrine]].\n\nTo the west of the swamp is the [[Kebos Lowlands mine]], as well as a small [[hunter]] area containing [[crimson swift]]s. Here, players can find [[Ket'sal K'uk]], a [[lizardman shaman]], worshipping a fire in the centre of a stone circle.\n\nThe [[Dwarf multicannon]] '''cannot''' be used here. If attempted, you receive the message, ''\"There's something in the swampy atmosphere that interferes with your cannon.\"''\n\n==History==\nThe Kebos Swamp was originally an open flatland, filled with lush greenery. While exploring [[Mount Quidamortem]], [[Xeric]] had many workers construct a large temple here. At some point during construction, a strange mist surrounded the mountain and affected the nearby flora, turning the land into a swamp.{{CiteNPC|npc=Player|loc=Stone tablet (Lizardman Temple)|quote=Entry 8 reads: A strange mist surrounded the mountain this week. Three went to investigate but never returned. Their wages will be held until they return. The days following showed a drastic change in the flora around the mountain, the lush greenery has rotted and the open flatlands have become sodden and impassable. Was this his doing? His work on the mountain must be progressing. Only time will tell.|notes=|name=}} This was likely done to make the environment suitable for [[lizardmen (race)|lizardmen]], as Xeric would soon descend the mountain, bringing them a strange green tonic which he commanded them to drink. This tonic turned the workers into some of the first lizardmen, reducing their intelligence and making them more obedient.{{CiteNPC|npc=Player|loc=Stone tablet (Lizardman Temple)|quote=Entry 12 reads: I hear him now. This is progress. Temple complete. To the mountain? Of course Master. We'll come to you. Scaly and strong.|notes=|name=}}\n\n==Monsters==\n<gallery>\nFile:Swamp frog.png|[[Swamp frog]], level 24\nFile:Lizardman (level 53).png|[[Lizardman]], level 53/62\nFile:Lizardman brute.png|[[Lizardman brute]], level 75 \n</gallery>\n\n[[File:Cryptic clue - dig Kebos Swamp.png|thumb|left|Ket'sal K'uk, occupied in prayer.]]\n{{clear}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 12 January 2017\n|update = Raids Improvements\n|change = Cannons can no longer be placed within the swamps of Kourend.\n}}\n{{Subject changes footer}}\n\n==References==\n{{Reflist}}\n\n{{Kebos Lowlands}}"
+        }
+      }
+    }
+  ]
+}
