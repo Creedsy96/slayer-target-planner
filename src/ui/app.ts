@@ -1,5 +1,6 @@
 import type {GuideCombat} from '../combat/guide';
 import {GearInspector} from './gear-inspector';
+import {CombatCacheStore,combatIdentity} from '../combat/cache';
 import type {GuideState} from '../guide/types';
 import {renderBank,type BankView} from './bank';
 import {loadDisplay,saveDisplay,applyDisplay,renderSettings,type DisplaySettings} from './settings';
@@ -39,6 +40,7 @@ const bool=(path:string,label:string,value:boolean)=>`<label class="check"><inpu
 const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,profile.bank,profile.levels,profile.combat,profile.diaries,profile.quests,profile.questImport?.states,guide]);
 const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
 class AppState{
+  combatCache=new CombatCacheStore();reusedCombat=false;
   gearResults:GuideCombat|undefined;gearKey='';
   display=loadDisplay();bankView:BankView={query:'',previews:[],levels:null,account:null,kind:'auto',group:false};bankPreviewProfile='';bankRequest=0;
   history=new History<{profiles:Profile[];activeId:string}>();compact=false;pin=false;huntSearch='';selectedPresetId='';
@@ -64,11 +66,12 @@ class AppState{
   persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your profile to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
   run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear',profile:Profile,masterId?:string,guide?:GuideState):void{
-    this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
-    this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:'Starting calculation'};
+    this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
+    this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:combatCache.entries.length?(kind==='plans'?'Updating hunt odds / reusing completed combat results':'Reusing completed combat results'):'Starting calculation'};
     worker.onmessage=event=>{
       if(this.workers.get(channel)!==worker||event.data.id!==id)return;
       const result=event.data;
+      if(result.kind==='combat-cache'){this.combatCache.put(identity,result.key,result.result);return;}
       if(result.kind==='progress'){this.busy[channel]={done:result.done,total:result.total,current:result.current||'Calculating'};renderStatus();return;}
       if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderContent();}return;}
       if(result.kind==='plan-ready'){
@@ -83,6 +86,7 @@ class AppState{
       if(result.kind==='error'){this.message=result.message;renderContent();renderMessage();renderStatus();return;}
       if(channel==='gear')this.gearResults=result.result;
       else if(channel==='plans'){
+        this.reusedCombat=result.combatRestored>0;
         this.plans=result.plans.sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
         if(!this.plans.some(p=>p.master.id===this.selected&&(this.showUnavailable||p.chance!==null)))this.selected=this.plans.find(p=>p.chance!==null)?.master.id||this.plans[0]?.master.id||'';
       }else if(channel==='compare')this.comparison=result.plans;
@@ -91,9 +95,15 @@ class AppState{
       renderContent();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the profile before trying again.';renderMessage();renderStatus();};
-    worker.postMessage({id,kind,profile:clone(profile),guide:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
+    worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
-  changed(record=true,key=''):void{if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);this.cancel();gearInspector.invalidate();this.gearKey=gearSignature(this.profile,guideState);this.gearResults=undefined;this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();}
+  changed(record=true,key=''):void{
+    if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);
+    const nextGearKey=gearSignature(this.profile,guideState),gearChanged=this.gearKey!==nextGearKey;
+    for(const channel of [...this.workers.keys()])if(channel!=='gear'||gearChanged)this.cancel(channel);
+    if(gearChanged){gearInspector.invalidate();this.gearKey=nextGearKey;this.gearResults=undefined;}
+    this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();
+  }
 }
 const state=new AppState();
 const p=()=>state.profile;
@@ -105,12 +115,12 @@ function renderShell():void{
   const restore=preserveView();
   document.body.classList.toggle('compact-hunt',state.compact);
   document.body.classList.toggle('field-guide',state.route==='guide');
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.9.3 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.9.4 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';decorateCreatureText($('message'));}
 function renderStatus():void{
-  $('status').innerHTML=Object.keys(state.busy).length?`<span>${Object.entries(state.busy).map(([k,v])=>`${esc(k)}: ${Math.min(100,Math.floor(v.done/Math.max(1,v.total)*100))}% - ${esc(v.current||'Calculating')}`).join(' · ')}</span><button data-action="cancel">Cancel calculations</button>`:`<span>${state.plans.length} master plans · ${p().assumeUnknown?'Conditional assumptions enabled':'Confirmed facts required'}</span><button data-action="recalculate">Recalculate</button>`;
+  $('status').innerHTML=Object.keys(state.busy).length?`<span>${Object.entries(state.busy).map(([k,v])=>`${esc(k)}: ${Math.min(100,Math.floor(v.done/Math.max(1,v.total)*100))}% - ${esc(v.current||'Calculating')}`).join(' · ')}</span><button data-action="cancel">Cancel calculations</button>`:`<span>${state.plans.length} master plans${state.reusedCombat?' · Reused combat results':''} · ${p().assumeUnknown?'Conditional assumptions enabled':'Confirmed facts required'}</span><button data-action="recalculate">Recalculate</button>`;
 }
 function renderContent():void{
   const restore=preserveView();

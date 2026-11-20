@@ -3,11 +3,16 @@ import type {GuideState} from './guide/types';
 import type {CombatResult,EquipmentSlot} from './combat/types';
 import {compareOwnedSlot} from './combat/comparisons';
 import {preparePriorityCombat,prioritisedMasters} from './combat/priority';
+import {combatIdentity,type CombatCacheSnapshot} from './combat/cache';
+import {observeCombatCache,restoreCombatCache} from './combat/optimise';
 import {catalogue,evaluate,optimise,simulate,searchHunt,prepareRows} from './core';
 import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
-  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot};
+  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot};
   try{
+    restoreCombatCache(profile,combatCache);
+    const identity=combatIdentity(profile);let calculated=0;
+    observeCombatCache((signature,key,result)=>{if(signature===identity){calculated++;self.postMessage({id,kind:'combat-cache',key,result});}});
     if(kind==='gear-detail'){
       self.postMessage({id,kind,result:compareOwnedSlot(profile,guide!,combat!,slot!)});
     }else if(kind==='gear'){
@@ -22,7 +27,7 @@ self.onmessage=(event:MessageEvent)=>{
         self.postMessage({id,kind:'plan-ready',plan:plans[plans.length-1]});
         self.postMessage({id,kind:'progress',done:offset+plans.length,total,current:master.name+' / finished'});
       }
-      self.postMessage({id,kind:'plans',plans});
+      self.postMessage({id,kind:'plans',plans,combatCalculated:calculated,combatRestored:combatCache?.identity===identity?combatCache.entries.length:0});
     }else if(kind==='hunt'){const master=catalogue.masters.find(m=>m.id===masterId)!;self.postMessage({id,kind:'progress',done:0,total:1,current:'Preparing full-hunt search / '+master.name});const found=searchHunt(catalogue,master,profile,(done,total)=>self.postMessage({id,kind:'progress',done,total,current:'Searching full-hunt block candidates'}));self.postMessage({id,kind:'hunt',...found,masterId});
     }else if(kind==='strategies'){
       const master=catalogue.masters.find(m=>m.id===masterId)!;
@@ -41,4 +46,5 @@ self.onmessage=(event:MessageEvent)=>{
       self.postMessage({id,kind:'simulation',result,masterId});
     }
   }catch(error){self.postMessage({id,kind:'error',message:error instanceof Error?error.message:String(error)});}
+  finally{observeCombatCache(undefined);}
 };

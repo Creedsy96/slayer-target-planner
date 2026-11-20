@@ -47,3 +47,4 @@ export * from './combat/autocast';
 export * from './combat/armour';
 export * from './combat/comparisons';
 export * from './combat/priority';
+export * from './combat/cache';

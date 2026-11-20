@@ -11,9 +11,13 @@ import {calculateCombat,combatStyles,emptyCombat,familyOf,isWildernessCombat,can
 import {encounter} from '../guide/encounters';
 import {defaultCombat} from '../state/bank';
 import art from '../ui/item-art.json';
+import {CombatCacheStore,combatIdentity,type CombatCacheSnapshot} from './cache';
 
-const cache=new Map<string,CombatResult>();let lastIdentity='';
-function identity(p:Profile):string{return JSON.stringify([p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states]);}
+const cache=new CombatCacheStore();
+let cacheObserver:((identity:string,key:string,result:CombatResult)=>void)|undefined;
+export function observeCombatCache(observer:typeof cacheObserver):void{cacheObserver=observer;}
+export function restoreCombatCache(p:Profile,snapshot?:CombatCacheSnapshot):void{cache.restore(combatIdentity(p),snapshot);}
+export function clearCombatCache():void{cache.clear();}
 export function requirementSlots(record:GuideRecord,state:GuideState,location?:LocationPlan,p?:Profile):Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>{
  const m=encounter(record),slots:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>={};
  if(m.shield)slots.shield=i=>m.shield!.some(n=>n.toLowerCase()===i.name.toLowerCase())||!!m.dragonfire&&['Anti-dragon shield','Dragonfire shield','Dragonfire ward'].includes(i.name)||!!m.wyvern&&['Elemental shield','Mind shield','Ancient wyvern shield'].includes(i.name);
@@ -52,11 +56,11 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
  return result;
 }
 export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
- const signature=identity(p);
- if(signature!==lastIdentity){cache.clear();lastIdentity=signature;}
- const key=''+record.id+'|'+form.id+'|'+state.approach+'|'+state.onTask+'|'+location?.name+'|'+state.stackSize+'|'+priority;
- const saved=cache.get(key);if(saved)return structuredClone(saved);
- const result=search(p,record,form,state,location,priority);if(cache.size>500)cache.clear();cache.set(key,result);return structuredClone(result);
+ const signature=combatIdentity(p),mode=priority??fightPlan(record,form,state,location).defence;
+ const family=state.approach==='auto'?'auto':state.approach.split('-')[0];
+ const key=JSON.stringify([record.id,form.id,family,mode,state.onTask,location?.name,state.stackSize]);
+ const saved=cache.get(signature,key);if(saved)return saved;
+ const result=search(p,record,form,state,location,mode);cache.put(signature,key,result);cacheObserver?.(signature,key,structuredClone(result));return structuredClone(result);
 }
 function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  if(!p.bank)return emptyCombat('Import bank/equipment files or add your owned gear first.');

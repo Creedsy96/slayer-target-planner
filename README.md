@@ -1,12 +1,18 @@
-# Slayer Target Planner 2.9.3
+# Slayer Target Planner 2.9.4
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.3 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.4 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Reusing combat results in 2.9.4
+
+Switching hunt targets updates hunt odds, skips and master rankings using completed combat results from the current session. It does not restart every owned-gear search or blank the unchanged guide cards. Only newly needed creature/form/location/style combinations need fresh gear work. Completion shows **Reused combat results** when saved results were supplied.
+
+Completed gear results are retained as they arrive, so cancelling or replacing a calculation preserves finished work. Bank, combat skill, combat-setting, relevant diary and quest changes use a different cache context. The cache is bounded, lives only in memory and is absent from profile backups; restarting the app starts a fresh session. See [regression evidence and limits](docs/target-calculation-cache.md).
 
 ## Gear comparisons and calculation priority in 2.9.3
 
