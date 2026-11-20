@@ -1,7 +1,9 @@
 import {ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
+import {fightPlan} from '../guide/model';
+import {fallbackArmour,compareLoadoutSustain,type ArmourPriority,type ArmourContext} from './armour';
 import {applyAreaDamage} from './area-damage';
 import type {Profile} from '../domain/types';
-import type {GuideRecord,GuideForm,GuideState,LocationPlan,GearSet} from '../guide/types';
+import type {GuideRecord,GuideForm,GuideState,LocationPlan,GearSet,Family} from '../guide/types';
 import type {CombatResult,CombatStyle,EquipmentItem,EquipmentSlot,Loadout} from './types';
 import {EQUIPMENT_SLOTS} from './types';
 import {ownedItems,canEquip,itemForLabel,equipmentItem,slotNames} from './equipment';
@@ -28,11 +30,11 @@ function requirementSlots(record:GuideRecord,state:GuideState,location?:Location
  return slots;
 }
 const score=(item:EquipmentItem,family:string)=>family==='melee'?item.bonuses.str*5+Math.max(item.offensive.stab,item.offensive.slash,item.offensive.crush):family==='ranged'?item.bonuses.ranged_str*5+item.offensive.ranged:item.bonuses.magic_str*30+item.offensive.magic;
-function slotCandidates(items:EquipmentItem[],family:string):EquipmentItem[]{
+function slotCandidates(items:EquipmentItem[],family:string,context?:ArmourContext):EquipmentItem[]{
  const sorted=items.sort((a,b)=>score(b,family)-score(a,family)||a.id-b.id);
  // Task and target multipliers can outweigh raw equipment bonuses.
  const specialists=sorted.filter(i=>/slayer helmet|black mask|salve amulet|berserker necklace/i.test(i.name));
- return [...new Map([...sorted.slice(0,8),...specialists].map(i=>[i.id,i])).values()];
+ return [...new Map([...sorted.slice(0,8),...specialists,...(context&&items.some(i=>i.slot==='body'||i.slot==='legs')?fallbackArmour(items,context).slice(0,1):[])].map(i=>[i.id,i])).values()];
 }
 function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>,family:string,weapon:EquipmentItem):Loadout[]{
  const result=[base];
@@ -49,14 +51,14 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
  if(family==='melee')add(['Obsidian helmet','Obsidian platebody','Obsidian platelegs','Berserker necklace']);
  return result;
 }
-export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan):CombatResult{
+export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  const signature=identity(p);
  if(signature!==lastIdentity){cache.clear();lastIdentity=signature;}
- const key=''+record.id+'|'+form.id+'|'+state.approach+'|'+state.onTask+'|'+location?.name+'|'+state.stackSize;
+ const key=''+record.id+'|'+form.id+'|'+state.approach+'|'+state.onTask+'|'+location?.name+'|'+state.stackSize+'|'+priority;
  const saved=cache.get(key);if(saved)return structuredClone(saved);
- const result=search(p,record,form,state,location);if(cache.size>500)cache.clear();cache.set(key,result);return structuredClone(result);
+ const result=search(p,record,form,state,location,priority);if(cache.size>500)cache.clear();cache.set(key,result);return structuredClone(result);
 }
-function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan):CombatResult{
+function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  if(!p.bank)return emptyCombat('Import bank/equipment files or add your owned gear first.');
  const config=p.combat??defaultCombat(),owned=ownedItems(p).filter(i=>canEquip(i,p)),required=requirementSlots(record,state,location,p),m=encounter(record);
  const forced:Loadout={};
@@ -66,18 +68,20 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
   if(!choices.length)return emptyCombat('Missing usable required '+slotNames[slot as EquipmentSlot]+': '+(slot==='shield'?m.shield?.join(' / '):slot==='head'?m.head||(m.shayzien?'Shayzien helm (5)':'head protection'):slot==='feet'?m.boots||'Karuulm protective boots':slot==='neck'?m.neck:'creature-specific equipment')+'.');
   forced[slot as EquipmentSlot]=choices[0].id;
  }
+ const mode=priority??fightPlan(record,form,state,location).defence;
  const allowed=m.allowed||['melee','ranged','magic'],requested=state.approach==='auto'?null:state.approach.split('-')[0];
  let best=emptyCombat('No compatible usable weapon/ammo setup was found. Check levels, spellbook and required protection.');
  const rank=(r:CombatResult)=>r.aggregateDps??r.dps;
  for(const family of requested?[requested]:allowed){
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
+  const context:ArmourContext={family:family as Family,priority:mode,form};
   const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&combatStyles(i.id).some(s=>familyOf(s)===family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
   const specialists=candidates.filter(i=>/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
   const weapons=[...new Map([...candidates.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
   const shortlist:CombatResult[]=[];
   const evaluate=(loadout:Loadout,style:CombatStyle,spell:string|null)=>applyAreaDamage(calculateCombat(p,record,form,loadout,style,spell,state.onTask,isWildernessCombat(record,location),false),record,location,state.stackSize);
   for(const weapon of weapons){
-   const choices=(slot:EquipmentSlot)=>slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family);
+   const choices=(slot:EquipmentSlot)=>slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
    const loadout:Loadout={...forced,weapon:weapon.id};
    for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||forced[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
@@ -97,18 +101,23 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
    const weapon=equipmentItem(seed.loadout.weapon!)!;
    for(let pass=0;pass<2;pass++)for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
-    const choices=slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family);
+    const choices=slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
     for(const item of [...(required[slot]?[]:[undefined]),...choices]){
      const trial={...seed.loadout};if(item)trial[slot]=item.id;else delete trial[slot];
      const value=evaluate(trial,seed.style,seed.spell);
-     if(value.supported&&(rank(value)>rank(seed)+1e-10||Math.abs(rank(value)-rank(seed))<1e-10&&preference(value.loadout)>preference(seed.loadout)))seed=value;
+     if(value.supported&&(rank(value)>rank(seed)+1e-10||Math.abs(rank(value)-rank(seed))<1e-10&&compareLoadoutSustain(value.loadout,seed.loadout,context)>0))seed=value;
     }
    }
-   if(rank(seed)>rank(best))best=seed;
+   seed=completeArmour(seed,owned,required,context,evaluate);
+   if(rank(seed)>rank(best)||Math.abs(rank(seed)-rank(best))<1e-10&&compareLoadoutSustain(seed.loadout,best.loadout,context)>0)best=seed;
   }
  }
  if(!best.supported)return best;
  const result=applyAreaDamage(calculateCombat(p,record,form,best.loadout,best.style,best.spell,state.onTask,isWildernessCombat(record,location)),record,location,state.stackSize);
+ result.armourPriority=mode;result.armourFallback=best.armourFallback;
+ if(best.armourFallback?.length)result.notes.push('Armour fallback ('+(mode==='prayer'?'prayer bonus first':'defence against listed attacks first')+'): '+best.armourFallback.map(slot=>slotNames[slot]+' / '+equipmentItem(result.loadout[slot]!)!.name).join('; ')+'. These slots were not DPS upgrades. Displayed DPS and kill time include the selected armour and any accuracy penalties.');
+ const emptyArmour=(['body','legs'] as const).filter(slot=>!result.loadout[slot]);
+ if(emptyArmour.length)result.notes.push('No compatible wearable owned armour is available for: '+emptyArmour.map(slot=>slotNames[slot]).join(', ')+'. Check bank quantities, levels and unreviewed item requirements.');
  result.notes.push('Best found by a bounded search: weapon/spell screening, full-set seeds and two slot passes for four finalists per style. Required protection and compatible ammunition are preserved. Not a global optimum proof.','Owned quantities indicate availability. Replenishable runes, ammunition and charges are assumed; item quest/diary unlocks need review.');
  if(config.allowUnknownRequirements)result.notes.push('Unreviewed equipment skill requirements accepted by your setting.');
  if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only; configured hunter timing is retained.');
@@ -119,8 +128,20 @@ function usableAmmo(weapon:EquipmentItem,ammo:EquipmentItem,family:string):boole
  const applicability=ammoApplicability(weapon.id,ammo.id);
  return applicability!==AmmoApplicability.INVALID&&(family==='ranged'&&applicability===AmmoApplicability.INCLUDED||ammo.bonuses.prayer>0);
 }
-function preference(loadout:Loadout):number{
- return Object.values(loadout).reduce((sum,id)=>{const item=equipmentItem(id!);return sum+(item?.bonuses.prayer||0)*500+Object.values(item?.defensive||{}).reduce((a,b)=>a+b,0);},0);
+function completeArmour(seed:CombatResult,owned:EquipmentItem[],required:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>,context:ArmourContext,evaluate:(loadout:Loadout,style:CombatStyle,spell:string|null)=>CombatResult):CombatResult{
+ const fallback:EquipmentSlot[]=[];
+ for(const slot of ['body','legs'] as const){
+  if(required[slot])continue;
+  const bare={...seed.loadout};delete bare[slot];
+  const unarmoured=evaluate(bare,seed.style,seed.spell);
+  if(!unarmoured.supported||seed.dps>unarmoured.dps+1e-10)continue;
+  for(const item of fallbackArmour(owned.filter(i=>i.slot===slot),context)){
+   const value=evaluate({...seed.loadout,[slot]:item.id},seed.style,seed.spell);
+   if(!value.supported)continue;
+   seed=value;fallback.push(slot);break;
+  }
+ }
+ return {...seed,armourFallback:fallback,armourPriority:context.priority};
 }
 export function exampleLoadout(set:GearSet):Loadout{
  const result:Loadout={};

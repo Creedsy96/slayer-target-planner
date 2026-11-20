@@ -43,3 +43,5 @@ export * from './combat/area-damage';
 export * from './combat/guide';
 
 export * from './combat/autocast';
+
+export * from './combat/armour';

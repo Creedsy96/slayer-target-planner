@@ -109,8 +109,9 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
 }
 function validateMethod(data:Catalogue,m:Method,aid?:string):void{
   delete m.calculated;delete m.combatNote;
+  if(m.combatDefence!==undefined&&!['tank','prayer'].includes(m.combatDefence))throw Error('Invalid armour priority.');
   if(m.combatStyle!==undefined&&!['auto','melee','ranged','magic'].includes(m.combatStyle))throw Error('Invalid combat style.');
-  if(m.stackSize!==undefined&&(!Number.isInteger(m.stackSize)||m.stackSize<1||m.stackSize>9))throw Error('Stack size must be 1–9.');
+  if(m.stackSize!==undefined&&(!Number.isInteger(m.stackSize)||m.stackSize<1||m.stackSize>9))throw Error('Stack size must be 1â€“9.');
   if(m.manualCombat!==undefined&&typeof m.manualCombat!=='boolean')throw Error('Invalid manual combat override.');
   const v=data.variants.find(v=>v.id===m.variantId);if(!v||aid&&!v.assignmentIds.includes(aid))throw Error('Invalid method variant.');
   if(!['dps','kills-hour','task-minutes'].includes(m.timing)||!['none','slaughter','expeditious'].includes(m.bracelet))throw Error('Invalid timing method.');

@@ -24,7 +24,7 @@ export function calculateGuideCombat(p:Profile,state:GuideState,progress?:(done:
  const styles={} as Record<Family,CombatResult>;
  for(const [n,family]of (['melee','ranged','magic'] as const).entries()){
   progress?.(n+2,record.name+' · '+family+' owned equipment');
-  styles[family]=bestOwnedGear(p,record,form,{...state,approach:family+'-tank' as GuideState['approach']},location);
+  styles[family]=bestOwnedGear(p,record,form,{...state,approach:family+'-'+plan.defence as GuideState['approach']},location);
  }
  progress?.(5,'Equipment ready');return {mid,max,styles};
 }
