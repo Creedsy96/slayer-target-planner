@@ -12,7 +12,7 @@ export function parseGuideState(text:string|null):GuideState{
   const base=defaultGuideState();if(!text||text.length>8000)return base;
   try{const value=JSON.parse(text);if(!value||!GUIDE.records[value.variantId])return base;
     const record=GUIDE.records[value.variantId];
-    return {...base,variantId:record.id,assignmentId:record.assignmentIds.includes(value.assignmentId)?value.assignmentId:'',
+    return {...base,stackSize:Number.isInteger(value.stackSize)&&value.stackSize>=1&&value.stackSize<=9?value.stackSize:undefined,variantId:record.id,assignmentId:record.assignmentIds.includes(value.assignmentId)?value.assignmentId:'',
       formId:record.forms.some(f=>f.id===value.formId)?value.formId:record.defaultForm,
       approach:APPROACHES.includes(value.approach)?value.approach:'auto',
       priority:['balanced','cannon','barrage','access'].includes(value.priority)?value.priority:'balanced',

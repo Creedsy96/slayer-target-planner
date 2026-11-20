@@ -1,3 +1,4 @@
+import type {Profile} from '../domain/types';
 import type {Attack,FightPlan,GearSet,GearSlot,GuideForm,GuideRecord,GuideState,LocationPlan,Supply} from './types';
 
 const elemental:Partial<Record<Attack,[string,string,string]>>={air:['Mystic air staff','Wind wave','Wind surge'],water:['Mystic water staff','Water wave','Water surge'],earth:['Mystic earth staff','Earth wave','Earth surge'],fire:['Mystic fire staff','Fire wave','Fire surge']};
@@ -6,7 +7,7 @@ export function offenceName(attack:Attack):string{return attackName[attack];}
 
 /** Examples are coherent loadouts, not an assertion of globally optimal DPS or
  * current prices. Mandatory protection overrides ordinary upgrade slots. */
-export function gearSet(record:GuideRecord,form:GuideForm,plan:FightPlan,state:GuideState,location:LocationPlan|undefined,tier:'mid'|'max'):GearSet{
+export function gearSet(record:GuideRecord,form:GuideForm,plan:FightPlan,state:GuideState,location:LocationPlan|undefined,tier:'mid'|'max',profile?:Profile):GearSet{
   const high=tier==='max',m=plan.mechanics,slots:Record<string,string>={};
   const notes:string[]=['Examples assume the item, spell and prayer unlocks. Choose substitutes you can actually use.'];
   let attack=plan.attack,twoHanded=false;
@@ -76,7 +77,7 @@ export function gearSet(record:GuideRecord,form:GuideForm,plan:FightPlan,state:G
   if(m.shield){slots['Off-hand']=m.shield[high?1:0];twoHanded=false;}
   if(m.dragonfire&&plan.family==='melee')slots['Off-hand']=high?'Dragonfire shield':'Anti-dragon shield';
   if(m.boots)slots.Feet=m.boots;
-  if(location&&/Karuulm/i.test(location.name)&&!m.boots){slots.Feet=high?'Boots of brimstone':'Boots of stone';notes.push('Protective Karuulm boots stay in both examples. Upgrade this slot only if the elite Kourend & Kebos diary removes the hazard.');}
+  if(location&&/Karuulm/i.test(location.name)&&!m.boots&&profile?.diaries.kourend!==1){slots.Feet=high?'Boots of brimstone':'Boots of stone';notes.push('Protective Karuulm boots stay in both examples. Upgrade this slot only if the elite Kourend & Kebos diary removes the hazard.');}
   if(m.shayzien){
     for(const [slot,item]of Object.entries({Head:'Shayzien helm (5)',Body:'Shayzien body (5)',Legs:'Shayzien greaves (5)',Hands:'Shayzien gloves (5)',Feet:'Shayzien boots (5)'}))slots[slot]=item;
     slots.Weapon='Toxic blowpipe';slots.Ammo=high?'Dragon darts and Zulrah scales':'Amethyst darts and Zulrah scales';slots['Off-hand']='None — two-handed weapon';attack='light';

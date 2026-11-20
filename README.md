@@ -1,12 +1,24 @@
-# Slayer Target Planner 2.9.0
+# Slayer Target Planner 2.9.1
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.1 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## DPS sanity fixes in 2.9.1
+
+Bank imports and existing profile inventories now retain recognised wearable equipment and ammunition, with an omission count in import previews. **Filter by gear slot** narrows the table. Inert ammunition is removed from suggested setups; ranged weapons search compatible ammo before ranking it. Temporary Gauntlet/Barbarian Assault equipment is excluded from ordinary Slayer recommendations.
+
+**Best in your Slots** now displays independent melee, ranged and magic alternatives. Each preserves required protection. **Use [style] for this creature** saves its preferred hunter method and displayed location without changing hunt targets. **Combat methods** exposes the same per-creature choice and a 1–9 target pod override; Settings supplies a default style.
+
+The engine considers demonbane effects, with reviewed skill requirements for Emberlight, Scorching bow and Purging staff. **Mark of Darkness** is an explicit combat assumption. Spellbook **Auto** uses Standard plus Ancient after confirmed Desert Treasure I and Arceuus after confirmed A Kingdom Divided; explicit book selections assume access. Existing explicit selections remain in effect; choose Auto or Ancient in Settings to enable bursting on an older profile. Old profiles load normally; backups using the new combat options require 2.9.1 or later. Weapon autocast compatibility is checked: a Purging staff does not become an Ancient autocast weapon. Strongest spell tiers are selected by damage, not dataset order. Elemental weaknesses can legitimately beat a demonbane spell.
+
+Multi-target spells show **single-target DPS**, the unchanged **one-creature kill time**, and separate **aggregate DPS**. Dust devils default to eight targets in the Catacombs pod and nine in the Wilderness Slayer Cave; smoke devils use nine in their multi-combat dungeon. Other rooms default to one unless a 1–9 pod is specified. Single-combat rooms and powered staves never gain this multiplier. Hunter estimates and simulations charge complete batches, including for a one-kill goal. These are idealised stacked-throughput estimates: use uptime, delay and travel for gathering, respawns and imperfect stacking, rather than treating them as measured rates.
+
+Gear calculations now run in cancellable background workers. Hunt optimisation reuses prepared completion rows rather than repeating equipment searches for every block candidate. Progress names the current creature, master or block candidate and shows a completion percentage. **Recalculate** retries a cancelled/failed run. Kourend & Kebos Elite removes Karuulm hazard boots from owned and example sets. See [sanity verification](docs/gear-dps-sanity.md).
 
 ## Owned gear, DPS and Settings in 2.9.0
 

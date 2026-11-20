@@ -35,7 +35,7 @@ test('example item names resolve to usable canonical items rather than broken or
 
 test('bank snapshots normalise noted equipment, combine duplicates and omit zero/placeholder items',()=>{
  const preview=c.parseBankImport(text('bank',[row(4151),row(4152,2),row(1205,0),{...row(1277),placeholder:true},row(999998)]));
- assert.equal(preview.snapshot.items[4151],3);assert.equal(preview.snapshot.items[4152],undefined);assert.equal(preview.snapshot.items[1205],undefined);assert.equal(preview.snapshot.items[1277],undefined);assert.equal(preview.snapshot.items[999998],1);assert.equal(preview.snapshot.account,null);
+ assert.equal(preview.snapshot.items[4151],3);assert.equal(preview.snapshot.items[4152],undefined);assert.equal(preview.snapshot.items[1205],undefined);assert.equal(preview.snapshot.items[1277],undefined);assert.equal(preview.snapshot.items[999998],undefined);assert.equal(preview.snapshot.account,null);
  assert.ok(preview.warnings.some(w=>w.includes('account')));
 });
 test('manual quantities survive snapshot replacements; group gear is an independent optional source',()=>{

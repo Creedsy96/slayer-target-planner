@@ -1,3 +1,4 @@
+import {combatSeconds} from './timing';
 import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types';
 import {clone} from '../state/profiles';
 import {choices,complete,completionReward,modifierKinds,ledger,pay,resetStreak,rangeValues,pointRewardUnknown,type Ledger} from '../rules/points';
@@ -106,7 +107,7 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
       if(target&&p.goal.kind==='offer'){add('Target task already assigned');return result(true);}
       const actual=sampleKills(p.current.remaining,row.method,rng);
       const done=finishCombat(row,actual,target,p,rng,progress);
-      minutes+=row.method.travel+done.kills*row.seconds/60;progress=done.progress;
+      minutes+=row.method.travel+combatSeconds(done.kills,row.method,row.seconds)/60;progress=done.progress;
       if(!done.success||done.kills===actual)complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);
       if(done.success){add('Goal reached during current task'+(done.kills===actual?'; task completion rewarded':''));return result(true);}
       previous={row,masterId:currentMaster.id,kind:p.current.modifier||'none',points:p.current.modifierPoints??0,quantity:0,target};
@@ -140,7 +141,7 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const quantity=sampleQuantity(chosen.row.entry,chosen.row.method,rng,chosen.kind==='quantity'?chosen.quantity:0);
     const kills=sampleKills(quantity,chosen.row.method,rng);
     const done=finishCombat(chosen.row,kills,chosen.target,p,rng,progress);progress=done.progress;
-    minutes+=chosen.row.method.travel+done.kills*chosen.row.seconds/60;
+    minutes+=chosen.row.method.travel+combatSeconds(done.kills,chosen.row.method,chosen.row.seconds)/60;
     if(!done.success||done.kills===kills)complete(l,m,p,chosen.row.entry,chosen.kind,chosen.points);
     if(done.success){add(`Goal reached at ${chosen.row.variant.name}${done.kills===kills?'; task completion rewarded':''}`);return result(true);}
     add(`Completed ${chosen.row.name} (${modifierLabel(chosen)})`);

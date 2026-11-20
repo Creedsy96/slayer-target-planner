@@ -12,8 +12,8 @@ import {resolveAccess} from '../rules/access';
 import {methodLocationRestriction} from '../rules/variant-additions';
 import {protectedTask,skipPreference,shouldReset,paidSkipFraction} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
-export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
-  return m.tasks.map(entry=>{
+export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:number,total:number,current:string)=>void):Row[]{
+  return m.tasks.map((entry,index)=>{
     const a=data.assignments.find(a=>a.id===entry.id)!;
     const targets=p.goal.targets.filter(t=>t.assignmentId===entry.id);
     const ordered=[...targets].sort((a,b)=>b.priority-a.priority);
@@ -33,6 +33,7 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile):Row[]{
     const locationRestriction=methodLocationRestriction(v,m,method.location);
     if(locationRestriction)variant.failed.push(locationRestriction);
     variant.eligible=!variant.failed.length;
+    progress?.(index,m.tasks.length,v.name);
     method=withCalculatedTiming(p,v,method);
     const timing=taskTiming(entry,v,method);
     const modifier=modifierKinds(p.mortimerTasks??0,entry);
@@ -84,8 +85,8 @@ export function fillerIssue(data:Catalogue,filler:Plan,p:Profile):string{
   if(rows.some(r=>(fallback.get(r)||r).methodReason&&r.targetFraction<1&&paidSkipFraction(fallback.get(r)||r,p)<1))return 'A '+filler.master.name+' filler task has no available completion method.';
   return '';
 }
-export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration',asFiller=false):Plan{
-  const rows=prepareRows(data,m,p),status=masterEligibility(m,p),slots=blockSlots(m,p),targets=targetAssignments(data,p);
+export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quality='Evaluated configuration',asFiller=false,baseRows?:Row[]):Plan{
+  const rows=baseRows?structuredClone(baseRows):prepareRows(data,m,p),status=masterEligibility(m,p),slots=blockSlots(m,p),targets=targetAssignments(data,p);
   const conflicts:string[]=[];
   if(blocks.length>slots.slots)conflicts.push(`Block list exceeds ${slots.slots} slots.`);
   for(const id of blocks){if(targets.has(id))conflicts.push(`Target ${id} is blocked.`);if(p.preferences[id]==='protect')conflicts.push(`Protected task ${id} is blocked.`);if(!m.tasks.some(t=>t.id===id)&&!asFiller&&!(p.blocks[m.group]||[]).includes(id))conflicts.push(`Master cannot assign ${id}.`);}
@@ -163,19 +164,21 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const objectiveValue=reason?Infinity:p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
   return {boost,simulationOnly,pointsRateReason,reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:boost&&boost.requests&&boost.paidSkips!==null?boost.paidSkips/boost.requests:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:pointsRateReason?null:boost?boost.pointsEarnedPerHour:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:pointsRateReason?null:boost?boost.pointsSpentPerHour:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
 }
-export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):Plan{
-  const rows=prepareRows(data,m,p),targets=targetAssignments(data,p),slots=blockSlots(m,p).slots;
+export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700,progress?:(fraction:number,current:string)=>void):Plan{
+  const rows=prepareRows(data,m,p,(done,total,current)=>progress?.(.7*done/Math.max(1,total),'Gear / '+current)),targets=targetAssignments(data,p),slots=blockSlots(m,p).slots;
+  let reported=0;
+  const scorePlan=(blocks:string[],quality='Evaluated configuration')=>{progress?.(.7+.29*Math.min(1,reported++/maxEvaluations),'Blocks and skips / candidate '+reported);return evaluate(data,m,p,blocks,quality,false,rows);};
   const fixed=p.proposed[m.group]||[];
-  if(Object.hasOwn(p.proposed,m.group))return evaluate(data,m,p,[...fixed],'Fixed proposed list');
+  if(Object.hasOwn(p.proposed,m.group))return scorePlan([...fixed],'Fixed proposed list');
   const candidates=rows.filter(r=>!r.reason&&!targets.has(r.id)&&p.preferences[r.id]!=='protect');
   const count=Math.min(slots,candidates.length);
   const score=(r:Row)=>p.objective==='chance'?r.weight:r.weight*r.minutes;
   const sorted=[...candidates].sort((a,b)=>score(b)-score(a)||a.id.localeCompare(b.id));
-  let best=evaluate(data,m,p,p.objective==='points'?(p.blocks[m.group]||[]):sorted.slice(0,count).map(r=>r.id));let evaluations=1;
+  let best=scorePlan(p.objective==='points'?(p.blocks[m.group]||[]):sorted.slice(0,count).map(r=>r.id));let evaluations=1;
   const combinations=p.objective==='points'?Array.from({length:count+1},(_,k)=>chooseCount(candidates.length,k)).reduce((a,b)=>a+b,0):chooseCount(candidates.length,count);
   if(combinations<=maxEvaluations){
     function visit(start:number,selected:string[],size=count):void{
-      if(selected.length===size){const plan=evaluate(data,m,p,selected);evaluations++;if(plan.objectiveValue<best.objectiveValue-1e-12)best=plan;return;}
+      if(selected.length===size){const plan=scorePlan(selected);evaluations++;if(plan.objectiveValue<best.objectiveValue-1e-12)best=plan;return;}
       for(let i=start;i<=candidates.length-(size-selected.length);i++)visit(i+1,[...selected,candidates[i].id],size);
     }
     if(p.objective==='points'){for(let k=0;k<=count;k++)visit(0,[],k);}else visit(0,[]);best.quality='Exact enumeration of legal block sets (fixed method/skip policy)';
@@ -186,7 +189,7 @@ export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700):P
     while(improved&&evaluations<maxEvaluations){improved=false;const current=[...best.blocks];
       for(let i=0;i<current.length&&evaluations<maxEvaluations;i++)for(const replacement of candidates){
         if(current.includes(replacement.id)||evaluations>=maxEvaluations)continue;
-        const next=[...current];next[i]=replacement.id;const plan=evaluate(data,m,p,next);evaluations++;
+        const next=[...current];next[i]=replacement.id;const plan=scorePlan(next);evaluations++;
         if(plan.objectiveValue<best.objectiveValue-1e-10){best=plan;improved=true;}
       }
     }

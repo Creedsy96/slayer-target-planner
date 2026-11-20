@@ -40,8 +40,9 @@ test('funded worker simulates the displayed block list rather than silently reop
   const p=profile();p.simulation.trials=100;p.simulation.horizonOffers=100;
   const blocks=['dust devils'],expected=c.simulate(d,c.evaluate(d,master,p,blocks),p),messages=[];
   const code=buildSync({entryPoints:['src/worker.ts'],bundle:true,write:false,format:'iife',platform:'browser'}).outputFiles[0].text;
-  const self={postMessage:m=>messages.push(m)};vm.runInNewContext(code,{self});
+  const self={postMessage:m=>messages.push(m)};vm.runInNewContext(code,{self,structuredClone});
   self.onmessage({data:{id:1,kind:'simulation',profile:p,masterId:master.id,blocks}});
+  assert.ok(messages.some(m=>m.kind==='progress'&&m.current.includes('Gear / ')));
   const actual=messages.at(-1);assert.equal(actual.kind,'simulation');assert.equal(actual.result.meanRemaining,expected.meanRemaining);assert.equal(actual.result.meanHours,expected.meanHours);
 });
 test('bounded history coalesces one field with an explicit clock, branches after undo and keeps copies',()=>{

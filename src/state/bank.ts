@@ -1,12 +1,12 @@
 import type {BankKind,BankSnapshot,BankState,CombatSettings} from '../combat/types';
-import {canonicalInventoryId,isPlaceholderId} from '../combat/item-ids';
+import {canonicalInventoryId,isPlaceholderId,isGearId} from '../combat/item-ids';
 import type {Profile} from '../domain/types';
 export const emptyBank=():BankState=>({version:1,account:null,snapshots:{},manual:{},groupManual:{},includeGroup:false});
-export const defaultCombat=():CombatSettings=>({enabled:false,potions:'none',prayer:'none',uptime:100,rigour:false,augury:false,piety:false,allowUnknownRequirements:false,spellbook:'standard'});
+export const defaultCombat=():CombatSettings=>({enabled:false,potions:'none',prayer:'none',uptime:100,rigour:false,augury:false,piety:false,allowUnknownRequirements:false,spellbook:'auto',markOfDarkness:false,style:'auto'});
 export function validateCombat(value:unknown):CombatSettings{
- const v=value as CombatSettings;if(!v||typeof v!=='object')throw Error('Invalid combat settings.');
- for(const key of ['enabled','rigour','augury','piety','allowUnknownRequirements'] as const)if(typeof v[key]!=='boolean')throw Error('Invalid combat switch.');
- if(!['none','standard'].includes(v.potions)||!['none','standard','unlocked'].includes(v.prayer)||!['standard','ancient','arceuus'].includes(v.spellbook)||!Number.isFinite(v.uptime)||v.uptime<10||v.uptime>100)throw Error('Invalid combat assumptions.');
+ const v={markOfDarkness:false,style:'auto',...(value as Partial<CombatSettings>)} as CombatSettings;if(!v||typeof v!=='object')throw Error('Invalid combat settings.');
+ for(const key of ['enabled','rigour','augury','piety','allowUnknownRequirements','markOfDarkness'] as const)if(typeof v[key]!=='boolean')throw Error('Invalid combat switch.');
+ if(!['none','standard'].includes(v.potions)||!['none','standard','unlocked'].includes(v.prayer)||!['auto','standard','ancient','arceuus'].includes(v.spellbook)||!['auto','melee','ranged','magic'].includes(v.style)||!Number.isFinite(v.uptime)||v.uptime<10||v.uptime>100)throw Error('Invalid combat assumptions.');
  return {...v};
 }
 const kinds=['bank','inventory','equipment','group_storage'];
@@ -17,7 +17,7 @@ function safe(value:unknown,depth=0):void{
 export function validateQuantities(value:unknown):Record<string,number>{
  if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length>10000)throw Error('Invalid item quantities.');
  const result:Record<string,number>={};
- for(const [id,quantity]of Object.entries(value)){if(!/^\d{1,6}$/.test(id)||Number(id)<1||!Number.isSafeInteger(quantity)||(quantity as number)<0||(quantity as number)>2147483647)throw Error('Invalid item ID or quantity.');result[id]=quantity as number;}
+ for(const [id,quantity]of Object.entries(value)){if(!/^\d{1,6}$/.test(id)||Number(id)<1||!Number.isSafeInteger(quantity)||(quantity as number)<0||(quantity as number)>2147483647)throw Error('Invalid item ID or quantity.');if(isGearId(Number(id)))result[id]=quantity as number;}
  return result;
 }
 export function validateBank(value:unknown):BankState{
@@ -51,16 +51,16 @@ export function parseBankImport(text:string,kindOverride?:BankKind):BankPreview{
  const value=JSON.parse(text.replace(/^\uFEFF/,''));safe(value);
  if(!value||typeof value!=='object'||!Array.isArray(value.items)||value.items.length>10000)throw Error('Choose a Character Export container JSON with an items array.');
  const kind=kindOverride??value.kind;if(!kinds.includes(kind))throw Error('Select Bank, Inventory, Equipment or Group Storage as the source.');
- const items:Record<string,number>={};
+ const items:Record<string,number>={};let omitted=0;
  for(const row of value.items){
   if(!row||!Number.isInteger(row.id)||row.id<1||row.id>999999||!Number.isSafeInteger(row.quantity)||row.quantity<0||row.quantity>2147483647)throw Error('Each item needs a valid ID and quantity.');
   if(row.placeholder===true||row.isPlaceholder===true||row.quantity===0||isPlaceholderId(row.id))continue;
-  const id=canonicalInventoryId(row.id);items[id]=(items[id]||0)+row.quantity;if(items[id]>2147483647)throw Error('Combined item quantity is too large.');
+  const id=canonicalInventoryId(row.id);if(!isGearId(id)){omitted++;continue;}items[id]=(items[id]||0)+row.quantity;if(items[id]>2147483647)throw Error('Combined item quantity is too large.');
  }
  const account=typeof value.player?.username==='string'?value.player.username:typeof value.account_name==='string'?value.account_name:typeof value.player_name==='string'?value.player_name:typeof value.accountName==='string'?value.accountName:null;
  const date=value.exported_at??value.lastUpdated;
  const at=typeof date==='string'&&Number.isFinite(Date.parse(date))?new Date(date).toISOString():null;
- const warnings=['Import replaces only this container snapshot. Manual item quantities stay in effect.'];
+ const warnings=[`${omitted} non-equipment or unmodelled item rows omitted; only recognised wearable gear/ammunition is imported.`,'Import replaces only this container snapshot. Manual item quantities stay in effect.'];
  if(!account)warnings.push('This export does not name the account; verify its character folder.');
  if(kind==='group_storage')warnings.push('Group items are shared; include them only if you can use them. Character Export does not currently export this container.');
  return {kind,snapshot:{items,account,at,label:kind},rows:value.items.length,warnings};

@@ -29,7 +29,7 @@ export function resolveAccess(key:string,p:Profile):AccessResult {
 }
 
 export function relevantQuests(data:Catalogue):string[] {
-  return [...new Set([...data.quests,...AREA_RULES.map(r=>r.quest)])].sort();
+  return [...new Set([...data.quests,'A Kingdom Divided',...AREA_RULES.map(r=>r.quest)])].sort();
 }
 
 export function knownAccessKeys(data:Catalogue):string[]{

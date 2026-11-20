@@ -14,7 +14,7 @@ export function taskTiming(entry:Entry,v:Variant,method:Method):{kills:number;se
   const kills=meanKills(entry,method);
   if(method.timing==='task-minutes')return {kills,seconds:method.rate*60/kills,minutes:method.rate+method.travel};
   const seconds=method.timing==='kills-hour'?3600/method.rate:(method.calculated?.ttk??v.hp/(method.dps*v.multiplier))+method.delay;
-  return {kills,seconds,minutes:kills*seconds/60+method.travel};
+  return {kills,seconds,minutes:combatSeconds(kills,method,seconds)/60+method.travel};
 }
 export function sampleQuantity(entry:Entry,method:Method,rng:()=>number,modifier=0):number{
   const lo=method.extended&&entry.extendedMax?entry.extendedMin:entry.minimum;
@@ -27,4 +27,10 @@ export function sampleKills(quantity:number,method:Method,rng:()=>number):number
   while(remaining>0&&kills<100000){kills++;const effect=rng()<.25;remaining-=method.bracelet==='slaughter'?(effect?0:1):(effect?2:1);}
   if(remaining>0)throw Error("Bracelet simulation exceeded its safety bound.");
   return kills;
+}
+
+/** Complete-stack batching prevents a one-kill goal taking a fraction of a kill. */
+export function combatSeconds(kills:number,method:Method,seconds:number):number{
+ const c=method.calculated;
+ return kills>0&&c&&c.targets&&c.targets>1&&c.batchTtk?Math.ceil(kills/c.targets)*(c.batchTtk+method.delay):kills*seconds;
 }

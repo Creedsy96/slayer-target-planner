@@ -14,7 +14,7 @@ export interface GuideRecord {id:string;name:string;assignmentIds:string[];forms
 export type Family='melee'|'ranged'|'magic';
 export type Approach='auto'|'melee-tank'|'melee-prayer'|'ranged-tank'|'ranged-prayer'|'magic-tank'|'magic-prayer';
 export type Attack='stab'|'slash'|'crush'|'light'|'standard'|'heavy'|'powered'|'barrage'|'air'|'water'|'earth'|'fire'|'vampyrebane'|'godspell'|'dart';
-export interface GuideState {variantId:string;assignmentId:string;formId:string;approach:Approach;priority:'balanced'|'cannon'|'barrage'|'access';onTask:boolean;fastTravel:boolean;location:string}
+export interface GuideState {stackSize?:number;variantId:string;assignmentId:string;formId:string;approach:Approach;priority:'balanced'|'cannon'|'barrage'|'access';onTask:boolean;fastTravel:boolean;location:string}
 export interface Encounter {
   family?:Family;defence?:'tank'|'prayer';prayer?:string;attack?:Attack;allowed?:Family[];
   shield?:[string,string];head?:string;neck?:string;boots?:string;weapon?:[string,string];

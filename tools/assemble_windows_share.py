@@ -75,7 +75,7 @@ def assemble(folder: Path) -> None:
         "or import an explicitly identified group snapshot. Inclusion is optional.\n"
         "Manual quantities survive later imports; zero marks unavailable.\n\n"
         "Creature guide: OSRS equipment layout, mid/max examples, and Best in your\n"
-        "Slots from owned gear, with target-specific DPS and expected kill time.\n"
+        "Slots melee/ranged/magic alternatives, DPS and expected kill time.\n"
         "Settings controls combat assumptions, automatic hunter timing, themes,\n"
         "optional sections and restricted-account area pickers. Measured methods\n"
         "and boss/unsupported encounters retain visibly explained configured timing.\n\n"

@@ -1,15 +1,17 @@
+import {ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
+import {applyAreaDamage} from './area-damage';
 import type {Profile} from '../domain/types';
 import type {GuideRecord,GuideForm,GuideState,LocationPlan,GearSet} from '../guide/types';
-import type {CombatResult,EquipmentItem,EquipmentSlot,Loadout} from './types';
+import type {CombatResult,CombatStyle,EquipmentItem,EquipmentSlot,Loadout} from './types';
 import {EQUIPMENT_SLOTS} from './types';
 import {ownedItems,canEquip,itemForLabel,equipmentItem,slotNames} from './equipment';
-import {calculateCombat,combatStyles,emptyCombat,familyOf,isWildernessCombat,spellChoices} from './calculate';
+import {calculateCombat,combatStyles,emptyCombat,familyOf,isWildernessCombat,candidateSpells} from './calculate';
 import {encounter} from '../guide/encounters';
 import {defaultCombat} from '../state/bank';
 import art from '../ui/item-art.json';
 
-const cache=new Map<string,CombatResult>();
-function identity(p:Profile):string{return JSON.stringify([p.bank,p.levels,p.combat,p.diaries.kourend]);}
+const cache=new Map<string,CombatResult>();let lastIdentity='';
+function identity(p:Profile):string{return JSON.stringify([p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states]);}
 function requirementSlots(record:GuideRecord,state:GuideState,location?:LocationPlan,p?:Profile):Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>{
  const m=encounter(record),slots:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>={};
  if(m.shield)slots.shield=i=>m.shield!.some(n=>n.toLowerCase()===i.name.toLowerCase())||!!m.dragonfire&&['Anti-dragon shield','Dragonfire shield','Dragonfire ward'].includes(i.name)||!!m.wyvern&&['Elemental shield','Mind shield','Ancient wyvern shield'].includes(i.name);
@@ -48,7 +50,9 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
  return result;
 }
 export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan):CombatResult{
- const key=identity(p)+'|'+record.id+'|'+form.id+'|'+state.approach+'|'+state.onTask+'|'+location?.name;
+ const signature=identity(p);
+ if(signature!==lastIdentity){cache.clear();lastIdentity=signature;}
+ const key=''+record.id+'|'+form.id+'|'+state.approach+'|'+state.onTask+'|'+location?.name+'|'+state.stackSize;
  const saved=cache.get(key);if(saved)return structuredClone(saved);
  const result=search(p,record,form,state,location);if(cache.size>500)cache.clear();cache.set(key,result);return structuredClone(result);
 }
@@ -59,56 +63,64 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  for(const [slot,accept]of Object.entries(required)){
   if(slot==='shield'&&record.id==='lobstrosity')continue;
   const choices=owned.filter(i=>i.slot===slot&&accept(i));
-  if(!choices.length)return emptyCombat('Missing usable required '+slotNames[slot as EquipmentSlot]+': '+(slot==='shield'?m.shield?.join(' / '):slot==='head'?m.head||(m.shayzien?'Shayzien helm (5)':'required head protection'):slot==='feet'?m.boots||'Karuulm protective boots':slot==='neck'?m.neck:'creature-specific equipment')+'.');
+  if(!choices.length)return emptyCombat('Missing usable required '+slotNames[slot as EquipmentSlot]+': '+(slot==='shield'?m.shield?.join(' / '):slot==='head'?m.head||(m.shayzien?'Shayzien helm (5)':'head protection'):slot==='feet'?m.boots||'Karuulm protective boots':slot==='neck'?m.neck:'creature-specific equipment')+'.');
   forced[slot as EquipmentSlot]=choices[0].id;
  }
- let best=emptyCombat('No compatible usable weapon/ammo setup was found. Check skill levels, item requirement confirmation, spellbook and required protection.');
- const allowed=m.allowed||['melee','ranged','magic'];
- const requested=state.approach==='auto'?null:state.approach.split('-')[0];
- const families=requested?[requested]:allowed;
- for(const family of families){
+ const allowed=m.allowed||['melee','ranged','magic'],requested=state.approach==='auto'?null:state.approach.split('-')[0];
+ let best=emptyCombat('No compatible usable weapon/ammo setup was found. Check levels, spellbook and required protection.');
+ const rank=(r:CombatResult)=>r.aggregateDps??r.dps;
+ for(const family of requested?[requested]:allowed){
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
   const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&combatStyles(i.id).some(s=>familyOf(s)===family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
-  // Raw item bonuses cannot rank powered staves, target-scaling or bane effects.
-  const specialists=candidates.filter(i=>/Powered/i.test(i.category)||/Twisted bow|Bow of faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(name=>name.toLowerCase()===i.name.toLowerCase()));
+  const specialists=candidates.filter(i=>/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
   const weapons=[...new Map([...candidates.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
+  const shortlist:CombatResult[]=[];
+  const evaluate=(loadout:Loadout,style:CombatStyle,spell:string|null)=>applyAreaDamage(calculateCombat(p,record,form,loadout,style,spell,state.onTask,isWildernessCombat(record,location),false),record,location,state.stackSize);
   for(const weapon of weapons){
+   const choices=(slot:EquipmentSlot)=>slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family);
    const loadout:Loadout={...forced,weapon:weapon.id};
    for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||forced[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
-    const items=owned.filter(i=>i.slot===slot).sort((a,b)=>score(b,family)-score(a,family)||a.id-b.id);if(items.length)loadout[slot]=items[0].id;
+    const items=choices(slot);if(items.length)loadout[slot]=items[0].id;
    }
-   for(const initial of setSeeds(loadout,owned,required,family,weapon)){
-   const styleOptions=combatStyles(weapon.id).filter(s=>familyOf(s)===family&&!/defensive|longrange/i.test(s.stance));
-   const spellOptions=family==='magic'&&!/Powered/i.test(weapon.category)?spellChoices(p.levels.magic??1,config.spellbook):[null];
-   // Evaluate spells once per seed; the slot search retains the winning spell.
+   const styles=combatStyles(weapon.id).filter(s=>familyOf(s)===family&&!/defensive|longrange/i.test(s.stance));
+   const spells=family==='magic'&&!/Powered/i.test(weapon.category)?candidateSpells(p):[null];
    let seed=emptyCombat('No damaging style for this weapon.');
-   for(const style of styleOptions)for(const spell of spellOptions){
-    const value=calculateCombat(p,record,form,initial,style,spell,state.onTask,isWildernessCombat(record,location),false);if(value.supported&&value.dps>seed.dps)seed=value;
+   for(const initial of setSeeds(loadout,owned,required,family,weapon))for(const style of styles)for(const spell of spells){
+    const value=evaluate(initial,style,spell);if(value.supported&&rank(value)>rank(seed))seed=value;
    }
-   // A greedy ammo seed can be incompatible. Try each owned ammo before rejecting.
-   if(!seed.supported&&family==='ranged')for(const ammo of owned.filter(i=>i.slot==='ammo'))for(const style of styleOptions){
-    const value=calculateCombat(p,record,form,{...initial,ammo:ammo.id},style,null,state.onTask,isWildernessCombat(record,location),false);if(value.supported&&value.dps>seed.dps)seed=value;
-   }
-   if(!seed.supported)continue;
+   if(seed.supported)shortlist.push(seed);
+  }
+  // Screen every retained weapon/spell first, then refine four finalists. This
+  // avoids thousands of full slot searches for obviously weaker weapons.
+  for(let seed of shortlist.sort((a,b)=>rank(b)-rank(a)).slice(0,4)){
+   const weapon=equipmentItem(seed.loadout.weapon!)!;
    for(let pass=0;pass<2;pass++)for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
-    const choices=slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))),family);
+    const choices=slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family);
     for(const item of [...(required[slot]?[]:[undefined]),...choices]){
      const trial={...seed.loadout};if(item)trial[slot]=item.id;else delete trial[slot];
-     const value=calculateCombat(p,record,form,trial,seed.style,seed.spell,state.onTask,isWildernessCombat(record,location),false);if(value.supported&&value.dps>seed.dps+1e-10)seed=value;
+     const value=evaluate(trial,seed.style,seed.spell);
+     if(value.supported&&(rank(value)>rank(seed)+1e-10||Math.abs(rank(value)-rank(seed))<1e-10&&preference(value.loadout)>preference(seed.loadout)))seed=value;
     }
    }
-   if(seed.dps>best.dps)best=seed;
-   }
+   if(rank(seed)>rank(best))best=seed;
   }
  }
  if(!best.supported)return best;
- const result=calculateCombat(p,record,form,best.loadout,best.style,best.spell,state.onTask,isWildernessCombat(record,location));
- result.notes.push('Best found by a bounded DPS search: 12 base weapon candidates per style plus powered/specialist weapons, full-set seeds, and two passes over eight base candidates per slot plus task/target accessories. Not a proof of a global optimum.','Owned quantities identify availability; replenishable runes, ammunition and weapon charges are assumed, rather than a full supply budget. Potion duration, healing and travel are not inferred from a bank snapshot. Item quest/diary unlocks need your review.');
- if(config.allowUnknownRequirements)result.notes.push('Unknown equipment skill requirements are accepted by your setting.');
- if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only. Boss mechanics and switching prevent automatic full-fight timing.');
+ const result=applyAreaDamage(calculateCombat(p,record,form,best.loadout,best.style,best.spell,state.onTask,isWildernessCombat(record,location)),record,location,state.stackSize);
+ result.notes.push('Best found by a bounded search: weapon/spell screening, full-set seeds and two slot passes for four finalists per style. Required protection and compatible ammunition are preserved. Not a global optimum proof.','Owned quantities indicate availability. Replenishable runes, ammunition and charges are assumed; item quest/diary unlocks need review.');
+ if(config.allowUnknownRequirements)result.notes.push('Unreviewed equipment skill requirements accepted by your setting.');
+ if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only; configured hunter timing is retained.');
  return result;
+}
+function usableAmmo(weapon:EquipmentItem,ammo:EquipmentItem,family:string):boolean{
+ if(weapon.name==='Toxic blowpipe')return /dart/i.test(ammo.name);
+ const applicability=ammoApplicability(weapon.id,ammo.id);
+ return applicability!==AmmoApplicability.INVALID&&(family==='ranged'&&applicability===AmmoApplicability.INCLUDED||ammo.bonuses.prayer>0);
+}
+function preference(loadout:Loadout):number{
+ return Object.values(loadout).reduce((sum,id)=>{const item=equipmentItem(id!);return sum+(item?.bonuses.prayer||0)*500+Object.values(item?.defensive||{}).reduce((a,b)=>a+b,0);},0);
 }
 export function exampleLoadout(set:GearSet):Loadout{
  const result:Loadout={};

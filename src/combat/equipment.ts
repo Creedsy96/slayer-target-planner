@@ -8,6 +8,8 @@ import {ownedQuantities,emptyBank} from '../state/bank';
 
 export const ITEMS=equipment;
 export const ITEMS_BY_ID=new Map(ITEMS.map(item=>[item.id,item]));
+const additions:Record<string,Record<string,number>>={'29589':{attack:77},'29591':{ranged:77},'29594':{attack:50,magic:77}};
+// Reviewed Wiki requirements for the three tormented-synapse demonbane weapons.
 const reqs:Record<string,Record<string,number>>=requirements.requirements;
 export function equipmentItem(id:number):EquipmentItem|undefined{return ITEMS_BY_ID.get(canonicalInventoryId(id))||ITEMS_BY_ID.get(id);}
 export function itemForLabel(label:string):EquipmentItem|undefined{
@@ -17,11 +19,11 @@ export function itemForLabel(label:string):EquipmentItem|undefined{
 }
 export function ownedItems(p:Profile):EquipmentItem[]{
  const owned=ownedQuantities(p.bank??emptyBank()),items=new Map<number,EquipmentItem>();
- for(const [id,n]of Object.entries(owned)){if(n<=0)continue;const item=equipmentItem(Number(id));if(item&&!/uncharged|broken|inactive|\b0\b/i.test(item.version))items.set(item.id,item);}
+ for(const [id,n]of Object.entries(owned)){if(n<=0)continue;const item=equipmentItem(Number(id));if(item&&!/uncharged|broken|inactive|\b0\b/i.test(item.version)&&!temporaryEquipment(item))items.set(item.id,item);}
  return [...items.values()].sort((a,b)=>a.id-b.id);
 }
 export function itemRequirements(item:EquipmentItem):Record<string,number>|null{
- return reqs[item.id]??null;
+ return additions[item.id]??reqs[item.id]??null;
 }
 export function canEquip(item:EquipmentItem,p:Profile):boolean{
  const req=itemRequirements(item);
@@ -30,3 +32,8 @@ export function canEquip(item:EquipmentItem,p:Profile):boolean{
 }
 export const slotNames:Record<EquipmentSlot,string>={head:'Head',cape:'Cape',neck:'Neck',ammo:'Ammo',weapon:'Weapon',body:'Body',shield:'Off-hand',legs:'Legs',hands:'Hands',feet:'Feet',ring:'Ring'};
 export function loadoutItems(loadout:Loadout):EquipmentItem[]{return Object.values(loadout).flatMap(id=>{const item=equipmentItem(id!);return item?[item]:[];});}
+
+/** Temporary activity equipment cannot be carried into ordinary Slayer fights. */
+export function temporaryEquipment(item:EquipmentItem):boolean{
+ return /\((basic|attuned|perfected)\)/i.test(item.name)||item.id>=22227&&item.id<=22230||/last man standing|emir.s arena|beta|tournament/i.test(item.version);
+}
