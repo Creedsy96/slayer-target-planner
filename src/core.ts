@@ -45,3 +45,5 @@ export * from './combat/guide';
 export * from './combat/autocast';
 
 export * from './combat/armour';
+export * from './combat/comparisons';
+export * from './combat/priority';

@@ -1,4 +1,5 @@
 import {withCalculatedTiming} from '../combat/timing';
+import {configuredMethod,prioritisedTasks} from '../combat/priority';
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
 import {clone,defaultMethod} from '../state/profiles';
 import {check,masterEligibility,blockSlots,variantEligibility,locationFraction,targetAssignments} from '../rules/eligibility';
@@ -13,13 +14,13 @@ import {methodLocationRestriction} from '../rules/variant-additions';
 import {protectedTask,skipPreference,shouldReset,paidSkipFraction} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:number,total:number,current:string)=>void):Row[]{
-  return m.tasks.map((entry,index)=>{
+  const rows=prioritisedTasks(m,p).map((entry,index)=>{
     const a=data.assignments.find(a=>a.id===entry.id)!;
     const targets=p.goal.targets.filter(t=>t.assignmentId===entry.id);
     const ordered=[...targets].sort((a,b)=>b.priority-a.priority);
     const target=ordered.find(t=>variantEligibility(data.variants.find(v=>v.id===t.variantId)!,p,m,entry.id).eligible)||ordered[0];
     const variantId=target?.variantId||p.methods[entry.id]?.variantId||a.variantIds[0];
-    let method={...defaultMethod(data,p,entry.id),...(p.methods[entry.id]?.variantId===variantId?p.methods[entry.id]:{}),...p.methods[entry.id+'::'+variantId],variantId};
+    let method=configuredMethod(data,p,entry.id,variantId);
     let v=data.variants.find(v=>v.id===method.variantId)!;
     if(!target&&!p.methods[entry.id]&&!p.methods[entry.id+'::'+variantId]){
       const available=a.variantIds.map(id=>data.variants.find(v=>v.id===id)!).filter(v=>variantEligibility(v,p,m,entry.id).eligible);
@@ -44,6 +45,8 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:nu
     const weightUnknown=entry.unlockWeight&&p.unlocks[entry.unlockWeight.key]==null?['Frost dragon weighting reward is unknown']:[];
     return {entry,id:entry.id,name:a.name,variant:v,method,weight,...timing,meanKills:timing.kills,reward,probability:0,skip:0,targetFraction:target&&variant.eligible?loc.fraction:0,isTarget:!!target,blocked:false,reason:eligibility.failed.join('; '),unknown:[...eligibility.unknown,...variant.unknown,...weightUnknown,...(target?loc.unknown:[])],methodReason:variant.failed.join('; '),modifierKinds:modifier};
   });
+  // Preparation order is independent of the published assignment order.
+  return rows.sort((a,b)=>m.tasks.indexOf(a.entry)-m.tasks.indexOf(b.entry));
 }
 function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
   if(p.strategy==='none')return;

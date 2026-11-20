@@ -1,12 +1,20 @@
-# Slayer Target Planner 2.9.2
+# Slayer Target Planner 2.9.3
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.2 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.3 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+
+## Gear comparisons and calculation priority in 2.9.3
+
+Hover or focus a gear item, or choose its **ⓘ** button, to see why it was selected and compare it with your owned alternatives in that slot. The table shows full-setup DPS, the DPS change from the displayed item, prayer bonus and all five defensive bonuses. Multi-target spells also show stack DPS. Required protection, insufficient levels, incompatible ammunition and two-handed conflicts explain unavailable alternatives. Mid-level/max examples identify their unowned baseline separately.
+
+Comparisons run on demand in a cancellable worker and are cached until the profile or guide choices change. They hold other slots fixed; weapon swaps can choose another supported attack/spell within the same combat family. They are not full replacement-loadout searches or an incoming-damage simulation.
+
+New profiles, imports and recalculations prepare the selected hunt creatures and guide creature before other work. The active guide is prepared first when it is open; otherwise hunt targets go first. Selected hunt assignments and masters offering them are processed first, and completed master plans appear while the remaining calculations continue. Percentages include priority preparation. See [verification and limits](docs/gear-comparisons-priority.md).
 
 ## Body and leg armour fallbacks in 2.9.2
 

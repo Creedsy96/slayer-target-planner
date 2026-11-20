@@ -14,7 +14,7 @@ import art from '../ui/item-art.json';
 
 const cache=new Map<string,CombatResult>();let lastIdentity='';
 function identity(p:Profile):string{return JSON.stringify([p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states]);}
-function requirementSlots(record:GuideRecord,state:GuideState,location?:LocationPlan,p?:Profile):Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>{
+export function requirementSlots(record:GuideRecord,state:GuideState,location?:LocationPlan,p?:Profile):Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>{
  const m=encounter(record),slots:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>={};
  if(m.shield)slots.shield=i=>m.shield!.some(n=>n.toLowerCase()===i.name.toLowerCase())||!!m.dragonfire&&['Anti-dragon shield','Dragonfire shield','Dragonfire ward'].includes(i.name)||!!m.wyvern&&['Elemental shield','Mind shield','Ancient wyvern shield'].includes(i.name);
  if(m.head)slots.head=i=>i.name.toLowerCase()===m.head!.toLowerCase()||/slayer helmet/i.test(i.name);
@@ -123,7 +123,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only; configured hunter timing is retained.');
  return result;
 }
-function usableAmmo(weapon:EquipmentItem,ammo:EquipmentItem,family:string):boolean{
+export function usableAmmo(weapon:EquipmentItem,ammo:EquipmentItem,family:string):boolean{
  if(weapon.name==='Toxic blowpipe')return /dart/i.test(ammo.name);
  const applicability=ammoApplicability(weapon.id,ammo.id);
  return applicability!==AmmoApplicability.INVALID&&(family==='ranged'&&applicability===AmmoApplicability.INCLUDED||ammo.bonuses.prayer>0);

@@ -1,4 +1,5 @@
 import type {GuideCombat} from '../combat/guide';
+import {GearInspector} from './gear-inspector';
 import type {GuideState} from '../guide/types';
 import {renderBank,type BankView} from './bank';
 import {loadDisplay,saveDisplay,applyDisplay,renderSettings,type DisplaySettings} from './settings';
@@ -35,6 +36,7 @@ const options=(values:[string,string][],value:unknown)=>values.map(([key,label])
 const select=(path:string,label:string,values:[string,string][],value:unknown)=>`<label>${esc(label)}<select data-setting="${esc(path)}">${options(values,value)}</select></label>`;
 const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<label>${esc(label)}<input data-setting="${esc(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value??''}"></label>`;
 const bool=(path:string,label:string,value:boolean)=>`<label class="check"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
+const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,profile.bank,profile.levels,profile.combat,profile.diaries,profile.quests,profile.questImport?.states,guide]);
 const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
 class AppState{
   gearResults:GuideCombat|undefined;gearKey='';
@@ -62,12 +64,21 @@ class AppState{
   persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your profile to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
   run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear',profile:Profile,masterId?:string,guide?:GuideState):void{
-    this.cancel(channel);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
+    this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
     this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:'Starting calculation'};
     worker.onmessage=event=>{
       if(this.workers.get(channel)!==worker||event.data.id!==id)return;
       const result=event.data;
       if(result.kind==='progress'){this.busy[channel]={done:result.done,total:result.total,current:result.current||'Calculating'};renderStatus();return;}
+      if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderContent();}return;}
+      if(result.kind==='plan-ready'){
+        if(channel==='plans'){
+          this.plans=[...this.plans.filter(p=>p.master.id!==result.plan.master.id),result.plan].sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
+          if(!this.selected)this.selected=this.plans.find(p=>p.chance!==null)?.master.id||this.plans[0]?.master.id||'';
+          if(this.route==='plan')renderContent();
+        }
+        return;
+      }
       this.cancel(channel);
       if(result.kind==='error'){this.message=result.message;renderContent();renderMessage();renderStatus();return;}
       if(channel==='gear')this.gearResults=result.result;
@@ -80,12 +91,13 @@ class AppState{
       renderContent();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the profile before trying again.';renderMessage();renderStatus();};
-    worker.postMessage({id,kind,profile:clone(profile),guide,masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
+    worker.postMessage({id,kind,profile:clone(profile),guide:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
-  changed(record=true,key=''):void{if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);this.cancel();this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();}
+  changed(record=true,key=''):void{if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);this.cancel();gearInspector.invalidate();this.gearKey=gearSignature(this.profile,guideState);this.gearResults=undefined;this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();}
 }
 const state=new AppState();
 const p=()=>state.profile;
+const gearInspector=new GearInspector(WORKER_SOURCE,()=>({profile:p(),guide:guideState,results:state.gearResults,key:state.gearKey}));
 let renderedRoute='';
 function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)=>v?.[k],p());}
 function renderShell():void{
@@ -93,7 +105,7 @@ function renderShell():void{
   const restore=preserveView();
   document.body.classList.toggle('compact-hunt',state.compact);
   document.body.classList.toggle('field-guide',state.route==='guide');
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.9.2 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.9.3 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';decorateCreatureText($('message'));}
@@ -102,10 +114,10 @@ function renderStatus():void{
 }
 function renderContent():void{
   const restore=preserveView();
-  if(state.route==='guide'){const key=JSON.stringify([p().bank,p().levels,p().combat,p().diaries,p().quests,p().questImport?.states,guideState]);if(key!==state.gearKey){state.gearKey=key;state.gearResults=undefined;state.run('gear','gear',p(),undefined,guideState);renderStatus();}}
+  if(state.route==='guide'){const key=gearSignature(p(),guideState);if(key!==state.gearKey){gearInspector.invalidate();state.gearKey=key;state.gearResults=undefined;state.run('gear','gear',p(),undefined,guideState);renderStatus();}}
   const renderers:Record<string,()=>string>={plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
   const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
-  content.innerHTML=renderers[state.route]();content.dataset.view=state.route;
+  content.innerHTML=renderers[state.route]();content.dataset.view=state.route;gearInspector.refresh();
   decorateCreatureText(document.getElementById('app')!);enhanceCreaturePickers(document.getElementById('app')!);restore();
   if(routeChanged&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)content.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});
 }
@@ -231,7 +243,7 @@ async function action(name:string):Promise<void>{
   if(name==='cancel-quests'){state.questRequest++;state.questPreview=null;renderContent();}
   if(name==='clear-imported-quests')update(q=>delete q.questImport);
   if(name==='dismiss'){state.message='';renderMessage();}
-  if(name==='recalculate'){state.gearKey='';state.run('plans','plans',p());renderContent();renderStatus();}
+  if(name==='recalculate'){state.changed(false);}
   if(name==='cancel'){state.cancel();state.message='Calculations cancelled. Current saved profile is unchanged.';renderMessage();renderStatus();}
   if(name==='new-profile'){const name=await requestName('New profile','New hunt');if(name){const q=newProfile(data,name);q.assumeUnknown=false;q.levels={slayer:null,combat:null};q.questPoints=null;q.points=null;q.streaks={normal:null,wilderness:null,mortimer:null};q.diaries={lumbridge:null,kourend:null,western:null};q.notes=['Enter player facts. Unknown requirements are not silently satisfied.'];addProfile(q);}}
   if(name==='duplicate-profile'||name==='snapshot-profile'){
@@ -465,7 +477,7 @@ async function readBankFiles(input:HTMLInputElement):Promise<void>{
 }
 async function bankAction(name:string):Promise<void>{
  if(name==='choose'){($('bank-file-import') as HTMLInputElement).value='';$('bank-file-import').click();return;}
- if(name==='recalculate'){state.gearKey='';state.run('plans','plans',p());renderContent();renderStatus();}
+ if(name==='recalculate'){state.changed(false);}
   if(name==='cancel'){state.bankView.previews=[];state.bankView.levels=null;renderContent();return;}
  if(name==='apply'){
   if(state.bankPreviewProfile!==state.activeId)throw Error('Review the import again for this profile.');
@@ -485,4 +497,4 @@ function renderMethodCombat(v:typeof data.variants[number],method:Method,assignm
  if(!p().combat?.enabled)return '<p class="small muted">Owned-gear timing is off. Enable it in Settings after adding your gear.</p>';
  return `<div class="notice"><strong>${resolved.calculated?'Calculated from owned gear':Object.keys(state.busy).length?'Calculations in progress':'Configured timing retained'}</strong><p>${esc(resolved.combatNote||(Object.keys(state.busy).length?'Preparing this method in the background.':'A measured/manual timing method is selected.'))}</p>${resolved.calculated?`<p>${resolved.calculated.dps.toFixed(3)} DPS · ${resolved.calculated.ttk.toFixed(2)} seconds per creature throughput before delay.${(resolved.calculated.targets||1)>1?' '+resolved.calculated.targets+' targets per batch; '+resolved.calculated.batchTtk?.toFixed(2)+' seconds per complete stack before delay.':''}</p>`:''}<button data-route="settings">Combat settings</button></div>`;
 }
-renderShell();state.run('plans','plans',p());renderStatus();
+state.gearKey=gearSignature(p(),guideState);renderShell();state.run('plans','plans',p());renderStatus();

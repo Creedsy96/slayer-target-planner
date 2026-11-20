@@ -15,7 +15,7 @@ export function exampleCombat(p:Profile,record:GuideRecord,form:GuideForm,state:
   const calculated=calculateCombat(p,record,form,loadout,style,spell,state.onTask,isWildernessCombat(record,location));
   if(calculated.supported&&calculated.dps>result.dps||!result.supported&&!calculated.supported)result=calculated;
  }
- result.source='example';return applyAreaDamage(result,record,location,state.stackSize);
+ result.source='example';result.armourPriority=plan.defence;return applyAreaDamage(result,record,location,state.stackSize);
 }
 export function calculateGuideCombat(p:Profile,state:GuideState,progress?:(done:number,current:string)=>void):GuideCombat{
  const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state),plan=fightPlan(record,form,state,location);
