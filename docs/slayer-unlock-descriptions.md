@@ -1,0 +1,11 @@
+# Slayer unlock descriptions — 3.0.26
+
+All 13 modeled task rewards show a point cost and an individual description inside their existing clickable card. Account & access and the Character Setup Wizard share the same renderer and keep the Slayer Rewards order and two-column layout. The small-screen layout remains one column.
+
+Descriptions name affected masters, task creatures and relevant caveats. Stop the Wyvern removes Fossil Island wyverns without consuming a block slot; it does not remove skeletal wyverns or cancel a current task. Chance of Heavy Frost increases task weight from 5 to 8 rather than unlocking frost dragons. I Wildy More Slayer is a free in-game toggle. Quest/location checks remain independent, including Basilisk Knights and Konar locations.
+
+The Account & access filter now matches both reward names and descriptions, allowing searches such as “basilisk”, “Knights” or “Duradel”. No-result text explains an empty reward list. Displaying or filtering descriptions does not change ownership, point balances, assignment rules or character data. The existing card action still records the player's in-game reward state.
+
+`data/slayer-unlocks.json` owns the explanatory text and costs. The source is the already captured [Slayer Rewards revision 15373095](https://oldschool.runescape.wiki/w/Slayer_Rewards?oldid=15373095#Unlock), also linked beneath the list. No additional Wiki scraping was needed. A single live-page check was unavailable; this release uses the pinned source, without claiming a live-data refresh. The source data ships with the portable app and the deployment manifest identifies its version.
+
+Verification: strict TypeScript check and six new regressions passed. The tests check complete metadata coverage, costs against the offline source, descriptive cards, preserved state/order, wizard reuse, special-case explanations, description filtering and escaping/fallback for an unknown future reward. Browser observations on a synthetic localhost character confirmed descriptions in both setup and Account & access, basilisk/Knights filtering, Duradel filtering and readable desktop card layout. The real desktop character was not edited. Native interaction with this new build was not run.

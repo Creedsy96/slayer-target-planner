@@ -73,3 +73,5 @@ export {selectCreatureGear,resetCreatureGear,gearAffectedMasters} from './combat
 export {strictGearUpgrade,filterStrictUpgrades,compareGearRows} from './combat/strict-upgrades';
 
 export {hasCombatImpact,combatCandidate} from './combat/combat-impact';
+
+export {removeCharacter,persistCharacterRemoval} from './state/character-removal';

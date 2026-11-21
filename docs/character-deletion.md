@@ -1,0 +1,11 @@
+# Delete saved characters — 3.0.26
+
+The sidebar includes Delete beside the other character actions. Select a custom character, choose Delete, then confirm the character named in the modal. Cancel has initial keyboard focus; Cancel and Escape leave the character intact. The built-in Maxed character is protected, and deletion is disabled during the practice hunt tutorial.
+
+Deletion removes that character's saved app-local account facts, gear/bank snapshots, methods and hunt settings. It selects a remaining neighboring character (Maxed when it is the only remaining character). Other characters and RuneLite export files are unchanged. IDs own deletion, so duplicate display names do not select the wrong character.
+
+The reduced character registry is saved before applying the transition. A storage error leaves the original character in memory and reports that deletion could not be saved. Existing storage errors also prevent deletion. Pending export/import reads are invalidated and character-specific previews are cleared; normal state invalidation cancels calculations and refreshes the newly active character. Deleting during the setup wizard returns to Account & access.
+
+Undo restores the complete character and active selection during the session, and Redo removes it again. History uses the existing bounded 40-snapshot session buffer; later edits can eventually evict the deletion. Reloading or closing clears Undo history, so later recovery requires a previously exported character backup. This is ordinary local app deletion, not secure erasure of browser storage or backup copies. Website and Windows storage remain separate.
+
+Verification: ten new regressions passed for ID-based removal, remaining-character selection, protected/unknown/last-character guards, persistent export/reload state, storage failure, full-state Undo/Redo, escaped confirmation content and Delete/Cancel/Escape modal outcomes. Browser observations used a newly created disposable “Delete character QA” on localhost: Cancel and Escape kept it, confirmation removed it and selected the prior character, Undo restored it, Redo removed it and reload preserved its absence. Maxed's Delete button was disabled with an explanation. Existing synthetic characters were retained. No real desktop character was deleted; native interaction with this release was not run.

@@ -1,0 +1,19 @@
+{
+  "version": "2026-11-21.1",
+  "source": {"url": "https://oldschool.runescape.wiki/w/Slayer_Rewards", "revision": 15373095},
+  "rewards": {
+    "seeing-red": {"points": 50, "description": "Adds red dragon tasks to Konar, Nieve and Duradel."},
+    "watch-the-birdie": {"points": 80, "description": "Adds aviansie tasks to Chaeldar, Nieve, Duradel, Konar and Krystilia. Unlock requires 60 Agility or Strength."},
+    "hot-stuff": {"points": 100, "description": "Adds TzHaar tasks to Chaeldar, Nieve and Duradel, with a Jad option. Zuk is offered after your first Zuk kill."},
+    "like-a-boss": {"points": 200, "description": "Adds dedicated boss assignments to Nieve, Duradel, Konar and Krystilia."},
+    "reptile-got-ripped": {"points": 75, "description": "Adds lizardmen tasks to Chaeldar, Nieve, Duradel and Konar; shamans can count where compatible."},
+    "stop-the-wyvern": {"points": 500, "description": "Removes Fossil Island wyvern tasks without using a block slot. Skeletal wyverns and your current task are unaffected."},
+    "basilocked": {"points": 80, "description": "Adds basilisk tasks to Nieve, Duradel and Konar. Knights still need quest access and a compatible task location."},
+    "vampyres": {"points": 80, "description": "Adds vampyre tasks to Chaeldar, Nieve, Duradel and Konar. Mortimer's Venators do not need this reward."},
+    "wildy-more": {"points": 0, "description": "Adds jellies, dust devils, nechryaels and abyssal demons to Krystilia's Wilderness pool. Free to toggle in game."},
+    "warped-reality": {"points": 60, "description": "Adds warped creature tasks to Chaeldar, Nieve, Duradel and Konar after The Path of Glouphrie."},
+    "lured-in": {"points": 80, "description": "Adds aquanite tasks to Nieve and Duradel."},
+    "wings-spread": {"points": 80, "description": "Adds gryphon tasks to Nieve and Duradel after Troubled Tortugans."},
+    "heavy-frost": {"points": 100, "description": "Raises frost dragon task weight from 5 to 8 for Nieve and Duradel. This increases odds; it does not unlock the task."}
+  }
+}

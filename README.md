@@ -1,12 +1,20 @@
-# Slayer Target Planner 3.0.25
+# Slayer Target Planner 3.0.26
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.25 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.26 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Descriptive Slayer unlocks in 3.0.26
+
+Every modeled Slayer unlock now shows its point cost and effect directly in the two-column rewards list, in both Account & access and the setup wizard. Descriptions identify affected masters and distinguish task unlocks, free toggles, task removal and increased assignment weight. Filter by reward name or description, including creature or master names. These controls record in-game ownership without spending points. [Source and verification](docs/slayer-unlock-descriptions.md).
+
+## Delete saved characters in 3.0.26
+
+Select a custom character and choose **Delete** in the sidebar. Confirm the named character to remove its app-local account, bank/gear and hunt settings. Cancel keeps it; Undo restores it during the session. After a reload, recovery needs an existing exported backup. The built-in Maxed character is protected, and other characters/RuneLite files are unaffected. [Behaviour and verification](docs/character-deletion.md).
 
 ## Consistent guide sidebar in 3.0.25
 

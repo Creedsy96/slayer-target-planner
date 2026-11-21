@@ -192,3 +192,6 @@ details>summary{transition:color .15s}details>summary:hover{color:var(--gold)}.p
 .selection-surface:hover,.selection-surface.selection-current{background-color:var(--selected)}
 .selection-surface:has(:focus-visible){outline:2px solid var(--gold);outline-offset:-2px}
 @media(prefers-reduced-motion:reduce){.selection-surface{transition:none}}
+
+button.character-delete{color:var(--red);border-color:var(--error-border)}
+.character-delete-dialog{width:min(500px,calc(100vw - 32px))}.character-delete-dialog .tools{justify-content:flex-end;margin-top:22px}
