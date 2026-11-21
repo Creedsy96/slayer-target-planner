@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.12
+# Slayer Target Planner 3.0.13
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.12 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.13 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Action feedback in 3.0.13
+
+Failed actions now show a floating banner beside the button or field that triggered them. Each banner has a correction link, which opens the relevant page, expands hidden sections and focuses the control to fix. Simulation without a point balance immediately offers **Enter current points** beside Simulate. Streak, task-state, account/method, import and typed-value errors use the same pattern; delayed calculation errors retain their initiating control across renders. Banners stay until dismissed or a successful edit, with keyboard, narrow-screen and reduced-motion support. See [feedback behavior and verification](docs/action-feedback.md).
 
 ## Konar location audit in 3.0.12
 

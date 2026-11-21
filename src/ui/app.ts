@@ -1,3 +1,5 @@
+import {ActionNotice,focusCorrection,type NoticeLevel} from './action-notice';
+import {captureAction,feedbackFix,type ActionOrigin,type FeedbackFix} from './action-feedback';
 import {renderKonarLocations} from './konar-locations';
 import {groupExportFolders} from '../state/export-folders';
 import type {ExportDiscoveryView} from './export-discovery';
@@ -90,7 +92,8 @@ class AppState{
   }
   persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your character to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
-  run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear',profile:Profile,masterId?:string,guide?:GuideState):void{
+  run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear',profile:Profile,masterId?:string,guide?:GuideState,origin?:ActionOrigin):void{
+    const requestedPlan=this.plans.find(plan=>plan.master.id===masterId);
     this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
     this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:combatCache.entries.length?(kind==='plans'?'Updating hunt odds / reusing completed combat results':'Reusing completed combat results'):'Starting calculation'};
     worker.onmessage=event=>{
@@ -108,18 +111,22 @@ class AppState{
         return;
       }
       this.cancel(channel);
-      if(result.kind==='error'){this.message=result.message;renderContent();renderMessage();renderStatus();return;}
+      if(result.kind==='error'){renderContent();reportActionError(result.message,origin||null,requestedPlan);renderStatus();return;}
       if(channel==='gear')this.gearResults=result.result;
       else if(channel==='plans'){
         this.reusedCombat=result.combatRestored>0;
         this.plans=result.plans.sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
         if(!this.plans.some(p=>p.master.id===this.selected&&(this.showUnavailable||canShowAvailableMaster(data,p,profile))))this.selected=this.plans.find(plan=>canRankPlan(plan,profile))?.master.id||this.plans.find(plan=>canShowAvailableMaster(data,plan,profile))?.master.id||this.plans[0]?.master.id||'';
       }else if(channel==='compare')this.comparison=result.plans;
-      else if(channel==='strategies')this.strategyResults=result.results;
+      else if(channel==='strategies'){
+        this.strategyResults=result.results;
+        const failures=this.strategyResults.filter(r=>r.error);
+        if(failures.length){this.message=failures[0].error!;displayedMessage='';renderMessage(failures.length===this.strategyResults.length?'error':'warning',origin||null,requestedPlan);}
+      }
       else {if(result.plan){this.plans=this.plans.map(p=>p.master.id===result.masterId?result.plan:p);}this.simulation=result.result;this.simulations.set(result.masterId,result.result);}
       renderContent();renderStatus();
     };
-    worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the character before trying again.';renderMessage();renderStatus();};
+    worker.onerror=()=>{this.cancel(channel);reportActionError('Calculation worker failed. Reload or export the character before trying again.',origin||null);renderStatus();};
     worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
   changed(record=true,key=''):void{
@@ -134,6 +141,8 @@ class AppState{
 const state=new AppState();
 const p=()=>state.profile;
 const gearInspector=new GearInspector(WORKER_SOURCE,()=>({profile:p(),guide:guideState,results:state.gearResults,key:state.gearKey}));
+let lastOrigin:ActionOrigin|undefined,displayedMessage='';
+const actionNotice=new ActionNotice(()=>({route:state.route,characterId:state.activeId}),openFeedbackFix,()=>{state.message='';displayedMessage='';});
 let renderedRoute='';
 function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)=>v?.[k],p());}
 function renderShell():void{
@@ -141,10 +150,33 @@ function renderShell():void{
   const restore=preserveView();
   document.body.classList.toggle('compact-hunt',state.compact);document.body.classList.toggle('tutorial-mode',state.route==='tutorial');
   document.body.classList.toggle('field-guide',state.route==='guide');
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">CHARACTER<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${renderQuestPoints(p(),true)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access; '+(p().assumeAllGear?'all gear assumed available':'recorded gear only')+'. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 3.0.12 · ${esc(data.attribution)}<br>Characters stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="account-folder-import" type="file" webkitdirectory multiple hidden><input id="account-file-import" type="file" accept=".json,application/json" multiple hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">CHARACTER<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${renderQuestPoints(p(),true)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access; '+(p().assumeAllGear?'all gear assumed available':'recorded gear only')+'. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 3.0.13 · ${esc(data.attribution)}<br>Characters stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="account-folder-import" type="file" webkitdirectory multiple hidden><input id="account-file-import" type="file" accept=".json,application/json" multiple hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
-function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';}
+function renderMessage(level:NoticeLevel='info',origin:ActionOrigin|null=lastOrigin||null,plan=state.plans.find(r=>r.master.id===state.selected)):void{
+  $('message').innerHTML=state.saveError?`<div class="notice error">${esc(state.saveError)} <button data-action="export-profile">Export character backup</button></div>`:'';
+  if(!state.message){actionNotice.close(false);displayedMessage='';return;}
+  if(state.message===displayedMessage)return;
+  displayedMessage=state.message;
+  if(level==='info'&&/session only|storage.*unavailable|applied for this session/i.test(state.message))level='warning';
+  actionNotice.show({message:state.message,level,fix:feedbackFix(data,p(),state.message,origin||undefined,plan)},origin||undefined);
+}
+function reportActionError(error:unknown,origin:ActionOrigin|null=lastOrigin||null,plan?:Plan):void{
+  state.message=error instanceof Error?error.message:String(error);displayedMessage='';renderMessage('error',origin,plan);
+}
+function openFeedbackFix(fix:FeedbackFix):void{
+  state.route=fix.route;
+  if(fix.route==='methods'){state.methodAssignment=fix.assignmentId||state.methodAssignment;methodVariant=fix.variantId||'';}
+  if(fix.route==='account')state.accessSearch=fix.filter||'';
+  if(fix.route==='tasks')state.taskMaster=fix.masterId||state.taskMaster;
+  renderShell();
+  const selector=fix.setting?'[data-setting="'+CSS.escape(fix.setting)+'"]':fix.selector||(fix.route==='methods'&&fix.field?'[data-method-field="'+CSS.escape(fix.field)+'"]':undefined);
+  let focus:HTMLElement|null=null;
+  if(selector){const candidates=[...document.querySelectorAll<HTMLElement>(selector)];focus=(fix.index!==undefined?candidates[fix.index]:candidates.find(e=>$('content').contains(e)))||candidates[0]||null;}
+  if(!focus&&fix.route==='plan'&&fix.assignmentId){const i=p().goal.targets.findIndex(t=>t.assignmentId===fix.assignmentId);focus=document.querySelector('[data-target="'+i+'"][data-target-field="variantId"]');}
+  if(focus)focusCorrection(focus);else{$('content').setAttribute('tabindex','-1');focusCorrection($('content'));}
+}
+
 function renderStatus():void{
   if(state.route==='setup'){ $('status').textContent='Character setup · hunt calculations start when you finish or exit';return;}
   if(state.route==='tutorial'){ $('status').textContent='Practice scenario';return;}
@@ -156,7 +188,7 @@ function renderContent():void{
   const renderers:Record<string,()=>string>={setup:()=>renderCharacterSetup(data,p(),state.exportPreview,state.display.showCompletedAccess,state.exportDiscovery,!!window.slayerDesktop?.characterExports),tutorial:()=>renderFirstHunt(data,state.tutorialProfile!,state.tutorialPlans,state.tutorialStep,state.tutorialProfile!.strategy,state.tutorialMaster),plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
   const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
   content.innerHTML=renderers[state.route]();content.dataset.view=state.route;gearInspector.refresh();
-  enhanceCreaturePickers(document.getElementById('app')!);restore();
+  enhanceCreaturePickers(document.getElementById('app')!);restore();actionNotice.refresh();
   if(state.route==='setup'&&p().setup?.step===1&&window.slayerDesktop?.characterExports&&!state.exportSearched.has(state.activeId)){state.exportSearched.add(state.activeId);queueMicrotask(()=>findAccountExports('auto'));}
   if(routeChanged&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)content.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});
 }
@@ -260,7 +292,7 @@ function download(name:string,text:string,mime='application/json'):void{
 }
 function update(mutate:(profile:Profile)=>void,key=''):boolean{
   try{const copy=clone(p());mutate(copy);const valid=validateProfile(data,copy);state.profiles[state.profiles.findIndex(p=>p.id===state.activeId)]=valid;state.message='';if(state.route==='setup'){state.history.record({profiles:state.profiles,activeId:state.activeId},key?state.activeId+':'+key:'');state.persist();renderShell();}else state.changed(true,key?state.activeId+':'+key:'');return true;}
-  catch(error){state.message=error instanceof Error?error.message:String(error);renderMessage();return false;}
+  catch(error){reportActionError(error);return false;}
 }
 async function requestName(title:string,value:string):Promise<string|null>{
   const dialog=document.createElement('dialog');dialog.innerHTML=`<form method="dialog"><h2>${esc(title)}</h2><label>Name<input id="dialog-name" maxlength="100" required value="${esc(value)}"></label><div class="tools" style="margin-top:20px"><button value="save">Save</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;
@@ -272,9 +304,10 @@ function addProfile(profile:Profile):void{
   if(customProfileCount(state.profiles)>=MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom characters. Export characters before creating more.');
   state.questRequest++;state.questDraft='';state.questPreview=null;state.profiles.push(validateProfile(data,profile));state.activeId=profile.id;state.changed();
 }
-async function action(name:string):Promise<void>{
+async function action(name:string,origin?:ActionOrigin):Promise<void>{
   if(await onboardingAction(name))return;
   const selected=state.plans.find(r=>r.master.id===state.selected);
+  if(selected&&['simulate','search-hunt','simulate-strategies'].includes(name)&&p().points===null)throw Error('Enter current points before simulating legal funded actions.');
   if(name==='mortimer-rules'){state.route='data';renderShell();$('mortimer-modifiers').scrollIntoView({block:'start'});return;}
   if(name==='add-offer')update(q=>(q.current.options||=[]).push({assignmentId:q.current.assignmentId||q.goal.targets[0].assignmentId,modifier:'none',points:0,quantity:0,target:true}));
   if(name.startsWith('remove-offer-'))update(q=>q.current.options?.splice(Number(name.split('-').at(-1)),1));
@@ -301,9 +334,9 @@ async function action(name:string):Promise<void>{
   if(name==='add-target')update(q=>{
     const a=data.assignments.find(a=>!q.goal.targets.some(t=>t.assignmentId===a.id));if(a)q.goal.targets.push({assignmentId:a.id,variantId:a.variantIds[0],priority:1});
   });
-  if(name==='simulate'){if(!selected)throw Error('Select a master first.');state.simulation=null;state.run('sim','simulation',p(),selected.master.id);renderContent();renderStatus();}
-  if(name==='search-hunt'){if(!selected)throw Error('Select a master first.');state.run('sim','hunt',p(),selected.master.id);renderStatus();}
-  if(name==='simulate-strategies'){if(!selected)throw Error('Select a master first.');state.strategyResults=[];state.run('strategies','strategies',p(),selected.master.id);renderStatus();}
+  if(name==='simulate'){if(!selected)throw Error('Select a master first.');state.simulation=null;state.run('sim','simulation',p(),selected.master.id,undefined,origin);renderContent();renderStatus();}
+  if(name==='search-hunt'){if(!selected)throw Error('Select a master first.');state.run('sim','hunt',p(),selected.master.id,undefined,origin);renderStatus();}
+  if(name==='simulate-strategies'){if(!selected)throw Error('Select a master first.');state.strategyResults=[];state.run('strategies','strategies',p(),selected.master.id,undefined,origin);renderStatus();}
   if(name==='export-simulation')download('slayer-hunt-simulation.json',JSON.stringify({dataVersion:data.version,mortimerRulesVersion:MORTIMER_VERSION,variantRulesVersion:VARIANT_VERSION,profile:clone(p()),masterId:state.selected,result:state.simulation},null,2));
   if(name==='use-proposal'&&selected)update(q=>q.proposed[selected.master.group]=[...selected.blocks]);
   if(name==='clear-proposal'&&selected)update(q=>delete q.proposed[selected.master.group]);
@@ -381,12 +414,13 @@ document.addEventListener('keydown',event=>{
 
 document.addEventListener('click',event=>{
   const button=(event.target as HTMLElement).closest('button');if(!button)return;
+  const origin=captureAction(button,state.route,state.activeId);lastOrigin=origin;
   if(button.dataset.useStyle){
     if(state.route==='tutorial'){state.message='Finish the tutorial and open your own guide to apply an owned-gear style.';renderMessage();return;}
     const variant=data.variants.find(v=>v.id===button.dataset.useVariant)!;const assignment=variant.assignmentIds.find(id=>p().goal.targets.some(t=>t.assignmentId===id&&t.variantId===variant.id))||variant.assignmentIds[0];
     update(q=>{const key=assignment+'::'+variant.id;q.methods[key]={...defaultMethod(data,q,assignment),...q.methods[key],variantId:variant.id,combatStyle:button.dataset.useStyle as Method['combatStyle'],combatDefence:button.dataset.useDefence as Method['combatDefence'],stackSize:guideState.stackSize,location:button.dataset.useLocation||guideState.location};});return;
   }
-  if(button.dataset.bankAction){bankAction(button.dataset.bankAction).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
+  if(button.dataset.bankAction){bankAction(button.dataset.bankAction).catch(error=>reportActionError(error,origin));return;}
   if(button.dataset.bankAdd){addOwnedItem(Number(button.dataset.bankAdd));return;}
   if(button.dataset.bankClear){update(q=>{q.bank??=emptyBank();delete (state.bankView.group?q.bank.groupManual:q.bank.manual)[button.dataset.bankClear!];});return;}
   if(button.dataset.guideLocation){chooseGuideLocation(button.dataset.guideLocation,state.route!=='tutorial');renderContent();$('guide-setup').focus({preventScroll:true});$('guide-setup').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
@@ -414,17 +448,20 @@ document.addEventListener('click',event=>{
   if(button.dataset.accessAuto){update(q=>delete q.access[button.dataset.accessAuto!]);return;}
   if(button.dataset.route){const deferred=state.route==='setup';if(state.route==='tutorial')endTutorial('skipped');state.route=button.dataset.route;renderShell();if(deferred)state.changed(false);return;}
   if(button.dataset.master){selectMaster(button.dataset.master);return;}
-  if(button.dataset.qol){huntAction(button.dataset.qol,button).catch(error=>{state.message=String(error instanceof Error?error.message:error);renderMessage();});return;}
+  if(button.dataset.qol){huntAction(button.dataset.qol,button).catch(error=>reportActionError(error,origin));return;}
   if(button.dataset.removeTarget!==undefined){update(q=>q.goal.targets.splice(Number(button.dataset.removeTarget),1));return;}
-  if(button.dataset.loadPreset){try{const preset=p().methodPresets[button.dataset.loadPreset],a=data.assignments.find(a=>a.id===state.methodAssignment)!;if(!a.variantIds.includes(preset.variantId))throw Error('This preset is for a different assignment variant.');methodVariant=preset.variantId;update(q=>q.methods[methodKey(a.id,preset.variantId)]=clone(preset));}catch(error){state.message=String(error);renderMessage();}return;}
-  if(button.dataset.action)action(button.dataset.action).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});
+  if(button.dataset.loadPreset){try{const preset=p().methodPresets[button.dataset.loadPreset],a=data.assignments.find(a=>a.id===state.methodAssignment)!;if(!a.variantIds.includes(preset.variantId))throw Error('This preset is for a different assignment variant.');methodVariant=preset.variantId;update(q=>q.methods[methodKey(a.id,preset.variantId)]=clone(preset));}catch(error){reportActionError(error);}return;}
+  if(button.dataset.action)action(button.dataset.action,origin).catch(error=>reportActionError(error,origin));
 });
 function changeInput(event:Event):void{
-  const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
-  if(element.id==='account-folder-import'){readAccountFolder(element as HTMLInputElement).catch(exportError);return;}
-  if(element.id==='export-folder-choice'){if(element.value&&state.exportFolders[element.value])void reviewExportFiles(state.exportFolders[element.value],element.value).catch(exportError);return;}
-  if(element.id==='account-file-import'){readAccountExports(element as HTMLInputElement).catch(exportError);return;}
-  if(element.id==='bank-file-import'){readBankFiles(element as HTMLInputElement).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
+  const element=event.target as HTMLInputElement|HTMLSelectElement;
+  if(!element.hidden)lastOrigin=captureAction(element,state.route,state.activeId);
+  const origin=lastOrigin;
+  if(!element.validity.valid){reportActionError(element.validationMessage,origin);return;}
+  if(element.id==='account-folder-import'){readAccountFolder(element as HTMLInputElement).catch(error=>exportError(error,origin));return;}
+  if(element.id==='export-folder-choice'){if(element.value&&state.exportFolders[element.value])void reviewExportFiles(state.exportFolders[element.value],element.value).catch(error=>exportError(error,origin));return;}
+  if(element.id==='account-file-import'){readAccountExports(element as HTMLInputElement).catch(error=>exportError(error,origin));return;}
+  if(element.id==='bank-file-import'){readBankFiles(element as HTMLInputElement).catch(error=>reportActionError(error,origin));return;}
   if(element.dataset.display){const key=element.dataset.display as keyof DisplaySettings;state.display[key]=(element as HTMLInputElement).checked;try{saveDisplay(state.display);}catch{state.message='Display choices applied for this session only.';}renderShell();return;}
   if(element.id==='bank-slot'){state.bankView.slot=element.value;renderContent();return;}
   if(element.id==='bank-import-kind'){state.bankView.kind=element.value;return;}
@@ -433,7 +470,7 @@ function changeInput(event:Event):void{
   if(element.dataset.bankQuantity){if(element.value==='')return;const id=element.dataset.bankQuantity;update(q=>{q.bank??=emptyBank();const manual=state.bankView.group?q.bank.groupManual:q.bank.manual;if(element.value==='')delete manual[id];else manual[id]=Number(element.value);},'bank-quantity:'+id);return;}
   if(changeGuide(element,state.route!=='tutorial')){renderContent();return;}
   if(element.id==='hunt-master'){selectMaster(element.value);return;}
-  if(element.id==='hunt-preset'){state.selectedPresetId=element.value;if(element.value){try{applyHunt(huntContext(),element.value);}catch(error){state.message=String(error);renderMessage();}}return;}
+  if(element.id==='hunt-preset'){state.selectedPresetId=element.value;if(element.value){try{applyHunt(huntContext(),element.value);}catch(error){reportActionError(error);}}return;}
   if(element.id==='show-unavailable'){
     state.showUnavailable=(element as HTMLInputElement).checked;
     if(!state.showUnavailable&&!canShowAvailableMaster(data,state.plans.find(r=>r.master.id===state.selected),p())){
@@ -445,13 +482,13 @@ function changeInput(event:Event):void{
   }
   if(element.id==='theme-select'){state.theme=themeId(element.value);applyTheme(state.theme);if(!saveTheme(state.theme)){state.message='Theme applied for this session. Browser storage is unavailable.';renderMessage();}return;}
   if(element.id==='preserve-quest-overrides'){state.preserveQuestOverrides=(element as HTMLInputElement).checked;renderContent();return;}
-  if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>{state.message=String(error);renderMessage();});return;}
+  if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>reportActionError(error,origin));return;}
   if(element.id==='profile-select'){resetExportDiscovery();if(state.route==='tutorial')endTutorial('skipped');if(state.route==='setup')state.route='account';state.exportRequest++;state.exportPreview=null;state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
   if(element.id==='task-master'){state.taskMaster=element.value;renderContent();return;}
   if(element.id==='method-assignment'){state.methodAssignment=element.value;methodVariant='';renderContent();return;}
   if(element.id==='method-variant'){methodVariant=element.value;renderContent();return;}
   if(element.id==='compare-profile'){state.comparisonId=element.value;state.comparison=[];renderContent();return;}
-  if(element.id==='file-import'){readImport(element as HTMLInputElement).catch(error=>{state.message=String(error);renderMessage();});return;}
+  if(element.id==='file-import'){readImport(element as HTMLInputElement).catch(error=>reportActionError(error,origin));return;}
   if(element.dataset.offer!==undefined){update(q=>{const o=q.current.options![Number(element.dataset.offer)]as any,key=element.dataset.offerField!;o[key]=element.type==='checkbox'?(element as HTMLInputElement).checked:element.type==='number'?Number(element.value):element.value;});return;}
   if(element.dataset.target!==undefined){
     const index=Number(element.dataset.target),field=element.dataset.targetField!;
@@ -513,8 +550,8 @@ async function readImport(input:HTMLInputElement):Promise<void>{
 
 function addOwnedItem(id:number):void{
  id=canonicalInventoryId(id);
- const input=$('bank-add-quantity') as HTMLInputElement;if(!input.reportValidity())return;
- const quantity=Number(input.value);if(!Number.isSafeInteger(quantity)||quantity<1){state.message='Enter a whole positive quantity.';renderMessage();return;}
+ const input=$('bank-add-quantity') as HTMLInputElement;lastOrigin=captureAction(input,state.route,state.activeId);if(!input.validity.valid){reportActionError(input.validationMessage);return;}
+ const quantity=Number(input.value);if(!Number.isSafeInteger(quantity)||quantity<1){reportActionError('Enter a whole positive quantity.');return;}
  update(q=>{q.bank??=emptyBank();const bank=q.bank,group=state.bankView.group;
   q.combat??={...defaultCombat(),enabled:true};
   const current=group?(bank.groupManual[id]??bank.snapshots.group_storage?.items[id]??0):(ownedQuantities({...bank,includeGroup:false})[id]||0);
@@ -568,10 +605,11 @@ async function welcome():Promise<void>{
 function resetExportDiscovery():void{
  state.exportRequest++;state.exportPreview=null;state.exportFolders={};state.exportDiscovery={busy:false,message:'',folders:[]};
 }
-function exportError(error:unknown):void{
- state.exportDiscovery.busy=false;state.exportDiscovery.message=error instanceof Error?error.message:String(error);renderContent();
+function exportError(error:unknown,origin=lastOrigin):void{
+ state.exportDiscovery.busy=false;state.exportDiscovery.message=error instanceof Error?error.message:String(error);renderContent();reportActionError(error,origin);
 }
 async function findAccountExports(mode:'auto'|'choose'):Promise<void>{
+ const origin=lastOrigin;
  const desktop=window.slayerDesktop?.characterExports;if(!desktop)return;
  const characterId=state.activeId,request=++state.exportRequest;state.exportSearched.add(characterId);state.exportPreview=null;state.exportFolders={};state.exportDiscovery={busy:true,message:mode==='auto'?'Searching RuneLite exports; select a character folder if the picker opens…':'Choose your RuneLite character folder…',folders:[]};renderContent();
  try{
@@ -579,9 +617,10 @@ async function findAccountExports(mode:'auto'|'choose'):Promise<void>{
   if(characterId!==state.activeId||request!==state.exportRequest)return;
   if(!found){state.exportDiscovery={busy:false,message:'No folder selected. Choose a character folder or try searching again.',folders:[]};renderContent();return;}
   state.exportPreview=parseAccountExports(data,found.files);state.exportDiscovery={busy:false,message:(found.source==='automatic'?'Automatically found ':'Selected ')+found.folder+'. Review the exports below before importing.',folders:[]};renderContent();
- }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error);}
+ }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error,origin);}
 }
 async function reviewExportFiles(files:File[],folder=''):Promise<void>{
+ const origin=lastOrigin;
  const characterId=state.activeId,request=++state.exportRequest;state.exportPreview=null;
  if(!files.length||files.length>10||files.reduce((n,f)=>n+f.size,0)>20_000_000)throw Error('Choose 1–10 export files totalling at most 20 MB.');
  if(files.some(file=>file.size>5_000_000))throw Error('Each export must be at most 5 MB.');
@@ -590,7 +629,7 @@ async function reviewExportFiles(files:File[],folder=''):Promise<void>{
   const exports=await Promise.all(files.map(async file=>({name:file.name,text:await file.text()})));
   if(characterId!==state.activeId||request!==state.exportRequest)return;
   state.exportPreview=parseAccountExports(data,exports);state.exportFolders={};state.exportDiscovery={busy:false,message:folder?'Selected '+folder+'. Review the exports below.':'Selected export files are ready for review.',folders:[]};renderContent();
- }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error);}
+ }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error,origin);}
 }
 async function readAccountExports(input:HTMLInputElement):Promise<void>{
  const files=[...(input.files||[])];input.value='';if(files.length)await reviewExportFiles(files);
