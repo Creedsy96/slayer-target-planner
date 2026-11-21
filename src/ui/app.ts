@@ -1,3 +1,5 @@
+import {groupExportFolders} from '../state/export-folders';
+import type {ExportDiscoveryView} from './export-discovery';
 import {renderCharacterSetup,requestCharacter,requestFirstLaunch} from './character-setup';
 import {renderFirstHunt} from './first-hunt';
 import {newCharacter,acceptSetupDefaults} from '../state/onboarding';
@@ -36,7 +38,7 @@ import {THEMES,loadTheme,themeId,applyTheme,saveTheme} from './themes';
 import {catalogue as data,MORTIMER_VERSION,VARIANT_VERSION,withDefaultMaxedProfile,knownAccessKeys,customProfileCount,MAX_CUSTOM_PROFILES,MAXED_PROFILE_ID,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,blockImpacts,evaluate,AREA_RULES,relevantQuests,questState,parseQuestImport,applyQuestImport,type QuestPreview} from '../core';
 import type {Profile,Plan,Simulation,Method,Requirement} from '../domain/types';
 declare const WORKER_SOURCE:string;
-declare global {interface Window {slayerDesktop?:{hiscores:(name:string)=>Promise<string>;compact?:(enabled:boolean,pin:boolean)=>Promise<void>}}}
+declare global {interface Window {slayerDesktop?:{characterExports?:(mode:'auto'|'choose')=>Promise<{source:'automatic'|'selected';folder:string;files:{name:string;text:string}[]}|null>;hiscores:(name:string)=>Promise<string>;compact?:(enabled:boolean,pin:boolean)=>Promise<void>}}}
 const $=(id:string)=>document.getElementById(id)!;
 const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const pct=(v:number|null)=>v===null?'—':(v*100).toFixed(2)+'%';
@@ -49,6 +51,7 @@ const bool=(path:string,label:string,value:boolean)=>`<label class="check toggle
 const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,profile.bank,profile.levels,profile.combat,profile.diaries,profile.quests,profile.questImport?.states,guide]);
 const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare characters'],['data','Data & sources']];
 class AppState{
+  exportDiscovery:ExportDiscoveryView={busy:false,message:'',folders:[]};exportFolders:Record<string,File[]>={};exportSearched=new Set<string>();
   firstLaunch=false;exportPreview:AccountExportPreview|null=null;exportRequest=0;
   tutorialStep=0;tutorialProfile:Profile|undefined;tutorialPlans:Plan[]=[];tutorialMaster='duradel';guideBeforeTutorial:GuideState|undefined;
 
@@ -111,6 +114,7 @@ class AppState{
     worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
   changed(record=true,key=''):void{
+    if(this.route==='setup'&&!this.profile.setup)this.route='account';
     if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);
     const nextGearKey=gearSignature(this.profile,guideState),gearChanged=this.gearKey!==nextGearKey;
     for(const channel of [...this.workers.keys()])if(channel!=='gear'||gearChanged)this.cancel(channel);
@@ -128,7 +132,7 @@ function renderShell():void{
   const restore=preserveView();
   document.body.classList.toggle('compact-hunt',state.compact);document.body.classList.toggle('tutorial-mode',state.route==='tutorial');
   document.body.classList.toggle('field-guide',state.route==='guide');
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">CHARACTER<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 3.0.0 · ${esc(data.attribution)}<br>Characters stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="account-file-import" type="file" accept=".json,application/json" multiple hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">CHARACTER<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 3.0.1 · ${esc(data.attribution)}<br>Characters stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="account-folder-import" type="file" webkitdirectory multiple hidden><input id="account-file-import" type="file" accept=".json,application/json" multiple hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';decorateCreatureText($('message'));}
@@ -140,10 +144,11 @@ function renderStatus():void{
 function renderContent():void{
   const restore=preserveView();
   if(state.route==='guide'){const key=gearSignature(p(),guideState);if(key!==state.gearKey){gearInspector.invalidate();state.gearKey=key;state.gearResults=undefined;state.run('gear','gear',p(),undefined,guideState);renderStatus();}}
-  const renderers:Record<string,()=>string>={setup:()=>renderCharacterSetup(data,p(),state.exportPreview,state.display.showCompletedAccess),tutorial:()=>renderFirstHunt(data,state.tutorialProfile!,state.tutorialPlans,state.tutorialStep,state.tutorialProfile!.strategy,state.tutorialMaster),plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
+  const renderers:Record<string,()=>string>={setup:()=>renderCharacterSetup(data,p(),state.exportPreview,state.display.showCompletedAccess,state.exportDiscovery,!!window.slayerDesktop?.characterExports),tutorial:()=>renderFirstHunt(data,state.tutorialProfile!,state.tutorialPlans,state.tutorialStep,state.tutorialProfile!.strategy,state.tutorialMaster),plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
   const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
   content.innerHTML=renderers[state.route]();content.dataset.view=state.route;gearInspector.refresh();
   decorateCreatureText(document.getElementById('app')!);enhanceCreaturePickers(document.getElementById('app')!);restore();
+  if(state.route==='setup'&&p().setup?.step===1&&window.slayerDesktop?.characterExports&&!state.exportSearched.has(state.activeId)){state.exportSearched.add(state.activeId);queueMicrotask(()=>findAccountExports('auto'));}
   if(routeChanged&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)content.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});
 }
 function head(eyebrow:string,title:string,description:string):string{return `<div class="pagehead"><div><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(title)}</h1><p>${esc(description)}</p></div></div>`;}
@@ -253,6 +258,7 @@ async function requestName(title:string,value:string):Promise<string|null>{
   return new Promise(resolve=>dialog.addEventListener('close',()=>{const name=dialog.returnValue==='save'?field.value.trim():null;dialog.remove();resolve(name||null);},{once:true}));
 }
 function addProfile(profile:Profile):void{
+  resetExportDiscovery();
   if(customProfileCount(state.profiles)>=MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom characters. Export characters before creating more.');
   state.questRequest++;state.questDraft='';state.questPreview=null;state.profiles.push(validateProfile(data,profile));state.activeId=profile.id;state.changed();
 }
@@ -335,6 +341,7 @@ function selectMaster(id:string):void{
   state.selected=id;state.simulation=state.simulations.get(id)||null;state.strategyResults=[];renderContent();scrollSection('selected-plan');
 }
 function restoreHistory(redo=false):void{
+  resetExportDiscovery();
   const saved=redo?state.history.redo():state.history.undo();if(!saved)return;
   state.questRequest++;state.questPreview=null;state.questDraft='';
   state.profiles=saved.profiles;state.activeId=saved.activeId;state.message=redo?'Change redone.':'Change undone.';state.changed(false);
@@ -401,7 +408,9 @@ document.addEventListener('click',event=>{
 });
 function changeInput(event:Event):void{
   const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
-  if(element.id==='account-file-import'){readAccountExports(element as HTMLInputElement).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
+  if(element.id==='account-folder-import'){readAccountFolder(element as HTMLInputElement).catch(exportError);return;}
+  if(element.id==='export-folder-choice'){if(element.value&&state.exportFolders[element.value])void reviewExportFiles(state.exportFolders[element.value],element.value).catch(exportError);return;}
+  if(element.id==='account-file-import'){readAccountExports(element as HTMLInputElement).catch(exportError);return;}
   if(element.id==='bank-file-import'){readBankFiles(element as HTMLInputElement).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
   if(element.dataset.display){const key=element.dataset.display as keyof DisplaySettings;state.display[key]=(element as HTMLInputElement).checked;try{saveDisplay(state.display);}catch{state.message='Display choices applied for this session only.';}renderShell();return;}
   if(element.id==='bank-slot'){state.bankView.slot=element.value;renderContent();return;}
@@ -424,7 +433,7 @@ function changeInput(event:Event):void{
   if(element.id==='theme-select'){state.theme=themeId(element.value);applyTheme(state.theme);if(!saveTheme(state.theme)){state.message='Theme applied for this session. Browser storage is unavailable.';renderMessage();}return;}
   if(element.id==='preserve-quest-overrides'){state.preserveQuestOverrides=(element as HTMLInputElement).checked;renderContent();return;}
   if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>{state.message=String(error);renderMessage();});return;}
-  if(element.id==='profile-select'){if(state.route==='tutorial')endTutorial('skipped');if(state.route==='setup')state.route='account';state.exportRequest++;state.exportPreview=null;state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
+  if(element.id==='profile-select'){resetExportDiscovery();if(state.route==='tutorial')endTutorial('skipped');if(state.route==='setup')state.route='account';state.exportRequest++;state.exportPreview=null;state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
   if(element.id==='task-master'){state.taskMaster=element.value;renderContent();return;}
   if(element.id==='method-assignment'){state.methodAssignment=element.value;methodVariant='';renderContent();return;}
   if(element.id==='method-variant'){methodVariant=element.value;renderContent();return;}
@@ -542,13 +551,45 @@ async function welcome():Promise<void>{
  const choice=await requestFirstLaunch();if(choice==='create')await createCharacter();
  else if(choice==='maxed'){try{localStorage.setItem('slayer-welcome-v1','chosen');}catch{/* Session remains usable. */}startTutorial();}
 }
-async function readAccountExports(input:HTMLInputElement):Promise<void>{
- const files=[...(input.files||[])],characterId=state.activeId,request=++state.exportRequest;input.value='';if(!files.length)return;
- if(files.length>10||files.reduce((n,f)=>n+f.size,0)>20_000_000)throw Error('Choose 1–10 files totalling at most 20 MB.');
- const exports=await Promise.all(files.map(async file=>({name:file.name,text:await file.text()})));
- if(characterId!==state.activeId||request!==state.exportRequest)return;
- state.exportPreview=parseAccountExports(data,exports);renderContent();
+function resetExportDiscovery():void{
+ state.exportRequest++;state.exportPreview=null;state.exportFolders={};state.exportDiscovery={busy:false,message:'',folders:[]};
 }
+function exportError(error:unknown):void{
+ state.exportDiscovery.busy=false;state.exportDiscovery.message=error instanceof Error?error.message:String(error);renderContent();
+}
+async function findAccountExports(mode:'auto'|'choose'):Promise<void>{
+ const desktop=window.slayerDesktop?.characterExports;if(!desktop)return;
+ const characterId=state.activeId,request=++state.exportRequest;state.exportSearched.add(characterId);state.exportPreview=null;state.exportFolders={};state.exportDiscovery={busy:true,message:mode==='auto'?'Searching RuneLite exports; select a character folder if the picker opens…':'Choose your RuneLite character folder…',folders:[]};renderContent();
+ try{
+  const found=await desktop(mode);
+  if(characterId!==state.activeId||request!==state.exportRequest)return;
+  if(!found){state.exportDiscovery={busy:false,message:'No folder selected. Choose a character folder or try searching again.',folders:[]};renderContent();return;}
+  state.exportPreview=parseAccountExports(data,found.files);state.exportDiscovery={busy:false,message:(found.source==='automatic'?'Automatically found ':'Selected ')+found.folder+'. Review the exports below before importing.',folders:[]};renderContent();
+ }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error);}
+}
+async function reviewExportFiles(files:File[],folder=''):Promise<void>{
+ const characterId=state.activeId,request=++state.exportRequest;state.exportPreview=null;
+ if(!files.length||files.length>10||files.reduce((n,f)=>n+f.size,0)>20_000_000)throw Error('Choose 1–10 export files totalling at most 20 MB.');
+ if(files.some(file=>file.size>5_000_000))throw Error('Each export must be at most 5 MB.');
+ state.exportDiscovery.busy=true;state.exportDiscovery.message='Reading selected exports…';renderContent();
+ try{
+  const exports=await Promise.all(files.map(async file=>({name:file.name,text:await file.text()})));
+  if(characterId!==state.activeId||request!==state.exportRequest)return;
+  state.exportPreview=parseAccountExports(data,exports);state.exportFolders={};state.exportDiscovery={busy:false,message:folder?'Selected '+folder+'. Review the exports below.':'Selected export files are ready for review.',folders:[]};renderContent();
+ }catch(error){if(characterId===state.activeId&&request===state.exportRequest)exportError(error);}
+}
+async function readAccountExports(input:HTMLInputElement):Promise<void>{
+ const files=[...(input.files||[])];input.value='';if(files.length)await reviewExportFiles(files);
+}
+async function readAccountFolder(input:HTMLInputElement):Promise<void>{
+ const files=[...(input.files||[])];input.value='';if(!files.length)return;resetExportDiscovery();
+ const groups=groupExportFolders(files.map(file=>({name:file.name,relativePath:file.webkitRelativePath})));state.exportFolders=Object.fromEntries(Object.entries(groups).map(([folder,indexes])=>[folder,indexes.map(i=>files[i])]));
+ const folders=Object.keys(groups).sort();
+ if(!folders.length)throw Error('No character export files found. Choose the character subfolder containing character.json or bank.json.');
+ if(folders.length===1){await reviewExportFiles(state.exportFolders[folders[0]],folders[0]);return;}
+ state.exportRequest++;state.exportPreview=null;state.exportDiscovery={busy:false,message:'Several exported characters found. Select one below; other characters’ file contents are not read.',folders};renderContent();
+}
+
 function startTutorial():void{
  state.cancel();state.guideBeforeTutorial=clone(guideState);state.tutorialProfile=practiceCharacter(data);state.tutorialPlans=practicePlans(data,state.tutorialProfile);state.tutorialStep=0;state.tutorialMaster='duradel';state.route='tutorial';state.message='';renderShell();
 }
@@ -558,10 +599,12 @@ function endTutorial(status:'complete'|'skipped'):void{
 }
 async function onboardingAction(name:string):Promise<boolean>{
  if(name==='refresh-access-checks'){resetAccessChecklist();renderContent();return true;}
- if(name==='resume-setup'){state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:1,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
+ if(name==='resume-setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:1,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
  if(name==='pause-setup'){state.route='account';state.changed(false);return true;}
+ if(name==='find-account-exports'){if(state.route!=='setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.route='setup';update(q=>{q.setup??={version:1,step:1,complete:false,imports:[],tutorial:'pending'};q.setup.step=1;q.setup.complete=false;});if(!window.slayerDesktop?.characterExports)($('account-folder-import')as HTMLInputElement).click();}else void findAccountExports('auto');return true;}
+ if(name==='choose-account-folder'){if(window.slayerDesktop?.characterExports)void findAccountExports('choose');else ($('account-folder-import')as HTMLInputElement).click();return true;}
  if(name==='choose-account-exports'){($('account-file-import')as HTMLInputElement).click();return true;}
- if(name==='cancel-account-exports'){state.exportRequest++;state.exportPreview=null;renderContent();return true;}
+ if(name==='cancel-account-exports'){resetExportDiscovery();state.exportDiscovery.message='Review cancelled. Choose a folder or search again.';renderContent();return true;}
  if(name==='apply-account-exports'&&state.exportPreview){const preview=state.exportPreview;const applied=update(q=>{Object.assign(q,applyAccountExports(data,q,preview,new Date().toISOString()));if(q.setup)q.setup.imports=[...new Set([...q.setup.imports,...preview.files])];});if(applied){state.exportPreview=null;state.message='Character exports imported. Manual overrides and owned-item edits were preserved.';renderContent();renderMessage();}return true;}
  if(name==='setup-next'||name==='setup-back'){update(q=>{if(name==='setup-next'){if(q.setup!.step===2)acceptSetupDefaults(data,q,'combat');if(q.setup!.step===3)acceptSetupDefaults(data,q,'rewards');}q.setup!.step=Math.max(0,Math.min(5,q.setup!.step+(name==='setup-next'?1:-1)));});return true;}
  if(name==='finish-setup'){if(update(q=>{q.setup!.complete=true;q.setup!.tutorial='pending';}))startTutorial();return true;}

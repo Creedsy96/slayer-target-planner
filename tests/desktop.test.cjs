@@ -15,6 +15,14 @@ test('desktop navigation remains in its packaged document', () => {
   for (const url of ['file:///C:/elsewhere.html', 'https://docs.google.com', document+'?remote=1', 'invalid']) assert.equal(sameDocument(url, document), false);
 });
 
+test('character export IPC keeps filesystem discovery behind the trusted packaged renderer',()=>{
+ const vm=require('node:vm'),fs=require('node:fs'),handlers={},calls=[],window={webContents:{}},electron={app:{setName(){},setAppUserModelId(){},getPath:()=>'/test-home',requestSingleInstanceLock:()=>true,on(){},whenReady:()=>({then:fn=>{}})},BrowserWindow:function(){},dialog:{showOpenDialog:async(parent,options)=>{calls.push({parent,options});return {canceled:true,filePaths:[]};}},shell:{},session:{},ipcMain:{handle:(name,fn)=>handlers[name]=fn}};
+ const source=fs.readFileSync(require('node:path').join(__dirname,'../desktop/main.cjs'),'utf8')+'\nmainWindow=globalThis.testWindow;';
+ const discovery=[];const sandbox={testWindow:window,__dirname:'/app',require:name=>name==='electron'?electron:name==='./character-exports.cjs'?{findCharacterExports:async(options,mode)=>{discovery.push(mode);assert.equal(options.home,'/test-home');await options.chooseFolder({defaultPath:'/test-home/.runelite/character-exporter'});return null;}}:name==='./navigation.cjs'?{allowedExternal,sameDocument}:name==='./compact.cjs'?{compactWindow(){}}:name==='./hiscores.cjs'?{lookup(){}}:require(name)};
+ vm.runInNewContext(source,sandbox);const invoke=handlers['character-exports'];assert.equal(typeof invoke,'function');
+ return (async()=>{for(const event of [{sender:{},senderFrame:{url:'file:///app/web/index.html'}},{sender:window.webContents,senderFrame:{url:'https://other.example'}}])await assert.rejects(invoke(event,'auto'),/Unknown request source/);assert.equal(discovery.length,0);await invoke({sender:window.webContents,senderFrame:{url:require('node:url').pathToFileURL('/app/web/index.html').href}},'auto');assert.deepEqual(discovery,['auto']);assert.equal(calls[0].parent,window);})();
+});
+
 test('offline font removal preserves root colour and typography declarations', () => {
   const fs = require('node:fs');
   const css = fs.readFileSync(require('node:path').join(__dirname,'../dist/style.css'), 'utf8');

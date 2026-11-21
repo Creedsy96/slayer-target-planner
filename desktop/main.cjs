@@ -16,6 +16,15 @@ ipcMain.handle('compact-mode',(event,enabled,pin)=>{
   normalWindowState=compactWindow(mainWindow,enabled,pin,normalWindowState);
 });
 const {lookup}=require('./hiscores.cjs');
+const {findCharacterExports}=require('./character-exports.cjs');
+ipcMain.handle('character-exports',async(event,mode)=>{
+  const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
+  if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected))throw Error('Unknown request source.');
+  return findCharacterExports({home:app.getPath('home'),chooseFolder:async options=>{
+    const selected=await dialog.showOpenDialog(mainWindow,options);
+    return selected.canceled?null:selected.filePaths[0];
+  }},mode);
+});
 ipcMain.handle('public-hiscores',async(event,name)=>{
   const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
   if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected))throw Error('Unknown request source.');

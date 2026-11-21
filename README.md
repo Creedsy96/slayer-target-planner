@@ -1,12 +1,20 @@
-# Slayer Target Planner 3.0.0
+# Slayer Target Planner 3.0.1
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.1 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Automatic RuneLite export discovery in 3.0.1
+
+The Windows Character Setup Wizard searches `%USERPROFILE%/.runelite/character-exporter/` when you reach Import files. One character folder opens directly into a review. Several characters, or no detected export, open a directory picker at the export folder (or nearest existing parent); select your character’s folder once. **Choose character folder** always lets you override automatic discovery. **Bank & gear → Find RuneLite character exports** opens the same review.
+
+The website cannot search your local disk automatically. Its folder picker accepts either one character folder or the export directory; if you select the latter with multiple characters, choose one inside the app. Only that character’s six supported files are read. Individual file selection remains available. Discovery reads local snapshots and never applies them until **Import reviewed files** is selected; it does not watch RuneLite continuously.
+
+See [discovery verification and limits](docs/export-discovery.md).
 
 ## Character onboarding in 3.0.0
 
