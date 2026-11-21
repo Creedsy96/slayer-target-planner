@@ -1,0 +1,19 @@
+{
+  "pageid": 458520,
+  "ns": 0,
+  "title": "Moonlight antler bolts",
+  "revisions": [
+    {
+      "revid": 15409294,
+      "parentid": 15405654,
+      "timestamp": "2026-11-19T18:46:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Moonlight antler bolts\n|image = [[File:Moonlight antler bolts 1.png]] [[File:Moonlight antler bolts 2.png]] [[File:Moonlight antler bolts 3.png]] [[File:Moonlight antler bolts 4.png]] [[File:Moonlight antler bolts 5.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = Yes\n|noteable = No\n|options = Wield, Drop\n|examine = Bolts made from the antlers of a moonlight antelope.\n|value = 31\n|weight = 0.000\n|exchange = Yes\n|id = 28878\n}}\n[[File:Moonlight antler bolts 5 detail.png|120px|left]]\n'''Moonlight antler bolts''' are ranged ammunition for the [[hunters' sunlight crossbow]], effectively requiring 66 [[Ranged]] to use. They can be created at level 72 [[Fletching]] by using a [[chisel]] on a [[moonlight antelope antler]]; each antler produces 12 bolts and rewards 12.1 Fletching experience.\n\nUnlike other arrows and bolts, moonlight antler bolts cannot be coated with [[weapon poison]].\n\nDespite not being made of metal, moonlight antler bolts '''do''' function with [[Ava's devices]] obtained from the completion of [[Animal Magnetism]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = 0\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = 0\n|rstr = +60\n|mdmg = 0\n|prayer = 0\n|slot = ammo\n}}\n\n==Creation==\n{{Recipe\n|skill1 = Fletching\n|skill1lvl = 72\n|skill1boostable = Yes\n|skill1exp = 12.1\n|members = Yes\n|ticks = 3\n|tools = Chisel\n|mat1 = Moonlight antelope antler\n|output1 = Moonlight antler bolts\n|output1quantity = 12\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Moonlight antler bolts}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 18 November 2026\n|update = Quest Month Week 3 & TFA Practice Mode\n|change = Fixed a bug where full inventories prevented players from fletching [[sunlight antler bolts|sunlight]] and moonlight antler bolts, even when an existing stack in the inventory provided room.\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"120\">\nMoonlight antler bolts 1 detail.png|One moonlight antler bolt\nMoonlight antler bolts 2 detail.png|Two moonlight antler bolts\nMoonlight antler bolts 3 detail.png|Three moonlight antler bolts\nMoonlight antler bolts 4 detail.png|Four moonlight antler bolts\nMoonlight antler bolts 5 detail.png|Five moonlight antler bolts\n</gallery>\n\n{{Bolts}}"
+        }
+      }
+    }
+  ]
+}

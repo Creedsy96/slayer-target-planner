@@ -1,6 +1,7 @@
-import {equipment} from '../../vendor/osrs-dps/runtime.js';
+import {equipment,canonicalId} from '../../vendor/osrs-dps/runtime.js';
 import {canonicalInventoryId} from './item-ids';
 import requirements from '../../data/equipment-requirements.json';
+import reviews from '../../data/equipment-requirement-reviews.json';
 import itemArt from '../ui/item-art.json';
 import type {EquipmentItem,EquipmentSlot,Loadout} from './types';
 import type {Profile} from '../domain/types';
@@ -16,6 +17,7 @@ const additions:Record<string,Record<string,number>>={
 };
 // Reviewed Wiki requirements for synapse weapons, crossbows and Sailing blowpipes.
 const reqs:Record<string,Record<string,number>>=requirements.requirements;
+const reviewed:Record<string,Record<string,number>>=Object.fromEntries(reviews.reviews.flatMap(review=>review.ids.map(id=>[id,review.requirements as Record<string,number>])));
 export function equipmentItem(id:number):EquipmentItem|undefined{return ITEMS_BY_ID.get(canonicalInventoryId(id))||ITEMS_BY_ID.get(id);}
 export function itemForLabel(label:string):EquipmentItem|undefined{
  const alias=Object.entries(itemArt.aliases).find(([name])=>name.toLowerCase()===label.toLowerCase())?.[1];
@@ -28,7 +30,10 @@ export function ownedItems(p:Profile):EquipmentItem[]{
  return [...items.values()].sort((a,b)=>a.id-b.id);
 }
 export function itemRequirements(item:EquipmentItem):Record<string,number>|null{
- return additions[item.id]??reqs[item.id]??null;
+ // Keep an explicit per-ID requirement before inheriting the pinned engine's
+ // equivalent cosmetic/charge variant. Never infer requirements from a name.
+ const base=canonicalId(item.id);
+ return reviewed[item.id]??additions[item.id]??reqs[item.id]??reviewed[base]??additions[base]??reqs[base]??null;
 }
 export function canEquip(item:EquipmentItem,p:Profile):boolean{
  const req=itemRequirements(item);

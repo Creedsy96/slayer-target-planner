@@ -1,0 +1,19 @@
+{
+  "pageid": 581031,
+  "ns": 0,
+  "title": "Radiant oathplate chest",
+  "revisions": [
+    {
+      "revid": 15193340,
+      "parentid": 15172718,
+      "timestamp": "2026-04-22T04:56:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Radiant oathplate chest\n|image = [[File:Radiant oathplate chest.png]]\n|release = [[23 May]] [[2025]]\n|update = Yama: The Calm Before the Contract Storm\n|members = Yes\n|quest = No\n|tradeable = No\n|equipable = Yes\n|stackable = No\n|noteable = No\n|options = Wear, Revert, Drop\n|examine = A chestplate forged from infernal metal, then purified by an ancient rite.\n|value = 600000\n|weight = 9.979\n|id = 30779\n}}\n[[File:Radiant oathplate chest detail.png|150px|left]]\nThe '''radiant oathplate chest''' is an [[oathplate chest]] modified by a [[purifying sigil]] and 2,500 [[aether rune]]s; the sigil is not consumed. The ornament gives no additional bonuses, and is purely cosmetic.\n\nWhile the item is untradeable in its radiant state, it can be reverted anytime. However, the aether runes will not be returned.\n\n{{Costume storage|armour case|[[radiant oathplate armour]] set|set=true}}\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = +16\n|acrush = 0\n|amagic = -16\n|arange = -18\n|dstab = +105\n|dslash = +128\n|dcrush = +100\n|dmagic = -5\n|drange = +112\n|str = +4\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = body\n|image = [[File:Radiant oathplate chest equipped male.png]]\n|altimage = [[File:Radiant oathplate chest equipped female.png]]\n}}\n\n==Creation==\n{{Recipe\n|members = Yes\n|ticks = 0\n|mat1 = Oathplate chest\n|mat2 = Purifying sigil\n|mat2cost = No\n|mat3 = Aether rune\n|mat3quantity = 2500\n|output1 = Radiant oathplate chest\n|output1cost = No\n}}\n\n==Transcript==\n{{hastranscript|transclude=yes}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nRadiant oathplate armour equipped male.png|Radiant oathplate armour on body type A.\nRadiant oathplate armour equipped female.png|Radiant oathplate armour set on body type B.\nRadiant oathplate creation.webm|A player creating a piece of radiant oathplate armour.\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 4 June 2025\n|update = Poll 84, AFK Timers & More\n|change = The number of aether runes needed to create a piece of [[radiant oathplate armour]] has been reduced from 10,000 to 2,500. Players who have done so prior to this update had 7,500 aether runes deposited into their bank for each piece created.\n}}\n{{Subject changes\n|date = 23 May 2025\n|update = Yama: The Calm Before the Contract Storm\n|change = The item is now obtainable.\n}}\n{{Subject changes\n|date = 14 May 2025\n|update = Yama, the Master of Pacts: Out Today\n|change = The item was added to the game, but was unobtainable.\n}}\n{{Subject changes footer}}\n\n{{Yama}}"
+        }
+      }
+    }
+  ]
+}

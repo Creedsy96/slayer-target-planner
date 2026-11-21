@@ -1,0 +1,2413 @@
+{
+  "version": "2026-11-21.1",
+  "engineCommit": "3da927f4280c73154fa59e4e90eb374af5123d32",
+  "scope": "Skill requirements only. Ordinary combat candidates use the existing activity/seasonal exclusions and engine alias deduplication. Quest, diary, boss-kill, charge and acquisition checks are separate.",
+  "allUsableCombat": {
+    "items": 3056,
+    "reviewed": 2816,
+    "unreviewed": 240
+  },
+  "ordinaryCombat": {
+    "items": 2232,
+    "reviewed": 2073,
+    "unreviewed": 159
+  },
+  "ordinaryUnreviewed": [
+    {
+      "id": 28226,
+      "name": "3rd Age felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28211,
+      "name": "Adamant felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34407,
+      "name": "Amulet of air",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34419,
+      "name": "Amulet of earth",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34425,
+      "name": "Amulet of fire",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34762,
+      "name": "Amulet of sight",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34413,
+      "name": "Amulet of water",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 26229,
+      "name": "Ancient ceremonial boots",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 26227,
+      "name": "Ancient ceremonial gloves",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26223,
+      "name": "Ancient ceremonial legs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 26225,
+      "name": "Ancient ceremonial mask",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26221,
+      "name": "Ancient ceremonial top",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 31081,
+      "name": "Antler guard",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 32879,
+      "name": "Aquanite hopper",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 30955,
+      "name": "Arkan blade",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34684,
+      "name": "Ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 27112,
+      "name": "Barrows gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 28316,
+      "name": "Bellator ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 31248,
+      "name": "Belle's folly",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28205,
+      "name": "Black felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33713,
+      "name": "Blisterwood sickle (e)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33716,
+      "name": "Blisterwood stake",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28196,
+      "name": "Bronze felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26755,
+      "name": "Calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26749,
+      "name": "Calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 30694,
+      "name": "Castle wars arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 30696,
+      "name": "Castle wars bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33631,
+      "name": "Crimson kisten",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28220,
+      "name": "Crystal felling axe",
+      "version": "Active",
+      "slot": "weapon"
+    },
+    {
+      "id": 29566,
+      "name": "Dark squall hood",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 29570,
+      "name": "Dark squall robe bottom",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 29568,
+      "name": "Dark squall robe top",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 8856,
+      "name": "Defensive shield",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 34690,
+      "name": "Diamond ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34696,
+      "name": "Diamond ascension bolts (e)",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33709,
+      "name": "Diamond sickle (b)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28902,
+      "name": "Dizana's max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 28217,
+      "name": "Dragon felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34428,
+      "name": "Elemental amulet",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 29560,
+      "name": "Elite black full helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 29562,
+      "name": "Elite black platebody",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 29564,
+      "name": "Elite black platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 26759,
+      "name": "Elite calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26753,
+      "name": "Elite calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 33711,
+      "name": "Enchanted diamond sickle (b)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 22517,
+      "name": "Escape crystal",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 31113,
+      "name": "Eye of Ayak",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28672,
+      "name": "Fancier boots",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 27550,
+      "name": "Ghommal's avernic defender 5",
+      "version": "Normal",
+      "slot": "shield"
+    },
+    {
+      "id": 27552,
+      "name": "Ghommal's avernic defender 6",
+      "version": "Normal",
+      "slot": "shield"
+    },
+    {
+      "id": 27871,
+      "name": "Giant bronze dagger",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26168,
+      "name": "Group ironman bracers",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 27046,
+      "name": "Group ironman bracers (unranked)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26156,
+      "name": "Group ironman helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 27042,
+      "name": "Group ironman helm (unranked)",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26158,
+      "name": "Group ironman platebody",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 26160,
+      "name": "Group ironman platebody",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 26162,
+      "name": "Group ironman platebody",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 26164,
+      "name": "Group ironman platebody",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 27048,
+      "name": "Group ironman platebody (unranked)",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 27050,
+      "name": "Group ironman platebody (unranked)",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 27052,
+      "name": "Group ironman platebody (unranked)",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 27054,
+      "name": "Group ironman platebody (unranked)",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 26166,
+      "name": "Group ironman platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 27044,
+      "name": "Group ironman platelegs (unranked)",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 33718,
+      "name": "Hallowed flail",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34027,
+      "name": "Hallowfell",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26182,
+      "name": "Hardcore group ironman bracers",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26170,
+      "name": "Hardcore group ironman helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26172,
+      "name": "Hardcore group ironman platebody",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 26174,
+      "name": "Hardcore group ironman platebody",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 26176,
+      "name": "Hardcore group ironman platebody",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 26178,
+      "name": "Hardcore group ironman platebody",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 26180,
+      "name": "Hardcore group ironman platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 30111,
+      "name": "Helmet of the moon",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 33002,
+      "name": "Holy moleys",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 29305,
+      "name": "Hunter's spear",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34633,
+      "name": "Imbued ancient cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 34625,
+      "name": "Imbued ancient max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 30347,
+      "name": "Infernal axe (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 30342,
+      "name": "Infernal harpoon (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 30345,
+      "name": "Infernal pickaxe (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28837,
+      "name": "Irit tar",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 28199,
+      "name": "Iron felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26741,
+      "name": "Koriff's coif",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26739,
+      "name": "Koriff's cowl",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26737,
+      "name": "Koriff's headband",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 28313,
+      "name": "Magus ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 26745,
+      "name": "Maoma's full helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26747,
+      "name": "Maoma's great helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26743,
+      "name": "Maoma's med helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 27363,
+      "name": "Masori assembler max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 28208,
+      "name": "Mithril felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27110,
+      "name": "Mithril gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 33101,
+      "name": "Mooleta",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 34401,
+      "name": "Necklace of Fangs",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 33639,
+      "name": "Necklace of rupture",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34715,
+      "name": "Obligator",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 34702,
+      "name": "Onyx ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34708,
+      "name": "Onyx ascension bolts (e)",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34769,
+      "name": "Painted kiteshield",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 34772,
+      "name": "Painted shortbow",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34766,
+      "name": "Painted shortsword",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 29892,
+      "name": "Pendant of Ates",
+      "version": "Inert",
+      "slot": "neck"
+    },
+    {
+      "id": 29893,
+      "name": "Pendant of Ates",
+      "version": "Charged",
+      "slot": "neck"
+    },
+    {
+      "id": 26948,
+      "name": "Pharaoh's sceptre",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 31049,
+      "name": "Redwood hiking staff",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28327,
+      "name": "Ring of shadows",
+      "version": "Charged",
+      "slot": "ring"
+    },
+    {
+      "id": 34719,
+      "name": "Rondache",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 28214,
+      "name": "Rune felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27111,
+      "name": "Rune gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26731,
+      "name": "Saika's hood",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26735,
+      "name": "Saika's shroud",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26733,
+      "name": "Saika's veil",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 31288,
+      "name": "Sailing cape",
+      "version": "Untrimmed",
+      "slot": "cape"
+    },
+    {
+      "id": 31290,
+      "name": "Sailing cape",
+      "version": "Trimmed",
+      "slot": "cape"
+    },
+    {
+      "id": 33577,
+      "name": "Seeking adamant arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33589,
+      "name": "Seeking amethyst arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33601,
+      "name": "Seeking broad arrows",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33553,
+      "name": "Seeking bronze arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33595,
+      "name": "Seeking dragon arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33559,
+      "name": "Seeking iron arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33571,
+      "name": "Seeking mithril arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33583,
+      "name": "Seeking rune arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33565,
+      "name": "Seeking steel arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33800,
+      "name": "Silvthrill ballista",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33801,
+      "name": "Silvthrill javelin",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 30759,
+      "name": "Soulflame horn",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33790,
+      "name": "Spine",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33063,
+      "name": "Starter cape",
+      "version": "",
+      "slot": "cape"
+    },
+    {
+      "id": 28202,
+      "name": "Steel felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 30895,
+      "name": "Steel ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 33722,
+      "name": "Sunspear",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26757,
+      "name": "Superior calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26751,
+      "name": "Superior calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 27788,
+      "name": "Thammaron's sceptre (a)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 31398,
+      "name": "Tortugan shield",
+      "version": "",
+      "slot": "cape"
+    },
+    {
+      "id": 33323,
+      "name": "Trident of the Seas (o)",
+      "version": "Fully charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28630,
+      "name": "Twitcher's gloves",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 28307,
+      "name": "Ultor ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 24265,
+      "name": "V's shield",
+      "version": "The Fremennik Exiles",
+      "slot": "shield"
+    },
+    {
+      "id": 34063,
+      "name": "Vampyre snelm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 28310,
+      "name": "Venator ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 21434,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Torvesta",
+      "slot": "cape"
+    },
+    {
+      "id": 21435,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "B0aty",
+      "slot": "cape"
+    },
+    {
+      "id": 21436,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Sick Nerd",
+      "slot": "cape"
+    },
+    {
+      "id": 21437,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Knightenator",
+      "slot": "cape"
+    },
+    {
+      "id": 21438,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Mmorpgrs",
+      "slot": "cape"
+    },
+    {
+      "id": 21428,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Torvesta",
+      "slot": "cape"
+    },
+    {
+      "id": 21429,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "B0aty",
+      "slot": "cape"
+    },
+    {
+      "id": 21430,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Sick Nerd",
+      "slot": "cape"
+    },
+    {
+      "id": 21431,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Knightenator",
+      "slot": "cape"
+    },
+    {
+      "id": 21432,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Mmorpgrs",
+      "slot": "cape"
+    },
+    {
+      "id": 26723,
+      "name": "Wristbands of the Arena",
+      "version": "Normal",
+      "slot": "hands"
+    },
+    {
+      "id": 26726,
+      "name": "Wristbands of the Arena",
+      "version": "Charged and Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 26727,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Normal",
+      "slot": "hands"
+    },
+    {
+      "id": 26730,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Charged and Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 30321,
+      "name": "Zombie helmet",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 34725,
+      "name": "Zorya's tome",
+      "version": "Charged",
+      "slot": "weapon"
+    }
+  ],
+  "allUsableCombatUnreviewed": [
+    {
+      "id": 28226,
+      "name": "3rd Age felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27861,
+      "name": "Abyssal dagger (bh)",
+      "version": "Unpoisoned",
+      "slot": "weapon"
+    },
+    {
+      "id": 27863,
+      "name": "Abyssal dagger (bh)",
+      "version": "Poison",
+      "slot": "weapon"
+    },
+    {
+      "id": 27865,
+      "name": "Abyssal dagger (bh)",
+      "version": "Poison+",
+      "slot": "weapon"
+    },
+    {
+      "id": 27867,
+      "name": "Abyssal dagger (bh)",
+      "version": "Poison++",
+      "slot": "weapon"
+    },
+    {
+      "id": 28211,
+      "name": "Adamant felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34407,
+      "name": "Amulet of air",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34419,
+      "name": "Amulet of earth",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34425,
+      "name": "Amulet of fire",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34762,
+      "name": "Amulet of sight",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34413,
+      "name": "Amulet of water",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 26229,
+      "name": "Ancient ceremonial boots",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 26227,
+      "name": "Ancient ceremonial gloves",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26223,
+      "name": "Ancient ceremonial legs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 26225,
+      "name": "Ancient ceremonial mask",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26221,
+      "name": "Ancient ceremonial top",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 31081,
+      "name": "Antler guard",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 32879,
+      "name": "Aquanite hopper",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 30955,
+      "name": "Arkan blade",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34684,
+      "name": "Ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 27855,
+      "name": "Barrelchest anchor (bh)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27112,
+      "name": "Barrows gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 28316,
+      "name": "Bellator ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 31248,
+      "name": "Belle's folly",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 25493,
+      "name": "Black d'hide chaps (beta)",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 25494,
+      "name": "Black d'hide vambraces (beta)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 28205,
+      "name": "Black felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33713,
+      "name": "Blisterwood sickle (e)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33716,
+      "name": "Blisterwood stake",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 740,
+      "name": "Blue hat (Legends' Quest)",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 28196,
+      "name": "Bronze felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26755,
+      "name": "Calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26756,
+      "name": "Calamity breeches",
+      "version": "Locked",
+      "slot": "legs"
+    },
+    {
+      "id": 26749,
+      "name": "Calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 26750,
+      "name": "Calamity chest",
+      "version": "Locked",
+      "slot": "body"
+    },
+    {
+      "id": 30694,
+      "name": "Castle wars arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 30696,
+      "name": "Castle wars bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 27847,
+      "name": "Corrupted morrigan's coif (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27848,
+      "name": "Corrupted morrigan's leather body (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27849,
+      "name": "Corrupted morrigan's leather chaps (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27844,
+      "name": "Corrupted statius's full helm (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27845,
+      "name": "Corrupted statius's platebody (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27846,
+      "name": "Corrupted statius's platelegs (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27842,
+      "name": "Corrupted vesta's chainbody (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27843,
+      "name": "Corrupted vesta's plateskirt (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27850,
+      "name": "Corrupted zuriel's hood (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27852,
+      "name": "Corrupted zuriel's robe bottom (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27851,
+      "name": "Corrupted zuriel's robe top (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 33631,
+      "name": "Crimson kisten",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 30384,
+      "name": "Crystal blessing",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 25496,
+      "name": "Crystal body (beta)",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 28220,
+      "name": "Crystal felling axe",
+      "version": "Active",
+      "slot": "weapon"
+    },
+    {
+      "id": 25495,
+      "name": "Crystal helm (beta)",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 25497,
+      "name": "Crystal legs (beta)",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 27853,
+      "name": "Dark bow (bh)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 29611,
+      "name": "Dark bow (Deadman)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 29566,
+      "name": "Dark squall hood",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 29570,
+      "name": "Dark squall robe bottom",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 29568,
+      "name": "Dark squall robe top",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 8856,
+      "name": "Defensive shield",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 30371,
+      "name": "Devil's element",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 34690,
+      "name": "Diamond ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34696,
+      "name": "Diamond ascension bolts (e)",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33709,
+      "name": "Diamond sickle (b)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28902,
+      "name": "Dizana's max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 28906,
+      "name": "Dizana's max cape",
+      "version": "Locked",
+      "slot": "cape"
+    },
+    {
+      "id": 28217,
+      "name": "Dragon felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27859,
+      "name": "Dragon longsword (bh)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27857,
+      "name": "Dragon mace (bh)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 30374,
+      "name": "Drygore blowpipe",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 34428,
+      "name": "Elemental amulet",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 29560,
+      "name": "Elite black full helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 29562,
+      "name": "Elite black platebody",
+      "version": "",
+      "slot": "body"
+    },
+    {
+      "id": 29564,
+      "name": "Elite black platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 26759,
+      "name": "Elite calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26760,
+      "name": "Elite calamity breeches",
+      "version": "Locked",
+      "slot": "legs"
+    },
+    {
+      "id": 26753,
+      "name": "Elite calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 26754,
+      "name": "Elite calamity chest",
+      "version": "Locked",
+      "slot": "body"
+    },
+    {
+      "id": 33711,
+      "name": "Enchanted diamond sickle (b)",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 22517,
+      "name": "Escape crystal",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 31113,
+      "name": "Eye of Ayak",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28672,
+      "name": "Fancier boots",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 33249,
+      "name": "Fang of the hound",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27550,
+      "name": "Ghommal's avernic defender 5",
+      "version": "Normal",
+      "slot": "shield"
+    },
+    {
+      "id": 27551,
+      "name": "Ghommal's avernic defender 5",
+      "version": "Locked",
+      "slot": "shield"
+    },
+    {
+      "id": 27552,
+      "name": "Ghommal's avernic defender 6",
+      "version": "Normal",
+      "slot": "shield"
+    },
+    {
+      "id": 27553,
+      "name": "Ghommal's avernic defender 6",
+      "version": "Locked",
+      "slot": "shield"
+    },
+    {
+      "id": 27871,
+      "name": "Giant bronze dagger",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 30380,
+      "name": "Gloves of the Damned",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26168,
+      "name": "Group ironman bracers",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 27046,
+      "name": "Group ironman bracers (unranked)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26156,
+      "name": "Group ironman helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 27042,
+      "name": "Group ironman helm (unranked)",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26158,
+      "name": "Group ironman platebody",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 26160,
+      "name": "Group ironman platebody",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 26162,
+      "name": "Group ironman platebody",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 26164,
+      "name": "Group ironman platebody",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 27048,
+      "name": "Group ironman platebody (unranked)",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 27050,
+      "name": "Group ironman platebody (unranked)",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 27052,
+      "name": "Group ironman platebody (unranked)",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 27054,
+      "name": "Group ironman platebody (unranked)",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 26166,
+      "name": "Group ironman platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 27044,
+      "name": "Group ironman platelegs (unranked)",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 33718,
+      "name": "Hallowed flail",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34027,
+      "name": "Hallowfell",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26182,
+      "name": "Hardcore group ironman bracers",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26170,
+      "name": "Hardcore group ironman helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 26172,
+      "name": "Hardcore group ironman platebody",
+      "version": "II",
+      "slot": "body"
+    },
+    {
+      "id": 26174,
+      "name": "Hardcore group ironman platebody",
+      "version": "III",
+      "slot": "body"
+    },
+    {
+      "id": 26176,
+      "name": "Hardcore group ironman platebody",
+      "version": "IV",
+      "slot": "body"
+    },
+    {
+      "id": 26178,
+      "name": "Hardcore group ironman platebody",
+      "version": "V",
+      "slot": "body"
+    },
+    {
+      "id": 26180,
+      "name": "Hardcore group ironman platelegs",
+      "version": "",
+      "slot": "legs"
+    },
+    {
+      "id": 30111,
+      "name": "Helmet of the moon",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 33002,
+      "name": "Holy moleys",
+      "version": "",
+      "slot": "feet"
+    },
+    {
+      "id": 29305,
+      "name": "Hunter's spear",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34633,
+      "name": "Imbued ancient cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 34637,
+      "name": "Imbued ancient cape",
+      "version": "Locked",
+      "slot": "cape"
+    },
+    {
+      "id": 34607,
+      "name": "Imbued ancient cape (Deadman)",
+      "version": "",
+      "slot": "cape"
+    },
+    {
+      "id": 34625,
+      "name": "Imbued ancient max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 30347,
+      "name": "Infernal axe (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 30342,
+      "name": "Infernal harpoon (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 30345,
+      "name": "Infernal pickaxe (or) (Trailblazer Reloaded)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 33243,
+      "name": "Infernal tecpatl",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28837,
+      "name": "Irit tar",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 28199,
+      "name": "Iron felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33251,
+      "name": "King's barrage",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26741,
+      "name": "Koriff's coif",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26742,
+      "name": "Koriff's coif",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26739,
+      "name": "Koriff's cowl",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26740,
+      "name": "Koriff's cowl",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26737,
+      "name": "Koriff's headband",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26738,
+      "name": "Koriff's headband",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 33255,
+      "name": "Lithic sceptre",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28313,
+      "name": "Magus ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 26745,
+      "name": "Maoma's full helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26746,
+      "name": "Maoma's full helm",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26747,
+      "name": "Maoma's great helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26748,
+      "name": "Maoma's great helm",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26743,
+      "name": "Maoma's med helm",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26744,
+      "name": "Maoma's med helm",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 27363,
+      "name": "Masori assembler max cape",
+      "version": "Normal",
+      "slot": "cape"
+    },
+    {
+      "id": 27365,
+      "name": "Masori assembler max cape",
+      "version": "Locked",
+      "slot": "cape"
+    },
+    {
+      "id": 28208,
+      "name": "Mithril felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27110,
+      "name": "Mithril gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 33101,
+      "name": "Mooleta",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 27836,
+      "name": "Morrigan's coif (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27916,
+      "name": "Morrigan's javelin (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    },
+    {
+      "id": 27837,
+      "name": "Morrigan's leather body (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27838,
+      "name": "Morrigan's leather chaps (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27912,
+      "name": "Morrigan's throwing axe (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    },
+    {
+      "id": 33245,
+      "name": "Nature's recurve",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34401,
+      "name": "Necklace of Fangs",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 33639,
+      "name": "Necklace of rupture",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 34715,
+      "name": "Obligator",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 34702,
+      "name": "Onyx ascension bolts",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34708,
+      "name": "Onyx ascension bolts (e)",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 34769,
+      "name": "Painted kiteshield",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 34772,
+      "name": "Painted shortbow",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 34766,
+      "name": "Painted shortsword",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 29892,
+      "name": "Pendant of Ates",
+      "version": "Inert",
+      "slot": "neck"
+    },
+    {
+      "id": 29893,
+      "name": "Pendant of Ates",
+      "version": "Charged",
+      "slot": "neck"
+    },
+    {
+      "id": 26948,
+      "name": "Pharaoh's sceptre",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 31049,
+      "name": "Redwood hiking staff",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 28327,
+      "name": "Ring of shadows",
+      "version": "Charged",
+      "slot": "ring"
+    },
+    {
+      "id": 34719,
+      "name": "Rondache",
+      "version": "",
+      "slot": "shield"
+    },
+    {
+      "id": 28214,
+      "name": "Rune felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 27111,
+      "name": "Rune gloves (wrapped)",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 26731,
+      "name": "Saika's hood",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26732,
+      "name": "Saika's hood",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26735,
+      "name": "Saika's shroud",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26736,
+      "name": "Saika's shroud",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 26733,
+      "name": "Saika's veil",
+      "version": "Normal",
+      "slot": "head"
+    },
+    {
+      "id": 26734,
+      "name": "Saika's veil",
+      "version": "Locked",
+      "slot": "head"
+    },
+    {
+      "id": 31288,
+      "name": "Sailing cape",
+      "version": "Untrimmed",
+      "slot": "cape"
+    },
+    {
+      "id": 31290,
+      "name": "Sailing cape",
+      "version": "Trimmed",
+      "slot": "cape"
+    },
+    {
+      "id": 33577,
+      "name": "Seeking adamant arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33589,
+      "name": "Seeking amethyst arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33601,
+      "name": "Seeking broad arrows",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33553,
+      "name": "Seeking bronze arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33595,
+      "name": "Seeking dragon arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33559,
+      "name": "Seeking iron arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33571,
+      "name": "Seeking mithril arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33583,
+      "name": "Seeking rune arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33565,
+      "name": "Seeking steel arrow",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 33253,
+      "name": "Shadowflame quadrant",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33800,
+      "name": "Silvthrill ballista",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33801,
+      "name": "Silvthrill javelin",
+      "version": "",
+      "slot": "ammo"
+    },
+    {
+      "id": 30759,
+      "name": "Soulflame horn",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33790,
+      "name": "Spine",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 33063,
+      "name": "Starter cape",
+      "version": "",
+      "slot": "cape"
+    },
+    {
+      "id": 27833,
+      "name": "Statius's full helm (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27834,
+      "name": "Statius's platebody (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27835,
+      "name": "Statius's platelegs (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27908,
+      "name": "Statius's warhammer (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    },
+    {
+      "id": 28202,
+      "name": "Steel felling axe",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 30895,
+      "name": "Steel ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 33722,
+      "name": "Sunspear",
+      "version": "",
+      "slot": "weapon"
+    },
+    {
+      "id": 26757,
+      "name": "Superior calamity breeches",
+      "version": "Normal",
+      "slot": "legs"
+    },
+    {
+      "id": 26758,
+      "name": "Superior calamity breeches",
+      "version": "Locked",
+      "slot": "legs"
+    },
+    {
+      "id": 26751,
+      "name": "Superior calamity chest",
+      "version": "Normal",
+      "slot": "body"
+    },
+    {
+      "id": 26752,
+      "name": "Superior calamity chest",
+      "version": "Locked",
+      "slot": "body"
+    },
+    {
+      "id": 27788,
+      "name": "Thammaron's sceptre (a)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 31398,
+      "name": "Tortugan shield",
+      "version": "",
+      "slot": "cape"
+    },
+    {
+      "id": 33036,
+      "name": "Toxic staff (Deadman)",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 33323,
+      "name": "Trident of the Seas (o)",
+      "version": "Fully charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 28630,
+      "name": "Twitcher's gloves",
+      "version": "",
+      "slot": "hands"
+    },
+    {
+      "id": 28307,
+      "name": "Ultor ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 33247,
+      "name": "V's helm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 24265,
+      "name": "V's shield",
+      "version": "The Fremennik Exiles",
+      "slot": "shield"
+    },
+    {
+      "id": 34063,
+      "name": "Vampyre snelm",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 28310,
+      "name": "Venator ring",
+      "version": "",
+      "slot": "ring"
+    },
+    {
+      "id": 27831,
+      "name": "Vesta's chainbody (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27904,
+      "name": "Vesta's longsword (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    },
+    {
+      "id": 27832,
+      "name": "Vesta's plateskirt (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27900,
+      "name": "Vesta's spear (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    },
+    {
+      "id": 21434,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Torvesta",
+      "slot": "cape"
+    },
+    {
+      "id": 21435,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "B0aty",
+      "slot": "cape"
+    },
+    {
+      "id": 21436,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Sick Nerd",
+      "slot": "cape"
+    },
+    {
+      "id": 21437,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Knightenator",
+      "slot": "cape"
+    },
+    {
+      "id": 21438,
+      "name": "Wilderness cape (Wilderness Wars, Champion)",
+      "version": "Mmorpgrs",
+      "slot": "cape"
+    },
+    {
+      "id": 21428,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Torvesta",
+      "slot": "cape"
+    },
+    {
+      "id": 21429,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "B0aty",
+      "slot": "cape"
+    },
+    {
+      "id": 21430,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Sick Nerd",
+      "slot": "cape"
+    },
+    {
+      "id": 21431,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Knightenator",
+      "slot": "cape"
+    },
+    {
+      "id": 21432,
+      "name": "Wilderness cape (Wilderness Wars)",
+      "version": "Mmorpgrs",
+      "slot": "cape"
+    },
+    {
+      "id": 21433,
+      "name": "Wilderness champion amulet",
+      "version": "",
+      "slot": "neck"
+    },
+    {
+      "id": 26723,
+      "name": "Wristbands of the Arena",
+      "version": "Normal",
+      "slot": "hands"
+    },
+    {
+      "id": 26724,
+      "name": "Wristbands of the Arena",
+      "version": "Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 26725,
+      "name": "Wristbands of the Arena",
+      "version": "Charged",
+      "slot": "hands"
+    },
+    {
+      "id": 26726,
+      "name": "Wristbands of the Arena",
+      "version": "Charged and Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 26727,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Normal",
+      "slot": "hands"
+    },
+    {
+      "id": 26728,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 26729,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Charged",
+      "slot": "hands"
+    },
+    {
+      "id": 26730,
+      "name": "Wristbands of the Arena (i)",
+      "version": "Charged and Locked",
+      "slot": "hands"
+    },
+    {
+      "id": 30321,
+      "name": "Zombie helmet",
+      "version": "",
+      "slot": "head"
+    },
+    {
+      "id": 34725,
+      "name": "Zorya's tome",
+      "version": "Charged",
+      "slot": "weapon"
+    },
+    {
+      "id": 27839,
+      "name": "Zuriel's hood (bh)",
+      "version": "Activated",
+      "slot": "head"
+    },
+    {
+      "id": 27841,
+      "name": "Zuriel's robe bottom (bh)",
+      "version": "Activated",
+      "slot": "legs"
+    },
+    {
+      "id": 27840,
+      "name": "Zuriel's robe top (bh)",
+      "version": "Activated",
+      "slot": "body"
+    },
+    {
+      "id": 27920,
+      "name": "Zuriel's staff (bh)",
+      "version": "Activated",
+      "slot": "weapon"
+    }
+  ]
+}

@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.26
+# Slayer Target Planner 3.0.27
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.26 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.27 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Reviewed Moon gear and equipment requirements in 3.0.27
+
+All Moon armour, usable degraded versions and weapons now have verified skill requirements, so Eclipse Moon tassets and the other sets no longer require accepting unknown requirements. The audit also reviews newer combat gear and restores requirements for equivalent ornament/charge variants. Missing ordinary combat entries fell from 318 to 159; remaining gaps stay flagged. [Source details, remaining gaps and verification](docs/equipment-requirement-audit.md).
 
 ## Descriptive Slayer unlocks in 3.0.26
 

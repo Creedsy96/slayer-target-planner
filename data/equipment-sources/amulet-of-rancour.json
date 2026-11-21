@@ -1,0 +1,19 @@
+{
+  "pageid": 509032,
+  "ns": 0,
+  "title": "Amulet of rancour",
+  "revisions": [
+    {
+      "revid": 15343231,
+      "parentid": 15282603,
+      "timestamp": "2026-09-14T08:38:15Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Amulet of rancour\n|image = [[File:Amulet of rancour.png]]\n|release = [[28 August]] [[2024]]\n|update = Araxxor\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = A very powerful zenyte amulet, infused with araxyte venom.\n|value = 400000\n|weight = 0.012\n|exchange = Yes\n|id = 29801\n|leagueRegion = Morytania\n}}\n[[File:Amulet of rancour detail.png|left|130px]]\nThe '''amulet of rancour''' is the upgraded variant of the [[amulet of torture]] requiring level 90 [[Hitpoints]] to wear, providing best in slot [[melee strength]] and melee attack bonuses in all three types. It is made with level 86 [[Crafting]] by attaching the [[araxyte fang]] to an [[amulet of torture]], requiring a rare untradeable drop from [[Araxxor]].\n\nCompared to the [[amulet of torture]], the amulet of rancour gains +10 melee attack bonuses and +2 strength bonus, but with negative bonuses for magic and ranged attacks.\n\nThe amulet of rancour can be recoloured to an [[amulet of rancour (s)]] by speaking to a [[Man (Morytania Spider Cave)|man]] at the end of a series of tunnels within the [[Morytania Spider Cave]], each of which have various requirements to pass through as alluded to in the [[venom-riddled note]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = +25\n|aslash = +25\n|acrush = +25\n|amagic = -6\n|arange = -8\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = +12\n|rstr = 0\n|mdmg = 0\n|prayer = +2\n|slot = neck\n|image = [[File:Amulet of rancour equipped male.png|130px]]\n|altimage = [[File:Amulet of rancour equipped female.png|120px]]\n}}\n\n==Creation==\n[[File:Crafting amulet of rancour.webm|thumb|A player creating the amulet of rancour.]]\n{{Recipe\n|skill1 = Crafting\n|skill1lvl = 86\n|skill1boostable = Yes\n|skill1exp = 500\n|members = Yes\n|ticks = 0\n|mat1 = Amulet of torture\n|mat2 = Etched araxyte fang\n|output1 = Amulet of rancour\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"180\" style=\"text-align:left\">\nAmulet of rancour design exploration.png|Early design explorations of the amulet of rancour, by [[Mod Skylark]].\n</gallery>\n\n==Trivia==\n*The word ''rancour'', first appearing in Middle English, is defined as ''ire'', ''wrath'', and/or ''bitterness''. It can be traced back to Latin ''rancere'', meaning [https://www.etymonline.com/word/rancour \"to stink\"]. The word ''rancid'' shares this root.\n\n{{Araxxor}}\n{{Amulets}}\n{{Strength armour}}\n{{Zenyte}}\n[[Category:Upgraded equipment]]"
+        }
+      }
+    }
+  ]
+}

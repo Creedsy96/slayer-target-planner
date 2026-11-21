@@ -1,0 +1,19 @@
+{
+  "pageid": 458421,
+  "ns": 0,
+  "title": "Atlatl dart",
+  "revisions": [
+    {
+      "revid": 15343589,
+      "parentid": 15271719,
+      "timestamp": "2026-09-14T18:42:42Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Atlatl dart\n|image = [[File:Atlatl dart 1.png]] [[File:Atlatl dart 2.png]] [[File:Atlatl dart 3.png]] [[File:Atlatl dart 4.png]] [[File:Atlatl dart 5.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|quest = No\n|tradeable = Yes\n|bankable = Yes\n|equipable = Yes\n|stackable = Yes\n|noteable = No\n|options = Wield, Drop\n|examine = Quite big for a dart.\n|value = 490\n|weight = 0.000\n|exchange = Yes\n|id = 28991\n|leagueRegion = Varlamore\n}}\n[[File:Atlatl dart 5 detail.png|130px|left]]\n'''Atlatl darts''' are [[ammunition]] used exclusively by the [[eclipse atlatl]], which is obtained as a possible reward from the [[Lunar Chest]] in [[Neypotzli]]. Alternatively the darts can be crafted, requiring level 74 [[Fletching]], [[Headless atlatl dart]] and [[Atlatl dart tips]]. Ironmen additionally require 54 [[Slayer]] in order to obtain [[broken antler]]s, which are required to make the dart tips.\n\nThe atlatl dart has no bonuses as the eclipse atlatl uses the player's melee strength bonus to deal damage.\n\nDespite being called [[dart]]s, atlatl darts cannot be loaded into the [[toxic blowpipe]], and they deal [[Ranged#Weapons|standard]] ranged damage.{{CiteTwitter|author=Mod Halo|url=https://twitter.com/JagexHalo/status/1797726734244294720|date=3 June 2024|quote=Ah, well from what I can see, the Eclipse atlatl is using the standard ranged style, much like a regular bow. Karil's is heavy as thats using bolts.|archiveurl=https://reldo.runescape.wiki/i/27963360|archivedate=7 April 2026}}\n\nDespite being equipped in the ammo slot, they cannot be stored in [[Dizana's quiver]]. Attempting to do so displays the following message: \"You have nothing in your worn quiver to fill your Dizana's Quiver with.\"\n\nAtlatl darts are compatible with [[Ava's device]]s, however the Ranged strength bonus on them will not affect their damage, making other capes like a [[Fire cape]] more preferable if not concerned with saving the darts.\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = 0\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = 0\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = ammo\n}}\n\n== Creation ==\n{{Recipe\n|skill1 = Fletching\n|skill1lvl = 74\n|skill1boostable = Yes\n|skill1exp = 30\n|ticks = 2\n|members = Yes\n|mat1pic = Headless_atlatl_dart_5\n|mat1 = Headless atlatl dart\n|mat1quantity = 20\n|mat2pic = Atlatl_dart_tips_5\n|mat2 = Atlatl dart tips\n|mat2quantity = 20\n|output1 = Atlatl dart\n|output1quantity = 20\n}}\n\n==Item sources==\n{{Drop sources|Atlatl dart}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Atlatl dart}}\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"120\">\nAtlatl dart 1 detail.png|One atlatl dart\nAtlatl dart 2 detail.png|Two atlatl darts\nAtlatl dart 3 detail.png|Three atlatl darts\nAtlatl dart 4 detail.png|Four atlatl darts\nAtlatl dart 5 detail.png|Five atlatl darts\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 March 2024\n|update = Easter & Varlamore Updates\n|poll = \n|change = [[Grand Exchange]] buy limit changed from 100 to 11000.\n}}\n{{Subject changes footer}}\n\n==References==\n{{Reflist}}\n\n{{Neypotzli}}\n{{Arrow}}\n[[Category:Collection log items]]"
+        }
+      }
+    }
+  ]
+}

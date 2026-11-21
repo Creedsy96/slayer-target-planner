@@ -1,0 +1,19 @@
+{
+  "pageid": 490743,
+  "ns": 0,
+  "title": "Dragon hunter wand",
+  "revisions": [
+    {
+      "revid": 15288834,
+      "parentid": 15208663,
+      "timestamp": "2026-08-06T08:43:40Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Dragon hunter wand\n|image = [[File:Dragon hunter wand.png]]\n|release = [[25 September]] [[2024]]\n|update = Varlamore: The Rising Darkness is OUT NOW\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wield, Drop\n|examine = A wand that is uniquely attuned to draconic creatures.\n|value = 300000\n|weight = 2.000\n|exchange = Yes\n|id = 30070\n|leagueRegion = Varlamore\n}}\n[[File:Dragon hunter wand detail.png|130px|left]]\nThe '''dragon hunter wand''' is a one-handed [[Weapons/Categories#Staff|staff]] and [[wand]], and [[dragonbane weapon]] requiring level 65 [[Magic]] to wield. It is obtained as a rare drop from [[the Hueycoatl]].\n\nThe wand's dragonbane [[passive effect]] is that its accuracy is increased by 75% and damage increased by 40% when fighting [[draconic]] creatures, such as [[wyrm]]s, [[wyvern]]s, and [[hydra]]s (but not [[Elvarg]] or [[revenant dragons]]). This stacks multiplicatively with the [[Slayer helm (i)]] or [[Elite Void Knight equipment]], but not the [[salve amulet (i)]]. \n\nThe wand can also autocast spells from the [[Standard spellbook]] and the [[Ancient spellbook]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = +16\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = +16\n|drange = 0\n|str = 0\n|rstr = 0\n|mdmg = +10\n|prayer = 0\n|slot = weapon\n|speed = 4\n|attackrange = 10\n|combatstyle = Staff\n|image = [[File:Dragon hunter wand equipped male.png|200px]]\n|altimage = [[File:Dragon hunter wand equipped female.png|200px]]\n}}\n{{CombatStyles|Staff|speed=4|attackrange=staff}}\n{{Autocasting|standard=yes|arceuus=no|ancient=yes}}\n\n==Item sources==\n{{Drop sources|Dragon hunter wand}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Dragon hunter wand}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"200\" style=\"text-align:left\">\nThe Hueycoatl rewards concept art.png|Concept art of [[the Hueycoatl]]'s rewards, by [[Mod Jerv]]. \n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 25 June 2025\n|update = Summer Sweep Up: Combat\n|change =\n* The accuracy and damage bonuses towards [[Draconic (attribute)|draconic creatures]] have been increased from 50% and 20% to 75% and 40% respectively.\n* The wand can now autocast [[Ancient Magicks]].\n}}\n{{Subject changes\n|date = 27 November 2024\n|update = Leagues V: Raging Echoes OUT NOW!\n|change = The wand was given a +16 [[Magic defence]] bonus as polled.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* The wand was originally proposed as the '''Dueling wand''', which, besides being able to cast normal [[combat spells]], would have also had a unique spell called ''Duelling Shot'', which would have been a 3-tick [[earth spell]] with a max hit of 15.\n\n{{Hueycoatl}}\n{{Magic weapons}}\n{{Attribute_affinities}}\n[[Category:Collection log items]]"
+        }
+      }
+    }
+  ]
+}

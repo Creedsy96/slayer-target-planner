@@ -1,0 +1,19 @@
+{
+  "pageid": 417148,
+  "ns": 0,
+  "title": "Mixed hide legs",
+  "revisions": [
+    {
+      "revid": 15410905,
+      "parentid": 15271150,
+      "timestamp": "2026-11-21T09:29:50Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Mixed hide legs\n|image = [[File:Mixed hide legs.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = Made from the hide of a few different creatures.\n|value = 4000\n|alchable = No\n|weight = 2.000\n|exchange = Yes\n|id = 29283\n}}\n[[File:Mixed hide legs detail.png|100px|left]]\n'''Mixed hide legs''' are part of the [[mixed hide armour]] set, requiring level 60 [[Ranged]] to wear. It provides bonuses that are meant to complement the [[hunter's spear]]. However, because of the added stab bonus, this item may be preferable to the [[Bandos tassets]] in situations where the additional 2 Strength bonus does not grant a max hit.\n\nPlayers with level 71 [[Crafting]] can create the legs with a [[mixed hide base]] and three [[fox fur]]s, alongside a [[needle]] and [[thread]] (or a [[costume needle]]). Players without the required level may instead pay 20,000 [[coins]] to [[Pellem]] at the [[Hunter Guild]] to make one on their behalf, whilst providing the aforementioned fur (you do not need to provide the mixed hide base).\n\n{{Costume storage|armour case|[[mixed hide armour]] set|set=true}}\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 3\n|aslash = -1\n|acrush = -2\n|amagic = -10\n|arange = +14\n|dstab = +20\n|dslash = +23\n|dcrush = +22\n|dmagic = +16\n|drange = +20\n|str = 0\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = legs\n|image = [[File:Mixed hide legs equipped male.png|130px]]\n|altimage = [[File:Mixed hide legs equipped female.png|130px]]\n}}\n\n==Creation==\n{{Tabber\n|tab1 = Needle\n|tab2 = Costume needle\n|tab3 = Pellem\n|tab1content = {{Recipe\n|skill1 = Crafting\n|skill1lvl = 71\n|skill1boostable = Yes\n|skill1exp = 210\n|tools = Needle\n|members = Yes\n|ticks = 3\n|mat1 = Mixed hide base\n|mat1quantity = 1\n|mat2 = Fox fur\n|mat2quantity = 3\n|mat3 = Thread\n|mat3quantity = 0.2\n|output1 = Mixed hide legs\n|output1subtxt = Needle\n}}\n|tab2content = {{Recipe\n|skill1 = Crafting\n|skill1lvl = 71\n|skill1boostable = Yes\n|skill1exp = 210\n|tools = Costume needle\n|members = Yes\n|ticks = 3\n|mat1 = Mixed hide base\n|mat1quantity = 1\n|mat2 = Fox fur\n|mat2quantity = 3\n|output1 = Mixed hide legs\n|output1subtxt = Costume needle\n}}\n|tab3content = {{Recipe\n|notes = {{SCP|Quest}} Completion of [[Children of the Sun]]\n|skill1 = Hunter\n|skill1lvl = 46\n|skill1boostable = No\n|skill1exp = 0\n|members = Yes\n|ticks = 0\n|facilities = Pellem\n|mat1 = Fox fur\n|mat1quantity = 3\n|mat2 = Coins\n|mat2quantity = 20000\n|mat2cost = 1\n|output1 = Mixed hide legs\n|output1subtxt = Pellem\n}}\n}}\n\n==Money making==\n{{Mmgsection|Crafting mixed hide legs from scratch (self hunted fur)}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nMixed hide armour equipped male.png|Mixed hide armour on body type A.\nMixed hide armour equipped female.png|Mixed hide armour on body type B.\n</gallery>\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Mixed hide legs}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 3 April 2024\n|update = Varlamore Tweaks & Drop Rates\n|change = Mixed hide armour can now be stored in the [[armour case]] of a [[costume room]].\n}}\n{{Subject changes footer}}\n\n{{Hunter Guild}}\n{{Ranged armour}}"
+        }
+      }
+    }
+  ]
+}

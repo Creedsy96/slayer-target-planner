@@ -1,0 +1,19 @@
+{
+  "pageid": 417152,
+  "ns": 0,
+  "title": "Mixed hide armour",
+  "revisions": [
+    {
+      "revid": 15215736,
+      "parentid": 15209702,
+      "timestamp": "2026-05-23T19:27:56Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "[[File:Mixed hide armour equipped male.png|thumb|width=465x465|Mixed hide armour on body type A.]]\n'''Mixed hide armour''' is a set of [[ranged armour]] obtained either through Crafting with [[Mixed hide base]]s or by having [[Pellem]] in the [[Hunter Guild]] make them. Pellem will create your desired piece of armour when provided the required furs and 20,000gp per piece. The only exception on price is for the boots at 17,500gp. Players need 46 [[Hunter]] to access Pellem's hide-making services. An [[Ironman Mode|Ironman]] looking to create the full set will need level 72 Hunter to acquire the materials.\n\nRequiring level 60 [[Ranged]] and 50 [[Defence]], the armour set boasts some melee strength bonuses that complement the [[hunter's spear]]. The [[Mixed hide legs|legs]] have no Defence level requirement, similar to [[dragonhide armour]]. The set's low cost and relatively high stats make it a popular low-risk choice for activities in the [[Wilderness]].\n\nThe complete set can be stored in the [[armour case space]] of a [[costume room]] in a [[player-owned house]].\n\n==Components==\n{{CostTableHead}}\n{{CostLine|Mixed hide top}}\n{{CostLine|Mixed hide legs}}\n{{CostLine|Mixed hide boots}}\n{{CostLine|Mixed hide cape}}\n{{CostTableBottom|total=y|compare=Mixed hide armour set}}\n\n==Bonuses==\n{{Infotable Bonuses|Mixed hide top|Mixed hide legs|Mixed hide boots|Mixed hide cape}}\n\n== Creation ==\nA [[costume needle]] or [[needle]] & [[thread]] is required.  [[Pellem]] at the [[Hunter Guild]] can create each piece for displayed costs which bypasses the crafting level requirements.\n{| class=\"wikitable\"\n!\n!Items\n![[Mixed hide base]]\n!Materials\n!Crafting level required\n!Pellem's cost\n|-\n|[[File:Mixed hide top.png|frameless]]\n|[[Mixed hide top]]\n|1\n|2 [[Sunlight antelope fur|sunlight antelope furs]]\n|72\n|20,000\n|-\n|[[File:Mixed hide legs.png|frameless]]\n|[[Mixed hide legs]]\n|1\n|3 [[Fox fur|fox furs]]\n|71\n|20,000\n|-\n|[[File:Mixed hide boots.png|frameless]]\n|[[Mixed hide boots]]\n|1\n|1 [[sunlight antelope fur]]\n|69\n|17,500\n|-\n|[[File:Mixed hide cape.png|frameless]]\n|[[Mixed hide cape]]\n|1\n|1 [[jaguar fur]]\n|68\n|20,000\n|}\n\n== Changes ==\n{{Subject changes header}}\n{{Subject changes\n|date = 3 April 2024\n|update = Varlamore Tweaks & Drop Rates\n|change = The item can now be stored in the [[costume room]] of a [[player-owned house]].\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nMixed hide armour equipped male.png|Mixed hide armour on body type A.\nMixed hide armour equipped female.png|Mixed hide armour on body type B.\n</gallery>\n\n===Concept art===\n<gallery mode=\"packed\" heights=\"200\" style=\"text-align:left\">\nMixed hide armour concept art.png|Concept art of the mixed hide armour, by [[Mod Jerv]].\n</gallery>\n\n==Trivia==\n* Despite all pieces of mixed hide armour not being alchable, it is possible to alchemise the [[Mixed hide armour set|item set]].\n\n{{Hunter Guild}}\n{{Ranged armour}}"
+        }
+      }
+    }
+  ]
+}

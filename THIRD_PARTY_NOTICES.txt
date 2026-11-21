@@ -18,6 +18,10 @@ osrsbox/osrsbox-db (GPL-3.0), commit dae12e3400add0c71465f07a334f9d8f86bebce8:
 https://github.com/osrsbox/osrsbox-db
 The extraction tool and dataset retain the original input checksum.
 Unknown/new equipment requirements are explicitly unreviewed.
+Additional reviewed skill requirements are adapted from the Old School RuneScape
+Wiki under its CC BY-NC-SA 3.0 terms. Per-review page URLs and revisions are in
+data/equipment-requirement-reviews.json; retained pages are in
+data/equipment-sources/. Equivalent item IDs use the pinned DPS engine aliases.
 
 Bundled calculation dependencies include axios and lodash.mergewith (MIT),
 d3-array and internmap (ISC). Their full licence texts and those of bundled

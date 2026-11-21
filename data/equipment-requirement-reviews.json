@@ -1,0 +1,1129 @@
+{
+  "version": "2026-11-21.1",
+  "engineCommit": "3da927f4280c73154fa59e4e90eb374af5123d32",
+  "reviews": [
+    {
+      "names": [
+        "Blood Moon helm",
+        "Blood Moon chestplate",
+        "Blood Moon tassets"
+      ],
+      "ids": [
+        29022,
+        29025,
+        29028,
+        29043,
+        29045,
+        29047
+      ],
+      "requirements": {
+        "strength": 75,
+        "defence": 50
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Blue Moon helm",
+        "Blue Moon chestplate",
+        "Blue Moon tassets"
+      ],
+      "ids": [
+        29013,
+        29016,
+        29019,
+        29037,
+        29039,
+        29041
+      ],
+      "requirements": {
+        "magic": 75,
+        "defence": 50
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Eclipse Moon helm",
+        "Eclipse Moon chestplate",
+        "Eclipse Moon tassets"
+      ],
+      "ids": [
+        29004,
+        29007,
+        29010,
+        29031,
+        29033,
+        29035
+      ],
+      "requirements": {
+        "ranged": 75,
+        "defence": 50
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Dual macuahuitl"
+      ],
+      "ids": [
+        28997
+      ],
+      "requirements": {
+        "attack": 70,
+        "strength": 75
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Blue Moon spear"
+      ],
+      "ids": [
+        28988
+      ],
+      "requirements": {
+        "attack": 70,
+        "magic": 75
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Eclipse atlatl"
+      ],
+      "ids": [
+        29000
+      ],
+      "requirements": {
+        "ranged": 75,
+        "attack": 50,
+        "strength": 50
+      },
+      "source": {
+        "title": "Moon equipment",
+        "revision": 15363383,
+        "url": "https://oldschool.runescape.wiki/w/Moon_equipment"
+      }
+    },
+    {
+      "names": [
+        "Masori mask",
+        "Masori body",
+        "Masori chaps"
+      ],
+      "ids": [
+        27226,
+        27229,
+        27232
+      ],
+      "requirements": {
+        "ranged": 80,
+        "defence": 30
+      },
+      "source": {
+        "title": "Masori armour",
+        "revision": 15236176,
+        "url": "https://oldschool.runescape.wiki/w/Masori_armour"
+      }
+    },
+    {
+      "names": [
+        "Masori mask (f)",
+        "Masori body (f)",
+        "Masori chaps (f)"
+      ],
+      "ids": [
+        27235,
+        27238,
+        27241
+      ],
+      "requirements": {
+        "ranged": 80,
+        "defence": 80
+      },
+      "source": {
+        "title": "Masori armour",
+        "revision": 15236176,
+        "url": "https://oldschool.runescape.wiki/w/Masori_armour"
+      }
+    },
+    {
+      "names": [
+        "Virtus mask",
+        "Virtus robe top",
+        "Virtus robe bottom"
+      ],
+      "ids": [
+        26241,
+        26243,
+        26245
+      ],
+      "requirements": {
+        "magic": 78,
+        "defence": 75
+      },
+      "source": {
+        "title": "Virtus robes",
+        "revision": 15315044,
+        "url": "https://oldschool.runescape.wiki/w/Virtus_robes"
+      }
+    },
+    {
+      "names": [
+        "Torva full helm",
+        "Torva platebody",
+        "Torva platelegs",
+        "Sanguine torva full helm",
+        "Sanguine torva platebody",
+        "Sanguine torva platelegs"
+      ],
+      "ids": [
+        26382,
+        26384,
+        26386,
+        28254,
+        28256,
+        28258
+      ],
+      "requirements": {
+        "defence": 80
+      },
+      "source": {
+        "title": "Torva armour",
+        "revision": 15208294,
+        "url": "https://oldschool.runescape.wiki/w/Torva_armour"
+      },
+      "note": "Sanguine conversion and acquisition requirements remain separate from equipment skill requirements."
+    },
+    {
+      "names": [
+        "Tumeken's shadow"
+      ],
+      "ids": [
+        27275
+      ],
+      "requirements": {
+        "magic": 85
+      },
+      "source": {
+        "title": "Tumeken's shadow",
+        "revision": 15373159,
+        "url": "https://oldschool.runescape.wiki/w/Tumeken%27s_shadow"
+      }
+    },
+    {
+      "names": [
+        "Osmumten's fang",
+        "Osmumten's fang (or)"
+      ],
+      "ids": [
+        26219,
+        27246
+      ],
+      "requirements": {
+        "attack": 82
+      },
+      "source": {
+        "title": "Osmumten's fang",
+        "revision": 15236139,
+        "url": "https://oldschool.runescape.wiki/w/Osmumten%27s_fang"
+      }
+    },
+    {
+      "names": [
+        "Zombie axe"
+      ],
+      "ids": [
+        28810
+      ],
+      "requirements": {
+        "attack": 65
+      },
+      "source": {
+        "title": "Zombie axe",
+        "revision": 15360518,
+        "url": "https://oldschool.runescape.wiki/w/Zombie_axe"
+      },
+      "note": "70 Smithing repairs the axe; it is not required to wield an already repaired axe."
+    },
+    {
+      "names": [
+        "Ancient sceptre"
+      ],
+      "ids": [
+        27624,
+        27626
+      ],
+      "requirements": {
+        "magic": 70,
+        "strength": 60,
+        "attack": 50
+      },
+      "source": {
+        "title": "Ancient sceptre",
+        "revision": 15338578,
+        "url": "https://oldschool.runescape.wiki/w/Ancient_sceptre"
+      },
+      "note": "Secrets of the North is a separate quest requirement."
+    },
+    {
+      "names": [
+        "Blood ancient sceptre",
+        "Ice ancient sceptre",
+        "Shadow ancient sceptre",
+        "Smoke ancient sceptre"
+      ],
+      "ids": [
+        28260,
+        28262,
+        28264,
+        28266,
+        28473,
+        28474,
+        28475,
+        28476
+      ],
+      "requirements": {
+        "magic": 75,
+        "strength": 60,
+        "attack": 50
+      },
+      "source": {
+        "title": "Ancient sceptre",
+        "revision": 15338578,
+        "url": "https://oldschool.runescape.wiki/w/Ancient_sceptre"
+      },
+      "note": "Quest/acquisition and spellbook requirements remain separate."
+    },
+    {
+      "names": [
+        "Venator bow"
+      ],
+      "ids": [
+        27610
+      ],
+      "requirements": {
+        "ranged": 80
+      },
+      "source": {
+        "title": "Venator bow",
+        "revision": 15393748,
+        "url": "https://oldschool.runescape.wiki/w/Venator_bow"
+      }
+    },
+    {
+      "names": [
+        "Voidwaker"
+      ],
+      "ids": [
+        27690
+      ],
+      "requirements": {
+        "attack": 75
+      },
+      "source": {
+        "title": "Voidwaker",
+        "revision": 15327980,
+        "url": "https://oldschool.runescape.wiki/w/Voidwaker"
+      }
+    },
+    {
+      "names": [
+        "Soulreaper axe",
+        "Soulreaper axe (o)"
+      ],
+      "ids": [
+        28338,
+        33335
+      ],
+      "requirements": {
+        "attack": 80,
+        "strength": 80
+      },
+      "source": {
+        "title": "Soulreaper axe",
+        "revision": 15381771,
+        "url": "https://oldschool.runescape.wiki/w/Soulreaper_axe"
+      },
+      "note": "75 Magic is for assembly; it is not an additional wield requirement."
+    },
+    {
+      "names": [
+        "Ursine chainmace"
+      ],
+      "ids": [
+        27660
+      ],
+      "requirements": {
+        "attack": 70
+      },
+      "source": {
+        "title": "Ursine chainmace",
+        "revision": 15396828,
+        "url": "https://oldschool.runescape.wiki/w/Ursine_chainmace"
+      }
+    },
+    {
+      "names": [
+        "Accursed sceptre",
+        "Accursed sceptre (a)"
+      ],
+      "ids": [
+        27665,
+        27679
+      ],
+      "requirements": {
+        "magic": 70
+      },
+      "source": {
+        "title": "Accursed sceptre",
+        "revision": 15316849,
+        "url": "https://oldschool.runescape.wiki/w/Accursed_sceptre"
+      }
+    },
+    {
+      "names": [
+        "Webweaver bow"
+      ],
+      "ids": [
+        27655
+      ],
+      "requirements": {
+        "ranged": 70
+      },
+      "source": {
+        "title": "Webweaver bow",
+        "revision": 15309891,
+        "url": "https://oldschool.runescape.wiki/w/Webweaver_bow"
+      }
+    },
+    {
+      "names": [
+        "Warped sceptre"
+      ],
+      "ids": [
+        28585
+      ],
+      "requirements": {
+        "magic": 62
+      },
+      "source": {
+        "title": "Warped sceptre",
+        "revision": 15400310,
+        "url": "https://oldschool.runescape.wiki/w/Warped_sceptre"
+      },
+      "note": "56 Slayer is for the drop source, not an equipment requirement."
+    },
+    {
+      "names": [
+        "Noxious halberd"
+      ],
+      "ids": [
+        29796
+      ],
+      "requirements": {
+        "attack": 80
+      },
+      "source": {
+        "title": "Noxious halberd",
+        "revision": 15356594,
+        "url": "https://oldschool.runescape.wiki/w/Noxious_halberd"
+      }
+    },
+    {
+      "names": [
+        "Aranea boots"
+      ],
+      "ids": [
+        29806
+      ],
+      "requirements": {},
+      "source": {
+        "title": "Aranea boots",
+        "revision": 15192520,
+        "url": "https://oldschool.runescape.wiki/w/Aranea_boots"
+      }
+    },
+    {
+      "names": [
+        "Amulet of rancour",
+        "Amulet of rancour (s)"
+      ],
+      "ids": [
+        29801,
+        29804
+      ],
+      "requirements": {
+        "hitpoints": 90
+      },
+      "source": {
+        "title": "Amulet of rancour",
+        "revision": 15343231,
+        "url": "https://oldschool.runescape.wiki/w/Amulet_of_rancour"
+      }
+    },
+    {
+      "names": [
+        "Zaryte vambraces"
+      ],
+      "ids": [
+        26235
+      ],
+      "requirements": {
+        "ranged": 80,
+        "defence": 45
+      },
+      "source": {
+        "title": "Zaryte vambraces",
+        "revision": 15190607,
+        "url": "https://oldschool.runescape.wiki/w/Zaryte_vambraces"
+      }
+    },
+    {
+      "names": [
+        "Hueycoatl hide coif",
+        "Hueycoatl hide body"
+      ],
+      "ids": [
+        30073,
+        30076
+      ],
+      "requirements": {
+        "ranged": 70,
+        "defence": 40
+      },
+      "source": {
+        "title": "Hueycoatl hide armour",
+        "revision": 15233356,
+        "url": "https://oldschool.runescape.wiki/w/Hueycoatl_hide_armour"
+      }
+    },
+    {
+      "names": [
+        "Hueycoatl hide chaps",
+        "Hueycoatl hide vambraces"
+      ],
+      "ids": [
+        30079,
+        30082
+      ],
+      "requirements": {
+        "ranged": 70
+      },
+      "source": {
+        "title": "Hueycoatl hide armour",
+        "revision": 15233356,
+        "url": "https://oldschool.runescape.wiki/w/Hueycoatl_hide_armour"
+      }
+    },
+    {
+      "names": [
+        "Sunfire fanatic helm",
+        "Sunfire fanatic cuirass",
+        "Sunfire fanatic chausses"
+      ],
+      "ids": [
+        28933,
+        28936,
+        28939
+      ],
+      "requirements": {
+        "prayer": 60,
+        "defence": 40
+      },
+      "source": {
+        "title": "Sunfire fanatic armour",
+        "revision": 14911113,
+        "url": "https://oldschool.runescape.wiki/w/Sunfire_fanatic_armour"
+      }
+    },
+    {
+      "names": [
+        "Dizana's quiver",
+        "Blessed Dizana's quiver"
+      ],
+      "ids": [
+        28951,
+        28953,
+        28955,
+        28957
+      ],
+      "requirements": {
+        "ranged": 75
+      },
+      "source": {
+        "title": "Dizana's quiver",
+        "revision": 15376019,
+        "url": "https://oldschool.runescape.wiki/w/Dizana%27s_quiver"
+      },
+      "note": "Colosseum completion and charges are separate requirements. Max-cape variants are not included."
+    },
+    {
+      "names": [
+        "Elidinis' ward",
+        "Elidinis' ward (f)",
+        "Elidinis' ward (or)"
+      ],
+      "ids": [
+        25985,
+        27251,
+        27253
+      ],
+      "requirements": {
+        "magic": 80,
+        "defence": 80,
+        "prayer": 80
+      },
+      "source": {
+        "title": "Elidinis' ward (f)",
+        "revision": 15381240,
+        "url": "https://oldschool.runescape.wiki/w/Elidinis%27_ward_%28f%29"
+      },
+      "note": "90 Prayer and Smithing are creation requirements, not equipment requirements."
+    },
+    {
+      "names": [
+        "Burning claws"
+      ],
+      "ids": [
+        29577
+      ],
+      "requirements": {
+        "attack": 60
+      },
+      "source": {
+        "title": "Burning claws",
+        "revision": 15272854,
+        "url": "https://oldschool.runescape.wiki/w/Burning_claws"
+      }
+    },
+    {
+      "names": [
+        "Ancient godsword"
+      ],
+      "ids": [
+        26233
+      ],
+      "requirements": {
+        "attack": 75
+      },
+      "source": {
+        "title": "Ancient godsword",
+        "revision": 15318997,
+        "url": "https://oldschool.runescape.wiki/w/Ancient_godsword"
+      }
+    },
+    {
+      "names": [
+        "Keris partisan"
+      ],
+      "ids": [
+        25979
+      ],
+      "requirements": {
+        "attack": 65
+      },
+      "source": {
+        "title": "Keris partisan",
+        "revision": 15254688,
+        "url": "https://oldschool.runescape.wiki/w/Keris_partisan"
+      },
+      "note": "Beneath Cursed Sands is a separate quest requirement."
+    },
+    {
+      "names": [
+        "Keris partisan of breaching"
+      ],
+      "ids": [
+        25981
+      ],
+      "requirements": {
+        "attack": 80
+      },
+      "source": {
+        "title": "Keris partisan of breaching",
+        "revision": 15314684,
+        "url": "https://oldschool.runescape.wiki/w/Keris_partisan_of_breaching"
+      }
+    },
+    {
+      "names": [
+        "Keris partisan of corruption"
+      ],
+      "ids": [
+        27287
+      ],
+      "requirements": {
+        "attack": 80
+      },
+      "source": {
+        "title": "Keris partisan of corruption",
+        "revision": 15315989,
+        "url": "https://oldschool.runescape.wiki/w/Keris_partisan_of_corruption"
+      }
+    },
+    {
+      "names": [
+        "Keris partisan of the sun"
+      ],
+      "ids": [
+        27291
+      ],
+      "requirements": {
+        "attack": 80
+      },
+      "source": {
+        "title": "Keris partisan of the sun",
+        "revision": 15314679,
+        "url": "https://oldschool.runescape.wiki/w/Keris_partisan_of_the_sun"
+      }
+    },
+    {
+      "names": [
+        "Dragon hunter wand"
+      ],
+      "ids": [
+        30070
+      ],
+      "requirements": {
+        "magic": 65
+      },
+      "source": {
+        "title": "Dragon hunter wand",
+        "revision": 15288834,
+        "url": "https://oldschool.runescape.wiki/w/Dragon_hunter_wand"
+      }
+    },
+    {
+      "names": [
+        "Tecu salamander"
+      ],
+      "ids": [
+        28834
+      ],
+      "requirements": {
+        "attack": 80,
+        "magic": 80,
+        "ranged": 80
+      },
+      "source": {
+        "title": "Tecu salamander",
+        "revision": 15369272,
+        "url": "https://oldschool.runescape.wiki/w/Tecu_salamander"
+      }
+    },
+    {
+      "names": [
+        "Hunters' sunlight crossbow"
+      ],
+      "ids": [
+        28869
+      ],
+      "requirements": {
+        "ranged": 66,
+        "hunter": 50
+      },
+      "source": {
+        "title": "Hunters' sunlight crossbow",
+        "revision": 15212660,
+        "url": "https://oldschool.runescape.wiki/w/Hunters%27_sunlight_crossbow"
+      }
+    },
+    {
+      "names": [
+        "Colossal blade"
+      ],
+      "ids": [
+        27021
+      ],
+      "requirements": {
+        "attack": 60
+      },
+      "source": {
+        "title": "Colossal blade",
+        "revision": 15402075,
+        "url": "https://oldschool.runescape.wiki/w/Colossal_blade"
+      }
+    },
+    {
+      "names": [
+        "Avernic treads",
+        "Avernic treads (et)",
+        "Avernic treads (max)",
+        "Avernic treads (pe)",
+        "Avernic treads (pe)(et)",
+        "Avernic treads (pr)",
+        "Avernic treads (pr)(et)",
+        "Avernic treads (pr)(pe)"
+      ],
+      "ids": [
+        31088,
+        31091,
+        31092,
+        31093,
+        31094,
+        31095,
+        31096,
+        31097
+      ],
+      "requirements": {
+        "defence": 80,
+        "strength": 80,
+        "ranged": 80,
+        "magic": 80
+      },
+      "source": {
+        "title": "Avernic treads",
+        "revision": 15314043,
+        "url": "https://oldschool.runescape.wiki/w/Avernic_treads"
+      }
+    },
+    {
+      "names": [
+        "Confliction gauntlets"
+      ],
+      "ids": [
+        31106
+      ],
+      "requirements": {
+        "hitpoints": 90
+      },
+      "source": {
+        "title": "Confliction gauntlets",
+        "revision": 15383951,
+        "url": "https://oldschool.runescape.wiki/w/Confliction_gauntlets"
+      }
+    },
+    {
+      "names": [
+        "Oathplate chest",
+        "Oathplate helm",
+        "Oathplate legs"
+      ],
+      "ids": [
+        30750,
+        30753,
+        30756
+      ],
+      "requirements": {
+        "defence": 78
+      },
+      "source": {
+        "title": "Oathplate armour",
+        "revision": 15363591,
+        "url": "https://oldschool.runescape.wiki/w/Oathplate_armour"
+      }
+    },
+    {
+      "names": [
+        "Twinflame staff"
+      ],
+      "ids": [
+        30634
+      ],
+      "requirements": {
+        "magic": 60
+      },
+      "source": {
+        "title": "Twinflame staff",
+        "revision": 15389683,
+        "url": "https://oldschool.runescape.wiki/w/Twinflame_staff"
+      }
+    },
+    {
+      "names": [
+        "Glacial temotli"
+      ],
+      "ids": [
+        29889
+      ],
+      "requirements": {
+        "attack": 55
+      },
+      "source": {
+        "title": "Glacial temotli",
+        "revision": 15359046,
+        "url": "https://oldschool.runescape.wiki/w/Glacial_temotli"
+      }
+    },
+    {
+      "names": [
+        "Tome of Earth"
+      ],
+      "ids": [
+        30064
+      ],
+      "requirements": {
+        "magic": 50
+      },
+      "source": {
+        "title": "Tome of Earth",
+        "revision": 15310850,
+        "url": "https://oldschool.runescape.wiki/w/Tome_of_Earth"
+      }
+    },
+    {
+      "names": [
+        "Echo boots"
+      ],
+      "ids": [
+        28945
+      ],
+      "requirements": {
+        "defence": 75
+      },
+      "source": {
+        "title": "Echo boots",
+        "revision": 15320314,
+        "url": "https://oldschool.runescape.wiki/w/Echo_boots"
+      }
+    },
+    {
+      "names": [
+        "Tonalztics of Ralos"
+      ],
+      "ids": [
+        28922
+      ],
+      "requirements": {
+        "ranged": 75
+      },
+      "source": {
+        "title": "Tonalztics of Ralos",
+        "revision": 15368852,
+        "url": "https://oldschool.runescape.wiki/w/Tonalztics_of_Ralos"
+      }
+    },
+    {
+      "names": [
+        "Atlatl dart"
+      ],
+      "ids": [
+        28991
+      ],
+      "requirements": {},
+      "source": {
+        "title": "Atlatl dart",
+        "revision": 15343589,
+        "url": "https://oldschool.runescape.wiki/w/Atlatl_dart"
+      },
+      "note": "No separate equip skill requirement; the Eclipse atlatl enforces its own wield requirements. Crafting the ammunition requires 74 Fletching, not wearing it."
+    },
+    {
+      "names": [
+        "Mixed hide top"
+      ],
+      "ids": [
+        29280
+      ],
+      "requirements": {
+        "ranged": 60,
+        "defence": 50
+      },
+      "source": {
+        "title": "Mixed hide top",
+        "revision": 15271149,
+        "url": "https://oldschool.runescape.wiki/w/Mixed_hide_top"
+      }
+    },
+    {
+      "names": [
+        "Mixed hide cape"
+      ],
+      "ids": [
+        29289
+      ],
+      "requirements": {
+        "ranged": 60,
+        "defence": 50
+      },
+      "source": {
+        "title": "Mixed hide cape",
+        "revision": 15350309,
+        "url": "https://oldschool.runescape.wiki/w/Mixed_hide_cape"
+      }
+    },
+    {
+      "names": [
+        "Mixed hide boots"
+      ],
+      "ids": [
+        29286
+      ],
+      "requirements": {
+        "ranged": 60,
+        "defence": 50
+      },
+      "source": {
+        "title": "Mixed hide boots",
+        "revision": 15344258,
+        "url": "https://oldschool.runescape.wiki/w/Mixed_hide_boots"
+      }
+    },
+    {
+      "names": [
+        "Mixed hide legs"
+      ],
+      "ids": [
+        29283
+      ],
+      "requirements": {
+        "ranged": 60
+      },
+      "source": {
+        "title": "Mixed hide legs",
+        "revision": 15410905,
+        "url": "https://oldschool.runescape.wiki/w/Mixed_hide_legs"
+      }
+    },
+    {
+      "names": [
+        "Bone mace"
+      ],
+      "ids": [
+        28792
+      ],
+      "requirements": {
+        "attack": 50
+      },
+      "source": {
+        "title": "Bone mace",
+        "revision": 15192239,
+        "url": "https://oldschool.runescape.wiki/w/Bone_mace"
+      }
+    },
+    {
+      "names": [
+        "Bone shortbow"
+      ],
+      "ids": [
+        28794
+      ],
+      "requirements": {
+        "ranged": 50
+      },
+      "source": {
+        "title": "Bone shortbow",
+        "revision": 15351012,
+        "url": "https://oldschool.runescape.wiki/w/Bone_shortbow"
+      }
+    },
+    {
+      "names": [
+        "Bone staff"
+      ],
+      "ids": [
+        28796
+      ],
+      "requirements": {
+        "magic": 50
+      },
+      "source": {
+        "title": "Bone staff",
+        "revision": 15192241,
+        "url": "https://oldschool.runescape.wiki/w/Bone_staff"
+      }
+    },
+    {
+      "names": [
+        "Sulphur blades"
+      ],
+      "ids": [
+        29084
+      ],
+      "requirements": {
+        "attack": 55
+      },
+      "source": {
+        "title": "Sulphur blades",
+        "revision": 15192275,
+        "url": "https://oldschool.runescape.wiki/w/Sulphur_blades"
+      }
+    },
+    {
+      "names": [
+        "Earthbound tecpatl"
+      ],
+      "ids": [
+        30957
+      ],
+      "requirements": {
+        "attack": 55
+      },
+      "source": {
+        "title": "Earthbound tecpatl",
+        "revision": 15193211,
+        "url": "https://oldschool.runescape.wiki/w/Earthbound_tecpatl"
+      }
+    },
+    {
+      "names": [
+        "Sunlight antler bolts"
+      ],
+      "ids": [
+        28872
+      ],
+      "requirements": {
+        "ranged": 66
+      },
+      "source": {
+        "title": "Sunlight antler bolts",
+        "revision": 15409293,
+        "url": "https://oldschool.runescape.wiki/w/Sunlight_antler_bolts"
+      }
+    },
+    {
+      "names": [
+        "Moonlight antler bolts"
+      ],
+      "ids": [
+        28878
+      ],
+      "requirements": {
+        "ranged": 66
+      },
+      "source": {
+        "title": "Moonlight antler bolts",
+        "revision": 15409294,
+        "url": "https://oldschool.runescape.wiki/w/Moonlight_antler_bolts"
+      }
+    },
+    {
+      "names": [
+        "Keris partisan of amascut"
+      ],
+      "ids": [
+        30891
+      ],
+      "requirements": {
+        "attack": 80
+      },
+      "source": {
+        "title": "Keris partisan of amascut",
+        "revision": 15399221,
+        "url": "https://oldschool.runescape.wiki/w/Keris_partisan_of_amascut"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 381919,
+  "ns": 0,
+  "title": "Venator ring",
+  "revisions": [
+    {
+      "revid": 15355516,
+      "parentid": 15355514,
+      "timestamp": "2026-09-25T03:21:45Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Venator ring\n|image = [[File:Venator ring.png]]\n|release = [[26 July]] [[2023]]\n|update = Desert Treasure II - The Fallen Empire\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = An occult ring that grants immense dexterity.\n|value = 140000\n|weight = 0.012\n|exchange = Yes\n|id = 28310\n|leagueRegion = Desert\n}}\n[[File:Venator ring detail.png|left|150px]]\nThe '''venator ring''' is one of four [[ancient rings]] which currently boasts the highest ranged attack bonus of any ring, surpassing the [[archers ring (i)|imbued archers ring]] by +2, and also being the only ring to offer a [[Ranged Strength]] bonus. The ring requires players to have killed [[the Leviathan]] at least once to wear, which is done during [[Desert Treasure II - The Fallen Empire]]; attempting to wear it otherwise will result in the message {{mes|The ring slips off your finger. The power within it seems unfamiliar.}}\n\nThe ring requires level 90 [[Magic]] and 80 [[Crafting]] to create (both being boostable), as well as having learnt how to combine Fremennik ring icons with ancient vestiges via [[Peer the Seer]].\n\nPlayers who are able to craft the ring must first combine the [[archer icon]] and the [[venator vestige]], obtained as an untradeable drop from the Leviathan. Next, they must bring the resulting [[venator icon]] to a [[furnace]], alongside three [[chromium ingot]]s and a [[ring mould]], to craft the ring.\n\nUnlike their predecessors, the [[Fremennik rings]], the ancient rings '''cannot''' be imbued.\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = 0\n|arange = +10\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = 0\n|rstr = +2\n|mdmg = 0\n|prayer = 0\n|slot = ring\n}}\n\n==Creation==\n{{Recipe\n|skill1 = Magic\n|skill1lvl = 90\n|skill1exp = 0 \n|skill1boostable = Yes\n|skill2 = Crafting\n|skill2lvl = 80\n|skill2exp = 2500 \n|skill2boostable = Yes\n|members = Yes\n|ticks = 3 \n|tools = Ring mould\n|facilities = Furnace\n|mat1 = Venator icon\n|mat1cost = No\n|mat2 = Chromium ingot\n|mat2quantity = 3\n|output1 = Venator ring\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 23 October 2024\n|update = Halloween Fixes & Miscellaneous Changes\n|change = The ring can no longer be equipped without having killed [[The Leviathan]] at least once.\n}}\n{{Subject changes\n|prerelease = yes\n|page = Ventor ring (beta)\n|daterange = 14 - 21 June 2023\n|beta = Ruinous Powers Beta v2\n|change = The item's name was changed from \"Ring of true smoke\" to \"Ventor ring\".{{sic}}<!--Do not change - it was \"ventor\" during the DT2 beta and was corrected to \"venator\" when DT2 released.-->\n}}\n{{Subject changes\n|daterange = 12 - 18 April 2023\n|beta = Desert Treasure II Rewards Beta\n|change = First present in the DT2 rewards beta.\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"150\" style=\"text-align:left\">\nAncient rings concept art.png|Concept art for the ancient rings, by [[Mod Jerv]].\n</gallery>\n\n==Trivia==\n* Venator is a Latin word meaning \"hunter\".\n* Despite the poll blog and newspost stating the venator ring requires full completion of [[Desert Treasure II]] to wear, this is not the case in-game, and players need only to have obtained one kill count of [[the Leviathan]] to wear it.\n\n{{Rings}}\n{{The Forgotten Four}}"
+        }
+      }
+    }
+  ]
+}

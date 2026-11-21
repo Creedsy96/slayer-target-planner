@@ -1,0 +1,19 @@
+{
+  "pageid": 417004,
+  "ns": 0,
+  "title": "Sunfire fanatic armour",
+  "revisions": [
+    {
+      "revid": 14911113,
+      "parentid": 14863087,
+      "timestamp": "2025-05-30T04:08:45Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "[[file:Sunfire fanatic helm chathead.png|left|130px]]\n[[File:Sunfire fanatic armour equipped male.png|right|130px]]\n'''Sunfire fanatic armour''' is a set of [[prayer armour]] obtained as a possible reward from participating in the [[Fortis Colosseum]], starting at Wave 4. Players will receive one of each piece before receiving duplicates. It currently has the best Prayer bonus for the head, body, and legs equipment slots, with each armour piece having a +2 higher bonus compared to their [[proselyte armour]] equivalents. \n\nIn order to wear the armour, the player must have a [[Prayer]] level of 60 and a [[Defence]] level of 40. The armour shares the same stats with [[rune equipment|rune armour]], barring the lighter weight and higher prayer bonus. Because of the negative ranged and magic bonuses the set provides, it is only ideal for combat that utilises prayer and where accuracy is not essential.\n\nEquipping any piece of sunfire fanatic armour is necessary for an [[Treasure Trails/Guide/Emote clues/Elite|elite clue scroll emote step]]. This set can be stored in the [[armour case space]] of a [[costume room]] in a [[player-owned house]]. [[Ultimate Ironmen]] will be unable to retrieve individual pieces until the full set is stored.\n\n==Components==\n{{CostTableHead}}\n{{CostLine|Sunfire fanatic helm}}\n{{CostLine|Sunfire fanatic cuirass}}\n{{CostLine|Sunfire fanatic chausses}}\n{{CostTableBottom|total=y|compare=Sunfire fanatic armour set}}\n\n==Bonuses==\n{{Infotable Bonuses|Sunfire fanatic helm|Sunfire fanatic cuirass|Sunfire fanatic chausses}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nSunfire fanatic helm chathead.png|The sunfire fanatic helm chathead.\nSunfire fanatic armour equipped male.png|Sunfire fanatic armour on body type A.\nSunfire fanatic armour equipped female.png|Sunfire fanatic armour on body type B.\n</gallery>\n\n===Concept art===\n<gallery mode=\"packed\" heights=\"200\" style=\"text-align:left\">\nSunfire fanatic armour concept art.png|Concept art of the sunfire fanatic armour, by [[Mod Jerv]].\n</gallery>\n\n{{Fortis Colosseum}}\n{{Prayer items}}"
+        }
+      }
+    }
+  ]
+}

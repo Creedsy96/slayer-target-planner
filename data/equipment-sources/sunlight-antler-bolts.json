@@ -1,0 +1,19 @@
+{
+  "pageid": 458566,
+  "ns": 0,
+  "title": "Sunlight antler bolts",
+  "revisions": [
+    {
+      "revid": 15409293,
+      "parentid": 15405652,
+      "timestamp": "2026-11-19T18:44:46Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Sunlight antler bolts\n|image = [[File:Sunlight antler bolts 1.png]] [[File:Sunlight antler bolts 2.png]] [[File:Sunlight antler bolts 3.png]] [[File:Sunlight antler bolts 4.png]] [[File:Sunlight antler bolts 5.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = Yes\n|noteable = No\n|options = Wield, Drop\n|examine = Bolts made from the antlers of a sunlight antelope.\n|value = 31\n|weight = 0.000\n|exchange = Yes\n|id = 28872\n}}\n[[File:Sunlight antler bolts 5 detail.png|120px|left]]\n'''Sunlight antler bolts''' are ranged ammunition for the [[hunters' sunlight crossbow]], requiring 66 [[Ranged]] to use. They can be created at level 62 [[Fletching]] by using a [[chisel]] on a [[sunlight antelope antler]]; each antler produces 12 bolts and 10 Fletching experience.\n\nUnlike other arrows and bolts, sunlight antler bolts cannot be coated with [[weapon poison]].\n\nDespite not being made of metal, sunlight antler bolts '''do''' function with [[Ava's devices]] obtained from the completion of [[Animal Magnetism]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = 0\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = 0\n|rstr = +55\n|mdmg = 0\n|prayer = 0\n|slot = ammo\n}}\n\n==Creation==\n{{Recipe\n|skill1 = Fletching\n|skill1lvl = 62\n|skill1boostable = Yes\n|skill1exp = 10\n|members = Yes\n|ticks = 3\n|tools = Chisel\n|mat1 = Sunlight antelope antler\n|output1 = Sunlight antler bolts\n|output1quantity = 12\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Sunlight antler bolts}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 18 November 2026\n|update = Quest Month Week 3 & TFA Practice Mode\n|change = Fixed a bug where full inventories prevented players from fletching sunlight and [[moonlight antler bolts]], even when an existing stack in the inventory provided room.\n}}\n{{Subject changes\n|date = 31 July 2024\n|update = QoL Improvements & Further Deadman: Armageddon Tweaks\n|change = The [[sunlight crossbow]] and its sunlight antler bolts should now work correctly with Dizana's quiver.\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"120\">\nSunlight antler bolts 1 detail.png|One sunlight antler bolt\nSunlight antler bolts 2 detail.png|Two sunlight antler bolts\nSunlight antler bolts 3 detail.png|Three sunlight antler bolts\nSunlight antler bolts 4 detail.png|Four sunlight antler bolts\nSunlight antler bolts 5 detail.png|Five sunlight antler bolts\n</gallery>\n\n{{Bolts}}"
+        }
+      }
+    }
+  ]
+}

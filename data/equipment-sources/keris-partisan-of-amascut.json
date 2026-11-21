@@ -1,0 +1,19 @@
+{
+  "pageid": 588743,
+  "ns": 0,
+  "title": "Keris partisan of amascut",
+  "revisions": [
+    {
+      "revid": 15399221,
+      "parentid": 15314676,
+      "timestamp": "2026-11-11T15:14:49Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|defver = 1\n|bucketname = Inside ToA¦Outside ToA\n|name = Keris partisan of amascut\n|image = [[File:Keris partisan of amascut.png]]\n|release = [[25 June]] [[2025]]\n|update = Summer Sweep Up: Combat\n|members = Yes\n|quest = No\n|tradeable = No\n|equipable = Yes\n|stackable = No\n|noteable = No\n|options = Wield, Dismantle, Drop\n|examine = A powerful polearm imbued with pinpoint precision.\n|value = 300000\n|weight = 3.218\n|id = 30891\n}}\n[[File:Keris partisan of amascut detail.png|130px|left]]\nThe '''keris partisan of Amascut''' is a one-handed spear requiring [[Attack]] level 80 to wield. It is created by combining a [[jewel of Amascut]] with a [[keris partisan]]. The upgrade greatly enhances the weapon's stats when used inside the [[Tombs of Amascut]]. If fighting [[Kalphite_(attribute)|kalphites or scabarites]], this variant has a damage bonus of 15%, down from the base weapon's 33%. It retains the 1/51 chance to deal triple damage against these targets, however. \n\nThe upgrade increases the [[stab bonus]] and [[strength bonus]] to +108 and +67, respectively (up from +58 and +45). This combination makes the weapon more suitable for general use in the raid, allowing it to be effective against a wide array of enemies. This makes it a possible choice for a primary weapon, with its effectiveness surpassing the [[Zamorakian hasta]] for this purpose. The Keris partisan of Amascut is particularly useful for players who have not yet obtained [[Osmumten's fang]], including [[Ironman Mode|Ironmen]]. It isn't ideal for higher invocations, however.\n\nAs with other variants, [[weapon poison|weapon poisons]] cannot be applied to the keris partisan of Amascut.\n\n==Combat stats==\n{{Infobox Bonuses\n|version1 = Inside ToA\n|version2 = Outside ToA\n|astab1 = +108\n|astab2 = +58\n|aslash = -2\n|acrush = +57\n|amagic = +2\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str1 = +67\n|str2 = +45\n|rstr = 0\n|mdmg = 0\n|prayer = +3\n|slot = weapon\n|speed = 4\n|attackrange = \n|combatstyle = Partisan\n|image = [[File:Keris partisan of amascut equipped male.png]]\n|altimage = [[File:Keris partisan of amascut equipped female.png]]\n}}\n\n{{CombatStyles|Partisan|speed=4|attackrange=1}}\n\n==Creation==\n{{Recipe\n|members = Yes\n|ticks = 0\n|mat1 = Keris partisan\n|mat1cost = 60000\n|mat2 = Jewel of Amascut\n|mat2cost = no\n|output1 = Keris partisan of amascut \n|output1cost = no\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Keris partisan of amascut}}\n\n{{Stab weapons}}\n{{Crush weapons}}\n{{Attribute_affinities}}\n{{Tombs of Amascut}}"
+        }
+      }
+    }
+  ]
+}

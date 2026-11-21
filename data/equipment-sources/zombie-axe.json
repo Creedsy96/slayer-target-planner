@@ -1,0 +1,19 @@
+{
+  "pageid": 415026,
+  "ns": 0,
+  "title": "Zombie axe",
+  "revisions": [
+    {
+      "revid": 15360518,
+      "parentid": 15350326,
+      "timestamp": "2026-10-02T17:48:52Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|dw=Zombie Axe}}\n{{Infobox Item\n|name = Zombie axe\n|image = [[File:Zombie axe.png]]\n|release = [[21 February]] [[2024]]\n|update = Defender of Varrock\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wield, Drop\n|examine = A rusty yet powerful axe.\n|value = 160000\n|weight = 2.721\n|exchange = Yes\n|id = 28810\n}}\n[[File:Zombie axe detail.png|left|120px]]\nThe '''zombie axe''' is a one-handed [[Weapons/Categories#Axe|axe]] that requires 65 [[Attack]] to wield. It is created by taking a [[broken zombie axe]], obtained as a drop from [[armoured zombie]]s, to an anvil and repairing it with 70 [[Smithing]].\n\nThe axe's high strength bonus and slash attack stats are higher than any other one-handed weapon, while its crush attack bonus is only surpassed by the [[dragon warhammer]] and [[Inquisitor's mace]] (not counting PVP-only weapons). Despite its 5-[[RuneScape clock|tick]] attack speed, the axe performs better than the [[dragon scimitar]] and against enemies weak to crush or enemies with higher defence, such as a [[gargoyle]], the axe can deal even more average damage than an [[abyssal whip]]. This is particularly useful for midgame [[Ironman Mode|ironman players]] who do not have level 85 [[Slayer]] to kill [[abyssal demon]]s.\n\nThe zombie axe's slash bonus will always slash [[web]]s successfully like the [[Wilderness sword 1]], making it a convenient weapon for ironmen to slay [[Sarachnis]].\n\nThe zombie axe counts as an axe for fixing bridges when doing [[Temple Trekking]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = -3\n|aslash = +105\n|acrush = +90\n|amagic = 0\n|arange = 0\n|dstab = -1\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = -1\n|str = +107\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = weapon\n|speed = 5\n|attackrange = 1\n|combatstyle = Axe\n|image = [[File:Zombie axe equipped male.png|140px]]\n|altimage = [[File:Zombie axe equipped female.png|140px]]\n}}\n\n{{CombatStyles|Axe|speed=5|attackrange=1}}\n\n==Creation==\n{{Recipe\n|members = Yes\n|ticks = 8\n|skill1 = Smithing\n|skill1lvl = 70\n|skill1boostable = Yes\n|skill1exp = 500\n|tools = Hammer\n|facilities = Anvil\n|mat1 = Broken zombie axe\n|output1 = Zombie axe\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Zombie axe}}\n\n==Transcript==\n{{Hastranscript|item}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"180\" style=\"text-align:left\">\nZombie axe concept art.png|Concept art of the zombie axe, by [[Mod Jerv]].\n</gallery>\n\n{{Slash weapons}}"
+        }
+      }
+    }
+  ]
+}

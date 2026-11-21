@@ -1,0 +1,19 @@
+{
+  "pageid": 581023,
+  "ns": 0,
+  "title": "Oathplate chest",
+  "revisions": [
+    {
+      "revid": 15378890,
+      "parentid": 15378887,
+      "timestamp": "2026-10-21T22:07:09Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Oathplate chest\n|image = [[File:Oathplate chest.png]]\n|release = [[14 May]] [[2025]]\n|update = Yama, the Master of Pacts: Out Today\n|members = Yes\n|quest = No\n|tradeable = Yes\n|bankable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = A chestplate forged from infernal metal.\n|value = 600000\n|weight = 9.979\n|exchange = Yes\n|id = 30753\n|leagueRegion = Kourend\n}}\n[[File:Oathplate chest detail.png|150px|left]]\nThe '''oathplate chest''' is part of the [[oathplate armour]] set, requiring 78 [[Defence]] to wear. The chest is the only piece of body slot item to have a positive [[slash bonus]], excluding the [[Vesta's chainbody]] which is only usable in [[Bounty Hunter]]. As a [[Zamorak]]ian-aligned item, oathplate armour will give [[God Wars Dungeon#God equipment|Zamorakian protection]] within the [[God Wars Dungeon]].\n\nThe chest can be obtained directly as a drop from [[Yama]] or more rarely from [[forgotten lockbox]]es, which are also dropped by Yama. Alternatively, it can be created via [[Smithing]] by combining 2,520 [[crushed infernal shale]] with 450 [[oathplate shards]] to make 9 [[infernal plate]]s, then using them to smith one piece of oathplate armour.\n\nOathplate chests can be broken down at the [[Ancient Forge]] inside the [[Ancient Prison]] in the [[God Wars Dungeon]] for 50 oathplate shards, resulting in a profit of {{NoCoins|{{GEP|Oathplate shards|50}} - {{GEP|Oathplate chest}}}}.\n\n{{Costume storage|armour case|[[oathplate armour]] set|set=true}}\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = +16\n|acrush = 0\n|amagic = -16\n|arange = -18\n|dstab = +105\n|dslash = +128\n|dcrush = +100\n|dmagic = -5\n|drange = +112\n|str = +4\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = body\n|image = [[File:Oathplate chest equipped male.png]]\n|altimage = [[File:Oathplate chest equipped female.png]]\n}}\n\n==Creation==\n{{Recipe\n|skill1=Smithing\n|skill1lvl=83\n|skill1boostable=Yes\n|skill1exp=2000\n|members=Yes\n|ticks=5\n|tools=Hammer\n|facilities=Anvil (Chasm of Fire)\n|mat1=Infernal plate\n|mat1cost = {{GEP|Crushed infernal shale|280}}+{{GEP|Oathplate shards|50}}\n|mat1costnote = Cost of the materials used to make 9 infernal plates, as the GE price for the plates themselves are inaccurate.\n|mat1quantity=9\n|output1=Oathplate chest\n}}\n\n==Products==\n{{Uses material list|Oathplate chest}}\n\n==Item sources==\n{{Drop sources|Oathplate chest}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Oathplate chest}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nOathplate armour equipped male.png|Oathplate armour on body type A.\nOathplate armour equipped female.png|Oathplate armour set on body type B.\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 22 May 2025\n|update = Yama: The Calm Before the Contract Storm\n|change = Players can now smelt down oathplate armour pieces into 50 [[oathplate shards]] using the [[Ancient Forge]] in the [[God Wars Dungeon]].\n}}\n{{Subject changes\n|date = 16 May 2025\n|type = hotfix\n|change = The amount of [[infernal plate]]s required to smith an oathplate chest has been increased from 7 to 9.\n}}\n{{Subject changes footer}}\n\n{{Yama}}\n{{Strength armour}}\n[[Category:Collection log items]]"
+        }
+      }
+    }
+  ]
+}

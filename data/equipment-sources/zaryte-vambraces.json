@@ -1,0 +1,19 @@
+{
+  "pageid": 336629,
+  "ns": 0,
+  "title": "Zaryte vambraces",
+  "revisions": [
+    {
+      "revid": 15190607,
+      "parentid": 15113637,
+      "timestamp": "2026-04-22T04:38:45Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Redirect|Zaros vambraces|the blessed d'hide armour piece|Ancient bracers}}\n{{Infobox Item\n|name = Zaryte vambraces\n|image = [[File:Zaryte vambraces.png]]\n|release = [[5 January]] [[2022]]\n|update = Nex: The Fifth General\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = A pair of ancient vambraces.\n|value = 200000\n|weight = 1.000\n|exchange = Yes\n|id = 26235\n|leagueRegion = Asgarnia\n}}\n[[File:Zaryte vambraces detail.png|left|130px]]\n'''Zaryte vambraces''' are a pair of [[vambraces]] requiring 80 [[Ranged]] and 45 [[Defence]] to wear. Obtained as a drop from [[Nex]], the vambraces are the best-in-slot offensive gloves for rangers, surpassing [[Barrows gloves]]. It is also the only [[hands slot]] item to offer a [[Ranged Strength]] bonus.\n\nAs a [[Zaros#Affiliated_items|Zarosian item]], it will also grant [[god protection]] towards Zarosian NPCs in the [[God Wars Dungeon]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = -8\n|aslash = -8\n|acrush = -8\n|amagic = 0\n|arange = +18\n|dstab = +8\n|dslash = +8\n|dcrush = +8\n|dmagic = +5\n|drange = +8\n|str = 0\n|rstr = +2\n|mdmg = 0\n|prayer = +1\n|slot = hands\n|image = [[File:Zaryte vambraces equipped male.png|130px]]\n|altimage = [[File:Zaryte vambraces equipped female.png|130px]]\n}}\n\n==Item sources==\n{{Drop sources|Zaryte vambraces}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Zaryte vambraces}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 11 January 2023\n|update = Secrets of the North & More!\n|change = The item has been added to the Grand Exchange's [[Grand_Exchange#Items_regulated_via_item_sink|item sink list]].\n}}\n{{Subject changes\n|date = 5 January 2022\n|update = Nex: The Fifth General\n|poll = Nex and Old School's Economy Poll\n|change = The item is now obtainable.\n}}\n{{Subject changes\n|date = 16 December 2021\n|update = Christmas 2021\n|change = The item was added to the game, but was unobtainable.\n}}\n{{Subject changes\n|prerelease = yes\n|page = Zaryte vambraces (beta)\n|daterange =  20 - 27 October 2021\n|beta = Nex Rewards Beta\n|change = First present in the Nex Rewards Beta.\n}}\n{{Subject changes footer}}\n\n{{Vambraces}}\n{{Ranged armour}}\n{{God Wars Dungeon}}\n[[Category:Items subject to Grand Exchange item sink]]\n[[Category:Collection log items]]\n[[Category:Vambraces]]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 535322,
+  "ns": 0,
+  "title": "Hueycoatl hide armour",
+  "revisions": [
+    {
+      "revid": 15233356,
+      "parentid": 15233355,
+      "timestamp": "2026-06-14T03:50:14Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "[[File:Hueycoatl hide coif chathead.png|left]]\n'''Hueycoatl hide armour''' is a set of [[Ranged armour]]. All the pieces of armour require 70 [[Ranged]] to equip. Additionally, the body and head require 40 [[Defence]] to equip. \n\nThe pieces can be crafted from [[Hueycoatl hide]], obtained from [[the Hueycoatl]], requiring level 76-78 [[Crafting]] (boostable) depending on the item.\n\nCompared to [[blessed dragonhide armour]], Hueycoatl hide armour possesses higher Magic defence and prayer bonus; the other stats are identical, essentially making most pieces of Hueycoatl hide armour an upgrade to blessed dragonhide. However, the vambraces are an exception, which have identical combat stats to their blessed counterparts. Their only benefit over their blessed counterparts is the lighter weight.\n\nAny two pieces of the armour are required for the combat achievement [[I'm your son]], whilst the coif and vambraces specifically are needed for a [[master clue]] emote step.\n\n{| class=\"wikitable align-center-1\"\n! colspan=3 |Armour\n! colspan=3 |Materials\n|-\n|{{plinkt|Hueycoatl hide coif}}||{{Coins|{{GEP|Hueycoatl hide coif}}}}\n|{{plinkp|Hueycoatl hide}}||2x [[Hueycoatl hide]]||{{Coins|{{GEP|Hueycoatl hide|2}}}}\n|-\n|{{plinkt|Hueycoatl hide body}}||{{Coins|{{GEP|Hueycoatl hide body}}}}\n|{{plinkp|Hueycoatl hide}}||3x [[Hueycoatl hide]]||{{Coins|{{GEP|Hueycoatl hide|3}}}}\n|-\n|{{plinkt|Hueycoatl hide chaps}}||{{Coins|{{GEP|Hueycoatl hide chaps}}}}\n|{{plinkp|Hueycoatl hide}}||2x [[Hueycoatl hide]]||{{Coins|{{GEP|Hueycoatl hide|2}}}}\n|-\n|{{plinkt|Hueycoatl hide vambraces}}||{{Coins|{{GEP|Hueycoatl hide vambraces}}}}\n|{{plinkp|Hueycoatl hide}}||1x [[Hueycoatl hide]]||{{Coins|{{GEP|Hueycoatl hide|1}}}}\n|-\n! colspan=2 |Armour Total\n|{{Coins|{{GEP|Hueycoatl hide coif}}+{{GEP|Hueycoatl hide body}}+{{GEP|Hueycoatl hide chaps}}+{{GEP|Hueycoatl hide vambraces}}}}\n! colspan=2 |Material Total\n|{{Coins|{{GEP|Hueycoatl hide|8}}}}\n|}\n\n==Bonuses==\n'''Without Vambraces'''{{Infotable Bonuses|Hueycoatl hide coif|Hueycoatl hide body|Hueycoatl hide chaps}}'''With Vambraces'''{{Infotable Bonuses|Hueycoatl hide coif|Hueycoatl hide body|Hueycoatl hide chaps|Hueycoatl hide vambraces}}\n\n== Gallery ==\n<gallery mode=\"packed\" heights=\"250\" style=\"text-align:left\">\nHueycoatl hide armour equipped male.png|A full set of Hueycoatl hide armour on body type A.\nHueycoatl hide armour equipped female.png|A full set of Hueycoatl hide armour on body type B.\nThe Hueycoatl rewards concept art.png|Concept art of [[the Hueycoatl]]'s rewards, by [[Mod Jerv]].\n</gallery>\n\n{{Hueycoatl}}\n{{Ranged armour}}\n{{Equipment class}}"
+        }
+      }
+    }
+  ]
+}

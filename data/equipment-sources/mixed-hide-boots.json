@@ -1,0 +1,19 @@
+{
+  "pageid": 417149,
+  "ns": 0,
+  "title": "Mixed hide boots",
+  "revisions": [
+    {
+      "revid": 15344258,
+      "parentid": 15271151,
+      "timestamp": "2026-09-15T21:00:34Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Mixed hide boots\n|image = [[File:Mixed hide boots.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = Made from the hide of a few different creatures.\n|value = 4000\n|alchable = No\n|weight = 2.000\n|exchange = Yes\n|id = 29286\n}}\n[[File:Mixed hide boots detail.png|130px|left]]\n'''Mixed hide boots''' are part of the [[mixed hide armour]] set, requiring level 60 [[Ranged]] and 50 [[Defence]] to wear. It provides bonuses that complement the [[hunter's spear]].\n\nPlayers with level 69 [[Crafting]] can create the boots with a [[mixed hide base]] and one [[sunlight antelope fur]], alongside a [[needle]] and [[thread]]. Players without the required level may instead pay 17,500 [[coins]] to [[Pellem]] at the [[Hunter Guild]] to make one on their behalf, whilst providing the aforementioned fur (you do not need to provide the mixed hide base).\n\n{{Costume storage|armour case|[[mixed hide armour]] set|set=true}}\n\nThese are comparable to [[climbing boots]], as both offer +2 strength bonus, with mixed hide boots having extra defence and ranged attack bonus. However, these have much higher requirements to equip, and provide negative magic attack bonus. \n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = -10\n|arange = +5\n|dstab = +4\n|dslash = +5\n|dcrush = +6\n|dmagic = +3\n|drange = +3\n|str = +2\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = feet\n|image = [[File:Mixed hide boots equipped male.png|130px]]\n|altimage = [[File:Mixed hide boots equipped female.png|130px]]\n}}\n\n==Creation==\n{{Tabber\n|tab1 = Needle\n|tab2 = Costume needle\n|tab3 = Pellem\n|tab1content = {{Recipe\n|skill1 = Crafting\n|skill1lvl = 69\n|skill1boostable = Yes\n|skill1exp = 75\n|tools = Needle\n|members = Yes\n|ticks = 3\n|mat1 = Mixed hide base\n|mat2 = Sunlight antelope fur\n|mat3 = Thread\n|mat3quantity = 0.2\n|output1 = Mixed hide boots\n|output1subtxt = Needle\n}}\n|tab2content = {{Recipe\n|skill1 = Crafting\n|skill1lvl = 69\n|skill1boostable = Yes\n|skill1exp = 75\n|tools = Costume needle\n|members = Yes\n|ticks = 3\n|mat1 = Mixed hide base\n|mat2 = Sunlight antelope fur\n|output1 = Mixed hide boots\n|output1subtxt = Costume needle\n}}\n|tab3content = {{Recipe\n|notes = {{SCP|Quest}} Completion of [[Children of the Sun]]\n|skill1 = Hunter\n|skill1lvl = 46\n|skill1boostable = No\n|skill1exp = 0\n|members = Yes\n|ticks = 0\n|facilities = Pellem\n|mat1 = Sunlight antelope fur\n|mat2 = Coins\n|mat2quantity = 17500\n|mat2cost = 1\n|output1 = Mixed hide boots\n|output1subtxt = Pellem\n}}\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Mixed hide boots}}\n\n==Gallery==\n<gallery heights=\"250\" style=\"text-align:left\">\nMixed hide armour equipped male.png|Mixed hide armour on body type A.\nMixed hide armour equipped female.png|Mixed hide armour on body type B.\n</gallery>\n\n\n{{Hunter Guild}}\n{{Ranged armour}}\n{{Strength armour}}\n[[Category:Boots]]"
+        }
+      }
+    }
+  ]
+}

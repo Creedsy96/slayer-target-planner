@@ -1,0 +1,19 @@
+{
+  "pageid": 329002,
+  "ns": 0,
+  "title": "Elidinis' ward",
+  "revisions": [
+    {
+      "revid": 15236925,
+      "parentid": 15236165,
+      "timestamp": "2026-06-21T04:27:51Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Item\n|name = Elidinis' ward\n|image = [[File:Elidinis' ward.png]]\n|release = [[24 August]] [[2022]]\n|update = Tombs of Amascut\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wield, Drop\n|examine = A ward once used by Elidinis herself.\n|value = 5000000\n|weight = 0.708\n|exchange = Yes\n|id = 25985\n|leagueRegion = Desert\n}}\n[[File:Elidinis' ward detail.png|left|150px]]\n'''Elidinis' ward'''  is a magical shield requiring 80 [[Magic]], [[Defence]], and [[Prayer]] to equip. Obtained as a rare drop from the [[Tombs of Amascut]], the ward once belonged to the [[god]]dess [[Elidinis]] herself, who gave it to Pharaoh [[Osmumten]] before disappearing to mourn the loss of her husband [[Tumeken]] at the end of the [[Kharidian–Zarosian War]].{{CiteNews|url=https://secure.runescape.com/m=news/tombs-of-amascut?oldschool=1|title=Tombs of Amascut|newsdate=24 August 2022|quote=After her husband’s noble sacrifice, the goddess Elidinis fled to mourn her loss. Before she left, she entrusted Osmumten, the last true pharaoh, with the broken Ward that had defended her people for so many centuries.}}\n\nThe ward can be fortified by attaching an [[arcane sigil|Arcane Sigil]] to the ward, creating the [[Elidinis' ward (f)]]; doing so requires level 90 [[Prayer]], 90 [[Smithing]], and 10,000 [[soul rune]]s, granting 260 experience in both skills in the process. Players cannot pay [[Abbot Langley]] to fortify the ward, though he can remove the sigil from an [[arcane spirit shield]]. \n[[File:Creating Elidinis' ward.gif|thumb|130px|A player fortifies Elidinis' ward.]]\n\nThe fortified ward is untradeable, but it can be dismantled to return the sigil and ward. However, the soul runes will not be returned.\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = +5\n|arange = 0\n|dstab = +5\n|dslash = +3\n|dcrush = +9\n|dmagic = 0\n|drange = +6\n|str = 0\n|rstr = 0\n|mdmg = +3\n|prayer = +1\n|slot = shield\n|image = [[File:Elidinis' ward equipped male.png|150px]]\n|altimage = [[File:Elidinis' ward equipped female.png|150px]]\n}}\n\n==Products==\n{{Uses material list|Elidinis' ward}}\n\n==Item sources==\n{{Drop sources|Elidinis' ward}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Elidinis' ward}}\n\n==Transcript==\n{{Hastranscript|item}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 11 January 2023\n|update = Secrets of the North & More!\n|change = The item has been added to the Grand Exchange's [[Grand_Exchange#Items_regulated_via_item_sink|item sink list]].\n}}\n{{Subject changes\n|date = 1 September 2022\n|update = Tombs of Amascut: Balancing & Bugfixes\n|change = Players can now boost the required levels for fortifying Elidinis' ward.\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"180\" style=\"text-align:left\">\nTumeken's heka concept art.jpg|Initial concept of Elidinis' ward by [[Mod Jerv]], alongside the scrapped [[Tumeken's heka]].\nWard of Elidinis concept art v2.jpg|Revised concept art of the ward. Notably, the ward now is based on a simplified hippo skull to subtly tie it to Elidinis.\n</gallery>\n\n==References==\n{{Reflist}}\n\n{{Tombs of Amascut}}\n{{Magic armour}}\n[[Category:Items subject to Grand Exchange item sink]]\n[[Category:Collection log items]]"
+        }
+      }
+    }
+  ]
+}
