@@ -1,4 +1,4 @@
-import {creatureId,creatureName} from './creature-art';
+import {creatureName} from './creature-art';
 
 let sequence=0;
 /** A worker can replace the view while its dialog stays open. Commit through
@@ -11,9 +11,9 @@ export function chooseCreature(root:ParentNode,key:string,value:string):boolean{
 /** Enhance only creature selectors. The native control remains the form/state
  * owner; choosing a result dispatches its existing change event. */
 export function enhanceCreaturePickers(root:ParentNode):void{
-  root.querySelectorAll<HTMLSelectElement>('select:not([data-creature-enhanced])').forEach(select=>{
+  root.querySelectorAll<HTMLSelectElement>('select[data-creature-picker]:not([data-creature-enhanced])').forEach(select=>{
     const choices=Array.from(select.options);
-    if(!choices.length||choices.filter(o=>creatureId(o.text)).length<choices.length/2)return;
+    if(!choices.length)return;
     select.dataset.creatureEnhanced='true';
     const label=select.getAttribute('aria-label')||select.labels?.[0]?.childNodes[0]?.textContent?.trim()||'Creature';
     const key=select.id||select.dataset.setting||[select.dataset.target,select.dataset.targetField,select.dataset.offer,select.dataset.offerField,select.name].join(':');
@@ -21,7 +21,7 @@ export function enhanceCreaturePickers(root:ParentNode):void{
     const trigger=document.createElement('button');trigger.type='button';trigger.className='creature-trigger';trigger.dataset.pickerFor=key;
     trigger.setAttribute('aria-label',label+': '+(select.selectedOptions[0]?.text||'Choose creature'));
     trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');trigger.disabled=select.disabled;
-    trigger.innerHTML=creatureName(select.selectedOptions[0]?.text||'Choose creature')+'<span class="picker-chevron" aria-hidden="true"></span>';
+    trigger.innerHTML=creatureName(select.selectedOptions[0]?.dataset.creatureId||'',select.selectedOptions[0]?.text||'Choose creature')+'<span class="picker-chevron" aria-hidden="true"></span>';
     select.after(trigger);select.hidden=true;
     trigger.addEventListener('click',()=>openPicker(select,trigger,label,key));
     trigger.addEventListener('keydown',event=>{if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();openPicker(select,trigger,label,key);}});
@@ -41,7 +41,7 @@ function openPicker(select:HTMLSelectElement,trigger:HTMLButtonElement,label:str
   const count=document.createElement('p');count.className='picker-count small muted';count.setAttribute('role','status');
   const cancel=document.createElement('button');cancel.type='button';cancel.className='secondary';cancel.textContent='Cancel';cancel.onclick=()=>dialog.close();
   dialog.append(heading,intro,search,count,list,cancel);document.body.append(dialog);
-  const all=Array.from(select.options).map(o=>({value:o.value,name:o.text,disabled:o.disabled}));
+  const all=Array.from(select.options).map(o=>({value:o.value,name:o.text,creatureId:o.dataset.creatureId||'',disabled:o.disabled}));
   let matches=all,active=Math.max(0,all.findIndex(o=>o.value===select.value));
   const setActive=(index:number,scroll=false)=>{
     active=Math.max(0,Math.min(index,matches.length-1));
@@ -55,7 +55,7 @@ function openPicker(select:HTMLSelectElement,trigger:HTMLButtonElement,label:str
   };
   const render=()=>{
     list.replaceChildren();count.textContent=matches.length?`${matches.length} ${matches.length===1?'creature':'creatures'}`:'No matching creatures. Try another name.';
-    matches.forEach((option,index)=>{const button=document.createElement('button');button.type='button';button.id=id+'-'+index;button.tabIndex=-1;button.setAttribute('role','option');button.disabled=option.disabled;button.innerHTML=creatureName(option.name);button.onclick=()=>choose(index);list.append(button);});setActive(active);
+    matches.forEach((option,index)=>{const button=document.createElement('button');button.type='button';button.id=id+'-'+index;button.tabIndex=-1;button.setAttribute('role','option');button.disabled=option.disabled;button.innerHTML=creatureName(option.creatureId,option.name);button.onclick=()=>choose(index);list.append(button);});setActive(active);
   };
   search.oninput=()=>{matches=all.filter(o=>o.name.toLowerCase().includes(search.value.trim().toLowerCase()));active=0;render();};
   search.onkeydown=event=>{

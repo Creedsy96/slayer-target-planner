@@ -1,12 +1,18 @@
-# Slayer Target Planner 3.0.2
+# Slayer Target Planner 3.0.3
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.2 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.3 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Explicit creature icons in 3.0.3
+
+Creature icons are rendered at known assignment and variant references using their IDs: targets, pickers, task and skip lists, blocks, task records, completion methods, the guide and tutorial. Quest names, character names, reward labels, item names and ordinary prose stay plain. Creature pickers are explicitly enabled; their option text no longer determines whether they become a creature picker. Unknown creature IDs retain readable text. Saved characters and calculation rules are unchanged.
+
+Validation: TypeScript and all 253 tests passed. Browser checks confirmed plain quest labels, one icon per creature picker option, and icons on proposed blocks and skip lists. The Windows package is checked against the same built assets; native interaction was not repeated for this UI-only fix.
 
 ## Slayer unlock layout in 3.0.2
 
