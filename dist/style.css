@@ -156,6 +156,8 @@ details>summary{transition:color .15s}details>summary:hover{color:var(--gold)}.p
 
 /* Character onboarding shares the same cards and palette as the planner. */
 .fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:16px 0}
+.reward-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:600px){.reward-grid{grid-template-columns:1fr}}
 .fact-card{display:flex;align-items:center;gap:12px;text-align:left;min-height:84px;width:100%;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);transition:background .15s,border-color .15s,transform .15s}
 .fact-card:hover{transform:translateY(-1px);border-color:var(--gold)}
 .fact-card.enabled,.toggle-card:has(input:checked){background:color-mix(in srgb,var(--gold) 14%,var(--panel));border-color:var(--gold)}
