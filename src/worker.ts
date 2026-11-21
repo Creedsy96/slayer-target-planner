@@ -1,4 +1,5 @@
 import {calculateGuideCombat} from './combat/guide';
+import {calculateMethodPreview} from './combat/method-preview';
 import type {GuideState} from './guide/types';
 import type {CombatResult,EquipmentSlot} from './combat/types';
 import {compareOwnedSlot} from './combat/comparisons';
@@ -9,12 +10,18 @@ import {catalogue,evaluate,optimise,simulate,searchHunt,prepareRows} from './cor
 import {withExtensionComparisons} from './analysis/extensions';
 import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
-  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot};
+  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string};
   try{
     restoreCombatCache(profile,combatCache);
     const identity=combatIdentity(profile);let calculated=0;
     observeCombatCache((signature,key,result)=>{if(signature===identity){calculated++;self.postMessage({id,kind:'combat-cache',key,result});}});
-    if(kind==='gear-detail'){
+    if(kind==='method-timing'){
+      const name=catalogue.variants.find(v=>v.id===variantId)?.name||'selected method';
+      self.postMessage({id,kind:'progress',done:0,total:1,current:'Calculating '+name+' / selected completion method'});
+      const result=calculateMethodPreview(catalogue,profile,assignmentId!,variantId!);
+      self.postMessage({id,kind:'progress',done:1,total:1,current:name+' / method ready'});
+      self.postMessage({id,kind,result});
+    }else if(kind==='gear-detail'){
       self.postMessage({id,kind,result:compareOwnedSlot(profile,guide!,combat!,slot!)});
     }else if(kind==='gear'){
       const result=calculateGuideCombat(profile,guide!, (done,current)=>self.postMessage({id,kind:'progress',done,total:5,current}));

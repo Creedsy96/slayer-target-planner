@@ -65,3 +65,5 @@ export * from './state/export-folders';
 export {isBlowpipe,isCrossbow,rangedWeaponCandidates,rangedAmmoCandidates} from './combat/ranged';
 
 export * from './combat/weapon-family';
+
+export * from './combat/method-preview';

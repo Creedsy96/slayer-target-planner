@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.19
+# Slayer Target Planner 3.0.20
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.19 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.20 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Calculated DPS in Completion methods in 3.0.20
+
+The edited assignment/variant now gets an independent background DPS calculation, even when the hunt planner uses a different variant. The method card shows DPS, kill time, weapon and its own loading/cancel/retry state. Measured/manual/disabled and equipment/encounter fallbacks give their actual reasons, with a Use calculated DPS action where appropriate. Manual fallback values and other methods are preserved. [Behaviour and verification](docs/selected-method-dps.md).
 
 ## Weapon comparisons by style in 3.0.19
 
