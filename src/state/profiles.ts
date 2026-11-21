@@ -54,7 +54,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   safeTree(value);const p=clone(value) as Profile;
   if(!p||typeof p!=='object'||!p.id||typeof p.id!=='string'||typeof p.name!=='string'||p.name.length>100)throw Error('Profile needs a valid ID and name (up to 100 characters).');
   if(p.dataVersion!==data.version)throw Error(`Profile uses data ${p.dataVersion}. This app uses ${data.version}; review and explicitly rebase a copy before import.`);
-  if(p.areaDataVersion!==undefined&&p.areaDataVersion!==AREA_VERSION)throw Error(`Profile uses area rules ${p.areaDataVersion}. This app uses ${AREA_VERSION}; review and explicitly rebase a copy before import.`);
+  if(p.areaDataVersion!==undefined&&p.areaDataVersion!==AREA_VERSION&&p.areaDataVersion!=='2026-11-19.1')throw Error(`Profile uses area rules ${p.areaDataVersion}. This app uses ${AREA_VERSION}; review and explicitly rebase a copy before import.`);
   p.areaDataVersion=AREA_VERSION;
   if(p.maxedPresetVersion!==undefined&&p.maxedPresetVersion!==1)throw Error('Unsupported Maxed preset version.');
   const numeric=(n:unknown,min:number,max:number,label:string,nullable=false)=>{if(nullable&&n===null)return;if(typeof n!=='number'||!Number.isFinite(n)||n<min||n>max)throw Error(`${label} must be between ${min} and ${max}.`);};
@@ -104,6 +104,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.bank!==undefined)p.bank=validateBank(p.bank);
   if(p.combat!==undefined)p.combat=validateCombat(p.combat);
   if(p.restrictBasicAccess!==undefined&&typeof p.restrictBasicAccess!=='boolean')throw Error('Invalid access restriction mode.');
+  if(p.setup!==undefined){const v=p.setup;if(!v||v.version!==1||!Number.isInteger(v.step)||v.step<0||v.step>5||typeof v.complete!=='boolean'||!['pending','skipped','complete'].includes(v.tutorial)||!Array.isArray(v.imports)||v.imports.length>7||v.imports.some(n=>!['character.json','bank.json','inventory.json','equipment.json','group_storage.json','quests.json','diaries.json'].includes(n)))throw Error('Invalid character setup progress.');p.setup={version:1,step:v.step,complete:v.complete,imports:[...new Set(v.imports)],tutorial:v.tutorial};}
   validateHuntExtras(data,p);
   return p;
 }

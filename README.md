@@ -1,12 +1,24 @@
-# Slayer Target Planner 2.9.5
+# Slayer Target Planner 3.0.0
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 2.9.5 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.0 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
-For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use profile JSON export/import to transfer plans.
+For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Character onboarding in 3.0.0
+
+On first launch, choose **Create my first character** or **Use default Maxed**. Existing installations keep their saved characters and do not see the welcome popup. Profiles are now called **characters** in the interface; existing JSON backups and local storage remain compatible.
+
+**New** opens a character dialog with **Character Setup Wizard** checked. The six-step wizard explains installing RuneLite Character Export, opening the bank and syncing available exports. Choose matching `character.json`, `bank.json`, `inventory.json`, `equipment.json`, `quests.json` and `diaries.json` together, review, then import. It imports base levels, recognised gear, relevant quest states and the three supported elite diaries. Manual gear edits, quest/area overrides and answered diary facts are preserved. Mismatched characters or login sessions are rejected before mutation. Group Storage is still a manual/custom source; the plugin does not export it.
+
+The remaining steps cover points/streaks, purchased Slayer rewards and unresolved access. Rewards start off; one click highlights Yes. Ordinary areas without a hard quest, miniquest or skill gate default open, with optional restricted-account controls in Settings. Confirmed one-time access and completed quest checks disappear on reload; **Show completed quest and one-time access checks** reveals them. Wizard progress is saved and resumes after reload. **Settings → Character Setup Wizard** reopens it; exiting defers nothing once you return to the planner.
+
+A skippable practice tutorial follows setup (and the first Maxed choice): Basilisk Knight target selection, real analytical master estimates, all six strategy types, a Duradel Waterfiends skip, then a Basilisks task and the creature guide. Its 500 → 470 point example does not alter real points, facts, bank or hunt. Applying the example hunt is an explicit final option that copies only target and strategy. Replay from **Settings → First hunt tutorial**.
+
+Other exports were reviewed: collection-log discoveries do not prove ownership; seed-vault items are not gear; Character Export 0.6.0 has a reported combat-achievement mapping defect, so none grant automatic unlocks. See [onboarding verification, sources and limits](docs/character-onboarding.md).
 
 ## Custom-account planning fixes in 2.9.5
 

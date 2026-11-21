@@ -38,7 +38,7 @@ export function renderTimingSuggestion(p:Profile,aid:string,vid:string):string{
   const s=timingSuggestion(p,aid,vid);
   return s?`<div class="notice"><strong>Measured timing suggestion: ${s.rate.toFixed(1)} kills/hour</strong><p>${s.samples} completed tasks · ${s.kills} actual kills over ${s.minutes.toFixed(1)} combat minutes. Check that locations and equipment match your intended method.</p><button data-qol="apply-timing" data-assignment="${esc(aid)}" data-variant="${esc(vid)}">Review measured rate</button></div>`:'';
 }
-/** Review dialogs keep draft inputs separate from saved profiles. */
+/** Review dialogs keep draft inputs separate from saved characters. */
 export function reviewDialog(title:string,body:string,commit='Apply'):Promise<FormData|null>{
   const dialog=document.createElement('dialog');dialog.className='review-dialog';
   dialog.innerHTML=`<form method="dialog"><h2>${esc(title)}</h2>${body}<p class="dialog-error" role="alert"></p><div class="tools"><button value="save">${esc(commit)}</button><button value="cancel" formnovalidate>Cancel</button></div></form>`;

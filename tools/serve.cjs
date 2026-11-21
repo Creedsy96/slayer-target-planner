@@ -10,4 +10,5 @@ const server=http.createServer((req,res)=>{
   if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
   fs.readFile(file,(error,bytes)=>{if(error){res.writeHead(404).end('Not found');return;}res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-cache'}).end(bytes);});
 });
-server.listen(4173,'127.0.0.1',()=>console.log('Local: http://127.0.0.1:4173'));
+const port=Number(process.env.PORT||4173);
+server.listen(port,'127.0.0.1',()=>console.log('Local: http://127.0.0.1:'+port));

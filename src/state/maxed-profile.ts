@@ -47,5 +47,6 @@ export function withDefaultMaxedProfile(data:Catalogue,profiles:Profile[]=[],act
   }
   const builtin=next.find(p=>p.id===MAXED_PROFILE_ID);
   if(builtin&&!Object.hasOwn(builtin.quests,'A Kingdom Divided'))next=next.map(p=>p===builtin?{...clone(p),quests:{...p.quests,'A Kingdom Divided':2}}:p);
+  if(builtin){const missing=relevantQuests(data).filter(key=>!Object.hasOwn(builtin.quests,key));if(missing.length)next=next.map(p=>p.id===builtin.id?{...p,quests:{...p.quests,...Object.fromEntries(missing.map(key=>[key,2]))}}:p);}
   return {profiles:next,activeId:next.some(p=>p.id===activeId)?activeId:next[0].id};
 }

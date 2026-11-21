@@ -1,3 +1,12 @@
+import {renderCharacterSetup,requestCharacter,requestFirstLaunch} from './character-setup';
+import {renderFirstHunt} from './first-hunt';
+import {newCharacter,acceptSetupDefaults} from '../state/onboarding';
+import {parseAccountExports,applyAccountExports,type AccountExportPreview} from '../state/account-exports';
+import {practiceCharacter,practicePlans,applyPracticeHunt} from '../state/first-hunt';
+import {factCard,rewardCards} from './fact-cards';
+import {resetAccessChecklist,visibleQuestNames,visibleFactKeys} from './account-import';
+import {resolveAccess} from '../rules/access';
+import {GUIDE_KEY,GUIDE} from '../guide';
 import type {GuideCombat} from '../combat/guide';
 import {GearInspector} from './gear-inspector';
 import {CombatCacheStore,combatIdentity} from '../combat/cache';
@@ -36,10 +45,13 @@ const time=(h:number|null)=>{if(h===null||!Number.isFinite(h))return 'Unavailabl
 const options=(values:[string,string][],value:unknown)=>values.map(([key,label])=>`<option value="${esc(key)}" ${String(value)===key?'selected':''}>${esc(label)}</option>`).join('');
 const select=(path:string,label:string,values:[string,string][],value:unknown)=>`<label>${esc(label)}<select data-setting="${esc(path)}">${options(values,value)}</select></label>`;
 const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<label>${esc(label)}<input data-setting="${esc(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value??''}"></label>`;
-const bool=(path:string,label:string,value:boolean)=>`<label class="check"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
+const bool=(path:string,label:string,value:boolean)=>`<label class="check toggle-card"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
 const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,profile.bank,profile.levels,profile.combat,profile.diaries,profile.quests,profile.questImport?.states,guide]);
-const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare profiles'],['data','Data & sources']];
+const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare characters'],['data','Data & sources']];
 class AppState{
+  firstLaunch=false;exportPreview:AccountExportPreview|null=null;exportRequest=0;
+  tutorialStep=0;tutorialProfile:Profile|undefined;tutorialPlans:Plan[]=[];tutorialMaster='duradel';guideBeforeTutorial:GuideState|undefined;
+
   combatCache=new CombatCacheStore();reusedCombat=false;
   gearResults:GuideCombat|undefined;gearKey='';
   display=loadDisplay();bankView:BankView={query:'',previews:[],levels:null,account:null,kind:'auto',group:false};bankPreviewProfile='';bankRequest=0;
@@ -50,20 +62,21 @@ class AppState{
   constructor(){
     applyTheme(this.theme);
     try{
-      const raw=localStorage.getItem(STORAGE);
+      const raw=localStorage.getItem(STORAGE);this.firstLaunch=localStorage.getItem('slayer-welcome-v1')==='pending'||(!raw&&!localStorage.getItem('slayer-target-planner-v1')&&!localStorage.getItem('slayer-welcome-v1'));if(this.firstLaunch)localStorage.setItem('slayer-welcome-v1','pending');
       if(raw){const saved=importProfiles(data,raw);this.profiles=saved.profiles;this.activeId=saved.activeId;}
       else{
         const legacy=localStorage.getItem('slayer-target-planner-v1');
         if(legacy){if(!localStorage.getItem(STORAGE+'-v1-backup'))localStorage.setItem(STORAGE+'-v1-backup',legacy);this.profiles=[migrateV1(data,JSON.parse(legacy))];}
       }
-    }catch(error){this.saveError='Saved profile could not be loaded; original storage is untouched. '+String(error);}
+    }catch(error){this.saveError='Saved character could not be loaded; original storage is untouched. '+String(error);}
     const originalProfiles=this.profiles;
     const defaults=withDefaultMaxedProfile(data,this.profiles,this.activeId);
     this.profiles=defaults.profiles;this.activeId=defaults.activeId;
     if(originalProfiles!==this.profiles)this.persist();
     this.history.record({profiles:this.profiles,activeId:this.activeId});
+    if(this.profile.setup&&!this.profile.setup.complete)this.route='setup';
   }
-  persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your profile to keep changes.';}}
+  persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your character to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
   run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear',profile:Profile,masterId?:string,guide?:GuideState):void{
     this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
@@ -94,7 +107,7 @@ class AppState{
       else {if(result.plan){this.plans=this.plans.map(p=>p.master.id===result.masterId?result.plan:p);}this.simulation=result.result;this.simulations.set(result.masterId,result.result);}
       renderContent();renderStatus();
     };
-    worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the profile before trying again.';renderMessage();renderStatus();};
+    worker.onerror=()=>{this.cancel(channel);this.message='Calculation worker failed. Reload or export the character before trying again.';renderMessage();renderStatus();};
     worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
   changed(record=true,key=''):void{
@@ -102,7 +115,7 @@ class AppState{
     const nextGearKey=gearSignature(this.profile,guideState),gearChanged=this.gearKey!==nextGearKey;
     for(const channel of [...this.workers.keys()])if(channel!=='gear'||gearChanged)this.cancel(channel);
     if(gearChanged){gearInspector.invalidate();this.gearKey=nextGearKey;this.gearResults=undefined;}
-    this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.run('plans','plans',this.profile);renderStatus();
+    this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();if(this.route!=='setup'&&this.route!=='tutorial')this.run('plans','plans',this.profile);renderStatus();
   }
 }
 const state=new AppState();
@@ -113,19 +126,21 @@ function fieldValue(path:string):unknown{return path.split('.').reduce((v:any,k)
 function renderShell():void{
   applyDisplay(state.display);
   const restore=preserveView();
-  document.body.classList.toggle('compact-hunt',state.compact);
+  document.body.classList.toggle('compact-hunt',state.compact);document.body.classList.toggle('tutorial-mode',state.route==='tutorial');
   document.body.classList.toggle('field-guide',state.route==='guide');
-  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER 2</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">PLAN PROFILE<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 2.9.5 · ${esc(data.attribution)}<br>Profiles stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
+  $('app').innerHTML=`<header class="topbar"><div class="brand"><img src="app-icon.png?v=2.1.1" alt=""><div>SLAYER<small>TARGET PLANNER</small></div></div><div class="header-tools"><button class="settings-button" data-route="settings">${interfaceIcon('settings')}<span>Settings</span></button><div class="topmeta">Offline-capable hunt planning<br>Data ${esc(data.version)}</div></div></header><div class="layout"><aside class="sidebar"><div class="profilehead"><label class="profile-label">CHARACTER<select id="profile-select">${options(state.profiles.map(p=>[p.id,p.name]),state.activeId)}</select></label><div class="tools"><button data-action="new-profile">New</button><button data-action="duplicate-profile">Duplicate</button></div></div><div class="tools profile-actions"><button data-action="rename-profile">Rename</button><button data-action="export-profile">Export</button><button data-action="import-profile">Import</button><button data-qol="undo" ${state.history.canUndo?'':'disabled'}>Undo</button><button data-qol="redo" ${state.history.canRedo?'':'disabled'}>Redo</button></div><nav aria-label="Planner views">${routes.filter(([id])=>!(id==='compare'&&!state.display.compareProfiles)&&!(id==='data'&&!state.display.dataSources)).map(([id,label])=>`<button data-route="${id}" class="${state.route===id?'active':''}" ${state.route===id?'aria-current="page"':''}>${interfaceIcon(id)}<span>${label}</span></button>`).join('')}</nav><div class="quick"><details open><summary>Quick setup</summary><div class="formgrid compact">${input('levels.slayer','Slayer',p().levels.slayer,1,99)}${input('levels.combat','Combat',p().levels.combat,3,126)}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('globalDps','Default DPS',p().globalDps,.1,10000,'.1')}${input('points','Current points',p().points,0,1e9)}${input('reserve','Reserve',p().reserve,0,1e9)}</div></details>${bool('assumeUnknown','Assume unknown requirements satisfied (conditional scenario)',p().assumeUnknown)}<p class="small muted">${p().id===MAXED_PROFILE_ID?'Maxed skills, quests, diaries and area access. Slayer-point rewards start off; enable purchased creature unlocks in Account & access.':'Blank account facts stay unknown. Game eligibility and personal preferences are separate.'}</p></div><div class="save">${state.saveError?'Session only — export a backup':'Saved on this device'}</div></aside><main><div id="message" role="status"></div><div id="status" class="statusline"></div><div id="content"></div><footer>Slayer Target Planner 3.0.0 · ${esc(data.attribution)}<br>Characters stay local. Optional hiscores lookup sends only the entered RuneScape name.</footer></main></div><input id="file-import" type="file" accept=".json,application/json" hidden><input id="quest-file-import" type="file" accept=".json,application/json" hidden><input id="account-file-import" type="file" accept=".json,application/json" multiple hidden><input id="bank-file-import" type="file" accept=".json,application/json" multiple hidden>`;
   renderMessage();renderStatus();renderContent();restore();
 }
 function renderMessage():void{$('message').innerHTML=state.message||state.saveError?`<div class="notice ${state.saveError?'error':''}">${esc(state.message||state.saveError)} <button data-action="dismiss">Dismiss</button></div>`:'';decorateCreatureText($('message'));}
 function renderStatus():void{
+  if(state.route==='setup'){ $('status').textContent='Character setup · hunt calculations start when you finish or exit';return;}
+  if(state.route==='tutorial'){ $('status').textContent='Practice scenario';return;}
   $('status').innerHTML=Object.keys(state.busy).length?`<span>${Object.entries(state.busy).map(([k,v])=>`${esc(k)}: ${Math.min(100,Math.floor(v.done/Math.max(1,v.total)*100))}% - ${esc(v.current||'Calculating')}`).join(' · ')}</span><button data-action="cancel">Cancel calculations</button>`:`<span>${state.plans.length} master plans${state.reusedCombat?' · Reused combat results':''} · ${p().assumeUnknown?'Conditional assumptions enabled':'Confirmed facts required'}</span><button data-action="recalculate">Recalculate</button>`;
 }
 function renderContent():void{
   const restore=preserveView();
   if(state.route==='guide'){const key=gearSignature(p(),guideState);if(key!==state.gearKey){gearInspector.invalidate();state.gearKey=key;state.gearResults=undefined;state.run('gear','gear',p(),undefined,guideState);renderStatus();}}
-  const renderers:Record<string,()=>string>={plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
+  const renderers:Record<string,()=>string>={setup:()=>renderCharacterSetup(data,p(),state.exportPreview,state.display.showCompletedAccess),tutorial:()=>renderFirstHunt(data,state.tutorialProfile!,state.tutorialPlans,state.tutorialStep,state.tutorialProfile!.strategy,state.tutorialMaster),plan:renderPlan,guide:()=>renderCreatureGuide(data,p(),state.gearResults),bank:()=>renderBank(p(),state.bankView),settings:()=>renderSettings(p(),state.display,state.theme),account:renderAccount,tasks:renderTasks,methods:renderMethods,compare:renderCompare,data:renderData};
   const content=$('content'),routeChanged=renderedRoute!==state.route;renderedRoute=state.route;
   content.innerHTML=renderers[state.route]();content.dataset.view=state.route;gearInspector.refresh();
   decorateCreatureText(document.getElementById('app')!);enhanceCreaturePickers(document.getElementById('app')!);restore();
@@ -190,11 +205,10 @@ function renderStrategyResults():string{
   return `<section class="card"><h2>Whole-strategy comparison</h2><p class="small muted">Each strategy starts with the same profile, balances, streaks and goal. Each uses its own suggested block list; setup costs are included only when enabled.</p><div class="tablewrap"><table><thead><tr><th>Strategy</th><th>Median</th><th>90th percentile</th><th>Session success</th><th>Mean spent</th></tr></thead><tbody>${state.strategyResults.map(r=>`<tr><td>${esc(r.strategy)}${r.error?`<small>${esc(r.error)}</small>`:''}</td><td>${r.result?time(r.result.medianHours):'Unavailable'}</td><td>${r.result?time(r.result.p90Hours):'—'}</td><td>${r.result?pct(r.result.sessionChance):'—'}</td><td>${r.result?num(r.result.meanSpent):'—'}</td></tr>`).join('')}</tbody></table></div></section>`;
 }
 function renderAccount():string{
-  const questSelect=(kind:string,key:string,label:string)=>`<label>${esc(label)}<select data-fact="${kind}" data-key="${esc(key)}">${options([['','Unknown'],['0',kind==='quests'?'Not started':'No / off'],...(kind==='quests'?[['1','Started'],['2','Completed']] as [string,string][]:[['1','Yes / on']] as [string,string][])],(p()[kind as 'quests'|'unlocks'|'access'][key]??''))}</select></label>`;
   const query=state.accessSearch.toLowerCase();
-  const quests=relevantQuests(data);
+  const quests=visibleQuestNames(p(),relevantQuests(data),state.display.showCompletedAccess);
   const questField=(key:string)=>`<label>${esc(key)}<select aria-label="Quest state for ${esc(key)}" data-fact="quests" data-key="${esc(key)}">${options([['','Auto: '+questLabel(p().questImport?.states[key]??null)],['0','Not started'],['1','In progress'],['2','Completed']],p().quests[key]??'')}</select><small class="muted">${p().quests[key]!=null?'Manual override':p().questImport?.states[key]!==undefined?'Imported quest state':'Not supplied'}</small></label>`;
-  return head('PLAYER INFORMATION','Account & access','Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.')+renderQuestImport(p(),state.questPreview,state.preserveQuestOverrides,state.questDraft)+`<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${['slayer','combat','attack','strength','defence','hitpoints','ranged','magic','prayer','agility','sailing'].map(k=>input('levels.'+k,k[0].toUpperCase()+k.slice(1),p().levels[k],k==='combat'?3:1,k==='combat'?126:99)).join('')}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('blockLimit','Optional hypothetical block-slot override',p().blockLimit,0,7)}${input('mortimerTasks','Completed Mortimer tasks',p().mortimerTasks,0,1e9)}</div>${bool('assumeUnknown','Assume unknown requirements satisfied for this scenario',p().assumeUnknown)}<p class="small muted">Derived block slots: ${data.masters.map(m=>`${m.name}: ${blockSlots(m,p()).slots}`).join(' · ')}</p><div class="formgrid">${(['lumbridge','kourend','western'] as const).map(k=>select('diaries.'+k,'Elite '+k+' diary',[['','Unknown'],['0','Not completed'],['1','Completed']],p().diaries[k]??'')).join('')}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc(state.accessSearch)}" placeholder="Filter quests, areas or unlocks…" aria-label="Filter requirements"></section>${renderAreaAccess(p(),accessKeys(),query)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter(q=>q.toLowerCase().includes(query)).map(questField).join('')}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${Object.entries(data.unlocks).filter(([k,v])=>v.toLowerCase().includes(query)).map(([k,v])=>questSelect('unlocks',k,v)).join('')}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${accessKeys().filter(k=>!k.startsWith('location:')&&k.toLowerCase().includes(query)).map(k=>questSelect('access',k,k)).join('')}</div></section>`;
+  return head('PLAYER INFORMATION','Account & access','Fill known facts; leave missing information unknown. Requirements are separate from your keep/skip preferences.')+`<section class="card"><h2>Character setup</h2><p>Import levels, gear, quests and supported diaries together, or fill the remaining facts.</p><button data-action="resume-setup">Open Character Setup Wizard</button></section>`+renderQuestImport(p(),state.questPreview,state.preserveQuestOverrides,state.questDraft)+`<section class="card"><div class="inline-form"><label>Optional public hiscores lookup<input id="rsn" type="text" maxlength="12" placeholder="RuneScape name"></label><button data-action="hiscores">Import levels</button></div><p class="small muted">Only public levels are imported. Quests, diaries and purchases remain as you entered them. If the browser blocks lookup, use the Windows app or enter levels below.</p><div class="formgrid">${['slayer','combat','attack','strength','defence','hitpoints','ranged','magic','prayer','agility','firemaking','sailing'].map(k=>input('levels.'+k,k[0].toUpperCase()+k.slice(1),p().levels[k],k==='combat'?3:1,k==='combat'?126:99)).join('')}${input('questPoints','Quest points',p().questPoints,0,1000)}${input('blockLimit','Optional hypothetical block-slot override',p().blockLimit,0,7)}${input('mortimerTasks','Completed Mortimer tasks',p().mortimerTasks,0,1e9)}</div>${bool('assumeUnknown','Assume unknown requirements satisfied for this scenario',p().assumeUnknown)}<p class="small muted">Derived block slots: ${data.masters.map(m=>`${m.name}: ${blockSlots(m,p()).slots}`).join(' · ')}</p><div class="formgrid">${(visibleFactKeys(p(),'diaries',['lumbridge','kourend','western'],k=>p().diaries[k as keyof Profile['diaries']]===1,state.display.showCompletedAccess) as (keyof Profile['diaries'])[]).map(k=>factCard('Elite '+k+' diary',p().diaries[k],`data-diary-toggle="${k}"`)).join('')}</div></section><section class="card"><input id="access-search" class="search" type="search" value="${esc(state.accessSearch)}" placeholder="Filter quests, areas or unlocks…" aria-label="Filter requirements"></section>${renderAreaAccess(p(),accessKeys(),query,state.display.showCompletedAccess)}<section class="card"><h2>Quest stages</h2><div class="formgrid">${quests.filter(q=>q.toLowerCase().includes(query)).map(questField).join('')}</div><h2 class="group-title">Purchased task unlocks</h2><div class="formgrid">${rewardCards({...data,unlocks:Object.fromEntries(Object.entries(data.unlocks).filter(([k,v])=>v.toLowerCase().includes(query)))},p())}</div><h2 class="group-title">Other access confirmations</h2><div class="formgrid">${visibleFactKeys(p(),'special-access',accessKeys().filter(k=>!k.startsWith('location:')),k=>p().access[k]===1,state.display.showCompletedAccess).filter(k=>k.toLowerCase().includes(query)).map(k=>factCard(k,p().access[k],`data-fact-toggle="access" data-key="${esc(k)}"`)).join('')}</div></section>`;
 }
 function accessKeys():string[]{
   return knownAccessKeys(data);
@@ -220,17 +234,17 @@ function renderMethods():string{
 }
 function renderCompare():string{
   const base=state.profiles.find(p=>p.id===state.comparisonId);
-  return head('INDEPENDENT SCENARIOS','Compare profiles','Each profile is evaluated with its own methods, goals, block lists and assumptions.')+`<section class="card"><div class="inline-form"><label>Compare active profile with<select id="compare-profile">${options([['','Choose a saved profile'],...state.profiles.filter(q=>q.id!==p().id).map(q=>[q.id,q.name] as [string,string])],state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base?'disabled':''}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a profile, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length?`<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc(p().name)}</th><th>${esc(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${data.masters.map(m=>{const a=state.plans.find(r=>r.master.id===m.id),b=state.comparison.find(r=>r.master.id===m.id);return `<tr><td>${esc(m.name)}</td><td>${time(a?.hours??null)}<small>${pct(a?.chance??null)}</small></td><td>${time(b?.hours??null)}<small>${pct(b?.chance??null)}</small></td><td>${a?.hours!==null&&a?.hours!==undefined&&b?.hours!==null&&b?.hours!==undefined?((a.hours-b.hours)*60).toFixed(1)+' min':'—'}</td></tr>`;}).join('')}</tbody></table></div><p class="notice">${JSON.stringify(p().goal)!==JSON.stringify(base?.goal)?'These profiles use different stopping events. Their times are not equivalent rankings.':'Comparison uses stationary offer estimates. Simulate each profile for full funded or drop goals.'}</p>`:''}`;
+  return head('INDEPENDENT SCENARIOS','Compare characters','Each character is evaluated with its own methods, goals, block lists and assumptions.')+`<section class="card"><div class="inline-form"><label>Compare active character with<select id="compare-profile">${options([['','Choose a saved character'],...state.profiles.filter(q=>q.id!==p().id).map(q=>[q.id,q.name] as [string,string])],state.comparisonId)}</select></label><button data-action="compare-profiles" ${!base?'disabled':''}>Compare</button><button data-action="snapshot-profile">Save current setup as a baseline</button></div><p class="small muted">To compare a change, duplicate a character, change that copy, then select the original baseline. Changes to one never alter the other.</p></section>${state.comparison.length?`<div class="tablewrap"><table><thead><tr><th>Master</th><th>${esc(p().name)}</th><th>${esc(base?.name)}</th><th>Offer-time difference</th></tr></thead><tbody>${data.masters.map(m=>{const a=state.plans.find(r=>r.master.id===m.id),b=state.comparison.find(r=>r.master.id===m.id);return `<tr><td>${esc(m.name)}</td><td>${time(a?.hours??null)}<small>${pct(a?.chance??null)}</small></td><td>${time(b?.hours??null)}<small>${pct(b?.chance??null)}</small></td><td>${a?.hours!==null&&a?.hours!==undefined&&b?.hours!==null&&b?.hours!==undefined?((a.hours-b.hours)*60).toFixed(1)+' min':'—'}</td></tr>`;}).join('')}</tbody></table></div><p class="notice">${JSON.stringify(p().goal)!==JSON.stringify(base?.goal)?'These characters use different stopping events. Their times are not equivalent rankings.':'Comparison uses stationary offer estimates. Simulate each character for full funded or drop goals.'}</p>`:''}`;
 }
 function renderData():string{
   const count=data.masters.reduce((s,m)=>s+m.tasks.length,0);
-  return head('RULES AND ASSUMPTIONS','Data & sources','Reviewed source snapshots and explicit planning estimates are kept separate.')+renderMortimerRules(p())+`<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${data.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${data.variants.length}</strong></div></div><p>Data version ${esc(data.version)} · Captured ${esc(data.captured)}</p><p class="small muted">${esc(data.attribution)}</p><h3>Known data qualifications</h3><ul>${data.audit.map(a=>`<li>${esc(a.master+' / '+a.assignment+': '+a.issue)}</li>`).join('')||'<li>All current master rows were extracted from captured source tables.</li>'}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer has one guaranteed modifier per offered task, uniform unlocked types and equally likely five-step values under the confirmed planning rules. The dedicated range table identifies its sources.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Profile migration notes</h3><ul>${p().notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul><div class="tools"><button data-action="export-profile">Export all profiles</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${data.sources.filter(s=>s.revision).map(s=>`<tr><td><a href="${esc(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc(s.title)}</a></td><td>${s.revision}</td></tr>`).join('')}</tbody></table></div></section>`;
+  return head('RULES AND ASSUMPTIONS','Data & sources','Reviewed source snapshots and explicit planning estimates are kept separate.')+renderMortimerRules(p())+`<section class="card"><div class="metrics"><div class="metric"><small>Master entries</small><strong>${count}</strong></div><div class="metric"><small>Assignments</small><strong>${data.assignments.length}</strong></div><div class="metric"><small>Variants</small><strong>${data.variants.length}</strong></div></div><p>Data version ${esc(data.version)} · Captured ${esc(data.captured)}</p><p class="small muted">${esc(data.attribution)}</p><h3>Known data qualifications</h3><ul>${data.audit.map(a=>`<li>${esc(a.master+' / '+a.assignment+': '+a.issue)}</li>`).join('')||'<li>All current master rows were extracted from captured source tables.</li>'}<li>Generic timing multipliers originate in the workbook; HP-only verification does not establish a complete combat DPS model.</li><li>Alternative mappings come from master tables; unreviewed access and repeatable methods require explicit confirmation. Only listed monster variants are selectable. Other alternatives require a data update.</li><li>Mortimer has one guaranteed modifier per offered task, uniform unlocked types and equally likely five-step values under the confirmed planning rules. The dedicated range table identifies its sources.</li><li>Konar location access and target compatibility must be confirmed or supplied as a custom probability.</li><li>Historical workbook fixtures remain tests of the old import, not current game correctness.</li></ul><h3>Character migration notes</h3><ul>${p().notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul><div class="tools"><button data-action="export-profile">Export all characters</button><button data-action="export-v1-backup">Export original v1 backup</button></div></section><section class="card"><h2>Captured source revisions</h2><div class="data-list"><table><thead><tr><th>Page</th><th>Revision</th></tr></thead><tbody>${data.sources.filter(s=>s.revision).map(s=>`<tr><td><a href="${esc(s.url)}?oldid=${s.revision}" target="_blank" rel="noopener">${esc(s.title)}</a></td><td>${s.revision}</td></tr>`).join('')}</tbody></table></div></section>`;
 }
 function download(name:string,text:string,mime='application/json'):void{
   const url=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function update(mutate:(profile:Profile)=>void,key=''):boolean{
-  try{const copy=clone(p());mutate(copy);const valid=validateProfile(data,copy);state.profiles[state.profiles.findIndex(p=>p.id===state.activeId)]=valid;state.message='';state.changed(true,key?state.activeId+':'+key:'');return true;}
+  try{const copy=clone(p());mutate(copy);const valid=validateProfile(data,copy);state.profiles[state.profiles.findIndex(p=>p.id===state.activeId)]=valid;state.message='';if(state.route==='setup'){state.history.record({profiles:state.profiles,activeId:state.activeId},key?state.activeId+':'+key:'');state.persist();renderShell();}else state.changed(true,key?state.activeId+':'+key:'');return true;}
   catch(error){state.message=error instanceof Error?error.message:String(error);renderMessage();return false;}
 }
 async function requestName(title:string,value:string):Promise<string|null>{
@@ -239,10 +253,11 @@ async function requestName(title:string,value:string):Promise<string|null>{
   return new Promise(resolve=>dialog.addEventListener('close',()=>{const name=dialog.returnValue==='save'?field.value.trim():null;dialog.remove();resolve(name||null);},{once:true}));
 }
 function addProfile(profile:Profile):void{
-  if(customProfileCount(state.profiles)>=MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom profiles. Export profiles before creating more.');
+  if(customProfileCount(state.profiles)>=MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom characters. Export characters before creating more.');
   state.questRequest++;state.questDraft='';state.questPreview=null;state.profiles.push(validateProfile(data,profile));state.activeId=profile.id;state.changed();
 }
 async function action(name:string):Promise<void>{
+  if(await onboardingAction(name))return;
   const selected=state.plans.find(r=>r.master.id===state.selected);
   if(name==='mortimer-rules'){state.route='data';renderShell();$('mortimer-modifiers').scrollIntoView({block:'start'});return;}
   if(name==='add-offer')update(q=>(q.current.options||=[]).push({assignmentId:q.current.assignmentId||q.goal.targets[0].assignmentId,modifier:'none',points:0,quantity:0,target:true}));
@@ -254,13 +269,13 @@ async function action(name:string):Promise<void>{
   if(name==='clear-imported-quests')update(q=>delete q.questImport);
   if(name==='dismiss'){state.message='';renderMessage();}
   if(name==='recalculate'){state.changed(false);}
-  if(name==='cancel'){state.cancel();state.message='Calculations cancelled. Current saved profile is unchanged.';renderMessage();renderStatus();}
-  if(name==='new-profile'){const name=await requestName('New profile','New hunt');if(name){const q=newProfile(data,name);q.assumeUnknown=false;q.levels={slayer:null,combat:null};q.questPoints=null;q.points=null;q.streaks={normal:null,wilderness:null,mortimer:null};q.diaries={lumbridge:null,kourend:null,western:null};q.notes=['Enter player facts. Unknown requirements are not silently satisfied.'];addProfile(q);}}
+  if(name==='cancel'){state.cancel();state.message='Calculations cancelled. Current saved character is unchanged.';renderMessage();renderStatus();}
+  if(name==='new-profile'){await createCharacter();return;}
   if(name==='duplicate-profile'||name==='snapshot-profile'){
-    const name=await requestName('Duplicate profile',p().name+' copy');if(name){const copy=clone(p());copy.id=newProfile(data).id;copy.name=name;addProfile(copy);}
+    const name=await requestName('Duplicate character',p().name+' copy');if(name){const copy=clone(p());copy.id=newProfile(data).id;copy.name=name;addProfile(copy);}
   }
-  if(name==='rename-profile'){const name=await requestName('Rename profile',p().name);if(name)update(q=>q.name=name);}
-  if(name==='export-profile')download('slayer-profiles-v2.json',exportProfiles(state.profiles,state.activeId));
+  if(name==='rename-profile'){const name=await requestName('Rename character',p().name);if(name)update(q=>q.name=name);}
+  if(name==='export-profile')download('slayer-characters-v2.json',exportProfiles(state.profiles,state.activeId));
   if(name==='import-profile')($('file-import')as HTMLInputElement).click();
   if(name==='export-v1-backup'){
     const text=localStorage.getItem(STORAGE+'-v1-backup')||localStorage.getItem('slayer-target-planner-v1');
@@ -339,7 +354,7 @@ async function huntAction(name:string,button:HTMLButtonElement):Promise<void>{
   if(name==='apply-timing')await applyTimingDialog(ctx,button.dataset.assignment!,button.dataset.variant!);
 }
 document.addEventListener('keydown',event=>{
-  if(state.route==='guide'||!(event.ctrlKey||event.metaKey)||event.altKey||document.querySelector('dialog[open]'))return;
+  if(state.route==='guide'||state.route==='tutorial'||!(event.ctrlKey||event.metaKey)||event.altKey||document.querySelector('dialog[open]'))return;
   const target=event.target as HTMLElement;
   if(target.closest('input,textarea,select,[contenteditable="true"]'))return;
   if(event.key.toLowerCase()==='z'){event.preventDefault();restoreHistory(event.shiftKey);}
@@ -349,13 +364,14 @@ document.addEventListener('keydown',event=>{
 document.addEventListener('click',event=>{
   const button=(event.target as HTMLElement).closest('button');if(!button)return;
   if(button.dataset.useStyle){
+    if(state.route==='tutorial'){state.message='Finish the tutorial and open your own guide to apply an owned-gear style.';renderMessage();return;}
     const variant=data.variants.find(v=>v.id===button.dataset.useVariant)!;const assignment=variant.assignmentIds.find(id=>p().goal.targets.some(t=>t.assignmentId===id&&t.variantId===variant.id))||variant.assignmentIds[0];
     update(q=>{const key=assignment+'::'+variant.id;q.methods[key]={...defaultMethod(data,q,assignment),...q.methods[key],variantId:variant.id,combatStyle:button.dataset.useStyle as Method['combatStyle'],combatDefence:button.dataset.useDefence as Method['combatDefence'],stackSize:guideState.stackSize,location:button.dataset.useLocation||guideState.location};});return;
   }
   if(button.dataset.bankAction){bankAction(button.dataset.bankAction).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
   if(button.dataset.bankAdd){addOwnedItem(Number(button.dataset.bankAdd));return;}
   if(button.dataset.bankClear){update(q=>{q.bank??=emptyBank();delete (state.bankView.group?q.bank.groupManual:q.bank.manual)[button.dataset.bankClear!];});return;}
-  if(button.dataset.guideLocation){chooseGuideLocation(button.dataset.guideLocation);renderContent();$('guide-setup').focus({preventScroll:true});$('guide-setup').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
+  if(button.dataset.guideLocation){chooseGuideLocation(button.dataset.guideLocation,state.route!=='tutorial');renderContent();$('guide-setup').focus({preventScroll:true});$('guide-setup').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
   if(button.dataset.issueRoute){
     state.route=button.dataset.issueRoute;
     if(state.route==='methods'){state.methodAssignment=button.dataset.issueAssignment||state.methodAssignment;methodVariant=button.dataset.issueVariant||'';}
@@ -369,7 +385,14 @@ document.addEventListener('click',event=>{
     if(focus instanceof HTMLSelectElement&&focus.dataset.creatureEnhanced)focus=focus.nextElementSibling as HTMLElement;
     focus?.focus({preventScroll:true});(focus||$('content')).scrollIntoView({block:'start'});return;
   }
-  if(button.dataset.route){state.route=button.dataset.route;renderShell();return;}
+  if(button.dataset.setupStep!==undefined){update(q=>q.setup!.step=Number(button.dataset.setupStep));return;}
+  if(button.dataset.tutorialMaster){state.tutorialMaster=button.dataset.tutorialMaster;renderContent();return;}
+  if(button.dataset.tutorialStrategy){state.tutorialProfile!.strategy=button.dataset.tutorialStrategy as Profile['strategy'];state.tutorialPlans=practicePlans(data,state.tutorialProfile!);renderContent();return;}
+  if(button.dataset.factToggle){const kind=button.dataset.factToggle as 'access'|'unlocks',key=button.dataset.key!;update(q=>q[kind][key]=(kind==='access'?resolveAccess(key,q).value:q.unlocks[key])===1?0:1);return;}
+  if(button.dataset.diaryToggle){const key=button.dataset.diaryToggle as keyof Profile['diaries'];update(q=>q.diaries[key]=q.diaries[key]===1?0:1);return;}
+  if(button.dataset.booleanToggle){const key=button.dataset.booleanToggle;update(q=>setSetting(q,key,!fieldValue(key)));return;}
+  if(button.dataset.accessAuto){update(q=>delete q.access[button.dataset.accessAuto!]);return;}
+  if(button.dataset.route){const deferred=state.route==='setup';if(state.route==='tutorial')endTutorial('skipped');state.route=button.dataset.route;renderShell();if(deferred)state.changed(false);return;}
   if(button.dataset.master){selectMaster(button.dataset.master);return;}
   if(button.dataset.qol){huntAction(button.dataset.qol,button).catch(error=>{state.message=String(error instanceof Error?error.message:error);renderMessage();});return;}
   if(button.dataset.removeTarget!==undefined){update(q=>q.goal.targets.splice(Number(button.dataset.removeTarget),1));return;}
@@ -378,6 +401,7 @@ document.addEventListener('click',event=>{
 });
 function changeInput(event:Event):void{
   const element=event.target as HTMLInputElement|HTMLSelectElement;if(!element.reportValidity())return;
+  if(element.id==='account-file-import'){readAccountExports(element as HTMLInputElement).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
   if(element.id==='bank-file-import'){readBankFiles(element as HTMLInputElement).catch(error=>{state.message=error instanceof Error?error.message:String(error);renderMessage();});return;}
   if(element.dataset.display){const key=element.dataset.display as keyof DisplaySettings;state.display[key]=(element as HTMLInputElement).checked;try{saveDisplay(state.display);}catch{state.message='Display choices applied for this session only.';}renderShell();return;}
   if(element.id==='bank-slot'){state.bankView.slot=element.value;renderContent();return;}
@@ -385,7 +409,7 @@ function changeInput(event:Event):void{
   if(element.id==='bank-manual-group'){state.bankView.group=element.value==='group';renderContent();return;}
   if(element.hasAttribute('data-bank-include-group')){update(q=>{q.bank??=emptyBank();q.bank.includeGroup=(element as HTMLInputElement).checked;});return;}
   if(element.dataset.bankQuantity){if(element.value==='')return;const id=element.dataset.bankQuantity;update(q=>{q.bank??=emptyBank();const manual=state.bankView.group?q.bank.groupManual:q.bank.manual;if(element.value==='')delete manual[id];else manual[id]=Number(element.value);},'bank-quantity:'+id);return;}
-  if(changeGuide(element)){renderContent();return;}
+  if(changeGuide(element,state.route!=='tutorial')){renderContent();return;}
   if(element.id==='hunt-master'){selectMaster(element.value);return;}
   if(element.id==='hunt-preset'){state.selectedPresetId=element.value;if(element.value){try{applyHunt(huntContext(),element.value);}catch(error){state.message=String(error);renderMessage();}}return;}
   if(element.id==='show-unavailable'){
@@ -400,7 +424,7 @@ function changeInput(event:Event):void{
   if(element.id==='theme-select'){state.theme=themeId(element.value);applyTheme(state.theme);if(!saveTheme(state.theme)){state.message='Theme applied for this session. Browser storage is unavailable.';renderMessage();}return;}
   if(element.id==='preserve-quest-overrides'){state.preserveQuestOverrides=(element as HTMLInputElement).checked;renderContent();return;}
   if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>{state.message=String(error);renderMessage();});return;}
-  if(element.id==='profile-select'){state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
+  if(element.id==='profile-select'){if(state.route==='tutorial')endTutorial('skipped');if(state.route==='setup')state.route='account';state.exportRequest++;state.exportPreview=null;state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
   if(element.id==='task-master'){state.taskMaster=element.value;renderContent();return;}
   if(element.id==='method-assignment'){state.methodAssignment=element.value;methodVariant='';renderContent();return;}
   if(element.id==='method-variant'){methodVariant=element.value;renderContent();return;}
@@ -447,7 +471,7 @@ async function readQuestFile(input:HTMLInputElement):Promise<void>{
   const file=input.files?.[0];if(!file)return;const request=++state.questRequest;state.questPreview=null;renderContent();if(file.size>2_000_000)throw Error('Quest file exceeds 2 MB.');
   const profileId=state.activeId,text=await file.text(),preview=parseQuestImport(data,text);
   if(request!==state.questRequest)return;
-  if(state.activeId!==profileId)throw Error('Active profile changed. Select the quest file again.');
+  if(state.activeId!==profileId)throw Error('Active character changed. Select the quest file again.');
   state.questDraft='';state.questPreview=preview;state.preserveQuestOverrides=true;renderContent();
 }
 async function readImport(input:HTMLInputElement):Promise<void>{
@@ -459,9 +483,9 @@ async function readImport(input:HTMLInputElement):Promise<void>{
     const answer=await requestName(`Review data change: ${versions.join(', ')} to ${data.version}. Existing IDs and methods will be validated. Type REBASE to import copies.`, '');
     if(answer!=='REBASE')return;imported=rebaseProfiles(data,text);
   }
-  if(customProfileCount(state.profiles)+imported.profiles.length>MAX_CUSTOM_PROFILES)throw Error('Import would exceed 50 custom profiles.');
+  if(customProfileCount(state.profiles)+imported.profiles.length>MAX_CUSTOM_PROFILES)throw Error('Import would exceed 50 custom characters.');
   for(const q of imported.profiles){if(state.profiles.some(p=>p.id===q.id)){q.id=newProfile(data).id;q.name=(q.name+' (imported)').slice(0,100);}state.profiles.push(q);}
-  state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=imported.profiles[0].id;state.message='Imported profiles as copies. Existing profiles were preserved.';state.changed();
+  state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=imported.profiles[0].id;state.message='Imported characters as copies. Existing characters were preserved.';state.changed();
 }
 
 function addOwnedItem(id:number):void{
@@ -482,7 +506,7 @@ async function readBankFiles(input:HTMLInputElement):Promise<void>{
   if(file.name.toLowerCase()==='character.json'){if(levels)throw Error('Choose one character file.');const parsed=parseCharacterLevels(text);levels=parsed.levels;account=parsed.account;}
   else {const preview=parseBankImport(text,state.bankView.kind==='auto'?undefined:state.bankView.kind as BankKind);if(previews.some(p=>p.kind===preview.kind))throw Error('Choose one file per container.');previews.push(preview);}
  }
- if(request!==state.bankRequest||state.activeId!==profileId)throw Error('Active profile changed; choose the exports again.');
+ if(request!==state.bankRequest||state.activeId!==profileId)throw Error('Active character changed; choose the exports again.');
  state.bankView.previews=previews;state.bankView.levels=levels;state.bankView.account=account;state.bankPreviewProfile=profileId;renderContent();
 }
 async function bankAction(name:string):Promise<void>{
@@ -490,7 +514,7 @@ async function bankAction(name:string):Promise<void>{
  if(name==='recalculate'){state.changed(false);}
   if(name==='cancel'){state.bankView.previews=[];state.bankView.levels=null;renderContent();return;}
  if(name==='apply'){
-  if(state.bankPreviewProfile!==state.activeId)throw Error('Review the import again for this profile.');
+  if(state.bankPreviewProfile!==state.activeId)throw Error('Review the import again for this character.');
   const timing=($('bank-enable-timing') as HTMLInputElement).checked;
   const levels=state.bankView.levels,previews=state.bankView.previews;
   const applied=update(q=>Object.assign(q,applyBankSnapshots(q,previews,levels,state.bankView.account,timing)));
@@ -507,4 +531,50 @@ function renderMethodCombat(v:typeof data.variants[number],method:Method,assignm
  if(!p().combat?.enabled)return '<p class="small muted">Owned-gear timing is off. Enable it in Settings after adding your gear.</p>';
  return `<div class="notice"><strong>${resolved.calculated?'Calculated from owned gear':Object.keys(state.busy).length?'Calculations in progress':'Configured timing retained'}</strong><p>${esc(resolved.combatNote||(Object.keys(state.busy).length?'Preparing this method in the background.':'A measured/manual timing method is selected.'))}</p>${resolved.calculated?`<p>${resolved.calculated.dps.toFixed(3)} DPS · ${resolved.calculated.ttk.toFixed(2)} seconds per creature throughput before delay.${(resolved.calculated.targets||1)>1?' '+resolved.calculated.targets+' targets per batch; '+resolved.calculated.batchTtk?.toFixed(2)+' seconds per complete stack before delay.':''}</p>`:''}<button data-route="settings">Combat settings</button></div>`;
 }
-state.gearKey=gearSignature(p(),guideState);renderShell();state.run('plans','plans',p());renderStatus();
+state.gearKey=gearSignature(p(),guideState);renderShell();if(state.firstLaunch)void welcome();else if(p().setup?.complete&&p().setup?.tutorial==='pending')startTutorial();else if(state.route!=='setup'){state.run('plans','plans',p());renderStatus();}
+
+async function createCharacter():Promise<void>{
+ const result=await requestCharacter();if(!result)return;if(state.route==='tutorial')endTutorial('skipped');
+ state.exportRequest++;state.exportPreview=null;state.route=result.wizard?'setup':'account';addProfile(newCharacter(data,result.name,result.wizard));
+ try{localStorage.setItem('slayer-welcome-v1','chosen');}catch{/* Existing storage warning covers persistence. */}
+}
+async function welcome():Promise<void>{
+ const choice=await requestFirstLaunch();if(choice==='create')await createCharacter();
+ else if(choice==='maxed'){try{localStorage.setItem('slayer-welcome-v1','chosen');}catch{/* Session remains usable. */}startTutorial();}
+}
+async function readAccountExports(input:HTMLInputElement):Promise<void>{
+ const files=[...(input.files||[])],characterId=state.activeId,request=++state.exportRequest;input.value='';if(!files.length)return;
+ if(files.length>10||files.reduce((n,f)=>n+f.size,0)>20_000_000)throw Error('Choose 1–10 files totalling at most 20 MB.');
+ const exports=await Promise.all(files.map(async file=>({name:file.name,text:await file.text()})));
+ if(characterId!==state.activeId||request!==state.exportRequest)return;
+ state.exportPreview=parseAccountExports(data,exports);renderContent();
+}
+function startTutorial():void{
+ state.cancel();state.guideBeforeTutorial=clone(guideState);state.tutorialProfile=practiceCharacter(data);state.tutorialPlans=practicePlans(data,state.tutorialProfile);state.tutorialStep=0;state.tutorialMaster='duradel';state.route='tutorial';state.message='';renderShell();
+}
+function endTutorial(status:'complete'|'skipped'):void{
+ if(state.guideBeforeTutorial){Object.assign(guideState,state.guideBeforeTutorial);try{localStorage.setItem(GUIDE_KEY,JSON.stringify(guideState));}catch{/* Display persistence is optional. */}state.guideBeforeTutorial=undefined;}
+ if(p().setup){p().setup!.tutorial=status;state.persist();}state.tutorialProfile=undefined;state.route='plan';state.changed(false);
+}
+async function onboardingAction(name:string):Promise<boolean>{
+ if(name==='refresh-access-checks'){resetAccessChecklist();renderContent();return true;}
+ if(name==='resume-setup'){state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:1,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
+ if(name==='pause-setup'){state.route='account';state.changed(false);return true;}
+ if(name==='choose-account-exports'){($('account-file-import')as HTMLInputElement).click();return true;}
+ if(name==='cancel-account-exports'){state.exportRequest++;state.exportPreview=null;renderContent();return true;}
+ if(name==='apply-account-exports'&&state.exportPreview){const preview=state.exportPreview;const applied=update(q=>{Object.assign(q,applyAccountExports(data,q,preview,new Date().toISOString()));if(q.setup)q.setup.imports=[...new Set([...q.setup.imports,...preview.files])];});if(applied){state.exportPreview=null;state.message='Character exports imported. Manual overrides and owned-item edits were preserved.';renderContent();renderMessage();}return true;}
+ if(name==='setup-next'||name==='setup-back'){update(q=>{if(name==='setup-next'){if(q.setup!.step===2)acceptSetupDefaults(data,q,'combat');if(q.setup!.step===3)acceptSetupDefaults(data,q,'rewards');}q.setup!.step=Math.max(0,Math.min(5,q.setup!.step+(name==='setup-next'?1:-1)));});return true;}
+ if(name==='finish-setup'){if(update(q=>{q.setup!.complete=true;q.setup!.tutorial='pending';}))startTutorial();return true;}
+ if(name==='start-tutorial'){startTutorial();return true;}
+ if(name==='skip-tutorial'||name==='finish-tutorial'||name==='apply-tutorial-hunt'){
+  if(name==='apply-tutorial-hunt'){const copy=clone(p());applyPracticeHunt(copy);state.profiles[state.profiles.findIndex(q=>q.id===state.activeId)]=validateProfile(data,copy);}
+  endTutorial(name==='skip-tutorial'?'skipped':'complete');return true;
+ }
+ if(name==='tutorial-next'||name==='tutorial-back'){
+  state.tutorialStep=Math.max(0,Math.min(7,state.tutorialStep+(name==='tutorial-next'?1:-1)));
+  if(state.tutorialStep>=4){state.tutorialProfile!.strategy='funded';state.tutorialMaster='duradel';state.tutorialPlans=practicePlans(data,state.tutorialProfile!);}
+  if(state.tutorialStep===7){Object.assign(guideState,{variantId:'basilisk-knight',assignmentId:'basilisks',formId:GUIDE.records['basilisk-knight'].defaultForm,approach:'auto',priority:'balanced',onTask:true,fastTravel:false,location:'',stackSize:undefined});}
+  renderContent();window.scrollTo({top:0});return true;
+ }
+ return false;
+}

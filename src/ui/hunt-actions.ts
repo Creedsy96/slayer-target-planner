@@ -12,7 +12,7 @@ function guard(ctx:HuntContext,before:string):void{
 }
 export async function saveHuntDialog(ctx:HuntContext):Promise<void>{
   const p=ctx.profile(),before=JSON.stringify(p),plan=ctx.plan();if(!plan)throw Error('Select a master first.');
-  const fields=await reviewDialog('Save named hunt','<p>Saves targets, strategy, objective, proposed blocks, preferences and combat methods. Account facts, actual blocks, points, current task and logs stay with this profile.</p><label>Hunt name<input name="name" required maxlength="100"></label>','Save hunt');
+  const fields=await reviewDialog('Save named hunt','<p>Saves targets, strategy, objective, proposed blocks, preferences and combat methods. Account facts, actual blocks, points, current task and logs stay with this character.</p><label>Hunt name<input name="name" required maxlength="100"></label>','Save hunt');
   if(!fields)return;guard(ctx,before);
   const name=String(fields.get('name'));
   if(p.huntPresets?.some(h=>h.name.toLowerCase()===name.trim().toLowerCase())){
@@ -27,7 +27,7 @@ export function applyHunt(ctx:HuntContext,id:string):void{
 export async function deleteHuntDialog(ctx:HuntContext,id:string):Promise<void>{
   const p=ctx.profile(),before=JSON.stringify(p),preset=p.huntPresets?.find(h=>h.id===id);
   if(!preset)throw Error('Choose a saved hunt first.');
-  if(!await reviewDialog('Delete saved hunt',`<p>Remove ${esc(preset.name)} from this profile? You can undo this during the session.</p>`,'Delete'))return;
+  if(!await reviewDialog('Delete saved hunt',`<p>Remove ${esc(preset.name)} from this character? You can undo this during the session.</p>`,'Delete'))return;
   guard(ctx,before);const q=clone(p);q.huntPresets=q.huntPresets?.filter(h=>h.id!==id);ctx.commit(q);
 }
 export async function reviewBlocks(ctx:HuntContext):Promise<void>{

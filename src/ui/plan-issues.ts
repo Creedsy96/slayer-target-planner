@@ -12,7 +12,7 @@ export function renderPlanIssues(data:Catalogue,plan:Plan,p:Profile,expanded=fal
 }
 
 export function planIssueTooltip(plan:Plan):string{
-  return [plan.reason,...plan.unknown.slice(0,5)].filter(Boolean).join('\n')||'Calculated from the current profile and methods.';
+  return [plan.reason,...plan.unknown.slice(0,5)].filter(Boolean).join('\n')||'Calculated from the current character and methods.';
 }
 
 /** Keep an actionable explanation visible even while unavailable rows are hidden. */
