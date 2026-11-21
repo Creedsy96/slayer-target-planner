@@ -50,8 +50,8 @@ test('explicit incompatible saved methods are preserved and labelled as non-targ
 test('variant additions reproduce from a pinned source without changing the base catalogue',()=>{
   const output='.desktop-build/variant-additions-check.json';cp.execFileSync('python',['tools/build_variant_additions.py','--output',output]);
   assert.deepEqual(JSON.parse(fs.readFileSync(output,'utf8')),require('../data/variant-additions.json'));
-  const base=require('../data/catalogue.json');assert.equal(d.variants.length,base.variants.length+2);
-  assert.deepEqual(d.masters,base.masters.map(master=>master.id==='mortimer'?d.masters.find(m=>m.id==='mortimer'):master));
+  const base=require('../data/catalogue.json');assert.equal(d.variants.length,base.variants.length+c.VARIANT_ADDITIONS.length);
+  assert.deepEqual(d.masters,base.masters.map(master=>['mortimer','konar'].includes(master.id)?d.masters.find(m=>m.id===master.id):master));
 });
 
 test('fully skipped non-target assignments do not need a completion-method issue',()=>{

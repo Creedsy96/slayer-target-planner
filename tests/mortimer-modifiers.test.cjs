@@ -39,7 +39,7 @@ test('each valid five-step value has one equal interval and all ranges include b
 test('source rules cover every Mortimer task and overlay no other masters or eligibility rules',()=>{
   const raw=require('../data/catalogue.json'),expected=raw.masters.find(m=>m.id==='mortimer').tasks;
   assert.equal(c.MORTIMER_RULES.tasks.length,expected.length);
-  for(const master of raw.masters)if(master.id!=='mortimer')assert.deepEqual(d.masters.find(m=>m.id===master.id),master);
+  for(const master of raw.masters)if(master.id!=='mortimer')assert.deepEqual(c.applyMortimerRules(raw).masters.find(m=>m.id===master.id),master);
   for(const entry of expected){const actual=d.masters.find(m=>m.id==='mortimer').tasks.find(t=>t.id===entry.id);assert.deepEqual(actual.requirements,entry.requirements);assert.equal(actual.weight,entry.weight);}
   assert.deepEqual(raw.masters.find(m=>m.id==='mortimer').tasks.find(t=>t.id==='crawling hands').quantityModifier,[-15,30]);
 });

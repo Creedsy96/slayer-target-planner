@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.11
+# Slayer Target Planner 3.0.12
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.11 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.12 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Konar location audit in 3.0.12
+
+Konar now rolls uniformly across the available locations for each creature assignment, then checks whether the selected variant exists there. Basilisk Knights therefore have 1/2 compatible basilisk locations when both areas are accessible; ordinary basilisks have 2/2. Each location uses its own legal completion creature and timing for skips, resets, boosting, point rates and target kills per hour. The selected plan shows the complete location breakdown and actions. All 39 assignments were audited; the aggregate boss task retains its separate specific-boss limitation. Four missing area-specific creature options were added. See [the model, full audit and verification](docs/konar-locations.md).
 
 ## Available masters and unlock warnings in 3.0.11
 

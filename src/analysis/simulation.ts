@@ -1,3 +1,4 @@
+import {sampleLocation} from './konar-outcomes';
 import {combatSeconds} from './timing';
 import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types';
 import {clone} from '../state/profiles';
@@ -92,13 +93,14 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
   if(p.cape&&p.previousTask&&p.previousMasterId){
     const master=data.masters.find(m=>m.id===p.previousMasterId)!;
     const rows=prepareRows(data,master,p),row=rows.find(r=>r.id===p.previousTask);
-    if(row){const target=actualTarget(row,p.previousTargetCompatible,'previous'),other=completionFallbacks(data,master,p,rows).get(row)||row;previous={row:target?row:other,masterId:master.id,kind:'none',points:0,quantity:0,target};}
+    if(row){const target=actualTarget(row,p.previousTargetCompatible,'previous'),other=completionFallbacks(data,master,p,rows).get(row)||row;previous={row:sampleLocation(target?row:other,rng,target),masterId:master.id,kind:'none',points:0,quantity:0,target};}
   }
   if(p.current.kind==='task'){
     const currentMaster=data.masters.find(m=>m.id===p.current.masterId)!;
     const currentRows=prepareRows(data,currentMaster,p),original=currentRows.find(r=>r.id===p.current.assignmentId);
     const target=original?actualTarget(original,p.current.targetCompatible,'current'):false;
-    const row=original&&!target?(completionFallbacks(data,currentMaster,p,currentRows).get(original)||original):original;
+    const resolved=original&&!target?(completionFallbacks(data,currentMaster,p,currentRows).get(original)||original):original;
+    const row=resolved?sampleLocation(resolved,rng,target):resolved;
     if(!row){add('Current task has no valid completion method');return result(false);}
     if(shouldReset(currentMaster,row,p,filler.master)){
       resetStreak(l,currentMaster);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset current ${row.name}; ${currentMaster.streakGroup} streak reset`);
@@ -122,7 +124,7 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     if(!rows.length){add('No eligible assignments');return result(false);}
     if(!(offer===0&&p.current.kind==='offer'))minutes+=p.requestMinutes;
     const repeat=p.cape&&previous?.masterId===m.id&&rows.some(r=>r.id===previous!.row.id)&&rng()<.1;
-    const supplied=pending?p.current.options!.map(o=>{const row=rows.find(r=>r.id===o.assignmentId);if(!row)throw Error('Pending offer is not eligible under this setup.');if(row.isTarget&&o.target&&row.targetFraction<=0)throw Error('This pending option cannot fulfil the target variant.');const target=row.isTarget&&o.target,other=!target?(fallback.get(row)||row):row;return {row:{...other,blocked:false},masterId:m.id,kind:o.modifier,points:o.points,quantity:o.quantity,target};}):null;
+    const supplied=pending?p.current.options!.map(o=>{const row=rows.find(r=>r.id===o.assignmentId);if(!row)throw Error('Pending offer is not eligible under this setup.');if(row.isTarget&&o.target&&row.targetFraction<=0)throw Error('This pending option cannot fulfil the target variant.');const target=row.isTarget&&o.target,other=!target?(fallback.get(row)||row):row;return {row:{...sampleLocation(other,rng,target),blocked:false},masterId:m.id,kind:o.modifier,points:o.points,quantity:o.quantity,target};}):null;
     const offered=supplied|| (repeat?[previous!]:sampleOffer(rows,m.id==='mortimer'?choices({...p,mortimerTasks:l.mortimerTasks}):1,rng).map(row=>makeOption(row,m,p,l,rng,fallback)));
     const targets=offered.filter(o=>o.target);
     const chosen=(targets.length?targets:offered).reduce((a,b)=>score(a,p,m)<score(b,p,m)?a:b);
@@ -161,6 +163,7 @@ function makeOption(row:Row,m:Master,p:Profile,l:Ledger,rng:()=>number,fallback:
     if(kind==='points')points=roll.value??0;
     if(kind==='quantity')quantity=roll.value??0;
   }
+  if(row.locationOutcomes){const selected=sampleLocation(row,rng);return {masterId:m.id,row:selected,kind,points,quantity,target:selected.isTarget,modifierValue};}
   const target=row.isTarget&&rng()<row.targetFraction;
   return {masterId:m.id,row:row.isTarget&&!target?(fallback.get(row)||row):row,kind,points,quantity,target,modifierValue};
 }

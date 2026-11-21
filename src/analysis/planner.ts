@@ -1,3 +1,5 @@
+import {addKonarOutcomes,locationActions,assignLocationProbabilities} from './konar-outcomes';
+import {KONAR_AUDIT} from '../rules/konar-locations';
 import {withCalculatedTiming} from '../combat/timing';
 import {configuredMethod,prioritisedTasks} from '../combat/priority';
 import type {Catalogue,Master,Profile,Row,Plan} from '../domain/types';
@@ -14,6 +16,12 @@ import {methodLocationRestriction} from '../rules/variant-additions';
 import {protectedTask,skipPreference,shouldReset,paidSkipFraction} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
 export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:number,total:number,current:string)=>void):Row[]{
+  if(m.id!=='konar')return prepareBaseRows(data,m,p,progress);
+  const total=m.tasks.length+m.tasks.reduce((s,e)=>s+(KONAR_AUDIT[e.id]?.locations.length||0),0);
+  const rows=prepareBaseRows(data,m,p,(done,_,current)=>progress?.(done,total,current));let done=m.tasks.length;
+  return addKonarOutcomes(data,m,p,rows,(master,scenario)=>prepareBaseRows(data,master,scenario),current=>progress?.(done++,total,'Konar location / '+current));
+}
+function prepareBaseRows(data:Catalogue,m:Master,p:Profile,progress?:(done:number,total:number,current:string)=>void):Row[]{
   const rows=prioritisedTasks(m,p).map((entry,index)=>{
     const a=data.assignments.find(a=>a.id===entry.id)!;
     const targets=p.goal.targets.filter(t=>t.assignmentId===entry.id);
@@ -69,7 +77,7 @@ function balanceSkips(rows:Row[],m:Master,p:Profile,data:Catalogue):void{
 }
 /** Completion method used when Konar offers the right assignment in the wrong location. */
 export function completionFallbacks(data:Catalogue,m:Master,p:Profile,rows:Row[]):Map<Row,Row>{
-  const result=new Map<Row,Row>();if(!rows.some(r=>r.isTarget&&r.targetFraction<1))return result;
+  const result=new Map<Row,Row>();if(rows.some(r=>!!r.locationOutcomes)||!rows.some(r=>r.isTarget&&r.targetFraction<1))return result;
   const q=clone(p);q.goal.targets=[];
   for(const row of rows.filter(r=>r.isTarget))delete q.methods[row.id];
   const alternatives=prepareRows(data,m,q);
@@ -98,9 +106,12 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   if(blocks.length>7)conflicts.push('Block list exceeds the maximum of 7 slots.');
   for(const id of blocks){if(targets.has(id))conflicts.push(`Target ${id} is blocked.`);if(p.preferences[id]==='protect')conflicts.push(`Protected task ${id} is blocked.`);if(!m.tasks.some(t=>t.id===id)&&!asFiller&&!(p.blocks[m.group]||[]).includes(id))conflicts.push(`Master cannot assign ${id}.`);}
   rows.forEach(r=>r.blocked=blocks.includes(r.id));
-  const active=rows.filter(r=>!r.reason&&!r.blocked);
-  selectionProbabilities(active,m.id==='mortimer'?choices(p):1);
+  const assignments=rows.filter(r=>!r.reason&&!r.blocked);
+  selectionProbabilities(assignments,m.id==='mortimer'?choices(p):1);
+  assignLocationProbabilities(rows);
+  const active=locationActions(assignments);
   balanceSkips(active,m,p,data);
+  for(const row of rows)if(row.locationOutcomes)row.skip=row.locationOutcomes.reduce((s,o)=>s+o.weight*o.row.skip,0);
   const fillerMaster=data.masters.find(master=>master.id==='turael')!;
   const fallback=completionFallbacks(data,m,p,rows);
   const boosting=p.strategy.startsWith('boost')&&!asFiller;

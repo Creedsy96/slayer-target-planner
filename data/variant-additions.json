@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-21.1",
+  "version": "2026-11-21.2",
   "variants": [
     {
       "id": "black-dragon",
@@ -82,6 +82,138 @@
       "masterLocations": {
         "krystilia": [
           "Wilderness Slayer Cave"
+        ]
+      }
+    },
+    {
+      "id": "frost-nagua",
+      "name": "Frost Nagua",
+      "assignmentIds": [
+        "lesser nagua"
+      ],
+      "hp": 120,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 48,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Frost Nagua",
+        "url": "https://oldschool.runescape.wiki/w/Frost_Nagua",
+        "revision": 15403765
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "chaeldar": [
+          "lesser nagua"
+        ],
+        "konar": [
+          "lesser nagua"
+        ]
+      }
+    },
+    {
+      "id": "earthen-nagua",
+      "name": "Earthen Nagua",
+      "assignmentIds": [
+        "lesser nagua"
+      ],
+      "hp": 160,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 48,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Earthen Nagua",
+        "url": "https://oldschool.runescape.wiki/w/Earthen_Nagua",
+        "revision": 15355034
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "chaeldar": [
+          "lesser nagua"
+        ],
+        "konar": [
+          "lesser nagua"
+        ]
+      }
+    },
+    {
+      "id": "ice-troll-runt",
+      "name": "Ice troll runt",
+      "assignmentIds": [
+        "trolls"
+      ],
+      "hp": 60,
+      "multiplier": 1,
+      "requirements": [],
+      "source": {
+        "title": "Ice troll runt",
+        "url": "https://oldschool.runescape.wiki/w/Ice_troll_runt",
+        "revision": 15199610
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "vannaka": [
+          "trolls"
+        ],
+        "chaeldar": [
+          "trolls"
+        ],
+        "konar": [
+          "trolls"
+        ],
+        "nieve": [
+          "trolls"
+        ],
+        "duradel": [
+          "trolls"
+        ]
+      }
+    },
+    {
+      "id": "dagannoth-waterbirth-island",
+      "name": "Dagannoth (Waterbirth Island)",
+      "assignmentIds": [
+        "dagannoth"
+      ],
+      "hp": 85,
+      "multiplier": 1,
+      "requirements": [],
+      "source": {
+        "title": "Dagannoth (Waterbirth Island)",
+        "url": "https://oldschool.runescape.wiki/w/Dagannoth_(Waterbirth_Island)",
+        "revision": 15406482
+      },
+      "status": "reviewed-variant",
+      "drops": [],
+      "masterAssignments": {
+        "vannaka": [
+          "dagannoth"
+        ],
+        "chaeldar": [
+          "dagannoth"
+        ],
+        "konar": [
+          "dagannoth"
+        ],
+        "nieve": [
+          "dagannoth"
+        ],
+        "duradel": [
+          "dagannoth"
         ]
       }
     }

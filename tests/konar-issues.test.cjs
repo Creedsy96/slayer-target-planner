@@ -23,14 +23,11 @@ test('Cerberus remains restricted to Taverley; blocked locations and unsupported
   assert.match(c.evaluate(d,konar,p,[]).reason,/no reviewed mapping/);
 });
 
-test('unreviewed compatibility explains the missing model and opens the correct target method',()=>{
+test('reviewed baby black dragons no longer need a custom compatibility assumption',()=>{
   const p=profile();p.goal.targets=[{assignmentId:'black dragons',variantId:'baby-black-dragon',priority:1}];
-  const plan=c.evaluate(d,konar,p,[]),issues=c.explainPlanIssues(d,plan,p);
-  assert.equal(plan.chance,null);
-  const issue=issues.find(i=>i.title.includes('Konar location compatibility'));
-  assert.equal(issue.route,'methods');assert.equal(issue.assignmentId,'black dragons');assert.equal(issue.variantId,'baby-black-dragon');
-  assert.equal(issue.field,'locationChance');assert.match(issue.detail,/not fully verified/);
-  assert.equal(issue.source.url,'https://oldschool.runescape.wiki/w/Konar_quo_Maten');
+  const plan=c.evaluate(d,konar,p,[]),row=plan.rows.find(r=>r.id==='black dragons');
+  assert.equal(row.targetFraction,3/4);assert.equal(plan.reason,'');assert.ok(plan.chance>0);
+  assert.ok(!c.explainPlanIssues(d,plan,p).some(i=>i.title.includes('Konar location compatibility')));
 });
 
 test('reward gates and closed locations show named requirements with relevant correction destinations',()=>{

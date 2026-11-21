@@ -1,0 +1,2171 @@
+{
+  "version": "2026-11-21.1",
+  "source": {
+    "title": "Konar quo Maten",
+    "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+    "revision": 15408174
+  },
+  "aliases": {
+    "Abyssal Area": [
+      "Abyss",
+      "Abyssal Nexus"
+    ],
+    "Jormungand's Prison": [
+      "Isle of Stone"
+    ],
+    "Stronghold Slayer Dungeon": [
+      "Stronghold Slayer Cave"
+    ],
+    "Myths' Guild Dungeon": [
+      "Myths' Guild",
+      "Myths' Guild Basement",
+      "Corsair Cove Dungeon"
+    ],
+    "Waterbirth Island": [
+      "Waterbirth Island Dungeon"
+    ],
+    "Fremennik Isles": [
+      "Jatizso",
+      "Neitiznot"
+    ],
+    "Lizardman Settlement": [
+      "Lizardman Caves"
+    ],
+    "Molch": [
+      "Lizardman Temple"
+    ],
+    "South of Mount Quidamortem": [
+      "Mount Quidamortem"
+    ],
+    "Troll Stronghold (location)": [
+      "Troll Stronghold"
+    ],
+    "Death Plateau (location)": [
+      "Death Plateau"
+    ]
+  },
+  "assignments": {
+    "aberrant spectres": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Slayer Tower",
+        "Stronghold Slayer Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "aberrant-spectre",
+          "name": "Aberrant spectre",
+          "locations": [
+            "Slayer Tower",
+            "Stronghold Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Aberrant spectre",
+            "url": "https://oldschool.runescape.wiki/w/Aberrant_spectre",
+            "revision": 15371564
+          }
+        },
+        {
+          "id": "deviant-spectre",
+          "name": "Deviant spectre",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Deviant spectre",
+            "url": "https://oldschool.runescape.wiki/w/Deviant_spectre",
+            "revision": 15360075
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "abyssal demons": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Abyssal Area",
+        "Slayer Tower"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "abyssal-demon",
+          "name": "Abyssal demon",
+          "locations": [
+            "Catacombs of Kourend",
+            "Abyssal Area",
+            "Slayer Tower"
+          ],
+          "source": {
+            "title": "Abyssal demon",
+            "url": "https://oldschool.runescape.wiki/w/Abyssal_demon",
+            "revision": 15391821
+          }
+        },
+        {
+          "id": "abyssal-sire",
+          "name": "Abyssal Sire",
+          "locations": [
+            "Abyssal Area"
+          ],
+          "source": {
+            "title": "Abyssal Sire",
+            "url": "https://oldschool.runescape.wiki/w/Abyssal_Sire",
+            "revision": 15392068
+          }
+        },
+        {
+          "id": "reanimated-abyssal",
+          "name": "Reanimated abyssal",
+          "locations": [],
+          "source": {
+            "title": "Reanimated abyssal",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_abyssal",
+            "revision": 15302057
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "ankou": {
+      "locations": [
+        "Stronghold of Security",
+        "Stronghold Slayer Dungeon",
+        "Catacombs of Kourend"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "ankou",
+          "name": "Ankou",
+          "locations": [
+            "Stronghold of Security",
+            "Stronghold Slayer Dungeon",
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Ankou",
+            "url": "https://oldschool.runescape.wiki/w/Ankou",
+            "revision": 15406410
+          }
+        },
+        {
+          "id": "dark-ankou",
+          "name": "Dark Ankou",
+          "locations": [],
+          "source": {
+            "title": "Dark Ankou",
+            "url": "https://oldschool.runescape.wiki/w/Dark_Ankou",
+            "revision": 15375068
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "aviansie": {
+      "locations": [
+        "God Wars Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "aviansie",
+          "name": "Aviansie",
+          "locations": [
+            "God Wars Dungeon"
+          ],
+          "source": {
+            "title": "Aviansie",
+            "url": "https://oldschool.runescape.wiki/w/Aviansie",
+            "revision": 15406581
+          }
+        },
+        {
+          "id": "kree-arra",
+          "name": "Kree'arra",
+          "locations": [
+            "God Wars Dungeon"
+          ],
+          "source": {
+            "title": "Kree'arra",
+            "url": "https://oldschool.runescape.wiki/w/Kree%27arra",
+            "revision": 15337073
+          }
+        },
+        {
+          "id": "flight-kilisa",
+          "name": "Flight Kilisa",
+          "locations": [
+            "God Wars Dungeon"
+          ],
+          "source": {
+            "title": "Flight Kilisa",
+            "url": "https://oldschool.runescape.wiki/w/Flight_Kilisa",
+            "revision": 15298482
+          }
+        },
+        {
+          "id": "flockleader-geerin",
+          "name": "Flockleader Geerin",
+          "locations": [
+            "God Wars Dungeon"
+          ],
+          "source": {
+            "title": "Flockleader Geerin",
+            "url": "https://oldschool.runescape.wiki/w/Flockleader_Geerin",
+            "revision": 15329496
+          }
+        },
+        {
+          "id": "wingman-skree",
+          "name": "Wingman Skree",
+          "locations": [
+            "God Wars Dungeon"
+          ],
+          "source": {
+            "title": "Wingman Skree",
+            "url": "https://oldschool.runescape.wiki/w/Wingman_Skree",
+            "revision": 15298484
+          }
+        },
+        {
+          "id": "reanimated-aviansie",
+          "name": "Reanimated aviansie",
+          "locations": [],
+          "source": {
+            "title": "Reanimated aviansie",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_aviansie",
+            "revision": 15302167
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "basilisks": {
+      "locations": [
+        "Fremennik Slayer Dungeon",
+        "Jormungand's Prison"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "basilisk-knight",
+          "name": "Basilisk Knight",
+          "locations": [
+            "Jormungand's Prison"
+          ],
+          "source": {
+            "title": "Basilisk Knight",
+            "url": "https://oldschool.runescape.wiki/w/Basilisk_Knight",
+            "revision": 15406511
+          }
+        },
+        {
+          "id": "basilisk",
+          "name": "Basilisk",
+          "locations": [
+            "Fremennik Slayer Dungeon",
+            "Jormungand's Prison"
+          ],
+          "source": {
+            "title": "Basilisk",
+            "url": "https://oldschool.runescape.wiki/w/Basilisk",
+            "revision": 15406509
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "black demons": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Chasm of Fire",
+        "Taverley Dungeon",
+        "Brimhaven Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "black-demon",
+          "name": "Black demon",
+          "locations": [
+            "Catacombs of Kourend",
+            "Chasm of Fire",
+            "Taverley Dungeon",
+            "Brimhaven Dungeon"
+          ],
+          "source": {
+            "title": "Black demon",
+            "url": "https://oldschool.runescape.wiki/w/Black_demon",
+            "revision": 15391823
+          }
+        },
+        {
+          "id": "demonic-gorilla",
+          "name": "Demonic gorilla",
+          "locations": [],
+          "source": {
+            "title": "Demonic gorilla",
+            "url": "https://oldschool.runescape.wiki/w/Demonic_gorilla",
+            "revision": 15373646
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "balfrug-kreeyath",
+          "name": "Balfrug Kreeyath",
+          "locations": [],
+          "source": {
+            "title": "Balfrug Kreeyath",
+            "url": "https://oldschool.runescape.wiki/w/Balfrug_Kreeyath",
+            "revision": 15375070
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "porazdir",
+          "name": "Porazdir",
+          "locations": [],
+          "source": {
+            "title": "Porazdir",
+            "url": "https://oldschool.runescape.wiki/w/Porazdir",
+            "revision": 15398625
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "skotizo",
+          "name": "Skotizo",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Skotizo",
+            "url": "https://oldschool.runescape.wiki/w/Skotizo",
+            "revision": 15404238
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "black dragons": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Myths' Guild Dungeon",
+        "Evil Chicken's Lair",
+        "Taverley Dungeon"
+      ],
+      "requirements": {
+        "Catacombs of Kourend": [
+          {
+            "kind": "skill",
+            "key": "combat",
+            "min": 100,
+            "label": "Combat"
+          },
+          {
+            "kind": "skill",
+            "key": "slayer",
+            "min": 77,
+            "label": "Slayer"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "baby-black-dragon",
+          "name": "Baby black dragon",
+          "locations": [
+            "Myths' Guild Dungeon",
+            "Evil Chicken's Lair",
+            "Taverley Dungeon"
+          ],
+          "source": {
+            "title": "Baby black dragon",
+            "url": "https://oldschool.runescape.wiki/w/Baby_black_dragon",
+            "revision": 15376099
+          }
+        },
+        {
+          "id": "king-black-dragon",
+          "name": "King Black Dragon",
+          "locations": [],
+          "source": {
+            "title": "King Black Dragon",
+            "url": "https://oldschool.runescape.wiki/w/King_Black_Dragon",
+            "revision": 15385987
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "brutal-black-dragon",
+          "name": "Brutal black dragon",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Brutal black dragon",
+            "url": "https://oldschool.runescape.wiki/w/Brutal_black_dragon",
+            "revision": 15377774
+          }
+        },
+        {
+          "id": "black-dragon",
+          "name": "Black dragon (level 227)",
+          "locations": [
+            "Myths' Guild Dungeon",
+            "Evil Chicken's Lair",
+            "Taverley Dungeon"
+          ],
+          "source": {
+            "title": "Black dragon",
+            "url": "https://oldschool.runescape.wiki/w/Black_dragon",
+            "revision": 15286221
+          }
+        },
+        {
+          "id": "black-dragon-wilderness-slayer-cave",
+          "name": "Black dragon (Wilderness Slayer Cave)",
+          "locations": [],
+          "source": {
+            "title": "Black dragon",
+            "url": "https://oldschool.runescape.wiki/w/Black_dragon",
+            "revision": 15286221
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "bloodveld": {
+      "locations": [
+        "Catacombs of Kourend",
+        "God Wars Dungeon",
+        "Iorwerth Dungeon",
+        "Meiyerditch Laboratories",
+        "Slayer Tower",
+        "Stronghold Slayer Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "bloodveld",
+          "name": "Bloodveld",
+          "locations": [
+            "God Wars Dungeon",
+            "Meiyerditch Laboratories",
+            "Slayer Tower",
+            "Stronghold Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Bloodveld",
+            "url": "https://oldschool.runescape.wiki/w/Bloodveld",
+            "revision": 15378518
+          }
+        },
+        {
+          "id": "mutated-bloodveld",
+          "name": "Mutated Bloodveld",
+          "locations": [
+            "Catacombs of Kourend",
+            "Iorwerth Dungeon",
+            "Meiyerditch Laboratories"
+          ],
+          "source": {
+            "title": "Mutated Bloodveld",
+            "url": "https://oldschool.runescape.wiki/w/Mutated_Bloodveld",
+            "revision": 15338397
+          }
+        },
+        {
+          "id": "reanimated-bloodveld",
+          "name": "Reanimated bloodveld",
+          "locations": [],
+          "source": {
+            "title": "Reanimated bloodveld",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_bloodveld",
+            "revision": 15302125
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "blue dragons": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Isle of Souls Dungeon",
+        "Myths' Guild Dungeon",
+        "Ogre Enclave",
+        "Ruins of Tapoyauik",
+        "Taverley Dungeon"
+      ],
+      "requirements": {
+        "Catacombs of Kourend": [
+          {
+            "kind": "skill",
+            "key": "combat",
+            "min": 100,
+            "label": "Combat"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "baby-blue-dragon",
+          "name": "Baby blue dragon",
+          "locations": [
+            "Isle of Souls Dungeon",
+            "Myths' Guild Dungeon",
+            "Ruins of Tapoyauik",
+            "Taverley Dungeon"
+          ],
+          "source": {
+            "title": "Baby blue dragon",
+            "url": "https://oldschool.runescape.wiki/w/Baby_blue_dragon",
+            "revision": 15406460
+          }
+        },
+        {
+          "id": "blue-dragon",
+          "name": "Blue dragon",
+          "locations": [
+            "Isle of Souls Dungeon",
+            "Myths' Guild Dungeon",
+            "Ogre Enclave",
+            "Ruins of Tapoyauik",
+            "Taverley Dungeon"
+          ],
+          "source": {
+            "title": "Blue dragon",
+            "url": "https://oldschool.runescape.wiki/w/Blue_dragon",
+            "revision": 15406592
+          }
+        },
+        {
+          "id": "brutal-blue-dragon",
+          "name": "Brutal blue dragon",
+          "locations": [
+            "Catacombs of Kourend",
+            "Ruins of Tapoyauik"
+          ],
+          "source": {
+            "title": "Brutal blue dragon",
+            "url": "https://oldschool.runescape.wiki/w/Brutal_blue_dragon",
+            "revision": 15406593
+          }
+        },
+        {
+          "id": "vorkath",
+          "name": "Vorkath",
+          "locations": [],
+          "source": {
+            "title": "Vorkath",
+            "url": "https://oldschool.runescape.wiki/w/Vorkath",
+            "revision": 15404047
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "boss": {
+      "locations": [],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "boss-pool",
+          "name": "Mixed boss assignment (timing scenario)",
+          "locations": [],
+          "source": {
+            "title": "Module:SlayerConsts/MasterTables",
+            "url": "https://oldschool.runescape.wiki/w/Module:SlayerConsts/MasterTables",
+            "revision": 15302373
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "specific-boss",
+      "note": "Boss task locations depend on the specific boss; the aggregate boss timing scenario is not a uniform creature/location target."
+    },
+    "brine rats": {
+      "locations": [
+        "Brine Rat Cavern"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "brine-rat",
+          "name": "Brine rat",
+          "locations": [
+            "Brine Rat Cavern"
+          ],
+          "source": {
+            "title": "Brine rat",
+            "url": "https://oldschool.runescape.wiki/w/Brine_rat",
+            "revision": 15406451
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "cave kraken": {
+      "locations": [
+        "Kraken Cove"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "cave-kraken",
+          "name": "Cave kraken",
+          "locations": [
+            "Kraken Cove"
+          ],
+          "source": {
+            "title": "Cave kraken",
+            "url": "https://oldschool.runescape.wiki/w/Cave_kraken",
+            "revision": 15342837
+          }
+        },
+        {
+          "id": "kraken",
+          "name": "Kraken",
+          "locations": [
+            "Kraken Cove"
+          ],
+          "source": {
+            "title": "Kraken",
+            "url": "https://oldschool.runescape.wiki/w/Kraken",
+            "revision": 15383981
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "dagannoth": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Lighthouse",
+        "Waterbirth Island",
+        "Jormungand's Prison"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "dagannoth",
+          "name": "Dagannoth",
+          "locations": [
+            "Catacombs of Kourend",
+            "Lighthouse",
+            "Jormungand's Prison"
+          ],
+          "source": {
+            "title": "Dagannoth",
+            "url": "https://oldschool.runescape.wiki/w/Dagannoth",
+            "revision": 15406476
+          }
+        },
+        {
+          "id": "dagannoth-spawn",
+          "name": "Dagannoth spawn",
+          "locations": [
+            "Waterbirth Island"
+          ],
+          "source": {
+            "title": "Dagannoth spawn",
+            "url": "https://oldschool.runescape.wiki/w/Dagannoth_spawn",
+            "revision": 15406480
+          }
+        },
+        {
+          "id": "dagannoth-fledgeling",
+          "name": "Dagannoth fledgeling",
+          "locations": [
+            "Waterbirth Island"
+          ],
+          "source": {
+            "title": "Dagannoth fledgeling",
+            "url": "https://oldschool.runescape.wiki/w/Dagannoth_fledgeling",
+            "revision": 15406481
+          }
+        },
+        {
+          "id": "reanimated-dagannoth",
+          "name": "Reanimated dagannoth",
+          "locations": [],
+          "source": {
+            "title": "Reanimated dagannoth",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_dagannoth",
+            "revision": 15406483
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "dagannoth-waterbirth-island",
+          "name": "Dagannoth (Waterbirth Island)",
+          "locations": [
+            "Waterbirth Island"
+          ],
+          "source": {
+            "title": "Dagannoth (Waterbirth Island)",
+            "url": "https://oldschool.runescape.wiki/w/Dagannoth_(Waterbirth_Island)",
+            "revision": 15406482
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "dark beasts": {
+      "locations": [
+        "Mourner Tunnels",
+        "Iorwerth Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "dark-beast",
+          "name": "Dark beast",
+          "locations": [
+            "Mourner Tunnels",
+            "Iorwerth Dungeon"
+          ],
+          "source": {
+            "title": "Dark beast",
+            "url": "https://oldschool.runescape.wiki/w/Dark_beast",
+            "revision": 15350345
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "drakes": {
+      "locations": [
+        "Karuulm Slayer Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "drake",
+          "name": "Drake",
+          "locations": [
+            "Karuulm Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Drake",
+            "url": "https://oldschool.runescape.wiki/w/Drake",
+            "revision": 15371749
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "dust devils": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Smoke Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "dust-devil",
+          "name": "Dust devil",
+          "locations": [
+            "Catacombs of Kourend",
+            "Smoke Dungeon"
+          ],
+          "source": {
+            "title": "Dust devil",
+            "url": "https://oldschool.runescape.wiki/w/Dust_devil",
+            "revision": 15386431
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "fire giants": {
+      "locations": [
+        "Brimhaven Dungeon",
+        "Catacombs of Kourend",
+        "Isle of Souls Dungeon",
+        "Giants' Den",
+        "Karuulm Slayer Dungeon",
+        "Stronghold Slayer Dungeon",
+        "Waterfall Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "fire-giant",
+          "name": "Fire giant",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Catacombs of Kourend",
+            "Isle of Souls Dungeon",
+            "Giants' Den",
+            "Karuulm Slayer Dungeon",
+            "Stronghold Slayer Dungeon",
+            "Waterfall Dungeon"
+          ],
+          "source": {
+            "title": "Fire giant",
+            "url": "https://oldschool.runescape.wiki/w/Fire_giant",
+            "revision": 15406493
+          }
+        },
+        {
+          "id": "branda-the-fire-queen",
+          "name": "Branda the Fire Queen",
+          "locations": [],
+          "source": {
+            "title": "Branda the Fire Queen",
+            "url": "https://oldschool.runescape.wiki/w/Branda_the_Fire_Queen",
+            "revision": 15390244
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "fossil island wyverns": {
+      "locations": [
+        "Wyvern Cave"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "spitting-wyvern",
+          "name": "Spitting Wyvern",
+          "locations": [
+            "Wyvern Cave"
+          ],
+          "source": {
+            "title": "Spitting Wyvern",
+            "url": "https://oldschool.runescape.wiki/w/Spitting_Wyvern",
+            "revision": 15366068
+          }
+        },
+        {
+          "id": "taloned-wyvern",
+          "name": "Taloned Wyvern",
+          "locations": [
+            "Wyvern Cave"
+          ],
+          "source": {
+            "title": "Taloned Wyvern",
+            "url": "https://oldschool.runescape.wiki/w/Taloned_Wyvern",
+            "revision": 15366069
+          }
+        },
+        {
+          "id": "long-tailed-wyvern",
+          "name": "Long-tailed Wyvern",
+          "locations": [
+            "Wyvern Cave"
+          ],
+          "source": {
+            "title": "Long-tailed Wyvern",
+            "url": "https://oldschool.runescape.wiki/w/Long-tailed_Wyvern",
+            "revision": 15366070
+          }
+        },
+        {
+          "id": "ancient-wyvern",
+          "name": "Ancient Wyvern",
+          "locations": [
+            "Wyvern Cave"
+          ],
+          "source": {
+            "title": "Ancient Wyvern",
+            "url": "https://oldschool.runescape.wiki/w/Ancient_Wyvern",
+            "revision": 15394980
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "gargoyles": {
+      "locations": [
+        "Slayer Tower"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "gargoyle",
+          "name": "Gargoyle",
+          "locations": [
+            "Slayer Tower"
+          ],
+          "source": {
+            "title": "Gargoyle",
+            "url": "https://oldschool.runescape.wiki/w/Gargoyle",
+            "revision": 15385687
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "greater demons": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Chasm of Fire",
+        "Isle of Souls Dungeon",
+        "Karuulm Slayer Dungeon",
+        "Brimhaven Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "greater-demon",
+          "name": "Greater demon",
+          "locations": [
+            "Catacombs of Kourend",
+            "Chasm of Fire",
+            "Isle of Souls Dungeon",
+            "Karuulm Slayer Dungeon",
+            "Brimhaven Dungeon"
+          ],
+          "source": {
+            "title": "Greater demon",
+            "url": "https://oldschool.runescape.wiki/w/Greater_demon",
+            "revision": 15399727
+          }
+        },
+        {
+          "id": "tormented-demon",
+          "name": "Tormented demon",
+          "locations": [],
+          "source": {
+            "title": "Tormented demon",
+            "url": "https://oldschool.runescape.wiki/w/Tormented_demon",
+            "revision": 15387439
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "skotizo",
+          "name": "Skotizo",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Skotizo",
+            "url": "https://oldschool.runescape.wiki/w/Skotizo",
+            "revision": 15404238
+          }
+        },
+        {
+          "id": "k-ril-tsutsaroth",
+          "name": "K'ril Tsutsaroth",
+          "locations": [],
+          "source": {
+            "title": "K'ril Tsutsaroth",
+            "url": "https://oldschool.runescape.wiki/w/K%27ril_Tsutsaroth",
+            "revision": 15357597
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "tstanon-karlak",
+          "name": "Tstanon Karlak",
+          "locations": [],
+          "source": {
+            "title": "Tstanon Karlak",
+            "url": "https://oldschool.runescape.wiki/w/Tstanon_Karlak",
+            "revision": 15298479
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "hellhounds": {
+      "locations": [
+        "Karuulm Slayer Dungeon",
+        "Catacombs of Kourend",
+        "Stronghold Slayer Dungeon",
+        "Taverley Dungeon",
+        "Witchaven Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "hellhound",
+          "name": "Hellhound",
+          "locations": [
+            "Karuulm Slayer Dungeon",
+            "Catacombs of Kourend",
+            "Stronghold Slayer Dungeon",
+            "Taverley Dungeon",
+            "Witchaven Dungeon"
+          ],
+          "source": {
+            "title": "Hellhound",
+            "url": "https://oldschool.runescape.wiki/w/Hellhound",
+            "revision": 15351778
+          }
+        },
+        {
+          "id": "cerberus",
+          "name": "Cerberus",
+          "locations": [
+            "Taverley Dungeon"
+          ],
+          "source": {
+            "title": "Cerberus",
+            "url": "https://oldschool.runescape.wiki/w/Cerberus",
+            "revision": 15397004
+          }
+        },
+        {
+          "id": "skeleton-hellhound-vet-ion",
+          "name": "Skeleton Hellhound (Vet'ion)",
+          "locations": [],
+          "source": {
+            "title": "Skeleton Hellhound (Vet'ion)",
+            "url": "https://oldschool.runescape.wiki/w/Skeleton_Hellhound_%28Vet%27ion%29",
+            "revision": 15358786
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "greater-skeleton-hellhound-vet-ion",
+          "name": "Greater Skeleton Hellhound (Vet'ion)",
+          "locations": [],
+          "source": {
+            "title": "Greater Skeleton Hellhound (Vet'ion)",
+            "url": "https://oldschool.runescape.wiki/w/Greater_Skeleton_Hellhound_%28Vet%27ion%29",
+            "revision": 15358787
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "reanimated-hellhound",
+          "name": "Reanimated hellhound",
+          "locations": [],
+          "source": {
+            "title": "Reanimated hellhound",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_hellhound",
+            "revision": 15358474
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "hydras": {
+      "locations": [
+        "Karuulm Slayer Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "hydra",
+          "name": "Hydra",
+          "locations": [
+            "Karuulm Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Hydra",
+            "url": "https://oldschool.runescape.wiki/w/Hydra",
+            "revision": 15404371
+          }
+        },
+        {
+          "id": "alchemical-hydra",
+          "name": "Alchemical Hydra",
+          "locations": [
+            "Karuulm Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Alchemical Hydra",
+            "url": "https://oldschool.runescape.wiki/w/Alchemical_Hydra",
+            "revision": 15375803
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "jellies": {
+      "locations": [
+        "Fremennik Slayer Dungeon",
+        "Catacombs of Kourend",
+        "Ruins of Tapoyauik"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "jelly",
+          "name": "Jelly",
+          "locations": [
+            "Fremennik Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Jelly",
+            "url": "https://oldschool.runescape.wiki/w/Jelly",
+            "revision": 15378281
+          }
+        },
+        {
+          "id": "warped-jelly",
+          "name": "Warped Jelly",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Warped Jelly",
+            "url": "https://oldschool.runescape.wiki/w/Warped_Jelly",
+            "revision": 15339567
+          }
+        },
+        {
+          "id": "chilled-jelly",
+          "name": "Chilled jelly",
+          "locations": [
+            "Ruins of Tapoyauik"
+          ],
+          "source": {
+            "title": "Chilled jelly",
+            "url": "https://oldschool.runescape.wiki/w/Chilled_jelly",
+            "revision": 15352393
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "kalphite": {
+      "locations": [
+        "Kalphite Lair",
+        "Kalphite Cave"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "kalphite-worker",
+          "name": "Kalphite Worker",
+          "locations": [
+            "Kalphite Lair",
+            "Kalphite Cave"
+          ],
+          "source": {
+            "title": "Kalphite Worker",
+            "url": "https://oldschool.runescape.wiki/w/Kalphite_Worker",
+            "revision": 15391770
+          }
+        },
+        {
+          "id": "kalphite-soldier",
+          "name": "Kalphite Soldier",
+          "locations": [
+            "Kalphite Lair",
+            "Kalphite Cave"
+          ],
+          "source": {
+            "title": "Kalphite Soldier",
+            "url": "https://oldschool.runescape.wiki/w/Kalphite_Soldier",
+            "revision": 15240656
+          }
+        },
+        {
+          "id": "kalphite-guardian",
+          "name": "Kalphite Guardian",
+          "locations": [
+            "Kalphite Lair",
+            "Kalphite Cave"
+          ],
+          "source": {
+            "title": "Kalphite Guardian",
+            "url": "https://oldschool.runescape.wiki/w/Kalphite_Guardian",
+            "revision": 15392090
+          }
+        },
+        {
+          "id": "kalphite-queen",
+          "name": "Kalphite Queen",
+          "locations": [
+            "Kalphite Lair"
+          ],
+          "source": {
+            "title": "Kalphite Queen",
+            "url": "https://oldschool.runescape.wiki/w/Kalphite_Queen",
+            "revision": 15387547
+          }
+        },
+        {
+          "id": "reanimated-kalphite",
+          "name": "Reanimated kalphite",
+          "locations": [],
+          "source": {
+            "title": "Reanimated kalphite",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_kalphite",
+            "revision": 15355223
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "kurask": {
+      "locations": [
+        "Fremennik Slayer Dungeon",
+        "Iorwerth Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "kurask",
+          "name": "Kurask",
+          "locations": [
+            "Fremennik Slayer Dungeon",
+            "Iorwerth Dungeon"
+          ],
+          "source": {
+            "title": "Kurask",
+            "url": "https://oldschool.runescape.wiki/w/Kurask",
+            "revision": 15386817
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "lesser nagua": {
+      "locations": [
+        "Neypotzli",
+        "Ruins of Tapoyauik",
+        "Crypt of Tonali"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "sulphur-nagua",
+          "name": "Sulphur Nagua",
+          "locations": [
+            "Neypotzli"
+          ],
+          "source": {
+            "title": "Sulphur Nagua",
+            "url": "https://oldschool.runescape.wiki/w/Sulphur_Nagua",
+            "revision": 15399867
+          }
+        },
+        {
+          "id": "amoxliatl",
+          "name": "Amoxliatl",
+          "locations": [
+            "Ruins of Tapoyauik"
+          ],
+          "source": {
+            "title": "Amoxliatl",
+            "url": "https://oldschool.runescape.wiki/w/Amoxliatl",
+            "revision": 15401516
+          }
+        },
+        {
+          "id": "frost-nagua",
+          "name": "Frost Nagua",
+          "locations": [
+            "Ruins of Tapoyauik"
+          ],
+          "source": {
+            "title": "Frost Nagua",
+            "url": "https://oldschool.runescape.wiki/w/Frost_Nagua",
+            "revision": 15403765
+          }
+        },
+        {
+          "id": "earthen-nagua",
+          "name": "Earthen Nagua",
+          "locations": [
+            "Crypt of Tonali"
+          ],
+          "source": {
+            "title": "Earthen Nagua",
+            "url": "https://oldschool.runescape.wiki/w/Earthen_Nagua",
+            "revision": 15355034
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "lizardmen": {
+      "locations": [
+        "Battlefront",
+        "Lizardman Canyon",
+        "Lizardman Settlement",
+        "Kebos Swamp",
+        "Molch"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "lizardman",
+          "name": "Lizardman",
+          "locations": [
+            "Battlefront",
+            "Lizardman Canyon",
+            "Lizardman Settlement",
+            "Kebos Swamp",
+            "Molch"
+          ],
+          "source": {
+            "title": "Lizardman",
+            "url": "https://oldschool.runescape.wiki/w/Lizardman",
+            "revision": 15406826
+          }
+        },
+        {
+          "id": "lizardman-brute",
+          "name": "Lizardman brute",
+          "locations": [
+            "Battlefront",
+            "Lizardman Canyon",
+            "Lizardman Settlement",
+            "Kebos Swamp",
+            "Molch"
+          ],
+          "source": {
+            "title": "Lizardman brute",
+            "url": "https://oldschool.runescape.wiki/w/Lizardman_brute",
+            "revision": 15406827
+          }
+        },
+        {
+          "id": "lizardman-shaman",
+          "name": "Lizardman shaman",
+          "locations": [
+            "Lizardman Canyon",
+            "Lizardman Settlement",
+            "Molch"
+          ],
+          "source": {
+            "title": "Lizardman shaman",
+            "url": "https://oldschool.runescape.wiki/w/Lizardman_shaman",
+            "revision": 15371945
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "metal dragons": {
+      "locations": [
+        "Brimhaven Dungeon",
+        "Catacombs of Kourend",
+        "Isle of Souls Dungeon",
+        "Lithkren Vault"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "iron-dragon",
+          "name": "Iron dragon",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Catacombs of Kourend",
+            "Isle of Souls Dungeon"
+          ],
+          "source": {
+            "title": "Iron dragon",
+            "url": "https://oldschool.runescape.wiki/w/Iron_dragon",
+            "revision": 15273774
+          }
+        },
+        {
+          "id": "steel-dragon",
+          "name": "Steel dragon",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Steel dragon",
+            "url": "https://oldschool.runescape.wiki/w/Steel_dragon",
+            "revision": 15365305
+          }
+        },
+        {
+          "id": "bronze-dragon",
+          "name": "Bronze dragon",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Bronze dragon",
+            "url": "https://oldschool.runescape.wiki/w/Bronze_dragon",
+            "revision": 15351936
+          }
+        },
+        {
+          "id": "mithril-dragon",
+          "name": "Mithril dragon",
+          "locations": [],
+          "source": {
+            "title": "Mithril dragon",
+            "url": "https://oldschool.runescape.wiki/w/Mithril_dragon",
+            "revision": 15351490
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "adamant-dragon",
+          "name": "Adamant dragon",
+          "locations": [
+            "Lithkren Vault"
+          ],
+          "source": {
+            "title": "Adamant dragon",
+            "url": "https://oldschool.runescape.wiki/w/Adamant_dragon",
+            "revision": 15373867
+          }
+        },
+        {
+          "id": "rune-dragon",
+          "name": "Rune dragon",
+          "locations": [
+            "Lithkren Vault"
+          ],
+          "source": {
+            "title": "Rune dragon",
+            "url": "https://oldschool.runescape.wiki/w/Rune_dragon",
+            "revision": 15364710
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "mutated zygomites": {
+      "locations": [
+        "Fossil Island",
+        "Zanaris"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "zygomite",
+          "name": "Zygomite",
+          "locations": [
+            "Zanaris"
+          ],
+          "source": {
+            "title": "Zygomite",
+            "url": "https://oldschool.runescape.wiki/w/Zygomite",
+            "revision": 15366230
+          }
+        },
+        {
+          "id": "ancient-zygomite",
+          "name": "Ancient Zygomite",
+          "locations": [
+            "Fossil Island"
+          ],
+          "source": {
+            "title": "Ancient Zygomite",
+            "url": "https://oldschool.runescape.wiki/w/Ancient_Zygomite",
+            "revision": 15375038
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "nechryael": {
+      "locations": [
+        "Catacombs of Kourend",
+        "Iorwerth Dungeon",
+        "Slayer Tower"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "nechryael",
+          "name": "Nechryael",
+          "locations": [
+            "Slayer Tower"
+          ],
+          "source": {
+            "title": "Nechryael",
+            "url": "https://oldschool.runescape.wiki/w/Nechryael",
+            "revision": 15385695
+          }
+        },
+        {
+          "id": "greater-nechryael",
+          "name": "Greater Nechryael",
+          "locations": [
+            "Catacombs of Kourend",
+            "Iorwerth Dungeon"
+          ],
+          "source": {
+            "title": "Greater Nechryael",
+            "url": "https://oldschool.runescape.wiki/w/Greater_Nechryael",
+            "revision": 15341801
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "red dragons": {
+      "locations": [
+        "Brimhaven Dungeon",
+        "Catacombs of Kourend",
+        "Forthos Dungeon",
+        "Myths' Guild Dungeon"
+      ],
+      "requirements": {
+        "Catacombs of Kourend": [
+          {
+            "kind": "skill",
+            "key": "combat",
+            "min": 100,
+            "label": "Combat"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "baby-red-dragon",
+          "name": "Baby red dragon",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Forthos Dungeon",
+            "Myths' Guild Dungeon"
+          ],
+          "source": {
+            "title": "Baby red dragon",
+            "url": "https://oldschool.runescape.wiki/w/Baby_red_dragon",
+            "revision": 15199796
+          }
+        },
+        {
+          "id": "red-dragon",
+          "name": "Red dragon",
+          "locations": [
+            "Brimhaven Dungeon",
+            "Forthos Dungeon",
+            "Myths' Guild Dungeon"
+          ],
+          "source": {
+            "title": "Red dragon",
+            "url": "https://oldschool.runescape.wiki/w/Red_dragon",
+            "revision": 15240522
+          }
+        },
+        {
+          "id": "brutal-red-dragon",
+          "name": "Brutal red dragon",
+          "locations": [
+            "Catacombs of Kourend"
+          ],
+          "source": {
+            "title": "Brutal red dragon",
+            "url": "https://oldschool.runescape.wiki/w/Brutal_red_dragon",
+            "revision": 15355325
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "skeletal wyverns": {
+      "locations": [
+        "Asgarnian Ice Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "skeletal-wyvern",
+          "name": "Skeletal Wyvern",
+          "locations": [
+            "Asgarnian Ice Dungeon"
+          ],
+          "source": {
+            "title": "Skeletal Wyvern",
+            "url": "https://oldschool.runescape.wiki/w/Skeletal_Wyvern",
+            "revision": 15359558
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "smoke devils": {
+      "locations": [
+        "Smoke Devil Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "smoke-devil",
+          "name": "Smoke devil",
+          "locations": [
+            "Smoke Devil Dungeon"
+          ],
+          "source": {
+            "title": "Smoke devil",
+            "url": "https://oldschool.runescape.wiki/w/Smoke_devil",
+            "revision": 15357607
+          }
+        },
+        {
+          "id": "thermonuclear-smoke-devil",
+          "name": "Thermonuclear smoke devil",
+          "locations": [
+            "Smoke Devil Dungeon"
+          ],
+          "source": {
+            "title": "Thermonuclear smoke devil",
+            "url": "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil",
+            "revision": 15369525
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "trolls": {
+      "locations": [
+        "Troll Stronghold (location)",
+        "Keldagrim",
+        "Death Plateau (location)",
+        "South of Mount Quidamortem",
+        "Fremennik Isles",
+        "Wyrmscraig Cavern"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "mountain-troll",
+          "name": "Mountain troll",
+          "locations": [
+            "Troll Stronghold (location)",
+            "Keldagrim",
+            "Death Plateau (location)",
+            "South of Mount Quidamortem",
+            "Wyrmscraig Cavern"
+          ],
+          "source": {
+            "title": "Mountain troll",
+            "url": "https://oldschool.runescape.wiki/w/Mountain_troll",
+            "revision": 15406524
+          }
+        },
+        {
+          "id": "ice-troll",
+          "name": "Ice troll",
+          "locations": [],
+          "source": {
+            "title": "Ice troll",
+            "url": "https://oldschool.runescape.wiki/w/Ice_troll",
+            "revision": 15199343
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "troll-general",
+          "name": "Troll general",
+          "locations": [
+            "Troll Stronghold (location)"
+          ],
+          "source": {
+            "title": "Troll general",
+            "url": "https://oldschool.runescape.wiki/w/Troll_general",
+            "revision": 15406525
+          }
+        },
+        {
+          "id": "reanimated-troll",
+          "name": "Reanimated troll",
+          "locations": [],
+          "source": {
+            "title": "Reanimated troll",
+            "url": "https://oldschool.runescape.wiki/w/Reanimated_troll",
+            "revision": 15406540
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "dad",
+          "name": "Dad",
+          "locations": [],
+          "source": {
+            "title": "Dad",
+            "url": "https://oldschool.runescape.wiki/w/Dad",
+            "revision": 15352679
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "ice-troll-king",
+          "name": "Ice Troll King",
+          "locations": [],
+          "source": {
+            "title": "Ice Troll King",
+            "url": "https://oldschool.runescape.wiki/w/Ice_Troll_King",
+            "revision": 15380078
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "arrg",
+          "name": "Arrg",
+          "locations": [],
+          "source": {
+            "title": "Arrg",
+            "url": "https://oldschool.runescape.wiki/w/Arrg",
+            "revision": 15406527
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "ice-troll-runt",
+          "name": "Ice troll runt",
+          "locations": [
+            "Fremennik Isles"
+          ],
+          "source": {
+            "title": "Ice troll runt",
+            "url": "https://oldschool.runescape.wiki/w/Ice_troll_runt",
+            "revision": 15199610
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "turoth": {
+      "locations": [
+        "Fremennik Slayer Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "turoth",
+          "name": "Turoth",
+          "locations": [
+            "Fremennik Slayer Dungeon"
+          ],
+          "source": {
+            "title": "Turoth",
+            "url": "https://oldschool.runescape.wiki/w/Turoth",
+            "revision": 15406881
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "vampyres": {
+      "locations": [
+        "Darkmeyer",
+        "Meiyerditch",
+        "Slepe",
+        "Vampyrium"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "vyrewatch-sentinel",
+          "name": "Vyrewatch Sentinel",
+          "locations": [
+            "Darkmeyer"
+          ],
+          "source": {
+            "title": "Vyrewatch Sentinel",
+            "url": "https://oldschool.runescape.wiki/w/Vyrewatch_Sentinel",
+            "revision": 15367082
+          }
+        },
+        {
+          "id": "venator",
+          "name": "Venator",
+          "locations": [
+            "Vampyrium"
+          ],
+          "source": {
+            "title": "Venator",
+            "url": "https://oldschool.runescape.wiki/w/Venator",
+            "revision": 15387621
+          }
+        },
+        {
+          "id": "feral-vampyre",
+          "name": "Feral Vampyre",
+          "locations": [],
+          "source": {
+            "title": "Feral Vampyre",
+            "url": "https://oldschool.runescape.wiki/w/Feral_Vampyre",
+            "revision": 15356500
+          },
+          "note": "No reviewed repeatable method within this assignment location pool; quest-only, reanimation and outside-area encounters are not assumed compatible."
+        },
+        {
+          "id": "vampyre-juvinate",
+          "name": "Vampyre Juvinate",
+          "locations": [
+            "Darkmeyer",
+            "Meiyerditch"
+          ],
+          "source": {
+            "title": "Vampyre Juvinate",
+            "url": "https://oldschool.runescape.wiki/w/Vampyre_Juvinate",
+            "revision": 15392016
+          }
+        },
+        {
+          "id": "vyrewatch",
+          "name": "Vyrewatch",
+          "locations": [
+            "Darkmeyer",
+            "Meiyerditch",
+            "Slepe"
+          ],
+          "source": {
+            "title": "Vyrewatch",
+            "url": "https://oldschool.runescape.wiki/w/Vyrewatch",
+            "revision": 15380818
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "warped creatures": {
+      "locations": [
+        "Poison Waste Dungeon"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "warped-tortoise",
+          "name": "Warped Tortoise",
+          "locations": [
+            "Poison Waste Dungeon"
+          ],
+          "source": {
+            "title": "Warped Tortoise",
+            "url": "https://oldschool.runescape.wiki/w/Warped_Tortoise",
+            "revision": 15406874
+          }
+        },
+        {
+          "id": "warped-terrorbird",
+          "name": "Warped Terrorbird",
+          "locations": [
+            "Poison Waste Dungeon"
+          ],
+          "source": {
+            "title": "Warped Terrorbird",
+            "url": "https://oldschool.runescape.wiki/w/Warped_Terrorbird",
+            "revision": 15406498
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "waterfiends": {
+      "locations": [
+        "Ancient Cavern",
+        "Iorwerth Dungeon",
+        "Kraken Cove"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "waterfiend",
+          "name": "Waterfiend",
+          "locations": [
+            "Ancient Cavern",
+            "Iorwerth Dungeon",
+            "Kraken Cove"
+          ],
+          "source": {
+            "title": "Waterfiend",
+            "url": "https://oldschool.runescape.wiki/w/Waterfiend",
+            "revision": 15385712
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    },
+    "wyrms": {
+      "locations": [
+        "Karuulm Slayer Dungeon",
+        "Neypotzli",
+        "Charred Dungeon",
+        "Wyrmscraig Cavern"
+      ],
+      "requirements": {},
+      "variants": [
+        {
+          "id": "wyrm",
+          "name": "Wyrm",
+          "locations": [
+            "Karuulm Slayer Dungeon",
+            "Wyrmscraig Cavern"
+          ],
+          "source": {
+            "title": "Wyrm",
+            "url": "https://oldschool.runescape.wiki/w/Wyrm",
+            "revision": 15391861
+          }
+        },
+        {
+          "id": "lava-strykewyrm",
+          "name": "Lava Strykewyrm",
+          "locations": [
+            "Charred Dungeon",
+            "Wyrmscraig Cavern"
+          ],
+          "source": {
+            "title": "Lava Strykewyrm",
+            "url": "https://oldschool.runescape.wiki/w/Lava_Strykewyrm",
+            "revision": 15397759
+          }
+        },
+        {
+          "id": "wyrmling",
+          "name": "Wyrmling",
+          "locations": [
+            "Neypotzli",
+            "Wyrmscraig Cavern"
+          ],
+          "source": {
+            "title": "Wyrmling",
+            "url": "https://oldschool.runescape.wiki/w/Wyrmling",
+            "revision": 15321695
+          }
+        }
+      ],
+      "source": {
+        "title": "Konar quo Maten",
+        "url": "https://oldschool.runescape.wiki/w/Konar_quo_Maten",
+        "revision": 15408174
+      },
+      "mode": "uniform",
+      "note": ""
+    }
+  }
+}

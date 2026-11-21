@@ -1,4 +1,5 @@
 import type {Catalogue,Eligibility,Master,Profile,Requirement,Variant,Entry,Method} from '../domain/types';
+import {KONAR_AUDIT,konarPool,konarVariantLocations,sameKonarLocation} from './konar-locations';
 import {questPointAllowance} from './quest-points';
 import {questState,resolveAccess} from './access';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
@@ -41,18 +42,10 @@ export function locationFraction(entry:Entry,v:Variant,method:Method,master:Mast
   if(method.location&&resolveAccess('location:'+method.location,p).value===0)return {fraction:0,unknown:[]};
   if(master.id!=='konar')return {fraction:1,unknown:[]};
   if(method.locationChance!==null)return {fraction:method.locationChance,unknown:['Custom Konar location probability']};
-  const all=entry.locations||[];
-  const known:Record<string,string[]>= {'basilisk-knight':["Jormungand's Prison"],'demonic-gorilla':['Crash Site Cavern'],'cerberus':['Taverley Dungeon'],'kraken':['Kraken Cove'],'alchemical-hydra':['Karuulm Slayer Dungeon']};
-  // Regular hellhounds occupy all five locations in the pinned Konar pool.
-  // Sources: Slayer task/Hellhounds (15357324), Hellhound (15351778).
-  known.hellhound=['Karuulm Slayer Dungeon','Catacombs of Kourend','Stronghold Slayer Dungeon','Taverley Dungeon','Witchaven Dungeon'];
-  const wanted=method.location?[method.location]:known[v.id];
-  if(!wanted)return {fraction:1,unknown:['Konar location compatibility assumed; enter a location chance for this method']};
-  if(!all.length)return {fraction:1,unknown:['Konar location pool is not verified for this assignment']};
-  const eligible=all.filter(loc=>resolveAccess('location:'+loc,p).value!==0);
-  const count=eligible.filter(loc=>wanted.some(w=>loc.toLowerCase().includes(w.toLowerCase()))).length;
-  const unknown=eligible.some(loc=>resolveAccess('location:'+loc,p).value===null)?['Konar location access requires confirmation']:[];
-  if(v.id==='hellhound'&&!method.location&&eligible.some(loc=>!wanted.some(w=>loc.toLowerCase()===w.toLowerCase())))unknown.push('Hellhound compatibility is not reviewed for every location in this pool');
-  return {fraction:eligible.length?count/eligible.length:0,unknown};
+  const audit=KONAR_AUDIT[entry.id];
+  if(audit?.mode==='specific-boss')return {fraction:1,unknown:[]};
+  const pool=konarPool(entry,p),compatible=konarVariantLocations(entry,v);
+  const matches=pool.locations.filter(location=>compatible.some(name=>sameKonarLocation(name,location))&&(!method.location||sameKonarLocation(method.location,location)));
+  return {fraction:pool.locations.length?matches.length/pool.locations.length:0,unknown:pool.unknown};
 }
 export function targetAssignments(data:Catalogue,p:Profile):Set<string>{return new Set(p.goal.targets.filter(t=>data.variants.some(v=>v.id===t.variantId)).map(t=>t.assignmentId));}

@@ -53,7 +53,7 @@ def build():
         strategy_sources[page['title'].casefold()] = dict(title=page['title'],
             url='https://oldschool.runescape.wiki/w/' + quote(page['title'].replace(' ', '_'), safe='/:'),
             revision=revision['revid'], timestamp=revision['timestamp'])
-    return dict(schemaVersion=1, version="2026-11-21.1", records=result, strategySources=strategy_sources)
+    return dict(schemaVersion=1, version="2026-11-21.2", records=result, strategySources=strategy_sources)
 
 
 if __name__ == "__main__":

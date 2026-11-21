@@ -1,3 +1,4 @@
+import {locationActions} from './konar-outcomes';
 import type {Profile,Row} from '../domain/types';
 import {paidSkipFraction} from '../rules/task-policy';
 
@@ -5,7 +6,7 @@ import {paidSkipFraction} from '../rules/task-policy';
  * moments instead complete target tasks and support long-run point rates. */
 export function offerMoments(rows:Row[],p:Profile,fallback=new Map<Row,Row>()){
   let target=0,targetKills=0,skip=0,beforeTarget=p.requestMinutes,full=p.requestMinutes;
-  for(const row of rows.filter(r=>!r.reason&&!r.blocked)){
+  for(const row of locationActions(rows).filter(r=>!r.reason&&!r.blocked)){
     const hit=row.isTarget?row.targetFraction:0,other=fallback.get(row)||row;
     const fraction=paidSkipFraction(other,p),cost=fraction*p.skipSeconds/60+(1-fraction)*other.minutes;
     target+=row.probability*hit;skip+=row.probability*(1-hit)*fraction;

@@ -2683,6 +2683,42 @@
       "imagePage": "https://oldschool.runescape.wiki/w/File:Black_dragon_icon.png",
       "originalSha256": "759ad652ac7e5adb7d0942d06479ae9bc6f44efb5f599c85a4c09ed85f87df5d",
       "imageTimestamp": "2014-01-23T15:26:48Z"
+    },
+    "frost-nagua": {
+      "frame": 298,
+      "name": "Frost Nagua",
+      "file": "Frost Nagua.png",
+      "source": "https://oldschool.runescape.wiki/w/Frost_Nagua",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Frost_Nagua.png",
+      "originalSha256": "3aea91747e7341a8a8ddaaac5c7edfe36dca1a597c74faa21bb0ec06753743e8",
+      "imageTimestamp": "2024-09-25T08:56:01Z"
+    },
+    "earthen-nagua": {
+      "frame": 299,
+      "name": "Earthen Nagua",
+      "file": "Earthen Nagua.png",
+      "source": "https://oldschool.runescape.wiki/w/Earthen_Nagua",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Earthen_Nagua.png",
+      "originalSha256": "0bf27cbe7a662b380e390d4bece155fdab1318d68b16af40ab6c222ffa578702",
+      "imageTimestamp": "2025-07-26T00:15:24Z"
+    },
+    "ice-troll-runt": {
+      "frame": 300,
+      "name": "Ice troll runt",
+      "file": "Ice troll runt.png",
+      "source": "https://oldschool.runescape.wiki/w/Ice_troll_runt",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Ice_troll_runt.png",
+      "originalSha256": "a28b4c43f0205aab13e31894188fccd2b564ce1512568a3c1fa41b664d08804c",
+      "imageTimestamp": "2021-07-03T07:12:22Z"
+    },
+    "dagannoth-waterbirth-island": {
+      "frame": 301,
+      "name": "Dagannoth (Waterbirth Island)",
+      "file": "Dagannoth (Waterbirth Island, level 88).png",
+      "source": "https://oldschool.runescape.wiki/w/Dagannoth_(Waterbirth_Island)",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Dagannoth_(Waterbirth_Island,_level_88).png",
+      "originalSha256": "6581dd32c1219d2ff48632104bd9bbbb917ebce951e58c2f597588fa4162b6a2",
+      "imageTimestamp": "2024-11-03T17:48:12Z"
     }
   },
   "aliases": {
@@ -2984,6 +3020,10 @@
     "mixed boss assignment (timing scenario)": "boss-pool",
     "black dragon (level 227)": "black-dragon",
     "black dragon (wilderness slayer cave)": "black-dragon-wilderness-slayer-cave",
+    "frost nagua": "frost-nagua",
+    "earthen nagua": "earthen-nagua",
+    "ice troll runt": "ice-troll-runt",
+    "dagannoth (waterbirth island)": "dagannoth-waterbirth-island",
     "aberrant spectres": "aberrant-spectre",
     "abyssal demons": "abyssal-demon",
     "aquanites": "aquanite",

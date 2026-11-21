@@ -1,7 +1,8 @@
 import raw from '../../data/variant-additions.json';
 import type {Catalogue,Variant,Master} from '../domain/types';
+import {sameKonarLocation} from './konar-locations';
 
-export const VARIANT_ADDITIONS=raw.variants as Variant[];
+export const VARIANT_ADDITIONS=raw.variants as unknown as Variant[];
 export const VARIANT_VERSION=raw.version;
 
 export function applyVariantAdditions(base:Catalogue):Catalogue{
@@ -19,6 +20,6 @@ export function applyVariantAdditions(base:Catalogue):Catalogue{
 
 export function methodLocationRestriction(v:Variant,master:Master,location:string):string|null{
   const allowed=v.masterLocations?.[master.id];
-  if(!location||!allowed||allowed.some(l=>l.toLowerCase()===location.trim().toLowerCase()))return null;
+  if(!location||!allowed||allowed.some(l=>master.id==='konar'?sameKonarLocation(l,location):l.toLowerCase()===location.trim().toLowerCase()))return null;
   return `${master.name} requires ${v.name} at ${allowed.join(' or ')}. The selected method location (${location}) is not valid for this master.`;
 }

@@ -5,6 +5,7 @@ import {evaluate} from './planner';
 export function taskAdvice(data:Catalogue,plan:Plan,p:Profile,row:Row):{action:string;detail:string}{
   if(row.reason)return {action:'Unavailable',detail:row.reason};
   if(row.blocked)return {action:'Block',detail:'Excluded by this proposed block list.'};
+  if(row.isTarget&&row.locationOutcomes&&row.targetFraction<1)return {action:'Check offered location',detail:`Only ${(row.targetFraction*100).toFixed(1)}% of the available assignment locations support a selected target. Check Konar’s location roll below for each area's creature and skip/reset/completion action. Saved keep/protect preferences apply to every location.`};
   if(row.isTarget&&plan.master.id==='konar'&&row.targetFraction>0&&row.targetFraction<1&&shouldReset(plan.master,{...row,isTarget:false},p,data.masters.find(m=>m.id==='turael')!))return {action:'Check offered location',detail:`Keep this offer if its location supports your target variant (${(row.targetFraction*100).toFixed(1)}% of locations in this scenario). Otherwise reset it through Turael under this policy. Your keep/protect preferences take priority.`};
   if(row.isTarget)return {action:'Complete target',detail:row.methodReason||'Protected hunt target. Keep the assignment; confirm its offered location can satisfy the selected variant.'};
   if(p.preferences[row.id]==='keep'||p.preferences[row.id]==='protect')return {action:'Complete',detail:'Your keep/protect preference takes priority.'};

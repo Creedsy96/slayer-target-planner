@@ -1,3 +1,4 @@
+import {locationActions} from './konar-outcomes';
 import type {Master,Plan,Profile,ResetEstimate,Row} from '../domain/types';
 import {paidSkipFraction,shouldReset} from '../rules/task-policy';
 
@@ -8,7 +9,8 @@ const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
  * are averaged into this offer-time estimate; simulation handles those facts.
  */
 export function resetEstimate(master:Master,rows:Row[],filler:Plan,p:Profile,fallback=new Map<Row,Row>()):ResetEstimate{
-  const replacement=filler.rows.filter(r=>!r.reason&&!r.blocked);
+  rows=locationActions(rows);
+  const replacement=locationActions(filler.rows).filter(r=>!r.reason&&!r.blocked);
   const target=(r:Row)=>r.isTarget?r.targetFraction:0;
   const actionMinutes=(r:Row)=> (1-paidSkipFraction(r,p))*r.minutes+paidSkipFraction(r,p)*p.skipSeconds/60;
   const action=(r:Row)=>fallback.get(r)||r;

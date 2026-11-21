@@ -23,7 +23,11 @@ export function compareTargetExtensions(data:Catalogue,plan:Plan,p:Profile):Exte
       const scenario=clone(p);setTaskExtension(scenario,assignmentId,extended);
       // Reuse calculated combat results. Only assignment quantity changes.
       const rows=plan.rows.map(row=>{
-        const clean={...row,skip:0,probability:0,blocked:false};
+        const clean={...row,skip:0,probability:0,blocked:false,locationOutcomes:row.locationOutcomes?.map(o=>{
+          if(row.id!==assignmentId)return {...o,row:{...o.row}};
+          const method={...o.row.method,extended},timing=taskTiming(o.row.entry,o.row.variant,method);
+          return {...o,row:{...o.row,method,...timing,meanKills:timing.kills}};
+        })};
         if(row.id!==assignmentId)return clean;
         const method={...row.method,extended},timing=taskTiming(row.entry,row.variant,method);
         return {...clean,method,...timing,meanKills:timing.kills};
