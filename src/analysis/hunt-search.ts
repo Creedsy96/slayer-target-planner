@@ -7,6 +7,13 @@ import {blockSlots,targetAssignments} from '../rules/eligibility';
 // Candidate search uses the actual stopping event and legal ledger, with common
 // random seeds. It is bounded and explicitly does not certify a global optimum.
 export function searchHunt(data:Catalogue,master:Master,p:Profile,progress?:(n:number,total:number)=>void):{plan:Plan;result:Simulation}{
+  if(p.objective==='kills-hour'){
+    const plan=optimise(data,master,p,250,(fraction)=>progress?.(fraction/2,1));
+    if(!Number.isFinite(plan.objectiveValue))throw Error(plan.targetRateReason||'No supported positive target kill-rate estimate for this master.');
+    plan.quality+='; full-hunt simulation reports the selected stopping goal; ranking uses the analytical long-run rate';
+    const result=simulate(data,plan,p,done=>progress?.(.5+.5*done/p.simulation.trials,1));
+    progress?.(1,1);return {plan,result};
+  }
   const baseline=optimise(data,master,p,100),targets=targetAssignments(data,p);
   const eligible=prepareRows(data,master,p).filter(r=>!r.reason&&!targets.has(r.id)&&p.preferences[r.id]!=='protect');
   const configurations:string[][]=[baseline.blocks,p.blocks[master.group]||[],[]];

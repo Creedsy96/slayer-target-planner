@@ -170,7 +170,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const rate=boost?boost.targetKillsPerHour:reset?reset.targetKillsPerHour:moments.full>0?moments.targetKills*60/moments.full:null;
   const targetRateReason=reason||(m.id==='mortimer'?'Mortimer quantity and combat modifiers need simulation; a base-quantity rate would be misleading.':undefined)||((rate===null||!Number.isFinite(rate)||rate<0)?'No finite full-task cycle is available for this setup.':undefined);
   const targetKillsPerHour=targetRateReason?null:rate;
-  const objectiveValue=reason?Infinity:p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
+  const objectiveValue=reason?Infinity:p.objective==='kills-hour'?(targetKillsPerHour!==null&&targetKillsPerHour>0?-targetKillsPerHour:Infinity):p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
   return {targetKillsPerHour,targetRateReason,boost,simulationOnly,pointsRateReason,reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:boost&&boost.requests&&boost.paidSkips!==null?boost.paidSkips/boost.requests:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:pointsRateReason?null:boost?boost.pointsEarnedPerHour:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:pointsRateReason?null:boost?boost.pointsSpentPerHour:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
 }
 export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700,progress?:(fraction:number,current:string)=>void):Plan{
@@ -181,35 +181,54 @@ export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700,pr
   if(Object.hasOwn(p.proposed,m.group))return scorePlan([...fixed],'Fixed proposed list');
   const candidates=rows.filter(r=>!r.reason&&!targets.has(r.id)&&p.preferences[r.id]!=='protect');
   const count=Math.min(slots,candidates.length);
-  const score=(r:Row)=>p.objective==='chance'?r.weight:r.weight*r.minutes;
+  const rateObjective=p.objective==='kills-hour',variableSize=rateObjective||p.objective==='points';
+  const score=(r:Row)=>p.objective==='chance'?r.weight:r.weight*(r.minutes+(rateObjective?p.requestMinutes:0));
   const sorted=[...candidates].sort((a,b)=>score(b)-score(a)||a.id.localeCompare(b.id));
   let best=scorePlan(p.objective==='points'?(p.blocks[m.group]||[]):sorted.slice(0,count).map(r=>r.id));let evaluations=1;
-  const combinations=p.objective==='points'?Array.from({length:count+1},(_,k)=>chooseCount(candidates.length,k)).reduce((a,b)=>a+b,0):chooseCount(candidates.length,count);
-  if(combinations<=maxEvaluations){
+  const combinations=variableSize?Array.from({length:count+1},(_,k)=>chooseCount(candidates.length,k)).reduce((a,b)=>a+b,0):chooseCount(candidates.length,count);
+  if(combinations+(rateObjective?1:0)<=maxEvaluations){
     function visit(start:number,selected:string[],size=count):void{
       if(selected.length===size){const plan=scorePlan(selected);evaluations++;if(plan.objectiveValue<best.objectiveValue-1e-12)best=plan;return;}
       for(let i=start;i<=candidates.length-(size-selected.length);i++)visit(i+1,[...selected,candidates[i].id],size);
     }
-    if(p.objective==='points'){for(let k=0;k<=count;k++)visit(0,[],k);}else visit(0,[]);best.quality='Exact enumeration of legal block sets (fixed method/skip policy)';
-  }else if(m.id!=='mortimer'&&p.objective!=='points'&&p.strategy==='none'&&p.goal.kind==='offer'&&!p.cape){
+    if(variableSize){for(let k=0;k<=count;k++)visit(0,[],k);}else visit(0,[]);best.quality='Exact enumeration of legal block sets (fixed method/skip policy)';
+  }else if(!rateObjective&&m.id!=='mortimer'&&p.objective!=='points'&&p.strategy==='none'&&p.goal.kind==='offer'&&!p.cape){
     best.quality='Exact blocks for stationary single-draw offers (fixed methods)';
   }else{
+    if(rateObjective){
+      const seeds=[[],p.blocks[m.group]||[],...Array.from({length:count},(_,n)=>sorted.slice(0,n+1).map(r=>r.id))];
+      for(const seed of seeds){
+        if(evaluations>=maxEvaluations)break;
+        if(seed.length>count||seed.some(id=>!candidates.some(r=>r.id===id)))continue;
+        const plan=scorePlan([...seed]);evaluations++;
+        if(plan.objectiveValue<best.objectiveValue-1e-10)best=plan;
+      }
+    }
     let improved=true;
     while(improved&&evaluations<maxEvaluations){improved=false;const current=[...best.blocks];
+      if(rateObjective){
+        const neighbours=[...current.map(id=>current.filter(other=>other!==id)),...(current.length<count?candidates.filter(r=>!current.includes(r.id)).map(r=>[...current,r.id]):[])];
+        for(const blocks of neighbours){
+          if(evaluations>=maxEvaluations)break;
+          const plan=scorePlan(blocks);evaluations++;
+          if(plan.objectiveValue<best.objectiveValue-1e-10){best=plan;improved=true;}
+        }
+      }
       for(let i=0;i<current.length&&evaluations<maxEvaluations;i++)for(const replacement of candidates){
         if(current.includes(replacement.id)||evaluations>=maxEvaluations)continue;
         const next=[...current];next[i]=replacement.id;const plan=scorePlan(next);evaluations++;
         if(plan.objectiveValue<best.objectiveValue-1e-10){best=plan;improved=true;}
       }
     }
-    best.quality=`Best found by bounded block swaps (${evaluations} evaluations); not a certified global optimum`;
+    best.quality=`Best found by bounded block ${rateObjective?'adds/removals/swaps':'swaps'} (${evaluations} evaluations); not a certified global optimum`;
   }
   if(best.boost)best.quality+='; periodic boosting estimate includes filler tasks and current streak; point rates use a 1000-completion cycle';
   if(best.reset)best.quality+='; reset renewal model includes recorded Turael blocks and replacement tasks; simulate points and streaks';
   best.searchEvaluations=evaluations;
   if(blockSlots(m,p).unknown)best.quality+='; baseline uses confirmed block capacity only — enter quest points and Lumbridge Elite status to optimise additional slots';
   if(m.id==='mortimer')best.quality+='; modifier-aware policies evaluated by simulation';
-  if(p.strategy==='funded'||p.goal.kind!=='offer'||p.objective==='points')best.quality+='; analytical offer estimate only — use strategy simulation for this objective';
+  if(rateObjective)best.quality+='; ranked by selected target creatures killed per hour over repeated full task cycles';
+  if(!rateObjective&&(p.strategy==='funded'||p.goal.kind!=='offer'||p.objective==='points'))best.quality+='; analytical offer estimate only — use strategy simulation for this objective';
   return best;
 }
 function chooseCount(n:number,k:number):number{let total=1;for(let i=1;i<=k;i++)total=total*(n-i+1)/i;return total;}

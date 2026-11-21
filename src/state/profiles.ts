@@ -68,7 +68,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   numeric(p.points,0,1e9,'Points',true);numeric(p.reserve,0,1e9,'Point reserve');numeric(p.globalDps,.1,10000,'DPS');numeric(p.skipSeconds,0,10000,'Skip seconds');numeric(p.requestMinutes,0,10000,'Request minutes');
   numeric(p.hypotheticalChoices,2,3,'Hypothetical choices',true);
   if(typeof p.assumeUnknown!=='boolean'||typeof p.applySetup!=='boolean'||typeof p.cape!=='boolean')throw Error('Invalid profile switches.');
-  if(!['time','chance','points'].includes(p.objective)||!['none','sustainable','funded','boost-turael','boost-mazchna','reset-turael'].includes(p.strategy))throw Error('Unknown objective or strategy.');
+  if(!['time','chance','points','kills-hour'].includes(p.objective)||!['none','sustainable','funded','boost-turael','boost-mazchna','reset-turael'].includes(p.strategy))throw Error('Unknown objective or strategy.');
   numeric(p.milestone,10,1000,'Boost milestone');if(![10,50,100,250,1000].includes(p.milestone))throw Error('Unsupported milestone.');
   for(const lists of [p.blocks,p.proposed])for(const [group,list]of Object.entries(lists)){
     if(!data.masters.some(m=>m.group===group)||!Array.isArray(list)||new Set(list).size!==list.length||list.some(id=>!ids.has(id)))throw Error('Invalid, duplicate or unknown block-list entries.');

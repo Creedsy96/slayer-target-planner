@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.6
+# Slayer Target Planner 3.0.7
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.6 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.7 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Rank by target kills per hour in 3.0.7
+
+Choose **Rank plans by → Highest target kills per hour** to recommend the best supported master for killing your selected creatures over full task cycles. The block search optimises the same rate, and the recommendation card highlights it. Unsupported rates stay inspectable without becoming recommendations. The option is retained in saved hunts and character exports. See [the ranking model and verification](docs/target-rate-ranking.md).
 
 ## Maxed gear assumption in 3.0.6
 
