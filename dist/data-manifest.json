@@ -1,4 +1,5 @@
 {
+  "slayerExtensions": "2026-11-21.1",
   "konarLocations": "2026-11-21.1",
   "questPoints": "2026-11-21.1",
   "combatEngine": "3da927f4280c73154fa59e4e90eb374af5123d32",
@@ -9,5 +10,5 @@
   "mortimerRules": "2026-11-19.1",
   "areaRules": "2026-11-21.1",
   "version": "2026-11-19.2",
-  "application": "3.0.13"
+  "application": "3.0.14"
 }

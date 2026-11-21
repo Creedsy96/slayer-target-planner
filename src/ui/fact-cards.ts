@@ -6,9 +6,9 @@ const creatures:Record<string,string>={basilocked:'basilisk-knight','watch-the-b
 // Rewards-shop order from the captured Slayer Rewards source, omitting rewards
 // this planner does not model. Read left to right, then top to bottom.
 const rewardOrder=['seeing-red','watch-the-birdie','hot-stuff','like-a-boss','reptile-got-ripped','stop-the-wyvern','basilocked','vampyres','wildy-more','warped-reality','lured-in','wings-spread','heavy-frost'];
-export function factCard(label:string,value:number|null|undefined,attributes:string,icon='',note=''):string{
+export function factCard(label:string,value:number|null|undefined,attributes:string,icon='',note='',mixed=false):string{
  const enabled=value===1;
- return `<button type="button" class="fact-card ${enabled?'enabled':''}" ${attributes} aria-pressed="${enabled}">${icon||interfaceIcon('account')}<span class="fact-copy"><strong>${esc(label)}</strong>${note?`<small>${esc(note)}</small>`:''}${value==null?'<small>Unconfirmed &middot; displayed off</small>':''}</span><span class="fact-state" aria-hidden="true">${enabled?'&#10003; Yes':'No'}</span></button>`;
+ return `<button type="button" class="fact-card ${enabled?'enabled':''}" ${attributes} aria-pressed="${mixed?'mixed':enabled}">${icon||interfaceIcon('account')}<span class="fact-copy"><strong>${esc(label)}</strong>${note?`<small>${esc(note)}</small>`:''}${value==null?'<small>Unconfirmed &middot; displayed off</small>':''}</span><span class="fact-state" aria-hidden="true">${mixed?'Review':enabled?'&#10003; Yes':'No'}</span></button>`;
 }
 export function rewardCards(data:Catalogue,p:Profile):string{
  const keys=[...rewardOrder.filter(key=>Object.hasOwn(data.unlocks,key)),...Object.keys(data.unlocks).filter(key=>!rewardOrder.includes(key))];

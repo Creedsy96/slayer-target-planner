@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.13
+# Slayer Target Planner 3.0.14
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.13 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.14 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Extension reward list in 3.0.14
+
+Character setup and Account & access now list all 29 supported task extensions like the Slayer Rewards **Extend** tab: in-game reward names/order, creature icons, point costs and extended quantities. They use the unlock list’s two columns (one on narrow screens), highlight recorded purchases and share the existing extension settings with Hunt setup and Combat methods. Filter by reward or creature name. Recording a purchase does not spend points or grant an unlock. [Behaviour, source and verification](docs/extension-rewards.md).
 
 ## Action feedback in 3.0.13
 

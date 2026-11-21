@@ -57,7 +57,7 @@ test('quest names, character names and Slayer reward labels remain plain text',(
   assert.doesNotMatch(html,/class="creature-(?:name|icon)"/);
   p.setup.step=3;const rewards=m.exports.renderCharacterSetup(data,p,null,false);
   assert.match(rewards,/<strong>Like a boss<\/strong>/);
-  assert.equal((rewards.match(/class="creature-icon"/g)||[]).length,Object.keys(data.unlocks).length);
+  assert.equal((rewards.match(/class="creature-icon"/g)||[]).length,Object.keys(data.unlocks).length+require('../data/slayer-extensions.json').rewards.length);
   assert.equal(context.module.exports.decorateCreatureText,undefined);
   assert.equal(context.module.exports.creatureText,undefined);
 });

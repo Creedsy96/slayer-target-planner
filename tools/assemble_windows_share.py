@@ -27,7 +27,7 @@ def assemble(folder: Path) -> None:
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
     version = json.loads((ROOT / "package.json").read_text())["version"]
-    for name in ["konar-locations", "catalogue", "area-access", "mortimer-modifiers", "variant-additions",
+    for name in ["slayer-extensions", "konar-locations", "catalogue", "area-access", "mortimer-modifiers", "variant-additions",
                  "creature-guide", "equipment-requirements", "item-names", "open-areas", "quest-points"]:
         shutil.copy2(ROOT / "data" / f"{name}.json", folder)
     for name in ["creature-art", "item-art", "owned-art"]:

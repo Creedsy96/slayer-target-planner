@@ -1,0 +1,328 @@
+{
+  "version": "2026-11-21.1",
+  "source": {
+    "title": "Slayer Rewards",
+    "url": "https://oldschool.runescape.wiki/w/Slayer_Rewards#Extend",
+    "revision": 15373095
+  },
+  "rewards": [
+    {
+      "assignmentId": "dark beasts",
+      "name": "Need More Darkness",
+      "points": 100,
+      "iconVariant": "dark-beast",
+      "quantity": {
+        "minimum": 110,
+        "maximum": 135
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "ankou",
+      "name": "Ankou Very Much",
+      "points": 100,
+      "iconVariant": "ankou",
+      "quantity": {
+        "minimum": 91,
+        "maximum": 150
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "suqahs",
+      "name": "Suq-a-nother One",
+      "points": 100,
+      "iconVariant": "suqah",
+      "quantity": {
+        "minimum": 186,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "black dragons",
+      "name": "Fire & Darkness",
+      "points": 50,
+      "iconVariant": "black-dragon",
+      "quantity": {
+        "minimum": 40,
+        "maximum": 60
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "metal dragons",
+      "name": "Pedal to the Metals",
+      "points": 200,
+      "iconVariant": "steel-dragon",
+      "quantity": {
+        "minimum": 150,
+        "maximum": 200
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "spiritual creatures",
+      "name": "Spiritual Fervour",
+      "points": 100,
+      "iconVariant": "spiritual-mage",
+      "quantity": {
+        "minimum": 181,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "abyssal demons",
+      "name": "Augment my Abbies",
+      "points": 100,
+      "iconVariant": "abyssal-demon",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "black demons",
+      "name": "It's Dark in Here",
+      "points": 100,
+      "iconVariant": "black-demon",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "greater demons",
+      "name": "Greater Challenge",
+      "points": 100,
+      "iconVariant": "greater-demon",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "bloodveld",
+      "name": "Bleed Me Dry",
+      "points": 75,
+      "iconVariant": "bloodveld",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "aberrant spectres",
+      "name": "Smell Ya Later",
+      "points": 100,
+      "iconVariant": "aberrant-spectre",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "aviansie",
+      "name": "Birds of a Feather",
+      "points": 100,
+      "iconVariant": "aviansie",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "cave horrors",
+      "name": "Horrorific",
+      "points": 100,
+      "iconVariant": "cave-horror",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "dust devils",
+      "name": "To Dust You Shall Return",
+      "points": 100,
+      "iconVariant": "dust-devil",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "skeletal wyverns",
+      "name": "Wyver-nother One",
+      "points": 100,
+      "iconVariant": "skeletal-wyvern",
+      "quantity": {
+        "minimum": 50,
+        "maximum": 75
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "gargoyles",
+      "name": "Get Smashed",
+      "points": 100,
+      "iconVariant": "gargoyle",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "nechryael",
+      "name": "Nechs Please",
+      "points": 100,
+      "iconVariant": "nechryael",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "cave kraken",
+      "name": "Krack On",
+      "points": 100,
+      "iconVariant": "cave-kraken",
+      "quantity": {
+        "minimum": 150,
+        "maximum": 200
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "scabarites",
+      "name": "Get Scabaright on It",
+      "points": 50,
+      "iconVariant": "locust-rider",
+      "quantity": {
+        "minimum": 130,
+        "maximum": 170
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "fossil island wyverns",
+      "name": "Wyver-nother Two",
+      "points": 100,
+      "iconVariant": "spitting-wyvern",
+      "quantity": {
+        "minimum": 55,
+        "maximum": 75
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "basilisks",
+      "name": "Basilonger",
+      "points": 100,
+      "iconVariant": "basilisk",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "vampyres",
+      "name": "More at Stake",
+      "points": 100,
+      "iconVariant": "vyrewatch-sentinel",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "revenants",
+      "name": "Revenenenenenants",
+      "points": 100,
+      "iconVariant": "revenant-cyclops",
+      "quantity": {
+        "minimum": 100,
+        "maximum": 150
+      },
+      "toggleable": true
+    },
+    {
+      "assignmentId": "araxytes",
+      "name": "More eyes than sense",
+      "points": 150,
+      "iconVariant": "araxyte",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "custodian stalker",
+      "name": "Un-restraining Order",
+      "points": 100,
+      "iconVariant": "mature-custodian-stalker",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "aquanites",
+      "name": "Let's Stay All Aquanite",
+      "points": 100,
+      "iconVariant": "aquanite",
+      "quantity": {
+        "minimum": 150,
+        "maximum": 200
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "wyrms",
+      "name": "Can of Wyrms",
+      "points": 100,
+      "iconVariant": "wyrm",
+      "quantity": {
+        "minimum": 200,
+        "maximum": 250
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "gryphons",
+      "name": "Gryphon and on",
+      "points": 50,
+      "iconVariant": "gryphon",
+      "quantity": {
+        "extra": 80
+      },
+      "toggleable": false
+    },
+    {
+      "assignmentId": "frost dragons",
+      "name": "I see Dragons",
+      "points": 100,
+      "iconVariant": "frost-dragon",
+      "quantity": {
+        "minimum": 180,
+        "maximum": 240
+      },
+      "toggleable": false
+    }
+  ]
+}
