@@ -1,5 +1,6 @@
 import type {EquipmentItem,CombatStyle} from '../../src/combat/types';
 export const equipment:EquipmentItem[];
+export const noStatExceptions:string[];
 export const spells:{name:string;max_hit:number;spellbook:string;element?:string}[];
 export const monsterInputs:Record<string,unknown>;
 export const PotionMap:Record<string,{calculateFn:(skills:Record<string,number>)=>Record<string,number>}>;

@@ -1,3 +1,4 @@
+import {combatCandidate} from './combat-impact';
 import {weaponSupportsFamily,weaponStylesForFamily} from './weapon-family';
 import {availableItems} from './availability';
 import {isBlowpipe,isCrossbow,rangedWeaponCandidates,rangedAmmoCandidates,usableAmmo} from './ranged';
@@ -67,7 +68,9 @@ export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:
 }
 function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  if(!p.bank&&!p.assumeAllGear)return emptyCombat('Import bank/equipment files or add your owned gear first.');
- const config=p.combat??defaultCombat(),owned=availableItems(p).filter(i=>canEquip(i,p)),required=requirementSlots(record,state,location,p),m=encounter(record);
+ const config=p.combat??defaultCombat(),required=requirementSlots(record,state,location,p),m=encounter(record);
+ const relevant=(item:EquipmentItem)=>combatCandidate(item,required[item.slot]?.(item));
+ const owned=availableItems(p).filter(i=>canEquip(i,p)&&relevant(i));
  const forced:Loadout={};
  for(const [slot,accept]of Object.entries(required)){
   if(slot==='shield'&&record.id==='lobstrosity')continue;
@@ -81,7 +84,8 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  const rank=(r:CombatResult)=>r.aggregateDps??r.dps;
  for(const family of requested?[requested]:allowed){
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
-  const pins=p.gearOverrides?.[record.id]?.[family as Family]||{};
+  const recorded=p.gearOverrides?.[record.id]?.[family as Family]||{};
+  const pins:Loadout=Object.fromEntries(Object.entries(recorded).filter(([,id])=>{const item=equipmentItem(id);return !item||relevant(item);}));
   const invalid=Object.entries(pins).find(([slot,id])=>{const item=owned.find(i=>i.id===id);return !item||item.slot!==slot&&!(slot==='ammo'&&item.slot==='weapon')||required[slot as EquipmentSlot]&&!required[slot as EquipmentSlot]!(item)||slot==='weapon'&&!weaponSupportsFamily(item,family);});
   if(invalid){if(requested)return emptyCombat('Saved '+slotNames[invalid[0] as EquipmentSlot]+' choice is no longer usable. Reset this style’s gear choices or update your bank.');continue;}
   const context:ArmourContext={family:family as Family,priority:mode,form};
@@ -128,7 +132,9 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  }
  if(!best.supported)return best;
  const result=applyAreaDamage(calculateCombat(p,record,form,best.loadout,best.style,best.spell,state.onTask,isWildernessCombat(record,location)),record,location,state.stackSize);
- if(p.gearOverrides?.[record.id]?.[result.family as Family])result.notes.push('Saved gear choices for this creature/style are held fixed; remaining slots are optimised automatically. Reset gear choices to restore automatic selection.');
+ const savedChoices=p.gearOverrides?.[record.id]?.[result.family as Family];
+ if(savedChoices&&Object.values(savedChoices).some(id=>{const item=equipmentItem(id!);return item&&!relevant(item);}))result.notes.push('Saved choices without combat benefit in this encounter were ignored. The bank and saved choices are unchanged; reset this style to clear those choices.');
+ if(savedChoices)result.notes.push('Combat-relevant saved gear choices for this creature/style are held fixed; remaining slots are optimised automatically. Reset gear choices to restore automatic selection.');
  result.armourPriority=mode;result.armourFallback=best.armourFallback;
  if(best.armourFallback?.length)result.notes.push('Armour fallback ('+(mode==='prayer'?'prayer bonus first':'defence against listed attacks first')+'): '+best.armourFallback.map(slot=>slotNames[slot]+' / '+equipmentItem(result.loadout[slot]!)!.name).join('; ')+'. These slots were not DPS upgrades. Displayed DPS and kill time include the selected armour and any accuracy penalties.');
  const emptyArmour=(['body','legs'] as const).filter(slot=>!result.loadout[slot]);

@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.22
+# Slayer Target Planner 3.0.23
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.22 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.23 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Combat-only equipment candidates in 3.0.23
+
+Automatic recommendations and slot comparisons omit cosmetic/skilling-only gear with no beneficial combat bonuses or reviewed combat effect. Prayer-only and defensive gear still count. Slayer protection, task bracelets and useful zero-stat effects remain eligible. Bank records stay intact. Old cosmetic slot overrides are ignored with an explanation, preserving calculated timing and the original saved record. [Behaviour and verification](docs/combat-only-gear.md).
 
 ## Cleaner gear comparisons in 3.0.22
 
