@@ -26,10 +26,18 @@ export function boostEstimate(main:Plan,filler:Plan,p:Profile,fallback=new Map<R
     totalMinutes+=kept>0?moments.full/kept:Infinity;
     totalSpent+=kept>0?moments.skip/kept*selected.master.skipCost:Infinity;
   }
+  let huntKills=0,huntMinutes=0;
+  for(const [moments,count] of [[high,1],[low,period-1]] as const){
+    if(!count)continue;
+    const kept=1-moments.skip;
+    huntKills+=kept>0?count*moments.targetKills/kept:0;
+    huntMinutes+=kept>0?count*moments.full/kept:Infinity;
+  }
   return {fillerId:filler.master.id,fillerBlocks:[...filler.blocks],startStreak:p.streaks.normal!,milestone:period,fillerCompletionsBeforeMain:until,nextMainCompletion:next,
     nextMainReward:completionReward(main.master,p,next),mainChance:high.target,fillerChance:low.target,
     minutes:finite?minutes/success:null,requests:finite?requests/success:null,paidSkips:finite?skips/success:null,
     pointsEarnedPerHour:Number.isFinite(totalMinutes)&&totalMinutes>0?reward*60/totalMinutes:null,
     pointsSpentPerHour:Number.isFinite(totalMinutes)&&totalMinutes>0?totalSpent*60/totalMinutes:null,
+    targetKillsPerHour:Number.isFinite(huntMinutes)&&huntMinutes>0?huntKills*60/huntMinutes:null,
     rewardPer1000:reward,cycleMinutes:totalMinutes};
 }

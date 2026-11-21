@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.4
+# Slayer Target Planner 3.0.5
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.4 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.5 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Target kill-rate comparison in 3.0.5
+
+The hunt planner now shows **Target kills / h** for each master: estimated selected target creatures killed over repeated full task cycles, including requests, intervening tasks, skips/resets, travel and target combat. Boosting counts both filler and milestone masters. The hover text explains assumptions and unavailable estimates; funded strategies are labelled as unlimited-funds benchmarks. Comparison CSV exports include the number and its calculation basis. See [the rate calculation and verification](docs/target-kill-rate.md).
 
 ## Variant coverage in 3.0.4
 

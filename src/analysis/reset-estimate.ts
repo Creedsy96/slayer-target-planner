@@ -17,6 +17,9 @@ export function resetEstimate(master:Master,rows:Row[],filler:Plan,p:Profile,fal
   const fillerChance=sum(replacement,r=>r.probability*target(r));
   const replacementMinutes=p.requestMinutes+sum(replacement,r=>r.probability*(1-target(r))*actionMinutes(r));
   const cycleMinutes=p.requestMinutes+sum(rows,r=>r.probability*(1-target(r))*(shouldReset(master,action(r),p,filler.master)?p.skipSeconds/60+replacementMinutes:actionMinutes(action(r))));
+  const kills=sum(rows,r=>r.probability*target(r)*r.meanKills)+rate*sum(replacement,r=>r.probability*target(r)*r.meanKills);
+  const fullMinutes=cycleMinutes+sum(rows,r=>r.probability*target(r)*r.minutes)+rate*sum(replacement,r=>r.probability*target(r)*r.minutes);
   return {rate,directChance,fillerChance,replacementMinutes,cycleMinutes,successPerCycle:directChance+rate*fillerChance,requestsPerCycle:1+rate,fillerBlocks:[...filler.blocks],
+    targetKillsPerHour:Number.isFinite(fullMinutes)&&fullMinutes>0?kills*60/fullMinutes:null,
     paidSkipsPerCycle:sum(rows,r=>r.probability*(1-target(r))*paidSkipFraction(action(r),p))+rate*sum(replacement,r=>r.probability*paidSkipFraction(r,p))};
 }
