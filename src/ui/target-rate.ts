@@ -1,5 +1,6 @@
 import type {Plan,Profile} from '../domain/types';
 import {escapeHtml as esc} from './html';
+import {extensionDifference} from './task-extensions';
 
 export function targetRateDescription(plan:Plan,p:Profile):string{
   if(plan.targetRateReason)return plan.targetRateReason;
@@ -11,5 +12,7 @@ export function targetRateDescription(plan:Plan,p:Profile):string{
 
 export function renderTargetRateCell(plan:Plan,p:Profile):string{
   const rate=plan.targetKillsPerHour,label=rate==null?'—':rate.toFixed(1);
-  return `<td class="target-kill-rate" title="${esc(targetRateDescription(plan,p))}">${label}${rate!=null&&p.strategy==='funded'?'<small>Unlimited funds</small>':''}</td>`;
+  const comparisons=plan.extensions?.filter(c=>c.quantities.length)||[];
+  const extension=rate!=null&&comparisons.length===1&&comparisons[0].extendedRate!==null&&comparisons[0].normalRate!==null?`<small>${comparisons[0].enabled?'Extended · vs normal':'If extended: '+comparisons[0].extendedRate!.toFixed(1)} · ${extensionDifference(comparisons[0])}</small>`:'';
+  return `<td class="target-kill-rate" title="${esc(targetRateDescription(plan,p))}">${label}${rate!=null&&p.strategy==='funded'?'<small>Unlimited funds</small>':''}${extension}</td>`;
 }

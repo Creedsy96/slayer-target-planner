@@ -22,6 +22,8 @@ export * from './rules/points';
 export * from './analysis/timing';
 export * from './analysis/offers';
 export * from './analysis/planner';
+export * from './analysis/extensions';
+export * from './state/task-extensions';
 export * from './analysis/simulation';
 export * from './analysis/explanations';
 export * from './analysis/plan-issues';

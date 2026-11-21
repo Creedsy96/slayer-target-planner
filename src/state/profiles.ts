@@ -13,7 +13,7 @@ export function newProfile(data:Catalogue,name='Example hunt — assumed access'
 function cryptoId():string{return 'profile-'+(typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2));}
 export function defaultMethod(data:Catalogue,p:Profile,id:string):Method{
   const a=data.assignments.find(a=>a.id===id)!;
-  return {variantId:a.variantIds[0],timing:'dps',rate:0,dps:p.globalDps,delay:3,travel:0,bracelet:'none',extended:false,location:'',locationChance:null};
+  return {variantId:a.variantIds[0],timing:'dps',rate:0,dps:p.globalDps,delay:3,travel:0,bracelet:'none',extended:p.extensions?.[id]??false,location:'',locationChance:null};
 }
 export function migrateV1(data:Catalogue,raw:unknown):Profile{
   const p=newProfile(data,'Imported workbook profile');
@@ -60,6 +60,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.maxedPresetVersion!==undefined&&p.maxedPresetVersion!==1)throw Error('Unsupported Maxed preset version.');
   const numeric=(n:unknown,min:number,max:number,label:string,nullable=false)=>{if(nullable&&n===null)return;if(typeof n!=='number'||!Number.isFinite(n)||n<min||n>max)throw Error(`${label} must be between ${min} and ${max}.`);};
   const ids=new Set(data.assignments.map(a=>a.id));
+  if(p.extensions!==undefined&&(typeof p.extensions!=='object'||!p.extensions||Array.isArray(p.extensions)||Object.entries(p.extensions).some(([id,enabled])=>!ids.has(id)||typeof enabled!=='boolean')))throw Error('Invalid task extensions.');
   for(const group of ['levels','quests','unlocks','access','streaks','blocks','proposed','preferences','methods','methodPresets','diaries'])if(!p[group as keyof Profile]||typeof p[group as keyof Profile]!=='object'||Array.isArray(p[group as keyof Profile]))throw Error(`Missing ${group} fields.`);
   for(const [k,n] of Object.entries(p.levels))numeric(n,0,k==='combat'?126:99,`${k} level`,true);
   for(const group of [p.quests,p.unlocks,p.access,p.diaries])for(const n of Object.values(group))numeric(n,0,2,'Requirement state',true);
@@ -148,7 +149,7 @@ function validateHuntExtras(data:Catalogue,p:Profile):void{
     for(const h of p.huntPresets){
       if(!h||typeof h.id!=='string'||!h.id||seen.has(h.id)||typeof h.name!=='string'||!h.name.trim()||h.name.length>100||!data.masters.some(m=>m.id===h.masterId))throw Error('Invalid hunt preset.');
       seen.add(h.id);
-      validateProfile(data,{...p,...Object.fromEntries(['goal','strategy','objective','proposed','preferences','methods','milestone'].map(k=>[k,(h as any)[k]])),huntPresets:[],taskHistory:[]});
+      validateProfile(data,{...p,...Object.fromEntries(['goal','strategy','objective','proposed','preferences','methods','milestone','extensions'].map(k=>[k,(h as any)[k]])),huntPresets:[],taskHistory:[]});
     }
   }
   if(p.taskHistory!==undefined){

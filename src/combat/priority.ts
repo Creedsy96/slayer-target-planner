@@ -5,7 +5,8 @@ import {withCalculatedTiming} from './timing';
 import {calculateGuideCombat,type GuideCombat} from './guide';
 
 export function configuredMethod(data:Catalogue,p:Profile,assignment:string,variantId:string):Method{
- return {...defaultMethod(data,p,assignment),...(p.methods[assignment]?.variantId===variantId?p.methods[assignment]:{}),...p.methods[assignment+'::'+variantId],variantId};
+ const method={...defaultMethod(data,p,assignment),...(p.methods[assignment]?.variantId===variantId?p.methods[assignment]:{}),...p.methods[assignment+'::'+variantId],variantId};
+ return {...method,extended:p.extensions?.[assignment]??method.extended};
 }
 export function prioritisedMasters(data:Catalogue,p:Profile):Master[]{
  const targets=new Set(p.goal.targets.map(t=>t.assignmentId));

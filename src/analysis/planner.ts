@@ -28,6 +28,7 @@ export function prepareRows(data:Catalogue,m:Master,p:Profile,progress?:(done:nu
       // A low-HP unreviewed spawn must not displace a confirmed ordinary method.
       if(choices.length){v=choices.map(choice=>choice.variant).reduce((best,next)=>best.hp/best.multiplier<=next.hp/next.multiplier?best:next);method={...method,...p.methods[entry.id+'::'+v.id],variantId:v.id};}
     }
+    method.extended=p.extensions?.[entry.id]??method.extended;
     const eligibility=check(entry.requirements,p),variant=variantEligibility(v,p,m,entry.id),loc=locationFraction(entry,v,method,m,p);
     if(m.id==='konar'&&entry.locations?.length&&entry.locations.every(l=>resolveAccess('location:'+l,p).value===0))eligibility.failed.push('No accessible assignment location');
     const methodAccess=method.location?resolveAccess('location:'+method.location,p):null;

@@ -6,7 +6,7 @@ import {masterEligibility} from '../rules/eligibility';
 
 export function saveHunt(p:Profile,name:string,masterId:string,id:string):Profile{
   if(!name.trim()||name.length>100)throw Error('Enter a hunt name of 1–100 characters.');
-  const q=clone(p),preset:HuntPreset={id,name:name.trim(),masterId,goal:clone(p.goal),strategy:p.strategy,objective:p.objective,proposed:clone(p.proposed),preferences:clone(p.preferences),methods:clone(p.methods),milestone:p.milestone};
+  const q=clone(p),preset:HuntPreset={id,name:name.trim(),masterId,goal:clone(p.goal),strategy:p.strategy,objective:p.objective,proposed:clone(p.proposed),preferences:clone(p.preferences),methods:clone(p.methods),extensions:clone(p.extensions||{}),milestone:p.milestone};
   q.huntPresets=(q.huntPresets||[]).filter(h=>h.name.toLowerCase()!==preset.name.toLowerCase());
   if(q.huntPresets.length>=30)throw Error('Maximum 30 hunt presets per profile.');
   q.huntPresets.push(preset);return q;
@@ -14,6 +14,7 @@ export function saveHunt(p:Profile,name:string,masterId:string,id:string):Profil
 export function loadHunt(data:Catalogue,p:Profile,id:string):{profile:Profile;masterId:string}{
   const h=p.huntPresets?.find(h=>h.id===id);if(!h)throw Error('Choose a saved hunt.');
   const q=clone(p);for(const key of ['goal','strategy','objective','proposed','preferences','methods','milestone']as const)(q as any)[key]=clone(h[key]);
+  if(h.extensions!==undefined)q.extensions=clone(h.extensions);else delete q.extensions;
   return {profile:validateProfile(data,q),masterId:h.masterId};
 }
 export interface TaskInput {masterId:string;assignmentId:string;action:'complete'|'skip';modifier:string;modifierPoints:number;combatMinutes:number|null;kills:number|null}
