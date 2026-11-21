@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.24
+# Slayer Target Planner 3.0.25
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.24 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.25 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Consistent guide sidebar in 3.0.25
+
+The Creature guide now keeps the same character selector, actions, navigation spacing and saved-state indicator as the other pages. Quick setup follows its existing display setting. Desktop and mobile use the shared sidebar rules; the guide’s separate print layout remains available. [Fix and verification](docs/guide-sidebar-consistency.md).
 
 ## Whole-box selection in 3.0.24
 
