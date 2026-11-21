@@ -1,6 +1,7 @@
 import {sampleLocation} from './konar-outcomes';
+import {emptyWorkload,meanWorkload} from './workload';
 import {combatSeconds} from './timing';
-import type {Catalogue,Plan,Profile,Row,Simulation,Master} from '../domain/types';
+import type {Catalogue,Plan,Profile,Row,Simulation,Master,SimulationWorkload} from '../domain/types';
 import {clone} from '../state/profiles';
 import {choices,complete,completionReward,modifierKinds,ledger,pay,resetStreak,rangeValues,pointRewardUnknown,type Ledger} from '../rules/points';
 import {rollMortimer,MORTIMER_VERSION} from '../rules/mortimer';
@@ -13,7 +14,7 @@ export function random(seed:number):()=>number{
   let state=seed>>>0;return ()=>{state+=0x6D2B79F5;let t=state;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
 }
 interface Option {masterId?:string;row:Row;kind:string;points:number;quantity:number;target:boolean;modifierValue?:number|null}
-interface Trial {success:boolean;hours:number;exhausted:boolean;spent:number;remaining:number;earned:number;trace:string[]}
+interface Trial {success:boolean;hours:number;exhausted:boolean;spent:number;remaining:number;earned:number;trace:string[];workload:SimulationWorkload}
 export function wilson(successes:number,total:number):[number,number]{
   if(!total)return [0,1];const z=1.95996398454,p=successes/total,d=1+z*z/total;
   const centre=(p+z*z/2/total)/d,half=z*Math.sqrt(p*(1-p)/total+z*z/4/total**2)/d;return [Math.max(0,centre-half),Math.min(1,centre+half)];
@@ -83,12 +84,13 @@ export function simulate(data:Catalogue,plan:Plan,p:Profile,onProgress?:(done:nu
   if(p.goal.kind==='offer')notes.push('An offered target ends the hunt before combat; its future completion reward is not earned.');
   if(p.strategy==='reset-turael')notes.push('Turael replacements use the recorded actual beginner block list; no automatic or proposed filler blocks are purchased. Only the cancelled master’s streak is reset. Turael completion then increments the normal streak. Reset timing uses seconds per reset, each task request, and configured Turael combat/travel rates.');
   if(p.goal.kind==='drop')notes.push('Drop goal includes the selected direct per-kill drop only. Superior spawns and their separate drop tables are not included.');
-  return {trials:count,successes:success.length,unresolved,meanHours:unresolved?null:success.reduce((s,t)=>s+t.hours,0)/count,medianHours:quantile(.5),p90Hours:quantile(.9),sessionChance:hit/count,sessionInterval:[wilson(hit,count)[0],wilson(hit+trials.filter(t=>!t.success&&t.hours<p.simulation.sessionHours).length,count)[1]],exhaustionChance:trials.filter(t=>t.exhausted).length/count,meanSpent:trials.reduce((s,t)=>s+t.spent,0)/count,meanRemaining:trials.reduce((s,t)=>s+t.remaining,0)/count,meanEarned:trials.reduce((s,t)=>s+t.earned,0)/count,curve,seed:p.simulation.seed,notes,trace:trials[0]?.trace||[]};
+  return {meanWorkload:meanWorkload(trials.map(t=>t.workload)),exampleWorkload:trials[0]?.workload||emptyWorkload(),trials:count,successes:success.length,unresolved,meanHours:unresolved?null:success.reduce((s,t)=>s+t.hours,0)/count,medianHours:quantile(.5),p90Hours:quantile(.9),sessionChance:hit/count,sessionInterval:[wilson(hit,count)[0],wilson(hit+trials.filter(t=>!t.success&&t.hours<p.simulation.sessionHours).length,count)[1]],exhaustionChance:trials.filter(t=>t.exhausted).length/count,meanSpent:trials.reduce((s,t)=>s+t.spent,0)/count,meanRemaining:trials.reduce((s,t)=>s+t.remaining,0)/count,meanEarned:trials.reduce((s,t)=>s+t.earned,0)/count,curve,seed:p.simulation.seed,notes,trace:trials[0]?.trace||[]};
 }
 function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,record:boolean,fallback:Map<Row,Row>,pendingPlan?:Plan):Trial{
   const l=ledger(p),trace:string[]=[];let minutes=0,exhausted=false,progress=0,nextFiller=false,previous:Option|undefined;
   const add=(message:string)=>{if(record&&trace.length<40)trace.push(`${minutes.toFixed(1)} min · ${message} · ${l.points.toFixed(0)} points`);};
-  const result=(success:boolean):Trial=>({success,hours:minutes/60,exhausted,spent:l.spent,remaining:l.points,earned:l.earned,trace});
+  const workload=emptyWorkload();
+  const result=(success:boolean):Trial=>({success,hours:minutes/60,exhausted,spent:l.spent,remaining:l.points,earned:l.earned,trace,workload});
   if(p.applySetup&&!pay(l,plan.setupCost,p.reserve)){add('Cannot afford block setup');return result(false);}
   if(p.cape&&p.previousTask&&p.previousMasterId){
     const master=data.masters.find(m=>m.id===p.previousMasterId)!;
@@ -103,14 +105,16 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const row=resolved?sampleLocation(resolved,rng,target):resolved;
     if(!row){add('Current task has no valid completion method');return result(false);}
     if(shouldReset(currentMaster,row,p,filler.master)){
+      workload.tasksSkipped++;workload.resets++;
       resetStreak(l,currentMaster);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset current ${row.name}; ${currentMaster.streakGroup} streak reset`);
     }else{
       if(row.methodReason){add('Current task has no valid completion method');return result(false);}
       if(target&&p.goal.kind==='offer'){add('Target task already assigned');return result(true);}
       const actual=sampleKills(p.current.remaining,row.method,rng);
       const done=finishCombat(row,actual,target,p,rng,progress);
+      workload.assignedKills+=p.current.remaining;workload.kills+=done.kills;
       minutes+=row.method.travel+combatSeconds(done.kills,row.method,row.seconds)/60;progress=done.progress;
-      if(!done.success||done.kills===actual)complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);
+      if(!done.success||done.kills===actual){complete(l,currentMaster,p,row.entry,p.current.modifier,p.current.modifierPoints);workload.tasksCompleted++;}
       if(done.success){add('Goal reached during current task'+(done.kills===actual?'; task completion rewarded':''));return result(true);}
       previous={row,masterId:currentMaster.id,kind:p.current.modifier||'none',points:p.current.modifierPoints??0,quantity:0,target};
       add('Completed current assignment');
@@ -133,18 +137,20 @@ function runTrial(data:Catalogue,plan:Plan,filler:Plan,p:Profile,rng:()=>number,
     const fraction=paidSkipFraction(chosen.row,p);
     const skip=!chosen.target&&fraction>0&&(fraction>=1||rng()<fraction);
     if(!chosen.target&&shouldReset(m,chosen.row,p,filler.master)){
+      workload.tasksSkipped++;workload.resets++;
       resetStreak(l,m);minutes+=p.skipSeconds/60;nextFiller=true;add(`Reset ${chosen.row.name}; ${m.streakGroup} streak reset`);continue;
     }
     if(skip){
-      if(pay(l,m.skipCost,p.reserve)){minutes+=p.skipSeconds/60;add(`Skipped ${chosen.row.name}`);continue;}
+      if(pay(l,m.skipCost,p.reserve)){workload.tasksSkipped++;workload.paidSkips++;minutes+=p.skipSeconds/60;add(`Skipped ${chosen.row.name}`);continue;}
       exhausted=true;add(`Skip unaffordable; complete ${chosen.row.name} instead`);
     }
     if(chosen.row.methodReason){add('Chosen method is not available');return result(false);}
     const quantity=sampleQuantity(chosen.row.entry,chosen.row.method,rng,chosen.kind==='quantity'?chosen.quantity:0);
     const kills=sampleKills(quantity,chosen.row.method,rng);
     const done=finishCombat(chosen.row,kills,chosen.target,p,rng,progress);progress=done.progress;
+    workload.assignedKills+=quantity;workload.kills+=done.kills;
     minutes+=chosen.row.method.travel+combatSeconds(done.kills,chosen.row.method,chosen.row.seconds)/60;
-    if(!done.success||done.kills===kills)complete(l,m,p,chosen.row.entry,chosen.kind,chosen.points);
+    if(!done.success||done.kills===kills){complete(l,m,p,chosen.row.entry,chosen.kind,chosen.points);workload.tasksCompleted++;}
     if(done.success){add(`Goal reached at ${chosen.row.variant.name}${done.kills===kills?'; task completion rewarded':''}`);return result(true);}
     add(`Completed ${chosen.row.name} (${modifierLabel(chosen)})`);
   }

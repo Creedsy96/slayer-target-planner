@@ -1,3 +1,4 @@
+import {emptyWorkload} from './workload';
 import type {Catalogue,Profile,Simulation} from '../domain/types';
 import {actualTargetCompatibility} from '../rules/task-policy';
 import {prepareRows} from './planner';
@@ -15,7 +16,7 @@ export function observedOfferGoal(data:Catalogue,p:Profile):Simulation|null{
   });
   if(!hit)return null;
   const count=Math.floor(p.simulation.trials);
-  return {trials:count,successes:count,unresolved:0,meanHours:0,medianHours:0,p90Hours:0,sessionChance:1,sessionInterval:[1,1],exhaustionChance:0,meanSpent:0,meanEarned:0,meanRemaining:p.points,seed:p.simulation.seed,
+  return {meanWorkload:emptyWorkload(),exampleWorkload:emptyWorkload(),trials:count,successes:count,unresolved:0,meanHours:0,medianHours:0,p90Hours:0,sessionChance:1,sessionInterval:[1,1],exhaustionChance:0,meanSpent:0,meanEarned:0,meanRemaining:p.points,seed:p.simulation.seed,
     curve:Array.from({length:21},(_,i)=>({hours:p.simulation.sessionHours*i/20,chance:1,low:1,high:1})),
     notes:['A compatible target offer is already observed. No setup purchase, new request or future completion reward is needed.'],trace:['0.0 min · Compatible target already offered · '+p.points+' points']};
 }

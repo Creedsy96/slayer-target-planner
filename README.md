@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.16
+# Slayer Target Planner 3.0.17
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.16 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.17 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Simulation workload totals in 3.0.17
+
+Full-hunt simulations now show average total assigned kills, actual creatures killed, completed tasks and skipped tasks, including boosting/reset fillers. Paid skips and resets are split out; partial goal tasks are handled separately from completed tasks. The strategy comparison includes workload columns, and the example trace/JSON export retain exact trial totals. [Counting rules and verification](docs/simulation-workload-totals.md).
 
 ## Session-hour validation in 3.0.16
 
