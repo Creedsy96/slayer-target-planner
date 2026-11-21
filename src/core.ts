@@ -67,3 +67,5 @@ export {isBlowpipe,isCrossbow,rangedWeaponCandidates,rangedAmmoCandidates} from 
 export * from './combat/weapon-family';
 
 export * from './combat/method-preview';
+
+export {selectCreatureGear,resetCreatureGear,gearAffectedMasters} from './combat/gear-selection';

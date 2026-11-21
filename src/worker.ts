@@ -1,3 +1,4 @@
+import {gearAffectedMasters} from './combat/gear-selection';
 import {calculateGuideCombat} from './combat/guide';
 import {calculateMethodPreview} from './combat/method-preview';
 import type {GuideState} from './guide/types';
@@ -10,7 +11,7 @@ import {catalogue,evaluate,optimise,simulate,searchHunt,prepareRows} from './cor
 import {withExtensionComparisons} from './analysis/extensions';
 import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
-  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string};
+  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId,variantIds}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string;variantIds?:string[]};
   try{
     restoreCombatCache(profile,combatCache);
     const identity=combatIdentity(profile);let calculated=0;
@@ -26,6 +27,18 @@ self.onmessage=(event:MessageEvent)=>{
     }else if(kind==='gear'){
       const result=calculateGuideCombat(profile,guide!, (done,current)=>self.postMessage({id,kind:'progress',done,total:5,current}));
       self.postMessage({id,kind:'gear',result});
+    }else if(kind==='gear-selection'){
+      const ids=new Set((variantIds?.length?variantIds:[variantId!]).flatMap(variant=>gearAffectedMasters(catalogue,profile,variant).map(master=>master.id)));
+      const masters=catalogue.masters.filter(master=>ids.has(master.id));
+      const result=calculateGuideCombat(profile,guide!,(done,current)=>self.postMessage({id,kind:'progress',done,total:5+masters.length,current}));
+      self.postMessage({id,kind:'priority-gear',result});
+      const plans=[];
+      for(const [index,master]of masters.entries()){
+        const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250,(fraction,current)=>self.postMessage({id,kind:'progress',done:5+index+fraction,total:5+masters.length,current:master.name+' / '+current}));
+        plans.push(withExtensionComparisons(catalogue,plan,profile));
+        self.postMessage({id,kind:'plan-ready',plan:plans[plans.length-1]});
+      }
+      self.postMessage({id,kind,plans,combatCalculated:calculated});
     }else if(kind==='plans'){
       const offset=preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>self.postMessage({id,kind:'progress',done,total,current}),result=>self.postMessage({id,kind:'priority-gear',result}));
       const plans=[],total=offset+catalogue.masters.length;

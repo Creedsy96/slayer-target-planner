@@ -4,7 +4,7 @@ import {configuredMethod} from './priority';
 import {withCalculatedTiming} from './timing';
 
 export function methodPreviewKey(p:Profile,assignment:string,method:Method):string{
- return JSON.stringify([p.id,combatIdentity(p),assignment,method]);
+ return JSON.stringify([p.id,combatIdentity(p),p.gearOverrides?.[method.variantId],assignment,method]);
 }
 /** Resolve the editor selection directly; planner rows can use other variants. */
 export function calculateMethodPreview(data:Catalogue,p:Profile,assignment:string,variantId:string):Method{

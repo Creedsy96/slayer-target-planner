@@ -1,10 +1,11 @@
 import type {Profile,Method,Variant} from '../domain/types';
 import {GUIDE,defaultGuideState,guideForm,selectedLocation,rankLocations,fightPlan} from '../guide/model';
+import {defaultCombat} from '../state/bank';
 import {bestOwnedGear} from './optimise';
 import {resolveAccess} from '../rules/access';
 import {encounter} from '../guide/encounters';
 export function configuredTimingReason(p:Profile,method:Method):string|undefined{
- if(!p.combat?.enabled)return 'Automatic combat timing is off for this character. Enable it in Combat settings to use calculated DPS.';
+ if(!p.combat?.enabled&&!method.useSelectedGear)return 'Automatic combat timing is off for this character. Enable it in Combat settings to use calculated DPS.';
  if(method.timing==='kills-hour')return 'Measured kills per hour is selected; that measured rate takes priority over calculated DPS.';
  if(method.timing==='task-minutes')return 'Measured combat minutes per task is selected; that full-task rate takes priority over calculated DPS.';
  if(method.manualCombat)return 'This method is set to keep its manual DPS instead of automatic combat timing.';
@@ -12,7 +13,7 @@ export function configuredTimingReason(p:Profile,method:Method):string|undefined
 export function withCalculatedTiming(p:Profile,v:Variant,method:Method):Method{
  const {calculated,combatNote,...base}=method;method=base;
  const retained=configuredTimingReason(p,method);if(retained)return {...method,combatNote:retained};
- const config=p.combat!;
+ const config=p.combat??defaultCombat();
  const record=GUIDE.records[v.id];if(!record)return {...method,combatNote:'No individual creature DPS mapping; using configured timing.'};
  const mechanics=encounter(record);
  if(mechanics.boss||mechanics.hybrid)return {...method,combatNote:'Boss/phase/switch encounter: using configured full-fight timing.'};

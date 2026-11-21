@@ -61,7 +61,7 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
 export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  const signature=combatIdentity(p),mode=priority??fightPlan(record,form,state,location).defence;
  const family=state.approach==='auto'?'auto':state.approach.split('-')[0];
- const key=JSON.stringify([record.id,form.id,family,mode,state.onTask,location?.name,state.stackSize]);
+ const key=JSON.stringify([record.id,form.id,family,mode,state.onTask,location?.name,state.stackSize,family==='auto'?p.gearOverrides?.[record.id]:p.gearOverrides?.[record.id]?.[family as Family]]);
  const saved=cache.get(signature,key);if(saved)return saved;
  const result=search(p,record,form,state,location,mode);cache.put(signature,key,result);cacheObserver?.(signature,key,structuredClone(result));return structuredClone(result);
 }
@@ -81,25 +81,30 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  const rank=(r:CombatResult)=>r.aggregateDps??r.dps;
  for(const family of requested?[requested]:allowed){
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
+  const pins=p.gearOverrides?.[record.id]?.[family as Family]||{};
+  const invalid=Object.entries(pins).find(([slot,id])=>{const item=owned.find(i=>i.id===id);return !item||item.slot!==slot&&!(slot==='ammo'&&item.slot==='weapon')||required[slot as EquipmentSlot]&&!required[slot as EquipmentSlot]!(item)||slot==='weapon'&&!weaponSupportsFamily(item,family);});
+  if(invalid){if(requested)return emptyCombat('Saved '+slotNames[invalid[0] as EquipmentSlot]+' choice is no longer usable. Reset this style’s gear choices or update your bank.');continue;}
   const context:ArmourContext={family:family as Family,priority:mode,form};
   const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&weaponSupportsFamily(i,family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
-  const retained=family==='ranged'?rangedWeaponCandidates(candidates):candidates;
+  const retained=pins.weapon?candidates.filter(i=>i.id===pins.weapon):family==='ranged'?rangedWeaponCandidates(candidates):candidates;
   const specialists=retained.filter(i=>isCrossbow(i)||isBlowpipe(i)||/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
   const weapons=[...new Map([...retained.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
   const shortlist:CombatResult[]=[];
   const evaluate=(loadout:Loadout,style:CombatStyle,spell:string|null)=>applyAreaDamage(calculateCombat(p,record,form,loadout,style,spell,state.onTask,isWildernessCombat(record,location),false),record,location,state.stackSize);
   for(const weapon of weapons){
-   const choices=(slot:EquipmentSlot)=>slot==='ammo'&&family==='ranged'?rangedAmmoCandidates(owned,weapon):slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
-   const loadout:Loadout={...forced,weapon:weapon.id};
+   const choices=(slot:EquipmentSlot)=>pins[slot]?owned.filter(i=>i.id===pins[slot]):slot==='ammo'&&family==='ranged'?rangedAmmoCandidates(owned,weapon):slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
+   if(weapon.isTwoHanded&&pins.shield)continue;
+   if(pins.ammo&&!usableAmmo(weapon,equipmentItem(pins.ammo)!,family))continue;
+   const loadout:Loadout={...forced,...pins,weapon:weapon.id};
    for(const slot of EQUIPMENT_SLOTS){
-    if(slot==='weapon'||forced[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
+    if(slot==='weapon'||forced[slot]||pins[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
     const items=choices(slot);if(items.length)loadout[slot]=items[0].id;
    }
    const styles=weaponStylesForFamily(weapon,family).filter(s=>!/defensive|longrange/i.test(s.stance));
    const spells=family==='magic'&&!/Powered/i.test(weapon.category)?candidateSpells(p):[null];
    let seed=emptyCombat('No damaging style for this weapon.');
    const ammo=(isCrossbow(weapon)||isBlowpipe(weapon))?choices('ammo'):[undefined];
-   for(const initial of setSeeds(loadout,owned,required,family,weapon))for(const ammunition of ammo)for(const style of styles)for(const spell of spells){
+   for(const initial of setSeeds(loadout,owned,required,family,weapon).filter(seed=>Object.entries(pins).every(([slot,id])=>seed[slot as EquipmentSlot]===id)))for(const ammunition of ammo)for(const style of styles)for(const spell of spells){
     const value=evaluate(ammunition?{...initial,ammo:ammunition.id}:initial,style,spell);if(value.supported&&rank(value)>rank(seed))seed=value;
    }
    if(seed.supported)shortlist.push(seed);
@@ -109,7 +114,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
   for(let seed of shortlist.sort((a,b)=>rank(b)-rank(a)).slice(0,4)){
    const weapon=equipmentItem(seed.loadout.weapon!)!;
    for(let pass=0;pass<2;pass++)for(const slot of EQUIPMENT_SLOTS){
-    if(slot==='weapon'||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
+    if(slot==='weapon'||pins[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
     const choices=slot==='ammo'&&family==='ranged'?rangedAmmoCandidates(owned,weapon):slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
     for(const item of [...(required[slot]?[]:[undefined]),...choices]){
      const trial={...seed.loadout};if(item)trial[slot]=item.id;else delete trial[slot];
@@ -117,12 +122,13 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
      if(value.supported&&(rank(value)>rank(seed)+1e-10||Math.abs(rank(value)-rank(seed))<1e-10&&compareLoadoutSustain(value.loadout,seed.loadout,context)>0))seed=value;
     }
    }
-   seed=completeArmour(seed,owned,required,context,evaluate);
+   seed=completeArmour(seed,owned,{...required,...Object.fromEntries(Object.keys(pins).map(slot=>[slot,()=>true]))},context,evaluate);
    if(rank(seed)>rank(best)||Math.abs(rank(seed)-rank(best))<1e-10&&compareLoadoutSustain(seed.loadout,best.loadout,context)>0)best=seed;
   }
  }
  if(!best.supported)return best;
  const result=applyAreaDamage(calculateCombat(p,record,form,best.loadout,best.style,best.spell,state.onTask,isWildernessCombat(record,location)),record,location,state.stackSize);
+ if(p.gearOverrides?.[record.id]?.[result.family as Family])result.notes.push('Saved gear choices for this creature/style are held fixed; remaining slots are optimised automatically. Reset gear choices to restore automatic selection.');
  result.armourPriority=mode;result.armourFallback=best.armourFallback;
  if(best.armourFallback?.length)result.notes.push('Armour fallback ('+(mode==='prayer'?'prayer bonus first':'defence against listed attacks first')+'): '+best.armourFallback.map(slot=>slotNames[slot]+' / '+equipmentItem(result.loadout[slot]!)!.name).join('; ')+'. These slots were not DPS upgrades. Displayed DPS and kill time include the selected armour and any accuracy penalties.');
  const emptyArmour=(['body','legs'] as const).filter(slot=>!result.loadout[slot]);

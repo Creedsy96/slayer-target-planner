@@ -1,3 +1,5 @@
+import {EQUIPMENT_SLOTS} from '../combat/types';
+import {equipmentItem} from '../combat/equipment';
 import {AREA_VERSION} from '../rules/access';
 import {pointQuestNames,questNameKey} from '../rules/quest-points';
 import {validateBank,validateCombat} from './bank';
@@ -106,6 +108,16 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
     p.questImport={...(q.pointStates!==undefined?{pointStates:q.pointStates}:{}),...(q.unknownPointQuests!==undefined?{unknownPointQuests:q.unknownPointQuests}:{}),format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
   }
   if(!Array.isArray(p.notes)||p.notes.some(n=>typeof n!=='string'))throw Error('Invalid migration notes.');
+  if(p.gearOverrides!==undefined){
+    if(!p.gearOverrides||typeof p.gearOverrides!=='object'||Array.isArray(p.gearOverrides))throw Error('Invalid creature gear choices.');
+    for(const [variant,families]of Object.entries(p.gearOverrides)){
+      if(!data.variants.some(v=>v.id===variant)||!families||typeof families!=='object'||Array.isArray(families))throw Error('Invalid creature gear choices.');
+      for(const [family,slots]of Object.entries(families)){
+        if(!['melee','ranged','magic'].includes(family)||!slots||typeof slots!=='object'||Array.isArray(slots))throw Error('Invalid gear style choices.');
+        for(const [slot,id]of Object.entries(slots))if(!EQUIPMENT_SLOTS.includes(slot as typeof EQUIPMENT_SLOTS[number])||!Number.isInteger(id)||!equipmentItem(id))throw Error('Invalid gear slot choice.');
+      }
+    }
+  }
   if(p.bank!==undefined)p.bank=validateBank(p.bank);
   if(p.combat!==undefined)p.combat=validateCombat(p.combat);
   if(p.restrictBasicAccess!==undefined&&typeof p.restrictBasicAccess!=='boolean')throw Error('Invalid access restriction mode.');
@@ -115,6 +127,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
 }
 function validateMethod(data:Catalogue,m:Method,aid?:string):void{
   delete m.calculated;delete m.combatNote;
+  if(m.useSelectedGear!==undefined&&typeof m.useSelectedGear!=='boolean')throw Error('Invalid selected gear timing option.');
   if(m.combatDefence!==undefined&&!['tank','prayer'].includes(m.combatDefence))throw Error('Invalid armour priority.');
   if(m.combatStyle!==undefined&&!['auto','melee','ranged','magic'].includes(m.combatStyle))throw Error('Invalid combat style.');
   if(m.stackSize!==undefined&&(!Number.isInteger(m.stackSize)||m.stackSize<1||m.stackSize>9))throw Error('Stack size must be 1–9.');

@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.20
+# Slayer Target Planner 3.0.21
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.20 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.21 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Selectable creature gear in 3.0.21
+
+Open a slot comparison with ⓘ and choose **Use item** to save that gear for the creature and combat style. Choices can upgrade or downgrade the setup; required protection and compatible ammunition remain enforced. Other slots stay automatic. Each style has **Reset gear choices**. Only that creature’s combat cache and associated master plans refresh, including reset/boost filler dependencies; unrelated results stay reusable. Selecting gear opts only this creature’s completion methods into calculated timing without enabling a character-wide rebalance. [Behaviour and verification](docs/creature-gear-selection.md).
 
 ## Calculated DPS in Completion methods in 3.0.20
 
