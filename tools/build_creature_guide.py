@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-from guide_wikitext import monster_forms, monster_locations
+from guide_wikitext import monster_forms, monster_locations, representative_form
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -33,7 +33,7 @@ def build():
         name_level = re.search(r"level (\d+)", variant["name"])
         matching = [f for f in forms if name_level and f["combat"] == int(name_level[1])]
         matching = matching or [f for f in forms if f["hitpoints"] == variant["hp"]]
-        default = (matching or forms)[0]
+        default = representative_form(matching or forms, locations) or (matching or forms)[0]
         if variant["id"] == "black-dragon-wilderness-slayer-cave":
             matching = [f for f in forms if "wilderness slayer" in f["label"].lower()]
             default = (matching or [f for f in forms if f["hitpoints"] == 250] or forms)[0]
@@ -53,7 +53,7 @@ def build():
         strategy_sources[page['title'].casefold()] = dict(title=page['title'],
             url='https://oldschool.runescape.wiki/w/' + quote(page['title'].replace(' ', '_'), safe='/:'),
             revision=revision['revid'], timestamp=revision['timestamp'])
-    return dict(schemaVersion=1, version="2026-11-19.1", records=result, strategySources=strategy_sources)
+    return dict(schemaVersion=1, version="2026-11-21.1", records=result, strategySources=strategy_sources)
 
 
 if __name__ == "__main__":

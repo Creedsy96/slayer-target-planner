@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -6,11 +7,40 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
-from guide_wikitext import fields, monster_forms, monster_locations, number
+from guide_wikitext import fields, monster_forms, monster_locations, number, representative_form
 from build_creature_guide import build
 
 
 class GuideParserTests(unittest.TestCase):
+    def test_numbered_stats_and_quest_forms_do_not_hide_the_repeatable_spawn(self):
+        source = '{{Infobox Monster|version1=Quest|combat1=50|hitpoints1=60|version2=Regular|combat2=54|hitpoints2=85|slaylvl=63}}\n{{LocLine|location=[[Town]]|levels=54}}'
+        form = representative_form(monster_forms(source), monster_locations(source))
+        self.assertEqual((form['hitpoints'], form['combat'], form['slaylvl']), (85, 54, 63))
+        self.assertIsNone(representative_form([], []))
+
+    def test_every_cached_master_alternative_with_active_stats_is_retained(self):
+        data = json.loads((ROOT / 'data/catalogue.json').read_text(encoding='utf-8'))
+        variants = {v['source']['title'].casefold(): v for v in data['variants']}
+        pages = {p['title'].casefold(): p for path in (ROOT / 'data/sources').glob('*.json')
+                 if (p := json.loads(path.read_text(encoding='utf-8-sig'))).get('revisions')}
+        checked = set()
+        for master in data['masters']:
+            for row in master['tasks']:
+                for title in row.get('alternativeTitles', []):
+                    page = pages.get(title.casefold())
+                    if not page:
+                        continue
+                    text = page['revisions'][0]['slots']['main']['content']
+                    if representative_form(monster_forms(text), monster_locations(text)) is None:
+                        continue
+                    if re.search(r'\|\s*superior\s*=\s*(?:yes|true)', text, re.I):
+                        continue
+                    variant = variants[page['title'].casefold()]
+                    self.assertIn(row['id'], variant['assignmentIds'], title)
+                    self.assertIn(variant['id'], next(a for a in data['assignments'] if a['id'] == row['id'])['variantIds'])
+                    checked.add(variant['id'])
+        self.assertGreater(len(checked), 100)
+
     def test_nested_templates_and_links_do_not_split_infobox_fields(self):
         result = fields('|attack style=[[Melee|Slash]]|max hit=20 {{efn|text=a|b}}|dstab=-15|dmagic=0')
         self.assertEqual(result['attack style'], '[[Melee|Slash]]')
@@ -47,6 +77,10 @@ class GuideParserTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(ROOT / 'tools/capture_guide_sources.py'), '--fetch', '--interval', '1'], capture_output=True, text=True)
         self.assertEqual(result.returncode, 2)
         self.assertIn('at least five seconds', result.stderr)
+        for tool in ['capture_variant_sources.py', 'build_creature_art.py']:
+            result = subprocess.run([sys.executable, str(ROOT / 'tools' / tool), '--interval', '1'], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn('at least five seconds', result.stderr)
 
 
 if __name__ == '__main__':

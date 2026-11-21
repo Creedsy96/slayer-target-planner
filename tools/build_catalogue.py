@@ -5,6 +5,7 @@ import re
 import argparse
 from pathlib import Path
 from urllib.parse import quote, unquote
+from guide_wikitext import monster_forms, monster_locations, representative_form
 
 ROOT = Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
@@ -127,6 +128,21 @@ for aid, title, level, quests in curated:
         assignments[aid]["variantIds"].append(vid)
 variants["basilisk-knight"]["drops"] = [{"id": "basilisk-jaw", "name": "Basilisk jaw", "onTask": 1/1000, "offTask": 1/5000, "source": source("Slayer task/Basilisks")}]
 
+# The workbook's fast-task representative is not the full creature selection.
+# Keep these ordinary forms even when master tables list only alternatives.
+for aid, title in [('blue dragons', 'Blue dragon'), ('red dragons', 'Red dragon'),
+                   ('bears', 'Black bear'), ('rats', 'Rat'), ('spiders', 'Spider'),
+                   ('metal dragons', 'Steel dragon')]:
+    form = representative_form(monster_forms(page(title)), monster_locations(page(title)))
+    if form is None:
+        raise ValueError('Missing baseline combat form: ' + title)
+    vid = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+    variants[vid] = {'id': vid, 'name': title, 'assignmentIds': [aid], 'hp': int(form['hitpoints']),
+        'multiplier': 1, 'requirements': [{'kind': 'skill', 'key': 'slayer', 'min': int(form['slaylvl'] or 0), 'label': 'Slayer'}],
+        'source': source(title), 'status': 'reviewed-variant', 'drops': []}
+    if vid not in assignments[aid]['variantIds']:
+        assignments[aid]['variantIds'].append(vid)
+
 for index, name in enumerate(names):
     old = oldmasters[index]
     task_rows = []
@@ -215,16 +231,20 @@ for index, name in enumerate(names):
 for master in masters:
     for row in master['tasks']:
         for title in row.get('alternativeTitles', []):
+            record = pages.get(title.replace('_', ' ').lower())
+            if not record:
+                continue
+            title = record['title']
             content=page(title)
-            hp=re.search(r"\|\s*hitpoints\s*=\s*(\d+)\s*(?:\n|\r)",content)
-            if not hp or '{{Infobox Monster' not in content:
+            form=representative_form(monster_forms(content), monster_locations(content))
+            if form is None:
                 continue
             if re.search(r"\|\s*superior\s*=\s*(?:yes|true)",content,re.I):
                 continue
             vid=re.sub(r'[^a-z0-9]+','-',title.lower()).strip('-')
             if vid not in variants:
                 level=re.search(r"\|\s*slaylvl\s*=\s*(\d+)",content)
-                variants[vid]={'id':vid,'name':title,'assignmentIds':[],'hp':int(hp[1]),'multiplier':1,'requirements':[{'kind':'skill','key':'slayer','min':int(level[1]) if level else 0,'label':'Slayer'},{'kind':'access','key':'variant:'+vid,'min':1,'label':'Confirm access and repeatable method for '+title}],'source':source(title),'status':'sourced-alternative-access-unreviewed','drops':[],'masterAssignments':{}}
+                variants[vid]={'id':vid,'name':title,'assignmentIds':[],'hp':int(form['hitpoints']),'multiplier':1,'requirements':[{'kind':'skill','key':'slayer','min':int(level[1]) if level else int(form['slaylvl'] or 0),'label':'Slayer'},{'kind':'access','key':'variant:'+vid,'min':1,'label':'Confirm access and repeatable method for '+title}],'source':source(title),'status':'sourced-alternative-access-unreviewed','drops':[],'masterAssignments':{}}
             v=variants[vid]
             if row['id'] not in v['assignmentIds']:v['assignmentIds'].append(row['id'])
             if vid not in assignments[row['id']]['variantIds']:assignments[row['id']]['variantIds'].append(vid)

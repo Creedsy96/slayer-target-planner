@@ -358,764 +358,776 @@
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7462.png",
       "sha256": "129f941d8a94a9c311a38d1efe66ec29cdcf6bc5d8a48e7ff8fd32c80baa0451"
     },
-    "8923": {
+    "7660": {
       "frame": 59,
+      "name": "Guthix balance(4)",
+      "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/7660.png",
+      "sha256": "09e9283b0d5aa9e914d15d9799d79ea66b8a1dd74c41478fc82b13141e83cd18"
+    },
+    "8923": {
+      "frame": 60,
       "name": "Witchwood icon",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/8923.png",
       "sha256": "03db17fc07fe92c3ab24a65e792e2a087fc7e27f3ef8e5f118acdfc3eaa8d8b7"
     },
     "9243": {
-      "frame": 60,
+      "frame": 61,
       "name": "Diamond bolts (e)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9243.png",
       "sha256": "4d03b1bbea7c1002704c262d1094b03b912e37c63274d45830f378434901a04d"
     },
     "9674": {
-      "frame": 61,
+      "frame": 62,
       "name": "Proselyte hauberk",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9674.png",
       "sha256": "d620c18499e5cbd5c317f1e0ba2dfce3855c0396f26ba9c66f341be903976c57"
     },
     "9676": {
-      "frame": 62,
+      "frame": 63,
       "name": "Proselyte cuisse",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9676.png",
       "sha256": "4eb1d24e9d602b307c224fd504984a0eb83ec161ce9181f89cdccb3dd101280f"
     },
     "9731": {
-      "frame": 63,
+      "frame": 64,
       "name": "Mind shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/9731.png",
       "sha256": "6f044febfb019c440614933d36617cf5ba9b3dca1c0661b51be44bd5fdfe7c7f"
     },
     "10386": {
-      "frame": 64,
+      "frame": 65,
       "name": "Saradomin d'hide body",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10386.png",
       "sha256": "69a7d02c9b3e82fc72f188432ce4dabcf8f166d76c8b7482eeb09ef5b2b1b5d6"
     },
     "10388": {
-      "frame": 65,
+      "frame": 66,
       "name": "Saradomin chaps",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10388.png",
       "sha256": "ec377adb132ac73dcfdd0642d8addc2ebcea3d8517c1b63c2b8c6466294516ca"
     },
     "10390": {
-      "frame": 66,
+      "frame": 67,
       "name": "Saradomin coif",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10390.png",
       "sha256": "fc3b76925d398c415963705ae9f2aa8c553d8c6371dfcf88f99d2cff2203379a"
     },
     "10499": {
-      "frame": 67,
+      "frame": 68,
       "name": "Ava's accumulator",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10499.png",
       "sha256": "be5695af6fbfd813723363cf81d997c06f66abcd99245f4407208d8a71f7db39"
     },
     "10828": {
-      "frame": 68,
+      "frame": 69,
       "name": "Helm of Neitiznot",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10828.png",
       "sha256": "95cd1fb6ac4066e3d904fe754556208d07583de448c3acc99e000fbe5a93573c"
     },
     "10925": {
-      "frame": 69,
+      "frame": 70,
       "name": "Sanfew serum(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10925.png",
       "sha256": "23893607530680cfef2901fdf2889e2b41f48c6fdc7698c1a92ed7dece10b1a5"
     },
     "10952": {
-      "frame": 70,
+      "frame": 71,
       "name": "Slayer bell",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/10952.png",
       "sha256": "27467d2557bb24ec8657f5425cce95a9e5c1f3ae15c8dd89a37e5a56af2ad1f8"
     },
     "11037": {
-      "frame": 71,
+      "frame": 72,
       "name": "Brine sabre",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11037.png",
       "sha256": "ad97758d2506f1d8370917b6117987ed4a555e08115996bf61c822539453e178"
     },
     "11212": {
-      "frame": 72,
+      "frame": 73,
       "name": "Dragon arrow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11212.png",
       "sha256": "be08bba0cad0d34455be5ac6310da39a48e9898ebbaefd3377d5cb042b07f5d7"
     },
     "11230": {
-      "frame": 73,
+      "frame": 74,
       "name": "Dragon dart",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11230.png",
       "sha256": "f42e0b76a6446ef03883819d52e41362a69fa4d4e6803969d0afecacd2093582"
     },
     "11283": {
-      "frame": 74,
+      "frame": 75,
       "name": "Dragonfire shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11283.png",
       "sha256": "bbec146e5e68902a077b3f775799dc9c95fd15cb3e761e4f6c70971a3d9af7c9"
     },
     "11770": {
-      "frame": 75,
+      "frame": 76,
       "name": "Seers ring (i)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11770.png",
       "sha256": "8c2c2b9c3e7017fa9dce989d6dc61b064e5b7222db5b4d708803038736147251"
     },
     "11771": {
-      "frame": 76,
+      "frame": 77,
       "name": "Archers ring (i)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11771.png",
       "sha256": "227e7dd05a7798c6418e7fc967abffefeb58f261dce1826c0bb091c3fa8310e8"
     },
     "11773": {
-      "frame": 77,
+      "frame": 78,
       "name": "Berserker ring (i)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11773.png",
       "sha256": "6207ad5fc1f25d4c527118d9fe022fccc46998f53cc111aeb4fe7979e2c39f48"
     },
     "11791": {
-      "frame": 78,
+      "frame": 79,
       "name": "Staff of the Dead",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11791.png",
       "sha256": "ef7cd776d71eb8163f04437a06a0e5cd113b55f099dba7870bd88f2aa8849ac7"
     },
     "11840": {
-      "frame": 79,
+      "frame": 80,
       "name": "Dragon boots",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11840.png",
       "sha256": "48fcc8134f473d5c4e39c848f657db4c6173bc168e6c691d01bafd729191f0e8"
     },
     "11865": {
-      "frame": 80,
+      "frame": 81,
       "name": "Slayer helmet (i)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11865.png",
       "sha256": "8679e3cc4dd4ac53e59333dcd536146aa90256feb8c0eb78f9b0a856870a6a30"
     },
     "11875": {
-      "frame": 81,
+      "frame": 82,
       "name": "Broad bolts",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11875.png",
       "sha256": "60f84e2d509da7e08af7a69e1db3871b76993cc9224b85d2a9a5f68fba75eeeb"
     },
     "11889": {
-      "frame": 82,
+      "frame": 83,
       "name": "Zamorakian hasta",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11889.png",
       "sha256": "da56a092a11f60d725a2979c30bfee151dff495a966ebe833c3e316b8008bcde"
     },
     "11902": {
-      "frame": 83,
+      "frame": 84,
       "name": "Leaf-bladed sword",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11902.png",
       "sha256": "bf3a923a203ae14269f4ca62e89eafb629412c6468a22d746402307e3d952948"
     },
     "11907": {
-      "frame": 84,
+      "frame": 85,
       "name": "Trident of the Seas",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11907.png",
       "sha256": "a3fd6cf9074ed064e02a9d2b8fb7d7a9dbe7512813d6d356a87b7afd23b8e39e"
     },
     "11951": {
-      "frame": 85,
+      "frame": 86,
       "name": "Extended antifire(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/11951.png",
       "sha256": "14d6ccd47aed8b765a345ebff2eca613b9c0dc02a56118846d0ad695179c2204"
     },
     "12002": {
-      "frame": 86,
+      "frame": 87,
       "name": "Occult necklace",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12002.png",
       "sha256": "d31270ce09eb2228b880297629092ab5edfa759277175210600002c21dd1c66c"
     },
     "12610": {
-      "frame": 87,
+      "frame": 88,
       "name": "Book of Law",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12610.png",
       "sha256": "80dcf8394042a82188b160c36aaa4578453ac55ce40f5155c2d0b2798690b735"
     },
     "12612": {
-      "frame": 88,
+      "frame": 89,
       "name": "Book of Darkness",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12612.png",
       "sha256": "3f67005d88cac7e7f608217b10964f833769a53796a77aec9a73219397bdd460"
     },
     "12695": {
-      "frame": 89,
+      "frame": 90,
       "name": "Super combat potion(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12695.png",
       "sha256": "d27c19a98445e495a594b97fb0beee7401b8a92a9b25f618aebe43d2e7e2699a"
     },
     "12788": {
-      "frame": 90,
+      "frame": 91,
       "name": "Magic shortbow (i)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12788.png",
       "sha256": "1799dc59790eb59eb5ab13b2a2cb829f2030e404de9a78f6df9f48fd3da8154a"
     },
     "12821": {
-      "frame": 91,
+      "frame": 92,
       "name": "Spectral spirit shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12821.png",
       "sha256": "4b78b75b5419e089334c17afc3b9511927cef7ce3fe0dbe71654ccac571fb5ca"
     },
     "12899": {
-      "frame": 92,
+      "frame": 93,
       "name": "Trident of the Swamp",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12899.png",
       "sha256": "9ee1d50aff5b1192152b5725d49e3afa801a659a148b3b0690be64848e3ee0d1"
     },
     "12913": {
-      "frame": 93,
+      "frame": 94,
       "name": "Anti-venom+(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12913.png",
       "sha256": "ea01818e08976c51f4c601b7620c94a07007f0385906ee8f72ae5ee9f32e0857"
     },
     "12926": {
-      "frame": 94,
+      "frame": 95,
       "name": "Toxic blowpipe",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12926.png",
       "sha256": "6bb9ff44beae4d24511adec0962d084baeaa1da8bbf4d4f79f2b110940f914b7"
     },
     "12934": {
-      "frame": 95,
+      "frame": 96,
       "name": "Zulrah's scales",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12934.png",
       "sha256": "f890ad3b9f00971ef4436db51a665536a2ef960ef173e85e1f2d8a287fd0bb17"
     },
     "12954": {
-      "frame": 96,
+      "frame": 97,
       "name": "Dragon defender",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/12954.png",
       "sha256": "4532f225b61595fd1d93fbd137f65e93f9623f70c8758b761df445eb7a3bfea0"
     },
     "13235": {
-      "frame": 97,
+      "frame": 98,
       "name": "Eternal boots",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13235.png",
       "sha256": "a14905cdceab83fc5b024a4d3320f8582594916653efdad70edb1515eb203688"
     },
     "13237": {
-      "frame": 98,
+      "frame": 99,
       "name": "Pegasian boots",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13237.png",
       "sha256": "3452cb76ec5ed1f1e830c69e83870f3ff0466975ffad4e2e7d1d72e7ccb26c9e"
     },
     "13239": {
-      "frame": 99,
+      "frame": 100,
       "name": "Primordial boots",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13239.png",
       "sha256": "cc653ba73d23744b010d4f886b8e418bbcae1c28eedd2ddc66db0d4ff1c39da5"
     },
     "13377": {
-      "frame": 100,
+      "frame": 101,
       "name": "Shayzien gloves (5)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13377.png",
       "sha256": "6f4a68fe1dc674bd95e37eec414f0bd723e09f40f79470e42ca7f619b305011a"
     },
     "13378": {
-      "frame": 101,
+      "frame": 102,
       "name": "Shayzien boots (5)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13378.png",
       "sha256": "33eed2c483ed8e0203d60528bb6dfe91e4e3369bdf0ab813f7b2fddf498cf4b9"
     },
     "13379": {
-      "frame": 102,
+      "frame": 103,
       "name": "Shayzien helm (5)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13379.png",
       "sha256": "4842e578b2937939eb816a04f0cb559ad05da8c1ed9d1b44a22ac39c134095c9"
     },
     "13380": {
-      "frame": 103,
+      "frame": 104,
       "name": "Shayzien greaves (5)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13380.png",
       "sha256": "b0a6ecbf3b348428991e3dca6e06226b565cd3ecbcc63f2bac5d08b9ba1750e3"
     },
     "13381": {
-      "frame": 104,
+      "frame": 105,
       "name": "Shayzien body (5)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/13381.png",
       "sha256": "21599bec271e5f0ce4476e5d20ccf77fbeb92ecf8250f6c0a59cbc65e1f9577e"
     },
     "19544": {
-      "frame": 105,
+      "frame": 106,
       "name": "Tormented bracelet",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19544.png",
       "sha256": "4f8ec3b0ee0f3063b6aceb747d7c3449aba4620d4a0703c7aee467906511cdcf"
     },
     "19547": {
-      "frame": 106,
+      "frame": 107,
       "name": "Necklace of anguish",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19547.png",
       "sha256": "b8f1e7ed5e7c7b4223cf6be36e3b84d39950fcf11f005d5fc206c77b4d37bf8a"
     },
     "19675": {
-      "frame": 107,
+      "frame": 108,
       "name": "Arclight",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19675.png",
       "sha256": "a4203905eb7d8d712d9cdc996dab6e7ad4f2c048631ceb01d4952ed9bcd8e56c"
     },
     "19685": {
-      "frame": 108,
+      "frame": 109,
       "name": "Dark totem",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19685.png",
       "sha256": "95efe492f0b0ae5dbdf8de574b86cab5eabc418a5e8286fa9664b11338666236"
     },
     "19933": {
-      "frame": 109,
+      "frame": 110,
       "name": "Saradomin d'hide boots",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/19933.png",
       "sha256": "293e63819887b5499bd28054c63c1e99d1b0c69b27870829345a8fb0ddf68cfa"
     },
     "20220": {
-      "frame": 110,
+      "frame": 111,
       "name": "Holy blessing",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20220.png",
       "sha256": "b375d4559d7bd3b2b30424659e1fd9e9a414cc321cfa66ae8fadc01a52a9a7ea"
     },
     "20724": {
-      "frame": 111,
+      "frame": 112,
       "name": "Imbued heart",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20724.png",
       "sha256": "d5160a65afd788e99febb2a940154d51776c8f558019678eabd026ef5efd9055"
     },
     "20727": {
-      "frame": 112,
+      "frame": 113,
       "name": "Leaf-bladed battleaxe",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20727.png",
       "sha256": "4adf220f7a4e4a817c17e9ea6b9a4006e8f0f1e33b1b51ecd4970f31c50cb0e4"
     },
     "20754": {
-      "frame": 113,
+      "frame": 114,
       "name": "Giant key",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20754.png",
       "sha256": "5cff98c61da8841386f648df0c39129abfc294b7d0635f3728be12ec968704cc"
     },
     "20997": {
-      "frame": 114,
+      "frame": 115,
       "name": "Twisted bow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/20997.png",
       "sha256": "9766816999a5945eca520c6a2c2e6ae0c390a62777ac35caf490142dfeabf0e6"
     },
     "21000": {
-      "frame": 115,
+      "frame": 116,
       "name": "Twisted buckler",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21000.png",
       "sha256": "7278aaa8acfcb399beefd97a243d5db5c319581a22ea1d32545776308cc59756"
     },
     "21006": {
-      "frame": 116,
+      "frame": 117,
       "name": "Kodai wand",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21006.png",
       "sha256": "8bbb51730237acd3bfe5e89ec56be87a2970a83cd4daf48ad232e94cd4e92a8f"
     },
     "21009": {
-      "frame": 117,
+      "frame": 118,
       "name": "Dragon shortsword",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21009.png",
       "sha256": "d3297b360bae42c77891f257c86e6ecddccd0856184d42a333d2113cfd9cda8c"
     },
     "21012": {
-      "frame": 118,
+      "frame": 119,
       "name": "Dragon hunter crossbow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21012.png",
       "sha256": "25890510ce4f029a5c2ea49f981703604a8412a2ccd3ad9a3943884ac353cd69"
     },
     "21018": {
-      "frame": 119,
+      "frame": 120,
       "name": "Ancestral hat",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21018.png",
       "sha256": "788d6e2b3501a23f8fb24236a04d516c3b070b4091b1f6b4eb6923057c6a1afc"
     },
     "21021": {
-      "frame": 120,
+      "frame": 121,
       "name": "Ancestral robe top",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21021.png",
       "sha256": "6c2ffa1214b9302ca8d2aa75f4d0e736d39fb7b9823a52bbc178d3e8b15fa876"
     },
     "21024": {
-      "frame": 121,
+      "frame": 122,
       "name": "Ancestral robe bottom",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21024.png",
       "sha256": "9ea7d52bfbee0e6b5af476115de03f31fbaa29553467b92c803f9f3af7d21dfa"
     },
     "21255": {
-      "frame": 122,
+      "frame": 123,
       "name": "Slayer's staff (e)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21255.png",
       "sha256": "db6cf0017849b074ac77d7f16e1a162293171af17f9a3e3090f77879323323e0"
     },
     "21295": {
-      "frame": 123,
+      "frame": 124,
       "name": "Infernal cape",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21295.png",
       "sha256": "59476df88ddf708273df4b5e03b96665bc52a3a23082935c3cf1f6bd36c15326"
     },
     "21316": {
-      "frame": 124,
+      "frame": 125,
       "name": "Amethyst broad bolts",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21316.png",
       "sha256": "cd753d56f7c0701cacacc24b0e6ca4322ec8b11f16930735c1a89a7b6ffb42b0"
     },
     "21326": {
-      "frame": 125,
+      "frame": 126,
       "name": "Amethyst arrow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21326.png",
       "sha256": "b9c47b3dc8d9ed198ff99ae02fd755ae15131476e72e6099b9065f420249f70e"
     },
     "21633": {
-      "frame": 126,
+      "frame": 127,
       "name": "Ancient wyvern shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21633.png",
       "sha256": "ba6d1b780d54c792a0e4109d040e168c07cd35774f4059fd83f24fcbc64e7bba"
     },
     "21754": {
-      "frame": 127,
+      "frame": 128,
       "name": "Rock thrownhammer",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21754.png",
       "sha256": "7e3b5cf82bf12c62811d475429d5bce1c13d233db72c3fd51f7e2d5a4b9b4fd9"
     },
     "21791": {
-      "frame": 128,
+      "frame": 129,
       "name": "Imbued Saradomin cape",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21791.png",
       "sha256": "c6f859c609772fccc34f8c69ecf550ccf68a62322ea0e79639ac0de36c6bc73a"
     },
     "21820": {
-      "frame": 129,
+      "frame": 130,
       "name": "Revenant ether",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21820.png",
       "sha256": "71e28d3e942ec2d1fc81740206b0624ea0fe63576367876a9ae1d7b2106749c7"
     },
     "21902": {
-      "frame": 130,
+      "frame": 131,
       "name": "Dragon crossbow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21902.png",
       "sha256": "5fc46151180b3e15d91e9f5f40d403923c1072f83281daa516ca1ffdf8043379"
     },
     "21946": {
-      "frame": 131,
+      "frame": 132,
       "name": "Diamond dragon bolts (e)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/21946.png",
       "sha256": "ca8535bebe36038004a4ba98fa2f49d6abcf8740b4aa86c7a47f9c7eddf46ddc"
     },
     "22002": {
-      "frame": 132,
+      "frame": 133,
       "name": "Dragonfire ward",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22002.png",
       "sha256": "6fc5b8027d8390da0507fcbbb9148c39f14d87f76dfde3c8f57b817d44113256"
     },
     "22322": {
-      "frame": 133,
+      "frame": 134,
       "name": "Avernic defender",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22322.png",
       "sha256": "305e5c367e6eadb0c2c34641972ada86c83d3e8ea04742fd019c1766eb82cac6"
     },
     "22323": {
-      "frame": 134,
+      "frame": 135,
       "name": "Sanguinesti staff",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22323.png",
       "sha256": "0c9050056b441c8716e8a9a83e34be215349318889028ea357c45ae6e59da25e"
     },
     "22324": {
-      "frame": 135,
+      "frame": 136,
       "name": "Ghrazi rapier",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22324.png",
       "sha256": "72a9516734fc41315a41773f65fd836a681f0dfa8a7ecba2e03adcbf4824ea4c"
     },
     "22325": {
-      "frame": 136,
+      "frame": 137,
       "name": "Scythe of Vitur",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22325.png",
       "sha256": "55782922621737d9674fd951c740273c270fe7c898212de10c194a146ad094fc"
     },
     "22374": {
-      "frame": 137,
+      "frame": 138,
       "name": "Mossy key",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22374.png",
       "sha256": "661df8e98f35b98b21b5780d571e94879383c3f8c27ee45a0db312395c6c8b49"
     },
+    "22398": {
+      "frame": 139,
+      "name": "Ivandis flail",
+      "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22398.png",
+      "sha256": "9c98fe1a590007048181e28bb1a20da3f9b080c47e57c94bd48d56a9e00d6b87"
+    },
     "22951": {
-      "frame": 138,
+      "frame": 140,
       "name": "Boots of Brimstone",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22951.png",
       "sha256": "173865669ab4856ef8749a8da1e8ac07540696e68d23cb42cab484fa5d065e8a"
     },
     "22978": {
-      "frame": 139,
+      "frame": 141,
       "name": "Dragon hunter lance",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22978.png",
       "sha256": "187a79b0aef35f3ae2251b376843ad0576934c4418ebf6285182f443b321c2f7"
     },
     "22981": {
-      "frame": 140,
+      "frame": 142,
       "name": "Ferocious gloves",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/22981.png",
       "sha256": "8c0ac44a0d9248dde3384476f521bc3502e91dea4da0e1ddb18db5fc93314845"
     },
     "23037": {
-      "frame": 141,
+      "frame": 143,
       "name": "Boots of stone",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23037.png",
       "sha256": "c112c503716c7c42200352aad4b25aadfc68b45260977baf685be751737941dd"
     },
     "23528": {
-      "frame": 142,
+      "frame": 144,
       "name": "Sarachnis cudgel",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23528.png",
       "sha256": "e5a6542042f4623ee1c073aa8dca372474dee4f157528f6cbee802676019bc06"
     },
     "23975": {
-      "frame": 143,
+      "frame": 145,
       "name": "Crystal body",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23975.png",
       "sha256": "e2e54adf3c296c686f3efa582ccff1a09b00c3ad3d143cd752d4bd5c52b759dd"
     },
     "23979": {
-      "frame": 144,
+      "frame": 146,
       "name": "Crystal legs",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23979.png",
       "sha256": "bd7e303872df06bf2cb21c0c7b8172fb676c5d09665e8e0b81f348893b749372"
     },
     "23995": {
-      "frame": 145,
+      "frame": 147,
       "name": "Blade of Saeldor",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/23995.png",
       "sha256": "941a95804ae3f56cc4be69a2ec2b90ff213085e76cda824e1faa715d714f8404"
     },
     "24265": {
-      "frame": 146,
+      "frame": 148,
       "name": "V's shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24265.png",
       "sha256": "ea02628e3797e35cc39af56b096eb792fd6ba8ba3ed512b91d310f5f4bc49050"
     },
     "24271": {
-      "frame": 147,
+      "frame": 149,
       "name": "Neitiznot faceguard",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24271.png",
       "sha256": "bdc8e5acc25d66c85f174dd556b6efce982ca8b912b9f0622490c407abce8f27"
     },
     "24417": {
-      "frame": 148,
+      "frame": 150,
       "name": "Inquisitor's mace",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24417.png",
       "sha256": "122c0a1ea4d3cd13bf7648d541d2d4c46178248dc99f60421c1c5d9425760a91"
     },
     "24420": {
-      "frame": 149,
+      "frame": 151,
       "name": "Inquisitor's hauberk",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24420.png",
       "sha256": "c5a71abcd661fdc9f4bc7b7e28ef6299eaec17d92642ba6a67964155ffeb03cb"
     },
     "24421": {
-      "frame": 150,
+      "frame": 152,
       "name": "Inquisitor's plateskirt",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24421.png",
       "sha256": "81ea2150b556443a7a06b09f2386c82e835c95099c60cd3be7e156880a87b3b4"
     },
     "24423": {
-      "frame": 151,
+      "frame": 153,
       "name": "Harmonised Nightmare staff",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24423.png",
       "sha256": "9c1e067011ea713efe7fb287f4d2c9505ebe4b6bf4e32358caac53adccbe3669"
     },
     "24699": {
-      "frame": 152,
+      "frame": 154,
       "name": "Blisterwood flail",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24699.png",
       "sha256": "ac5055b81699cdd0574ee2bb4a6880288bce37d99665730556a49ba943ec3884"
     },
     "24942": {
-      "frame": 153,
+      "frame": 155,
       "name": "Reinforced goggles",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/24942.png",
       "sha256": "61e410ecc7135de57c9065d2c39112d82da1dfac3727805181ea835551a792d2"
     },
     "25485": {
-      "frame": 154,
+      "frame": 156,
       "name": "Ultor ring",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25485.png",
       "sha256": "ba157d1428b07d16857cf75b1ce912818646588b42f4c4551e0824c61786f9f9"
     },
     "25486": {
-      "frame": 155,
+      "frame": 157,
       "name": "Magus ring",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25486.png",
       "sha256": "b8068242d057763a171748ebc830798494f4aaa5668c94ce29d0df603b462dcb"
     },
     "25487": {
-      "frame": 156,
+      "frame": 158,
       "name": "Venator ring",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25487.png",
       "sha256": "4e91f30cefae0e9accbd5067632c083491f790764202ede6f70606807093a5ac"
     },
     "25849": {
-      "frame": 157,
+      "frame": 159,
       "name": "Amethyst dart",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25849.png",
       "sha256": "dd37fd6b8c3a21b9d89c046e46b84a8b007576c747436a0a3fc7a2ebf92b954a"
     },
     "25865": {
-      "frame": 158,
+      "frame": 160,
       "name": "Bow of Faerdhinen",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25865.png",
       "sha256": "d9087fca786846ca18d3867316fd1777037e8af867c74872347bc442adc971d7"
     },
     "25979": {
-      "frame": 159,
+      "frame": 161,
       "name": "Keris partisan",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25979.png",
       "sha256": "703403cb3f4b5d1907af2c9e8d3ec6a1dfa374520759b99ac24993c68076b941"
     },
     "25981": {
-      "frame": 160,
+      "frame": 162,
       "name": "Keris partisan of breaching",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/25981.png",
       "sha256": "e372bc891adb3b93f3793657cb8e3951bc38879e2cd11f17894e6f1784e0e9da"
     },
     "26219": {
-      "frame": 161,
+      "frame": 163,
       "name": "Osmumten's fang",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26219.png",
       "sha256": "19fcfa0b0ca46e388bfa513b3979012b8111bc2909318d5fce486ed8c4456f27"
     },
     "26235": {
-      "frame": 162,
+      "frame": 164,
       "name": "Zaryte vambraces",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26235.png",
       "sha256": "c999edae7a924af723e6d988ec558edc2743863ad3d6f1238f3ac87e93309815"
     },
     "26243": {
-      "frame": 163,
+      "frame": 165,
       "name": "Virtus robe top",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26243.png",
       "sha256": "8ca4a00b33f0da18163a135b724797214e60d00089b891d419fa11b975294460"
     },
     "26245": {
-      "frame": 164,
+      "frame": 166,
       "name": "Virtus robe bottom",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26245.png",
       "sha256": "e491821b21bd3c8a572543f287733604889ffa8a1973c0a4399146a5dd8e4b4f"
     },
     "26374": {
-      "frame": 165,
+      "frame": 167,
       "name": "Zaryte crossbow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26374.png",
       "sha256": "a2f04daadc884abc4888b827b2dbe25dcc7eb34f6fa83fc487fb07a03e27da16"
     },
     "26384": {
-      "frame": 166,
+      "frame": 168,
       "name": "Torva platebody",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26384.png",
       "sha256": "4b8174fb1fcaac20e3cd591358af6aa8a33f3db03b8511b1ac344bc639654937"
     },
     "26386": {
-      "frame": 167,
+      "frame": 169,
       "name": "Torva platelegs",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/26386.png",
       "sha256": "d9ad6d302a3d239d1e07f479cd22289728ce91867d6b97e31b4a06bcfaff0c55"
     },
     "27235": {
-      "frame": 168,
+      "frame": 170,
       "name": "Masori mask (f)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27235.png",
       "sha256": "e5278c79831a399008875bf5e7eae99b71e04a8358c86d9adba5b644ed8a2d40"
     },
     "27238": {
-      "frame": 169,
+      "frame": 171,
       "name": "Masori body (f)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27238.png",
       "sha256": "48a7c078266fe40a2e5d424ac32d77b9687df3847f28a7f646ab4cde8ffac5a8"
     },
     "27241": {
-      "frame": 170,
+      "frame": 172,
       "name": "Masori chaps (f)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27241.png",
       "sha256": "da3e80998e886abadb8425808fc0ff186ca78a4fe389a1581aa6c4e4d23310ba"
     },
     "27251": {
-      "frame": 171,
+      "frame": 173,
       "name": "Elidinis' ward (f)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27251.png",
       "sha256": "5e44493e2396088eece85672fea5cdc64007a7a8b8010c3e243057b1e2cd6397"
     },
     "27275": {
-      "frame": 172,
+      "frame": 174,
       "name": "Tumeken's shadow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27275.png",
       "sha256": "e35d01e45eaed7e242eda0d799f782113ea93f92aed90542d3d0985df157afa0"
     },
     "27655": {
-      "frame": 173,
+      "frame": 175,
       "name": "Webweaver bow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27655.png",
       "sha256": "3e4c7036e8a2dd766b24c5c00cf781f357da5114211a81f9a253585d6f3bfc0c"
     },
     "27660": {
-      "frame": 174,
+      "frame": 176,
       "name": "Ursine chainmace",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27660.png",
       "sha256": "3144a8889e7943762823ff4fecf63e83ef95fe1feaba52b502e84ba50dcd1286"
     },
     "27665": {
-      "frame": 175,
+      "frame": 177,
       "name": "Accursed sceptre",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/27665.png",
       "sha256": "b5b7346242e4d33b584e8b958717136681b395ebf831cfe290c2f7b8b3fbb3cd"
     },
     "28936": {
-      "frame": 176,
+      "frame": 178,
       "name": "Sunfire fanatic cuirass",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28936.png",
       "sha256": "b0047b679831d007eeecace0df9975275937d506ff93ccb61449d04121ad500e"
     },
     "28939": {
-      "frame": 177,
+      "frame": 179,
       "name": "Sunfire fanatic chausses",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28939.png",
       "sha256": "07d2ddacd727a5f93c2f00953a432d0dc1a72d54ccf77f8e5ebfcb392d173ecb"
     },
     "28951": {
-      "frame": 178,
+      "frame": 180,
       "name": "Dizana's quiver",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/28951.png",
       "sha256": "58dd7f1d6634c2cbda160475f292d737fed43245e26b1b001040c3d264369275"
     },
     "29080": {
-      "frame": 179,
+      "frame": 181,
       "name": "Moonlight potion(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29080.png",
       "sha256": "cc88dc0aa026037e6c3e15e3239fa39ebf2296d5437f6a5d11a013f472ce7543"
     },
     "29589": {
-      "frame": 180,
+      "frame": 182,
       "name": "Emberlight",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29589.png",
       "sha256": "86551d75233116a1aa90556fa7e10bb213588b9468f81ba8c1329c8b1967dde9"
     },
     "29591": {
-      "frame": 181,
+      "frame": 183,
       "name": "Scorching bow",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29591.png",
       "sha256": "3c6f75f031ae915972a3a2ff079e54b6137b5e880e77cb2516b51324db09810b"
     },
     "29801": {
-      "frame": 182,
+      "frame": 184,
       "name": "Amulet of rancour",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29801.png",
       "sha256": "d27f923dbffeed54edd9a778efe1f472f92cbec2dd250327db667a3a02292d85"
     },
     "29824": {
-      "frame": 183,
+      "frame": 185,
       "name": "Extended anti-venom+(4)",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/29824.png",
       "sha256": "89a379782e57ae58caaf72a9d4df4a8826662d496fbd1168ff74fe02117ab38a"
     },
     "31398": {
-      "frame": 184,
+      "frame": 186,
       "name": "Tortugan shield",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/31398.png",
       "sha256": "f6c30920c4a34f5dd51059c5c546d6029e04e1494402f7b36b885a1e20000a40"
     },
     "33722": {
-      "frame": 185,
+      "frame": 187,
       "name": "Sunspear",
       "source": "https://raw.githubusercontent.com/runelite/static.runelite.net/e60d45ed18a57c40c1d4120a1ed94c5896e49da8/cache/item/icon/33722.png",
       "sha256": "9361b1dba0e920f3cbaf2678e43b4c56e27af24ae0ef99d37caf59f35595d6d4"
@@ -1138,9 +1150,17 @@
       "page": "Ahrim's robetop",
       "itemId": 4712
     },
+    "Amethyst arrows": {
+      "page": "Amethyst arrow",
+      "itemId": 21326
+    },
     "Amethyst broad bolts": {
       "page": "Amethyst broad bolts",
       "itemId": 21316
+    },
+    "Amethyst darts": {
+      "page": "Amethyst dart",
+      "itemId": 25849
     },
     "Amulet of fury": {
       "page": "Amulet of fury",
@@ -1178,6 +1198,14 @@
       "page": "Anti-dragon shield",
       "itemId": 1540
     },
+    "Anti-venom+": {
+      "page": "Anti-venom+",
+      "itemId": 12913
+    },
+    "Antidote++": {
+      "page": "Antidote++",
+      "itemId": 5952
+    },
     "Archers ring (i)": {
       "page": "Archers ring (i)",
       "itemId": 11771
@@ -1193,6 +1221,14 @@
     "Avernic defender": {
       "page": "Avernic defender",
       "itemId": 22322
+    },
+    "Axe": {
+      "page": "Axe",
+      "itemId": 1351
+    },
+    "Bags of salt": {
+      "page": "Bag of salt",
+      "itemId": 4161
     },
     "Barrows gloves": {
       "page": "Barrows gloves",
@@ -1213,6 +1249,22 @@
     "Blade of saeldor": {
       "page": "Blade of saeldor",
       "itemId": 23995
+    },
+    "Blessed coif": {
+      "page": "Blessed dragonhide armour",
+      "itemId": 10390
+    },
+    "Blessed d'hide body": {
+      "page": "Blessed dragonhide armour",
+      "itemId": 10386
+    },
+    "Blessed d'hide boots": {
+      "page": "Blessed dragonhide armour",
+      "itemId": 19933
+    },
+    "Blessed d'hide chaps": {
+      "page": "Blessed dragonhide armour",
+      "itemId": 10388
     },
     "Blisterwood flail": {
       "page": "Blisterwood flail",
@@ -1246,6 +1298,14 @@
       "page": "Climbing boots",
       "itemId": 3105
     },
+    "Crumble Undead": {
+      "page": "Crumble Undead",
+      "itemId": null
+    },
+    "Crystal armour": {
+      "page": "Crystal armour",
+      "itemId": 23975
+    },
     "Crystal body": {
       "page": "Crystal body",
       "itemId": 23975
@@ -1270,6 +1330,10 @@
       "page": "Dizana's quiver",
       "itemId": 28951
     },
+    "Dragon arrows": {
+      "page": "Dragon arrow",
+      "itemId": 11212
+    },
     "Dragon boots": {
       "page": "Dragon boots",
       "itemId": 11840
@@ -1277,6 +1341,10 @@
     "Dragon crossbow": {
       "page": "Dragon crossbow",
       "itemId": 21902
+    },
+    "Dragon darts": {
+      "page": "Dragon dart",
+      "itemId": 11230
     },
     "Dragon defender": {
       "page": "Dragon defender",
@@ -1290,6 +1358,10 @@
       "page": "Dragon hunter lance",
       "itemId": 22978
     },
+    "Dragon sword": {
+      "page": "Dragon shortsword",
+      "itemId": 21009
+    },
     "Dragonfire shield": {
       "page": "Dragonfire shield",
       "itemId": 11283
@@ -1301,6 +1373,14 @@
     "Earmuffs": {
       "page": "Earmuffs",
       "itemId": 4166
+    },
+    "Earth surge": {
+      "page": "Earth surge",
+      "itemId": null
+    },
+    "Earth wave": {
+      "page": "Earth wave",
+      "itemId": null
     },
     "Elidinis' ward (f)": {
       "page": "Elidinis' ward (f)",
@@ -1314,6 +1394,10 @@
       "page": "Eternal boots",
       "itemId": 13235
     },
+    "Extended antifire": {
+      "page": "Extended antifire",
+      "itemId": 11951
+    },
     "Facemask": {
       "page": "Facemask",
       "itemId": 4164
@@ -1326,6 +1410,26 @@
       "page": "Fire cape",
       "itemId": 6570
     },
+    "Fire surge": {
+      "page": "Fire surge",
+      "itemId": null
+    },
+    "Fire wave": {
+      "page": "Fire wave",
+      "itemId": null
+    },
+    "Fishing explosives": {
+      "page": "Fishing explosive",
+      "itemId": 6660
+    },
+    "Flames of Zamorak": {
+      "page": "Flames of Zamorak",
+      "itemId": null
+    },
+    "Fungicide spray": {
+      "page": "Fungicide spray",
+      "itemId": 7421
+    },
     "Ghrazi rapier": {
       "page": "Ghrazi rapier",
       "itemId": 22324
@@ -1334,6 +1438,22 @@
       "page": "Giant key",
       "itemId": 20754
     },
+    "God blessing": {
+      "page": "Blessing",
+      "itemId": 20220
+    },
+    "God cape": {
+      "page": "God cape",
+      "itemId": 2412
+    },
+    "Guthix balance": {
+      "page": "Guthix balance",
+      "itemId": 7660
+    },
+    "Guthix balance potions": {
+      "page": "Guthix balance",
+      "itemId": 7660
+    },
     "Harmonised nightmare staff": {
       "page": "Harmonised nightmare staff",
       "itemId": 24423
@@ -1341,6 +1461,22 @@
     "Helm of Neitiznot": {
       "page": "Helm of Neitiznot",
       "itemId": 10828
+    },
+    "Ice Barrage": {
+      "page": "Ice Barrage",
+      "itemId": null
+    },
+    "Ice Burst": {
+      "page": "Ice Burst",
+      "itemId": null
+    },
+    "Ice coolers": {
+      "page": "Ice cooler",
+      "itemId": 6696
+    },
+    "Imbued god cape": {
+      "page": "Imbued god cape",
+      "itemId": 21791
     },
     "Infernal cape": {
       "page": "Infernal cape",
@@ -1361,6 +1497,10 @@
     "Insulated boots": {
       "page": "Insulated boots",
       "itemId": 7159
+    },
+    "Ivandis flail": {
+      "page": "Ivandis flail",
+      "itemId": 22398
     },
     "Karil's leatherskirt": {
       "page": "Karil's leatherskirt",
@@ -1393,6 +1533,14 @@
     "Lit bug lantern": {
       "page": "Lit bug lantern",
       "itemId": 7053
+    },
+    "Magic Dart": {
+      "page": "Magic Dart",
+      "itemId": null
+    },
+    "Magic potion": {
+      "page": "Magic potion",
+      "itemId": 3040
     },
     "Magic shortbow (i)": {
       "page": "Magic shortbow (i)",
@@ -1482,9 +1630,21 @@
       "page": "Occult necklace",
       "itemId": 12002
     },
+    "Ogre arrows": {
+      "page": "Ogre arrow",
+      "itemId": 2866
+    },
+    "Ogre bellows": {
+      "page": "Ogre bellows",
+      "itemId": 2871
+    },
     "Ogre bow": {
       "page": "Ogre bow",
       "itemId": 2883
+    },
+    "Ogre composite bow": {
+      "page": "Comp ogre bow",
+      "itemId": 4827
     },
     "Osmumten's fang": {
       "page": "Osmumten's fang",
@@ -1493,6 +1653,10 @@
     "Pegasian boots": {
       "page": "Pegasian boots",
       "itemId": 13237
+    },
+    "Prayer potions": {
+      "page": "Prayer potion",
+      "itemId": 2434
     },
     "Primordial boots": {
       "page": "Primordial boots",
@@ -1506,9 +1670,33 @@
       "page": "Proselyte hauberk",
       "itemId": 9674
     },
+    "Ranging potion": {
+      "page": "Ranging potion",
+      "itemId": 2444
+    },
     "Reinforced goggles": {
       "page": "Reinforced goggles",
       "itemId": 24942
+    },
+    "Relicym’s balm": {
+      "page": "Relicym's balm",
+      "itemId": 4842
+    },
+    "Revenant ether": {
+      "page": "Revenant ether",
+      "itemId": 21820
+    },
+    "Ring of dueling": {
+      "page": "Ring of dueling",
+      "itemId": 2552
+    },
+    "Rune brutal arrows": {
+      "page": "Rune brutal",
+      "itemId": 4803
+    },
+    "Sanfew serum": {
+      "page": "Sanfew serum",
+      "itemId": 10925
     },
     "Sanguinesti staff": {
       "page": "Sanguinesti staff",
@@ -1517,6 +1705,14 @@
     "Sarachnis cudgel": {
       "page": "Sarachnis cudgel",
       "itemId": 23528
+    },
+    "Saradomin brews": {
+      "page": "Saradomin brew",
+      "itemId": 6685
+    },
+    "Scorching bow": {
+      "page": "Scorching bow",
+      "itemId": 29591
     },
     "Scythe of Vitur": {
       "page": "Scythe of Vitur",
@@ -1558,6 +1754,10 @@
       "page": "Slayer's staff (e)",
       "itemId": 21255
     },
+    "Spectral spirit shield": {
+      "page": "Spectral spirit shield",
+      "itemId": 12821
+    },
     "Spiny helmet": {
       "page": "Spiny helmet",
       "itemId": 4551
@@ -1577,6 +1777,10 @@
     "Sunspear": {
       "page": "Sunspear",
       "itemId": 33722
+    },
+    "Super combat potion": {
+      "page": "Super combat potion",
+      "itemId": 12695
     },
     "Torag's platebody": {
       "page": "Torag's platebody",
@@ -1650,9 +1854,25 @@
       "page": "Virtus robe top",
       "itemId": 26243
     },
+    "Water surge": {
+      "page": "Water surge",
+      "itemId": null
+    },
+    "Water wave": {
+      "page": "Water wave",
+      "itemId": null
+    },
     "Webweaver bow": {
       "page": "Webweaver bow",
       "itemId": 27655
+    },
+    "Wind surge": {
+      "page": "Wind surge",
+      "itemId": null
+    },
+    "Wind wave": {
+      "page": "Wind wave",
+      "itemId": null
     },
     "Witchwood icon": {
       "page": "Witchwood icon",
@@ -1674,249 +1894,57 @@
       "page": "Zaryte vambraces",
       "itemId": 26235
     },
-    "Amethyst arrows": {
-      "page": "Amethyst arrow",
-      "itemId": 21326
-    },
-    "Dragon arrows": {
-      "page": "Dragon arrow",
-      "itemId": 11212
-    },
-    "Dragon sword": {
-      "page": "Dragon shortsword",
-      "itemId": 21009
-    },
-    "Blessed coif": {
-      "page": "Blessed dragonhide armour",
-      "itemId": 10390
-    },
-    "Blessed d'hide body": {
-      "page": "Blessed dragonhide armour",
-      "itemId": 10386
-    },
-    "Blessed d'hide chaps": {
-      "page": "Blessed dragonhide armour",
-      "itemId": 10388
-    },
-    "Blessed d'hide boots": {
-      "page": "Blessed dragonhide armour",
-      "itemId": 19933
-    },
-    "God blessing": {
-      "page": "Blessing",
-      "itemId": 20220
-    },
-    "God cape": {
-      "page": "God cape",
-      "itemId": 2412
-    },
-    "Imbued god cape": {
-      "page": "Imbued god cape",
-      "itemId": 21791
-    },
-    "Crystal armour": {
-      "page": "Crystal armour",
-      "itemId": 23975
-    },
-    "Amethyst darts": {
-      "page": "Amethyst dart",
-      "itemId": 25849
-    },
-    "Dragon darts": {
-      "page": "Dragon dart",
-      "itemId": 11230
-    },
     "Zulrah scales": {
       "page": "Zulrah's scales",
       "itemId": 12934
-    },
-    "Ogre arrows": {
-      "page": "Ogre arrow",
-      "itemId": 2866
-    },
-    "Ogre composite bow": {
-      "page": "Comp ogre bow",
-      "itemId": 4827
-    },
-    "Ogre bellows": {
-      "page": "Ogre bellows",
-      "itemId": 2871
-    },
-    "swamp toads": {
-      "page": "Chompy bird hunting",
-      "itemId": 2875
-    },
-    "Rune brutal arrows": {
-      "page": "Rune brutal",
-      "itemId": 4803
-    },
-    "Revenant ether": {
-      "page": "Revenant ether",
-      "itemId": 21820
-    },
-    "Anti-venom+": {
-      "page": "Anti-venom+",
-      "itemId": 12913
-    },
-    "extended anti-venom+": {
-      "page": "Extended anti-venom+",
-      "itemId": 29824
-    },
-    "Antidote++": {
-      "page": "Antidote++",
-      "itemId": 5952
     },
     "antipoison": {
       "page": "Antipoison",
       "itemId": 2446
     },
-    "Extended antifire": {
-      "page": "Extended antifire",
-      "itemId": 11951
-    },
-    "Prayer potions": {
-      "page": "Prayer potion",
-      "itemId": 2434
-    },
-    "super restores": {
-      "page": "Super restore",
-      "itemId": 3024
-    },
-    "Ranging potion": {
-      "page": "Ranging potion",
-      "itemId": 2444
-    },
-    "Magic potion": {
-      "page": "Magic potion",
-      "itemId": 3040
-    },
-    "heart boost": {
-      "page": "Imbued heart",
-      "itemId": 20724
-    },
-    "Super combat potion": {
-      "page": "Super combat potion",
-      "itemId": 12695
-    },
-    "super attack": {
-      "page": "Super attack",
-      "itemId": 2436
-    },
-    "super strength": {
-      "page": "Super strength",
-      "itemId": 2440
-    },
-    "Saradomin brews": {
-      "page": "Saradomin brew",
-      "itemId": 6685
-    },
-    "Relicym’s balm": {
-      "page": "Relicym's balm",
-      "itemId": 4842
-    },
-    "Sanfew serum": {
-      "page": "Sanfew serum",
-      "itemId": 10925
-    },
-    "moonlight potions": {
-      "page": "Moonlight potion",
-      "itemId": 29080
-    },
-    "Ice coolers": {
-      "page": "Ice cooler",
-      "itemId": 6696
-    },
-    "Fishing explosives": {
-      "page": "Fishing explosive",
-      "itemId": 6660
-    },
-    "Bags of salt": {
-      "page": "Bag of salt",
-      "itemId": 4161
-    },
     "brine sabre": {
       "page": "Brine sabre",
       "itemId": 11037
     },
-    "rock thrownhammer": {
-      "page": "Rock thrownhammer",
-      "itemId": 21754
-    },
-    "Fungicide spray": {
-      "page": "Fungicide spray",
-      "itemId": 7421
+    "extended anti-venom+": {
+      "page": "Extended anti-venom+",
+      "itemId": 29824
     },
     "fungicide": {
       "page": "Fungicide",
       "itemId": 7432
     },
-    "Ring of dueling": {
-      "page": "Ring of dueling",
-      "itemId": 2552
+    "heart boost": {
+      "page": "Imbued heart",
+      "itemId": 20724
     },
-    "Spectral spirit shield": {
-      "page": "Spectral spirit shield",
-      "itemId": 12821
+    "moonlight potions": {
+      "page": "Moonlight potion",
+      "itemId": 29080
     },
-    "Scorching bow": {
-      "page": "Scorching bow",
-      "itemId": 29591
-    },
-    "Axe": {
-      "page": "Axe",
-      "itemId": 1351
+    "rock thrownhammer": {
+      "page": "Rock thrownhammer",
+      "itemId": 21754
     },
     "secateurs": {
       "page": "Secateurs",
       "itemId": 5329
     },
-    "Earth surge": {
-      "page": "Earth surge",
-      "itemId": null
+    "super attack": {
+      "page": "Super attack",
+      "itemId": 2436
     },
-    "Earth wave": {
-      "page": "Earth wave",
-      "itemId": null
+    "super restores": {
+      "page": "Super restore",
+      "itemId": 3024
     },
-    "Fire surge": {
-      "page": "Fire surge",
-      "itemId": null
+    "super strength": {
+      "page": "Super strength",
+      "itemId": 2440
     },
-    "Fire wave": {
-      "page": "Fire wave",
-      "itemId": null
-    },
-    "Water surge": {
-      "page": "Water surge",
-      "itemId": null
-    },
-    "Water wave": {
-      "page": "Water wave",
-      "itemId": null
-    },
-    "Wind surge": {
-      "page": "Wind surge",
-      "itemId": null
-    },
-    "Wind wave": {
-      "page": "Wind wave",
-      "itemId": null
-    },
-    "Ice Barrage": {
-      "page": "Ice Barrage",
-      "itemId": null
-    },
-    "Ice Burst": {
-      "page": "Ice Burst",
-      "itemId": null
-    },
-    "Magic Dart": {
-      "page": "Magic Dart",
-      "itemId": null
-    },
-    "Flames of Zamorak": {
-      "page": "Flames of Zamorak",
-      "itemId": null
+    "swamp toads": {
+      "page": "Chompy bird hunting",
+      "itemId": 2875
     }
   }
 }

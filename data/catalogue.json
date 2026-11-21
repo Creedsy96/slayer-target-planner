@@ -143,6 +143,7 @@
       "name": "Bears",
       "variantIds": [
         "grizzly-bear",
+        "black-bear",
         "grizzly-bear-cub",
         "bear-cub",
         "reanimated-bear",
@@ -161,7 +162,9 @@
       "variantIds": [
         "chicken",
         "terrorbird",
+        "rooster",
         "chompy-bird",
+        "seagull",
         "penguin-monster",
         "duck",
         "duckling"
@@ -233,7 +236,9 @@
       "name": "Blue dragons",
       "variantIds": [
         "baby-blue-dragon",
-        "brutal-blue-dragon"
+        "blue-dragon",
+        "brutal-blue-dragon",
+        "vorkath"
       ],
       "source": {
         "title": "Slayer task/Blue dragons",
@@ -517,7 +522,8 @@
       "variantIds": [
         "dwarf",
         "black-guard",
-        "chaos-dwarf"
+        "chaos-dwarf",
+        "dwarf-gang-member"
       ],
       "source": {
         "title": "Slayer task/Dwarves",
@@ -542,6 +548,7 @@
       "name": "Elves",
       "variantIds": [
         "elf-warrior",
+        "mourner",
         "guard-prifddinas",
         "reanimated-elf",
         "iorwerth-warrior"
@@ -757,7 +764,8 @@
       "name": "Hill giants",
       "variantIds": [
         "hill-giant",
-        "obor"
+        "obor",
+        "cyclops"
       ],
       "source": {
         "title": "Slayer task/Hill giants",
@@ -936,7 +944,8 @@
       "id": "lesser nagua",
       "name": "Lesser nagua",
       "variantIds": [
-        "sulphur-nagua"
+        "sulphur-nagua",
+        "amoxliatl"
       ],
       "source": {
         "title": "Slayer task/Lesser nagua",
@@ -1002,6 +1011,7 @@
       "name": "Metal dragons",
       "variantIds": [
         "iron-dragon",
+        "steel-dragon",
         "bronze-dragon",
         "mithril-dragon",
         "adamant-dragon",
@@ -1056,7 +1066,9 @@
         "monkey-monster",
         "monkey-guard",
         "monkey-archer",
-        "demonic-gorilla"
+        "monkey-zombie",
+        "demonic-gorilla",
+        "tortured-gorilla"
       ],
       "source": {
         "title": "Slayer task/Monkeys",
@@ -1159,10 +1171,12 @@
       "name": "Rats",
       "variantIds": [
         "giant-rat",
+        "rat",
         "dungeon-rat",
         "crypt-rat",
         "brine-rat",
-        "giant-crypt-rat"
+        "giant-crypt-rat",
+        "scurrius"
       ],
       "source": {
         "title": "Slayer task/Rats",
@@ -1175,6 +1189,7 @@
       "name": "Red dragons",
       "variantIds": [
         "baby-red-dragon",
+        "red-dragon",
         "brutal-red-dragon"
       ],
       "source": {
@@ -1225,7 +1240,8 @@
       "variantIds": [
         "locust-rider",
         "scarabs",
-        "scarab-swarm"
+        "scarab-swarm",
+        "scarab-mage"
       ],
       "source": {
         "title": "Slayer task/Scabarites",
@@ -1312,9 +1328,11 @@
       "name": "Skeletons",
       "variantIds": [
         "skeleton",
+        "skeleton-mage",
         "vet-ion",
         "skogre",
         "skeleton-shayzien-crypts",
+        "skeleton-fremennik",
         "calvar-ion"
       ],
       "source": {
@@ -1353,6 +1371,7 @@
       "name": "Spiders",
       "variantIds": [
         "giant-spider",
+        "spider",
         "shadow-spider",
         "giant-crypt-spider",
         "sarachnis",
@@ -1371,7 +1390,9 @@
       "id": "spiritual creatures",
       "name": "Spiritual creatures",
       "variantIds": [
-        "spiritual-warrior"
+        "spiritual-warrior",
+        "spiritual-ranger",
+        "spiritual-mage"
       ],
       "source": {
         "title": "Slayer task/Spiritual creatures",
@@ -1408,6 +1429,7 @@
       "name": "Trolls",
       "variantIds": [
         "mountain-troll",
+        "ice-troll",
         "troll-general",
         "reanimated-troll",
         "dad",
@@ -1451,6 +1473,9 @@
       "name": "Vampyres",
       "variantIds": [
         "vyrewatch-sentinel",
+        "feral-vampyre",
+        "vampyre-juvinate",
+        "vyrewatch",
         "venator"
       ],
       "source": {
@@ -1487,7 +1512,8 @@
       "id": "warped creatures",
       "name": "Warped creatures",
       "variantIds": [
-        "warped-tortoise"
+        "warped-tortoise",
+        "warped-terrorbird"
       ],
       "source": {
         "title": "Slayer task/Warped creatures",
@@ -1554,11 +1580,14 @@
       "name": "Zombies",
       "variantIds": [
         "zombie",
+        "monkey-zombie",
         "undead-chicken",
         "undead-cow",
         "undead-druid",
+        "undead-one",
         "zombie-rat",
-        "zogre"
+        "zogre",
+        "vorkath"
       ],
       "source": {
         "title": "Slayer task/Zombies",
@@ -4530,6 +4559,150 @@
       "drops": []
     },
     {
+      "id": "blue-dragon",
+      "name": "Blue dragon",
+      "assignmentIds": [
+        "blue dragons"
+      ],
+      "hp": 105,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Blue dragon",
+        "url": "https://oldschool.runescape.wiki/w/Blue_dragon",
+        "revision": 15406592
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
+      "id": "red-dragon",
+      "name": "Red dragon",
+      "assignmentIds": [
+        "red dragons"
+      ],
+      "hp": 140,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Red dragon",
+        "url": "https://oldschool.runescape.wiki/w/Red_dragon",
+        "revision": 15240522
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
+      "id": "black-bear",
+      "name": "Black bear",
+      "assignmentIds": [
+        "bears"
+      ],
+      "hp": 25,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Black bear",
+        "url": "https://oldschool.runescape.wiki/w/Black_bear",
+        "revision": 15199246
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
+      "id": "rat",
+      "name": "Rat",
+      "assignmentIds": [
+        "rats"
+      ],
+      "hp": 2,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Rat",
+        "url": "https://oldschool.runescape.wiki/w/Rat",
+        "revision": 15406455
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
+      "id": "spider",
+      "name": "Spider",
+      "assignmentIds": [
+        "spiders"
+      ],
+      "hp": 2,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Spider",
+        "url": "https://oldschool.runescape.wiki/w/Spider",
+        "revision": 15398049
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
+      "id": "steel-dragon",
+      "name": "Steel dragon",
+      "assignmentIds": [
+        "metal dragons"
+      ],
+      "hp": 210,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "source": {
+        "title": "Steel dragon",
+        "url": "https://oldschool.runescape.wiki/w/Steel_dragon",
+        "revision": 15365305
+      },
+      "status": "reviewed-variant",
+      "drops": []
+    },
+    {
       "id": "deviant-spectre",
       "name": "Deviant spectre",
       "assignmentIds": [
@@ -4575,7 +4748,7 @@
     },
     {
       "id": "abyssal-sire",
-      "name": "Abyssal sire",
+      "name": "Abyssal Sire",
       "assignmentIds": [
         "abyssal demons"
       ],
@@ -4592,12 +4765,12 @@
           "kind": "access",
           "key": "variant:abyssal-sire",
           "min": 1,
-          "label": "Confirm access and repeatable method for Abyssal sire"
+          "label": "Confirm access and repeatable method for Abyssal Sire"
         }
       ],
       "source": {
-        "title": "Abyssal sire",
-        "url": "https://oldschool.runescape.wiki/w/Abyssal_sire",
+        "title": "Abyssal Sire",
+        "url": "https://oldschool.runescape.wiki/w/Abyssal_Sire",
         "revision": 15392068
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -5069,7 +5242,7 @@
     },
     {
       "id": "brutal-black-dragon",
-      "name": "brutal black dragon",
+      "name": "Brutal black dragon",
       "assignmentIds": [
         "black dragons"
       ],
@@ -5086,12 +5259,12 @@
           "kind": "access",
           "key": "variant:brutal-black-dragon",
           "min": 1,
-          "label": "Confirm access and repeatable method for brutal black dragon"
+          "label": "Confirm access and repeatable method for Brutal black dragon"
         }
       ],
       "source": {
-        "title": "brutal black dragon",
-        "url": "https://oldschool.runescape.wiki/w/brutal_black_dragon",
+        "title": "Brutal black dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_black_dragon",
         "revision": 15377774
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -5151,7 +5324,7 @@
     },
     {
       "id": "brutal-blue-dragon",
-      "name": "brutal blue dragon",
+      "name": "Brutal blue dragon",
       "assignmentIds": [
         "blue dragons"
       ],
@@ -5168,12 +5341,12 @@
           "kind": "access",
           "key": "variant:brutal-blue-dragon",
           "min": 1,
-          "label": "Confirm access and repeatable method for brutal blue dragon"
+          "label": "Confirm access and repeatable method for Brutal blue dragon"
         }
       ],
       "source": {
-        "title": "brutal blue dragon",
-        "url": "https://oldschool.runescape.wiki/w/brutal_blue_dragon",
+        "title": "Brutal blue dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_blue_dragon",
         "revision": 15406593
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -5181,6 +5354,57 @@
       "masterAssignments": {
         "nieve": [
           "blue dragons"
+        ],
+        "vannaka": [
+          "blue dragons"
+        ],
+        "chaeldar": [
+          "blue dragons"
+        ],
+        "duradel": [
+          "blue dragons"
+        ]
+      }
+    },
+    {
+      "id": "vorkath",
+      "name": "Vorkath",
+      "assignmentIds": [
+        "blue dragons",
+        "zombies"
+      ],
+      "hp": 750,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:vorkath",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Vorkath"
+        }
+      ],
+      "source": {
+        "title": "Vorkath",
+        "url": "https://oldschool.runescape.wiki/w/Vorkath",
+        "revision": 15404047
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "blue dragons"
+        ],
+        "spria": [
+          "zombies"
+        ],
+        "mazchna": [
+          "zombies"
         ],
         "vannaka": [
           "blue dragons"
@@ -5354,6 +5578,50 @@
         ],
         "duradel": [
           "dagannoth"
+        ]
+      }
+    },
+    {
+      "id": "mourner",
+      "name": "Mourner",
+      "assignmentIds": [
+        "elves"
+      ],
+      "hp": 19,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:mourner",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Mourner"
+        }
+      ],
+      "source": {
+        "title": "Mourner",
+        "url": "https://oldschool.runescape.wiki/w/Mourner",
+        "revision": 15372803
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "elves"
+        ],
+        "vannaka": [
+          "elves"
+        ],
+        "chaeldar": [
+          "elves"
+        ],
+        "duradel": [
+          "elves"
         ]
       }
     },
@@ -5697,7 +5965,7 @@
         {
           "kind": "skill",
           "key": "slayer",
-          "min": 0,
+          "min": 51,
           "label": "Slayer"
         },
         {
@@ -5819,7 +6087,7 @@
     },
     {
       "id": "kalphite-soldier",
-      "name": "Kalphite soldier",
+      "name": "Kalphite Soldier",
       "assignmentIds": [
         "kalphite"
       ],
@@ -5836,12 +6104,12 @@
           "kind": "access",
           "key": "variant:kalphite-soldier",
           "min": 1,
-          "label": "Confirm access and repeatable method for Kalphite soldier"
+          "label": "Confirm access and repeatable method for Kalphite Soldier"
         }
       ],
       "source": {
-        "title": "Kalphite soldier",
-        "url": "https://oldschool.runescape.wiki/w/Kalphite_soldier",
+        "title": "Kalphite Soldier",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Soldier",
         "revision": 15240656
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -5869,7 +6137,7 @@
     },
     {
       "id": "kalphite-guardian",
-      "name": "Kalphite guardian",
+      "name": "Kalphite Guardian",
       "assignmentIds": [
         "kalphite"
       ],
@@ -5886,12 +6154,12 @@
           "kind": "access",
           "key": "variant:kalphite-guardian",
           "min": 1,
-          "label": "Confirm access and repeatable method for Kalphite guardian"
+          "label": "Confirm access and repeatable method for Kalphite Guardian"
         }
       ],
       "source": {
-        "title": "Kalphite guardian",
-        "url": "https://oldschool.runescape.wiki/w/Kalphite_guardian",
+        "title": "Kalphite Guardian",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Guardian",
         "revision": 15392090
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -6288,7 +6556,7 @@
     },
     {
       "id": "brutal-red-dragon",
-      "name": "brutal red dragon",
+      "name": "Brutal red dragon",
       "assignmentIds": [
         "red dragons"
       ],
@@ -6305,12 +6573,12 @@
           "kind": "access",
           "key": "variant:brutal-red-dragon",
           "min": 1,
-          "label": "Confirm access and repeatable method for brutal red dragon"
+          "label": "Confirm access and repeatable method for Brutal red dragon"
         }
       ],
       "source": {
-        "title": "brutal red dragon",
-        "url": "https://oldschool.runescape.wiki/w/brutal_red_dragon",
+        "title": "Brutal red dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_red_dragon",
         "revision": 15355325
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -6361,7 +6629,7 @@
     },
     {
       "id": "scarab-swarm",
-      "name": "scarab swarm",
+      "name": "Scarab Swarm",
       "assignmentIds": [
         "scabarites"
       ],
@@ -6378,13 +6646,48 @@
           "kind": "access",
           "key": "variant:scarab-swarm",
           "min": 1,
-          "label": "Confirm access and repeatable method for scarab swarm"
+          "label": "Confirm access and repeatable method for Scarab Swarm"
         }
       ],
       "source": {
-        "title": "scarab swarm",
-        "url": "https://oldschool.runescape.wiki/w/scarab_swarm",
+        "title": "Scarab Swarm",
+        "url": "https://oldschool.runescape.wiki/w/Scarab_Swarm",
         "revision": 15376011
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "scabarites"
+        ]
+      }
+    },
+    {
+      "id": "scarab-mage",
+      "name": "Scarab Mage",
+      "assignmentIds": [
+        "scabarites"
+      ],
+      "hp": 50,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:scarab-mage",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Scarab Mage"
+        }
+      ],
+      "source": {
+        "title": "Scarab Mage",
+        "url": "https://oldschool.runescape.wiki/w/Scarab_Mage",
+        "revision": 15281960
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -6429,6 +6732,138 @@
         ],
         "duradel": [
           "smoke devils"
+        ]
+      }
+    },
+    {
+      "id": "spiritual-ranger",
+      "name": "Spiritual ranger",
+      "assignmentIds": [
+        "spiritual creatures"
+      ],
+      "hp": 120,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 63,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:spiritual-ranger",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Spiritual ranger"
+        }
+      ],
+      "source": {
+        "title": "Spiritual ranger",
+        "url": "https://oldschool.runescape.wiki/w/Spiritual_ranger",
+        "revision": 15341103
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "spiritual creatures"
+        ],
+        "vannaka": [
+          "spiritual creatures"
+        ],
+        "chaeldar": [
+          "spiritual creatures"
+        ],
+        "duradel": [
+          "spiritual creatures"
+        ]
+      }
+    },
+    {
+      "id": "spiritual-mage",
+      "name": "Spiritual mage",
+      "assignmentIds": [
+        "spiritual creatures"
+      ],
+      "hp": 75,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 83,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:spiritual-mage",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Spiritual mage"
+        }
+      ],
+      "source": {
+        "title": "Spiritual mage",
+        "url": "https://oldschool.runescape.wiki/w/Spiritual_mage",
+        "revision": 15392596
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "spiritual creatures"
+        ],
+        "vannaka": [
+          "spiritual creatures"
+        ],
+        "chaeldar": [
+          "spiritual creatures"
+        ],
+        "duradel": [
+          "spiritual creatures"
+        ]
+      }
+    },
+    {
+      "id": "ice-troll",
+      "name": "Ice troll",
+      "assignmentIds": [
+        "trolls"
+      ],
+      "hp": 100,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:ice-troll",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Ice troll"
+        }
+      ],
+      "source": {
+        "title": "Ice troll",
+        "url": "https://oldschool.runescape.wiki/w/Ice_troll",
+        "revision": 15199343
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "trolls"
+        ],
+        "vannaka": [
+          "trolls"
+        ],
+        "chaeldar": [
+          "trolls"
+        ],
+        "duradel": [
+          "trolls"
         ]
       }
     },
@@ -6561,6 +6996,188 @@
         "duradel": [
           "tzhaar",
           "tzhaar"
+        ]
+      }
+    },
+    {
+      "id": "feral-vampyre",
+      "name": "Feral Vampyre",
+      "assignmentIds": [
+        "vampyres"
+      ],
+      "hp": 40,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:feral-vampyre",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Feral Vampyre"
+        }
+      ],
+      "source": {
+        "title": "Feral Vampyre",
+        "url": "https://oldschool.runescape.wiki/w/Feral_Vampyre",
+        "revision": 15356500
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "vampyres"
+        ],
+        "mazchna": [
+          "vampyres"
+        ],
+        "vannaka": [
+          "vampyres"
+        ],
+        "chaeldar": [
+          "vampyres"
+        ],
+        "duradel": [
+          "vampyres"
+        ]
+      }
+    },
+    {
+      "id": "vampyre-juvinate",
+      "name": "Vampyre Juvinate",
+      "assignmentIds": [
+        "vampyres"
+      ],
+      "hp": 85,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:vampyre-juvinate",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Vampyre Juvinate"
+        }
+      ],
+      "source": {
+        "title": "Vampyre Juvinate",
+        "url": "https://oldschool.runescape.wiki/w/Vampyre_Juvinate",
+        "revision": 15392016
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "vampyres"
+        ],
+        "mazchna": [
+          "vampyres"
+        ],
+        "vannaka": [
+          "vampyres"
+        ],
+        "chaeldar": [
+          "vampyres"
+        ],
+        "duradel": [
+          "vampyres"
+        ]
+      }
+    },
+    {
+      "id": "vyrewatch",
+      "name": "Vyrewatch",
+      "assignmentIds": [
+        "vampyres"
+      ],
+      "hp": 90,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:vyrewatch",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Vyrewatch"
+        }
+      ],
+      "source": {
+        "title": "Vyrewatch",
+        "url": "https://oldschool.runescape.wiki/w/Vyrewatch",
+        "revision": 15380818
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "vampyres"
+        ],
+        "mazchna": [
+          "vampyres"
+        ],
+        "vannaka": [
+          "vampyres"
+        ],
+        "chaeldar": [
+          "vampyres"
+        ],
+        "duradel": [
+          "vampyres"
+        ]
+      }
+    },
+    {
+      "id": "warped-terrorbird",
+      "name": "Warped Terrorbird",
+      "assignmentIds": [
+        "warped creatures"
+      ],
+      "hp": 150,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 56,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:warped-terrorbird",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Warped Terrorbird"
+        }
+      ],
+      "source": {
+        "title": "Warped Terrorbird",
+        "url": "https://oldschool.runescape.wiki/w/Warped_Terrorbird",
+        "revision": 15406498
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "nieve": [
+          "warped creatures"
+        ],
+        "chaeldar": [
+          "warped creatures"
+        ],
+        "duradel": [
+          "warped creatures"
         ]
       }
     },
@@ -6841,7 +7458,7 @@
     },
     {
       "id": "bear-cub",
-      "name": "Bear cub",
+      "name": "Bear Cub",
       "assignmentIds": [
         "bears"
       ],
@@ -6858,12 +7475,12 @@
           "kind": "access",
           "key": "variant:bear-cub",
           "min": 1,
-          "label": "Confirm access and repeatable method for Bear cub"
+          "label": "Confirm access and repeatable method for Bear Cub"
         }
       ],
       "source": {
-        "title": "Bear cub",
-        "url": "https://oldschool.runescape.wiki/w/Bear_cub",
+        "title": "Bear Cub",
+        "url": "https://oldschool.runescape.wiki/w/Bear_Cub",
         "revision": 15210521
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -7021,6 +7638,41 @@
       }
     },
     {
+      "id": "rooster",
+      "name": "Rooster",
+      "assignmentIds": [
+        "birds"
+      ],
+      "hp": 5,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:rooster",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Rooster"
+        }
+      ],
+      "source": {
+        "title": "Rooster",
+        "url": "https://oldschool.runescape.wiki/w/Rooster",
+        "revision": 15406631
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "birds"
+        ]
+      }
+    },
+    {
       "id": "chompy-bird",
       "name": "Chompy bird",
       "assignmentIds": [
@@ -7046,6 +7698,41 @@
         "title": "Chompy bird",
         "url": "https://oldschool.runescape.wiki/w/Chompy_bird",
         "revision": 15381197
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "birds"
+        ]
+      }
+    },
+    {
+      "id": "seagull",
+      "name": "Seagull",
+      "assignmentIds": [
+        "birds"
+      ],
+      "hp": 6,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:seagull",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Seagull"
+        }
+      ],
+      "source": {
+        "title": "Seagull",
+        "url": "https://oldschool.runescape.wiki/w/Seagull",
+        "revision": 15406500
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -7453,7 +8140,7 @@
     },
     {
       "id": "chaos-dwarf",
-      "name": "Chaos Dwarf",
+      "name": "Chaos dwarf",
       "assignmentIds": [
         "dwarves"
       ],
@@ -7470,13 +8157,48 @@
           "kind": "access",
           "key": "variant:chaos-dwarf",
           "min": 1,
-          "label": "Confirm access and repeatable method for Chaos Dwarf"
+          "label": "Confirm access and repeatable method for Chaos dwarf"
         }
       ],
       "source": {
-        "title": "Chaos Dwarf",
-        "url": "https://oldschool.runescape.wiki/w/Chaos_Dwarf",
+        "title": "Chaos dwarf",
+        "url": "https://oldschool.runescape.wiki/w/Chaos_dwarf",
         "revision": 15398096
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "dwarves"
+        ]
+      }
+    },
+    {
+      "id": "dwarf-gang-member",
+      "name": "Dwarf gang member",
+      "assignmentIds": [
+        "dwarves"
+      ],
+      "hp": 40,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:dwarf-gang-member",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Dwarf gang member"
+        }
+      ],
+      "source": {
+        "title": "Dwarf gang member",
+        "url": "https://oldschool.runescape.wiki/w/Dwarf_gang_member",
+        "revision": 15199785
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -7887,6 +8609,81 @@
       }
     },
     {
+      "id": "monkey-zombie",
+      "name": "Monkey Zombie",
+      "assignmentIds": [
+        "monkeys",
+        "zombies"
+      ],
+      "hp": 60,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:monkey-zombie",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Monkey Zombie"
+        }
+      ],
+      "source": {
+        "title": "Monkey Zombie",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Zombie",
+        "revision": 15322124
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "monkeys",
+          "zombies"
+        ],
+        "mazchna": [
+          "zombies"
+        ]
+      }
+    },
+    {
+      "id": "tortured-gorilla",
+      "name": "Tortured gorilla",
+      "assignmentIds": [
+        "monkeys"
+      ],
+      "hp": 210,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:tortured-gorilla",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Tortured gorilla"
+        }
+      ],
+      "source": {
+        "title": "Tortured gorilla",
+        "url": "https://oldschool.runescape.wiki/w/Tortured_gorilla",
+        "revision": 15373438
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "monkeys"
+        ]
+      }
+    },
+    {
       "id": "dungeon-rat",
       "name": "Dungeon rat",
       "assignmentIds": [
@@ -7982,6 +8779,41 @@
         "title": "Giant crypt rat",
         "url": "https://oldschool.runescape.wiki/w/Giant_crypt_rat",
         "revision": 15199840
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "rats"
+        ]
+      }
+    },
+    {
+      "id": "scurrius",
+      "name": "Scurrius",
+      "assignmentIds": [
+        "rats"
+      ],
+      "hp": 500,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:scurrius",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Scurrius"
+        }
+      ],
+      "source": {
+        "title": "Scurrius",
+        "url": "https://oldschool.runescape.wiki/w/Scurrius",
+        "revision": 15402984
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -8290,6 +9122,44 @@
       }
     },
     {
+      "id": "skeleton-mage",
+      "name": "Skeleton Mage",
+      "assignmentIds": [
+        "skeletons"
+      ],
+      "hp": 17,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:skeleton-mage",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Skeleton Mage"
+        }
+      ],
+      "source": {
+        "title": "Skeleton Mage",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_Mage",
+        "revision": 15363021
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "skeletons"
+        ],
+        "mazchna": [
+          "skeletons"
+        ]
+      }
+    },
+    {
       "id": "vet-ion",
       "name": "Vet'ion",
       "assignmentIds": [
@@ -8388,6 +9258,41 @@
         "title": "Skeleton (Shayzien Crypts)",
         "url": "https://oldschool.runescape.wiki/w/Skeleton_%28Shayzien_Crypts%29",
         "revision": 15392093
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "skeletons"
+        ]
+      }
+    },
+    {
+      "id": "skeleton-fremennik",
+      "name": "Skeleton fremennik",
+      "assignmentIds": [
+        "skeletons"
+      ],
+      "hp": 25,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:skeleton-fremennik",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Skeleton fremennik"
+        }
+      ],
+      "source": {
+        "title": "Skeleton fremennik",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_fremennik",
+        "revision": 15392101
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -8758,7 +9663,7 @@
     },
     {
       "id": "jungle-wolf",
-      "name": "Jungle wolf",
+      "name": "Jungle Wolf",
       "assignmentIds": [
         "wolves"
       ],
@@ -8775,12 +9680,12 @@
           "kind": "access",
           "key": "variant:jungle-wolf",
           "min": 1,
-          "label": "Confirm access and repeatable method for Jungle wolf"
+          "label": "Confirm access and repeatable method for Jungle Wolf"
         }
       ],
       "source": {
-        "title": "Jungle wolf",
-        "url": "https://oldschool.runescape.wiki/w/Jungle_wolf",
+        "title": "Jungle Wolf",
+        "url": "https://oldschool.runescape.wiki/w/Jungle_Wolf",
         "revision": 15406449
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -8858,6 +9763,44 @@
         "title": "Undead Druid",
         "url": "https://oldschool.runescape.wiki/w/Undead_Druid",
         "revision": 15396837
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "spria": [
+          "zombies"
+        ],
+        "mazchna": [
+          "zombies"
+        ]
+      }
+    },
+    {
+      "id": "undead-one",
+      "name": "Undead one",
+      "assignmentIds": [
+        "zombies"
+      ],
+      "hp": 47,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:undead-one",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Undead one"
+        }
+      ],
+      "source": {
+        "title": "Undead one",
+        "url": "https://oldschool.runescape.wiki/w/Undead_one",
+        "revision": 15402096
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -8977,7 +9920,7 @@
     },
     {
       "id": "ammonite-crab",
-      "name": "Ammonite crab",
+      "name": "Ammonite Crab",
       "assignmentIds": [
         "crabs"
       ],
@@ -8994,12 +9937,12 @@
           "kind": "access",
           "key": "variant:ammonite-crab",
           "min": 1,
-          "label": "Confirm access and repeatable method for Ammonite crab"
+          "label": "Confirm access and repeatable method for Ammonite Crab"
         }
       ],
       "source": {
-        "title": "Ammonite crab",
-        "url": "https://oldschool.runescape.wiki/w/Ammonite_crab",
+        "title": "Ammonite Crab",
+        "url": "https://oldschool.runescape.wiki/w/Ammonite_Crab",
         "revision": 15367275
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9018,7 +9961,7 @@
     },
     {
       "id": "frost-crab",
-      "name": "Frost crab",
+      "name": "Frost Crab",
       "assignmentIds": [
         "crabs"
       ],
@@ -9035,12 +9978,12 @@
           "kind": "access",
           "key": "variant:frost-crab",
           "min": 1,
-          "label": "Confirm access and repeatable method for Frost crab"
+          "label": "Confirm access and repeatable method for Frost Crab"
         }
       ],
       "source": {
-        "title": "Frost crab",
-        "url": "https://oldschool.runescape.wiki/w/Frost_crab",
+        "title": "Frost Crab",
+        "url": "https://oldschool.runescape.wiki/w/Frost_Crab",
         "revision": 15200547
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9059,7 +10002,7 @@
     },
     {
       "id": "rock-crab",
-      "name": "Rock crab",
+      "name": "Rock Crab",
       "assignmentIds": [
         "crabs"
       ],
@@ -9076,12 +10019,12 @@
           "kind": "access",
           "key": "variant:rock-crab",
           "min": 1,
-          "label": "Confirm access and repeatable method for Rock crab"
+          "label": "Confirm access and repeatable method for Rock Crab"
         }
       ],
       "source": {
-        "title": "Rock crab",
-        "url": "https://oldschool.runescape.wiki/w/Rock_crab",
+        "title": "Rock Crab",
+        "url": "https://oldschool.runescape.wiki/w/Rock_Crab",
         "revision": 15351395
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9100,7 +10043,7 @@
     },
     {
       "id": "swamp-crab",
-      "name": "Swamp crab",
+      "name": "Swamp Crab",
       "assignmentIds": [
         "crabs"
       ],
@@ -9117,12 +10060,12 @@
           "kind": "access",
           "key": "variant:swamp-crab",
           "min": 1,
-          "label": "Confirm access and repeatable method for Swamp crab"
+          "label": "Confirm access and repeatable method for Swamp Crab"
         }
       ],
       "source": {
-        "title": "Swamp crab",
-        "url": "https://oldschool.runescape.wiki/w/Swamp_crab",
+        "title": "Swamp Crab",
+        "url": "https://oldschool.runescape.wiki/w/Swamp_Crab",
         "revision": 15200068
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9165,6 +10108,44 @@
         "title": "Obor",
         "url": "https://oldschool.runescape.wiki/w/Obor",
         "revision": 15383989
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "mazchna": [
+          "hill giants"
+        ],
+        "vannaka": [
+          "hill giants"
+        ]
+      }
+    },
+    {
+      "id": "cyclops",
+      "name": "Cyclops",
+      "assignmentIds": [
+        "hill giants"
+      ],
+      "hp": 75,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:cyclops",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Cyclops"
+        }
+      ],
+      "source": {
+        "title": "Cyclops",
+        "url": "https://oldschool.runescape.wiki/w/Cyclops",
+        "revision": 15406749
       },
       "status": "sourced-alternative-access-unreviewed",
       "drops": [],
@@ -9293,7 +10274,7 @@
     },
     {
       "id": "riyl-shade",
-      "name": "Riyl shade",
+      "name": "Riyl Shade",
       "assignmentIds": [
         "shades"
       ],
@@ -9310,12 +10291,12 @@
           "kind": "access",
           "key": "variant:riyl-shade",
           "min": 1,
-          "label": "Confirm access and repeatable method for Riyl shade"
+          "label": "Confirm access and repeatable method for Riyl Shade"
         }
       ],
       "source": {
-        "title": "Riyl shade",
-        "url": "https://oldschool.runescape.wiki/w/Riyl_shade",
+        "title": "Riyl Shade",
+        "url": "https://oldschool.runescape.wiki/w/Riyl_Shade",
         "revision": 15199707
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9331,7 +10312,7 @@
     },
     {
       "id": "asyn-shade",
-      "name": "Asyn shade",
+      "name": "Asyn Shade",
       "assignmentIds": [
         "shades"
       ],
@@ -9348,12 +10329,12 @@
           "kind": "access",
           "key": "variant:asyn-shade",
           "min": 1,
-          "label": "Confirm access and repeatable method for Asyn shade"
+          "label": "Confirm access and repeatable method for Asyn Shade"
         }
       ],
       "source": {
-        "title": "Asyn shade",
-        "url": "https://oldschool.runescape.wiki/w/Asyn_shade",
+        "title": "Asyn Shade",
+        "url": "https://oldschool.runescape.wiki/w/Asyn_Shade",
         "revision": 15199705
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9369,7 +10350,7 @@
     },
     {
       "id": "fiyr-shade",
-      "name": "Fiyr shade",
+      "name": "Fiyr Shade",
       "assignmentIds": [
         "shades"
       ],
@@ -9386,12 +10367,12 @@
           "kind": "access",
           "key": "variant:fiyr-shade",
           "min": 1,
-          "label": "Confirm access and repeatable method for Fiyr shade"
+          "label": "Confirm access and repeatable method for Fiyr Shade"
         }
       ],
       "source": {
-        "title": "Fiyr shade",
-        "url": "https://oldschool.runescape.wiki/w/Fiyr_shade",
+        "title": "Fiyr Shade",
+        "url": "https://oldschool.runescape.wiki/w/Fiyr_Shade",
         "revision": 15229541
       },
       "status": "sourced-alternative-access-unreviewed",
@@ -9761,6 +10742,41 @@
       "masterAssignments": {
         "chaeldar": [
           "jungle horrors"
+        ]
+      }
+    },
+    {
+      "id": "amoxliatl",
+      "name": "Amoxliatl",
+      "assignmentIds": [
+        "lesser nagua"
+      ],
+      "hp": 520,
+      "multiplier": 1,
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 48,
+          "label": "Slayer"
+        },
+        {
+          "kind": "access",
+          "key": "variant:amoxliatl",
+          "min": 1,
+          "label": "Confirm access and repeatable method for Amoxliatl"
+        }
+      ],
+      "source": {
+        "title": "Amoxliatl",
+        "url": "https://oldschool.runescape.wiki/w/Amoxliatl",
+        "revision": 15401516
+      },
+      "status": "sourced-alternative-access-unreviewed",
+      "drops": [],
+      "masterAssignments": {
+        "chaeldar": [
+          "lesser nagua"
         ]
       }
     },
@@ -22052,6 +23068,11 @@
       "revision": 15406440
     },
     {
+      "title": "Black bear",
+      "url": "https://oldschool.runescape.wiki/w/Black_bear",
+      "revision": 15199246
+    },
+    {
       "title": "Black demon",
       "url": "https://oldschool.runescape.wiki/w/Black_demon",
       "revision": 15391823
@@ -22070,6 +23091,11 @@
       "title": "Bloodveld",
       "url": "https://oldschool.runescape.wiki/w/Bloodveld",
       "revision": 15378518
+    },
+    {
+      "title": "Blue dragon",
+      "url": "https://oldschool.runescape.wiki/w/Blue_dragon",
+      "revision": 15406592
     },
     {
       "title": "Bracelet of slaughter",
@@ -23097,6 +24123,11 @@
       "revision": 15338384
     },
     {
+      "title": "Rat",
+      "url": "https://oldschool.runescape.wiki/w/Rat",
+      "revision": 15406455
+    },
+    {
       "title": "Reanimated abyssal",
       "url": "https://oldschool.runescape.wiki/w/Reanimated_abyssal",
       "revision": 15302057
@@ -23155,6 +24186,11 @@
       "title": "Reanimated troll",
       "url": "https://oldschool.runescape.wiki/w/Reanimated_troll",
       "revision": 15406540
+    },
+    {
+      "title": "Red dragon",
+      "url": "https://oldschool.runescape.wiki/w/Red_dragon",
+      "revision": 15240522
     },
     {
       "title": "Revenant cyclops",
@@ -23755,6 +24791,11 @@
       "title": "Sourhog",
       "url": "https://oldschool.runescape.wiki/w/Sourhog",
       "revision": 15275486
+    },
+    {
+      "title": "Spider",
+      "url": "https://oldschool.runescape.wiki/w/Spider",
+      "revision": 15398049
     },
     {
       "title": "Spindel",

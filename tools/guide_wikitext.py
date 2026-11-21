@@ -125,3 +125,18 @@ def monster_locations(text):
             taskOnly=bool(re.search(r"task.only|slayer task", raw, re.I)),
             limited=bool(re.search(r"unreachable|cannot actually|cutscene|during \[\[|quest only", raw, re.I))))
     return result
+
+
+def representative_form(forms, locations):
+    """Prefer a combat form with a listed, non-limited spawn over quest forms."""
+    active = [f for f in forms if f['hitpoints'] is not None and f['hitpoints'] > 0]
+    for form in active:
+        for location in locations:
+            levels = location['levels']
+            if location['limited'] or not re.fullmatch(r'[\d\s,;–-]+', levels):
+                continue
+            bounds = re.fullmatch(r'\s*(\d+)\s*[-–]\s*(\d+)\s*', levels)
+            matches = int(bounds[1]) <= form['combat'] <= int(bounds[2]) if bounds and form['combat'] is not None else form['combat'] in [int(n) for n in re.findall(r'\d+', levels)]
+            if matches:
+                return form
+    return active[0] if active else None

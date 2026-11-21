@@ -4,12 +4,15 @@ Requires Pillow. Network responses are data only; existing cached originals are
 reused. Run deliberately when changing artwork, never as part of normal builds.
 """
 import hashlib
+import argparse
 import io
 import json
 import math
 import re
 import urllib.parse
 import urllib.request
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -19,6 +22,14 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".desktop-build/creature-art-cache"
 CACHE.mkdir(parents=True, exist_ok=True)
 AGENT = {"User-Agent": "SlayerTargetPlanner/2.7 (offline fan planner artwork)"}
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--interval', type=float, default=8)
+parser.add_argument('--offline', action='store_true', help='Require all artwork to be cached')
+args = parser.parse_args()
+if args.interval < 5:
+    parser.error('Use an interval of at least five seconds')
+request_lock = threading.Lock()
+next_request = 0.0
 
 
 def read(path):
@@ -26,6 +37,12 @@ def read(path):
 
 
 def fetch(url):
+    global next_request
+    if args.offline:
+        raise ValueError('Missing cached artwork; offline mode forbids requests')
+    with request_lock:
+        time.sleep(max(0, next_request - time.monotonic()))
+        next_request = time.monotonic() + args.interval
     with urllib.request.urlopen(urllib.request.Request(url, headers=AGENT), timeout=45) as response:
         content = response.read(4_000_001)
     if len(content) > 4_000_000:

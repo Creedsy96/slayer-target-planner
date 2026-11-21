@@ -27,7 +27,7 @@ def build():
                          'source': source, 'status': 'reviewed-variant', 'drops': [],
                          'masterAssignments': {master: ['black dragons'] for master in masters},
                          'masterLocations': {'krystilia': [location]}})
-    return {'schemaVersion': 1, 'version': '2026-11-19.1', 'variants': variants}
+    return {'schemaVersion': 1, 'version': '2026-11-21.1', 'variants': variants}
 
 
 if __name__ == '__main__':

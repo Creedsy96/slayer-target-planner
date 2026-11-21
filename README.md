@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.3
+# Slayer Target Planner 3.0.4
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.3 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.4 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Variant coverage in 3.0.4
+
+Regular Blue dragon is now selectable alongside baby and brutal blues, and Vorkath. The same audit restores 27 choices, including regular red and steel dragons, spiritual rangers/mages, warped terrorbirds, black bears, rats and spiders. The importer now reads numbered combat/Slayer fields and prefers listed regular spawns over quest-only forms. Special alternatives retain access and method checks; boss hunts retain configured full-fight timing. See [the coverage audit and verification](docs/variant-coverage.md).
 
 ## Explicit creature icons in 3.0.3
 

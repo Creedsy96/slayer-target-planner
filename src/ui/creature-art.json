@@ -1,6 +1,6 @@
 {
   "columns": 16,
-  "rows": 17,
+  "rows": 19,
   "entries": {
     "aberrant-spectre": {
       "frame": 0,
@@ -1100,8 +1100,62 @@
       "originalSha256": "425322d2bb6ef02962e41adc099ba3517212008a7c0eaab77b860a265165bc13",
       "imageTimestamp": "2019-01-10T12:58:33Z"
     },
-    "deviant-spectre": {
+    "blue-dragon": {
       "frame": 122,
+      "name": "Blue dragon",
+      "file": "Blue dragon (2).png",
+      "source": "https://oldschool.runescape.wiki/w/Blue_dragon",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Blue_dragon_(2).png",
+      "originalSha256": "da18ea829dde6869e52f7fac7d6039958e1ac1ff61b6c341d7a6340c9025ee02",
+      "imageTimestamp": "2019-05-14T04:30:28Z"
+    },
+    "red-dragon": {
+      "frame": 123,
+      "name": "Red dragon",
+      "file": "Red dragon icon.png",
+      "source": "https://oldschool.runescape.wiki/w/Red_dragon",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Red_dragon_icon.png",
+      "originalSha256": "0f2f994b16a48d636b1c0a02c373b42ad54d5206dff6b96a7057c999b5794b46",
+      "imageTimestamp": "2016-07-28T15:22:08Z"
+    },
+    "black-bear": {
+      "frame": 124,
+      "name": "Black bear",
+      "file": "Black bear.png",
+      "source": "https://oldschool.runescape.wiki/w/Black_bear",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Black_bear.png",
+      "originalSha256": "c648834638000f27d91b5ae239946a461c27152dd171f75357e3f08922ca4764",
+      "imageTimestamp": "2019-06-16T20:25:46Z"
+    },
+    "rat": {
+      "frame": 125,
+      "name": "Rat",
+      "file": "Rat.png",
+      "source": "https://oldschool.runescape.wiki/w/Rat",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Rat.png",
+      "originalSha256": "fee9222353ab3bc497da2987f108b95a0ea0eb92c947123ed82a9ba118cfac20",
+      "imageTimestamp": "2019-05-14T01:46:04Z"
+    },
+    "spider": {
+      "frame": 126,
+      "name": "Spider",
+      "file": "Spider.png",
+      "source": "https://oldschool.runescape.wiki/w/Spider",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Spider.png",
+      "originalSha256": "9f61cd860145cc6a479ded73d9193e0e2674f97a2851418168c51994efb81f8b",
+      "imageTimestamp": "2019-02-02T18:43:59Z"
+    },
+    "steel-dragon": {
+      "frame": 127,
+      "name": "Steel dragon",
+      "file": "Steel dragon.png",
+      "source": "https://oldschool.runescape.wiki/w/Steel_dragon",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Steel_dragon.png",
+      "originalSha256": "462ce9c3eb6e5c2c73c6b722a61037bdec9355ac37c2476e8065fd87beb7951f",
+      "imageTimestamp": "2019-05-14T02:05:34Z"
+    },
+    "deviant-spectre": {
+      "frame": 128,
       "name": "Deviant spectre",
       "file": "Aberrant spectre icon.png",
       "source": "https://oldschool.runescape.wiki/w/Deviant_spectre",
@@ -1110,16 +1164,16 @@
       "imageTimestamp": "2014-01-06T22:42:04Z"
     },
     "abyssal-sire": {
-      "frame": 123,
-      "name": "Abyssal sire",
+      "frame": 129,
+      "name": "Abyssal Sire",
       "file": "Abyssal demon icon.png",
-      "source": "https://oldschool.runescape.wiki/w/Abyssal_sire",
+      "source": "https://oldschool.runescape.wiki/w/Abyssal_Sire",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Abyssal_demon_icon.png",
       "originalSha256": "155a7124e86255aec130c32b7bd35a7ca743a42dc214c2bf9d3203c0aa729c01",
       "imageTimestamp": "2014-01-06T22:42:05Z"
     },
     "dark-ankou": {
-      "frame": 124,
+      "frame": 130,
       "name": "Dark Ankou",
       "file": "Dark Ankou.png",
       "source": "https://oldschool.runescape.wiki/w/Dark_Ankou",
@@ -1128,7 +1182,7 @@
       "imageTimestamp": "2019-01-20T09:22:22Z"
     },
     "araxxor": {
-      "frame": 125,
+      "frame": 131,
       "name": "Araxxor",
       "file": "Araxxor.png",
       "source": "https://oldschool.runescape.wiki/w/Araxxor",
@@ -1137,7 +1191,7 @@
       "imageTimestamp": "2024-08-28T09:48:05Z"
     },
     "kree-arra": {
-      "frame": 126,
+      "frame": 132,
       "name": "Kree'arra",
       "file": "Kree'arra.png",
       "source": "https://oldschool.runescape.wiki/w/Kree%27arra",
@@ -1146,7 +1200,7 @@
       "imageTimestamp": "2022-01-16T18:10:51Z"
     },
     "flight-kilisa": {
-      "frame": 127,
+      "frame": 133,
       "name": "Flight Kilisa",
       "file": "Flight Kilisa.png",
       "source": "https://oldschool.runescape.wiki/w/Flight_Kilisa",
@@ -1155,7 +1209,7 @@
       "imageTimestamp": "2018-11-21T06:35:33Z"
     },
     "flockleader-geerin": {
-      "frame": 128,
+      "frame": 134,
       "name": "Flockleader Geerin",
       "file": "Flockleader Geerin.png",
       "source": "https://oldschool.runescape.wiki/w/Flockleader_Geerin",
@@ -1164,7 +1218,7 @@
       "imageTimestamp": "2018-11-21T06:35:34Z"
     },
     "wingman-skree": {
-      "frame": 129,
+      "frame": 135,
       "name": "Wingman Skree",
       "file": "Wingman Skree.png",
       "source": "https://oldschool.runescape.wiki/w/Wingman_Skree",
@@ -1173,7 +1227,7 @@
       "imageTimestamp": "2018-11-21T06:35:34Z"
     },
     "reanimated-aviansie": {
-      "frame": 130,
+      "frame": 136,
       "name": "Reanimated aviansie",
       "file": "Reanimated aviansie.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_aviansie",
@@ -1182,7 +1236,7 @@
       "imageTimestamp": "2019-05-14T01:46:04Z"
     },
     "balfrug-kreeyath": {
-      "frame": 131,
+      "frame": 137,
       "name": "Balfrug Kreeyath",
       "file": "Balfrug Kreeyath.png",
       "source": "https://oldschool.runescape.wiki/w/Balfrug_Kreeyath",
@@ -1191,7 +1245,7 @@
       "imageTimestamp": "2019-06-04T17:45:03Z"
     },
     "porazdir": {
-      "frame": 132,
+      "frame": 138,
       "name": "Porazdir",
       "file": "Porazdir.png",
       "source": "https://oldschool.runescape.wiki/w/Porazdir",
@@ -1200,7 +1254,7 @@
       "imageTimestamp": "2018-02-08T17:06:24Z"
     },
     "skotizo": {
-      "frame": 133,
+      "frame": 139,
       "name": "Skotizo",
       "file": "Skotizo.png",
       "source": "https://oldschool.runescape.wiki/w/Skotizo",
@@ -1209,7 +1263,7 @@
       "imageTimestamp": "2019-05-14T02:05:36Z"
     },
     "king-black-dragon": {
-      "frame": 134,
+      "frame": 140,
       "name": "King Black Dragon",
       "file": "King Black Dragon.png",
       "source": "https://oldschool.runescape.wiki/w/King_Black_Dragon",
@@ -1218,16 +1272,16 @@
       "imageTimestamp": "2019-05-14T01:33:55Z"
     },
     "brutal-black-dragon": {
-      "frame": 135,
-      "name": "brutal black dragon",
+      "frame": 141,
+      "name": "Brutal black dragon",
       "file": "Brutal black dragon icon.png",
-      "source": "https://oldschool.runescape.wiki/w/brutal_black_dragon",
+      "source": "https://oldschool.runescape.wiki/w/Brutal_black_dragon",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Brutal_black_dragon_icon.png",
       "originalSha256": "c978086153ec3f028f8d7cdf2485cbb46f101a0bfb7c58e5ce4757df5e3ab9e4",
       "imageTimestamp": "2017-07-29T15:11:25Z"
     },
     "mutated-bloodveld": {
-      "frame": 136,
+      "frame": 142,
       "name": "Mutated Bloodveld",
       "file": "Mutated Bloodveld.png",
       "source": "https://oldschool.runescape.wiki/w/Mutated_Bloodveld",
@@ -1236,16 +1290,25 @@
       "imageTimestamp": "2020-05-04T16:29:00Z"
     },
     "brutal-blue-dragon": {
-      "frame": 137,
-      "name": "brutal blue dragon",
+      "frame": 143,
+      "name": "Brutal blue dragon",
       "file": "Brutal blue dragon.png",
-      "source": "https://oldschool.runescape.wiki/w/brutal_blue_dragon",
+      "source": "https://oldschool.runescape.wiki/w/Brutal_blue_dragon",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Brutal_blue_dragon.png",
       "originalSha256": "8c2a5a73d8d77cdd6d5ccb9836787da4b9e720dfa5d05b8a34efec04fd5e9536",
       "imageTimestamp": "2019-05-14T01:21:54Z"
     },
+    "vorkath": {
+      "frame": 144,
+      "name": "Vorkath",
+      "file": "Vorkath.png",
+      "source": "https://oldschool.runescape.wiki/w/Vorkath",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Vorkath.png",
+      "originalSha256": "22f75b23e5671b4f1b0c97e7064688520e48cbd30ae6309de87050566c4fd296",
+      "imageTimestamp": "2019-05-14T02:18:15Z"
+    },
     "mature-custodian-stalker": {
-      "frame": 138,
+      "frame": 145,
       "name": "Mature custodian stalker",
       "file": "Mature custodian stalker icon.png",
       "source": "https://oldschool.runescape.wiki/w/Mature_custodian_stalker",
@@ -1254,7 +1317,7 @@
       "imageTimestamp": "2025-07-25T17:50:21Z"
     },
     "elder-custodian-stalker": {
-      "frame": 139,
+      "frame": 146,
       "name": "Elder custodian stalker",
       "file": "Elder custodian stalker icon.png",
       "source": "https://oldschool.runescape.wiki/w/Elder_custodian_stalker",
@@ -1263,7 +1326,7 @@
       "imageTimestamp": "2025-07-25T17:50:21Z"
     },
     "dagannoth-spawn": {
-      "frame": 140,
+      "frame": 147,
       "name": "Dagannoth spawn",
       "file": "Dagannoth spawn.png",
       "source": "https://oldschool.runescape.wiki/w/Dagannoth_spawn",
@@ -1272,7 +1335,7 @@
       "imageTimestamp": "2019-05-14T01:22:00Z"
     },
     "dagannoth-fledgeling": {
-      "frame": 141,
+      "frame": 148,
       "name": "Dagannoth fledgeling",
       "file": "Dagannoth fledgeling.png",
       "source": "https://oldschool.runescape.wiki/w/Dagannoth_fledgeling",
@@ -1280,8 +1343,17 @@
       "originalSha256": "d57d12816bf9eab40b2d81789e8eacaf44c4c45d62ab12bbd6607c8817795e68",
       "imageTimestamp": "2019-05-14T01:21:58Z"
     },
+    "mourner": {
+      "frame": 149,
+      "name": "Mourner",
+      "file": "Mourner.png",
+      "source": "https://oldschool.runescape.wiki/w/Mourner",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Mourner.png",
+      "originalSha256": "7843d25cdf93405dd52379be35e883c2321222af3665046d65aadf53825c7e3a",
+      "imageTimestamp": "2021-10-19T16:07:55Z"
+    },
     "guard-prifddinas": {
-      "frame": 142,
+      "frame": 150,
       "name": "Guard (Prifddinas)",
       "file": "Guard (Prifddinas, 1).png",
       "source": "https://oldschool.runescape.wiki/w/Guard_%28Prifddinas%29",
@@ -1290,7 +1362,7 @@
       "imageTimestamp": "2019-07-29T02:28:39Z"
     },
     "reanimated-elf": {
-      "frame": 143,
+      "frame": 151,
       "name": "Reanimated elf",
       "file": "Reanimated elf.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_elf",
@@ -1299,7 +1371,7 @@
       "imageTimestamp": "2019-11-07T16:12:55Z"
     },
     "branda-the-fire-queen": {
-      "frame": 144,
+      "frame": 152,
       "name": "Branda the Fire Queen",
       "file": "Branda the Fire Queen.png",
       "source": "https://oldschool.runescape.wiki/w/Branda_the_Fire_Queen",
@@ -1308,7 +1380,7 @@
       "imageTimestamp": "2025-02-05T12:08:54Z"
     },
     "taloned-wyvern": {
-      "frame": 145,
+      "frame": 153,
       "name": "Taloned Wyvern",
       "file": "Fossil Island wyverns icon.png",
       "source": "https://oldschool.runescape.wiki/w/Taloned_Wyvern",
@@ -1317,7 +1389,7 @@
       "imageTimestamp": "2017-09-07T14:32:37Z"
     },
     "long-tailed-wyvern": {
-      "frame": 146,
+      "frame": 154,
       "name": "Long-tailed Wyvern",
       "file": "Fossil Island wyverns icon.png",
       "source": "https://oldschool.runescape.wiki/w/Long-tailed_Wyvern",
@@ -1326,7 +1398,7 @@
       "imageTimestamp": "2017-09-07T14:32:37Z"
     },
     "ancient-wyvern": {
-      "frame": 147,
+      "frame": 155,
       "name": "Ancient Wyvern",
       "file": "Ancient Wyvern icon.png",
       "source": "https://oldschool.runescape.wiki/w/Ancient_Wyvern",
@@ -1335,7 +1407,7 @@
       "imageTimestamp": "2017-09-07T14:32:38Z"
     },
     "k-ril-tsutsaroth": {
-      "frame": 148,
+      "frame": 156,
       "name": "K'ril Tsutsaroth",
       "file": "K'ril Tsutsaroth.png",
       "source": "https://oldschool.runescape.wiki/w/K%27ril_Tsutsaroth",
@@ -1344,7 +1416,7 @@
       "imageTimestamp": "2021-08-30T07:49:42Z"
     },
     "tstanon-karlak": {
-      "frame": 149,
+      "frame": 157,
       "name": "Tstanon Karlak",
       "file": "Tstanon Karlak.png",
       "source": "https://oldschool.runescape.wiki/w/Tstanon_Karlak",
@@ -1353,7 +1425,7 @@
       "imageTimestamp": "2021-08-30T08:02:45Z"
     },
     "shellbane-gryphon": {
-      "frame": 150,
+      "frame": 158,
       "name": "Shellbane gryphon",
       "file": "Shellbane gryphon.png",
       "source": "https://oldschool.runescape.wiki/w/Shellbane_gryphon",
@@ -1362,7 +1434,7 @@
       "imageTimestamp": "2025-11-19T16:11:43Z"
     },
     "skeleton-hellhound-vet-ion": {
-      "frame": 151,
+      "frame": 159,
       "name": "Skeleton Hellhound (Vet'ion)",
       "file": "Skeleton Hellhound (Vet'ion).png",
       "source": "https://oldschool.runescape.wiki/w/Skeleton_Hellhound_%28Vet%27ion%29",
@@ -1371,7 +1443,7 @@
       "imageTimestamp": "2023-01-25T10:49:07Z"
     },
     "greater-skeleton-hellhound-vet-ion": {
-      "frame": 152,
+      "frame": 160,
       "name": "Greater Skeleton Hellhound (Vet'ion)",
       "file": "Greater Skeleton Hellhound (Vet'ion).png",
       "source": "https://oldschool.runescape.wiki/w/Greater_Skeleton_Hellhound_%28Vet%27ion%29",
@@ -1380,25 +1452,25 @@
       "imageTimestamp": "2023-01-25T10:49:06Z"
     },
     "kalphite-soldier": {
-      "frame": 153,
-      "name": "Kalphite soldier",
+      "frame": 161,
+      "name": "Kalphite Soldier",
       "file": "Kalphite Soldier.png",
-      "source": "https://oldschool.runescape.wiki/w/Kalphite_soldier",
+      "source": "https://oldschool.runescape.wiki/w/Kalphite_Soldier",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Kalphite_Soldier.png",
       "originalSha256": "cc016a27bcdde05de7e5f4a656a140473d101e72fc54f8f0906b5fb558766b12",
       "imageTimestamp": "2020-10-23T18:21:32Z"
     },
     "kalphite-guardian": {
-      "frame": 154,
-      "name": "Kalphite guardian",
+      "frame": 162,
+      "name": "Kalphite Guardian",
       "file": "Kalphite Guardian.png",
-      "source": "https://oldschool.runescape.wiki/w/Kalphite_guardian",
+      "source": "https://oldschool.runescape.wiki/w/Kalphite_Guardian",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Kalphite_Guardian.png",
       "originalSha256": "deec55ccfd09907c19649072ea3741d02e3a79f7ceebf1f40744c17d29be2616",
       "imageTimestamp": "2020-10-23T18:24:34Z"
     },
     "kalphite-queen": {
-      "frame": 155,
+      "frame": 163,
       "name": "Kalphite Queen",
       "file": "Kalphite Queen.png",
       "source": "https://oldschool.runescape.wiki/w/Kalphite_Queen",
@@ -1407,7 +1479,7 @@
       "imageTimestamp": "2019-05-27T22:22:26Z"
     },
     "lizardman-brute": {
-      "frame": 156,
+      "frame": 164,
       "name": "Lizardman brute",
       "file": "Lizardmen icon.png",
       "source": "https://oldschool.runescape.wiki/w/Lizardman_brute",
@@ -1416,7 +1488,7 @@
       "imageTimestamp": "2016-03-24T14:04:14Z"
     },
     "lizardman-shaman": {
-      "frame": 157,
+      "frame": 165,
       "name": "Lizardman shaman",
       "file": "Lizardmen icon.png",
       "source": "https://oldschool.runescape.wiki/w/Lizardman_shaman",
@@ -1425,7 +1497,7 @@
       "imageTimestamp": "2016-03-24T14:04:14Z"
     },
     "bronze-dragon": {
-      "frame": 158,
+      "frame": 166,
       "name": "Bronze dragon",
       "file": "Bronze dragon.png",
       "source": "https://oldschool.runescape.wiki/w/Bronze_dragon",
@@ -1434,7 +1506,7 @@
       "imageTimestamp": "2019-05-14T01:21:53Z"
     },
     "mithril-dragon": {
-      "frame": 159,
+      "frame": 167,
       "name": "Mithril dragon",
       "file": "Mithril dragon icon.png",
       "source": "https://oldschool.runescape.wiki/w/Mithril_dragon",
@@ -1443,7 +1515,7 @@
       "imageTimestamp": "2014-01-30T14:20:27Z"
     },
     "adamant-dragon": {
-      "frame": 160,
+      "frame": 168,
       "name": "Adamant dragon",
       "file": "Adamant dragon icon.png",
       "source": "https://oldschool.runescape.wiki/w/Adamant_dragon",
@@ -1452,7 +1524,7 @@
       "imageTimestamp": "2018-01-13T04:09:14Z"
     },
     "rune-dragon": {
-      "frame": 161,
+      "frame": 169,
       "name": "Rune dragon",
       "file": "Rune dragon icon.png",
       "source": "https://oldschool.runescape.wiki/w/Rune_dragon",
@@ -1461,7 +1533,7 @@
       "imageTimestamp": "2025-06-16T17:05:27Z"
     },
     "ancient-zygomite": {
-      "frame": 162,
+      "frame": 170,
       "name": "Ancient Zygomite",
       "file": "Mutated zygomite icon.png",
       "source": "https://oldschool.runescape.wiki/w/Ancient_Zygomite",
@@ -1470,7 +1542,7 @@
       "imageTimestamp": "2014-01-06T22:42:36Z"
     },
     "greater-nechryael": {
-      "frame": 163,
+      "frame": 171,
       "name": "Greater Nechryael",
       "file": "Nechryael icon.png",
       "source": "https://oldschool.runescape.wiki/w/Greater_Nechryael",
@@ -1479,16 +1551,16 @@
       "imageTimestamp": "2014-01-06T22:42:36Z"
     },
     "brutal-red-dragon": {
-      "frame": 164,
-      "name": "brutal red dragon",
+      "frame": 172,
+      "name": "Brutal red dragon",
       "file": "Brutal red dragon.png",
-      "source": "https://oldschool.runescape.wiki/w/brutal_red_dragon",
+      "source": "https://oldschool.runescape.wiki/w/Brutal_red_dragon",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Brutal_red_dragon.png",
       "originalSha256": "7323ca9f325fe27cf19d53bdbfbf022ac876710ea3f7dd190843eb447e963dbe",
       "imageTimestamp": "2019-05-14T01:21:54Z"
     },
     "scarabs": {
-      "frame": 165,
+      "frame": 173,
       "name": "Scarabs",
       "file": "Scarabs.png",
       "source": "https://oldschool.runescape.wiki/w/Scarabs",
@@ -1497,16 +1569,25 @@
       "imageTimestamp": "2023-06-12T03:45:48Z"
     },
     "scarab-swarm": {
-      "frame": 166,
-      "name": "scarab swarm",
+      "frame": 174,
+      "name": "Scarab Swarm",
       "file": "Scarab Swarm.png",
-      "source": "https://oldschool.runescape.wiki/w/scarab_swarm",
+      "source": "https://oldschool.runescape.wiki/w/Scarab_Swarm",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Scarab_Swarm.png",
       "originalSha256": "2a5645af55d6102fe8bc87f46410bd3d148c1a49abf12015339db219492ee2fb",
       "imageTimestamp": "2020-07-14T18:05:41Z"
     },
+    "scarab-mage": {
+      "frame": 175,
+      "name": "Scarab Mage",
+      "file": "Scarab Mage.png",
+      "source": "https://oldschool.runescape.wiki/w/Scarab_Mage",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Scarab_Mage.png",
+      "originalSha256": "07d05405a6fdd30b19ac5bb7c70c96c06e16c84508c5bafc8cd34afa4e4596a0",
+      "imageTimestamp": "2015-11-23T23:27:49Z"
+    },
     "thermonuclear-smoke-devil": {
-      "frame": 167,
+      "frame": 176,
       "name": "Thermonuclear smoke devil",
       "file": "Smoke devil icon.png",
       "source": "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil",
@@ -1514,8 +1595,35 @@
       "originalSha256": "ce45b3aaa0269a02df41cae8a1a92ca3e04e4d5d17823eea00fe7df9e918cf8e",
       "imageTimestamp": "2014-04-10T17:24:35Z"
     },
+    "spiritual-ranger": {
+      "frame": 177,
+      "name": "Spiritual ranger",
+      "file": "Spiritual ranger icon.png",
+      "source": "https://oldschool.runescape.wiki/w/Spiritual_ranger",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Spiritual_ranger_icon.png",
+      "originalSha256": "1c73c8d884189814ecb79ea88e9c41e8fef7fb0dae93e4a21b344573794b5db7",
+      "imageTimestamp": "2014-01-06T22:42:37Z"
+    },
+    "spiritual-mage": {
+      "frame": 178,
+      "name": "Spiritual mage",
+      "file": "Spiritual mage icon.png",
+      "source": "https://oldschool.runescape.wiki/w/Spiritual_mage",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Spiritual_mage_icon.png",
+      "originalSha256": "3969f2bca2893f02b2e93f63873e605fc63219f1ae49d4ec457562f27ac8be93",
+      "imageTimestamp": "2014-01-06T22:42:37Z"
+    },
+    "ice-troll": {
+      "frame": 179,
+      "name": "Ice troll",
+      "file": "Ice troll (level 120, 1).png",
+      "source": "https://oldschool.runescape.wiki/w/Ice_troll",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Ice_troll_(level_120,_1).png",
+      "originalSha256": "95c02bbe87e46242c5633135ac78ba2991341de572a85613aab4d631bcf3ced6",
+      "imageTimestamp": "2023-10-21T22:11:03Z"
+    },
     "troll-general": {
-      "frame": 168,
+      "frame": 180,
       "name": "Troll general",
       "file": "Troll general (sword).png",
       "source": "https://oldschool.runescape.wiki/w/Troll_general",
@@ -1524,7 +1632,7 @@
       "imageTimestamp": "2019-04-14T12:54:24Z"
     },
     "tztok-jad": {
-      "frame": 169,
+      "frame": 181,
       "name": "TzTok-Jad",
       "file": "TzTok-Jad.png",
       "source": "https://oldschool.runescape.wiki/w/TzTok-Jad",
@@ -1533,7 +1641,7 @@
       "imageTimestamp": "2026-01-31T20:41:38Z"
     },
     "tzkal-zuk": {
-      "frame": 170,
+      "frame": 182,
       "name": "TzKal-Zuk",
       "file": "TzKal-Zuk.png",
       "source": "https://oldschool.runescape.wiki/w/TzKal-Zuk",
@@ -1541,8 +1649,44 @@
       "originalSha256": "1c876e32b7976fb3de8d9d72779838263af68b59416c351c98e0983b8fb4d71b",
       "imageTimestamp": "2020-07-10T20:46:14Z"
     },
+    "feral-vampyre": {
+      "frame": 183,
+      "name": "Feral Vampyre",
+      "file": "Feral Vampyre.png",
+      "source": "https://oldschool.runescape.wiki/w/Feral_Vampyre",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Feral_Vampyre.png",
+      "originalSha256": "8a812133b977c77a77d1202b345c934bfa14e63c92199a2b485cff7ab2cecd84",
+      "imageTimestamp": "2020-08-15T10:01:39Z"
+    },
+    "vampyre-juvinate": {
+      "frame": 184,
+      "name": "Vampyre Juvinate",
+      "file": "Vampyre Juvinate (In Aid of the Myreque, level 50).png",
+      "source": "https://oldschool.runescape.wiki/w/Vampyre_Juvinate",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Vampyre_Juvinate_(In_Aid_of_the_Myreque,_level_50).png",
+      "originalSha256": "c1a84b6a93dba001fd2d75f531106879c2dff57cab7c35ee5201c732dbb7533c",
+      "imageTimestamp": "2026-03-15T03:45:44Z"
+    },
+    "vyrewatch": {
+      "frame": 185,
+      "name": "Vyrewatch",
+      "file": "Vyrewatch.png",
+      "source": "https://oldschool.runescape.wiki/w/Vyrewatch",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Vyrewatch.png",
+      "originalSha256": "45195973cd0ac5df0865bd389433639743bde383ba0824265bbc8f807652fa9e",
+      "imageTimestamp": "2024-12-31T11:52:12Z"
+    },
+    "warped-terrorbird": {
+      "frame": 186,
+      "name": "Warped Terrorbird",
+      "file": "Warped Terrorbird icon.png",
+      "source": "https://oldschool.runescape.wiki/w/Warped_Terrorbird",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Warped_Terrorbird_icon.png",
+      "originalSha256": "4a8b9865649be3fab16330aafe30e380cd1f2134f6540e1ce3a99be7b4de4325",
+      "imageTimestamp": "2023-09-12T21:58:47Z"
+    },
     "lava-strykewyrm": {
-      "frame": 171,
+      "frame": 187,
       "name": "Lava Strykewyrm",
       "file": "Wyrm icon.png",
       "source": "https://oldschool.runescape.wiki/w/Lava_Strykewyrm",
@@ -1551,7 +1695,7 @@
       "imageTimestamp": "2019-01-10T12:58:11Z"
     },
     "wyrmling": {
-      "frame": 172,
+      "frame": 188,
       "name": "Wyrmling",
       "file": "Wyrm icon.png",
       "source": "https://oldschool.runescape.wiki/w/Wyrmling",
@@ -1560,7 +1704,7 @@
       "imageTimestamp": "2019-01-10T12:58:11Z"
     },
     "twisted-banshee": {
-      "frame": 173,
+      "frame": 189,
       "name": "Twisted Banshee",
       "file": "Banshee icon.png",
       "source": "https://oldschool.runescape.wiki/w/Twisted_Banshee",
@@ -1569,7 +1713,7 @@
       "imageTimestamp": "2014-01-06T22:42:05Z"
     },
     "giant-bat": {
-      "frame": 174,
+      "frame": 190,
       "name": "Giant bat",
       "file": "Giant bat.png",
       "source": "https://oldschool.runescape.wiki/w/Giant_bat",
@@ -1578,7 +1722,7 @@
       "imageTimestamp": "2019-05-14T01:28:27Z"
     },
     "albino-bat": {
-      "frame": 175,
+      "frame": 191,
       "name": "Albino bat",
       "file": "Albino bat.png",
       "source": "https://oldschool.runescape.wiki/w/Albino_bat",
@@ -1587,7 +1731,7 @@
       "imageTimestamp": "2019-05-18T16:33:39Z"
     },
     "death-wing": {
-      "frame": 176,
+      "frame": 192,
       "name": "Death wing",
       "file": "Death wing.png",
       "source": "https://oldschool.runescape.wiki/w/Death_wing",
@@ -1596,7 +1740,7 @@
       "imageTimestamp": "2022-01-16T18:04:27Z"
     },
     "grizzly-bear-cub": {
-      "frame": 177,
+      "frame": 193,
       "name": "Grizzly bear cub",
       "file": "Grizzly bear cub (level 33).png",
       "source": "https://oldschool.runescape.wiki/w/Grizzly_bear_cub",
@@ -1605,16 +1749,16 @@
       "imageTimestamp": "2025-02-13T22:11:48Z"
     },
     "bear-cub": {
-      "frame": 178,
-      "name": "Bear cub",
+      "frame": 194,
+      "name": "Bear Cub",
       "file": "Bear Cub (1).png",
-      "source": "https://oldschool.runescape.wiki/w/Bear_cub",
+      "source": "https://oldschool.runescape.wiki/w/Bear_Cub",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Bear_Cub_(1).png",
       "originalSha256": "c96311099d031b4c7c8a4a2c1e108c02fcebf1efdea2853639c4f1aafe4db72b",
       "imageTimestamp": "2019-06-16T15:42:23Z"
     },
     "reanimated-bear": {
-      "frame": 179,
+      "frame": 195,
       "name": "Reanimated bear",
       "file": "Reanimated bear.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_bear",
@@ -1623,7 +1767,7 @@
       "imageTimestamp": "2019-05-14T01:46:05Z"
     },
     "callisto": {
-      "frame": 180,
+      "frame": 196,
       "name": "Callisto",
       "file": "Callisto.png",
       "source": "https://oldschool.runescape.wiki/w/Callisto",
@@ -1632,7 +1776,7 @@
       "imageTimestamp": "2023-01-25T10:49:05Z"
     },
     "artio": {
-      "frame": 181,
+      "frame": 197,
       "name": "Artio",
       "file": "Artio.png",
       "source": "https://oldschool.runescape.wiki/w/Artio",
@@ -1641,7 +1785,7 @@
       "imageTimestamp": "2023-01-25T10:49:05Z"
     },
     "terrorbird": {
-      "frame": 182,
+      "frame": 198,
       "name": "Terrorbird",
       "file": "Terrorbird.png",
       "source": "https://oldschool.runescape.wiki/w/Terrorbird",
@@ -1649,8 +1793,17 @@
       "originalSha256": "9e2bde66aaba3f1b3a2616c8f2c5de561d2c51abc930a460f7bb264ff765f66a",
       "imageTimestamp": "2019-05-14T02:12:40Z"
     },
+    "rooster": {
+      "frame": 199,
+      "name": "Rooster",
+      "file": "Rooster.png",
+      "source": "https://oldschool.runescape.wiki/w/Rooster",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Rooster.png",
+      "originalSha256": "d06fbfe43895f435fd3fb3067979e914467a2c4c37d6605e451147adc6f52c88",
+      "imageTimestamp": "2020-05-02T09:14:51Z"
+    },
     "chompy-bird": {
-      "frame": 183,
+      "frame": 200,
       "name": "Chompy bird",
       "file": "Chompy bird.png",
       "source": "https://oldschool.runescape.wiki/w/Chompy_bird",
@@ -1658,8 +1811,17 @@
       "originalSha256": "2d5a4287105c581d1974b1d25c8eb977a6871fa1485a67d2e3a5737c6efae6d6",
       "imageTimestamp": "2019-06-22T14:16:55Z"
     },
+    "seagull": {
+      "frame": 201,
+      "name": "Seagull",
+      "file": "Seagull.png",
+      "source": "https://oldschool.runescape.wiki/w/Seagull",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Seagull.png",
+      "originalSha256": "3ccfd0c0a531ae1e744b3ed8e0c9c3e267cb6a3c39971823bf2630c0c6e05d5f",
+      "imageTimestamp": "2019-05-14T01:57:26Z"
+    },
     "penguin-monster": {
-      "frame": 184,
+      "frame": 202,
       "name": "Penguin (monster)",
       "file": "Penguin (monster).png",
       "source": "https://oldschool.runescape.wiki/w/Penguin_%28monster%29",
@@ -1668,7 +1830,7 @@
       "imageTimestamp": "2021-09-14T14:32:45Z"
     },
     "duck": {
-      "frame": 185,
+      "frame": 203,
       "name": "Duck",
       "file": "Duck.png",
       "source": "https://oldschool.runescape.wiki/w/Duck",
@@ -1677,7 +1839,7 @@
       "imageTimestamp": "2026-04-09T05:27:07Z"
     },
     "duckling": {
-      "frame": 186,
+      "frame": 204,
       "name": "Duckling",
       "file": "Duckling.png",
       "source": "https://oldschool.runescape.wiki/w/Duckling",
@@ -1686,7 +1848,7 @@
       "imageTimestamp": "2019-05-14T01:28:22Z"
     },
     "brutus": {
-      "frame": 187,
+      "frame": 205,
       "name": "Brutus",
       "file": "Brutus.png",
       "source": "https://oldschool.runescape.wiki/w/Brutus",
@@ -1695,7 +1857,7 @@
       "imageTimestamp": "2026-02-25T20:26:03Z"
     },
     "buffalo": {
-      "frame": 188,
+      "frame": 206,
       "name": "Buffalo",
       "file": "Buffalo.png",
       "source": "https://oldschool.runescape.wiki/w/Buffalo",
@@ -1704,7 +1866,7 @@
       "imageTimestamp": "2024-03-21T15:50:02Z"
     },
     "cow-calf": {
-      "frame": 189,
+      "frame": 207,
       "name": "Cow calf",
       "file": "Cow calf.png",
       "source": "https://oldschool.runescape.wiki/w/Cow_calf",
@@ -1713,7 +1875,7 @@
       "imageTimestamp": "2019-06-24T17:00:49Z"
     },
     "undead-cow": {
-      "frame": 190,
+      "frame": 208,
       "name": "Undead cow",
       "file": "Undead cow.png",
       "source": "https://oldschool.runescape.wiki/w/Undead_cow",
@@ -1722,7 +1884,7 @@
       "imageTimestamp": "2019-05-14T02:18:12Z"
     },
     "jackal": {
-      "frame": 191,
+      "frame": 209,
       "name": "Jackal",
       "file": "Jackal.png",
       "source": "https://oldschool.runescape.wiki/w/Jackal",
@@ -1731,7 +1893,7 @@
       "imageTimestamp": "2019-05-14T01:33:53Z"
     },
     "wild-dog": {
-      "frame": 192,
+      "frame": 210,
       "name": "Wild dog",
       "file": "Wild dog.png",
       "source": "https://oldschool.runescape.wiki/w/Wild_dog",
@@ -1740,7 +1902,7 @@
       "imageTimestamp": "2019-05-14T02:18:18Z"
     },
     "reanimated-dog": {
-      "frame": 193,
+      "frame": 211,
       "name": "Reanimated dog",
       "file": "Reanimated dog.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_dog",
@@ -1749,7 +1911,7 @@
       "imageTimestamp": "2019-05-14T01:46:05Z"
     },
     "black-guard": {
-      "frame": 194,
+      "frame": 212,
       "name": "Black Guard",
       "file": "Black Guard (level 25, 1).png",
       "source": "https://oldschool.runescape.wiki/w/Black_Guard",
@@ -1758,16 +1920,25 @@
       "imageTimestamp": "2019-06-16T20:09:11Z"
     },
     "chaos-dwarf": {
-      "frame": 195,
-      "name": "Chaos Dwarf",
+      "frame": 213,
+      "name": "Chaos dwarf",
       "file": "Chaos dwarf.png",
-      "source": "https://oldschool.runescape.wiki/w/Chaos_Dwarf",
+      "source": "https://oldschool.runescape.wiki/w/Chaos_dwarf",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Chaos_dwarf.png",
       "originalSha256": "9a26c854751810bdc432781f5ed0f880515ea8e356121a03dd7a17965314ce36",
       "imageTimestamp": "2019-01-29T06:25:54Z"
     },
+    "dwarf-gang-member": {
+      "frame": 214,
+      "name": "Dwarf gang member",
+      "file": "Dwarf gang member (1).png",
+      "source": "https://oldschool.runescape.wiki/w/Dwarf_gang_member",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Dwarf_gang_member_(1).png",
+      "originalSha256": "a581873dda4ee422876fa095304e4aeac6b1519800660bc0ac0389aaf478b14d",
+      "imageTimestamp": "2020-02-10T02:25:50Z"
+    },
     "tortured-soul": {
-      "frame": 196,
+      "frame": 215,
       "name": "Tortured soul",
       "file": "Tortured soul.png",
       "source": "https://oldschool.runescape.wiki/w/Tortured_soul",
@@ -1776,7 +1947,7 @@
       "imageTimestamp": "2019-01-27T20:20:18Z"
     },
     "forgotten-soul": {
-      "frame": 197,
+      "frame": 216,
       "name": "Forgotten Soul",
       "file": "Forgotten Soul.png",
       "source": "https://oldschool.runescape.wiki/w/Forgotten_Soul",
@@ -1785,7 +1956,7 @@
       "imageTimestamp": "2021-01-08T14:00:39Z"
     },
     "cave-goblin-guard": {
-      "frame": 198,
+      "frame": 217,
       "name": "Cave goblin guard",
       "file": "Cave goblin guard (level 24).png",
       "source": "https://oldschool.runescape.wiki/w/Cave_goblin_guard",
@@ -1794,7 +1965,7 @@
       "imageTimestamp": "2019-01-20T08:31:34Z"
     },
     "sergeant-strongstack": {
-      "frame": 199,
+      "frame": 218,
       "name": "Sergeant Strongstack",
       "file": "Sergeant Strongstack.png",
       "source": "https://oldschool.runescape.wiki/w/Sergeant_Strongstack",
@@ -1803,7 +1974,7 @@
       "imageTimestamp": "2018-11-21T06:50:03Z"
     },
     "sergeant-steelwill": {
-      "frame": 200,
+      "frame": 219,
       "name": "Sergeant Steelwill",
       "file": "Sergeant Steelwill.png",
       "source": "https://oldschool.runescape.wiki/w/Sergeant_Steelwill",
@@ -1812,7 +1983,7 @@
       "imageTimestamp": "2018-11-21T06:50:03Z"
     },
     "sergeant-grimspike": {
-      "frame": 201,
+      "frame": 220,
       "name": "Sergeant Grimspike",
       "file": "Sergeant Grimspike.png",
       "source": "https://oldschool.runescape.wiki/w/Sergeant_Grimspike",
@@ -1821,7 +1992,7 @@
       "imageTimestamp": "2018-11-21T06:50:03Z"
     },
     "small-lizard": {
-      "frame": 202,
+      "frame": 221,
       "name": "Small Lizard",
       "file": "Small Lizard (green).png",
       "source": "https://oldschool.runescape.wiki/w/Small_Lizard",
@@ -1830,7 +2001,7 @@
       "imageTimestamp": "2021-09-13T15:00:41Z"
     },
     "sulphur-lizard": {
-      "frame": 203,
+      "frame": 222,
       "name": "Sulphur Lizard",
       "file": "Sulphur Lizard icon.png",
       "source": "https://oldschool.runescape.wiki/w/Sulphur_Lizard",
@@ -1839,7 +2010,7 @@
       "imageTimestamp": "2019-01-10T12:57:59Z"
     },
     "grimy-lizard": {
-      "frame": 204,
+      "frame": 223,
       "name": "Grimy Lizard",
       "file": "Grimy Lizard.png",
       "source": "https://oldschool.runescape.wiki/w/Grimy_Lizard",
@@ -1848,7 +2019,7 @@
       "imageTimestamp": "2024-03-20T20:25:43Z"
     },
     "monkey-guard": {
-      "frame": 205,
+      "frame": 224,
       "name": "Monkey Guard",
       "file": "Monkey Guard.png",
       "source": "https://oldschool.runescape.wiki/w/Monkey_Guard",
@@ -1857,7 +2028,7 @@
       "imageTimestamp": "2020-10-23T18:00:41Z"
     },
     "monkey-archer": {
-      "frame": 206,
+      "frame": 225,
       "name": "Monkey Archer",
       "file": "Monkey Archer.png",
       "source": "https://oldschool.runescape.wiki/w/Monkey_Archer",
@@ -1865,8 +2036,26 @@
       "originalSha256": "e06cc8e06adf7e56b0e78fe9c63494d0090f135b4c22a5f4d5e13446f75e03c4",
       "imageTimestamp": "2020-08-02T07:35:25Z"
     },
+    "monkey-zombie": {
+      "frame": 226,
+      "name": "Monkey Zombie",
+      "file": "Monkey Zombie.png",
+      "source": "https://oldschool.runescape.wiki/w/Monkey_Zombie",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Monkey_Zombie.png",
+      "originalSha256": "41654e037b3cad5c592ae7d5fc68973b2cec4e686af947f01a1bb5aa92a17a24",
+      "imageTimestamp": "2020-05-21T20:54:40Z"
+    },
+    "tortured-gorilla": {
+      "frame": 227,
+      "name": "Tortured gorilla",
+      "file": "Tortured gorilla.png",
+      "source": "https://oldschool.runescape.wiki/w/Tortured_gorilla",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Tortured_gorilla.png",
+      "originalSha256": "afaad86204202668fea7ec21cb648a271c703c5f882976b78b8ad500c3c99598",
+      "imageTimestamp": "2021-07-10T12:46:59Z"
+    },
     "dungeon-rat": {
-      "frame": 207,
+      "frame": 228,
       "name": "Dungeon rat",
       "file": "Dungeon rat.png",
       "source": "https://oldschool.runescape.wiki/w/Dungeon_rat",
@@ -1875,7 +2064,7 @@
       "imageTimestamp": "2018-11-22T04:36:16Z"
     },
     "crypt-rat": {
-      "frame": 208,
+      "frame": 229,
       "name": "Crypt rat",
       "file": "Crypt rat.png",
       "source": "https://oldschool.runescape.wiki/w/Crypt_rat",
@@ -1884,7 +2073,7 @@
       "imageTimestamp": "2018-10-31T16:31:28Z"
     },
     "giant-crypt-rat": {
-      "frame": 209,
+      "frame": 230,
       "name": "Giant crypt rat",
       "file": "Giant crypt rat.png",
       "source": "https://oldschool.runescape.wiki/w/Giant_crypt_rat",
@@ -1892,8 +2081,17 @@
       "originalSha256": "834f43a5f5904f1ce7f3ca260c543aa279649dc2ce7f2a3800c5d570b9d57d33",
       "imageTimestamp": "2018-10-31T16:31:29Z"
     },
+    "scurrius": {
+      "frame": 231,
+      "name": "Scurrius",
+      "file": "Scurrius.png",
+      "source": "https://oldschool.runescape.wiki/w/Scurrius",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Scurrius.png",
+      "originalSha256": "05e13dae2ed1343da72a67b7ac4ca09931457c855171e387b4e97f3b8b8a954c",
+      "imageTimestamp": "2024-01-25T21:37:21Z"
+    },
     "king-scorpion": {
-      "frame": 210,
+      "frame": 232,
       "name": "King Scorpion",
       "file": "King Scorpion.png",
       "source": "https://oldschool.runescape.wiki/w/King_Scorpion",
@@ -1902,7 +2100,7 @@
       "imageTimestamp": "2016-11-29T23:01:45Z"
     },
     "poison-scorpion": {
-      "frame": 211,
+      "frame": 233,
       "name": "Poison Scorpion",
       "file": "Poison Scorpion.png",
       "source": "https://oldschool.runescape.wiki/w/Poison_Scorpion",
@@ -1911,7 +2109,7 @@
       "imageTimestamp": "2019-02-05T21:29:19Z"
     },
     "pit-scorpion": {
-      "frame": 212,
+      "frame": 234,
       "name": "Pit Scorpion",
       "file": "Pit Scorpion.png",
       "source": "https://oldschool.runescape.wiki/w/Pit_Scorpion",
@@ -1920,7 +2118,7 @@
       "imageTimestamp": "2019-01-28T16:27:03Z"
     },
     "scorpia": {
-      "frame": 213,
+      "frame": 235,
       "name": "Scorpia",
       "file": "Scorpia.png",
       "source": "https://oldschool.runescape.wiki/w/Scorpia",
@@ -1929,7 +2127,7 @@
       "imageTimestamp": "2018-11-09T03:56:38Z"
     },
     "lobstrosity": {
-      "frame": 214,
+      "frame": 236,
       "name": "Lobstrosity",
       "file": "Lobstrosity.png",
       "source": "https://oldschool.runescape.wiki/w/Lobstrosity",
@@ -1938,7 +2136,7 @@
       "imageTimestamp": "2018-05-11T05:50:48Z"
     },
     "reanimated-scorpion": {
-      "frame": 215,
+      "frame": 237,
       "name": "Reanimated scorpion",
       "file": "Reanimated scorpion.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_scorpion",
@@ -1947,7 +2145,7 @@
       "imageTimestamp": "2019-05-14T01:46:07Z"
     },
     "scorpia-s-offspring-monster": {
-      "frame": 216,
+      "frame": 238,
       "name": "Scorpia's offspring (monster)",
       "file": "Scorpia's offspring (monster).png",
       "source": "https://oldschool.runescape.wiki/w/Scorpia%27s_offspring_%28monster%29",
@@ -1956,7 +2154,7 @@
       "imageTimestamp": "2019-05-14T02:00:12Z"
     },
     "scorpia-s-guardian": {
-      "frame": 217,
+      "frame": 239,
       "name": "Scorpia's guardian",
       "file": "Scorpia's guardian.png",
       "source": "https://oldschool.runescape.wiki/w/Scorpia%27s_guardian",
@@ -1964,8 +2162,17 @@
       "originalSha256": "8fa530055246ee48526ce4e6c11fe331197fd0286b2c43812341154d5d9b8601",
       "imageTimestamp": "2019-05-14T01:57:25Z"
     },
+    "skeleton-mage": {
+      "frame": 240,
+      "name": "Skeleton Mage",
+      "file": "Skeleton Mage (lv 16).png",
+      "source": "https://oldschool.runescape.wiki/w/Skeleton_Mage",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Skeleton_Mage_(lv_16).png",
+      "originalSha256": "3af81c05cfac1d39585e05d99aefb619e372fc9aa2ad7ea1003de4f67f813c4b",
+      "imageTimestamp": "2019-05-14T02:05:35Z"
+    },
     "vet-ion": {
-      "frame": 218,
+      "frame": 241,
       "name": "Vet'ion",
       "file": "Vet'ion.png",
       "source": "https://oldschool.runescape.wiki/w/Vet%27ion",
@@ -1974,7 +2181,7 @@
       "imageTimestamp": "2023-01-25T10:49:10Z"
     },
     "skogre": {
-      "frame": 219,
+      "frame": 242,
       "name": "Skogre",
       "file": "Skogre (1).png",
       "source": "https://oldschool.runescape.wiki/w/Skogre",
@@ -1983,7 +2190,7 @@
       "imageTimestamp": "2019-01-19T21:14:35Z"
     },
     "skeleton-shayzien-crypts": {
-      "frame": 220,
+      "frame": 243,
       "name": "Skeleton (Shayzien Crypts)",
       "file": "Skeleton (Shayzien Crypts, melee).png",
       "source": "https://oldschool.runescape.wiki/w/Skeleton_%28Shayzien_Crypts%29",
@@ -1991,8 +2198,17 @@
       "originalSha256": "621aa587f6c5374ef72298c0cd6f9b8fcaca689b0ded24959acbdd35b0630092",
       "imageTimestamp": "2025-05-21T23:42:18Z"
     },
+    "skeleton-fremennik": {
+      "frame": 244,
+      "name": "Skeleton fremennik",
+      "file": "Skeleton fremennik.png",
+      "source": "https://oldschool.runescape.wiki/w/Skeleton_fremennik",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Skeleton_fremennik.png",
+      "originalSha256": "3a8fcbb73926b6eb2df3485f3b6b0406f467cd29c25c6e89056d1e228ef7c4ef",
+      "imageTimestamp": "2021-03-08T22:56:36Z"
+    },
     "calvar-ion": {
-      "frame": 221,
+      "frame": 245,
       "name": "Calvar'ion",
       "file": "Calvar'ion.png",
       "source": "https://oldschool.runescape.wiki/w/Calvar%27ion",
@@ -2001,7 +2217,7 @@
       "imageTimestamp": "2023-01-25T10:49:06Z"
     },
     "shadow-spider": {
-      "frame": 222,
+      "frame": 246,
       "name": "Shadow spider",
       "file": "Shadow spider.png",
       "source": "https://oldschool.runescape.wiki/w/Shadow_spider",
@@ -2010,7 +2226,7 @@
       "imageTimestamp": "2019-02-02T18:58:58Z"
     },
     "giant-crypt-spider": {
-      "frame": 223,
+      "frame": 247,
       "name": "Giant crypt spider",
       "file": "Giant crypt spider.png",
       "source": "https://oldschool.runescape.wiki/w/Giant_crypt_spider",
@@ -2019,7 +2235,7 @@
       "imageTimestamp": "2019-02-02T18:47:58Z"
     },
     "sarachnis": {
-      "frame": 224,
+      "frame": 248,
       "name": "Sarachnis",
       "file": "Sarachnis.png",
       "source": "https://oldschool.runescape.wiki/w/Sarachnis",
@@ -2028,7 +2244,7 @@
       "imageTimestamp": "2019-07-04T11:44:19Z"
     },
     "temple-spider": {
-      "frame": 225,
+      "frame": 249,
       "name": "Temple Spider",
       "file": "Temple Spider.png",
       "source": "https://oldschool.runescape.wiki/w/Temple_Spider",
@@ -2037,7 +2253,7 @@
       "imageTimestamp": "2019-07-04T11:46:39Z"
     },
     "venenatis": {
-      "frame": 226,
+      "frame": 250,
       "name": "Venenatis",
       "file": "Venenatis.png",
       "source": "https://oldschool.runescape.wiki/w/Venenatis",
@@ -2046,7 +2262,7 @@
       "imageTimestamp": "2023-01-25T10:49:08Z"
     },
     "spindel": {
-      "frame": 227,
+      "frame": 251,
       "name": "Spindel",
       "file": "Spindel.png",
       "source": "https://oldschool.runescape.wiki/w/Spindel",
@@ -2055,7 +2271,7 @@
       "imageTimestamp": "2023-01-25T10:49:07Z"
     },
     "big-wolf": {
-      "frame": 228,
+      "frame": 252,
       "name": "Big Wolf",
       "file": "Big Wolf.png",
       "source": "https://oldschool.runescape.wiki/w/Big_Wolf",
@@ -2064,7 +2280,7 @@
       "imageTimestamp": "2019-05-14T01:08:46Z"
     },
     "desert-wolf": {
-      "frame": 229,
+      "frame": 253,
       "name": "Desert Wolf",
       "file": "Desert Wolf.png",
       "source": "https://oldschool.runescape.wiki/w/Desert_Wolf",
@@ -2073,7 +2289,7 @@
       "imageTimestamp": "2019-05-14T01:28:20Z"
     },
     "ice-wolf": {
-      "frame": 230,
+      "frame": 254,
       "name": "Ice wolf",
       "file": "Ice wolf (level 96).png",
       "source": "https://oldschool.runescape.wiki/w/Ice_wolf",
@@ -2082,16 +2298,16 @@
       "imageTimestamp": "2021-10-01T11:56:08Z"
     },
     "jungle-wolf": {
-      "frame": 231,
-      "name": "Jungle wolf",
+      "frame": 255,
+      "name": "Jungle Wolf",
       "file": "Jungle Wolf.png",
-      "source": "https://oldschool.runescape.wiki/w/Jungle_wolf",
+      "source": "https://oldschool.runescape.wiki/w/Jungle_Wolf",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Jungle_Wolf.png",
       "originalSha256": "aa98815236b3cdada3215d36b09d331f545d95c4016f0e568dddbf7764ca4034",
       "imageTimestamp": "2017-01-14T14:01:00Z"
     },
     "undead-chicken": {
-      "frame": 232,
+      "frame": 256,
       "name": "Undead chicken",
       "file": "Undead chicken.png",
       "source": "https://oldschool.runescape.wiki/w/Undead_chicken",
@@ -2100,7 +2316,7 @@
       "imageTimestamp": "2019-05-14T02:18:12Z"
     },
     "undead-druid": {
-      "frame": 233,
+      "frame": 257,
       "name": "Undead Druid",
       "file": "Undead Druid.png",
       "source": "https://oldschool.runescape.wiki/w/Undead_Druid",
@@ -2108,8 +2324,17 @@
       "originalSha256": "49b47367f25f0accf65a5a2669349524af3347901153a059021776b080e72cc6",
       "imageTimestamp": "2019-07-04T15:28:25Z"
     },
+    "undead-one": {
+      "frame": 258,
+      "name": "Undead one",
+      "file": "Undead one (Skeletal, 3).png",
+      "source": "https://oldschool.runescape.wiki/w/Undead_one",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Undead_one_(Skeletal,_3).png",
+      "originalSha256": "8c14d2c99ee250a3ff392f1e4b7d1bb2c5bbea3c1ce35f1bb61e1f5a5b8f13f9",
+      "imageTimestamp": "2019-01-30T21:16:07Z"
+    },
     "zombie-rat": {
-      "frame": 234,
+      "frame": 259,
       "name": "Zombie rat",
       "file": "Zombie rat (1).png",
       "source": "https://oldschool.runescape.wiki/w/Zombie_rat",
@@ -2118,7 +2343,7 @@
       "imageTimestamp": "2019-06-07T06:18:21Z"
     },
     "zogre": {
-      "frame": 235,
+      "frame": 260,
       "name": "Zogre",
       "file": "Zogre (1).png",
       "source": "https://oldschool.runescape.wiki/w/Zogre",
@@ -2127,7 +2352,7 @@
       "imageTimestamp": "2019-06-16T21:13:36Z"
     },
     "moonlight-cockatrice": {
-      "frame": 236,
+      "frame": 261,
       "name": "Moonlight Cockatrice",
       "file": "Moonlight Cockatrice.png",
       "source": "https://oldschool.runescape.wiki/w/Moonlight_Cockatrice",
@@ -2136,43 +2361,43 @@
       "imageTimestamp": "2024-03-21T14:05:10Z"
     },
     "ammonite-crab": {
-      "frame": 237,
-      "name": "Ammonite crab",
+      "frame": 262,
+      "name": "Ammonite Crab",
       "file": "Ammonite Crab.png",
-      "source": "https://oldschool.runescape.wiki/w/Ammonite_crab",
+      "source": "https://oldschool.runescape.wiki/w/Ammonite_Crab",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Ammonite_Crab.png",
       "originalSha256": "11858b3bb527d66dbdf7f9b8f738edc03f86b45bc30b91fa884679b59d15de3e",
       "imageTimestamp": "2017-09-07T18:35:19Z"
     },
     "frost-crab": {
-      "frame": 238,
-      "name": "Frost crab",
+      "frame": 263,
+      "name": "Frost Crab",
       "file": "Frost Crab.png",
-      "source": "https://oldschool.runescape.wiki/w/Frost_crab",
+      "source": "https://oldschool.runescape.wiki/w/Frost_Crab",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Frost_Crab.png",
       "originalSha256": "f1e113e4e7f899d55a0201fc5b31e44dc651844e7e8be594beab8fe93a8f065c",
       "imageTimestamp": "2024-09-27T22:49:03Z"
     },
     "rock-crab": {
-      "frame": 239,
-      "name": "Rock crab",
+      "frame": 264,
+      "name": "Rock Crab",
       "file": "Rock crab (exposed).png",
-      "source": "https://oldschool.runescape.wiki/w/Rock_crab",
+      "source": "https://oldschool.runescape.wiki/w/Rock_Crab",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Rock_crab_(exposed).png",
       "originalSha256": "3adaf0458c224ca144d5efd789c63596f76268d887785cf32899cb3a64d99255",
       "imageTimestamp": "2019-01-26T17:15:55Z"
     },
     "swamp-crab": {
-      "frame": 240,
-      "name": "Swamp crab",
+      "frame": 265,
+      "name": "Swamp Crab",
       "file": "Swamp Crab.png",
-      "source": "https://oldschool.runescape.wiki/w/Swamp_crab",
+      "source": "https://oldschool.runescape.wiki/w/Swamp_Crab",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Swamp_Crab.png",
       "originalSha256": "ec17b0ab0c16f23c233e47998f3310a9ca994fcae52dca09c46e7d1aebbb91d8",
       "imageTimestamp": "2018-05-25T03:45:40Z"
     },
     "obor": {
-      "frame": 241,
+      "frame": 266,
       "name": "Obor",
       "file": "Obor.png",
       "source": "https://oldschool.runescape.wiki/w/Obor",
@@ -2180,8 +2405,17 @@
       "originalSha256": "8c0eca2b20ee305c7213ab1018c7ac172bf6065f3ec4baa23e38e43f518acb9b",
       "imageTimestamp": "2024-02-04T01:19:12Z"
     },
+    "cyclops": {
+      "frame": 267,
+      "name": "Cyclops",
+      "file": "Cyclops.png",
+      "source": "https://oldschool.runescape.wiki/w/Cyclops",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Cyclops.png",
+      "originalSha256": "550e08ed0412fc6d9077d8c9d705e4dd89ad8b25be7afcb6dbc27d1c1ccc75d4",
+      "imageTimestamp": "2019-04-03T23:59:29Z"
+    },
     "icelord": {
-      "frame": 242,
+      "frame": 268,
       "name": "Icelord",
       "file": "Icelord (melee).png",
       "source": "https://oldschool.runescape.wiki/w/Icelord",
@@ -2190,7 +2424,7 @@
       "imageTimestamp": "2025-03-05T17:27:53Z"
     },
     "pyrelord": {
-      "frame": 243,
+      "frame": 269,
       "name": "Pyrelord",
       "file": "Pyrefiend icon.png",
       "source": "https://oldschool.runescape.wiki/w/Pyrelord",
@@ -2199,7 +2433,7 @@
       "imageTimestamp": "2014-01-06T22:42:37Z"
     },
     "phrin-shade": {
-      "frame": 244,
+      "frame": 270,
       "name": "Phrin Shade",
       "file": "Phrin Shade.png",
       "source": "https://oldschool.runescape.wiki/w/Phrin_Shade",
@@ -2208,34 +2442,34 @@
       "imageTimestamp": "2019-01-29T06:01:43Z"
     },
     "riyl-shade": {
-      "frame": 245,
-      "name": "Riyl shade",
+      "frame": 271,
+      "name": "Riyl Shade",
       "file": "Riyl Shade.png",
-      "source": "https://oldschool.runescape.wiki/w/Riyl_shade",
+      "source": "https://oldschool.runescape.wiki/w/Riyl_Shade",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Riyl_Shade.png",
       "originalSha256": "82ab8d31a25a356ef6e44ec8d75b91ecaabaf79afe8795ec454b197fc7020795",
       "imageTimestamp": "2019-01-29T06:01:44Z"
     },
     "asyn-shade": {
-      "frame": 246,
-      "name": "Asyn shade",
+      "frame": 272,
+      "name": "Asyn Shade",
       "file": "Asyn Shade.png",
-      "source": "https://oldschool.runescape.wiki/w/Asyn_shade",
+      "source": "https://oldschool.runescape.wiki/w/Asyn_Shade",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Asyn_Shade.png",
       "originalSha256": "0ef03dce2de2cd74e70b7883a5152b95149d12badd2feee665c71b9405dc4c38",
       "imageTimestamp": "2019-01-29T06:01:37Z"
     },
     "fiyr-shade": {
-      "frame": 247,
-      "name": "Fiyr shade",
+      "frame": 273,
+      "name": "Fiyr Shade",
       "file": "Fiyr Shade.png",
-      "source": "https://oldschool.runescape.wiki/w/Fiyr_shade",
+      "source": "https://oldschool.runescape.wiki/w/Fiyr_Shade",
       "imagePage": "https://oldschool.runescape.wiki/w/File:Fiyr_Shade.png",
       "originalSha256": "b7aa7c4cf06b484ea2d2b25e4e51705c8c74354d6092aac98f6dffac95d5d32a",
       "imageTimestamp": "2019-01-29T06:01:40Z"
     },
     "urium-shade": {
-      "frame": 248,
+      "frame": 274,
       "name": "Urium Shade",
       "file": "Urium Shade.png",
       "source": "https://oldschool.runescape.wiki/w/Urium_Shade",
@@ -2244,7 +2478,7 @@
       "imageTimestamp": "2021-01-27T12:23:23Z"
     },
     "eldric-the-ice-king": {
-      "frame": 249,
+      "frame": 275,
       "name": "Eldric the Ice King",
       "file": "Eldric the Ice King.png",
       "source": "https://oldschool.runescape.wiki/w/Eldric_the_Ice_King",
@@ -2253,7 +2487,7 @@
       "imageTimestamp": "2025-02-05T13:26:56Z"
     },
     "warped-jelly": {
-      "frame": 250,
+      "frame": 276,
       "name": "Warped Jelly",
       "file": "Jelly icon.png",
       "source": "https://oldschool.runescape.wiki/w/Warped_Jelly",
@@ -2262,7 +2496,7 @@
       "imageTimestamp": "2014-01-06T22:42:11Z"
     },
     "chilled-jelly": {
-      "frame": 251,
+      "frame": 277,
       "name": "Chilled jelly",
       "file": "Chilled jelly.png",
       "source": "https://oldschool.runescape.wiki/w/Chilled_jelly",
@@ -2271,7 +2505,7 @@
       "imageTimestamp": "2024-09-29T18:50:47Z"
     },
     "zakl-n-gritch": {
-      "frame": 252,
+      "frame": 278,
       "name": "Zakl'n Gritch",
       "file": "Zakl'n Gritch.png",
       "source": "https://oldschool.runescape.wiki/w/Zakl%27n_Gritch",
@@ -2280,7 +2514,7 @@
       "imageTimestamp": "2018-11-21T06:50:17Z"
     },
     "bryophyta": {
-      "frame": 253,
+      "frame": 279,
       "name": "Bryophyta",
       "file": "Bryophyta.png",
       "source": "https://oldschool.runescape.wiki/w/Bryophyta",
@@ -2289,7 +2523,7 @@
       "imageTimestamp": "2024-02-04T01:19:12Z"
     },
     "ogress-shaman": {
-      "frame": 254,
+      "frame": 280,
       "name": "Ogress Shaman",
       "file": "Ogress Shaman.png",
       "source": "https://oldschool.runescape.wiki/w/Ogress_Shaman",
@@ -2298,7 +2532,7 @@
       "imageTimestamp": "2019-12-10T18:30:47Z"
     },
     "ogress-warrior": {
-      "frame": 255,
+      "frame": 281,
       "name": "Ogress Warrior",
       "file": "Ogress Warrior (1).png",
       "source": "https://oldschool.runescape.wiki/w/Ogress_Warrior",
@@ -2307,7 +2541,7 @@
       "imageTimestamp": "2021-08-31T09:53:29Z"
     },
     "sea-snake-young": {
-      "frame": 256,
+      "frame": 282,
       "name": "Sea Snake Young",
       "file": "Sea snake icon.png",
       "source": "https://oldschool.runescape.wiki/w/Sea_Snake_Young",
@@ -2316,7 +2550,7 @@
       "imageTimestamp": "2015-05-15T11:56:17Z"
     },
     "reanimated-horror": {
-      "frame": 257,
+      "frame": 283,
       "name": "Reanimated horror",
       "file": "Reanimated horror.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_horror",
@@ -2324,8 +2558,17 @@
       "originalSha256": "88d5f0be15a85899e08bf6eecc18beddebce8166f87d337c03048da158815922",
       "imageTimestamp": "2019-05-14T01:46:06Z"
     },
+    "amoxliatl": {
+      "frame": 284,
+      "name": "Amoxliatl",
+      "file": "Amoxliatl.png",
+      "source": "https://oldschool.runescape.wiki/w/Amoxliatl",
+      "imagePage": "https://oldschool.runescape.wiki/w/File:Amoxliatl.png",
+      "originalSha256": "a1510d795769dace97bcd74a3b859a4d5de2b4fa991f627a35c30d882e97a7e3",
+      "imageTimestamp": "2024-09-25T08:56:00Z"
+    },
     "reanimated-abyssal": {
-      "frame": 258,
+      "frame": 285,
       "name": "Reanimated abyssal",
       "file": "Reanimated abyssal.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_abyssal",
@@ -2334,7 +2577,7 @@
       "imageTimestamp": "2019-05-14T01:46:04Z"
     },
     "reanimated-bloodveld": {
-      "frame": 259,
+      "frame": 286,
       "name": "Reanimated bloodveld",
       "file": "Reanimated bloodveld.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_bloodveld",
@@ -2343,7 +2586,7 @@
       "imageTimestamp": "2019-05-14T01:46:05Z"
     },
     "reanimated-dagannoth": {
-      "frame": 260,
+      "frame": 287,
       "name": "Reanimated dagannoth",
       "file": "Reanimated dagannoth.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_dagannoth",
@@ -2352,7 +2595,7 @@
       "imageTimestamp": "2019-05-14T01:46:06Z"
     },
     "iorwerth-warrior": {
-      "frame": 261,
+      "frame": 288,
       "name": "Iorwerth Warrior",
       "file": "Iorwerth Warrior (2).png",
       "source": "https://oldschool.runescape.wiki/w/Iorwerth_Warrior",
@@ -2361,7 +2604,7 @@
       "imageTimestamp": "2019-09-05T13:31:15Z"
     },
     "reanimated-hellhound": {
-      "frame": 262,
+      "frame": 289,
       "name": "Reanimated hellhound",
       "file": "Reanimated hellhound.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_hellhound",
@@ -2370,7 +2613,7 @@
       "imageTimestamp": "2022-05-18T11:20:35Z"
     },
     "reanimated-kalphite": {
-      "frame": 263,
+      "frame": 290,
       "name": "Reanimated kalphite",
       "file": "Reanimated kalphite.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_kalphite",
@@ -2379,7 +2622,7 @@
       "imageTimestamp": "2019-05-14T01:46:07Z"
     },
     "reanimated-troll": {
-      "frame": 264,
+      "frame": 291,
       "name": "Reanimated troll",
       "file": "Reanimated troll.png",
       "source": "https://oldschool.runescape.wiki/w/Reanimated_troll",
@@ -2388,7 +2631,7 @@
       "imageTimestamp": "2019-05-14T01:46:07Z"
     },
     "dad": {
-      "frame": 265,
+      "frame": 292,
       "name": "Dad",
       "file": "Dad.png",
       "source": "https://oldschool.runescape.wiki/w/Dad",
@@ -2397,7 +2640,7 @@
       "imageTimestamp": "2020-05-02T18:09:43Z"
     },
     "ice-troll-king": {
-      "frame": 266,
+      "frame": 293,
       "name": "Ice Troll King",
       "file": "Ice Troll King.png",
       "source": "https://oldschool.runescape.wiki/w/Ice_Troll_King",
@@ -2406,7 +2649,7 @@
       "imageTimestamp": "2021-03-08T15:54:54Z"
     },
     "arrg": {
-      "frame": 267,
+      "frame": 294,
       "name": "Arrg",
       "file": "Arrg.png",
       "source": "https://oldschool.runescape.wiki/w/Arrg",
@@ -2415,7 +2658,7 @@
       "imageTimestamp": "2019-05-23T21:43:14Z"
     },
     "boss-pool": {
-      "frame": 268,
+      "frame": 295,
       "name": "Mixed boss assignment (timing scenario)",
       "file": "Slayer icon.png",
       "source": "https://oldschool.runescape.wiki/w/Module:SlayerConsts/MasterTables",
@@ -2424,7 +2667,7 @@
       "imageTimestamp": "2018-04-24T01:10:38Z"
     },
     "black-dragon": {
-      "frame": 269,
+      "frame": 296,
       "name": "Black dragon (level 227)",
       "file": "Black dragon icon.png",
       "source": "https://oldschool.runescape.wiki/w/Black_dragon",
@@ -2433,7 +2676,7 @@
       "imageTimestamp": "2014-01-23T15:26:48Z"
     },
     "black-dragon-wilderness-slayer-cave": {
-      "frame": 270,
+      "frame": 297,
       "name": "Black dragon (Wilderness Slayer Cave)",
       "file": "Black dragon icon.png",
       "source": "https://oldschool.runescape.wiki/w/Black_dragon",
@@ -2565,6 +2808,12 @@
     "cerberus": "cerberus",
     "kraken": "kraken",
     "alchemical hydra": "alchemical-hydra",
+    "blue dragon": "blue-dragon",
+    "red dragon": "red-dragon",
+    "black bear": "black-bear",
+    "rat": "rat",
+    "spider": "spider",
+    "steel dragon": "steel-dragon",
     "deviant spectre": "deviant-spectre",
     "abyssal sire": "abyssal-sire",
     "dark ankou": "dark-ankou",
@@ -2581,10 +2830,12 @@
     "brutal black dragon": "brutal-black-dragon",
     "mutated bloodveld": "mutated-bloodveld",
     "brutal blue dragon": "brutal-blue-dragon",
+    "vorkath": "vorkath",
     "mature custodian stalker": "mature-custodian-stalker",
     "elder custodian stalker": "elder-custodian-stalker",
     "dagannoth spawn": "dagannoth-spawn",
     "dagannoth fledgeling": "dagannoth-fledgeling",
+    "mourner": "mourner",
     "guard (prifddinas)": "guard-prifddinas",
     "reanimated elf": "reanimated-elf",
     "branda the fire queen": "branda-the-fire-queen",
@@ -2610,10 +2861,18 @@
     "brutal red dragon": "brutal-red-dragon",
     "scarabs": "scarabs",
     "scarab swarm": "scarab-swarm",
+    "scarab mage": "scarab-mage",
     "thermonuclear smoke devil": "thermonuclear-smoke-devil",
+    "spiritual ranger": "spiritual-ranger",
+    "spiritual mage": "spiritual-mage",
+    "ice troll": "ice-troll",
     "troll general": "troll-general",
     "tztok-jad": "tztok-jad",
     "tzkal-zuk": "tzkal-zuk",
+    "feral vampyre": "feral-vampyre",
+    "vampyre juvinate": "vampyre-juvinate",
+    "vyrewatch": "vyrewatch",
+    "warped terrorbird": "warped-terrorbird",
     "lava strykewyrm": "lava-strykewyrm",
     "wyrmling": "wyrmling",
     "twisted banshee": "twisted-banshee",
@@ -2626,7 +2885,9 @@
     "callisto": "callisto",
     "artio": "artio",
     "terrorbird": "terrorbird",
+    "rooster": "rooster",
     "chompy bird": "chompy-bird",
+    "seagull": "seagull",
     "penguin (monster)": "penguin-monster",
     "duck": "duck",
     "duckling": "duckling",
@@ -2639,6 +2900,7 @@
     "reanimated dog": "reanimated-dog",
     "black guard": "black-guard",
     "chaos dwarf": "chaos-dwarf",
+    "dwarf gang member": "dwarf-gang-member",
     "tortured soul": "tortured-soul",
     "forgotten soul": "forgotten-soul",
     "cave goblin guard": "cave-goblin-guard",
@@ -2650,9 +2912,12 @@
     "grimy lizard": "grimy-lizard",
     "monkey guard": "monkey-guard",
     "monkey archer": "monkey-archer",
+    "monkey zombie": "monkey-zombie",
+    "tortured gorilla": "tortured-gorilla",
     "dungeon rat": "dungeon-rat",
     "crypt rat": "crypt-rat",
     "giant crypt rat": "giant-crypt-rat",
+    "scurrius": "scurrius",
     "king scorpion": "king-scorpion",
     "poison scorpion": "poison-scorpion",
     "pit scorpion": "pit-scorpion",
@@ -2661,9 +2926,11 @@
     "reanimated scorpion": "reanimated-scorpion",
     "scorpia's offspring (monster)": "scorpia-s-offspring-monster",
     "scorpia's guardian": "scorpia-s-guardian",
+    "skeleton mage": "skeleton-mage",
     "vet'ion": "vet-ion",
     "skogre": "skogre",
     "skeleton (shayzien crypts)": "skeleton-shayzien-crypts",
+    "skeleton fremennik": "skeleton-fremennik",
     "calvar'ion": "calvar-ion",
     "shadow spider": "shadow-spider",
     "giant crypt spider": "giant-crypt-spider",
@@ -2677,6 +2944,7 @@
     "jungle wolf": "jungle-wolf",
     "undead chicken": "undead-chicken",
     "undead druid": "undead-druid",
+    "undead one": "undead-one",
     "zombie rat": "zombie-rat",
     "zogre": "zogre",
     "moonlight cockatrice": "moonlight-cockatrice",
@@ -2685,6 +2953,7 @@
     "rock crab": "rock-crab",
     "swamp crab": "swamp-crab",
     "obor": "obor",
+    "cyclops": "cyclops",
     "icelord": "icelord",
     "pyrelord": "pyrelord",
     "phrin shade": "phrin-shade",
@@ -2701,6 +2970,7 @@
     "ogress warrior": "ogress-warrior",
     "sea snake young": "sea-snake-young",
     "reanimated horror": "reanimated-horror",
+    "amoxliatl": "amoxliatl",
     "reanimated abyssal": "reanimated-abyssal",
     "reanimated bloodveld": "reanimated-bloodveld",
     "reanimated dagannoth": "reanimated-dagannoth",
@@ -2819,7 +3089,6 @@
     "werewolves": "werewolf",
     "wolves": "white-wolf",
     "wyrms": "wyrm",
-    "zombies": "zombie",
-    "basilisk knights": "basilisk-knight"
+    "zombies": "zombie"
   }
 }
