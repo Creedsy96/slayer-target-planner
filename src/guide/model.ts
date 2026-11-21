@@ -1,5 +1,6 @@
 import raw from '../../data/creature-guide.json';
-import type {Source} from '../domain/types';
+import type {Source,Profile} from '../domain/types';
+import {locationAccess} from '../rules/location-pool';
 import {encounter} from './encounters';
 import {EXTRA_LOCATIONS,LOCATION_NOTES} from './location-notes';
 import type {Attack,Family,FightPlan,GuideForm,GuideRecord,GuideState,LocationPlan} from './types';
@@ -55,12 +56,12 @@ function matchesLevel(levels:string,combat:number|null):boolean{
   if(/^\d+\s*[-–]\s*\d+$/.test(levels)){const [a,b]=levels.split(/[-–]/).map(Number);return combat>=a&&combat<=b;}
   return (levels.match(/\d+/g)||[]).map(Number).includes(combat);
 }
-export function rankLocations(record:GuideRecord,form:GuideForm,state:GuideState):LocationPlan[]{
+export function rankLocations(record:GuideRecord,form:GuideForm,state:GuideState,p?:Profile):LocationPlan[]{
   const extra=EXTRA_LOCATIONS[record.id]||(record.id.startsWith('reanimated-')?['Arceuus Dark Altar (reanimation area)']:[]);
   const candidates=record.locations.length?[...record.locations]:extra.map(name=>({name,page:null,region:null,levels:'',creature:record.name,caveat:'',taskOnly:false,limited:false}));
   if(record.id==='werewolf'&&form.combat===88)candidates.push({name:'Canifis (transformed townsfolk)',page:'Canifis',region:'Morytania',levels:'88',creature:'Werewolf',caveat:'Use a normal weapon to trigger the transformation; Wolfbane prevents it.',taskOnly:false,limited:false});
   const seen=new Set<string>();
-  const levelMatches=candidates.filter(loc=>matchesLevel(loc.levels,form.combat));
+  const levelMatches=candidates.filter(loc=>matchesLevel(loc.levels,form.combat)&&(!p?.restrictBasicAccess||locationAccess(loc.name,p,loc.page).value!==0));
   const locationForm=levelMatches.filter(loc=>form.label.length>10&&loc.name.toLowerCase().includes(form.label.toLowerCase()));
   return (locationForm.length?locationForm:levelMatches).filter(loc=>{const key=loc.name.toLowerCase();if(seen.has(key))return false;seen.add(key);return true;}).map(loc=>{
     const meta=LOCATION_NOTES.find(m=>m.match.test(loc.name));
@@ -87,8 +88,8 @@ export function rankLocations(record:GuideRecord,form:GuideForm,state:GuideState
       sourceUrl:loc.page?'https://oldschool.runescape.wiki/w/'+encodeURIComponent(loc.page.replaceAll(' ','_')):record.source.url};
   }).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
 }
-export function selectedLocation(record:GuideRecord,form:GuideForm,state:GuideState):LocationPlan|undefined{
-  const ranked=rankLocations(record,form,state);return ranked.find(loc=>loc.name===state.location)||ranked.find(loc=>loc.available)||ranked[0];
+export function selectedLocation(record:GuideRecord,form:GuideForm,state:GuideState,p?:Profile):LocationPlan|undefined{
+  const ranked=rankLocations(record,form,state,p);return ranked.find(loc=>loc.name===state.location)||ranked.find(loc=>loc.available)||ranked[0];
 }
 export function guideSources(record:GuideRecord):Source[]{
   const sources=[record.source,GUIDE.strategySources['slayer training']];

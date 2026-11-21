@@ -5,6 +5,7 @@ import {questOverridesAfterImport} from '../state/quest-import';
 import {questPointSummary} from './quest-points';
 import {factCard} from './fact-cards';
 import {interfaceIcon} from './interface-icons';
+import {locationAccess,hasLocationOverride,locationMatches,locationControlKey} from '../rules/location-pool';
 
 const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 export const questLabel=(n:number|null)=>n===null?'Unknown':n===0?'Not started':n===1?'In progress':'Completed';
@@ -31,11 +32,13 @@ export function visibleQuestNames(p:Profile,quests:string[],showCompleted=false)
  const key=p.id+':quests';if(!answeredAtVisit.has(key))answeredAtVisit.set(key,new Set(quests.filter(q=>questState(p,q)===2)));
  return quests.filter(q=>showCompleted||!answeredAtVisit.get(key)!.has(q));
 }
-export function renderAreaAccess(p:Profile,keys:string[],query:string,showCompleted=false):string {
+export function renderAreaAccess(p:Profile,keys:string[],query:string,showCompleted=false,embedded=false):string {
  const visit=p.id+':areas';if(!answeredAtVisit.has(visit))answeredAtVisit.set(visit,new Set(keys.filter(key=>resolveAccess(key,p).value===1)));
- const locations=keys.filter(key=>key.startsWith('location:')&&key.toLowerCase().includes(query)&&(p.restrictBasicAccess||!isOpenArea(key))&&(showCompleted||!answeredAtVisit.get(visit)!.has(key)));
- return `<section class="card"><h2>Area access</h2><p class="small muted">Ordinary entrances with no hard quest, miniquest or skill restriction default to Yes. Confirmed one-time access is hidden on your next page load. Enable Show completed access in Settings to review it, or enable restricted-account controls for normally open areas. Fees, tools, teleports and individual creature requirements remain separate.</p><div class="fact-grid">${locations.map(key=>{
-  const result=resolveAccess(key,p),manual=p.access[key]===0||p.access[key]===1;
-  return `<div class="access-fact">${factCard(key.slice(9),result.value,`data-fact-toggle="access" data-key="${esc(key)}"`,interfaceIcon('route'),result.reason)}${manual?`<button class="text-button" data-access-auto="${esc(key)}">Use automatic quest/skill facts</button>`:''}${result.source?`<a class="small" href="${esc(result.source.url+(result.source.revision?'?oldid='+result.source.revision:''))}" target="_blank" rel="noopener">Requirement source</a>`:''}</div>`;
- }).join('')}</div>${!locations.length?'<p class="notice">No remaining area checks in this view. Confirmed access stays saved; review completed access in Settings.</p>':''}<button data-action="refresh-access-checks">Hide newly confirmed checks</button></section>`;
+ const locations=keys.filter(key=>key.startsWith('location:')&&locationMatches(key,query)&&(p.restrictBasicAccess||!isOpenArea(key))&&(p.restrictBasicAccess||showCompleted||!answeredAtVisit.get(visit)!.has(key)));
+ const tag=embedded?'div':'section';
+ return `<${tag} class="${embedded?'area-pool':'card'}" ${embedded?'':'id="area-access" tabindex="-1"'}>${embedded?'':'<h2>Area access</h2>'}<p class="small muted">${p.restrictBasicAccess?'Manual location restrictions are enabled. Every location remains visible, including areas already unlocked through quests or skills. Click a card to turn it off or on for this character. Saved choices remain editable after reload.':'Ordinary entrances default to Yes. Confirmed one-time access is hidden on your next page load. Enable Show completed access or manual location restrictions in Settings to review it.'} Fees, tools, teleports and individual creature requirements remain separate.</p><p class="small muted">${locations.length} location${locations.length===1?'':'s'}${query?' matching this filter':''}.</p><div class="fact-grid">${locations.map(key=>{
+  const result=p.restrictBasicAccess?locationAccess(key,p):resolveAccess(key,p),manual=p.restrictBasicAccess?hasLocationOverride(p,key):p.access[key]===0||p.access[key]===1;
+  const parent='blockedBy'in result&&typeof result.blockedBy==='string'&&locationControlKey(result.blockedBy)!==locationControlKey(key)?locationControlKey(result.blockedBy):'';
+  return `<div class="access-fact">${factCard(key.slice(9),result.value,`data-fact-toggle="access" data-key="${esc(key)}" ${parent?'disabled':''}`,interfaceIcon('route'),result.reason+(parent?' Parent area is disabled or inaccessible: '+parent.slice(9)+'.':''))}${parent?`<button class="text-button" data-location-parent="${esc(parent)}">Review ${esc(parent.slice(9))} first</button>`:''}${manual?`<button class="text-button" data-access-auto="${esc(key)}">Use automatic quest/skill facts</button>`:''}${result.source?`<a class="small" href="${esc(result.source.url+(result.source.revision?'?oldid='+result.source.revision:''))}" target="_blank" rel="noopener">Requirement source</a>`:''}</div>`;
+ }).join('')}</div>${!locations.length?'<p class="notice">No area checks match this view. Saved access choices are retained.</p>':''}${p.restrictBasicAccess?'':'<button data-action="refresh-access-checks">Hide newly confirmed checks</button>'}</${tag}>`;
 }

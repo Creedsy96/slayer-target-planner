@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.14
+# Slayer Target Planner 3.0.15
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.14 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.15 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Editable restricted-account pool in 3.0.15
+
+Enabling manual location restrictions now opens the full searchable pool directly in Settings and keeps every location editable in Account & access/setup, including already-completed access. Guide areas and saved custom locations are included. Disabled areas are excluded from guide choices, automatic combat timing and compatible hunt methods; Konar checks the rooms inside each roll. Saved restrictions survive reload/import, and cache invalidation prevents stale location DPS. [Behaviour and verification](docs/restricted-location-pool.md).
 
 ## Extension reward list in 3.0.14
 

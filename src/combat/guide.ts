@@ -18,7 +18,11 @@ export function exampleCombat(p:Profile,record:GuideRecord,form:GuideForm,state:
  result.source='example';result.armourPriority=plan.defence;return applyAreaDamage(result,record,location,state.stackSize);
 }
 export function calculateGuideCombat(p:Profile,state:GuideState,progress?:(done:number,current:string)=>void):GuideCombat{
- const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state),plan=fightPlan(record,form,state,location);
+ const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state,p),plan=fightPlan(record,form,state,location);
+ if(p.restrictBasicAccess&&!location){
+  const unavailable=()=>emptyCombat('No available location remains for this form. Review this character’s location pool in Settings.');
+  return {mid:unavailable(),max:unavailable(),styles:{melee:unavailable(),ranged:unavailable(),magic:unavailable()}};
+ }
  const example=(tier:'mid'|'max')=>exampleCombat(p,record,form,state,location,gearSet(record,form,plan,state,location,tier,p),plan);
  progress?.(0,'Mid-level example');const mid=example('mid');progress?.(1,'Max example');const max=example('max');
  const styles={} as Record<Family,CombatResult>;

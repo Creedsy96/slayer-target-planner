@@ -14,7 +14,7 @@ export interface GearComparison {assumed?:boolean;slot:EquipmentSlot;selectedId:
 
 /** One-slot comparisons keep all other equipment fixed, including protection. */
 export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,slot:EquipmentSlot):GearComparison{
- const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state);
+ const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state,p);
  const required=requirementSlots(record,state,location,p),selectedId=result.loadout[slot]||0;
  const fallback=result.armourFallback?.includes(slot),priority=result.armourPriority==='prayer'?'prayer bonus, then relevant defence':'relevant defence, then prayer bonus';
  let reason=required[slot]?'Required creature or location protection takes priority over DPS.':result.source==='example'?'Curated tier/style template, rather than a search of your bank. The comparison shows whether your available alternatives improve this example setup.':fallback?'This slot was not a DPS upgrade. Selected for '+priority+' from style-compatible available armour (or the least accuracy penalty when none is compatible).':'Selected by the bounded DPS search, with '+priority+' breaking equal-DPS ties.';

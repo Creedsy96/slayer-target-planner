@@ -1,7 +1,8 @@
 import type {Catalogue,Eligibility,Master,Profile,Requirement,Variant,Entry,Method} from '../domain/types';
-import {KONAR_AUDIT,konarPool,konarVariantLocations,sameKonarLocation} from './konar-locations';
+import {KONAR_AUDIT,konarPool,konarVariantAvailableAt,sameKonarLocation} from './konar-locations';
 import {questPointAllowance} from './quest-points';
 import {questState,resolveAccess} from './access';
+import {allVariantLocationsDisabled,locationAccess} from './location-pool';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
   const result:Eligibility={eligible:true,unknown:[],failed:[]};
   for(const r of requirements){
@@ -32,6 +33,7 @@ export function blockSlots(master:Master,p:Profile):{slots:number;unknown:boolea
 }
 export function variantEligibility(v:Variant,p:Profile,master:Master,assignmentId?:string):Eligibility{
   const status=check(v.requirements,p);
+  if(allVariantLocationsDisabled(v.id,p))status.failed.push('All reviewed locations for this creature are disabled or inaccessible in this character’s location pool.');
   if(v.masterAssignments&&(!v.masterAssignments[master.id]||assignmentId&&!v.masterAssignments[master.id].includes(assignmentId)))status.failed.push("This master/assignment has no reviewed mapping to this variant");
   if(v.id==='boss-pool'&&p.goal.targets.some(t=>t.variantId===v.id))status.failed.push('Select a directly mapped creature assignment; specific boss secondary rolls are not supported.');
   if(master.id==='krystilia'&&['demonic-gorilla','tormented-demon','cerberus','kraken','alchemical-hydra','basilisk-knight','baby-black-dragon','baby-blue-dragon'].includes(v.id))status.failed.push('Variant is outside the Wilderness assignment area');
@@ -39,13 +41,13 @@ export function variantEligibility(v:Variant,p:Profile,master:Master,assignmentI
   status.eligible=!status.failed.length;return status;
 }
 export function locationFraction(entry:Entry,v:Variant,method:Method,master:Master,p:Profile):{fraction:number;unknown:string[]}{
-  if(method.location&&resolveAccess('location:'+method.location,p).value===0)return {fraction:0,unknown:[]};
+  if(method.location&&(p.restrictBasicAccess?locationAccess(method.location,p):resolveAccess('location:'+method.location,p)).value===0)return {fraction:0,unknown:[]};
   if(master.id!=='konar')return {fraction:1,unknown:[]};
   if(method.locationChance!==null)return {fraction:method.locationChance,unknown:['Custom Konar location probability']};
   const audit=KONAR_AUDIT[entry.id];
   if(audit?.mode==='specific-boss')return {fraction:1,unknown:[]};
-  const pool=konarPool(entry,p),compatible=konarVariantLocations(entry,v);
-  const matches=pool.locations.filter(location=>compatible.some(name=>sameKonarLocation(name,location))&&(!method.location||sameKonarLocation(method.location,location)));
+  const pool=konarPool(entry,p);
+  const matches=pool.locations.filter(location=>konarVariantAvailableAt(entry,v,location,p)&&(!method.location||sameKonarLocation(method.location,location)));
   return {fraction:pool.locations.length?matches.length/pool.locations.length:0,unknown:pool.unknown};
 }
 export function targetAssignments(data:Catalogue,p:Profile):Set<string>{return new Set(p.goal.targets.filter(t=>data.variants.some(v=>v.id===t.variantId)).map(t=>t.assignmentId));}

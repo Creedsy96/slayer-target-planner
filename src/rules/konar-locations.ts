@@ -2,6 +2,7 @@ import raw from '../../data/konar-locations.json';
 import guide from '../../data/creature-guide.json';
 import type {Catalogue,Entry,Profile,Requirement,Variant} from '../domain/types';
 import {resolveAccess} from './access';
+import {locationAccess} from './location-pool';
 
 interface LocationAudit {locations:string[];requirements:Record<string,Requirement[]>;variants:{id:string;locations:string[];note?:string}[];mode:string;note:string}
 export const KONAR_VERSION=raw.version;
@@ -15,19 +16,24 @@ export function konarLocation(s:string):string{
 }
 export function sameKonarLocation(a:string,b:string):boolean{return normal(konarLocation(a))===normal(konarLocation(b));}
 export function konarLocationAccess(location:string,p:Profile){
-  const name=konarLocation(location),aliases=(raw.aliases as Record<string,string[]>)[name]||[];
-  // Keep existing quest rules and saved manual overrides under their original names.
-  const keys=[name,...aliases],manual=keys.find(k=>p.access['location:'+k]===0||p.access['location:'+k]===1);
-  if(manual&&p.restrictBasicAccess)return resolveAccess('location:'+manual,p);
-  const states=keys.map(k=>resolveAccess('location:'+k,p));
-  return states.find(s=>s.origin==='manual')||states.find(s=>s.origin==='quest'||s.origin==='unknown')||states[0];
+  return locationAccess(location,p);
+}
+function variantRooms(id:string,location:string){
+  const record=(guide.records as Record<string,{locations:{name:string;page:string|null;limited:boolean}[]}>)[id];
+  return (record?.locations||[]).filter(l=>!l.limited&&(sameKonarLocation(l.name,location)||sameKonarLocation(l.page||'',location)));
+}
+export function konarVariantAvailableAt(entry:Entry,v:Variant,location:string,p:Profile):boolean{
+  if(!konarVariantLocations(entry,v).some(l=>sameKonarLocation(l,location)))return false;
+  const rooms=p.restrictBasicAccess?variantRooms(v.id,location):[];
+  return !rooms.length||rooms.some(l=>locationAccess(l.name,p,l.page).value!==0);
 }
 export function konarPool(entry:Entry,p:Profile):{locations:string[];unknown:string[];excluded:string[]}{
   const audit=KONAR_AUDIT[entry.id];
   const pool=entry.locations||audit?.locations||[],unknown:string[]=[],excluded:string[]=[];
   const locations=pool.filter(location=>{
     const access=konarLocationAccess(location,p),requirements=audit?.requirements[location]||[];
-    const locked=access.value===0||requirements.some(r=>(p.levels[r.key!]??Infinity)<(r.min??1));
+    const rooms=p.restrictBasicAccess?audit?.variants.flatMap(v=>variantRooms(v.id,location))||[]:[];
+    const locked=access.value===0||rooms.length>0&&rooms.every(l=>locationAccess(l.name,p,l.page).value===0)||requirements.some(r=>(p.levels[r.key!]??Infinity)<(r.min??1));
     if(locked){excluded.push(location);return false;}
     if(!audit?.locations.some(l=>sameKonarLocation(l,location)))unknown.push('Konar location not reviewed: '+location);
     if(access.value===null||requirements.some(r=>p.levels[r.key!]==null))unknown.push('Konar location access: '+location);

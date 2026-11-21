@@ -1,3 +1,4 @@
+import {locationAccess} from '../rules/location-pool';
 import {addKonarOutcomes,locationActions,assignLocationProbabilities} from './konar-outcomes';
 import {KONAR_AUDIT} from '../rules/konar-locations';
 import {withCalculatedTiming} from '../combat/timing';
@@ -39,7 +40,7 @@ function prepareBaseRows(data:Catalogue,m:Master,p:Profile,progress?:(done:numbe
     method.extended=p.extensions?.[entry.id]??method.extended;
     const eligibility=check(entry.requirements,p),variant=variantEligibility(v,p,m,entry.id),loc=locationFraction(entry,v,method,m,p);
     if(m.id==='konar'&&entry.locations?.length&&entry.locations.every(l=>resolveAccess('location:'+l,p).value===0))eligibility.failed.push('No accessible assignment location');
-    const methodAccess=method.location?resolveAccess('location:'+method.location,p):null;
+    const methodAccess=method.location?(p.restrictBasicAccess?locationAccess(method.location,p):resolveAccess('location:'+method.location,p)):null;
     if(methodAccess?.value===0)variant.failed.push(`Method location ${method.location} is locked: ${methodAccess.reason}`);
     if(methodAccess?.value===null)variant.unknown.push(`Method location ${method.location}: ${methodAccess.reason}`);
     const locationRestriction=methodLocationRestriction(v,m,method.location);

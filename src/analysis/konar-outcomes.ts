@@ -1,5 +1,6 @@
 import type {Catalogue,Master,Profile,Row,Variant,Method} from '../domain/types';
-import {KONAR_AUDIT,konarPool,konarVariantLocations,sameKonarLocation} from '../rules/konar-locations';
+import {KONAR_AUDIT,konarPool,konarVariantAvailableAt,sameKonarLocation} from '../rules/konar-locations';
+import {locationAccess} from '../rules/location-pool';
 import {variantEligibility} from '../rules/eligibility';
 import {configuredMethod} from '../combat/priority';
 import {GUIDE} from '../guide/model';
@@ -12,8 +13,8 @@ export function addKonarOutcomes(data:Catalogue,m:Master,p:Profile,rows:Row[],pr
     const pool=konarPool(parent.entry,p),targets=p.goal.targets.filter(t=>t.assignmentId===parent.id).sort((a,b)=>b.priority-a.priority);
     const available=data.variants.filter(v=>v.assignmentIds.includes(parent.id)&&variantEligibility(v,p,m,parent.id).eligible);
     const outcomes=pool.locations.map(location=>{
-      const here=(v:Variant)=>konarVariantLocations(parent.entry,v).some(l=>sameKonarLocation(l,location));
-      const target=targets.find(t=>{const v=available.find(v=>v.id===t.variantId),method=configuredMethod(data,p,parent.id,t.variantId);return v&&here(v)&&(!method.location||sameKonarLocation(method.location,location));});
+      const here=(v:Variant)=>konarVariantAvailableAt(parent.entry,v,location,p);
+      const target=targets.find(t=>{const v=available.find(v=>v.id===t.variantId),method=configuredMethod(data,p,parent.id,t.variantId);return v&&here(v)&&(!method.location||sameKonarLocation(method.location,location)&&(!p.restrictBasicAccess||locationAccess(method.location,p).value!==0));});
       const choices=available.filter(here).sort((a,b)=>Number(variantEligibility(a,p,m,parent.id).unknown.length>0)-Number(variantEligibility(b,p,m,parent.id).unknown.length>0)||a.hp/a.multiplier-b.hp/b.multiplier);
       const saved=choices.find(v=>v.id===p.methods[parent.id]?.variantId);
       const variant=target?available.find(v=>v.id===target.variantId):saved||choices[0];
@@ -21,7 +22,7 @@ export function addKonarOutcomes(data:Catalogue,m:Master,p:Profile,rows:Row[],pr
       if(!variant)return {location,weight:1/pool.locations.length,row:{...parent,locationOutcomes:undefined,isTarget:false,targetFraction:0,methodReason:'No reviewed available completion creature at '+location,unknown:[...pool.unknown]}};
       // Resolve the assignment-area alias to the actual guide chamber name so
       // bursting and form-specific DPS use the assigned area, not a default pod.
-      const actual=GUIDE.records[variant.id]?.locations.find(l=>sameKonarLocation(l.name,location)||sameKonarLocation(l.page||'',location))?.name||location;
+      const actual=GUIDE.records[variant.id]?.locations.find(l=>(sameKonarLocation(l.name,location)||sameKonarLocation(l.page||'',location))&&(!p.restrictBasicAccess||locationAccess(l.name,p,l.page).value!==0))?.name||location;
       const method:Method={...configuredMethod(data,p,parent.id,variant.id),location:actual,locationChance:null};
       const scenario={...p,goal:{...p.goal,targets:target?[target]:[]},methods:{...p.methods,[parent.id]:method,[parent.id+'::'+variant.id]:method}};
       const row=prepare({...m,tasks:[parent.entry]},scenario)[0];

@@ -4,7 +4,7 @@ import type {CombatResult} from './types';
 export interface CombatCacheSnapshot {identity:string;entries:[string,CombatResult][]}
 /** Hunt goals/method preferences do not change the underlying combat inputs. */
 export function combatIdentity(p:Profile):string{
- return JSON.stringify([p.assumeAllGear===true,p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states]);
+ return JSON.stringify([p.assumeAllGear===true,p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states,p.restrictBasicAccess===true,p.restrictBasicAccess?p.access:undefined]);
 }
 /** Session-only LRU storage; never part of a saved/exported profile. */
 export class CombatCacheStore {

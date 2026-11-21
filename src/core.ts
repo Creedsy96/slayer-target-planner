@@ -1,3 +1,4 @@
+export * from './rules/location-pool';
 import raw from '../data/catalogue.json';
 import type {Catalogue} from './domain/types';
 import {applyMortimerRules} from './rules/mortimer';

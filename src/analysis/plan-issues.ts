@@ -1,9 +1,10 @@
 import type {Catalogue,Plan,Profile,Requirement,Source,Row} from '../domain/types';
 import {check,masterRequirements} from '../rules/eligibility';
 import {resolveAccess} from '../rules/access';
+import {firstDisabledLocation} from '../rules/location-pool';
 
 export interface PlanIssue {
-  title:string;detail:string;route:'account'|'methods'|'tasks'|'plan'|'data';action:string;source:Source;
+  title:string;detail:string;route:'account'|'methods'|'tasks'|'plan'|'data'|'settings';action:string;source:Source;
   assignmentId?:string;variantId?:string;filter?:string;field?:string;
 }
 
@@ -26,7 +27,10 @@ export function explainPlanIssues(data:Catalogue,plan:Plan,p:Profile):PlanIssue[
   for(const row of relevantRows){
     facts(row.entry.requirements,row.entry.source,row.name);
     facts(row.variant.requirements,row.variant.source,row.variant.name);
-    if(row.methodReason&&(row.isTarget||row.skip<1))add({title:`${row.isTarget?'Target method':'Non-target method'}: ${row.name} → ${row.variant.name}`,detail:row.methodReason+'. '+(row.isTarget?'Choose a supported target variant.':'This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment.'),route:row.isTarget?'plan':'methods',action:row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:'variantId'});
+    if(row.methodReason&&(row.isTarget||row.skip<1)){
+      const pool=p.restrictBasicAccess&&/location pool|method location.*locked/i.test(row.methodReason);
+      add({title:`${row.isTarget?'Target method':'Non-target method'}: ${row.name} → ${row.variant.name}`,detail:row.methodReason+'. '+(pool?'Review the character location restrictions or choose another creature.':row.isTarget?'Choose a supported target variant.':'This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment.'),route:pool?'settings':row.isTarget?'plan':'methods',action:pool?'Review location pool':row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:pool?undefined:'variantId',filter:pool?firstDisabledLocation(row.variant.id,p)?.slice(9):undefined});
+    }
     if(row.isTarget&&plan.master.id==='konar')locationIssues(row,p,add);
   }
   for(const message of plan.unknown){
