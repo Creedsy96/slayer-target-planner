@@ -80,3 +80,9 @@ art is copyright Jagex Ltd, taken from the pinned OSRS Wiki DPS repository
 cdn/equipment files. assets/owned-items.png arranges these images locally;
 src/ui/owned-art.json records source commit, filenames and SHA-256 hashes.
 No inventory art or item-name requests are made while using the application.
+
+Quest reward metadata is derived from the retained OSRS Wiki Quests/List table
+and RuneLite Quest enum names: https://github.com/runelite/runelite .
+The RuneLite Quest.java BSD-2-Clause copyright and licence are retained in
+source/data/quest-point-sources/Quest.java. Reward data retains the Wiki terms
+above. The offline generator records the table capture and its qualifications.

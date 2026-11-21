@@ -1,4 +1,5 @@
 import type {Catalogue,Profile} from '../domain/types';
+import {questPointAllowance} from '../rules/quest-points';
 import {newProfile} from './profiles';
 import {defaultCombat} from './bank';
 import {knownAccessKeys,resolveAccess,relevantQuests} from '../rules/access';
@@ -12,7 +13,7 @@ export function newCharacter(data:Catalogue,name:string,wizard=true):Profile{
  return p;
 }
 export function setupUnanswered(data:Catalogue,p:Profile):{skills:string[];quests:string[];areas:string[];points:boolean}{
- return {skills:['attack','strength','defence','hitpoints','ranged','magic','prayer','slayer'].filter(key=>p.levels[key]==null),quests:relevantQuests(data).filter(key=>p.quests[key]==null&&p.questImport?.states[key]==null),areas:knownAccessKeys(data).filter(key=>key.startsWith('location:')&&resolveAccess(key,p).value!==1),points:p.questPoints===null||p.points===null};
+ return {skills:['attack','strength','defence','hitpoints','ranged','magic','prayer','slayer'].filter(key=>p.levels[key]==null),quests:relevantQuests(data).filter(key=>p.quests[key]==null&&p.questImport?.states[key]==null),areas:knownAccessKeys(data).filter(key=>key.startsWith('location:')&&resolveAccess(key,p).value!==1),points:(!questPointAllowance(p).complete&&questPointAllowance(p).minimum<300)||p.points===null};
 }
 export function acceptSetupDefaults(data:Catalogue,p:Profile,section:'combat'|'rewards'):void{
  if(section==='combat')for(const key of ['lumbridge','kourend','western'] as const)if(p.diaries[key]==null)p.diaries[key]=0;

@@ -1,0 +1,1993 @@
+{
+  "version": "2026-11-21.1",
+  "captured": "2026-11-21",
+  "source": {
+    "title": "Quests/List",
+    "url": "https://oldschool.runescape.wiki/w/Quests/List",
+    "revision": 15366661
+  },
+  "note": "Rendered table snapshot; transcluded quest rewards reflect capture time, not the outer page revision alone.",
+  "maximum": 354,
+  "quests": [
+    {
+      "name": "A Kingdom Divided",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "A Kingdom Divided",
+        "A_KINGDOM_DIVIDED"
+      ]
+    },
+    {
+      "name": "A New Leaf",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "A New Leaf",
+        "A_NEW_LEAF"
+      ]
+    },
+    {
+      "name": "A Night at the Theatre",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "A Night at the Theatre",
+        "A_NIGHT_AT_THE_THEATRE"
+      ]
+    },
+    {
+      "name": "A Porcine of Interest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "A Porcine of Interest",
+        "A_PORCINE_OF_INTEREST"
+      ]
+    },
+    {
+      "name": "A Ruff Situation",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "A Ruff Situation",
+        "A_RUFF_SITUATION"
+      ]
+    },
+    {
+      "name": "A Shell of a Friend",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "A Shell of a Friend",
+        "A_SHELL_OF_A_FRIEND"
+      ]
+    },
+    {
+      "name": "A Soul's Bane",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "A Soul's Bane",
+        "A_SOULS_BANE"
+      ]
+    },
+    {
+      "name": "A Tail of Two Cats",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "A Tail of Two Cats",
+        "A_TAIL_OF_TWO_CATS"
+      ]
+    },
+    {
+      "name": "A Taste of Hope",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "A Taste of Hope",
+        "A_TASTE_OF_HOPE"
+      ]
+    },
+    {
+      "name": "Alfred Grimhand's Barcrawl",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "ALFRED_GRIMHANDS_BARCRAWL",
+        "Alfred Grimhand's Barcrawl"
+      ]
+    },
+    {
+      "name": "Animal Magnetism",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ANIMAL_MAGNETISM",
+        "Animal Magnetism"
+      ]
+    },
+    {
+      "name": "Another Slice of H.A.M.",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ANOTHER_SLICE_OF_HAM",
+        "Another Slice of H.A.M."
+      ]
+    },
+    {
+      "name": "At First Light",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "AT_FIRST_LIGHT",
+        "At First Light"
+      ]
+    },
+    {
+      "name": "Barbarian Training",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "BARBARIAN_TRAINING",
+        "Barbarian Training"
+      ]
+    },
+    {
+      "name": "Bear Your Soul",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "BEAR_YOUR_SOUL",
+        "Bear Your Soul"
+      ]
+    },
+    {
+      "name": "Below Ice Mountain",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "BELOW_ICE_MOUNTAIN",
+        "Below Ice Mountain"
+      ]
+    },
+    {
+      "name": "Beneath Cursed Sands",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "BENEATH_CURSED_SANDS",
+        "Beneath Cursed Sands"
+      ]
+    },
+    {
+      "name": "Between a Rock...",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "BETWEEN_A_ROCK",
+        "Between a Rock..."
+      ]
+    },
+    {
+      "name": "Big Chompy Bird Hunting",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "BIG_CHOMPY_BIRD_HUNTING",
+        "Big Chompy Bird Hunting"
+      ]
+    },
+    {
+      "name": "Biohazard",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "BIOHAZARD",
+        "Biohazard"
+      ]
+    },
+    {
+      "name": "Black Knights' Fortress",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "BLACK_KNIGHTS_FORTRESS",
+        "Black Knights' Fortress"
+      ]
+    },
+    {
+      "name": "Bone Voyage",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "BONE_VOYAGE",
+        "Bone Voyage"
+      ]
+    },
+    {
+      "name": "Cabin Fever",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "CABIN_FEVER",
+        "Cabin Fever"
+      ]
+    },
+    {
+      "name": "Children of the Sun",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CHILDREN_OF_THE_SUN",
+        "Children of the Sun"
+      ]
+    },
+    {
+      "name": "Client of Kourend",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CLIENT_OF_KOUREND",
+        "Client of Kourend"
+      ]
+    },
+    {
+      "name": "Clock Tower",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CLOCK_TOWER",
+        "Clock Tower"
+      ]
+    },
+    {
+      "name": "Cold War",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "COLD_WAR",
+        "Cold War"
+      ]
+    },
+    {
+      "name": "Contact!",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CONTACT",
+        "Contact!"
+      ]
+    },
+    {
+      "name": "Cook's Assistant",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "COOKS_ASSISTANT",
+        "Cook's Assistant"
+      ]
+    },
+    {
+      "name": "Crab Quest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CRAB_QUEST",
+        "Crab Quest"
+      ]
+    },
+    {
+      "name": "Creature of Fenkenstrain",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "CREATURE_OF_FENKENSTRAIN",
+        "Creature of Fenkenstrain"
+      ]
+    },
+    {
+      "name": "Current Affairs",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "CURRENT_AFFAIRS",
+        "Current Affairs"
+      ]
+    },
+    {
+      "name": "Curse of the Empty Lord",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "CURSE_OF_THE_EMPTY_LORD",
+        "Curse of the Empty Lord"
+      ]
+    },
+    {
+      "name": "Daddy's Home",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DADDYS_HOME",
+        "Daddy's Home"
+      ]
+    },
+    {
+      "name": "Darkness of Hallowvale",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "DARKNESS_OF_HALLOWVALE",
+        "Darkness of Hallowvale"
+      ]
+    },
+    {
+      "name": "Death Plateau",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DEATH_PLATEAU",
+        "Death Plateau"
+      ]
+    },
+    {
+      "name": "Death on the Isle",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "DEATH_ON_THE_ISLE",
+        "Death on the Isle"
+      ]
+    },
+    {
+      "name": "Death to the Dorgeshuun",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DEATH_TO_THE_DORGESHUUN",
+        "Death to the Dorgeshuun"
+      ]
+    },
+    {
+      "name": "Defender of Varrock",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "DEFENDER_OF_VARROCK",
+        "Defender of Varrock"
+      ]
+    },
+    {
+      "name": "Demon Slayer",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "DEMON_SLAYER",
+        "Demon Slayer"
+      ]
+    },
+    {
+      "name": "Desert Treasure I",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "DESERT_TREASURE_I",
+        "Desert Treasure I"
+      ]
+    },
+    {
+      "name": "Desert Treasure II - The Fallen Empire",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "DESERT_TREASURE_II__THE_FALLEN_EMPIRE",
+        "Desert Treasure II - The Fallen Empire"
+      ]
+    },
+    {
+      "name": "Devious Minds",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DEVIOUS_MINDS",
+        "Devious Minds"
+      ]
+    },
+    {
+      "name": "Doric's Quest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DORICS_QUEST",
+        "Doric's Quest"
+      ]
+    },
+    {
+      "name": "Dragon Slayer I",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "DRAGON_SLAYER_I",
+        "Dragon Slayer I"
+      ]
+    },
+    {
+      "name": "Dragon Slayer II",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "DRAGON_SLAYER_II",
+        "Dragon Slayer II"
+      ]
+    },
+    {
+      "name": "Dream Mentor",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "DREAM_MENTOR",
+        "Dream Mentor"
+      ]
+    },
+    {
+      "name": "Druidic Ritual",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "DRUIDIC_RITUAL",
+        "Druidic Ritual"
+      ]
+    },
+    {
+      "name": "Dwarf Cannon",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "DWARF_CANNON",
+        "Dwarf Cannon"
+      ]
+    },
+    {
+      "name": "Eadgar's Ruse",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "EADGARS_RUSE",
+        "Eadgar's Ruse"
+      ]
+    },
+    {
+      "name": "Eagles' Peak",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "EAGLES_PEAK",
+        "Eagles' Peak"
+      ]
+    },
+    {
+      "name": "Elemental Workshop I",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ELEMENTAL_WORKSHOP_I",
+        "Elemental Workshop I"
+      ]
+    },
+    {
+      "name": "Elemental Workshop II",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ELEMENTAL_WORKSHOP_II",
+        "Elemental Workshop II"
+      ]
+    },
+    {
+      "name": "Enakhra's Lament",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "ENAKHRAS_LAMENT",
+        "Enakhra's Lament"
+      ]
+    },
+    {
+      "name": "Enlightened Journey",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ENLIGHTENED_JOURNEY",
+        "Enlightened Journey"
+      ]
+    },
+    {
+      "name": "Enter the Abyss",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "ENTER_THE_ABYSS",
+        "Enter the Abyss"
+      ]
+    },
+    {
+      "name": "Ernest the Chicken",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "ERNEST_THE_CHICKEN",
+        "Ernest the Chicken"
+      ]
+    },
+    {
+      "name": "Ethically Acquired Antiquities",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ETHICALLY_ACQUIRED_ANTIQUITIES",
+        "Ethically Acquired Antiquities"
+      ]
+    },
+    {
+      "name": "Fairytale I - Growing Pains",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "FAIRYTALE_I__GROWING_PAINS",
+        "Fairytale I - Growing Pains"
+      ]
+    },
+    {
+      "name": "Fairytale II - Cure a Queen",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "FAIRYTALE_II__CURE_A_QUEEN",
+        "Fairytale II - Cure a Queen"
+      ]
+    },
+    {
+      "name": "Fallen From Grace",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "FALLEN_FROM_GRACE",
+        "Fallen From Grace"
+      ]
+    },
+    {
+      "name": "Family Crest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "FAMILY_CREST",
+        "Family Crest"
+      ]
+    },
+    {
+      "name": "Family Pest",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "FAMILY_PEST",
+        "Family Pest"
+      ]
+    },
+    {
+      "name": "Fight Arena",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "FIGHT_ARENA",
+        "Fight Arena"
+      ]
+    },
+    {
+      "name": "Fishing Contest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "FISHING_CONTEST",
+        "Fishing Contest"
+      ]
+    },
+    {
+      "name": "Forgettable Tale...",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "FORGETTABLE_TALE",
+        "Forgettable Tale..."
+      ]
+    },
+    {
+      "name": "Garden of Tranquillity",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "GARDEN_OF_TRANQUILLITY",
+        "Garden of Tranquillity"
+      ]
+    },
+    {
+      "name": "Gertrude's Cat",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "GERTRUDES_CAT",
+        "Gertrude's Cat"
+      ]
+    },
+    {
+      "name": "Getting Ahead",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "GETTING_AHEAD",
+        "Getting Ahead"
+      ]
+    },
+    {
+      "name": "Ghosts Ahoy",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "GHOSTS_AHOY",
+        "Ghosts Ahoy"
+      ]
+    },
+    {
+      "name": "Goblin Diplomacy",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "GOBLIN_DIPLOMACY",
+        "Goblin Diplomacy"
+      ]
+    },
+    {
+      "name": "Grim Tales",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "GRIM_TALES",
+        "Grim Tales"
+      ]
+    },
+    {
+      "name": "Haunted Mine",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "HAUNTED_MINE",
+        "Haunted Mine"
+      ]
+    },
+    {
+      "name": "Hazeel Cult",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "HAZEEL_CULT",
+        "Hazeel Cult"
+      ]
+    },
+    {
+      "name": "Heroes' Quest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "HEROES_QUEST",
+        "Heroes' Quest"
+      ]
+    },
+    {
+      "name": "His Faithful Servants",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "HIS_FAITHFUL_SERVANTS",
+        "His Faithful Servants"
+      ]
+    },
+    {
+      "name": "Holy Grail",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "HOLY_GRAIL",
+        "Holy Grail"
+      ]
+    },
+    {
+      "name": "Hopespear's Will",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "HOPESPEARS_WILL",
+        "Hopespear's Will"
+      ]
+    },
+    {
+      "name": "Horror from the Deep",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "HORROR_FROM_THE_DEEP",
+        "Horror from the Deep"
+      ]
+    },
+    {
+      "name": "Icthlarin's Little Helper",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "ICTHLARINS_LITTLE_HELPER",
+        "Icthlarin's Little Helper"
+      ]
+    },
+    {
+      "name": "Imp Catcher",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "IMP_CATCHER",
+        "Imp Catcher"
+      ]
+    },
+    {
+      "name": "In Aid of the Myreque",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "IN_AID_OF_THE_MYREQUE",
+        "In Aid of the Myreque"
+      ]
+    },
+    {
+      "name": "In Search of Knowledge",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "IN_SEARCH_OF_KNOWLEDGE",
+        "In Search of Knowledge"
+      ]
+    },
+    {
+      "name": "In Search of the Myreque",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "IN_SEARCH_OF_THE_MYREQUE",
+        "In Search of the Myreque"
+      ]
+    },
+    {
+      "name": "Into the Tombs",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "INTO_THE_TOMBS",
+        "Into the Tombs"
+      ]
+    },
+    {
+      "name": "Jungle Potion",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "JUNGLE_POTION",
+        "Jungle Potion"
+      ]
+    },
+    {
+      "name": "King's Ransom",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "KINGS_RANSOM",
+        "King's Ransom"
+      ]
+    },
+    {
+      "name": "Lair of Tarn Razorlor",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "LAIR_OF_TARN_RAZORLOR",
+        "Lair of Tarn Razorlor"
+      ]
+    },
+    {
+      "name": "Land of the Goblins",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "LAND_OF_THE_GOBLINS",
+        "Land of the Goblins"
+      ]
+    },
+    {
+      "name": "Learning the Ropes",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "LEARNING_THE_ROPES",
+        "Learning the Ropes"
+      ]
+    },
+    {
+      "name": "Legends' Quest",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "LEGENDS_QUEST",
+        "Legends' Quest"
+      ]
+    },
+    {
+      "name": "Lost City",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "LOST_CITY",
+        "Lost City"
+      ]
+    },
+    {
+      "name": "Lunar Diplomacy",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "LUNAR_DIPLOMACY",
+        "Lunar Diplomacy"
+      ]
+    },
+    {
+      "name": "Mage Arena I",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "MAGE_ARENA_I",
+        "Mage Arena I"
+      ]
+    },
+    {
+      "name": "Mage Arena II",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "MAGE_ARENA_II",
+        "Mage Arena II"
+      ]
+    },
+    {
+      "name": "Making Friends with My Arm",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "MAKING_FRIENDS_WITH_MY_ARM",
+        "Making Friends with My Arm"
+      ]
+    },
+    {
+      "name": "Making History",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "MAKING_HISTORY",
+        "Making History"
+      ]
+    },
+    {
+      "name": "Meat and Greet",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "MEAT_AND_GREET",
+        "Meat and Greet"
+      ]
+    },
+    {
+      "name": "Merlin's Crystal",
+      "points": 6,
+      "part": false,
+      "aliases": [
+        "MERLINS_CRYSTAL",
+        "Merlin's Crystal"
+      ]
+    },
+    {
+      "name": "Misthalin Mystery",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "MISTHALIN_MYSTERY",
+        "Misthalin Mystery"
+      ]
+    },
+    {
+      "name": "Monk's Friend",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "MONKS_FRIEND",
+        "Monk's Friend"
+      ]
+    },
+    {
+      "name": "Monkey Madness I",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "MONKEY_MADNESS_I",
+        "Monkey Madness I"
+      ]
+    },
+    {
+      "name": "Monkey Madness II",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "MONKEY_MADNESS_II",
+        "Monkey Madness II"
+      ]
+    },
+    {
+      "name": "Mountain Daughter",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "MOUNTAIN_DAUGHTER",
+        "Mountain Daughter"
+      ]
+    },
+    {
+      "name": "Mourning's End Part I",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "MOURNINGS_END_PART_I",
+        "Mourning's End Part I"
+      ]
+    },
+    {
+      "name": "Mourning's End Part II",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "MOURNINGS_END_PART_II",
+        "Mourning's End Part II"
+      ]
+    },
+    {
+      "name": "Mudfoot's Big Adventure",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "MUDFOOTS_BIG_ADVENTURE",
+        "Mudfoot's Big Adventure"
+      ]
+    },
+    {
+      "name": "Murder Mystery",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "MURDER_MYSTERY",
+        "Murder Mystery"
+      ]
+    },
+    {
+      "name": "My Arm's Big Adventure",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "MY_ARMS_BIG_ADVENTURE",
+        "My Arm's Big Adventure"
+      ]
+    },
+    {
+      "name": "Nature Spirit",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "NATURE_SPIRIT",
+        "Nature Spirit"
+      ]
+    },
+    {
+      "name": "Observatory Quest",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "OBSERVATORY_QUEST",
+        "Observatory Quest"
+      ]
+    },
+    {
+      "name": "Olaf's Quest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "OLAFS_QUEST",
+        "Olaf's Quest"
+      ]
+    },
+    {
+      "name": "One Small Favour",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "ONE_SMALL_FAVOUR",
+        "One Small Favour"
+      ]
+    },
+    {
+      "name": "Pandemonium",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "PANDEMONIUM",
+        "Pandemonium"
+      ]
+    },
+    {
+      "name": "Perilous Moons",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "PERILOUS_MOONS",
+        "Perilous Moons"
+      ]
+    },
+    {
+      "name": "Pirate's Treasure",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "PIRATES_TREASURE",
+        "Pirate's Treasure"
+      ]
+    },
+    {
+      "name": "Plague City",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "PLAGUE_CITY",
+        "Plague City"
+      ]
+    },
+    {
+      "name": "Priest in Peril",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "PRIEST_IN_PERIL",
+        "Priest in Peril"
+      ]
+    },
+    {
+      "name": "Prince Ali Rescue",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "PRINCE_ALI_RESCUE",
+        "Prince Ali Rescue"
+      ]
+    },
+    {
+      "name": "Prying Times",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "PRYING_TIMES",
+        "Prying Times"
+      ]
+    },
+    {
+      "name": "Rag and Bone Man I",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "RAG_AND_BONE_MAN_I",
+        "Rag and Bone Man I"
+      ]
+    },
+    {
+      "name": "Rag and Bone Man II",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "RAG_AND_BONE_MAN_II",
+        "Rag and Bone Man II"
+      ]
+    },
+    {
+      "name": "Rag and Bone Man III",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "RAG_AND_BONE_MAN_III",
+        "Rag and Bone Man III"
+      ]
+    },
+    {
+      "name": "Ratcatchers",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "RATCATCHERS",
+        "Ratcatchers"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster",
+      "points": 10,
+      "part": false,
+      "aliases": [
+        "RECIPE_FOR_DISASTER",
+        "Recipe for Disaster"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Another Cook's Quest",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST",
+        "Recipe for Disaster - Another Cook's Quest"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Defeating the Culinaromancer",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__CULINAROMANCER",
+        "Recipe for Disaster - Culinaromancer"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing Evil Dave",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__EVIL_DAVE",
+        "Recipe for Disaster - Evil Dave"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing King Awowogei",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__KING_AWOWOGEI",
+        "Recipe for Disaster - King Awowogei"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing Pirate Pete",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__PIRATE_PETE",
+        "Recipe for Disaster - Pirate Pete"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing Sir Amik Varze",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__SIR_AMIK_VARZE",
+        "Recipe for Disaster - Sir Amik Varze"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing Skrach Uglogwee",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__SKRACH_UGLOGWEE",
+        "Recipe for Disaster - Skrach Uglogwee"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing the Goblin generals",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__WARTFACE__BENTNOZE",
+        "Recipe for Disaster - Wartface & Bentnoze"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing the Lumbridge Guide",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__LUMBRIDGE_GUIDE",
+        "Recipe for Disaster - Lumbridge Guide"
+      ]
+    },
+    {
+      "name": "Recipe for Disaster/Freeing the Mountain Dwarf",
+      "points": 1,
+      "part": true,
+      "aliases": [
+        "RECIPE_FOR_DISASTER__MOUNTAIN_DWARF",
+        "Recipe for Disaster - Mountain Dwarf"
+      ]
+    },
+    {
+      "name": "Recruitment Drive",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "RECRUITMENT_DRIVE",
+        "Recruitment Drive"
+      ]
+    },
+    {
+      "name": "Regicide",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "REGICIDE",
+        "Regicide"
+      ]
+    },
+    {
+      "name": "Romeo & Juliet",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "ROMEO__JULIET",
+        "Romeo & Juliet"
+      ]
+    },
+    {
+      "name": "Roving Elves",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ROVING_ELVES",
+        "Roving Elves"
+      ]
+    },
+    {
+      "name": "Royal Trouble",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ROYAL_TROUBLE",
+        "Royal Trouble"
+      ]
+    },
+    {
+      "name": "Rum Deal",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "RUM_DEAL",
+        "Rum Deal"
+      ]
+    },
+    {
+      "name": "Rune Mysteries",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "RUNE_MYSTERIES",
+        "Rune Mysteries"
+      ]
+    },
+    {
+      "name": "Scorpion Catcher",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SCORPION_CATCHER",
+        "Scorpion Catcher"
+      ]
+    },
+    {
+      "name": "Scrambled!",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SCRAMBLED",
+        "Scrambled!"
+      ]
+    },
+    {
+      "name": "Sea Slug",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SEA_SLUG",
+        "Sea Slug"
+      ]
+    },
+    {
+      "name": "Secrets of the North",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SECRETS_OF_THE_NORTH",
+        "Secrets of the North"
+      ]
+    },
+    {
+      "name": "Shades of Mort'ton",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "SHADES_OF_MORTTON",
+        "Shades of Mort'ton"
+      ]
+    },
+    {
+      "name": "Shadow of the Storm",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SHADOW_OF_THE_STORM",
+        "Shadow of the Storm"
+      ]
+    },
+    {
+      "name": "Shadows of Custodia",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SHADOWS_OF_CUSTODIA",
+        "Shadows of Custodia"
+      ]
+    },
+    {
+      "name": "Sheep Herder",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "SHEEP_HERDER",
+        "Sheep Herder"
+      ]
+    },
+    {
+      "name": "Sheep Shearer",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SHEEP_SHEARER",
+        "Sheep Shearer"
+      ]
+    },
+    {
+      "name": "Shield of Arrav",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SHIELD_OF_ARRAV",
+        "Shield of Arrav"
+      ]
+    },
+    {
+      "name": "Shilo Village",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SHILO_VILLAGE",
+        "Shilo Village"
+      ]
+    },
+    {
+      "name": "Sins of the Father",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SINS_OF_THE_FATHER",
+        "Sins of the Father"
+      ]
+    },
+    {
+      "name": "Skippy and the Mogres",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "SKIPPY_AND_THE_MOGRES",
+        "Skippy and the Mogres"
+      ]
+    },
+    {
+      "name": "Sleeping Giants",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "SLEEPING_GIANTS",
+        "Sleeping Giants"
+      ]
+    },
+    {
+      "name": "Song of the Elves",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "SONG_OF_THE_ELVES",
+        "Song of the Elves"
+      ]
+    },
+    {
+      "name": "Spirits of the Elid",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SPIRITS_OF_THE_ELID",
+        "Spirits of the Elid"
+      ]
+    },
+    {
+      "name": "Swan Song",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "SWAN_SONG",
+        "Swan Song"
+      ]
+    },
+    {
+      "name": "Tai Bwo Wannai Trio",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "TAI_BWO_WANNAI_TRIO",
+        "Tai Bwo Wannai Trio"
+      ]
+    },
+    {
+      "name": "Tale of the Righteous",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TALE_OF_THE_RIGHTEOUS",
+        "Tale of the Righteous"
+      ]
+    },
+    {
+      "name": "Tears of Guthix",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TEARS_OF_GUTHIX",
+        "Tears of Guthix"
+      ]
+    },
+    {
+      "name": "Temple of Ikov",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TEMPLE_OF_IKOV",
+        "Temple of Ikov"
+      ]
+    },
+    {
+      "name": "Temple of the Eye",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TEMPLE_OF_THE_EYE",
+        "Temple of the Eye"
+      ]
+    },
+    {
+      "name": "The Ascent of Arceuus",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_ASCENT_OF_ARCEUUS",
+        "The Ascent of Arceuus"
+      ]
+    },
+    {
+      "name": "The Birds and the Wasps",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_BIRDS_AND_THE_WASPS",
+        "The Birds and the Wasps"
+      ]
+    },
+    {
+      "name": "The Blood Moon Rises",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "THE_BLOOD_MOON_RISES",
+        "The Blood Moon Rises"
+      ]
+    },
+    {
+      "name": "The Corsair Curse",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_CORSAIR_CURSE",
+        "The Corsair Curse"
+      ]
+    },
+    {
+      "name": "The Curse of Arrav",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_CURSE_OF_ARRAV",
+        "The Curse of Arrav"
+      ]
+    },
+    {
+      "name": "The Depths of Despair",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_DEPTHS_OF_DESPAIR",
+        "The Depths of Despair"
+      ]
+    },
+    {
+      "name": "The Dig Site",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_DIG_SITE",
+        "The Dig Site"
+      ]
+    },
+    {
+      "name": "The Enchanted Key",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "THE_ENCHANTED_KEY",
+        "The Enchanted Key"
+      ]
+    },
+    {
+      "name": "The Eyes of Glouphrie",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_EYES_OF_GLOUPHRIE",
+        "The Eyes of Glouphrie"
+      ]
+    },
+    {
+      "name": "The Feud",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_FEUD",
+        "The Feud"
+      ]
+    },
+    {
+      "name": "The Final Dawn",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "THE_FINAL_DAWN",
+        "The Final Dawn"
+      ]
+    },
+    {
+      "name": "The Forsaken Tower",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_FORSAKEN_TOWER",
+        "The Forsaken Tower"
+      ]
+    },
+    {
+      "name": "The Fractured Archive",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "THE_FRACTURED_ARCHIVE",
+        "The Fractured Archive"
+      ]
+    },
+    {
+      "name": "The Fremennik Exiles",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_FREMENNIK_EXILES",
+        "The Fremennik Exiles"
+      ]
+    },
+    {
+      "name": "The Fremennik Isles",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_FREMENNIK_ISLES",
+        "The Fremennik Isles"
+      ]
+    },
+    {
+      "name": "The Fremennik Trials",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "THE_FREMENNIK_TRIALS",
+        "The Fremennik Trials"
+      ]
+    },
+    {
+      "name": "The Frozen Door",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "THE_FROZEN_DOOR",
+        "The Frozen Door"
+      ]
+    },
+    {
+      "name": "The Garden of Death",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_GARDEN_OF_DEATH",
+        "The Garden of Death"
+      ]
+    },
+    {
+      "name": "The General's Shadow",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "THE_GENERALS_SHADOW",
+        "The General's Shadow"
+      ]
+    },
+    {
+      "name": "The Giant Dwarf",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_GIANT_DWARF",
+        "The Giant Dwarf"
+      ]
+    },
+    {
+      "name": "The Golem",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_GOLEM",
+        "The Golem"
+      ]
+    },
+    {
+      "name": "The Grand Tree",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "THE_GRAND_TREE",
+        "The Grand Tree"
+      ]
+    },
+    {
+      "name": "The Great Brain Robbery",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_GREAT_BRAIN_ROBBERY",
+        "The Great Brain Robbery"
+      ]
+    },
+    {
+      "name": "The Hand in the Sand",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_HAND_IN_THE_SAND",
+        "The Hand in the Sand"
+      ]
+    },
+    {
+      "name": "The Heart of Darkness",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_HEART_OF_DARKNESS",
+        "The Heart of Darkness"
+      ]
+    },
+    {
+      "name": "The Ides of Milk",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_IDES_OF_MILK",
+        "The Ides of Milk"
+      ]
+    },
+    {
+      "name": "The Knight's Sword",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_KNIGHTS_SWORD",
+        "The Knight's Sword"
+      ]
+    },
+    {
+      "name": "The Lost Tribe",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_LOST_TRIBE",
+        "The Lost Tribe"
+      ]
+    },
+    {
+      "name": "The Path of Glouphrie",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_PATH_OF_GLOUPHRIE",
+        "The Path of Glouphrie"
+      ]
+    },
+    {
+      "name": "The Queen of Thieves",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_QUEEN_OF_THIEVES",
+        "The Queen of Thieves"
+      ]
+    },
+    {
+      "name": "The Red Reef",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_RED_REEF",
+        "The Red Reef"
+      ]
+    },
+    {
+      "name": "The Restless Ghost",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_RESTLESS_GHOST",
+        "The Restless Ghost"
+      ]
+    },
+    {
+      "name": "The Ribbiting Tale of a Lily Pad Labour Dispute",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_RIBBITING_TALE_OF_A_LILY_PAD_LABOUR_DISPUTE",
+        "The Ribbiting Tale of a Lily Pad Labour Dispute"
+      ]
+    },
+    {
+      "name": "The Slug Menace",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_SLUG_MENACE",
+        "The Slug Menace"
+      ]
+    },
+    {
+      "name": "The Tourist Trap",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "THE_TOURIST_TRAP",
+        "The Tourist Trap"
+      ]
+    },
+    {
+      "name": "The Writing's on the Wall",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THE_WRITINGS_ON_THE_WALL",
+        "The Writing's on the Wall"
+      ]
+    },
+    {
+      "name": "Throne of Miscellania",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "THRONE_OF_MISCELLANIA",
+        "Throne of Miscellania"
+      ]
+    },
+    {
+      "name": "Tower of Life",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "TOWER_OF_LIFE",
+        "Tower of Life"
+      ]
+    },
+    {
+      "name": "Tree Gnome Village",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "TREE_GNOME_VILLAGE",
+        "Tree Gnome Village"
+      ]
+    },
+    {
+      "name": "Tribal Totem",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TRIBAL_TOTEM",
+        "Tribal Totem"
+      ]
+    },
+    {
+      "name": "Troll Romance",
+      "points": 2,
+      "part": false,
+      "aliases": [
+        "TROLL_ROMANCE",
+        "Troll Romance"
+      ]
+    },
+    {
+      "name": "Troll Stronghold",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TROLL_STRONGHOLD",
+        "Troll Stronghold"
+      ]
+    },
+    {
+      "name": "Troubled Tortugans",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TROUBLED_TORTUGANS",
+        "Troubled Tortugans"
+      ]
+    },
+    {
+      "name": "Twilight's Promise",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "TWILIGHTS_PROMISE",
+        "Twilight's Promise"
+      ]
+    },
+    {
+      "name": "Underground Pass",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "UNDERGROUND_PASS",
+        "Underground Pass"
+      ]
+    },
+    {
+      "name": "Vale Totems",
+      "points": 0,
+      "part": false,
+      "aliases": [
+        "VALE_TOTEMS",
+        "Vale Totems"
+      ]
+    },
+    {
+      "name": "Vampyre Slayer",
+      "points": 3,
+      "part": false,
+      "aliases": [
+        "VAMPYRE_SLAYER",
+        "Vampyre Slayer"
+      ]
+    },
+    {
+      "name": "Wanted!",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "WANTED",
+        "Wanted!"
+      ]
+    },
+    {
+      "name": "Watchtower",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "WATCHTOWER",
+        "Watchtower"
+      ]
+    },
+    {
+      "name": "Waterfall Quest",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "WATERFALL_QUEST",
+        "Waterfall Quest"
+      ]
+    },
+    {
+      "name": "What Lies Below",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "WHAT_LIES_BELOW",
+        "What Lies Below"
+      ]
+    },
+    {
+      "name": "While Guthix Sleeps",
+      "points": 5,
+      "part": false,
+      "aliases": [
+        "WHILE_GUTHIX_SLEEPS",
+        "While Guthix Sleeps"
+      ]
+    },
+    {
+      "name": "Witch's House",
+      "points": 4,
+      "part": false,
+      "aliases": [
+        "WITCHS_HOUSE",
+        "Witch's House"
+      ]
+    },
+    {
+      "name": "Witch's Potion",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "WITCHS_POTION",
+        "Witch's Potion"
+      ]
+    },
+    {
+      "name": "X Marks the Spot",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "X Marks the Spot",
+        "X_MARKS_THE_SPOT"
+      ]
+    },
+    {
+      "name": "Zogre Flesh Eaters",
+      "points": 1,
+      "part": false,
+      "aliases": [
+        "ZOGRE_FLESH_EATERS",
+        "Zogre Flesh Eaters"
+      ]
+    }
+  ]
+}

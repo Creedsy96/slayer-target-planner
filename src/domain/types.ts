@@ -1,7 +1,7 @@
 import type {CharacterSetup} from '../state/onboarding';
 import type {BankState,CombatSettings} from '../combat/types';
 export type Fact = number | null;
-export interface QuestImport {format:string;playerName:string|null;exportedAt:string|null;importedAt:string|null;states:Record<string,number>}
+export interface QuestImport {pointStates?:Record<string,number>;unknownPointQuests?:string[];format:string;playerName:string|null;exportedAt:string|null;importedAt:string|null;states:Record<string,number>}
 export interface PendingOption {assignmentId:string;modifier:string;points:number;quantity:number;target:boolean}
 export interface Source {title:string;url:string;revision:number|null}
 export interface Requirement {kind:'skill'|'quest'|'unlock'|'access'|'any';key?:string;min?:number;label:string;items?:Requirement[]}

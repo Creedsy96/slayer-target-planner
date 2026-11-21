@@ -1,4 +1,5 @@
 import type {Catalogue,Eligibility,Master,Profile,Requirement,Variant,Entry,Method} from '../domain/types';
+import {questPointAllowance} from './quest-points';
 import {questState,resolveAccess} from './access';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
   const result:Eligibility={eligible:true,unknown:[],failed:[]};
@@ -25,8 +26,8 @@ export function masterEligibility(master:Master,p:Profile):Eligibility{
 export function blockSlots(master:Master,p:Profile):{slots:number;unknown:boolean}{
   if(master.id==='mortimer')return {slots:2,unknown:false};
   if(p.blockLimit!==null)return {slots:p.blockLimit,unknown:false};
-  if(p.questPoints===null)return {slots:0,unknown:true};
-  return {slots:Math.min(6,Math.floor(p.questPoints/50))+(p.diaries.lumbridge===1?1:0),unknown:p.diaries.lumbridge===null};
+  const points=questPointAllowance(p);
+  return {slots:Math.min(6,Math.floor(points.minimum/50))+(p.diaries.lumbridge===1?1:0),unknown:(!points.complete&&points.minimum<300)||p.diaries.lumbridge===null};
 }
 export function variantEligibility(v:Variant,p:Profile,master:Master,assignmentId?:string):Eligibility{
   const status=check(v.requirements,p);

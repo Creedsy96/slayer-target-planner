@@ -1,4 +1,5 @@
 import {AREA_VERSION} from '../rules/access';
+import {pointQuestNames,questNameKey} from '../rules/quest-points';
 import {validateBank,validateCombat} from './bank';
 import type {Catalogue,Profile,Method} from '../domain/types';
 export const SCHEMA=2;
@@ -100,7 +101,9 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
     for(const date of [q.exportedAt,q.importedAt])if(date!==null&&(typeof date!=='string'||!Number.isFinite(Date.parse(date))))throw Error('Invalid quest import date.');
     if(Object.keys(q.states).length>1000)throw Error('Too many imported quests.');
     for(const [name,state]of Object.entries(q.states))if(name.length>120||!name||!Number.isInteger(state)||state<0||state>2)throw Error('Invalid imported quest state.');
-    p.questImport={format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
+    if(q.pointStates!==undefined&&(!q.pointStates||typeof q.pointStates!=='object'||Array.isArray(q.pointStates)||Object.keys(q.pointStates).length>1000||Object.entries(q.pointStates).some(([name,state])=>!pointQuestNames.has(questNameKey(name))||!Number.isInteger(state)||state<0||state>2)))throw Error('Invalid quest point states.');
+    if(q.unknownPointQuests!==undefined&&(!Array.isArray(q.unknownPointQuests)||q.unknownPointQuests.length>1000||q.unknownPointQuests.some(name=>typeof name!=='string'||!name||name.length>120)))throw Error('Invalid unknown quest point records.');
+    p.questImport={...(q.pointStates!==undefined?{pointStates:q.pointStates}:{}),...(q.unknownPointQuests!==undefined?{unknownPointQuests:q.unknownPointQuests}:{}),format:q.format,playerName:q.playerName,exportedAt:q.exportedAt,importedAt:q.importedAt,states:q.states};
   }
   if(!Array.isArray(p.notes)||p.notes.some(n=>typeof n!=='string'))throw Error('Invalid migration notes.');
   if(p.bank!==undefined)p.bank=validateBank(p.bank);

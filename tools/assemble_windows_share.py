@@ -28,7 +28,7 @@ def assemble(folder: Path) -> None:
     ).strip()
     version = json.loads((ROOT / "package.json").read_text())["version"]
     for name in ["catalogue", "area-access", "mortimer-modifiers", "variant-additions",
-                 "creature-guide", "equipment-requirements", "item-names", "open-areas"]:
+                 "creature-guide", "equipment-requirements", "item-names", "open-areas", "quest-points"]:
         shutil.copy2(ROOT / "data" / f"{name}.json", folder)
     for name in ["creature-art", "item-art", "owned-art"]:
         shutil.copy2(ROOT / "src/ui" / f"{name}.json", folder)

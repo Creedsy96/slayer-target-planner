@@ -42,7 +42,7 @@ export function parseAccountExports(data:Catalogue,files:ExportFile[]):AccountEx
  if(!result.account)result.notes.push('No account name supplied. Verify every file came from the same character folder.');
  if(!result.levels)result.notes.push('Character levels were not selected; existing levels will be preserved.');
  if(!result.quests)result.notes.push('Quest states were not selected. Unanswered quest requirements stay unknown.');
- result.notes.push('Quest points, Slayer points/streaks, purchased rewards, prayer unlocks and partial miniquest steps are not supplied by these exports.');
+ result.notes.push('Quest points are derived from recognised quest rewards; incomplete quest exports supply a confirmed minimum. Manual quest-point totals are preserved. Slayer points/streaks, purchased rewards, prayer unlocks and partial miniquest steps are not supplied by these exports.');
  return result;
 }
 export function applyAccountExports(data:Catalogue,p:Profile,preview:AccountExportPreview,now:string):Profile{

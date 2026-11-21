@@ -16,6 +16,7 @@ export * from './combat/kill-time';
 export * from './state/profiles';
 export * from './state/maxed-profile';
 export * from './rules/eligibility';
+export * from './rules/quest-points';
 export * from './rules/access';
 export * from './state/quest-import';
 export * from './rules/points';

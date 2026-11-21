@@ -1,6 +1,7 @@
 import type {Catalogue,Profile,Requirement} from '../domain/types';
 import {defaultCombat} from './bank';
 import {knownAccessKeys,relevantQuests} from '../rules/access';
+import {QUEST_POINTS} from '../rules/quest-points';
 import {newProfile,validateProfile,clone,MAXED_PROFILE_ID,MAX_CUSTOM_PROFILES,customProfileCount} from './profiles';
 
 const skills='attack strength defence ranged prayer magic runecraft construction hitpoints agility herblore thieving crafting fletching slayer hunter mining smithing fishing cooking firemaking woodcutting farming sailing'.split(' ');
@@ -25,11 +26,11 @@ export function maxedProfile(data:Catalogue):Profile{
   };
   data.masters.forEach(m=>{m.requirements.forEach(grant);m.tasks.forEach(t=>t.requirements.forEach(grant));});
   data.variants.forEach(v=>v.requirements.forEach(grant));
-  p.questPoints=343;p.diaries={lumbridge:1,kourend:1,western:1};
+  p.questPoints=QUEST_POINTS.maximum;p.diaries={lumbridge:1,kourend:1,western:1};
   p.mortimerTasks=50;p.assumeUnknown=false;
   p.notes=[
     'Maxed planning preset: all skills 99, combat 126, all supported quests/diaries complete and all modelled areas/variants accessible. These are scenario settings, not imported account facts.',
-    'Quest points: 343 (Wiki snapshot checked 19 November 2026). Stop the Wyvern is off to retain wyvern assignments. Mortimer progression is 50 tasks, unlocking all modelled offer options.',
+    `Maxed quest-point assumption: ${QUEST_POINTS.maximum} from the ${QUEST_POINTS.captured} reward snapshot. Stop the Wyvern is off to retain wyvern assignments. Mortimer progression is 50 tasks, unlocking all modelled offer options.`,
     'Points, reserves, streaks and combat rates are editable planning defaults. Master/variant mappings and uncertain combat/location models still apply.',
     rewardNote,gearNote,
   ];

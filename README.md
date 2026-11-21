@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.8
+# Slayer Target Planner 3.0.9
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.8 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.9 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Automatic quest points in 3.0.9
+
+Quest points now derive from recognised completed quests and Recipe for Disaster subquests. Full quest exports supply an exact total; incomplete lists supply a confirmed minimum. These points determine ordinary block slots and therefore affect optimisation and KPH. Existing entered totals remain manual overrides; clear one with **Use quest-derived total**. See [the calculation, compatibility and verification](docs/quest-points.md).
 
 ## Task extension comparisons in 3.0.8
 
