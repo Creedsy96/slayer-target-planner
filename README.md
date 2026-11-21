@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.23
+# Slayer Target Planner 3.0.24
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.23 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.24 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Whole-box selection in 3.0.24
+
+Click anywhere on a gear comparison row, master row, guide location card or individual equipment slot to use its single selection action. Wizard step boxes work the same way. Cards with multiple selection options retain their separate controls. Links, disclosures, input fields and secondary buttons keep their own actions; native selection buttons remain keyboard accessible. [Behaviour and verification](docs/whole-box-selection.md).
 
 ## Combat-only equipment candidates in 3.0.23
 

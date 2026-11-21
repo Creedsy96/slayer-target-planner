@@ -187,3 +187,9 @@ details>summary{transition:color .15s}details>summary:hover{color:var(--gold)}.p
 .action-notice:popover-open{display:flex;align-items:flex-start;animation:notice-enter .16s ease-out}.action-notice::backdrop{background:transparent;pointer-events:none}.action-notice[data-level=error]{border-color:#ed987d}.action-notice-icon{display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;border:1px solid currentColor;border-radius:50%;font-weight:700;color:var(--gold)}.action-notice[data-level=error] .action-notice-icon{color:#ed987d}.action-notice-copy{flex:1;min-width:0;overflow-wrap:anywhere}.action-notice-copy strong{font-size:15px}.action-notice p{margin:5px 0 12px}.action-notice a{color:var(--gold);font-weight:600;text-underline-offset:3px}.action-notice [data-notice-close]{flex:0 0 auto;padding:0 7px;min-height:28px;font-size:22px;background:transparent;border:0;color:var(--muted);line-height:1.2}.action-notice [data-notice-close]:hover{color:var(--text)}.feedback-focus{outline:3px solid var(--gold)!important;outline-offset:5px;scroll-margin:30px}
 @keyframes notice-enter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.action-notice:popover-open{animation:none}}
+
+/* Single-choice surfaces retain their native button and independent links. */
+.selection-surface{cursor:pointer;transition:background-color .15s ease,box-shadow .15s ease}
+.selection-surface:hover,.selection-surface.selection-current{background-color:var(--selected)}
+.selection-surface:has(:focus-visible){outline:2px solid var(--gold);outline-offset:-2px}
+@media(prefers-reduced-motion:reduce){.selection-surface{transition:none}}

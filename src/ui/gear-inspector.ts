@@ -1,3 +1,4 @@
+import {enhanceSelectionSurfaces} from './selection-surfaces';
 import type {GearSelection} from '../combat/gear-selection';
 import type {CombatResult,EquipmentSlot} from '../combat/types';
 import type {GearComparison,GearComparisonRow} from '../combat/comparisons';
@@ -12,7 +13,7 @@ const signed=(n:number,digits=0)=>(n>0?'+':'')+n.toFixed(digits);
 function gearTable(comparison:GearComparison,rows:GearComparisonRow[],selectable:boolean,multi:boolean):string{
  return `<table><thead><tr><th>${comparison.assumed?'Available':'Owned'} ${slotNames[comparison.slot].toLowerCase()}</th>${selectable?'<th>Selection</th>':''}<th>Setup DPS</th><th>Δ DPS</th>${multi?'<th>Stack DPS</th>':''}<th>Prayer</th><th>Stab</th><th>Slash</th><th>Crush</th><th>Magic</th><th>Ranged</th><th>Relevant defence</th></tr></thead><tbody>${rows.map(row=>{
   const item=equipmentItem(row.id),ammo=row.ammoId?equipmentItem(row.ammoId):undefined;
-  return `<tr class="${row.selected?'equipped-comparison':''}"><td>${item?ownedItemLink(item):esc(row.name)}${ammo?'<small>with '+ownedItemLink(ammo)+'</small>':''}${row.upgrade?'<small>Strict upgrade: '+esc(row.upgrade)+'</small>':''}${row.selected?'<span class="badge">Shown setup</span>':''}${!row.owned?`<span class="badge">${comparison.assumed?'Assumed available':'Example · not owned'}</span>`:''}${row.dps===null||comparison.slot==='weapon'?`<small>${esc(row.reason)}</small>`:''}</td>${selectable?`<td><button data-gear-pick="${row.id}" ${row.ammoId?`data-gear-ammo="${row.ammoId}"`:''} ${row.dps===null||!row.owned&&!comparison.assumed?'disabled':''} aria-label="Use ${esc(row.name)}${ammo?' with '+esc(ammo.name):''}">${row.selected?'Keep selected':'Use item'}</button></td>`:''}<td>${row.dps===null?'Unavailable':row.dps.toFixed(3)}</td><td>${row.delta===null?'—':signed(row.delta,3)}</td>${multi?`<td>${row.aggregateDps?.toFixed(3)??'—'}</td>`:''}<td>${signed(row.prayer)}</td>${['stab','slash','crush','magic','ranged'].map(key=>`<td>${signed(row.defensive[key]||0)}</td>`).join('')}<td>${signed(row.defence,1)}</td></tr>`;
+  return `<tr class="${row.selected?'equipped-comparison':''}"><td>${item?ownedItemLink(item):esc(row.name)}${ammo?'<small>with '+ownedItemLink(ammo)+'</small>':''}${row.upgrade?'<small>Strict upgrade: '+esc(row.upgrade)+'</small>':''}${row.selected?'<span class="badge">Shown setup</span>':''}${!row.owned?`<span class="badge">${comparison.assumed?'Assumed available':'Example · not owned'}</span>`:''}${row.dps===null||comparison.slot==='weapon'?`<small>${esc(row.reason)}</small>`:''}</td>${selectable?`<td><button data-gear-pick="${row.id}" ${row.ammoId?`data-gear-ammo="${row.ammoId}"`:''} ${row.dps===null||!row.owned&&!comparison.assumed?'disabled':''} aria-pressed="${row.selected}" aria-label="Use ${esc(row.name)}${ammo?' with '+esc(ammo.name):''}">${row.selected?'Keep selected':'Use item'}</button></td>`:''}<td>${row.dps===null?'Unavailable':row.dps.toFixed(3)}</td><td>${row.delta===null?'—':signed(row.delta,3)}</td>${multi?`<td>${row.aggregateDps?.toFixed(3)??'—'}</td>`:''}<td>${signed(row.prayer)}</td>${['stab','slash','crush','magic','ranged'].map(key=>`<td>${signed(row.defensive[key]||0)}</td>`).join('')}<td>${signed(row.defence,1)}</td></tr>`;
  }).join('')}</tbody></table>`;
 }
 export function renderGearComparison(comparison:GearComparison,selectable=false):string{
@@ -84,7 +85,7 @@ export class GearInspector {
   worker.onerror=()=>this.showError('Comparison failed. Move away and hover again to retry.');
   worker.postMessage({id,kind:'gear-detail',profile:context.profile,guide:context.guide,combat:result satisfies CombatResult,slot});
  }
- private show(value:GearComparison):void{this.panel.querySelector('.gear-comparison-body')!.innerHTML=renderGearComparison(value,this.selectionContext?.selectable);this.position();}
+ private show(value:GearComparison):void{this.panel.querySelector('.gear-comparison-body')!.innerHTML=renderGearComparison(value,this.selectionContext?.selectable);enhanceSelectionSurfaces(this.panel);this.position();}
  private showError(message:string):void{this.worker?.terminate();this.worker=undefined;this.panel.querySelector('.gear-comparison-body')!.innerHTML='<p class="notice error">'+esc(message)+'</p>';}
  private position():void{
   if(!this.anchor?.isConnected||!this.panel.matches(':popover-open'))return;
