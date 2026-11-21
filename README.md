@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.15
+# Slayer Target Planner 3.0.16
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.15 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.16 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Session-hour validation in 3.0.16
+
+Both session-hours editors accept whole and fractional hours within the existing 0.01–10,000-hour bounds. Removing the offset step constraint fixes browser rejection of values such as 40, 1.5 and 2.25. Saved values and calculations retain their precision; trials and offer counts retain their integer controls.
 
 ## Editable restricted-account pool in 3.0.15
 
