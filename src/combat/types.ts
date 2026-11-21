@@ -1,6 +1,6 @@
 export const EQUIPMENT_SLOTS=['head','cape','neck','ammo','weapon','body','shield','legs','hands','feet','ring'] as const;
 export type EquipmentSlot=typeof EQUIPMENT_SLOTS[number];
-export interface EquipmentItem {id:number;name:string;version:string;slot:EquipmentSlot;speed:number;category:string;isTwoHanded:boolean;bonuses:{str:number;ranged_str:number;magic_str:number;prayer:number};offensive:Record<string,number>;defensive:Record<string,number>;itemVars?:{blowpipeDartName?:string;blowpipeDartId?:number}}
+export interface EquipmentItem {weight?:number;id:number;name:string;version:string;slot:EquipmentSlot;speed:number;category:string;isTwoHanded:boolean;bonuses:{str:number;ranged_str:number;magic_str:number;prayer:number};offensive:Record<string,number>;defensive:Record<string,number>;itemVars?:{blowpipeDartName?:string;blowpipeDartId?:number}}
 export type Loadout=Partial<Record<EquipmentSlot,number>>;
 export interface CombatStyle {name:string;type:string|null;stance:string}
 export interface BankSnapshot {items:Record<string,number>;at:string|null;account:string|null;label:string}

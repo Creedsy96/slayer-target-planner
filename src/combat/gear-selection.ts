@@ -10,7 +10,7 @@ export interface GearSelection {family:Family;slot:EquipmentSlot;id:number;ammoI
 export function selectCreatureGear(data:Catalogue,p:Profile,state:GuideState,result:CombatResult,choice:GearSelection):void{
  if(result.source!=='bank'||result.family!==choice.family||!result.supported)throw Error('Choose an available character gear setup first.');
  const comparison=compareOwnedSlot(p,state,result,choice.slot);
- const row=comparison.rows.find(row=>row.id===choice.id&&row.ammoId===choice.ammoId);
+ const row=[...comparison.rows,...(comparison.outclassed||[])].find(row=>row.id===choice.id&&row.ammoId===choice.ammoId);
  if(!row||row.dps===null||!row.owned&&!p.assumeAllGear)throw Error('This item cannot be used in the current setup. Review its protection, levels and ammunition.');
  p.gearOverrides??={};p.gearOverrides[state.variantId]??={};
  const pins=p.gearOverrides[state.variantId][choice.family]??={};pins[choice.slot]=choice.id;

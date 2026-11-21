@@ -1,6 +1,6 @@
 {
   "name": "slayer-target-planner",
-  "version": "3.0.21",
+  "version": "3.0.22",
   "private": true,
   "license": "GPL-3.0-only",
   "scripts": {

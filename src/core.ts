@@ -69,3 +69,5 @@ export * from './combat/weapon-family';
 export * from './combat/method-preview';
 
 export {selectCreatureGear,resetCreatureGear,gearAffectedMasters} from './combat/gear-selection';
+
+export {strictGearUpgrade,filterStrictUpgrades,compareGearRows} from './combat/strict-upgrades';
