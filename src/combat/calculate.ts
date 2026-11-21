@@ -1,4 +1,5 @@
 import {Calc,bonuses,speed,styles,spells,monsters,monsterInputs,PotionMap,ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
+import {isBlowpipe,usableAmmo} from './ranged';
 import type {Profile} from '../domain/types';
 import type {GuideRecord,GuideForm,Family} from '../guide/types';
 import type {CombatResult,CombatStyle,Loadout} from './types';
@@ -49,13 +50,15 @@ export function calculateCombat(p:Profile,record:GuideRecord,form:GuideForm,load
  const config=p.combat??defaultCombat();
  if(['attack','strength','defence','ranged','magic','prayer','hitpoints'].some(key=>p.levels[key]==null))return emptyCombat('Enter or import every combat skill, including Attack and Prayer.',loadout);
  const equipment=Object.fromEntries(EQUIPMENT_SLOTS.map(slot=>[slot,loadout[slot]?structuredClone(equipmentItem(loadout[slot]!))||null:null]));
- for(const slot of EQUIPMENT_SLOTS)if(loadout[slot]&&(!equipment[slot]||equipment[slot].slot!==slot))return emptyCombat('Unknown equipment or item placed in the wrong gear slot.',loadout);
+ for(const slot of EQUIPMENT_SLOTS)if(loadout[slot]&&(!equipment[slot]||equipment[slot].slot!==slot&&!(slot==='ammo'&&isBlowpipe(equipment.weapon)&&equipment[slot]&&usableAmmo(equipment.weapon,equipment[slot],'ranged'))))return emptyCombat('Unknown equipment or item placed in the wrong gear slot.',loadout);
  const weapon=equipment.weapon;
+ if(isBlowpipe(weapon)&&weapon.version!=='Charged')return emptyCombat('A charged blowpipe with compatible loaded darts is required.',loadout);
  if(familyOf(style)==='magic'&&spell&&!canAutocast(weapon,spell.name,loadout))return emptyCombat('This weapon cannot autocast '+spell.name+'. Manual casting is not assumed.',loadout);
- if(equipment.ammo&&weapon?.name!=='Toxic blowpipe'&&ammoApplicability(weapon?.id,equipment.ammo.id)!==AmmoApplicability.INCLUDED&&equipment.ammo.bonuses.prayer===0){delete loadout.ammo;equipment.ammo=null;}
+ if(equipment.ammo&&!isBlowpipe(weapon)&&ammoApplicability(weapon?.id,equipment.ammo.id)!==AmmoApplicability.INCLUDED&&equipment.ammo.bonuses.prayer===0){delete loadout.ammo;equipment.ammo=null;}
  if(weapon?.isTwoHanded&&equipment.shield)return emptyCombat('A two-handed weapon cannot use an off-hand item.',loadout);
  // Blowpipe darts are contained in the weapon, not a worn ammunition slot.
- if(weapon?.name==='Toxic blowpipe'&&equipment.ammo&&/dart/i.test(equipment.ammo.name)){
+ if(isBlowpipe(weapon)&&(!equipment.ammo||!usableAmmo(weapon,equipment.ammo,'ranged')))return emptyCombat('A blowpipe requires compatible unpoisoned darts loaded into it.',loadout);
+ if(isBlowpipe(weapon)&&equipment.ammo){
   weapon.itemVars={blowpipeDartName:equipment.ammo.name,blowpipeDartId:equipment.ammo.id};equipment.ammo=null;
  }
  const skills={atk:p.levels.attack!,str:p.levels.strength!,def:p.levels.defence!,ranged:p.levels.ranged!,magic:p.levels.magic!,prayer:p.levels.prayer!,hp:p.levels.hitpoints!,mining:p.levels.mining??1,herblore:p.levels.herblore??1,farming:p.levels.farming??1};

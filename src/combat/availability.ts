@@ -8,7 +8,7 @@ import exclusions from '../../data/assumed-gear-exclusions.json';
  * assumed usable for a normal Slayer encounter. Equivalent cosmetic/charge
  * variants share the engine's canonical identity and need one candidate. */
 const assumed=[...new Map(ITEMS.filter(item=>
-  !Object.hasOwn(exclusions.items,item.id)&&!temporaryEquipment(item)&&! /uncharged|broken|inactive|\b0\b/i.test(item.version)&&
+  !Object.hasOwn(exclusions.items,item.id)&&!temporaryEquipment(item)&&! /uncharged|empty|broken|inactive|\b0\b/i.test(item.version)&&
   !/deadman|last man standing|emir.s arena|beta|tournament|leagues|unobtainable|\(bh\)|blighted/i.test(item.name+' '+item.version)&&
   (!/^echo /i.test(item.name)||/^echo boots$/i.test(item.name))
 ).map(item=>[canonicalId(item.id),item])).values()];

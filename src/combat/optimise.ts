@@ -1,5 +1,6 @@
 import {availableItems} from './availability';
-import {ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
+import {isBlowpipe,isCrossbow,rangedWeaponCandidates,rangedAmmoCandidates,usableAmmo} from './ranged';
+export {usableAmmo} from './ranged';
 import {fightPlan} from '../guide/model';
 import {fallbackArmour,compareLoadoutSustain,type ArmourPriority,type ArmourContext} from './armour';
 import {applyAreaDamage} from './area-damage';
@@ -81,12 +82,13 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
   const context:ArmourContext={family:family as Family,priority:mode,form};
   const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&combatStyles(i.id).some(s=>familyOf(s)===family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
-  const specialists=candidates.filter(i=>/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
-  const weapons=[...new Map([...candidates.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
+  const retained=family==='ranged'?rangedWeaponCandidates(candidates):candidates;
+  const specialists=retained.filter(i=>isCrossbow(i)||isBlowpipe(i)||/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
+  const weapons=[...new Map([...retained.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
   const shortlist:CombatResult[]=[];
   const evaluate=(loadout:Loadout,style:CombatStyle,spell:string|null)=>applyAreaDamage(calculateCombat(p,record,form,loadout,style,spell,state.onTask,isWildernessCombat(record,location),false),record,location,state.stackSize);
   for(const weapon of weapons){
-   const choices=(slot:EquipmentSlot)=>slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
+   const choices=(slot:EquipmentSlot)=>slot==='ammo'&&family==='ranged'?rangedAmmoCandidates(owned,weapon):slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
    const loadout:Loadout={...forced,weapon:weapon.id};
    for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||forced[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
@@ -95,8 +97,9 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
    const styles=combatStyles(weapon.id).filter(s=>familyOf(s)===family&&!/defensive|longrange/i.test(s.stance));
    const spells=family==='magic'&&!/Powered/i.test(weapon.category)?candidateSpells(p):[null];
    let seed=emptyCombat('No damaging style for this weapon.');
-   for(const initial of setSeeds(loadout,owned,required,family,weapon))for(const style of styles)for(const spell of spells){
-    const value=evaluate(initial,style,spell);if(value.supported&&rank(value)>rank(seed))seed=value;
+   const ammo=(isCrossbow(weapon)||isBlowpipe(weapon))?choices('ammo'):[undefined];
+   for(const initial of setSeeds(loadout,owned,required,family,weapon))for(const ammunition of ammo)for(const style of styles)for(const spell of spells){
+    const value=evaluate(ammunition?{...initial,ammo:ammunition.id}:initial,style,spell);if(value.supported&&rank(value)>rank(seed))seed=value;
    }
    if(seed.supported)shortlist.push(seed);
   }
@@ -106,7 +109,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
    const weapon=equipmentItem(seed.loadout.weapon!)!;
    for(let pass=0;pass<2;pass++)for(const slot of EQUIPMENT_SLOTS){
     if(slot==='weapon'||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
-    const choices=slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
+    const choices=slot==='ammo'&&family==='ranged'?rangedAmmoCandidates(owned,weapon):slotCandidates(owned.filter(i=>i.slot===slot&&(!required[slot]||required[slot]!(i))&&(slot!=='ammo'||usableAmmo(weapon,i,family))),family,context);
     for(const item of [...(required[slot]?[]:[undefined]),...choices]){
      const trial={...seed.loadout};if(item)trial[slot]=item.id;else delete trial[slot];
      const value=evaluate(trial,seed.style,seed.spell);
@@ -128,11 +131,6 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only; configured hunter timing is retained.');
  return result;
 }
-export function usableAmmo(weapon:EquipmentItem,ammo:EquipmentItem,family:string):boolean{
- if(weapon.name==='Toxic blowpipe')return /dart/i.test(ammo.name);
- const applicability=ammoApplicability(weapon.id,ammo.id);
- return applicability!==AmmoApplicability.INVALID&&(family==='ranged'&&applicability===AmmoApplicability.INCLUDED||ammo.bonuses.prayer>0);
-}
 function completeArmour(seed:CombatResult,owned:EquipmentItem[],required:Partial<Record<EquipmentSlot,(i:EquipmentItem)=>boolean>>,context:ArmourContext,evaluate:(loadout:Loadout,style:CombatStyle,spell:string|null)=>CombatResult):CombatResult{
  const fallback:EquipmentSlot[]=[];
  for(const slot of ['body','legs'] as const){
@@ -150,11 +148,12 @@ function completeArmour(seed:CombatResult,owned:EquipmentItem[],required:Partial
 }
 export function exampleLoadout(set:GearSet):Loadout{
  const result:Loadout={};
+ const weapon=itemForLabel(set.slots.find(row=>row.slot==='Weapon')?.item||'');
  for(const row of set.slots){
   const slot=Object.entries(slotNames).find(([,label])=>label===row.slot)?.[0] as EquipmentSlot|undefined;if(!slot)continue;
   let item=itemForLabel(row.item);
-  if(!item)for(const label of Object.keys(art.aliases).sort((a,b)=>b.length-a.length))if(row.item.toLowerCase().includes(label.toLowerCase())){const choice=itemForLabel(label);if(choice?.slot===slot){item=choice;break;}}
-  if(item?.slot===slot)result[slot]=item.id;
+  if(!item)for(const label of Object.keys(art.aliases).sort((a,b)=>b.length-a.length))if(row.item.toLowerCase().includes(label.toLowerCase())){const choice=itemForLabel(label);if(choice&&(choice.slot===slot||slot==='ammo'&&isBlowpipe(weapon)&&usableAmmo(weapon,choice,'ranged'))){item=choice;break;}}
+  if(item&&(item.slot===slot||slot==='ammo'&&isBlowpipe(weapon)&&usableAmmo(weapon,item,'ranged')))result[slot]=item.id;
  }
  return result;
 }

@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.17
+# Slayer Target Planner 3.0.18
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.17 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.18 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Ranged weapon and ammo accuracy in 3.0.18
+
+Crossbows stay in the DPS search and comparison list: the best usable ordinary tier through Rune, Dragon/higher crossbows and distinct ammunition families. Each uses the strongest compatible non-enchanted bolt plus every available compatible enchanted bolt, shown as separate linked/icon rows. Blowpipes load compatible owned darts correctly and no longer lose dart strength through slot filtering. Empty/missing-dart setups stay unavailable, required shields remain mandatory, and reviewed crossbow/blowpipe skill requirements are enforced. [Rules, sources and verification](docs/ranged-ammunition.md).
 
 ## Simulation workload totals in 3.0.17
 
