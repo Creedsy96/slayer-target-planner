@@ -1,7 +1,9 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),g=require('../.desktop-build/guide.cjs'),d=c.catalogue;
 const workerSource=buildSync({entryPoints:['src/worker.ts'],bundle:true,write:false,format:'iife',platform:'browser'}).outputFiles[0].text;
-function profile(){const p=c.maxedProfile(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true};p.bank.manual[c.itemForLabel('Abyssal whip').id]=1;p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];return p;}
+function profile(){const p=ownedScenario(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true};p.bank.manual[c.itemForLabel('Abyssal whip').id]=1;p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];return p;}
 function run(p,snapshot,guide,interrupt=false){
  const messages=[],store=new c.CombatCacheStore(),identity=c.combatIdentity(p);
  if(snapshot)store.restore(identity,snapshot);

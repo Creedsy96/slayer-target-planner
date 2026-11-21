@@ -1,8 +1,10 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const vm=require('node:vm'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),g=require('../.desktop-build/guide.cjs'),d=c.catalogue;
 function setup(names,id='hellhound',approach='melee-prayer'){
- const p=c.maxedProfile(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true};
+ const p=ownedScenario(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true};
  for(const name of names){const item=c.itemForLabel(name);assert.ok(item,name);p.bank.manual[item.id]=1;}
  const record=g.GUIDE.records[id],state={...g.defaultGuideState(),variantId:id,formId:record.defaultForm,approach},form=g.guideForm(record,state),location=g.selectedLocation(record,form,state);
  return {p,record,state,form,location};

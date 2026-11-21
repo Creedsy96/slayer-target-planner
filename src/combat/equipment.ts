@@ -27,7 +27,7 @@ export function itemRequirements(item:EquipmentItem):Record<string,number>|null{
 }
 export function canEquip(item:EquipmentItem,p:Profile):boolean{
  const req=itemRequirements(item);
- if(req===null)return p.combat?.allowUnknownRequirements===true;
+ if(req===null)return p.assumeAllGear===true||p.combat?.allowUnknownRequirements===true;
  return Object.entries(req).every(([key,level])=>(p.levels[key]??0)>=level);
 }
 export const slotNames:Record<EquipmentSlot,string>={head:'Head',cape:'Cape',neck:'Neck',ammo:'Ammo',weapon:'Weapon',body:'Body',shield:'Off-hand',legs:'Legs',hands:'Hands',feet:'Feet',ring:'Ring'};

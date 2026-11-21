@@ -1,7 +1,9 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),cp=require('node:child_process');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue,m=d.masters.find(m=>m.id==='krystilia');
 function profile(variant='cerberus'){
-  const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:variant,priority:1}];return p;
+  const p=ownedScenario(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:variant,priority:1}];return p;
 }
 
 test('Krystilia Cerberus diagnostics do not invent a default Black dragons completion problem',()=>{

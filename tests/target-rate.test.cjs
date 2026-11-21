@@ -1,3 +1,5 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs');
 function fixture(){
@@ -70,7 +72,7 @@ test('reset target rate includes targets rolled as Turael replacements',()=>{
 test('unsupported or unavailable analytical rates have an explanation instead of a made-up number',()=>{
  const {d,p,main}=fixture();p.cape=true;let plan=c.evaluate(d,main,p,[]);
  assert.equal(plan.targetKillsPerHour,null);assert.match(plan.targetRateReason,/Cape/);
- const actual=c.maxedProfile(c.catalogue);actual.unlocks.basilocked=1;actual.strategy='none';actual.assumeUnknown=true;
+ const actual=ownedScenario(c.catalogue);actual.unlocks.basilocked=1;actual.strategy='none';actual.assumeUnknown=true;
  plan=c.evaluate(c.catalogue,c.catalogue.masters.find(m=>m.id==='mortimer'),actual,[]);
  assert.equal(plan.reason,'');assert.equal(plan.targetKillsPerHour,null);assert.match(plan.targetRateReason,/Mortimer quantity and combat modifiers/);
 });

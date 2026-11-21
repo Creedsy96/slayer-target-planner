@@ -1,6 +1,8 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
-function profile(){const p=c.maxedProfile(d);p.access={};p.questPoints=null;p.diaries.lumbridge=null;p.blockLimit=null;p.strategy='none';p.goal.targets=[{assignmentId:'dogs',variantId:'guard-dog',priority:1}];return p;}
+function profile(){const p=ownedScenario(d);p.access={};p.questPoints=null;p.diaries.lumbridge=null;p.blockLimit=null;p.strategy='none';p.goal.targets=[{assignmentId:'dogs',variantId:'guard-dog',priority:1}];return p;}
 const master=id=>d.masters.find(m=>m.id===id);
 
 test('strict custom accounts can calculate a zero-block baseline without knowing maximum block capacity',()=>{

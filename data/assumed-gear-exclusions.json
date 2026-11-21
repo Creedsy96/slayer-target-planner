@@ -1,0 +1,121 @@
+{
+  "version": "2026-11-21.1",
+  "sources": [
+    {
+      "title": "Demonic Pacts League/Echo bosses and echo equipment",
+      "revision": 15209621,
+      "url": "https://oldschool.runescape.wiki/w/Demonic_Pacts_League/Echo_bosses_and_echo_equipment",
+      "timestamp": "2026-05-11T19:17:45Z"
+    },
+    {
+      "title": "Raging Echoes League/Echo bosses and echo equipment",
+      "revision": 15319429,
+      "url": "https://oldschool.runescape.wiki/w/Raging_Echoes_League/Echo_bosses_and_echo_equipment",
+      "timestamp": "2026-08-25T06:02:28Z"
+    },
+    {
+      "title": "Unobtainable items",
+      "revision": 15387330,
+      "url": "https://oldschool.runescape.wiki/w/Unobtainable_items",
+      "timestamp": "2026-10-31T21:32:24Z"
+    },
+    {
+      "title": "Wilderness champion amulet",
+      "revision": 15275860,
+      "url": "https://oldschool.runescape.wiki/w/Wilderness_champion_amulet",
+      "timestamp": "2026-07-26T14:15:57Z"
+    }
+  ],
+  "items": {
+    "30384": {
+      "name": "Crystal blessing",
+      "reason": "Temporary Leagues equipment",
+      "source": "Raging Echoes League/Echo bosses and echo equipment"
+    },
+    "30371": {
+      "name": "Devil's element",
+      "reason": "Temporary Leagues equipment",
+      "source": "Raging Echoes League/Echo bosses and echo equipment"
+    },
+    "30374": {
+      "name": "Drygore blowpipe",
+      "reason": "Temporary Leagues equipment",
+      "source": "Raging Echoes League/Echo bosses and echo equipment"
+    },
+    "30373": {
+      "name": "Drygore blowpipe",
+      "reason": "Temporary Leagues equipment",
+      "source": "Raging Echoes League/Echo bosses and echo equipment"
+    },
+    "33249": {
+      "name": "Fang of the hound",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33243": {
+      "name": "Infernal tecpatl",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33251": {
+      "name": "King's barrage",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33255": {
+      "name": "Lithic sceptre",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33257": {
+      "name": "Lithic sceptre",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33245": {
+      "name": "Nature's recurve",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33253": {
+      "name": "Shadowflame quadrant",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "33247": {
+      "name": "V's helm",
+      "reason": "Temporary Leagues equipment",
+      "source": "Demonic Pacts League/Echo bosses and echo equipment"
+    },
+    "30380": {
+      "name": "Gloves of the Damned",
+      "reason": "Temporary Leagues equipment",
+      "source": "Raging Echoes League/Echo bosses and echo equipment"
+    },
+    "740": {
+      "name": "Blue hat (Legends' Quest)",
+      "reason": "Unobtainable, discontinued or moderator-only equipment",
+      "source": "Unobtainable items"
+    },
+    "30302": {
+      "name": "Torva full helm (unobtainable item)",
+      "reason": "Unobtainable, discontinued or moderator-only equipment",
+      "source": "Unobtainable items"
+    },
+    "30303": {
+      "name": "Torva platebody (unobtainable item)",
+      "reason": "Unobtainable, discontinued or moderator-only equipment",
+      "source": "Unobtainable items"
+    },
+    "30304": {
+      "name": "Torva platelegs (unobtainable item)",
+      "reason": "Unobtainable, discontinued or moderator-only equipment",
+      "source": "Unobtainable items"
+    },
+    "21433": {
+      "name": "Wilderness champion amulet",
+      "reason": "Discontinued Wilderness Wars event equipment",
+      "source": "Wilderness champion amulet"
+    }
+  }
+}

@@ -4,6 +4,7 @@ const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
 
 test('Maxed leaves Slayer rewards unpurchased and creature assignments require opting in',()=>{
   const p=c.maxedProfile(d),master=d.masters.find(m=>m.id==='nieve');
+  p.combat.enabled=false; // This eligibility regression does not need a gear search.
   assert.ok(Object.values(p.unlocks).every(value=>value===0));
   let row=c.prepareRows(d,master,p).find(r=>r.id==='basilisks');
   assert.match(row.reason,/Basilocked/);

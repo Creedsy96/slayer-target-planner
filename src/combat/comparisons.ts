@@ -2,6 +2,7 @@ import type {Profile} from '../domain/types';
 import type {GuideState} from '../guide/types';
 import type {CombatResult,EquipmentItem,EquipmentSlot} from './types';
 import {GUIDE,guideForm,selectedLocation} from '../guide/model';
+import {availableItems} from './availability';
 import {ownedItems,equipmentItem,canEquip,itemRequirements} from './equipment';
 import {calculateCombat,combatStyles,familyOf,isWildernessCombat,candidateSpells} from './calculate';
 import {requirementSlots,usableAmmo} from './optimise';
@@ -9,14 +10,14 @@ import {defenceScore} from './armour';
 import {applyAreaDamage} from './area-damage';
 
 export interface GearComparisonRow {id:number;name:string;selected:boolean;owned:boolean;dps:number|null;aggregateDps:number|null;delta:number|null;prayer:number;defensive:Record<string,number>;defence:number;reason:string}
-export interface GearComparison {slot:EquipmentSlot;selectedId:number;reason:string;context:string;notes:string;rows:GearComparisonRow[]}
+export interface GearComparison {assumed?:boolean;slot:EquipmentSlot;selectedId:number;reason:string;context:string;notes:string;rows:GearComparisonRow[]}
 
 /** One-slot comparisons keep all other equipment fixed, including protection. */
 export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,slot:EquipmentSlot):GearComparison{
  const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state);
  const required=requirementSlots(record,state,location,p),selectedId=result.loadout[slot]||0;
  const fallback=result.armourFallback?.includes(slot),priority=result.armourPriority==='prayer'?'prayer bonus, then relevant defence':'relevant defence, then prayer bonus';
- let reason=required[slot]?'Required creature or location protection takes priority over DPS.':result.source==='example'?'Curated tier/style template, rather than a search of your bank. The comparison shows whether your owned alternatives improve this example setup.':fallback?'This slot was not a DPS upgrade. Selected for '+priority+' from style-compatible owned armour (or the least accuracy penalty when none is compatible).':'Selected by the bounded DPS search, with '+priority+' breaking equal-DPS ties.';
+ let reason=required[slot]?'Required creature or location protection takes priority over DPS.':result.source==='example'?'Curated tier/style template, rather than a search of your bank. The comparison shows whether your available alternatives improve this example setup.':fallback?'This slot was not a DPS upgrade. Selected for '+priority+' from style-compatible available armour (or the least accuracy penalty when none is compatible).':'Selected by the bounded DPS search, with '+priority+' breaking equal-DPS ties.';
  const evaluate=(item:EquipmentItem):{dps:number|null;aggregateDps:number|null;reason:string}=>{
   if(!canEquip(item,p)){
    const requirements=itemRequirements(item),missing=requirements&&Object.entries(requirements).filter(([skill,level])=>(p.levels[skill]??0)<level).map(([skill,level])=>skill+' '+level);
@@ -36,15 +37,16 @@ export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,
   }
   return best?{dps:best.dps,aggregateDps:best.aggregateDps??best.dps,reason:slot==='weapon'?best.style.type+' / '+best.style.stance+(best.spell?' / '+best.spell:'')+'. Best supported attack/spell within '+result.family+'; other gear held fixed.':'Other slots, attack style and spell held fixed.'}:{dps:null,aggregateDps:null,reason:issue};
  };
- const owned=ownedItems(p).filter(item=>item.slot===slot),selectedItem=equipmentItem(selectedId);
+ const actualOwned=new Set(ownedItems(p).map(item=>item.id));
+ const owned=availableItems(p).filter(item=>item.slot===slot),selectedItem=equipmentItem(selectedId);
  const items=selectedItem&&!owned.some(item=>item.id===selectedId)?[selectedItem,...owned]:owned;
  const rows=items.map(item=>{
   const selected=item.id===selectedId,value=selected?{dps:result.dps,aggregateDps:result.aggregateDps??result.dps,reason:'Equipped recommendation.'}:evaluate(item);
-  return {id:item.id,name:item.name,selected,owned:owned.some(i=>i.id===item.id),...value,delta:value.dps===null?null:value.dps-result.dps,prayer:item.bonuses.prayer,defensive:{...item.defensive},defence:defenceScore(item,form)};
+  return {id:item.id,name:item.name,selected,owned:actualOwned.has(item.id),...value,delta:value.dps===null?null:value.dps-result.dps,prayer:item.bonuses.prayer,defensive:{...item.defensive},defence:defenceScore(item,form)};
  }).sort((a,b)=>Number(b.selected)-Number(a.selected)||(b.aggregateDps??-1)-(a.aggregateDps??-1)||b.prayer-a.prayer||a.id-b.id);
  if(!required[slot]&&!fallback&&result.source!=='example'){
   const bestAlternative=rows.filter(row=>!row.selected&&row.dps!==null).sort((a,b)=>(b.aggregateDps??0)-(a.aggregateDps??0))[0];
-  reason+=!bestAlternative?' No other owned item can be used in this fixed setup.':(bestAlternative.aggregateDps??0)>(result.aggregateDps??result.dps)+1e-10?' A one-slot swap to '+bestAlternative.name+' scores higher; the bounded search missed this alternative.':' Best usable alternative: '+bestAlternative.name+' ('+bestAlternative.dps!.toFixed(3)+' single-target DPS).';
+  reason+=!bestAlternative?' No other available item can be used in this fixed setup.':(bestAlternative.aggregateDps??0)>(result.aggregateDps??result.dps)+1e-10?' A one-slot swap to '+bestAlternative.name+' scores higher; the bounded search missed this alternative.':' Best usable alternative: '+bestAlternative.name+' ('+bestAlternative.dps!.toFixed(3)+' single-target DPS).';
  }
- return {slot,selectedId,reason,context:record.name+' / '+form.label+' · '+(location?.name||'default location'),notes:'DPS is the whole setup with this item, not damage attributable to the item alone. Defence relevance averages bonuses against the listed NPC attacks ('+(form['attack style']||'unknown: all five')+'); it is not a damage-taken model. Alternatives are owned gear in this slot; an unowned example is labelled. Quest/diary item unlocks and charges still need review. Other gear is held fixed; weapon swaps try supported attacks/spells within the chosen combat family. A complete rebuild may produce a different ranking.',rows};
+ return {slot,selectedId,reason,assumed:p.assumeAllGear===true,context:(p.assumeAllGear?'All gear assumed · ':'')+record.name+' / '+form.label+' · '+(location?.name||'default location'),notes:'DPS is the whole setup with this item, not damage attributable to the item alone. Defence relevance averages bonuses against the listed NPC attacks ('+(form['attack style']||'unknown: all five')+'); it is not a damage-taken model. Alternatives are available gear in this slot; assumed gear is not a bank-ownership claim. Quest/diary item unlocks and charges still need review. Other gear is held fixed; weapon swaps try supported attacks/spells within the chosen combat family. A complete rebuild may produce a different ranking.',rows};
 }

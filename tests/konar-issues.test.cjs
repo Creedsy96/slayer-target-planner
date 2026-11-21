@@ -1,8 +1,10 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
 const konar=d.masters.find(m=>m.id==='konar');
 function profile(variant='hellhound'){
-  const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:variant,priority:1}];return p;
+  const p=ownedScenario(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:variant,priority:1}];return p;
 }
 
 test('ordinary hellhounds calculate for strict Maxed at all five reviewed Konar locations',()=>{

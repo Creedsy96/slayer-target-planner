@@ -1,6 +1,8 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),g=require('../.desktop-build/guide.cjs'),d=c.catalogue;
-function profile(names){const p=c.maxedProfile(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true,spellbook:'auto'};for(const name of names){const item=c.itemForLabel(name);assert.ok(item,name);p.bank.manual[item.id]=1;}return p;}
+function profile(names){const p=ownedScenario(d);p.bank=c.emptyBank();p.combat={...c.defaultCombat(),enabled:true,spellbook:'auto'};for(const name of names){const item=c.itemForLabel(name);assert.ok(item,name);p.bank.manual[item.id]=1;}return p;}
 function target(id,location){const record=g.GUIDE.records[id],state={...g.defaultGuideState(),variantId:id,formId:record.defaultForm,location:location||''};const form=location?record.forms.find(form=>g.rankLocations(record,form,state).some(l=>l.name===location)):g.guideForm(record,state);assert.ok(form);return {record,form,state,location:g.selectedLocation(record,form,state)};}
 const best=(p,t,family='melee')=>c.bestOwnedGear(p,t.record,t.form,{...t.state,approach:family+'-tank'},t.location);
 

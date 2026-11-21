@@ -1,3 +1,5 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const c=require('../.desktop-build/core.cjs');
 function fixture(){
@@ -78,7 +80,7 @@ test('ordinary points use a full 1000-task cycle, first four zero, and unstacked
   const wild={...main,id:'krystilia',streakGroup:'wilderness',basePoints:25};l.streaks.wilderness=4;const normal=l.streaks.normal;assert.equal(c.complete(l,wild,p,entry('target')),25);assert.equal(l.streaks.normal,normal);
 });
 test('unknown elite diary point bonuses stay conditional and cannot become recorded actual rewards',()=>{
-  const d=c.catalogue,p=c.maxedProfile(d),m=d.masters.find(m=>m.id==='nieve');p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];p.diaries.western=null;p.assumeUnknown=false;
+  const d=c.catalogue,p=ownedScenario(d),m=d.masters.find(m=>m.id==='nieve');p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];p.diaries.western=null;p.assumeUnknown=false;
   const plan=c.evaluate(d,m,p,[]);assert.ok(plan.unknown.includes('Western elite diary point bonus'));assert.equal(plan.pointsEarned,null);assert.equal(plan.hours,null);
   const scenario={...p,assumeUnknown:true};assert.equal(c.completionReward(m,scenario,10,m.tasks[0]),75);
   assert.throws(()=>c.recordTask(d,scenario,{masterId:m.id,assignmentId:'hellhounds',action:'complete',modifier:'none',modifierPoints:0,combatMinutes:null,kills:null},'2026-11-19T15:00:00Z','id'),/Confirm the elite diary/);
@@ -134,7 +136,7 @@ test('an actual current assignment supplies cape history without inventing a dif
   assert.doesNotThrow(()=>c.validateProfile(d,p));const r=c.simulate(d,c.evaluate(d,main,p,[]),p);assert.ok(Math.abs(r.meanHours*60-27)<1e-8);
 });
 test('Mortimer reward is the actual modifier without streak multipliers, and invalid manual values are rejected',()=>{
-  const d=c.catalogue,p=c.maxedProfile(d),m=d.masters.find(m=>m.id==='mortimer'),entry=m.tasks.find(t=>t.id==='banshees');p.streaks.normal=888;p.streaks.mortimer=999;
+  const d=c.catalogue,p=ownedScenario(d),m=d.masters.find(m=>m.id==='mortimer'),entry=m.tasks.find(t=>t.id==='banshees');p.streaks.normal=888;p.streaks.mortimer=999;
   const l=c.ledger(p);assert.equal(c.complete(l,m,p,entry,'points',10),10);assert.equal(l.streaks.normal,888);assert.equal(l.streaks.mortimer,1000);
   assert.throws(()=>c.completionReward(m,p,1000,entry,'points'),/actual/);assert.throws(()=>c.complete(l,m,p,entry,'points',7),/actual/);
   p.goal.targets=[{assignmentId:'banshees',variantId:d.assignments.find(a=>a.id==='banshees').variantIds[0],priority:1}];p.strategy='none';

@@ -1,7 +1,9 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
 const {buildSync}=require('esbuild'),vm=require('node:vm');
-function profile(){const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];return p;}
+function profile(){const p=ownedScenario(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];return p;}
 const master=d.masters.find(m=>m.id==='nieve');
 const at='2026-11-19T15:00:00.000Z';
 function input(action='complete'){return {masterId:'nieve',assignmentId:'dust devils',action,modifier:'none',modifierPoints:0,kills:150,combatMinutes:30};}

@@ -1,10 +1,12 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm'),{buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),g=require('../.desktop-build/guide.cjs'),d=c.catalogue;
 const text=(kind,items,extra={})=>JSON.stringify({kind,items,exported_at:'2026-11-20T00:00:00Z',...extra});
 const row=(id,quantity=1)=>({id,quantity,name:'ignored; IDs own identity'});
-function profile(names=[]){const p=c.maxedProfile(d);p.bank=c.emptyBank();p.combat=c.defaultCombat();p.combat.enabled=true;for(const name of names){const i=c.itemForLabel(name);assert.ok(i,name);p.bank.manual[i.id]=1;}return p;}
+function profile(names=[]){const p=ownedScenario(d);p.bank=c.emptyBank();p.combat=c.defaultCombat();p.combat.enabled=true;for(const name of names){const i=c.itemForLabel(name);assert.ok(i,name);p.bank.manual[i.id]=1;}return p;}
 function target(id,approach='melee-tank'){
  const record=g.GUIDE.records[id];assert.ok(record,id);const state={...g.defaultGuideState(),variantId:id,formId:record.defaultForm,approach};const form=g.guideForm(record,state);return {record,state,form,location:g.selectedLocation(record,form,state)};
 }
@@ -29,7 +31,7 @@ test('task headgear survives raw-stat pruning in a large owned helmet collection
 });
 test('example item names resolve to usable canonical items rather than broken or alternate minigame versions',()=>{
  for(const [name,id]of [['Fire cape',6570],['Dragon defender',12954],['Slayer helmet (i)',11865]]){
-  const item=c.itemForLabel(name);assert.equal(item.id,id);assert.doesNotMatch(item.version,/broken/i);assert.equal(c.canEquip(item,c.maxedProfile(d)),true);
+  const item=c.itemForLabel(name);assert.equal(item.id,id);assert.doesNotMatch(item.version,/broken/i);assert.equal(c.canEquip(item,ownedScenario(d)),true);
  }
 });
 

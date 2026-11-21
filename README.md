@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.5
+# Slayer Target Planner 3.0.6
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.5 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.6 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Maxed gear assumption in 3.0.6
+
+Maxed now assumes all modelled ordinary-game gear is available, without importing or filling a bank, and uses equipment-based kill times by default. Existing Maxed characters upgrade once while preserving saved data and Slayer purchases. The guide and item comparisons label the assumption; Settings lets you disable it. New custom characters continue to use imported/manual gear. Seasonal, temporary and unobtainable equipment is excluded from the assumed pool. See [the implementation and verification](docs/maxed-gear-assumption.md).
 
 ## Target kill-rate comparison in 3.0.5
 

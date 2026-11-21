@@ -1,3 +1,5 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),cp=require('node:child_process');
 const c=require('../.desktop-build/core.cjs'),g=require('../.desktop-build/guide.cjs'),d=c.catalogue;
 const baseline=[['blue dragons','blue-dragon',105,111],['red dragons','red-dragon',140,152],['metal dragons','steel-dragon',210,246],['bears','black-bear',25,19],['rats','rat',2,1],['spiders','spider',2,1]];
@@ -18,7 +20,7 @@ test('ordinary creature forms are selectable beside the workbook fast-task repre
 });
 
 test('new regular blue dragon target survives character export/import and produces a valid master plan',()=>{
- const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'blue dragons',variantId:'blue-dragon',priority:1}];
+ const p=ownedScenario(d);p.goal.targets=[{assignmentId:'blue dragons',variantId:'blue-dragon',priority:1}];
  const restored=c.importProfiles(d,c.exportProfiles([p],p.id)).profiles[0];assert.deepEqual(restored.goal.targets,p.goal.targets);
  const m=d.masters.find(m=>m.id==='vannaka'),plan=c.evaluate(d,m,restored,[]),row=plan.rows.find(r=>r.id==='blue dragons');
  assert.equal(row.variant.id,'blue-dragon');assert.equal(row.isTarget,true);assert.equal(row.targetFraction,1);assert.ok(plan.chance>0);assert.ok(Number.isFinite(plan.hours));
@@ -36,7 +38,7 @@ test('numbered-stat alternatives retain their skill restrictions and explicit ma
   const v=d.variants.find(v=>v.id===id);assert.ok(v,id);assert.ok(d.assignments.find(a=>a.id===aid).variantIds.includes(id));
   assert.equal(v.requirements.find(r=>r.kind==='skill'&&r.key==='slayer').min,level);
   assert.ok(v.requirements.some(r=>r.kind==='access'));assert.ok(v.masterAssignments.nieve.includes(aid));
-  assert.equal(c.variantEligibility(v,c.maxedProfile(d),d.masters.find(m=>m.id==='krystilia'),aid).eligible,false);
+  assert.equal(c.variantEligibility(v,ownedScenario(d),d.masters.find(m=>m.id==='krystilia'),aid).eligible,false);
  }
 });
 
@@ -47,7 +49,7 @@ test('default forms choose sourced regular spawns rather than quest-only encount
 });
 
 test('adult dragons keep fire protection and restored bosses keep full-fight timing',()=>{
- const p=c.maxedProfile(d);p.combat={...c.defaultCombat(),enabled:true};
+ const p=ownedScenario(d);p.combat={...c.defaultCombat(),enabled:true};
  for(const id of ['blue-dragon','red-dragon','steel-dragon']){
   const s=scenario(id);
   for(const approach of g.APPROACHES){const state={...s.state,approach},plan=g.fightPlan(s.record,s.form,state,g.selectedLocation(s.record,s.form,state));

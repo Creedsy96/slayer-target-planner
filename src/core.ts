@@ -48,6 +48,7 @@ export * from './combat/armour';
 export * from './combat/comparisons';
 export * from './combat/priority';
 export * from './combat/cache';
+export * from './combat/availability';
 
 export * from './state/onboarding';
 export * from './state/account-exports';

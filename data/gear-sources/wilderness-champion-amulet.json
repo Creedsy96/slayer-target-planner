@@ -1,0 +1,19 @@
+{
+  "pageid": 326345,
+  "ns": 0,
+  "title": "Wilderness champion amulet",
+  "revisions": [
+    {
+      "revid": 15275860,
+      "parentid": 15275850,
+      "timestamp": "2026-07-26T14:15:57Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Gone}}\n{{Infobox Item\n|name = Wilderness champion amulet\n|image = [[File:Wilderness champion amulet.png]]\n|release = [[24 August]] [[2017]]\n|update = Remember username, tooltips, and Wilderness Wars!\n|members = No\n|quest = No\n|tradeable = No\n|equipable = Yes\n|stackable = No\n|noteable = No\n|options = Wear, Destroy\n|examine = A very powerful amulet worn by Wilderness Wars champions.\n|value = 1\n|weight = 0.010\n|id = 21433\n}}\n[[File:Wilderness champion amulet detail.png|left|150x150px]]\nThe '''Wilderness champion amulet''' was an amulet worn by champions during the [[Wilderness Wars]] event in 2017. Alongside a unique [[Wilderness cape (Wilderness Wars, Champion)|Wilderness cape]], the champions of each team wore this to identify them amongst their 50 teammates.\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 100\n|aslash = 100\n|acrush = 100\n|amagic = 100\n|arange = 100\n|dstab = 100\n|dslash = 100\n|dcrush = 100\n|dmagic = 100\n|drange = 100\n|str = 50\n|rstr = 0\n|mdmg = 0\n|prayer = 50\n|slot = neck\n|image = [[File:Wilderness champion amulet equipped.png]]\n}}\n\n==Trivia==\n*This is one of the rarest items to have existed in ''Old School RuneScape'', having only ever been owned by 5 players.\n\n{{Wilderness Wars}}"
+        }
+      }
+    }
+  ]
+}

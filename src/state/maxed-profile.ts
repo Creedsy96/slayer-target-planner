@@ -1,14 +1,17 @@
 import type {Catalogue,Profile,Requirement} from '../domain/types';
+import {defaultCombat} from './bank';
 import {knownAccessKeys,relevantQuests} from '../rules/access';
 import {newProfile,validateProfile,clone,MAXED_PROFILE_ID,MAX_CUSTOM_PROFILES,customProfileCount} from './profiles';
 
 const skills='attack strength defence ranged prayer magic runecraft construction hitpoints agility herblore thieving crafting fletching slayer hunter mining smithing fishing cooking firemaking woodcutting farming sailing'.split(' ');
+const gearNote='All ordinary-game gear is assumed available for this scenario. Actual bank contents are preserved separately; change the assumption in Settings.';
 const rewardNote='Slayer-point reward purchases start off. Enable purchased creature unlocks in Account & access as needed.';
 
 export function maxedProfile(data:Catalogue):Profile{
   const p=newProfile(data,'Maxed');
   p.id=MAXED_PROFILE_ID;
   p.maxedPresetVersion=1;
+  p.assumeAllGear=true;p.combat={...defaultCombat(),enabled:true};
   p.levels=Object.fromEntries(skills.map(key=>[key,99]));p.levels.combat=126;
   p.quests=Object.fromEntries(relevantQuests(data).map(key=>[key,2]));
   p.unlocks=Object.fromEntries(Object.keys(data.unlocks).map(key=>[key,0]));
@@ -28,7 +31,7 @@ export function maxedProfile(data:Catalogue):Profile{
     'Maxed planning preset: all skills 99, combat 126, all supported quests/diaries complete and all modelled areas/variants accessible. These are scenario settings, not imported account facts.',
     'Quest points: 343 (Wiki snapshot checked 19 November 2026). Stop the Wyvern is off to retain wyvern assignments. Mortimer progression is 50 tasks, unlocking all modelled offer options.',
     'Points, reserves, streaks and combat rates are editable planning defaults. Master/variant mappings and uncertain combat/location models still apply.',
-    rewardNote,
+    rewardNote,gearNote,
   ];
   return validateProfile(data,p);
 }
@@ -48,5 +51,10 @@ export function withDefaultMaxedProfile(data:Catalogue,profiles:Profile[]=[],act
   const builtin=next.find(p=>p.id===MAXED_PROFILE_ID);
   if(builtin&&!Object.hasOwn(builtin.quests,'A Kingdom Divided'))next=next.map(p=>p===builtin?{...clone(p),quests:{...p.quests,'A Kingdom Divided':2}}:p);
   if(builtin){const missing=relevantQuests(data).filter(key=>!Object.hasOwn(builtin.quests,key));if(missing.length)next=next.map(p=>p.id===builtin.id?{...p,quests:{...p.quests,...Object.fromEntries(missing.map(key=>[key,2]))}}:p);}
+  const gearPreset=next.find(p=>p.id===MAXED_PROFILE_ID);
+  if(gearPreset&&gearPreset.assumeAllGear===undefined){
+    const updated=clone(gearPreset);updated.assumeAllGear=true;updated.combat={...defaultCombat(),...updated.combat,enabled:true};updated.notes.push(gearNote);
+    next=next.map(p=>p===gearPreset?updated:p);
+  }
   return {profiles:next,activeId:next.some(p=>p.id===activeId)?activeId:next[0].id};
 }

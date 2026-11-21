@@ -1,3 +1,5 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),cp=require('node:child_process');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
@@ -43,7 +45,7 @@ test('source rules cover every Mortimer task and overlay no other masters or eli
 });
 
 test('Maxed Mortimer no longer has a speculative modifier-distribution blocker',()=>{
-  const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'crawling hands',variantId:d.assignments.find(a=>a.id==='crawling hands').variantIds[0],priority:1}];
+  const p=ownedScenario(d);p.goal.targets=[{assignmentId:'crawling hands',variantId:d.assignments.find(a=>a.id==='crawling hands').variantIds[0],priority:1}];
   const plan=c.evaluate(d,d.masters.find(m=>m.id==='mortimer'),p,[]);
   assert.equal(plan.reason,'');assert.ok(plan.chance>0);assert.deepEqual(plan.unknown,[]);
 });
@@ -55,7 +57,7 @@ test('Mortimer rules reproduce from pinned source rows without workbook fallback
 });
 
 test('quantity modifiers are flat kill adjustments before bracelet effects, including extensions',()=>{
-  const p=c.maxedProfile(d),m=d.masters.find(m=>m.id==='mortimer');
+  const p=ownedScenario(d),m=d.masters.find(m=>m.id==='mortimer');
   const hands=m.tasks.find(t=>t.id==='crawling hands'),method=c.defaultMethod(d,p,hands.id);
   assert.equal(c.sampleQuantity(hands,method,()=>0,-30),5);
   assert.equal(c.sampleQuantity(hands,method,()=>.999,-15),35);
@@ -65,7 +67,7 @@ test('quantity modifiers are flat kill adjustments before bracelet effects, incl
 });
 
 test('manual Mortimer tasks and offers cannot simulate a missing modifier',()=>{
-  const p=c.maxedProfile(d),master=d.masters.find(m=>m.id==='mortimer');
+  const p=ownedScenario(d),master=d.masters.find(m=>m.id==='mortimer');
   p.goal.targets=[{assignmentId:'crawling hands',variantId:d.assignments.find(a=>a.id==='crawling hands').variantIds[0],priority:1}];
   p.current={kind:'task',masterId:master.id,assignmentId:'crawling hands',remaining:10,modifier:'none'};
   const plan=c.evaluate(d,master,p,[]);assert.throws(()=>c.simulate(d,plan,p),/Every Mortimer task has a modifier/);

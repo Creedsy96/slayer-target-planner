@@ -1,3 +1,4 @@
+import {availableItems} from './availability';
 import {ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
 import {fightPlan} from '../guide/model';
 import {fallbackArmour,compareLoadoutSustain,type ArmourPriority,type ArmourContext} from './armour';
@@ -6,7 +7,7 @@ import type {Profile} from '../domain/types';
 import type {GuideRecord,GuideForm,GuideState,LocationPlan,GearSet,Family} from '../guide/types';
 import type {CombatResult,CombatStyle,EquipmentItem,EquipmentSlot,Loadout} from './types';
 import {EQUIPMENT_SLOTS} from './types';
-import {ownedItems,canEquip,itemForLabel,equipmentItem,slotNames} from './equipment';
+import {canEquip,itemForLabel,equipmentItem,slotNames} from './equipment';
 import {calculateCombat,combatStyles,emptyCombat,familyOf,isWildernessCombat,candidateSpells} from './calculate';
 import {encounter} from '../guide/encounters';
 import {defaultCombat} from '../state/bank';
@@ -63,8 +64,8 @@ export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:
  const result=search(p,record,form,state,location,mode);cache.put(signature,key,result);cacheObserver?.(signature,key,structuredClone(result));return structuredClone(result);
 }
 function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
- if(!p.bank)return emptyCombat('Import bank/equipment files or add your owned gear first.');
- const config=p.combat??defaultCombat(),owned=ownedItems(p).filter(i=>canEquip(i,p)),required=requirementSlots(record,state,location,p),m=encounter(record);
+ if(!p.bank&&!p.assumeAllGear)return emptyCombat('Import bank/equipment files or add your owned gear first.');
+ const config=p.combat??defaultCombat(),owned=availableItems(p).filter(i=>canEquip(i,p)),required=requirementSlots(record,state,location,p),m=encounter(record);
  const forced:Loadout={};
  for(const [slot,accept]of Object.entries(required)){
   if(slot==='shield'&&record.id==='lobstrosity')continue;
@@ -122,7 +123,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  if(best.armourFallback?.length)result.notes.push('Armour fallback ('+(mode==='prayer'?'prayer bonus first':'defence against listed attacks first')+'): '+best.armourFallback.map(slot=>slotNames[slot]+' / '+equipmentItem(result.loadout[slot]!)!.name).join('; ')+'. These slots were not DPS upgrades. Displayed DPS and kill time include the selected armour and any accuracy penalties.');
  const emptyArmour=(['body','legs'] as const).filter(slot=>!result.loadout[slot]);
  if(emptyArmour.length)result.notes.push('No compatible wearable owned armour is available for: '+emptyArmour.map(slot=>slotNames[slot]).join(', ')+'. Check bank quantities, levels and unreviewed item requirements.');
- result.notes.push('Best found by a bounded search: weapon/spell screening, full-set seeds and two slot passes for four finalists per style. Required protection and compatible ammunition are preserved. Not a global optimum proof.','Owned quantities indicate availability. Replenishable runes, ammunition and charges are assumed; item quest/diary unlocks need review.');
+ result.notes.push('Best found by a bounded search: weapon/spell screening, full-set seeds and two slot passes for four finalists per style. Required protection and compatible ammunition are preserved. Not a global optimum proof.',p.assumeAllGear?'All ordinary-game equipment is assumed available for this scenario; this is not an imported bank. Runes, ammunition and charges are assumed replenishable.':'Owned quantities indicate availability. Replenishable runes, ammunition and charges are assumed; item quest/diary unlocks need review.');
  if(config.allowUnknownRequirements)result.notes.push('Unreviewed equipment skill requirements accepted by your setting.');
  if(m.boss||m.hybrid)result.notes.push('Encounter/phase DPS only; configured hunter timing is retained.');
  return result;

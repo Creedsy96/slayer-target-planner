@@ -56,6 +56,7 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.dataVersion!==data.version)throw Error(`Profile uses data ${p.dataVersion}. This app uses ${data.version}; review and explicitly rebase a copy before import.`);
   if(p.areaDataVersion!==undefined&&p.areaDataVersion!==AREA_VERSION&&p.areaDataVersion!=='2026-11-19.1')throw Error(`Profile uses area rules ${p.areaDataVersion}. This app uses ${AREA_VERSION}; review and explicitly rebase a copy before import.`);
   p.areaDataVersion=AREA_VERSION;
+  if(p.assumeAllGear!==undefined&&typeof p.assumeAllGear!=='boolean')throw Error('Invalid all-gear assumption.');
   if(p.maxedPresetVersion!==undefined&&p.maxedPresetVersion!==1)throw Error('Unsupported Maxed preset version.');
   const numeric=(n:unknown,min:number,max:number,label:string,nullable=false)=>{if(nullable&&n===null)return;if(typeof n!=='number'||!Number.isFinite(n)||n<min||n>max)throw Error(`${label} must be between ${min} and ${max}.`);};
   const ids=new Set(data.assignments.map(a=>a.id));

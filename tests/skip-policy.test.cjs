@@ -1,3 +1,5 @@
+// These fixtures exercise recorded equipment/manual timing rather than the all-gear preset.
+function ownedScenario(data){const p=c.maxedProfile(data);p.assumeAllGear=false;p.combat.enabled=false;return p;}
 const test=require('node:test'),assert=require('node:assert/strict');
 const {buildSync}=require('esbuild');
 const c=require('../.desktop-build/core.cjs'),d=c.catalogue;
@@ -5,7 +7,7 @@ const code=buildSync({entryPoints:['src/ui/skip-policy.ts'],bundle:true,write:fa
 const ui={exports:{}};new Function('module','exports',code)(ui,ui.exports);
 const master=d.masters.find(m=>m.id==='nieve');
 function fixture(){
-  const p=c.maxedProfile(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];
+  const p=ownedScenario(d);p.goal.targets=[{assignmentId:'hellhounds',variantId:'hellhound',priority:1}];
   p.strategy='sustainable';return {p,plan:c.evaluate(d,master,p,[])};
 }
 test('selected hunt exposes every full skip and its partial budget boundary',()=>{
