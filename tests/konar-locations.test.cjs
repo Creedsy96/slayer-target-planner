@@ -126,6 +126,18 @@ test('non-target tasks use a legal method at each location; no global fast varia
  const dragons=plan.rows.find(r=>r.id==='metal dragons').locationOutcomes;
  assert.equal(dragons.find(o=>o.location==='Lithkren Vault').row.variant.id,'adamant-dragon');
 });
+test('the unlocked mixed boss pool retains completion timing without enabling specific boss targeting',()=>{
+ const p=profile('hellhounds','hellhound');p.unlocks['like-a-boss']=1;
+ const plan=c.evaluate(d,m,p,[]),row=plan.rows.find(r=>r.id==='boss');
+ assert.equal(plan.reason,'');assert.equal(row.reason,'');assert.equal(row.methodReason,'');assert.equal(row.locationOutcomes,undefined);assert.ok(row.minutes>0);
+ p.goal.targets=[{assignmentId:'boss',variantId:'boss-pool',priority:1}];assert.equal(c.evaluate(d,m,p,[]).chance,null);
+});
+test('local fallback summaries describe the legal outcomes when a saved global method is outside Konar’s pool',()=>{
+ const p=profile('hellhounds','hellhound');p.methods['black demons']={...c.defaultMethod(d,p,'black demons'),variantId:'demonic-gorilla'};
+ const plan=c.evaluate(d,m,p,[]),row=plan.rows.find(r=>r.id==='black demons');
+ assert.equal(plan.reason,'');assert.equal(row.methodReason,'');assert.ok(row.locationOutcomes.every(o=>o.row.variant.id==='black-demon'));
+ assert.equal(p.methods['black demons'].variantId,'demonic-gorilla');
+});
 test('location-specific timing distinguishes the Dust devil barrage pod from the Smoke Dungeon',()=>{
  const p=profile('dust devils','dust-devil');p.methods['dust devils::dust-devil']={...c.defaultMethod(d,p,'dust devils'),variantId:'dust-devil'};
  const row=c.prepareRows(d,{...m,tasks:m.tasks.filter(e=>e.id==='dust devils')},p)[0];

@@ -40,7 +40,7 @@ export function applyKonarLocations(data:Catalogue):Catalogue{
   return {...data,masters:data.masters.map(m=>m.id==='konar'?{...m,tasks:m.tasks.map(e=>({...e,locations:KONAR_AUDIT[e.id]?.locations||e.locations}))}:m),
     sources:[...data.sources,raw.source],
     variants:data.variants.map(v=>{
-      const assignments=v.assignmentIds.filter(id=>KONAR_AUDIT[id]?.variants.some(row=>row.id===v.id&&row.locations.length));
+      const assignments=v.assignmentIds.filter(id=>KONAR_AUDIT[id]?.mode==='specific-boss'||KONAR_AUDIT[id]?.variants.some(row=>row.id===v.id&&row.locations.length));
       const masterAssignments={...(v.masterAssignments||Object.fromEntries(data.masters.map(m=>[m.id,v.assignmentIds.filter(id=>m.tasks.some(e=>e.id===id))]))),konar:assignments};
       return {...v,masterAssignments,masterLocations:{...v.masterLocations,konar:[...new Set(assignments.flatMap(id=>KONAR_AUDIT[id].variants.find(row=>row.id===v.id)!.locations))]}};
     })};

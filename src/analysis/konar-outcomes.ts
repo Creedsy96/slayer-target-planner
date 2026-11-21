@@ -39,7 +39,8 @@ export function addKonarOutcomes(data:Catalogue,m:Master,p:Profile,rows:Row[],pr
     const fraction=outcomes.reduce((s,o)=>s+(o.row.isTarget?o.weight:0),0),representative=matches[0]?.row||(parent.isTarget?parent:outcomes[0]?.row)||parent;
     const timed=matches.length?matches:outcomes,total=timed.reduce((s,o)=>s+o.weight,0);
     const mean=(key:'minutes'|'meanKills'|'seconds')=>total?timed.reduce((s,o)=>s+o.weight*o.row[key],0)/total:parent[key];
-    return {...parent,variant:representative.variant,method:representative.method,methodReason:matches.length?'':parent.methodReason,
+    const methodReason=parent.isTarget?(matches.length?'':parent.methodReason):outcomes.filter(o=>o.row.methodReason).map(o=>o.location+': '+o.row.methodReason).join('; ');
+    return {...parent,variant:representative.variant,method:representative.method,methodReason,
       targetFraction:fraction,minutes:mean('minutes'),seconds:mean('seconds'),meanKills:mean('meanKills'),locationOutcomes:outcomes,locationExcluded:pool.excluded,
       reason:pool.locations.length?parent.reason:'No accessible assignment location',unknown:[...new Set([...pool.unknown,...outcomes.flatMap(o=>o.row.unknown),...(custom!==null?['Custom Konar location probability']:[])])]};
   });
