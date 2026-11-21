@@ -178,3 +178,5 @@ details>summary{transition:color .15s}details>summary:hover{color:var(--gold)}.p
 .tutorial-highlight .skip-list{max-height:340px;overflow:auto;padding:8px;display:grid}.tutorial-highlight .skip-list li[data-task="waterfiends"]{order:-1;border:2px solid var(--gold);border-radius:8px;padding:12px;background:var(--selected)}
 
 .target-extensions{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.target-extensions .fact-card{margin:.5rem 0;width:100%}.extension-advice{margin-top:1rem;border-top:1px solid var(--line);padding-top:1rem}.extension-comparison+.extension-comparison{border-top:1px solid var(--line);margin-top:1rem;padding-top:.5rem}.target-kill-rate small{display:block;max-width:13rem;line-height:1.5;margin-top:.3rem}
+
+.target-unlock-warning{padding:.6rem 0;color:var(--gold)}.target-unlock-warning>strong{display:block;font-size:.8rem;letter-spacing:.02em}.target-unlock-warning p{margin:.3rem 0;line-height:1.5}.target-unlock-warning .text-button{margin-top:.2rem;text-align:left}td .target-unlock-warning{min-width:12rem;max-width:20rem;font-size:.8rem}

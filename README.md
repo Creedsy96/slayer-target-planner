@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.10
+# Slayer Target Planner 3.0.11
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.10 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.11 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Available masters and unlock warnings in 3.0.11
+
+Masters that can offer a selected creature after a purchased Slayer unlock stay visible and selectable, even when unavailable masters are hidden. An upfront **Requires Basilocked** (or the relevant reward) warning opens and focuses its setting. Locked target calculations stay pending until ownership is recorded; rewards are never enabled automatically. See [availability rules and verification](docs/master-unlock-warnings.md).
 
 ## Creature icon alignment in 3.0.10
 

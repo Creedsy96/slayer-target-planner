@@ -28,6 +28,7 @@ export * from './state/task-extensions';
 export * from './analysis/simulation';
 export * from './analysis/explanations';
 export * from './analysis/plan-issues';
+export * from './analysis/target-unlocks';
 export * from './analysis/skip-policy';
 
 export * from './analysis/hunt-search';
