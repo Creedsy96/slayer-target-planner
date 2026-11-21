@@ -43,7 +43,7 @@ test('required protection and two-handed conflicts are explained rather than sho
 test('incompatible ammunition and other combat families are excluded from fixed-slot comparisons',()=>{
  const t=setup(['Magic shortbow (i)','Amethyst arrows','Adamant javelin','Abyssal whip'],'hellhound','ranged-tank'),r=best(t);
  const ammo=c.compareOwnedSlot(t.p,t.state,r,'ammo').rows.find(row=>row.id===id('Adamant javelin'));assert.equal(ammo.dps,null);assert.match(ammo.reason,/incompatible/);
- const whip=c.compareOwnedSlot(t.p,t.state,r,'weapon').rows.find(row=>row.id===id('Abyssal whip'));assert.equal(whip.dps,null);
+ const whip=c.compareOwnedSlot(t.p,t.state,r,'weapon').rows.find(row=>row.id===id('Abyssal whip'));assert.equal(whip,undefined);
 });
 
 test('burst comparisons retain single-target and pod DPS and disclose the assumption',()=>{

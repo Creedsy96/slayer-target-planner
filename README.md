@@ -1,12 +1,16 @@
-# Slayer Target Planner 3.0.18
+# Slayer Target Planner 3.0.19
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.18 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.19 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Weapon comparisons by style in 3.0.19
+
+Each setup now lists weapon alternatives from its own combat style. Generic manual casting no longer puts swords, bows or darts in magic lists, and incidental staff-bashing attacks do not put plain staves in melee lists. Genuine hybrids remain in applicable styles. Automatic setup selection uses the same filter; crossbow/bolt and blowpipe/dart combinations are preserved. [Behaviour and verification](docs/weapon-family-filter.md).
 
 ## Ranged weapon and ammo accuracy in 3.0.18
 

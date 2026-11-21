@@ -1,3 +1,4 @@
+import {weaponSupportsFamily,weaponStylesForFamily} from './weapon-family';
 import {availableItems} from './availability';
 import {isBlowpipe,isCrossbow,rangedWeaponCandidates,rangedAmmoCandidates,usableAmmo} from './ranged';
 export {usableAmmo} from './ranged';
@@ -9,7 +10,7 @@ import type {GuideRecord,GuideForm,GuideState,LocationPlan,GearSet,Family} from 
 import type {CombatResult,CombatStyle,EquipmentItem,EquipmentSlot,Loadout} from './types';
 import {EQUIPMENT_SLOTS} from './types';
 import {canEquip,itemForLabel,equipmentItem,slotNames} from './equipment';
-import {calculateCombat,combatStyles,emptyCombat,familyOf,isWildernessCombat,candidateSpells} from './calculate';
+import {calculateCombat,emptyCombat,isWildernessCombat,candidateSpells} from './calculate';
 import {encounter} from '../guide/encounters';
 import {defaultCombat} from '../state/bank';
 import art from '../ui/item-art.json';
@@ -81,7 +82,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
  for(const family of requested?[requested]:allowed){
   if(!allowed.includes(family as 'melee'|'ranged'|'magic'))continue;
   const context:ArmourContext={family:family as Family,priority:mode,form};
-  const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&combatStyles(i.id).some(s=>familyOf(s)===family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
+  const candidates=owned.filter(i=>i.slot==='weapon'&&(!required.weapon||required.weapon(i))&&(!required.shield||!i.isTwoHanded)&&weaponSupportsFamily(i,family)).sort((a,b)=>(score(b,family)+320)/(b.speed||4)-(score(a,family)+320)/(a.speed||4));
   const retained=family==='ranged'?rangedWeaponCandidates(candidates):candidates;
   const specialists=retained.filter(i=>isCrossbow(i)||isBlowpipe(i)||/Powered/i.test(i.category)||/Twisted bow|faerdhinen|Scythe|fang|Arclight|Emberlight|Darklight|Silverlight|Scorching bow|Purging staff|Dragon hunter|Keris|Inquisitor.s mace|rat|Bone (mace|staff|shortbow)|leaf-bladed|obsidian|toktz/i.test(i.name)||m.weapon?.some(n=>n.toLowerCase()===i.name.toLowerCase()));
   const weapons=[...new Map([...retained.slice(0,12),...specialists].map(i=>[i.id,i])).values()];
@@ -94,7 +95,7 @@ function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,loc
     if(slot==='weapon'||forced[slot]||slot==='shield'&&(weapon.isTwoHanded||record.id==='lobstrosity'))continue;
     const items=choices(slot);if(items.length)loadout[slot]=items[0].id;
    }
-   const styles=combatStyles(weapon.id).filter(s=>familyOf(s)===family&&!/defensive|longrange/i.test(s.stance));
+   const styles=weaponStylesForFamily(weapon,family).filter(s=>!/defensive|longrange/i.test(s.stance));
    const spells=family==='magic'&&!/Powered/i.test(weapon.category)?candidateSpells(p):[null];
    let seed=emptyCombat('No damaging style for this weapon.');
    const ammo=(isCrossbow(weapon)||isBlowpipe(weapon))?choices('ammo'):[undefined];

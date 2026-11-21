@@ -1,10 +1,11 @@
+import {weaponSupportsFamily,weaponStylesForFamily} from './weapon-family';
 import type {Profile} from '../domain/types';
 import type {GuideState} from '../guide/types';
 import type {CombatResult,EquipmentItem,EquipmentSlot} from './types';
 import {GUIDE,guideForm,selectedLocation} from '../guide/model';
 import {availableItems} from './availability';
 import {ownedItems,equipmentItem,canEquip,itemRequirements} from './equipment';
-import {calculateCombat,combatStyles,familyOf,isWildernessCombat,candidateSpells} from './calculate';
+import {calculateCombat,isWildernessCombat,candidateSpells} from './calculate';
 import {requirementSlots,usableAmmo} from './optimise';
 import {defenceScore} from './armour';
 import {applyAreaDamage} from './area-damage';
@@ -33,7 +34,7 @@ export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,
   if(removeShield)delete loadout.shield;
   if(weapon?.isTwoHanded&&loadout.shield)return {dps:null,aggregateDps:null,reason:'Two-handed weapon conflicts with the equipped off-hand. Other slots are held fixed.'};
   if(ammo&&weapon&&!usableAmmo(weapon,ammo,result.family))return {dps:null,aggregateDps:null,reason:'Ammunition is incompatible with this weapon/style.'};
-  const styles=slot==='weapon'?combatStyles(item.id).filter(s=>familyOf(s)===result.family&&!/defensive|longrange/i.test(s.stance)):[result.style];
+  const styles=slot==='weapon'?weaponStylesForFamily(item,result.family).filter(s=>!/defensive|longrange/i.test(s.stance)):[result.style];
   const spells=slot==='weapon'&&result.family==='magic'&&!/Powered/i.test(item.category)?candidateSpells(p):[slot==='weapon'?null:result.spell];
   let best:CombatResult|undefined,issue='No attack style in the selected combat family.';
   for(const style of styles)for(const spell of spells){
@@ -44,10 +45,10 @@ export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,
   return best?{dps:best.dps,aggregateDps:best.aggregateDps??best.dps,reason:slot==='weapon'?best.style.type+' / '+best.style.stance+(best.spell?' / '+best.spell:'')+'. '+(rangedWeapon?(ammo?'With '+ammo.name+'. ':'No external ammunition needed. ')+(removeShield?'Optional off-hand removed for this two-handed weapon. ':''):'')+'Best supported attack/spell within '+result.family+'; remaining gear held fixed.':'Other slots, attack style and spell held fixed.'}:{dps:null,aggregateDps:null,reason:issue};
  };
  const actualOwned=new Set(ownedItems(p).map(item=>item.id));
- const available=availableItems(p),usable=available.filter(item=>canEquip(item,p));
+ const available=availableItems(p).filter(item=>slot!=='weapon'||weaponSupportsFamily(item,result.family)),usable=availableItems(p).filter(item=>canEquip(item,p));
  const currentWeapon=equipmentItem(result.loadout.weapon||0);
  const owned=rangedWeapon?rangedWeaponCandidates(available.filter(item=>item.slot==='weapon'),item=>canEquip(item,p)):slot==='ammo'&&isBlowpipe(currentWeapon)?available.filter(item=>usableAmmo(currentWeapon,item,'ranged')):available.filter(item=>item.slot===slot),selectedItem=equipmentItem(selectedId);
- const items=selectedItem&&!owned.some(item=>item.id===selectedId)?[selectedItem,...owned]:owned;
+ const items=selectedItem&&(slot!=='weapon'||weaponSupportsFamily(selectedItem,result.family))&&!owned.some(item=>item.id===selectedId)?[selectedItem,...owned]:owned;
  const rows=items.flatMap(item=>{
   const options:(number|undefined)[]=rangedWeapon?rangedAmmoCandidates(usable,item).map(ammo=>ammo.id):[undefined];
   if(rangedWeapon&&item.id===selectedId&&result.loadout.ammo&&!options.includes(result.loadout.ammo))options.unshift(result.loadout.ammo);
@@ -60,5 +61,5 @@ export function compareOwnedSlot(p:Profile,state:GuideState,result:CombatResult,
   const bestAlternative=rows.filter(row=>!row.selected&&row.dps!==null).sort((a,b)=>(b.aggregateDps??0)-(a.aggregateDps??0))[0];
   reason+=!bestAlternative?' No other available item can be used in this fixed setup.':(bestAlternative.aggregateDps??0)>(result.aggregateDps??result.dps)+1e-10?' A '+(rangedWeapon?'weapon/ammo combination':'one-slot swap')+' with '+bestAlternative.name+' scores higher; the bounded search missed this alternative.':' Best usable alternative: '+bestAlternative.name+' ('+bestAlternative.dps!.toFixed(3)+' single-target DPS).';
  }
- return {slot,selectedId,reason,assumed:p.assumeAllGear===true,context:(p.assumeAllGear?'All gear assumed · ':'')+record.name+' / '+form.label+' · '+(location?.name||'default location'),notes:'DPS is the whole setup with this item, not damage attributable to the item alone. Defence relevance averages bonuses against the listed NPC attacks ('+(form['attack style']||'unknown: all five')+'); it is not a damage-taken model. Alternatives are available gear in this slot; assumed gear is not a bank-ownership claim. Quest/diary item unlocks and charges still need review. Other gear is held fixed; ranged weapons use compatible available ammunition and remove an optional off-hand for two-handed weapons. The best usable ordinary Rune-or-lower crossbow is retained alongside Dragon/higher and distinct ammunition families. Crossbows evaluate their strongest non-enchanted bolt by Ranged strength plus every available compatible enchanted bolt; blowpipes load their strongest compatible unpoisoned dart. Weapon swaps try supported attacks/spells within the chosen combat family. A complete rebuild may produce a different ranking.',rows};
+ return {slot,selectedId,reason,assumed:p.assumeAllGear===true,context:(p.assumeAllGear?'All gear assumed · ':'')+record.name+' / '+form.label+' · '+(location?.name||'default location'),notes:'DPS is the whole setup with this item, not damage attributable to the item alone. Defence relevance averages bonuses against the listed NPC attacks ('+(form['attack style']||'unknown: all five')+'); it is not a damage-taken model. Weapon alternatives are filtered to the selected combat family; generic manual casting and incidental staff bash attacks are excluded. Alternatives are available gear in this slot; assumed gear is not a bank-ownership claim. Quest/diary item unlocks and charges still need review. Other gear is held fixed; ranged weapons use compatible available ammunition and remove an optional off-hand for two-handed weapons. The best usable ordinary Rune-or-lower crossbow is retained alongside Dragon/higher and distinct ammunition families. Crossbows evaluate their strongest non-enchanted bolt by Ranged strength plus every available compatible enchanted bolt; blowpipes load their strongest compatible unpoisoned dart. Weapon swaps try supported attacks/spells within the chosen combat family. A complete rebuild may produce a different ranking.',rows};
 }

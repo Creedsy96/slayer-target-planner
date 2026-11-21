@@ -1,0 +1,11 @@
+# Weapon comparisons by combat style — 3.0.19
+
+Weapon inspection now filters alternatives to the selected setup's combat family before calculating DPS. Ranged shows ranged weapons, melee shows melee weapons, and magic shows magic weapons. The owned-bank and Maxed all-gear paths share the same filter. An unrelated weapon is omitted instead of appearing as an unavailable row; genuine same-family requirements, shield conflicts and ammunition warnings remain visible.
+
+The retained engine exposes a generic Manual Cast action for all weapons. That action does not make a sword, bow or dart a magic weapon. Plain and powered staves/books do not enter the melee list through incidental bash attacks. Genuine native hybrids remain eligible for their applicable styles: Bladed Staff weapons can appear in melee/magic, and Salamanders retain their native styles. The shown baseline is retained only if it belongs to the selected family.
+
+The bounded automatic equipment search uses the same classifier and native styles. This prevents a ranged dart from being chosen as a magic setup through generic manual casting. Direct engine calculation capabilities are unchanged; the recommendation search does not assume manual-casting rotations. Crossbow tier collapsing, compatible bolt rows, loaded blowpipe darts, required protection, ownership and equip-level checks retain their existing behaviour. Character and bank data are unchanged.
+
+Verification: production build and strict TypeScript passed; all 402 JavaScript tests passed. Five regressions cover ordinary family classification, generic manual casting, incidental staff bash, genuine hybrids, all three owned comparison lists, crossbow bolt rows, automatic setup selection and the all-gear path. The old comparison regression now requires the unrelated whip to be absent from ranged, while its ammunition incompatibility assertion remains.
+
+A synthetic 21-item localhost bank was checked in the browser. Ranged inspection contained only its ranged weapon/bolt rows; melee contained Abyssal whip and Blue Moon spear; magic contained Ancient staff, Trident of the Seas and Blue Moon spear. The hybrid's unreviewed equip requirement stayed explicit. No native desktop app or real character files were altered. Distribution/source parity and ZIP integrity are checked during release packaging.
