@@ -1,0 +1,19 @@
+{
+  "pageid": 108970,
+  "ns": 0,
+  "title": "Ungael",
+  "revisions": [
+    {
+      "revid": 15023397,
+      "parentid": 14843790,
+      "timestamp": "2025-11-12T02:23:11Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Ungael\n|image = [[File:Ungael.png|300px]]\n|release = [[4 January]] [[2018]]\n|update = Dragon Slayer II\n|members = Yes\n|location = [[Northern Ocean]], [[Fremennik Province]]\n|race = [[Vorkath]]\n|teleport = [[Torfinn]]\n|music = {{*}} [[The Desolate Isle]]<br/> {{*}} [[On Thin Ice]]\n|map = {{Map|name=Ungael|x=2272|y=4064|zoom=2}}\n|type = island\n|leagueRegion = Fremennik\n}}\n'''Ungael''' is an island located in the northernmost region of the [[Northern Ocean]]. An abandoned [[dragonkin]] fortress and [[Ungael laboratory|laboratory]] can be found here. It can be reached by boarding [[Torfinn]]'s [[Fremennik Boat (Torfinn)|boat]] directly north of the [[Rellekka]] marketplace.\n\n[[File:Ungael laboratory.png|thumb|left|The laboratory underneath Ungael.]]\nSometime during the [[Dragonkin Conflicts]], it was used as the base of operations for [[Zorgoth]]'s experiments, which took place in the [[Ungael laboratory|laboratory]] underneath the island. Here, he brought spores and fungi from [[Lithkren]] to Ungael to use for his experiments. It is here in which Zorgoth created [[Vorkath]], and left it there in order to guard the route to the laboratory from invading humans.\n\n[[Vorkath]] remains on the island after over 2,000 years, and is fought during [[Dragon Slayer II]] in order to retrieve a [[dragon key piece]] hidden by [[Robert the Strong]] in the laboratory. After the quest, Vorkath can be fought again as a stronger boss.\n\nNear the stone table in the north-western corner of the island lies a single glass of [[dragon bitter]].\n{{Dragon Slayer II}}\n[[Category:Fremennik Province]]"
+        }
+      }
+    }
+  ]
+}

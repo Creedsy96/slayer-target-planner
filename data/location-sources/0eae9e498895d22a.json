@@ -1,0 +1,19 @@
+{
+  "pageid": 17758,
+  "ns": 0,
+  "title": "Jolly Boar Inn",
+  "revisions": [
+    {
+      "revid": 15375629,
+      "parentid": 15365897,
+      "timestamp": "2026-10-19T03:37:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Shop\n|name = Jolly Boar Inn\n|image = [[File:Jolly Boar Inn.png|300px]]\n|release = [[4 January]] [[2001]]\n|update = Runescape beta is now online!\n|members = No\n|icon = [[File:Pub icon.png]]\n|location = North-east of [[Varrock]]\n|owner = [[Bartender (Jolly Boar Inn)|Bartender]]\n|special = [[Beer]]\n|map = {{Map|mtype=polygon|3275,3507|3275,3492|3272,3492|3272,3486|3287,3486|3287,3497|3289,3497|3289,3503|3287,3503|3287,3507|bucket=yes}}\n|leagueRegion = Misthalin\n}}\n[[File:Sign (Jolly Boar Inn).png|left|100px]]\nThe '''Jolly Boar Inn''' is a two-story [[List of bars and pubs|bar]] and inn located north-east of [[Varrock]], on the southern border of the [[Wilderness]]. It contains a [[range]] and a spawn point for [[thread]]. The [[Bartender (Jolly Boar Inn)|bartender]] only sells (ordinary) [[beer]] for 2 [[coins]] each.\n\nThe bar contains [[Johnathon]], whom players must speak to in the [[Family Crest]] quest. A [[man]] upstairs and a [[woman]] downstairs, though they both walk normally, act drunk when you talk to them, conversing with a player about how there are two of them and mumbling about \"giant hairy [[cabbages]]\". A [[Black Knight]] and a [[thief]] also wander around the inn, but the knight is not aggressive, unlike those at the [[Black Knights' Fortress (location)|Black Knights' Fortress]]. A quite-unfriendly [[Cook (Jolly Boar Inn)|cook]] resides in the kitchen of the inn, cooking something on the range. \n\n==Stock==\n{{StoreTableHead|hidebuy=y|hidestock=y|hiderestock=y|hidecaption=y}}\n{{StoreLine|name=Beer|stock=inf|sell=2|buy=N/A}}\n{{StoreTableBottom}}\n\n==Trivia==\n* In the early days of ''[[RuneScape 2]]'', this bar was the location of [[Dr Harlow]], an important character in the [[Vampyre Slayer]] quest. He was moved to the [[Blue Moon Inn]] because newer players had a hard time finding the bar and would often wander into the nearby Wilderness.\n* When asking the [[Bartender (Jolly Boar Inn)|bartender]] for gossip, he will say that the [[Bartender (Blue Moon Inn)|bartender]] of the [[Blue Moon Inn]] is crazy because he thinks ''Old School RuneScape'' is in a computer game, referencing that bartender's dialogue when you ask him how to make money.\n\n{{Alfred Grimhand's Barcrawl}}\n{{Varrock}}\n{{Bars}}"
+        }
+      }
+    }
+  ]
+}

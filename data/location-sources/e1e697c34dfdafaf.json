@@ -1,0 +1,19 @@
+{
+  "pageid": 28152,
+  "ns": 0,
+  "title": "Grand Tree mine",
+  "revisions": [
+    {
+      "revid": 15233015,
+      "parentid": 15057597,
+      "timestamp": "2026-06-13T12:47:52Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Tree Gnome Stronghold mine}}\n{{otheruses|the mine beneath the Grand Tree|the entire tunnels beneath the Grand Tree|Grand Tree Tunnels}}\n{{Infobox Location\n|name = Grand Tree mine\n|image = [[File:Grand Tree mine.png]]\n|release = [[12 December]] [[2002]]\n|update = Agility skill online\n|members = Yes\n|location = [[Grand Tree Tunnels]]\n|map = {{Map|name=Grand Tree mine|x=2464|y=9908|height=200|zoom=2|mapID=19}}\n|type = mine\n|leagueRegion = Kandarin\n}}\nThe '''Grand Tree mine''' is an area in the northern part of the [[Grand Tree Tunnels]] and is only accessible after [[The Grand Tree]] quest. Players can enter the mine after the quest by pushing the roots that block access from the central area. No [[axe]] or other equipment is required to push the roots aside.\n\nWithin the mine lie two slightly separated [[List of mines|mining areas]], one to the east and one to the west.\n\n==Rocks==\n===East side===\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Clay}}||[[Clay rock|Clay]]\n|1||5||10\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||1\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||11\n|-\n|{{plinkp|Gold ore}}||[[Gold rock|Gold]]\n|40||65||4\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||2\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||3\n|-\n|}\n\n===West side===\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Clay}}||[[Clay rock|Clay]]\n|1||5||5\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||7\n|-\n|{{plinkp|Silver ore}}||[[Silver rock|Silver]]\n|20||40||4\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||2\n|-\n|}\n\n==Monsters==\n*[[Rat]] (level 1)\n*[[Giant rat]] (levels 3 and 6)\n*[[Giant bat]] (level 27)\n\n{{Tree Gnome Stronghold}}\n{{Mines}}"
+        }
+      }
+    }
+  ]
+}

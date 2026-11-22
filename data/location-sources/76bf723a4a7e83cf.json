@@ -1,0 +1,19 @@
+{
+  "pageid": 106079,
+  "ns": 0,
+  "title": "Crabclaw Caves",
+  "revisions": [
+    {
+      "revid": 15356301,
+      "parentid": 15341061,
+      "timestamp": "2026-09-26T08:14:55Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Confuse|Crabclaw Isle}}\n{{Infobox Location\n|name = Crabclaw Caves\n|image = [[File:Crabclaw Caves.png|300px]]\n|release = [[9 November]] [[2017]]\n|update = The Queen of Thieves & The Depths of Despair\n|members = Yes\n|floors = 1\n|location = [[Great Kourend]]\n|race = [[Sand Crab]]s\n|music = [[Subterranea]]\n|map = [[File:Crabclaw Caves map.png|300px]]\n|type = dungeon\n|leagueRegion = Kourend\n}}\nThe '''Crabclaw Caves''' is a dungeon found south of the [[Woodcutting Guild]] in [[Great Kourend]]. Access to the caves requires partial completion of [[The Depths of Despair]] [[quest]]. If players attempt to enter the [[cave (Crabclaw Caves)|cave]] without starting the quest, they will not be able to enter. \n\nYou are able to set up a [[dwarf multicannon]] inside the cave to kill a [[King Sand Crab|king sand crab]] for the [[Kourend & Kebos Diary|easy Kourend & Kebos Diary]]. The dwarf multicannon will not target immune targets such as sand crabs or sand snakes, however. \n\n{{Map|1644,3449|r=4|mtype=square|caption=The location of the cave's entrance.|align=left|width=250|height=250|zoom=1}}\nThe caves contain an additional place to train on [[Sand Crab|sand crab]]s, with three crabs next to each other in one spot, and another spot with four crabs next to each other. There are also two smaller caves with several king sand crabs.\n\nDuring The Depths of Despair, players must travel to the very end of the caves, and climbing down the [[tunnel entrance (Crabclaw Caves)|tunnel entrance]] to find [[Artur Hosidius]], who is searching for the [[Royal Accord of Twill]], and finds a [[Sand Snake|sand snake]] guarding the [[chest (The Depths of Despair)|chest]] containing it. After the quest is complete, players can no longer access the bottom area, with the player stating \"I don't really want to go down there again.\"\n\n== Transportation ==\n*[[Skills necklace]] teleport to the [[Woodcutting Guild]] - run a short distance south to the cave entrance.\n* [[Spirit tree]] planted in a [[spirit tree patch]] south-east of the [[Forthos Ruin]] near [[Hosidius]] - run south-west to the cave entrance.\n*[[Lovakengj Minecart Network]] - run south-west to the cave entrance from the Hosidius West station of the minecart network.\n\n==Trivia==\n*A part of [[Skotizo]]'s lair can be seen in the northernmost area of the caves.\n[[File:Skotizo's lair from Crabclaw Caves.png|thumb|left|The southernmost part of Skotizo's lair can be seen from the Crabclaw Caves.]]\n\n{{Crabclaw Caves}}\n{{Great Kourend}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 67112,
+  "ns": 0,
+  "title": "Troll arena",
+  "revisions": [
+    {
+      "revid": 15133880,
+      "parentid": 14925357,
+      "timestamp": "2026-02-24T08:24:07Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Troll arena\n|image = [[File:Troll arena.png]]\n|release = [[24 August]] [[2004]]\n|update = Troll Stronghold Quest\n|members = Yes\n|location = [[Troll Country]]\n|map = {{Map|name=Troll arena|x=2911|y=3612|height=250|zoom=2}}\n|leagueRegion = Asgarnia\n}}\n\nThe '''Troll arena''' is a combat arena used by trolls in the [[Troll Country]].\n\nThe arena is on one route to [[Trollheim]] and the [[Troll Stronghold (location)|Troll Stronghold]]. Players can enter the area during and after the [[Troll Stronghold]] quest. The player fights trolls in the arena is in two quests: Troll Stronghold, against [[Dad]], and [[Troll Romance]], against [[Arrg]].\n\nSeveral [[troll spectator]]s are present at the arena to watch the fights. These trolls are not aggressive but players can fight them if they wish.\n\nAn instanced version of the troll arena is also the location of a battle against three drink trolls: [[The rocks]], [[Chuck up]], and [[Daddy's special water]], upon drinking the [[bottle of fishier bladderier stout]].\n\n[[Category:Locations]]\n[[Category:Quest locations]]\n[[Category:Arenas]]"
+        }
+      }
+    }
+  ]
+}

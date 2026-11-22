@@ -27,7 +27,10 @@ export function locationControlKey(key:string):string{
 function overrideKeys(key:string):string[]{return equivalentNames(key.startsWith('location:')?key.slice(9):key).map(n=>'location:'+n);}
 export function locationAccess(name:string,p:Profile,page?:string|null){
  const original=name.startsWith('location:')?name.slice(9):name,listed=names.get(normal(original));
- const parents=[original,page||listed?.page||''];
+ // A nearby guild is a map reference, not an entrance requirement for creatures
+ // explicitly listed outside it. Keep the named exterior's own manual control.
+ const exterior=/Guild/i.test(page||listed?.page||'')&&/^(?:outside|(?:north|south|east|west)(?:-(?:east|west))? of)\b/i.test(original);
+ const parents=[original,...(exterior?[]:[page||listed?.page||''])];
  if(parents.includes('Lizardman Temple'))parents.push('Molch');
  if(parents.includes('Lizardman Caves'))parents.push('Lizardman Settlement');
  if(parents.includes('Waterbirth Island Dungeon'))parents.push('Waterbirth Island');

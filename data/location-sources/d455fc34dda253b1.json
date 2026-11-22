@@ -1,0 +1,19 @@
+{
+  "pageid": 22829,
+  "ns": 0,
+  "title": "Shadow Dungeon",
+  "revisions": [
+    {
+      "revid": 15127725,
+      "parentid": 15127708,
+      "timestamp": "2026-02-15T22:23:10Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Shadow Dungeon\n|image = [[File:Shadow Dungeon.png]]\n|release = [[18 April]] [[2005]]\n|update = Desert Treasure\n|members = Yes\n|floors = 1\n|location = [[Kandarin]]\n|race = Varies\n|music = [[Path of Peril]]\n|map = {{Map|mapID=-1|zoom=1|height=175|x=2688|y=5088}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\nThe '''Shadow Dungeon''' is the [[dungeon]] used during [[Desert Treasure I]], where players fight [[Damis]] to obtain the [[shadow diamond]]. To access the dungeon, players must use the [[Ladder (Shadow Dungeon)|ladder]] east of [[Baxtorian Falls]], near [[Rasolo]]. To be able to see the ladder, players are required to wear the [[ring of visibility]] or the [[ring of shadows]]. If lost, the ring of visibility can be reclaimed from [[Rasolo]] west of the [[Fishing Guild]], or if [[Desert Treasure II]] has been completed, the ring of shadows can be bought from the [[Mysterious Bandit]] at the [[Ancient Vault]] for 75,000 coins.\n\nOutside of the quest, the dungeon is only frequented for potential [[Trasure trails|clue steps]]:\n*Elite: [[Clue scroll (elite) - Cheer in the Shadow dungeon|Cheer in the Shadow dungeon]]\n*Master: [[Clue scroll (master) - The far north eastern corner where 1 of 4 was defeated|The far north eastern corner where 1 of 4 was defeated]]\n\nThe map of the dungeon shows the location of [[Giant skeleton (Shadow Dungeon)|Giant skeletons]] (G), [[Shadow Hound]]s (S), Damis (2, during Desert Treasure I), and the path to the end of the dungeon where Damis as well as the dig location for the master clue step can be found.\n\n[[File:Shadow Dungeon map.png|300px|thumb|left|The route to get to Damis.]]\n\n==Transportation==\nThe Shadow Dungeon can be found down a [[Ladder (Shadow Dungeon)|ladder]] south-east of [[Baxtorian Falls]]; a [[ring of visibility]] or [[ring of shadows]] must be equipped to see the ladder. The ladder can be found within the fenced area north of the [[moss giant]]s and south of [[Glarial's Tomb]]. These are located slightly west of the [[Fishing Guild]].\n\n{|\n|{{Map|align=left|2547,3421|r=2|mtype=square|caption=The entrance to the Shadow Dungeon.|width=200|height=200}}\n|[[File:Shadow Dungeon entrance.png|thumb|left|x200px|The ladder leading to the dungeon, visible whilst having the ring of visibility or ring of shadows equipped.]]\n|}\n{{clear|left}}\n\n==Monsters==\n*[[Giant skeleton (Shadow Dungeon)|Giant skeletons]] - Level 80\n*[[Shadow Hound]]s - Level 63\n*[[Rat]] - Level 2\n*[[Giant rat]] - Levels 3 and 6\n*[[Bat]] - Level 6\n*[[Giant bat]] - Level 27\n*[[Damis]] - Level 103/174 (first and second form, respectively) \n\nThe dungeon can be difficult to navigate, as it has a maze-like structure. Once Damis is killed during [[Desert Treasure I]], he will not reappear in the dungeon.\n\n{{Shadow Dungeon}}\n{{Desert Treasure I}}\n{{Dungeons}}\n[[Category:Quest locations]]\n[[Category:Kandarin]]"
+        }
+      }
+    }
+  ]
+}

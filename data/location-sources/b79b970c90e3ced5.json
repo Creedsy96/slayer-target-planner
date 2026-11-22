@@ -1,0 +1,19 @@
+{
+  "pageid": 16026,
+  "ns": 0,
+  "title": "Moss Giant Island",
+  "revisions": [
+    {
+      "revid": 15211820,
+      "parentid": 15143882,
+      "timestamp": "2026-05-17T04:32:35Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Moss Giant Island\n|image = [[File:Moss Giant Island.png]]\n|release = [[12 December]] [[2002]]\n|update = Agility skill online\n|members = Yes\n|location = [[Karamja]]\n|race = [[Moss giant]]s\n|teleport = None\n|music = [[Jungly 2]]\n|map = {{Map|name=Moss Giant Island|x=2696|y=3208|height=350|width=300|zoom=3}}\n|type = island\n|leagueRegion = Karamja\n}}\n'''Moss Giant Island''' is a small island located west of [[Brimhaven]], accessed by using a rope swing ([[Rope]] not needed) requiring 10 [[Agility]]. There are five [[moss giant]]s on the island. Players can use [[safespot]]s when fighting them.    \n\nThere are two [[slice of cake]] [[Spawning|spawns]], which have a respawn time of 45 seconds. Players with 40+ [[Defence]] do not need to bring much [[food]] because of this resource. Lower-level players should, however, be cautious of the [[Poison Scorpion]]s near the island.  \n\nThe island is also a [[Clue scroll (medium)|medium clue scroll]] step location.\n\n==Transportation==\n* [[Brimhaven teleport]] or [[Teleport to house]] (if your house is in Brimhaven) and run west.\n* Brimhaven spirit tree and run west.\n* Fairy ring {{Fairycode|BJR}}, then blowing the [[magic whistle]] obtained during the [[Holy Grail]] quest.\n* [[Ardougne teleport]], run south-east to [[Captain Barnaby]], travel to Brimhaven for 30 [[coins]], run west.\n\n{{Brimhaven}}"
+        }
+      }
+    }
+  ]
+}

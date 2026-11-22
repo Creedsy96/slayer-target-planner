@@ -1,0 +1,19 @@
+{
+  "pageid": 590498,
+  "ns": 0,
+  "title": "Shimmering Atoll",
+  "revisions": [
+    {
+      "revid": 15356339,
+      "parentid": 15286026,
+      "timestamp": "2026-09-26T08:50:38Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Shimmering Atoll\n|image = [[File:Shimmering Atoll.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = South of [[Sunset Coast]]\n|requirement = {{SCP|Sailing|49}}\n|music = [[Tranquillity]]\n|map = {{Map|x=1569|y=2786|height=325}}\n|type = Island\n|leagueRegion = No\n}}\n{{Relative location\n|north = Sunset Bay\n|east = Wyrm's Waters\n|south = Ochre Sea\n|west = Misty Sea\n}}\nThe '''Shimmering Atoll''' is an atoll found south of the [[Avium Savannah]] in [[Wyrm's Waters]]. Mooring here requires 49 [[Sailing]].\n\n==Transportation==\n* [[Mooring point]]\n\n==Features==\n* A [[Hunter]] training spot containing [[tropical wagtail]] and [[black warlock]].\n* [[Tarnished chest]].\n* A [[Lockbox (Shimmering Atoll)|lockbox]] containing the [[Lost schematics|schematics]] for the [[rosewood hull]].\n* [[Mahogany]] and [[teak]] trees. \n\nThe lockbox is opened with a key obtained by digging south-west of the starfish by the mooring point on the [[Isle of Bones]]. Interacting with the lockbox without this key will produce a set of [[Lockbox directions (Shimmering Atoll)|lockbox directions]] with a clue to its location. These directions '''are not''' required to obtain the key otherwise. \n\nA [[medallion fragment]] can be obtained by successfully chopping any teak tree once.\n\nA decorative [[Katana (scenery)|katana]] can be found in the northern banks of the atoll.\n\n==Woodcutting==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Tree\n! colspan=2 | {{SCP|Woodcutting}} [[Woodcutting]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Teak logs}}||[[Teak tree|Teak]]\n|35||85||5\n|-\n|{{plinkp|Mahogany logs}}||[[Mahogany tree|Mahogany]]\n|50||125||2\n|-\n|}\n\n==Fishing==\n* There are [[Fishing spot (cage, harpoon)|fishing spots]] around the atoll for catching [[lobster]], [[swordfish]], and [[tuna]].\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Island names were added to the world map.\n}}\n{{Subject changes footer}}\n\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

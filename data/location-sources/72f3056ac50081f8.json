@@ -1,0 +1,19 @@
+{
+  "pageid": 590507,
+  "ns": 0,
+  "title": "Grimstone",
+  "revisions": [
+    {
+      "revid": 15286898,
+      "parentid": 15212206,
+      "timestamp": "2026-08-04T07:57:38Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Grimstone\n|image = [[File:Grimstone.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = North of [[Weiss]]\n|requirement = {{SCP|Sailing|87}}{{Boostable|no}}\n|music = [[Stranded]]\n|map = {{Map|2913,4072}}\n|type = Island\n|leagueRegion = No\n}}\n{{Relative location\n|north = Unknown\n|east = The Searing Sea\n|west = Shiverwake Expanse\n|south = Weiss Melt\n}}\n'''Grimstone''' is an island north of [[Weiss]]. It is a long-forgotten frozen island beyond the [[Fremennik]]s' border, requiring 87 [[Sailing]] to moor on. As Grimstone is in [[icy seas]], an [[eternal brazier]] is required to access it.\n\nThe island surface contains several rocks of coal, nickel, adamantite, and runite, along with a [[wallasalki]] colony that resides on the southern half of the island. There is also a [[lockbox]] which contains the [[dragon keel schematic]]. Additionally, there is a cave leading to the [[Grimstone Dungeon]], which is the main attraction of the island. The dungeon contains [[Chilled jelly|chilled jellies]], [[frost dragon]]s, as well as a [[Ancient Furnace|furnace]] that can smelt cannonballs at twice the normal speed. \n\n==Transportation==\n* Teleport to [[fairy ring]] {{Fairycode|DLP}} inside the dungeon (requires that you have moored on the island at least once)\n* Sail with your ship and [[Docking point|dock]] at the island (requires 87 Sailing)\n* [[Teleport to Boat|Teleport to your boat]] (if it's situated at Grimstone, which requires completion of [[Pandemonium]], 67 [[Magic]], and a [[Greater teleport focus (facility)|greater teleport focus]] on the boat)\n\n==Mining==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||7\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||4\n|-\n|{{plinkp|Nickel ore}}||[[Nickel rock|Nickel]]\n|74||80.5||8\n|-\n|{{plinkp|Runite ore}}||[[Runite rock|Runite]]\n|85||125||3\n|-\n|}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Island names were added to the world map.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* Grimstone first appeared during the [[June 2025 Sailing Beta]], but was not accessible.\n\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 590491,
+  "ns": 0,
+  "title": "Wintumber Island",
+  "revisions": [
+    {
+      "revid": 15396919,
+      "parentid": 15396731,
+      "timestamp": "2026-11-08T18:14:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Wintumber Island\n|image = [[File:Wintumber Island.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = South of the [[Isle of Souls]]\n|requirement = {{SCP|Sailing|63}}\n|music = [[Tranquillity]]\n|map = {{Map|2068,2603|zoom=2|mapID=-1}}\n|type = Island\n|leagueRegion = No\n}}\n{{Relative location\n|north = Shipyard\n|east = Barracuda Belt\n|south = Shrouded Ocean\n|west = Sapphire Sea\n}}\n'''Wintumber Island''' is an island south of the [[Isle of Souls]]. It requires 63 [[Sailing]], unboosted, to moor on.\n\nIt contains a [[crab monument]] that can be charted. Doing so while on the island will also unlock the [[crab dance]] emote and gives a [[medallion fragment]].\nIf the player has already charted the monument, the emote and medallion fragment can still be obtained by approaching the monument and attempting to chart it again.\n\nIf you teleport away from the island, you will need to retrieve your boat via a [[Shipwright]], use one of the [[boat#Teleportation|boat teleportation]] spells, or be brought to the island by another player, as there is no other way to get to the island than with a player-owned ship.\n\nThere is also a pile of inconspicuous rocks for building an Elite [[STASH]] unit, several [[lantern fishing]] spots, as well as 11 [[Sand Crab|Sand Crabs]].\n\n==Transportation==\n* The closest island with a teleport is [[Deepfin Point]], located to the north-west of Wintumber Island. Players can teleport to Deepfin Point with the [[Sailors' amulet]], [[Summon Boat|summon their boat]] or have [[Shipwright Sornik]] recover it, and then sail south-east.\n==Treasure Trails==\n[[Clue scroll (elite)|Elite]] tier - [[Treasure Trails/Guide/Emote clues|Emote]]: [[Clue scroll (elite) - Do the crab dance by the monument on Wintumber Island|Do the crab dance by the monument on Wintumber Island]]\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Island names were added to the world map.\n}}\n{{Subject changes footer}}\n\n==Gallery (historical)==\n<gallery mode=\"nolines\">\nWintumber Island (alpha).png|20 March 2025 - 26 March 2025 (Wintumber Island in the [[March 2025 Sailing Alpha]])\nUnnamed island (south of Isle of Souls).png|20 March 2025 - 26 March 2025 (Wintumber Island in the [[March 2025 Sailing Alpha]])\n</gallery>\n\n==Trivia==\n* The island's name is a reference to {{WP|Christmas Island}}, best known for the {{WP|Christmas Island red crab}} and the annual migrations they make to the sea.\n\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

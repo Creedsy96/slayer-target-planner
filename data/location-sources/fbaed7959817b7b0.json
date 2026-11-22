@@ -1,0 +1,19 @@
+{
+  "pageid": 21512,
+  "ns": 0,
+  "title": "Tree Gnome Village Dungeon",
+  "revisions": [
+    {
+      "revid": 15326958,
+      "parentid": 15290516,
+      "timestamp": "2026-09-01T03:29:31Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Gnome Village Dungeon|rsc=Tree Gnome Village dungeon}}\n{{Infobox Location\n|name = Tree Gnome Village Dungeon\n|image = [[File:Tree Gnome Village Dungeon.png|300px]]\n|release = [[24 September]] [[2002]]\n|update = Tutorial island\n|members = Yes\n|location = [[Tree Gnome Village (location)|Tree Gnome Village]]\n|music = *[[Emotion]]\n*[[Storeroom Shuffle]]\n|map = {{Map|name=Tree Gnome Village Dungeon|2530,9570|mapID=10154}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\nThe '''Tree Gnome Village Dungeon''' is found beneath the [[Tree Gnome Village (location)|Tree Gnome Village]]. Its surface entrance is in the maze just south of the main village area.\n\nThe dungeon features in [[Waterfall Quest]], where players visit it to obtain [[glarial's pebble]] from [[Golrie]]. To reach Golrie, a [[Key (Gnome Village Dungeon)|key]] must first be obtained from the eastern room, which is inhabited by [[zombie]]s and [[giant bat]]s. The key is found in the large [[Crate (Tree Gnome Village Dungeon)|crate]] in the south-east corner that is coloured differently from the rest of the crates. The key can then be used in the western room full of [[hobgoblin]]s to unlock the door Golrie is imprisoned behind.\n\nAfter starting [[Roving Elves]], Golrie and the hobgoblins swap positions, and the key to the now-imprisoned hobgoblins can instead be obtained by simply speaking to Golrie.\n\nDuring [[The Path of Glouphrie]], the player gains access to a storeroom in the east of the dungeon, containing a [[singing bowl]] as well as [[Yewnock]]'s anti-illusion machine.\n\n{{Map|2533,3155|r=3|mtype=square|width=250|height=250|align=left|caption=The location of the dungeon entrance inside of the [[Tree Gnome Village (location)|Tree Gnome Village]] maze.}}\n==Personalities==\n*[[Golrie]] \n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Giant bat|levels=27|spawns=3}}\n{{LocationMonsterTableLine|name=Hobgoblin|levels=28|spawns=9 (before [[Roving Elves]])<br/>7 (during/after Roving Elves){{efn|Requires [[Key (Tree Gnome Village Dungeon)|key]].}}}}\n{{LocationMonsterTableLine|name=Zombie|image=Zombie (Level 13).png|levels=13, 24|spawns=3}}\n{{LocationMonsterTableBottom}}\n{{Notelist}}\n\n==Quests==\n*[[Waterfall Quest]] for [[Glarial's pebble]]\n*[[The Path of Glouphrie]] for a [[crystal chime seed]].\n\n{{Waterfall Quest}}\n{{Tree Gnome Village (location)}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

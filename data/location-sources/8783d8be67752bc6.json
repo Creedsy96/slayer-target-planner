@@ -1,0 +1,19 @@
+{
+  "pageid": 218522,
+  "ns": 0,
+  "title": "Hosidius mine",
+  "revisions": [
+    {
+      "revid": 15057725,
+      "parentid": 15056613,
+      "timestamp": "2025-11-23T00:22:30Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Hosidius mine\n|image = [[File:Hosidius mine.png|300px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|location = West of [[Tithe farm]]\n|map = {{Map|name=Hosidius mine|x=1778|y=3489|height=300|width=300|zoom=3}}\n|type = mine\n|leagueRegion = Kourend\n}}\nThe '''Hosidius mine''' is located west of the [[Tithe farm]] and north of [[Crabclaw Isle]]. It is a medium-sized [[mine]], containing a variety of low-level ores. There is a [[bronze pickaxe]] spawn located just north of the mine in the ruins of an abandoned building.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Clay}}||[[Clay rock|Clay]]\n|1||5||10\n|-\n|{{plinkp|Copper ore}}||[[Copper rock|Copper]]\n|1||17.5||11\n|-\n|{{plinkp|Tin ore}}||[[Tin rock|Tin]]\n|1||17.5||4\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||9\n|-\n|{{plinkp|Silver ore}}||[[Silver rock|Silver]]\n|20||40||2\n|-\n|}\n\n{{Hosidius}}\n{{Mines}}"
+        }
+      }
+    }
+  ]
+}

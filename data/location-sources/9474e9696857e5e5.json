@@ -1,0 +1,19 @@
+{
+  "pageid": 667326,
+  "ns": 0,
+  "title": "Apsul Hunting Ground",
+  "revisions": [
+    {
+      "revid": 15266513,
+      "parentid": 15246962,
+      "timestamp": "2026-07-17T22:37:24Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Apsul Hunting Ground\n|image = [[File:Apsul Hunting Ground.png|300px]]\n|release = [[30 June]] [[2026]]\n|update = The Blood Moon Rises - Out Today!\n|members = Yes\n|location = \n|wilderness = \n|teleport = \n|music = \n|type = \n|map = {{Map|x=2583|y=7773|mapID=-1|height=250}}\n}}\n{{Relative location\n|location = Apsul Hunting Ground\n|south = Vampyrium Mine\n|north = Sangvesti\n|west = Virer Hunting Ground\n|east = Sotfa Forest\n}}\n'''Apsul Hunting Ground''' is a wooded area in [[Vampyrium]], just south of [[Sangvesti]], containing [[venator]]s and [[bloodwood tree]]s. There is a plateau atop which [[Letvek (Hunter)|letvek]] can be hunted, with an Agility shortcut leading to the top.\n\n{{Vampyrium}}"
+        }
+      }
+    }
+  ]
+}

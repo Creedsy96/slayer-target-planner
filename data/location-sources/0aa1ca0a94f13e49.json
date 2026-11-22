@@ -1,0 +1,19 @@
+{
+  "pageid": 98050,
+  "ns": 0,
+  "title": "Smoke Devil Dungeon",
+  "revisions": [
+    {
+      "revid": 15252276,
+      "parentid": 15128650,
+      "timestamp": "2026-07-04T14:56:10Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Smoke Devil Dungeon\n|image = [[File:Smoke Devil Dungeon.png|300px]]\n|release = [[27 April]] [[2017]]\n|update = Diverse Dungeons\n|members = Yes\n|floors = 1\n|location = [[Kandarin]]\n|race = [[Smoke devil]]\n|music = [[Devils May Care]]\n|map = {{Map|name=Smoke Devil Dungeon|2392,9440|mapID=27|width=400}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\nThe '''Smoke Devil Dungeon''' is a dungeon located in the [[Chompy Marsh]] south of [[Castle Wars]], housing [[smoke devils]] and the [[thermonuclear smoke devil]] that can both only be killed while on a [[Slayer task]].\n\nPlayers may enter without a slayer assignment, but upon attacking any monster inside the dungeon, [[Breive]] will stop them from doing so, claiming that they are not assigned to kill them.\n\nAttempting to enter the dungeon without a [[facemask]] (or [[Slayer helm]]) will result in Breive warning the player that they should get some protection first before entering. The [[gas mask]] also works. Without one, the player will take periodic damage<!--every 20 ticks?--> from the smoke (shown as \"cough\"; \"wheeze\" if the smoke damages you to 1 Hitpoint). The smoke cannot kill the player, but a facemask or slayer helm is still needed to fight the smoke devils. The smoke from smoke devils will also reduce all combat stats and agility to 1 if inhaled without a mask/slayer helm.\n\nThe smoke overlay effect within the cave can be toggled on and off by right-clicking the cave's entrance and selecting the Smoke option.\n\n{{Map|x=2412|y=3061|r=4|mtype=square|align=left|caption=The entrance to the dungeon.}}\n\n==Transportation==\nThere are several ways to access the dungeon:\n*The [[fairy ring]] code {{Fairycode|BKP}} will bring the players just south-west of the dungeon.\n*Using a [[ring of dueling]] to teleport to [[Castle Wars]], then running south-west.\n\n==Monsters==\n{{LocationMonsterTableHead|showslayer=yes}}\n{{LocationMonsterTableLine|name=Smoke devil|levels=160|slayerlevel=93|slayerxp=185|spawns=36}}\n{{LocationMonsterTableLine|name=Thermonuclear smoke devil|levels=301|slayerlevel=93|slayerxp=240|spawns=1}}\n{{LocationMonsterTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 31 March 2016\n|update = Bugfixes & Combining Tentacles\n|change = Improved the blending of smoke overlays.\n}}\n{{Subject changes\n|date = 25 June 2015\n|update = Boss Room Counters & Platinum Tokens\n|poll = Old School Content Poll 34: XP droplets & Slayer\n|change = Added a 'peek' option to the entrance of the boss room, allowing players to see the number of other players currently in the room. \n}}\n{{Subject changes footer}}\n\n==Trivia==\n* When entering the thermonuclear smoke devil's cave, the player is briefly placed in an unknown area for a tick before arriving in the boss cave.\n* According to the thermonuclear smoke devil, the dungeon was originally home to an unknown species that specialized in forging.{{CitePostbag|issue=29|author=Thermonuclear Smoke Devil|letter=It’s all gone now, but they used to have a pretty industrious forge set-up, from the looks of it. I wonder what sort of weapons they were making?|name=}}\n\n==References==\n{{Reflist}}\n\n{{Slayer locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

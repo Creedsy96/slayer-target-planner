@@ -1,0 +1,19 @@
+{
+  "pageid": 46376,
+  "ns": 0,
+  "title": "Black Knights' Base",
+  "revisions": [
+    {
+      "revid": 15398010,
+      "parentid": 15397879,
+      "timestamp": "2026-11-10T01:33:25Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Otheruses|def=no|the fortress near Ice Mountain|Black Knights' Fortress (location)}}\n{{Infobox Location\n|name = Black Knights' Base\n|image = [[File:Black Knights' Base.png|300px]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|aka = Kinshra Base\n|members = Yes\n|location = [[Asgarnia]]\n|teleport = No\n|music = [[Royale]]\n|map = {{Map|name=Black Knights' Base|x=2906|y=9691|zoom=2|mapID=20}}\n|leagueRegion = Asgarnia\n}}\nThe '''Black Knights' Base''' is a [[Kinshra]] base in the far south of [[Taverley Dungeon]]. The base has two main areas, and both are swarming with [[black knight]]s. \n\nIn the top right of the first area is a kitchen, with a sink and a range. In the far right area of the second compartment is the jail. To gain access to the jail cells, the [[jailer]] must be killed; his combat level is 47. Inside the south cell is [[Velrak the explorer]], who can give the player a [[dusty key]] which gives access shortcuts in the dungeon.\n\nTo access the base, the player must enter the ladder south of Taverley and run past numerous monsters including [[chaos dwarf|chaos dwarves]] and [[hill giant]]s. Because of this, it is advised that lower levelled players take [[food]]. The base plays a part in the [[Wanted!]] quest, where the player must interrogate [[Lord Daquarius]] about the whereabouts of [[Solus Dellagar]].\n\n==Inhabitants==\nAs well as the [[Black Knight]]s around the base, there are some other characters at the base:\n*[[Velrak the explorer]] - A jailed explorer, Velrak can be found in the southern jail cell.\n*[[Lord Daquarius]] - The leader of the [[Kinshra]] can be found in the western room in the second area\n*[[Jailer]] - The level 47 jailer can be found by the jail in the far right of the second area. Players must kill him for a [[jail key]].\n*[[Dwarf|Dwarves]] - Captured by the black knights, the dwarves can be found in the northern jail cell.\n\n{{Wanted!}}\n{{Taverley Dungeon}}\n{{Kinshra}}"
+        }
+      }
+    }
+  ]
+}

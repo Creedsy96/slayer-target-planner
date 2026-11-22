@@ -1,0 +1,19 @@
+{
+  "pageid": 9429,
+  "ns": 0,
+  "title": "Scorpion Pit",
+  "revisions": [
+    {
+      "revid": 15410982,
+      "parentid": 15410981,
+      "timestamp": "2026-11-21T15:41:49Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Scorpion Ravine}}\n{{Infobox Location\n|name = Scorpion Pit\n|image = [[File:Scorpion Pit.png|300px]]\n|release = [[8 May]] [[2002]]\n|update = Latest RuneScape News (8 May 2002)\n|members = Yes\n|location = [[Wilderness]]\n|wilderness = 53-55\n|map = {{Map|name=Scorpion Pit|x=3240|y=3944|height=250|zoom=2}}\n|leagueRegion = Wilderness\n}}\n{{Relative location\n|north = Untamed Ocean\n|west = Resource Area\n|location = Scorpion Pit\n|east = Rogues' Castle\n|south = Lava Dragon Isle\n}}\nThe '''Scorpion Pit''' is a valley in the northern portion of the [[Wilderness]] extending from level 53 to 55. The surface of the pit is infested with many level 14 [[Scorpion]]s. Multiple cave entrances lead the player into an underground cavern which contains [[Scorpia]] and [[Scorpia's offspring (monster)|her offspring]].\n\nOn the valley itself, there are several [[headless arrow]] and [[bone]] spawns, along with many level 14 [[Scorpion]]s. The Scorpion Pit (both inside and outside), along with the surrounding area is multi-combat, and is a hotspot for PKers who come to kill Scorpia hunters. Players should take caution around the pit as the [[Chaos Elemental]] can also wander into the Scorpion Pit, dealing high damage to lower-levelled players.\n\n==Transportation==\n* Pull the lever in either [[Ardougne]] or [[Edgeville]] to teleport to the [[Deserted Keep]]. Run north and slash the [[web]], then run east.\n* Use a [[Wilderness Obelisk]] to travel to level 50 Wilderness. Run west past the [[Rogues' Castle]] and the [[Chaos Elemental]].\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 13 March 2014\n|update = Rejuvenating the Wilderness: More risk, more reward\n|change = Multiple cave entrances can now be interacted with\n}}\n{{Subject changes footer}}\n\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

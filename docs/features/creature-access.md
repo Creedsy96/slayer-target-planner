@@ -42,6 +42,13 @@ behaviour. Persistent character facts are not rewritten by this review.
 
 ## Planning and warnings
 
+The 4.1.0 [location review](location-route-reviews.md) extends the audit to all
+listed guide locations, removes the duplicate Stalker Den/Ancient Zygomite gates,
+and corrects Tonali Cavern's quest owner. The current generated creature audit is
+103 derived entries and 64 special confirmations. The 100/67 counts above record
+the original 4.0.2 release. Reviewed physical-route requirements remain authoritative
+even when a special creature method has been manually confirmed.
+
 Konar warnings inspect individual area outcomes, so the Catacombs spectre branch
 names Deviant spectres rather than an unrelated representative variant. Remaining
 method issues include the creature and location and link to the account, method

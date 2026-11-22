@@ -1,0 +1,19 @@
+{
+  "pageid": 18619,
+  "ns": 0,
+  "title": "Observatory",
+  "revisions": [
+    {
+      "revid": 15104819,
+      "parentid": 14958726,
+      "timestamp": "2026-01-13T20:47:39Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Observatory\n|image = [[File:Observatory.png|300px]]\n|release = [[17 March]] [[2003]]\n|update = Observatory Quest online!\n|members = Yes\n|location = [[Kandarin]]\n|map = {{Map|name=Observatory|x=2441|y=3162|r=8|mtype=square}}\n|type = building\n|leagueRegion = Kandarin\n}}\nThe '''Observatory''' is a complex mostly used during the [[Observatory Quest]]. It consists of four parts. The area was overrun by [[goblin]]s, who have damaged the telescope, and players must fix it during the [[quest]]. The original bridge to the Observatory has been destroyed, so you must go underground at the ruined buildings and through the [[Observatory Dungeon]] to get to it. Alternatively, players who have completed the Observatory Quest can use the [[grapple shortcut]] with 23 [[Agility]], 24 [[Ranged]], and 28 [[Strength]]. It should be noted that players who use this shortcut forfeit their [[mith grapple]], but in doing so create a permanent shortcut.\n\n==Transportation==\n* [[Ring of dueling]] teleport to [[Castle Wars]] and go north\n* [[Ourania Teleport]] and go south\n\nTo get to the Observatory itself, the player has to either go through the [[Observatory Dungeon]], or use the [[Rocks (Observatory)|shortcut]].\n\n== Inhabitants ==\n* [[Observatory professor]]; after [[Observatory Quest]]\n\n== Features ==\n\n=== {{FloorNumber|uk=0|caps=y}} ===\n\n* There are [[star chart]]s on the walls around the room.\n* The front door can be used to quickly leave, if the player has unlocked the grapple shortcut.\n* [[STASH#Medium|STASH (Medium)]], where the player can store a [[mithril chainbody]], [[Green d'hide chaps|green d'hide chaps,]]  and a [[ruby amulet]].\n\n=== {{FloorNumber|uk=1}} ===\n\n* [[Telescope (Observatory)]]\n\n==Star chart viewer==\n<gallery>\nStar Chart Viewer Aquarius.png\nStar Chart Viewer Aries.png\nStar Chart Viewer Cancer.png\nStar Chart Viewer Capricorn.png\nStar Chart Viewer Gemini.png\nStar Chart Viewer Leo.png\nStar Chart Viewer Libra.png\nStar Chart Viewer Pisces.png\nStar Chart Viewer Sagittarius.png\nStar Chart Viewer Scorpio.png\nStar Chart Viewer Taurus.png\nStar Chart Viewer Virgo.png\n</gallery>\n\n== Agility shortcut ==\n{{Main|Rocks (Observatory)}}\nAfter completing the [[Observatory Quest]], players with 23 [[Agility]], 24 [[Ranged]], and 28 [[Strength]] can create a permanent [[grapple shortcut]] for quick access. Creating the shortcut requires a [[Crossbow (weapon)|crossbow]] and a [[mithril grapple]]. The mithril grapple will be consumed, but the shortcut remains permanent after that. \n\nTo get back down, players have to use the Observatory's front door.\n\n==Trivia==\n*In {{UD|Upcoming Changes and Fake XP Drop Improvements|an update}} on [[22 March]] [[2018]], the examine text of the telescope was changed to a quote by {{wp|Stephen Hawking}} to honour his memory - \"''Remember to look up at the stars and not down at your feet''\". Previously, the examine text was \"''Looking through it makes far off things seem closer.''\"\n*[[Coordinates]] 0°00' degrees north and 0°00' degrees east is located in the middle of the Observatory.\n\n{{Observatory Quest}}\n[[Category:Quest locations]]\n[[Category:Kandarin]]\n[[Category:Towers]]"
+        }
+      }
+    }
+  ]
+}

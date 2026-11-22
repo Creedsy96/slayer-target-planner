@@ -1,0 +1,19 @@
+{
+  "pageid": 538075,
+  "ns": 0,
+  "title": "Twilight Temple",
+  "revisions": [
+    {
+      "revid": 15390726,
+      "parentid": 15356787,
+      "timestamp": "2026-11-03T10:16:09Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Twilight Temple\n|image = [[File:Twilight Temple.png|300px]]\n|release = [[25 September]] [[2024]]\n|update = Varlamore: The Rising Darkness is OUT NOW\n|members = Yes\n|location = [[Varlamore]]\n|teleport = [[Pendant of Ates]]\n|music = [[Emissaries of Twilight]]\n|map = {{Map|1670,3246}}\n|type = settlement\n|leagueRegion = Varlamore\n}}\nThe '''Twilight Temple''' is a temple compound in [[Varlamore]]. It was initially a temple dedicated to [[Ranul]] built under the reign of [[Emperor Imafore]], which was considered blasphemous and thus was abandoned for many years until the [[Twilight Emissaries]] began using it as their base of operations.{{CiteNPC|npc=Prince Itzla Arkan|quote=The temple here was built not long before the War of Betrayal. It is said that Imafore wanted somewhere dedicated to Ranul that would rival the Teomat.{{nbsp}}[...] Anyway, the temple was considered an affront to both the Church of Ralos and the Sect of Ranul. After Imafore died, most people were more than happy to see it abandoned.}}\n\nThe temple is the main setting in [[The Heart of Darkness]]. The player and [[Prince Itzla Arkan|Prince Itzla]] explore the temple buildings and [[Ruins of Tapoyauik|underground]] whilst infiltrating the Twilight Emissaries to investigate them. The player must be wearing all pieces of the [[Twilight Emissary Robes]] to enter the temple during and after the quest. The robes can be reobtained from a chest on the ground floor of the [[Tower of Ascension]]. Whilst inside the temple, players who attempt to remove any part of the robes will receive the message, {{mes|You should leave your robes on while you're in the temple.}}\n\n==Transportation==\n* Use the [[Pendant of Ates]] to teleport to the [[Statue of Ates]] at the Temple\n* Take the [[Quetzal Transport System]] to [[Salvager Overlook]] (must be built before it can be used) and run east\n\n==Features==\n* The main temple, which contains a [[Shrine of Twilight]] that can be used to restore [[Prayer]] points like an [[altar]]. Players may only enter the main temple building if they are wearing a full set of [[Twilight Emissary Robes]].\n* The infirmary building north-east of the main temple contains an unmarked [[altar]] that can be used to restore [[Prayer]] points. \n* The [[Tower of Ascension]], a building used to test new recruits to the Emissaries. \n* The [[Ruins of Tapoyauik]], a dungeon which contains several monsters and a boss, [[Amoxliatl]]\n* Several attackable NPCs including [[Emissary Acolyte]]s, [[Emissary Chosen|Emissaries Chosen]], and [[Emissary Ascended|Emissaries Ascended]]\n\n===Basement===\nThe main temple has a staircase leading down to a basement, which is first accessed during [[The Final Dawn]], and requires wearing [[Twilight Emissary Robes]] to access. It contains more Emissaries which can be fought, and is where the player fights the [[Emissary Enforcer]] during the quest.\n\nThe basement contains some [[oven (Varlamore)|ovens]] which can be used for [[Cooking]], and both [[barrel (Twilight Temple)|barrels]] and [[bookcase (Twilight Temple)|bookcases]] which can be searched for a variety of items.\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"160\" style=\"text-align:left\">\nThe Heart of Darkness - Twilight Temple wallkit concept art.png|Concept art of the Twilight Temple wallkit, by [[Mod Jerv]].\n</gallery>\n\n== References ==\n{{Reflist}}\n{{Varlamore}}\n{{Places of worship}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 590394,
+  "ns": 0,
+  "title": "Abalone Cliffs",
+  "revisions": [
+    {
+      "revid": 15212104,
+      "parentid": 15156215,
+      "timestamp": "2026-05-17T04:34:27Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Abalone Cliffs\n|image = [[File:Abalone Cliffs.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[The Great Conch]]\n|music = [[The Tortugan Way]]\n|map = {{Map|3105,2518}}\n|leagueRegion = No\n}}\n'''Abalone Cliffs''' are cliffs located in [[The Great Conch]]. The cliffs are inhabited by [[eagle|eagles]], [[Scorpion#Level_1|tiny scorpions]], and [[Snake (Varlamore)|snakes]]. Additionally, [[Orange salamander (Hunter)|orange salamanders]] can be hunted here.\n\n==Trivia==\n* Despite its name, {{wp|abalone}} are not found in the area, as they do not exist at all in the game's files.\n\n{{The Great Conch}}\n{{Terrain}}"
+        }
+      }
+    }
+  ]
+}

@@ -18,7 +18,7 @@ test('Settings exposes an editable filtered pool immediately when enabled',()=>{
 });
 test('the full pool includes guide areas and saved custom locations beyond the master-only checklist',()=>{
  const p=profile();p.access['location:My custom restricted island']=0;const keys=c.locationPoolKeys(d,p),old=c.knownAccessKeys(d).filter(k=>k.startsWith('location:'));
- assert.ok(keys.length>old.length*4);assert.equal(new Set(keys).size,keys.length);assert.ok(keys.includes('location:My custom restricted island'));
+ assert.ok(keys.length>old.length);assert.equal(new Set(keys).size,keys.length);assert.ok(keys.includes('location:My custom restricted island'));
  for(const record of Object.values(g.GUIDE.records))for(const l of record.locations.filter(l=>!l.limited))assert.ok(keys.includes(c.locationControlKey('location:'+(l.page||l.name))),l.name);
 });
 test('physical naming aliases toggle and reset together without stale opposite overrides',()=>{

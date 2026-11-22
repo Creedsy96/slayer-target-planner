@@ -1,0 +1,19 @@
+{
+  "pageid": 612250,
+  "ns": 0,
+  "title": "Kurask Lair",
+  "revisions": [
+    {
+      "revid": 15389275,
+      "parentid": 15388212,
+      "timestamp": "2026-11-01T22:47:36Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Kurask Lair\n|image = [[File:Kurask Lair.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Laguna Aurorae]]\n|music = [[Waterlogged]]\n|map = {{Map|1182,9200|mapID=-1|zoom=3}}\n|type = Dungeon\n|leagueRegion = No\n}}\n'''Kurask Lair''' is a dungeon beneath [[Laguna Aurorae]], accessed by a [[Cave entrance (Kurask Lair)|cave entrance]]. It is a small cave that contains eight [[kurask]]. A [[dwarf multicannon]] can be used in the dungeon, although cannonballs don't damage kurask. The entire dungeon is single-way combat.\n\n{{Map|mtype=pin|1191,2786|align=left|icon=redPin|caption=The entrance to the lair.}}\n\n==Trivia==\n* Four of the kurask in the lair are large kurask, compared to the [[Fremennik Slayer Dungeon]] only having one large kurask.\n\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

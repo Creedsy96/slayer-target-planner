@@ -1,0 +1,19 @@
+{
+  "pageid": 571099,
+  "ns": 0,
+  "title": "Isle of Bones",
+  "revisions": [
+    {
+      "revid": 15386008,
+      "parentid": 15386007,
+      "timestamp": "2026-10-30T03:22:59Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Isle of Bones\n|image = [[File:Isle of Bones.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|requirement = {{SCP|Sailing|56}}\n|music = [[Exposed]]\n|map = {{Map|2533,2533|zoom=2|mapID=-1}}\n|type = Island\n|leagueRegion = No\n}}\n{{Relative location\n|north = Anglers' Retreat\n|east = Pest Control\n|west = The Skullhorde\n|south = Charred Island\n}}\nThe '''Isle of Bones''' is an island located south-west of the [[Void Knights' Outpost]]. It requires 56{{boostable|no}} [[Sailing]] to moor on.\n\nThis small island consists of several level 45 [[skeletons]], [[dead tree]]s, several [[Big bones]] spawns, several [[Bones]] spawns, and a small gulf where players can disembark at the [[mooring point]]. There are also several one-off activities:\n*A [[Meaty Aura Logist]] on for [[Sea charting]].\n*A [[medallion fragment]] can be found by investigating the [[Cauldron (Isle of Bones)|cauldron]].\n*A [[Small key (Isle of Bones)|small key]] can be dug up one tile south of the shell west of the mooring point.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Island names were added to the world map.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* In the sailing alpha and beta, [[Close Quarters]] played instead.\n\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

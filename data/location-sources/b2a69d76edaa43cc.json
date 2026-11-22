@@ -1,0 +1,19 @@
+{
+  "pageid": 28367,
+  "ns": 0,
+  "title": "River Elid",
+  "revisions": [
+    {
+      "revid": 15212923,
+      "parentid": 14871395,
+      "timestamp": "2026-05-19T02:09:45Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = River Elid\n|image = [[File:River Elid.png|300px]]\n|release = [[26 April]] [[2005]]\n|update = Desert Month Finale\n|members = Yes\n|location = [[Kharidian Desert]]\n|map = {{Map|name=River Elid|x=3330|y=2950|height=800|width=300|zoom=1}}\n|type = river\n|leagueRegion = Desert\n}}\nThe '''River Elid''' begins just east of the [[Shantay Pass]] and flows across the [[Kharidian Desert]]. There are three bridges across this river. The northernmost bridge is close to the Shantay Pass and leads into the [[Uzer Hunter area]], and then on into the [[Ruins of Uzer]]. The next bridge is south-west of [[Pollnivneach]]. The final bridge joins [[Sophanem]] to [[Menaphos]], but the bridge is blocked on the Menaphos side.\n\nThe section of the river south of Pollnivneach is home to the [[crocodile]]s, a possible [[Slayer]] [[Slayer task|assignment]] from [[Vannaka]].\n\n==Trivia==\n*The word Elid backwards is Dile, which may be a play on words for the Nile River, acknowledging the crocodiles that reside nearby.\n\n{{Terrain}}\n[[Category:Terrain]]\n[[Category:Bodies of water]]"
+        }
+      }
+    }
+  ]
+}

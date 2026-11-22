@@ -1,0 +1,19 @@
+{
+  "pageid": 16665,
+  "ns": 0,
+  "title": "Hobgoblin Peninsula",
+  "revisions": [
+    {
+      "revid": 15376426,
+      "parentid": 15163707,
+      "timestamp": "2026-10-19T23:14:27Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{No official name}}\n{{Infobox Location\n|name = Hobgoblin Peninsula\n|image = [[File:Hobgoblin Peninsula.png]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|members = No\n|location = [[Asgarnia]]\n|race = [[Hobgoblin]]\n|map = {{Map|name=Hobgoblin Peninsula|width=300|height=210|x=2912|y=3281}}\n|leagueRegion = Asgarnia\n}}\n{{Relativelocation\n|location = Hobgoblin Peninsula\n|south = Melzar's Maze\n|north = Dark Wizards' Tower\n|west = Crandor\n|east = Crafting Guild\n}}\nThe '''Hobgoblin Peninsula''' is an area west of the [[Crafting Guild]].\n\nIt is crawling with several level 28 [[hobgoblins]]. On [[members]] [[server]]s, it spawns 3 [[snape grass]] in the sand pit near the end of the island. Some players gather the snape grass for a small profit, but since the peninsula is far away from a bank, this is not done by many players. The quickest way to get there is via the [[skills necklace]] teleport to the Crafting Guild.\n\nPlayers can safely [[Ranged|range]] or [[Magic|mage]] the hobgoblins from the [[cow]] area beside it. However, they are suggested to cast [[telekinetic grab|Telekinetic Grab]] to get back their [[arrows]] or to retrieve loot. There's also a strange [[Sand (pile)|pile of sand]] in it, with an odd \"look\" option. Its use as of now is simply a place to gather sand. Players are able to use a [[bucket]] with the pile of sand to get a '[[bucket of sand]]', a material for glass-making. Since glass-making is part of the [[Crafting]] [[skill]], and the peninsula is very close to the Crafting Guild, it is possible that [[Jagex]] put this here with that in mind (though the purpose of the 'look' option on it is still a mystery). When a bucket is used on the pile it becomes smaller, and when a second is used it goes away completely, respawning a few seconds later."
+        }
+      }
+    }
+  ]
+}

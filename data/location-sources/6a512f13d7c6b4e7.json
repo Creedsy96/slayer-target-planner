@@ -1,0 +1,19 @@
+{
+  "pageid": 82898,
+  "ns": 0,
+  "title": "Shayziens' Wall",
+  "revisions": [
+    {
+      "revid": 15212882,
+      "parentid": 15210371,
+      "timestamp": "2026-05-19T01:31:29Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Shayziens' Wall\n|image = [[File:Shayzien's Wall.png|300px]]\n|release = [[17 November]] [[2016]]\n|update = Great Kourend Rework\n|members = Yes\n|location = [[Shayzien]]\n|map = {{Map|name=Shayziens' Wall|x=1405|y=3535|height=350|zoom=1}}\n|leagueRegion = Kourend\n}}\n{{Relativelocation\n|location = Shayziens' Wall\n|north = Lizardman Canyon\n|west = Lizardman Settlement\n|south = Lacerta Falls\n|east = Shayzien\n}}\n'''Shayziens' Wall''', also known as the '''Shayzien Outpost''', is a wall located west of [[Shayzien]]. Immediately to the west of the wall, on the other side of the river, are two outposts that serve as a first line of defence against the [[lizardmen]]. Fires can be found at both of the outposts.\n\nWest of this wall is the [[Lizardman Settlement]], home to hostile lizardmen, including [[Lizardman brute|brutes]] and [[Lizardman shaman|shamans]], who can [[poison]] unprepared players.\n\n==Gallery==\n<gallery>\nShayzien Outpost north.png|The northern outpost.\nShayzien Outpost south.png|The southern outpost.\n</gallery>\n\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

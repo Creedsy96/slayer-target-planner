@@ -1,0 +1,19 @@
+{
+  "pageid": 14169,
+  "ns": 0,
+  "title": "Shantay Pass",
+  "revisions": [
+    {
+      "revid": 15360728,
+      "parentid": 15264123,
+      "timestamp": "2026-10-02T19:30:17Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Otheruses|the location|the item|Shantay pass (item)|the scenery|Shantay pass (scenery)}}\n{{Infobox Location\n|name = Shantay Pass\n|image = [[File:Shantay Pass.png]]\n|release = [[14 April]] [[2003]]\n|update = Tourist Trap Quest Online!\n|members = No\n|location = [[Al Kharid]]\n|music = [[Egypt]]\n|map = {{Map|name=Shantay Pass|x=3304|y=3123|height=250|width=300|zoom=2}}\n|leagueRegion = Desert\n}}\n{{Relative location\n|location = Shantay Pass\n|north = Al Kharid\n|east = Sorceress's Garden\n|south = Kharidian Desert\n|west = River Lum\n}}\n\nThe '''Shantay Pass''' is a small area that separates [[Al Kharid]] from the [[Kharidian Desert]]. Players will need to have 5 coins to buy a [[shantay pass (item)|pass]] from [[Shantay]], or have completed the elite [[Desert Diary]], if they wish to enter the desert.\n\n==Things to do==\n===Bank===\nThe Shantay Pass has a [[bank chest]] which players can access before entering the desert. The bank is only available to members, but the [[Bank Deposit Box|deposit box]] is available in [[free-to-play]].\n\nDue to the fact that the bank can be accessed through [[Shantay]] himself, he is considered a teller; for this reason, the Shantay Pass is considered a bank. The Shantay Pass was the 18th bank added to ''RuneScape'', and the tenth bank available to [[Members|members only]].\n\n===Shantay's Store===\nThe [[Shantay Pass Shop]] is a shop owned by [[Shantay]], which sells items similar to [[Ali's Discount Wares.]]\n\n===Quests===\nPlayers may also start the [[The Tourist Trap|Tourist Trap]] quest here by talking to the crying lady through the pass, to the south.\n\n===Transport to Port Sarim Jail===\nTo get arrested and placed in a cell at [[Port Sarim]], players can do the following:\n\nTalk to [[Shantay]] and ask \"What is this place?\". ''If this is not the first time being arrested, or the player had already been arrested but had not talked to Shantay before, complete the dialogue and then repeat this.''\n\nAfter that, say \"I am definitely an outlaw, prepare to die!\". You will be locked up in the small cell at the Shantay Pass.\n\nRefuse to pay the 5 coins two times. You will get sent to the jail at [[Port Sarim]]. To escape, right-click on the door and select the option to picklock it. After some time picking the cell door's lock, you will escape and are free to walk around. Note that this will give the player [[Thieving]] experience, but only on a members server. Also, no equipment is required and can be done by [[Free-to-play|free players]].\n\n==Other locations==\nTwo other Shantay Passes are run by [[Shantay Guard (Ruins of Unkah)|Shantay Guard]]s at the [[Ruins of Unkah]].\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 23 June 2016\n|update = In Other News (23 June 2016)\n|change = Added a poll booth to the Shantay pass.\n}}\n{{Subject changes\n|date = 5 March 2015\n|update = Achievement Diaries\n|poll = Old School Achievement Diary Rewards Poll\n|change = You can now travel through the Shantay Pass for free if you have completed the [[Desert Elite Diary]].\n}}\n{{Subject changes\n|date = 26 July 2013\n|update = Patch Notes (26 July 2013)\n|poll = Old School feature poll 7\n|change = The message box has been removed from Shantay's bank chest.\n}}\n{{Subject changes footer}}\n\n{{Al Kharid}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 572591,
+  "ns": 0,
+  "title": "Pandemonium Cave",
+  "revisions": [
+    {
+      "revid": 15389931,
+      "parentid": 15331410,
+      "timestamp": "2026-11-02T15:18:49Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Pandemonium Cave\n|image = [[File:Pandemonium Cave.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[The Pandemonium]]\n|music = [[Scape Cave]]\n|map = {{Map|mapID=-1|x=3044|y=9383}}\n|type = mine,dungeon\n|leagueRegion = No\n}}\nThe '''Pandemonium Cave''' is located on the north end of [[The Pandemonium]]. It is a small cave populated by [[rat]]s, [[giant rat]]s, [[spider]]s, [[giant spider]]s, and [[deadly red spider]]s.\n\nThere are ores close to the bank chest outside, namely eight [[lead rocks]] important for [[Sailing]] upgrades, and also three [[tin rocks]], three [[copper rocks]], and five [[iron rocks]] (including a [[power-mining]] location). There are also two spawns of [[bones]], three spawns of [[red spiders' eggs]], one [[rope]] spawn, and one [[bronze mace]] spawn in the cave, along with a permanent fire. \n\n[[Chartin' Charles McAtless]] can be found just past the entrance. He is the target of a [[spyglass]] [[Sea charting]] task. Near the mining area of the cave is a locked chest, which can be opened with the [[Stormy key]] from a [[The Tempor Tantrum|barracuda trial]] and contains the [[Storm cruiser's outfit]].\n\nJust outside the cave entrance is a [[sea charting]] task location, and a key for a [[salvaging station schematic|buried schematic]].\n\n{{Map|mtype=pin|x=3046|y=2996|width=250|height=250|align=left|caption=The entrance to the cave|icon=redPin}}\n\n==Mining==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Copper ore}}||[[Copper rock|Copper]]\n|1||17.5||3\n|-\n|{{plinkp|Tin ore}}||[[Tin rock|Tin]]\n|1||17.5||3\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||5\n|-\n|{{plinkp|Lead ore}}||[[Lead rock|Lead]]\n|25||40.5||8\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||4\n|-\n|}\n\n{{The Pandemonium}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 593876,
+  "ns": 0,
+  "title": "Dragon Nest",
+  "revisions": [
+    {
+      "revid": 15359072,
+      "parentid": 15212211,
+      "timestamp": "2026-09-30T19:21:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Dragon Nest\n|image = [[File:Dragon Nest.png|300px]]\n|release = [[23 July]] [[2025]]\n|update = Varlamore: The Final Dawn Out Now\n|members = Yes\n|location = [[Tlati Rainforest]]\n|music = [[Call of the Tlati]]\n|map = {{Map|name=Dragon Nest|x=1246|y=9500|mapID=-1}}\n|type = dungeon\n|leagueRegion = Varlamore\n}}\nThe '''Dragon Nest''' is a cave east of [[Tal Teklan]] in the [[Tlati Rainforest]]. Completion of [[Children of the Sun]] is required to access the Rainforest, but the Nest has no other requirements to access. It is visited as part of the [[Scrambled!]] quest, where the player must retrieve a [[Dragon egg (Scrambled!)|dragon egg]] from the south-east corner of the cave. Upon attempting to take the egg, the player is attacked by and must defeat a [[Red dragon (Scrambled!)|red dragon]].\n\nDragon Nest contains 5 [[Blue dragon|blue dragons]] and 5 [[Red dragon|red dragons]], in addition to 2 [[Baby blue dragon|baby blue dragons]] and 2 [[Baby red dragon|baby red dragons]]. Item spawns include 4 [[Blue dragon scales|blue dragon scales]], some [[burnt bone]]s, and a number of coin spawns.\n\nA [[Dwarf multicannon|cannon]] can be set up in the cave.\n\n{{Map|x=1290|y=3135|caption=Entrance to the Dragon Nest|align=left|mtype=pin|zoom=1}}\n\n==Monsters==\n* [[Blue dragon]]\n** [[Baby blue dragon]]\n* [[Red dragon]]\n** [[Baby red dragon]]\n\n{{Varlamore}}\n{{Scrambled!}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

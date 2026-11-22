@@ -1,0 +1,19 @@
+{
+  "pageid": 9564,
+  "ns": 0,
+  "title": "Coal Trucks",
+  "revisions": [
+    {
+      "revid": 15236528,
+      "parentid": 15088445,
+      "timestamp": "2026-06-20T05:16:06Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs=Coal truck mine|rsc}}\n{{Infobox Location\n|name = Coal Trucks\n|image = [[File:Coal Trucks (Seers' Village).png|300px]]\n|release = [[23 July]] [[2002]]\n|update = Members' quests\n|members = Yes\n|location = North of the [[Fishing Guild]], west of [[McGrubor's Wood]]\n|map = {{Map|name=Coal Trucks|x=2598|y=3490}}\n|type = mine\n|leagueRegion = Kandarin\n}}\n[[File:Coal Trucks (mine).png|thumb|The coal truck carts and the nearby coal rocks.]]\n{{Relativelocation\n|location = Coal Trucks\n|north = Barbarian Outpost\n|west = Baxtorian Falls\n|south = Fishing Guild\n|east = McGrubor's Wood\n}}\nThe '''Coal Trucks''' are located north of the [[Fishing Guild]] and west of [[McGrubor's Wood]]. At the coal truck mining area, there are 18 [[coal rocks]] and several carts. Coal can be deposited into the trucks and later retrieved from any truck along the mine track, allowing players to collect and bank their coal from the depot at [[Seers' Village]].\n\n120 coal can be stored in the carts if no [[Kandarin Diary|Kandarin achievement diaries]] have been completed, though 140, 280, or 308 pieces of coal can be stored in the trucks if the easy, medium, or hard diary is completed (respectively). With the elite diary, the first 200 coal removed in a day are automatically transported to the player's bank. Though the diary reward says placed, you must first place then attempt to remove the coal from the coal truck to initiate transfer to your bank. An exploit currently exists in which a player can transport 27 additional coal if the trucks are filled up to one less than full, then an entire inventory of coal is placed in the cart.\n\nOnce the carts are full of coal, the coal may then be removed from any of the carts. A [[Log balance (Coal Trucks)|log balance]] [[shortcut]] just east of the coal trucks can be used at level 20 [[Agility]] to cross over towards McGrubor's Wood. \n\nIt should also be noted that there are aggressive [[Giant bat]]s amongst the coal, so mining here may not be suitable for players with a low combat level.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||18\n|-\n|}\n\n==Personalities==\n*[[Stankers]]\n\n==Monsters==\n*[[Giant bat]]s (level 27)\n*[[Guard (dwarf)|Dwarven guard]] (level 10)\n\n==Quests==\nThe Coal Trucks area contains the starting point of the [[Dwarf Cannon]] quest.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 March 2015\n|update = Achievement Diaries\n|poll = Old School Achievement Diary Rewards Poll\n|change =\n*Coal trucks now hold more [[coal]] for the completion of [[Kandarin Diary|Kandarin Diaries]]:\n**140 coal for the [[Kandarin easy diary|easy diary]].\n**280 coal for the [[Kandarin Medium|medium diary]].\n**308 coal for the [[Kandarin Hard Diary|hard diary]].\n*The first 200 [[coal]] placed in the coal trucks each day are now transported to your [[bank]] if you have completed the [[Kandarin Elite|Kandarin Elite Diary]].\n}}\n{{Subject changes footer}}\n\n{{Mines}}\n[[Category:Kandarin]]"
+        }
+      }
+    }
+  ]
+}

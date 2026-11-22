@@ -1,0 +1,19 @@
+{
+  "pageid": 594450,
+  "ns": 0,
+  "title": "Tonali Cavern",
+  "revisions": [
+    {
+      "revid": 15319374,
+      "parentid": 15212216,
+      "timestamp": "2026-08-25T05:44:00Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Tonali Cavern\n|image = [[File:Tonali Cavern.png|300px]]\n|release = [[23 July]] [[2025]]\n|update = Varlamore: The Final Dawn Out Now\n|members = Yes\n|location = [[Crypt of Tonali]]\n|map = {{Map|name=Tonali Cavern|1311,9382|mapID=-1|plane=0|zoom=2}}\n|type = dungeon\n|leagueRegion = Varlamore\n}}\n{{Map|1309,3104|1305,3033|caption=Entrances to Tonali Cavern|align=right|mtype=pin}}\nThe '''Tonali Cavern''' is a dungeon located beneath the [[Crypt of Tonali]] in the [[Tlati Rainforest]] region of [[Varlamore]]. Accessing it requires completion of the [[The Final Dawn]] quest. It features a number of [[Slayer]] monsters and leads to the [[Ruins of Mokhaiotl]].\n\nThe central section contains a lift which can be activated to allow a two-way transit from the central section to the [[Tlati Rainforest]]. West of this lift is a chest which can be looted to obtain two [[tonali teleporter]]s, which allow instant teleportation between the two nodes, provided that they are placed within a 30 tile range from each other. The western Moon chamber contains grimy lizards, while the eastern Sun chamber contains earthen nagua, both of which are in a [[multicombat area]] and only appear after completion of the quest.\n\nPlayers '''cannot''' set up a [[dwarf multicannon]] within the cavern. Attempting to do so yields the chatbox message: ''\"An ancient magical force won't let you set up a cannon here.\"''\n\n==Transportation==\n*[[Mokhaiotl waystone]]s can be used to teleport directly inside the Ruins of Mokhaiotl, then run south to the cavern.\n*The [[Pendant of Ates]] can be used to teleport to [[Kastori]] just east of the cavern's entrances.\n*The [[Quetzal Transport System]] can be used to land at [[Tal Teklan]] or [[Kastori]], both near the cavern's entrances.\n\n==Monsters==\n{| class=\"wikitable sortable\" style=text-align:center width=\"75%\"\n!Monster\n!Image\n!Combat level\n!Slayer level\n!Slayer XP\n!Quantity\n|-\n|[[Earthen Nagua]]\n|[[File:Earthen_Nagua.png|center|120px]]\n|128\n|48\n|165\n|17\n|-\n|[[Grimy lizard]]\n|[[File:Grimy Lizard.png|center|150px]]\n|50\n|44\n|75\n|5\n|-\n|[[Skeleton#1_(Plain)|Skeleton]]\n|[[File:Skeleton (level 29, 1).png|center|90px]]\n|29\n|{{NA|None}}\n|?\n|13\n|-\n|[[Moss giant]]\n|[[File:Moss_giant_(Varlamore,_1).png|center|120px]]\n|42\n|{{NA|None}}\n|60\n|8\n|-\n|[[Giant Rock Crab|Giant rock crab]]\n|[[File:Giant_Rock_Crab.png|center|150px]]\n|137\n|{{NA|None}}\n|198\n|9\n|-\n|[[Rockslug]]\n|[[File:Rockslug.png|center|120px]]\n|29\n|20\n|27\n|6\n|-\n|}\n\nThere are also [[moonlight moth]]s in the area, requiring 75 [[Hunter]] to catch with a net or 85 barehanded. They can be used to restore 22 [[Prayer points]].\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"150\" style=\"text-align:left\">\nTonali Cavern concept art.png|Concept art for the Tonali Caverns, by [[Mod Jerv]].\n</gallery>\n\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

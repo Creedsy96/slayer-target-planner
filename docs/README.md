@@ -3,6 +3,8 @@
 Start with the [project README](../README.md), [domain vocabulary](../CONTEXT.md)
 and [current verification record](../VERIFICATION.md).
 
+The 4.1.0 minor release adds [the complete listed-location review index](features/location-route-reviews.md).
+
 | Folder | Contents |
 | --- | --- |
 | [features](features/) | Implemented behaviour, calculation assumptions and feature-specific evidence |

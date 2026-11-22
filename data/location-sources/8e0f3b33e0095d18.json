@@ -1,0 +1,19 @@
+{
+  "pageid": 81193,
+  "ns": 0,
+  "title": "Crabclaw Isle",
+  "revisions": [
+    {
+      "revid": 15362035,
+      "parentid": 15317421,
+      "timestamp": "2026-10-03T12:41:22Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Confuse|Crabclaw Caves}}\n{{Infobox Location\n|name = Crabclaw Isle\n|image = [[File:Crabclaw Isle.png]]\n|release = [[17 November]] [[2016]]\n|update = Great Kourend Rework\n|members = Yes\n|aka = Sand Crab Isle\n|location = [[Western Ocean]], [[Great Kourend]]\n|race = [[Sand Crab]]s\n|teleport = [[Sandicrahb]] (10,000 coins)\n|map = {{Map|name=Crabclaw Isle|x=1767|y=3420|height=300|width=300|zoom=2}}\n|type = island\n|leagueRegion = Kourend\n}}\n'''Crabclaw Isle''' is a small island just south of the [[Hosidius]] coast. Players can reach the island by paying [[Sandicrahb]] 10,000 coins. Completing the easy [[Kourend & Kebos Diary]] will allow players to access it for half the price. Completing the medium Kourend & Kebos Diary will allow players to access the island for free.\n\nThere are 40 [[sand crab]]s scattered throughout the isle, with several spots containing three/four crabs near one tile.\n\n==Transportation==\n* Casting the [[Minigame Teleport]] spell to [[Tithe Farm]] and run south. \n* Use a [[Hosidius teleport]] or exit a [[player-owned house]] in Hosidius and go south.\n* Use a planted [[spirit tree (Farming)|spirit tree]] and run south-east.\n\n==Treasure Trails==\nThe island contains the location of a [[Treasure_Trails/Guide/Coordinates/Master|master clue]] coordinate.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 24 November 2016\n|update = Quality of Life & Bugfixes\n|change = Sand Crab Isle now has a few more Sand Crabs.\n}}\n{{Subject changes footer}}\n\n{{Hosidius}}\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 55329,
+  "ns": 0,
+  "title": "Ice Troll Caves",
+  "revisions": [
+    {
+      "revid": 15389940,
+      "parentid": 15389934,
+      "timestamp": "2026-11-02T15:34:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Ice Troll Caves\n|image = [[File:Ice Troll Cave.png|300px]]\n|release = [[6 February]] [[2007]]\n|update = Fremennik Isles\n|members = Yes\n|floors = 1\n|location = [[Fremennik Isles]]\n|race = [[Ice troll]]s\n|music = [[Ogre the Top]]\n|map = {{Map|2400,10274|plane=1|mapID=-1|zoom=2}}\n|type = dungeon\n|leagueRegion = Fremennik\n}}\nThe '''Ice Troll Caves''' can be found north of [[Jatizso]] and [[Neitiznot]]. To enter the caves, players need to have completed parts of [[The Fremennik Isles]] quest. Six [[Honour guard]]s can be found fighting [[ice troll]]s in the northern most cave. During the quest, the [[Ice Troll King]] is also found in this cave. After the completion of The Fremennik Isles, the caves can only be accessed using the western entrance, and the Ice Troll King is no longer present.\n\nThe cave is a dangerous area as it is [[multicombat]] and the trolls can hit high using both [[Melee]] and [[Ranged]] attacks; wearing a [[Neitiznot shield]] is advised as it lowers the max hit of the ranged trolls from 6 to 2. While en route to the cave, it's strongly advised to activate [[Protect from Melee]] since the melee trolls do more damage. You are unable to use the [[Dwarf multicannon]]  within this cave, when attempting to set up the cannon it will state, \"The air is too dank for you to set up a cannon here.\"\n\n{{Map|align=left|name=Ice Troll Caves|x=2360|y=3891|zoom=1|caption=The entrance to the caves.}}\n\n==Monsters==\nRegular ice trolls reside on the eastern side of the cave, whilst frenzied ice trolls (who drop only big bones) reside on the western side.\n* [[Ice Troll King]]\n* [[Ice troll female]]\n* [[Ice troll male]]\n* [[Ice troll grunt]]\n* [[Ice troll runt]]\n* [[Frenzied ice troll female]]\n* [[Frenzied ice troll male]]\n* [[Frenzied ice troll grunt]]\n* [[Frenzied ice troll runt]]\n\n==Personalities==\n* [[Bork Sigmundson]]\n* [[Honour guard]]\n\n{{The Fremennik Isles}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 69130,
+  "ns": 0,
+  "title": "Chaos Druid Tower",
+  "revisions": [
+    {
+      "revid": 15267034,
+      "parentid": 15255566,
+      "timestamp": "2026-07-18T17:10:37Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Chaos Druid Tower\n|image = [[File:Chaos Druid Tower.png]]\n|release = [[30 April]] [[2002]]\n|update = Latest RuneScape News (30 April 2002)\n|members = Yes\n|floors = 3\n|location = [[Kandarin]]\n|map = {{Map|name=Chaos Druid Tower|x=2563|y=3356|r=4|mtype=square}}\n|type = building, dungeon\n|leagueRegion = Kandarin\n}}\n{{Map|name=Chaos Druid Tower|x:2580,y:9743|plane=0|align=left|mapID=2|height=250|width=250|caption=A map of the underground area of the Chaos Druid Tower.}}\n{{Relativelocation\n|location = Chaos Druid Tower\n|north = Coal Trucks\n|east = Legends' Guild\n|south = Ardougne\n|west = Combat Training Camp\n}}\nThe '''Chaos Druid Tower''' is located to the north of [[Ardougne]] and is home to 4 [[chaos druid]]s, located on the {{FloorNumber|uk=0}}. The [[Door (Chaos Druid Tower)|door]] is locked, requiring level 46 [[Thieving]] to open, and granting 37.5 [[experience]] when successful. Picking the lock does ''not'' require a [[lockpick]].\n\nThe tower also houses the entrance to a dungeon containing two [[Chest (Chaos Druid Tower)|chests]] requiring level 59 Thieving to open. Upon doing so the player receives two [[blood rune]]s and 500 [[coins]] and is granted 250 experience. Once a player has successfully opened the chest and removed its contents they will be teleported, along with their loot, to a house in the north of [[East Ardougne]]. The chest respawns every 210 seconds or 3 and a half minutes. The dungeon itself is also inhabited by 5 [[giant bat]]s and 7 [[ogre]]s.\n\n==Transportation==\n*Teleport to Ardougne with the [[Achievement diary cape]]\n*Teleport to the [[Fishing Guild]] using a [[skills necklace]] or [[Fishing Guild Teleport]] (Level 85 [[Magic]] and [[Lunar Diplomacy]]) and run south-west.\n*Teleport to the [[Outpost]] using a [[necklace of passage]] and run east.\n*Teleport to the [[Ardougne farm]] patch using [[Ardougne cloak]] and run west.\n*Teleport to Ardougne using the [[Ardougne Teleport]] spell or [[Ardougne teleport (tablet)|tablet]] and run north-west to the [[Chaos Druid Tower]], then go to its basement.\n*Teleport to [[West Ardougne]] using [[West Ardougne Teleport]] spell or [[West ardougne teleport|tab]] and running east through the gate into East Ardougne and then north.\n\n==Blood rune chest==\n{{Main|Chest (Chaos Druid Tower)}}\nNote that to open the chest safely, one must right-click and choose the \"Search for traps\" option. Simply left-clicking on the chest will trigger traps which can do up to 22 damage.\n[[File:Chaos Druid Tower underground.png|thumb|A bunch of ogres guarding the chests.|none]]\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Giant bat|levels=27|spawns=5}}\n{{LocationMonsterTableLine|name=Ogre|levels=53|spawns=7}}\n{{LocationMonsterTableBottom}}\n\n{{Dungeons}}\n[[Category:Kandarin]]\n[[Category:Towers]]"
+        }
+      }
+    }
+  ]
+}

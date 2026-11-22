@@ -1,0 +1,19 @@
+{
+  "pageid": 46476,
+  "ns": 0,
+  "title": "Bandit Camp mine",
+  "revisions": [
+    {
+      "revid": 15276679,
+      "parentid": 15275859,
+      "timestamp": "2026-07-27T14:09:10Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Wilderness (level 35) hobgoblin mine|rsc=Wilderness hobgoblin mine}}\n{{otheruses|the mine in the [[Wilderness]]|the mine in the [[Kharidian Desert]]|Quarry}}\n{{Infobox Location\n|name = Bandit Camp mine\n|image = [[File:Bandit Camp mine.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness system online\n|aka = Hobgoblin mine\n|members = No\n|location = North-east of [[Bandit Camp (Wilderness)|Bandit Camp]], east of [[Wilderness God Wars Dungeon]]\n|map = {{Map|name=Bandit Camp mine|x=3087|y=3762|height=300|width=300|zoom=2}}\n|type = mine\n|leagueRegion = Wilderness\n}}\n\nThe '''Bandit Camp mine''' (or the '''Hobgoblin Mine''') is a [[mining]] site found north-east of the [[Bandit Camp (Wilderness)|Bandit Camp]] in the [[Wilderness]] from levels 32 to 35 and east of the [[Wilderness God Wars Dungeon]]. The mine is occupied by a large number of aggressive [[hobgoblin]]s, from whom the mine gets its nickname.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||16\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||31\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||19\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||8\n|-\n|}\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Hobgoblin|levels=28|spawns=26}}\n{{LocationMonsterTableBottom}}\n\n{{Mines}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 18813,
+  "ns": 0,
+  "title": "Mudskipper Point",
+  "revisions": [
+    {
+      "revid": 15364640,
+      "parentid": 15364637,
+      "timestamp": "2026-10-04T18:31:17Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Asgarnian southern peninsula}}\n{{Infobox Location\n|name = Mudskipper Point\n|image = [[File:Mudskipper Point.png|300px]]\n|release = [[24 October]] [[2005]]\n|update = Mogres, Lizards, Pet Fish, Potions and Potatoes!\n|members = No\n|location = [[Asgarnia]]\n|music = [[Mudskipper Melody]]\n|map = {{Map|name=Mudskipper Point|width=300|height=200|x=2999|y=3122}}\n|leagueRegion = Asgarnia\n}}\n{{Relativelocation\n|location = Mudskipper Point\n|north = Port Sarim\n|west = Musa Point\n|south = Ship Yard\n|east = Tutorial Island\n}}\n\n'''Mudskipper Point''' is a small peninsula located in the south of the [[Kingdom]] of [[Asgarnia]]. It can be reached by journeying south past the coastal town of [[Port Sarim]]. After passing by the [[Rimmington church|Rimmington Church]], players will come to a small hut belonging to [[Thurgo]], an [[Imcando dwarf]]. His hut contains an [[anvil]], for [[smithing]] [[weapons]], a hammock, a table and a chair. He plays a part in various [[quests]] and sells the [[Smithing cape|Skillcape of Smithing]]. Next to him is a small hill with a trapdoor leading into the dangerous [[Asgarnian Ice Dungeon]]. If you continue south you will come to a small peninsula with a [[signpost (Mudskipper Point)|signpost]] reading:\n\n{{colour|red|\"BEWARE OF THE MUDSKIPPERS!\"}}\n\nOn a members' world, Mudskipper Point is known for its dangerous underwater inhabitants as both [[mudskipper]]s (hence the name) and [[mogre]]s dwell in this seemingly quiet place. The latter can be summoned by throwing [[fishing explosive]] into [[Ominous Fishing Spot|ominous fishing spots]], which will drive an enraged mogre to the shore, who will engage in battle. These creatures have affected a drunken man named [[Skippy]], who stands south-east of [[Rimmington]] tossing rather empty bottles of \"[[Captain Braindeath]]'s Extra Strength Rum/Drain Cleaner\" into the sea, yelling at the mudskippers. You can start the [[Skippy and the Mogres]] [[miniquest]] by speaking with him. The most prominent use for the location, however, is the [[fairy ring]] with code {{fairycode|AIQ}} located there. Notable in that it is the only fairy ring in [[Asgarnia]].\n\nThere are two [[fishing spots]] for anchovies on west side of Mudskipper point. On the east side, there is a bench and a hammock.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 24 September 2015\n|update = New Animations & Barbarian Assault Changes\n|change = The Palm tree top at Mudskipper Point no longer renders behind the grass when 'Remove roof' is enabled.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n*If you use the [[forlorn boot]] found washed up on the shore on [[Skippy]], it will start a new conversation in which he calls you loony.\n\n{{The Knight's Sword}}\n{{Skippy and the Mogres}}"
+        }
+      }
+    }
+  ]
+}

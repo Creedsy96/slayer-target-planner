@@ -1,0 +1,19 @@
+{
+  "pageid": 219109,
+  "ns": 0,
+  "title": "Kingstown",
+  "revisions": [
+    {
+      "revid": 15372150,
+      "parentid": 15366204,
+      "timestamp": "2026-10-13T21:04:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Kingstown\n|image = [[File:Kingstown.png|300px]]\n|release = [[23 May]] [[2019]]\n|update = Hosidius Rework and Deadman Beta\n|members = Yes\n|location = [[Great Kourend]]\n|music = [[Kourend the Magnificent]]\n|map = {{Map|name=Kingstown|x=1660|y=3677|height=200|zoom=1}}\n|type = settlement\n|leagueRegion = Kourend\n}}\n{{Relative location\n|location = Kingstown\n|north = Arceuus\n|south = Hosidius\n|east = Hosidius\n|west = Kourend Castle\n}}\n'''Kingstown''' is a town located in the centre of [[Great Kourend]], made up of [[Kourend Castle]], its courtyard, and multiple houses to the east of the courtyard. Here, players can find the houses of the four members of the [[Kourend Council]], although it is not known which council members lives in which house, save [[Councillor Hughes|Sophia Hughes]] before her arrest during the events of [[The Queen of Thieves]].\n\nOutside the councillors’ houses, [[Martin Holt]] and four other [[protester]]s can be seen protesting against the Kourend Council, accusing them of corruption and expressing their desire for a king to rule Great Kourend once more.\n\nThe town also has a park east of the councillors’ residences. Here, [[Reshi]], [[Kendall]] and [[Thomdril]], travelling students from the [[College of Bards]] in [[Varlamore]], can be seen camping and playing music. In the nearby pond, players can fish [[salmon]], [[trout]], [[pike]]s and [[sardine]]. A [[Lovakengj Minecart Network]] station operated by [[Hordal]] is located south of the park.\n\n==Treasure Trails==\n*Digging in front of the large statue in the centre of Kingstown is the solution to the easy [[cryptic clue]]: ''[[Clue scroll (easy) - Dig in the centre of a great kingdom of 5 cities|Dig in the centre of a great kingdom of 5 cities]].''\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"200\">\nKingstown - small northern house.png|The small northern house belonging to a member of the Kourend Council.\nKingstown - large northern house.png|The large northern house belonging to [[Councillor Hughes]].\nKingstown - small southern house.png|The small southern house belonging to a member of the Kourend Council.\nKingstown - large southern house.png|The large southern house belonging to a member of the Kourend Council.\nKingstown - protesters.png|A group of [[protester]]s led by [[Martin Holt]] found by the councillor's residences.\nKingstown - Varlamore college students.png|Travelling students from the College of Bards in [[Varlamore]], camping and playing music in the park.\nKingstown - fishing pond.png|A small pond found in the park where players can go fishing.\nKingstown - gravestone.png|An unmarked gravestone found in the park.\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 30 May 2019\n|update = Poll 67 Updates and Hosidius Improvements\n|change = A district of Kourend has been named as Kingstown on the in-game world map, and some directions in the Queen of Thieves quest have been updated to refer to it.\n}}\n{{Subject changes footer}}\n\n{{Kingstown}}\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

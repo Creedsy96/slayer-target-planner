@@ -1,0 +1,19 @@
+{
+  "pageid": 17885,
+  "ns": 0,
+  "title": "Ice Path",
+  "revisions": [
+    {
+      "revid": 15363038,
+      "parentid": 15354666,
+      "timestamp": "2026-10-03T17:03:53Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Ice Path\n|image = [[File:Ice Path.png|300px]]\n|release = [[18 April]] [[2005]]\n|update = Desert Treasure\n|aka = Icy Path Area\n|members = Yes\n|location = [[Troll Country]]\n|music = [[Frostbite]]\n|map = {{Map|name=Ice Path|x=2853|y=3809|height=350|width=300|zoom=1}}\n[[File:Ice Path map.png|200px]]\n|leagueRegion = Asgarnia\n}}\n{{Relativelocation\n|location = Ice Path\n|north = Zemouregal's Fort\n|west = Trollweiss Mountain\n|south = Trollheim\n|east = Lucien's camp\n}}\nThe '''Ice Path''' is a path ascending up a mountain, in the [[Troll Country]] region of [[Gielinor]]. It has no purpose other than the part it plays during the [[Desert Treasure I#Ice diamond|ice diamond section]] of the [[Desert Treasure I]] quest and a location for a [[Treasure Trails/Guide/Cryptic clues/Master|master cryptic clue]] on a [[Clue scroll (master)|master clue scroll]]. It is extremely dangerous, and players are advised not to enter unless prepared. The entrance to the path is barred with a gate and players may only pass if they have given the [[troll child]] a ([[Chocolate cake|chocolate]]) [[cake]] during the Desert Treasure I quest. After that, the player can freely go through the gate at any time. West of the [[Ice gate|Ice Gate]] is the entrance to [[Trollweiss Dungeon]].\n\nBecause of the extremely cold conditions, players cannot run after passing the [[Ice gate|Ice Gate]] (although this effect can be countered by using [[stamina potion]]s). The area's [[chill]] effect also drains your [[Hitpoints]] periodically by 1-2 and other stats in the same fashion by one. However, this effect stops draining your Hitpoints once you have only 1 left. Towards the end of the path, after defeating [[Kamil]], players must use [[spiked boots]] on the ice shelf to be able to walk at all; however, they may still slip and fall several times, taking damage.\n\n[[File:Ice Gate.png|thumb|The imposing Ice Gate.|none]]\n\n==Monsters==\n*[[Ice troll]] (level 120-124)\n*[[Ice Wolf]] (level 134)\n*[[Kamil]] (level 154)\n\n==Agility info==\n{{Agility info\n|level = 1\n|xp = 0.5\n|failxp = 0\n|type = Obstacle\n}}\n\n===Success chance===\n{{DropLogProject|jagex=yes|success=yes}}\n\nThe chance of slipping on the ice path depends on your Agility level. Players are required to wear [[spiked boots]] to use the ice ledge to climb on the ice path. The slip check occurs every six seconds. Failing the Agility roll will deal damage that can kill you.\n\n{{Skilling success chart|xlabel=Agility level|ylabel=Success chance\n|label1=Falling off the ice path|low1=128|high1=255|req1=1|image1=Agility icon.png\n}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 April 2017\n|update = Diverse Dungeons\n|change = Prevented an error from occurring when entering an instance from the Ice Path.\n}}\n{{Subject changes\n|date = 18 April 2005\n|update = Desert Treasure\n|change = The area was made accessible to players.\n}}\n{{Subject changes\n|date = 5 January 2005\n|update = Troll Romance, Banks and Chat\n|change = The other half of the area was added ingame, but it was still inaccessible.\n}}\n{{Subject changes\n|date = 17 November 2004\n|update = Horror From The Deep\n|change = The area was partially added ingame, but players could not yet access it.\n}}\n{{Subject changes footer}}\n\n{{Desert Treasure I}}\n[[Category:Troll Country]]"
+        }
+      }
+    }
+  ]
+}

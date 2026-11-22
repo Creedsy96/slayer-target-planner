@@ -1,0 +1,19 @@
+{
+  "pageid": 573083,
+  "ns": 0,
+  "title": "Limbo",
+  "revisions": [
+    {
+      "revid": 15212072,
+      "parentid": 15157012,
+      "timestamp": "2026-05-17T04:34:15Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Limbo\n|image = [[File:Limbo.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Shrouded Ocean]]\n|music = [[Tranquillity]]\n|map = {{Map|2023,2666}}\n|type = island\n|leagueRegion = No\n}}\n{{Relativelocation\n|location = Limbo\n|north = Shipyard\n|west = The Crown Jewel\n|south = Wintumber Island\n|east = Sea of Souls\n}}\n'''Limbo''' is an island south-west of the [[Isle of Souls]]. It does not have a standard mooring point and can only be reached by [[World switching|hopping]] to a different world while on someone else's boat. [[Junior Jim]] enjoys vacations on the island, to \"get away from all the rabble.\" It is home to two level 5 [[frog]]s, a [[Duck (Kourend Woodland)|duck]] and three [[Crab (Beach)|crabs]].\n\nTo exit the island, Junior Jim can transport players to [[The Pandemonium]], or players can hop back to the world they came from to return to the boat.\n\n==Transcript==\n{{Hastranscript}}\n\n{{Ocean locations}}\n\n[[Category:Shrouded Ocean]]"
+        }
+      }
+    }
+  ]
+}

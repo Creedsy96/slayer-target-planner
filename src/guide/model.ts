@@ -2,6 +2,7 @@ import {locationTravel} from './travel';
 import raw from '../../data/creature-guide.json';
 import type {Source,Profile} from '../domain/types';
 import {locationAccess} from '../rules/location-pool';
+import {locationReview} from './location-reviews';
 import {encounter} from './encounters';
 import {EXTRA_LOCATIONS,LOCATION_NOTES} from './location-notes';
 import type {Attack,Family,FightPlan,GuideForm,GuideRecord,GuideState,LocationPlan} from './types';
@@ -65,30 +66,31 @@ export function rankLocations(record:GuideRecord,form:GuideForm,state:GuideState
   const levelMatches=candidates.filter(loc=>matchesLevel(loc.levels,form.combat)&&(!p?.restrictBasicAccess||locationAccess(loc.name,p,loc.page).value!==0));
   const locationForm=levelMatches.filter(loc=>form.label.length>10&&loc.name.toLowerCase().includes(form.label.toLowerCase()));
   return (locationForm.length?locationForm:levelMatches).filter(loc=>{const key=loc.name.toLowerCase();if(seen.has(key))return false;seen.add(key);return true;}).map(loc=>{
-    const meta=LOCATION_NOTES.find(m=>m.match.test(loc.name));
-    const wilderness=/wilderness/i.test(loc.region||'')||/wilderness|revenant|callisto|artio|vet[’']ion|calvar|venenatis|spindel|scorpia|web chasm|skeletal tomb|hunter.?s end|king black dragon|bone yard|demonic ruins|lava maze|resource area|dark warriors.? fortress|frozen waste|mage arena/i.test(loc.name);
+    const review=locationReview(loc.name,loc.page),meta=['Wilderness God Wars Dungeon','Scorpia'].includes(review?.name||'')?undefined:LOCATION_NOTES.find(m=>m.match.test(review?.name||loc.name));
+    const wilderness=review?.name==='Ferox Enclave'?false:/wilderness/i.test(loc.region||'')||/wilderness|revenant|callisto|artio|vet[’']ion|calvar|venenatis|spindel|scorpia|web chasm|skeletal tomb|hunter.?s end|king black dragon|bone yard|demonic ruins|lava maze|resource area|dark warriors.? fortress|frozen waste|mage arena/i.test(loc.name);
     const riskKnown=wilderness||!!loc.region||!!meta;
     const limited=loc.limited||/quest encounter|random spawn|trap spawn|boss summon|summoned/i.test(loc.name);
     const access=p?locationAccess(loc.name,p,loc.page):null;
-    const available=!limited&&(!loc.taskOnly||state.onTask)&&access?.value!==0;
+    const available=!limited&&!review?.unsupported&&(!loc.taskOnly||state.onTask)&&(!access||access.value===1);
     const immune=/^yes\b/i.test(form.immunecannon||'');
-    const cannon=immune?false:meta?.cannon??null,multi=meta?.multi??null;
+    const cannon=immune?false:review?.name==="Jormungand's Prison"&&record.id==='dagannoth'?true:review?.cannon??meta?.cannon??null,multi=review?.multi??meta?.multi??null;
     const reasons:string[]=[];
     let score=25+(wilderness?-25:riskKnown?20:0)+(meta?.convenience??2)*3;
     if(wilderness)reasons.push('Wilderness PvP risk on this location or its approach.');
-    if(meta){reasons.push(meta.note||'Reviewed route and access caveats are available.');}else reasons.push('Route not reviewed: the ranking uses limited source information.');
-    const routes=p?locationTravel(loc.name,p,meta?.travel||['Reach the named region','Use the entrance described by the location source',loc.name],loc.page||loc.name):[];
+    if(review){reasons.push('Entrance and published transport reviewed; source revision '+review.source.revision+'.');}else reasons.push('No retained entrance review: check the named location source.');
+    const travel=review&&review.travel.length>1?review.travel:meta?.travel||review?.travel||[loc.name];
+    const routes=p?locationTravel(loc.name,p,travel,loc.page||loc.name):[];
     if(routes.some(r=>r.available&&r.methods.length)){score+=12;reasons.push('A recorded teleport route is available for this character.');}
     if(state.priority==='cannon'){if(cannon===true){score+=35;reasons.push('Confirmed cannon placement for this route and a cannon-susceptible creature.');}else score-=15;}
     if(state.priority==='barrage'){if(multi===true){score+=35;reasons.push('Multi-combat is useful for stacking where the room permits.');}else score-=15;}
     if(state.priority==='access'){score-=Math.min(25,(meta?.requires?.length||0)*6);if(!meta)score-=12;reasons.push('Lower-requirement routes are favoured; unknown access is not assumed free.');}
-    if(!available){score-=120;reasons.push(limited?'Quest, summoned, trap or non-repeatable appearance: not a normal farming route.':'Task-only room: off-task access is not assumed.');}
-    const requires=[...(meta?.requires||[])];if(access?.value===0)requires.push(access.reason);if(loc.caveat)requires.push(loc.caveat);if(loc.taskOnly)requires.push('A matching Slayer task is required in this room.');
+    if(!available){score-=120;reasons.push(limited?'Quest, summoned, trap or non-repeatable appearance: not a normal farming route.':access?.value!==1&&access?access.reason:review?.unsupported?'Special location: not an ordinary repeatable route.':'Task-only room: off-task access is not assumed.');}
+    const requires=[...(meta?.requires||[]).filter(r=>!(review?.name==="Jormungand's Prison"&&record.id==='dagannoth'&&/shield/i.test(r))),...(review?.caveats||[])];if(access&&access.value!==1)requires.push(access.reason);if(loc.caveat)requires.push(loc.caveat);if(loc.taskOnly)requires.push('A matching Slayer task is required in this room.');
     if(['calvar-ion','spindel'].includes(record.id))requires.push('Hard Wilderness diary OR the specific matching boss Slayer task; an ordinary skeleton/spider task does not bypass the diary rule.');
     if(loc.name.includes('King Black Dragon'))requires.push('The lair itself is outside PvP; the approach crosses the Wilderness.');
-    return {...loc,travelOptions:routes,accessBlocked:access?.value===0,limited,available,score,reasons,requires,cannon,multi,wilderness,riskKnown,reviewed:!!meta,
-      travel:meta?.travel||['Reach the named region','Check the entrance on the source page',loc.name],fastRoute:meta?.fast||null,
-      sourceUrl:loc.page?'https://oldschool.runescape.wiki/w/'+encodeURIComponent(loc.page.replaceAll(' ','_')):record.source.url};
+    return {...loc,review,travelOptions:routes,accessBlocked:access?.value===0,limited,available,score,reasons,requires,cannon,multi,wilderness,riskKnown,reviewed:!!review,
+      travel,fastRoute:meta?.fast||null,
+      sourceUrl:review?.source.url||(loc.page?'https://oldschool.runescape.wiki/w/'+encodeURIComponent(loc.page.replaceAll(' ','_')):record.source.url)};
   }).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
 }
 export function selectedLocation(record:GuideRecord,form:GuideForm,state:GuideState,p?:Profile):LocationPlan|undefined{

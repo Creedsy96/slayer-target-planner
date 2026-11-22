@@ -1,0 +1,19 @@
+{
+  "pageid": 98045,
+  "ns": 0,
+  "title": "Kraken Cove",
+  "revisions": [
+    {
+      "revid": 15395547,
+      "parentid": 15331545,
+      "timestamp": "2026-11-06T16:45:43Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Kraken Cove\n|image = [[File:Kraken Cove.png|300px]]\n|release = [[27 April]] [[2017]]\n|update = Diverse Dungeons\n|members = Yes\n|floors = One\n|location = [[Piscatoris]]\n|race = [[Waterfiend]]s, [[Cave kraken]]s\n|music = [[Troubled Waters]]\n|map = {{Map|name=Kraken Cove|zoom=2|x=2272|y=10016|mapID=19}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\nThe '''Kraken Cove''' is a dungeon full of underground lakes located in [[Piscatoris]], south-west of the [[Piscatoris Fishing Colony]], housing [[waterfiend]]s, [[cave kraken]]s, and the [[Kraken]] boss. All of the creatures can only be killed while on a [[Slayer task]].\n\nPlayers may enter without a Slayer task, but upon attacking any monster inside the dungeon, [[Lieve McCracken]] will stop them from doing so, stating that they are not assigned to kill them.\n\nIt is not possible to use a [[dwarf multicannon]] within this dungeon. If players attempt to place one, they will instead receive a chatbox message: {{mes|Lieve McCracken won't be happy if you set up a cannon here.}}\n\n==Transportation==\n{{Map|align=left|x=2278|y=3611|r=3|mtype=square|width=200|height=200|caption=The location of the Kraken Cove.}}\nThere are several ways to access the cove:\n* The [[fairy ring]] code {{Fairycode|AKQ}} will bring the players just east of the Cove.\n* Using a [[Piscatoris teleport]] scroll, or either the [[Western banner 3]] or [[Western banner 4|4]] to teleport the [[Piscatoris Fishing Colony]], and running south-west.\n{{Clear|left}}\n\n==Monsters==\n{{LocationMonsterTableHead|showslayer=yes}}\n{{LocationMonsterTableLine|name=Waterfiend|levels=115|slayerlevel=1|slayerxp=128|spawns=15}}\n{{LocationMonsterTableLine|name=Cave kraken|levels=127|slayerlevel=87|slayerxp=125|spawns=25}}\n{{LocationMonsterTableLine|name=Kraken|levels=291|slayerlevel=87|slayerxp=255|spawns=1}}\n{{LocationMonsterTableBottom}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Kraken Cove now appears with a label on the World map.\n}}\n{{Subject changes\n|date = 25 June 2015\n|update = Boss Room Counters & Platinum Tokens\n|poll = Old School Content Poll 34: XP droplets & Slayer\n|change = Added a 'peek' option to the entrance of the boss chamber, allowing players to see the number of other players currently in the room. \n}}\n{{Subject changes footer}}\n\n==Trivia==\n*West of the [[Kraken]] boss chamber is a small room with a [[hole (Kraken Cove)|roped hole]] leading to another floor. However, it is currently inaccessible to players.\n* Lieve has unique dialogue when attacking waterfiends or krakens off-task:\n** '''Kraken:''' Oi, I'm Lieve McCracken and I say leave m' Kraken alone!\n** '''Waterfiend:''' Oi, I'm Lieve, and I say leave it!\n\n{{Slayer locations}}\n{{Kraken Cove}}\n{{Piscatoris}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

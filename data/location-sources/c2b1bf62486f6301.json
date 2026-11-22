@@ -1,0 +1,19 @@
+{
+  "pageid": 15631,
+  "ns": 0,
+  "title": "Entrana Dungeon",
+  "revisions": [
+    {
+      "revid": 15353043,
+      "parentid": 15352902,
+      "timestamp": "2026-09-22T07:33:01Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Entrana Dungeon\n|image = [[File:Entrana Dungeon.png|300px]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|members = Yes\n|floors = 1\n|location = [[Entrana]]\n|race = [[Undead]], [[Demons]]\n|music = [[Underground (music track)|Underground]]\n|map = [[File:Entrana Dungeon map.png|250px]]\n|type = dungeon\n|leagueRegion = Asgarnia\n}} __NOTOC__\nThe '''Entrana Dungeon''' is found on the north-west corner of [[Entrana]]. Entering the dungeon drains your [[Prayer]] to almost zero, and there is no way to climb back up to Entrana from inside.\n\nIt is visited during the [[Lost City]] and [[Recipe for Disaster]] [[quests]]. \n\nThere are [[Zombie (Entrana Dungeon)|zombies]], [[greater demon]]s and during the Lost City quest, a [[Tree spirit (Lost City)|Dramen Tree Spirit]]. However, [[armour]] and [[weapons]] can't be brought to the island, so the player must obtain their own via killing the zombies or demons.\n\n{{Map|width=250|height=250|align=left|mtype=pin|2820,3374|caption=The entrance to the dungeon.|group=a}}\n==Features==\n===Dramen Tree===\nThe main use for this dungeon is the [[Dramen tree]]. During [[Lost City]] and when freeing [[Sir Amik Varze]] in [[Recipe for Disaster]], the player has to cut some [[Dramen branch|branches]] from this tree.\n\nAs the player cuts it, a level 101 [[Tree spirit (Lost City)|Dramen Tree Spirit]] will appear and attack them. You do not have to defeat the spirit again after slaying it once.\n\n===Monsters===\n*[[Zombie (Entrana Dungeon)|Zombies]] (level 25)\n*[[Greater demon]]s (level 92)\n*The [[Tree spirit (Lost City)|Dramen Tree Spirit]] (level 101)\n\n===Wilderness Exit===\n{{main|Magic door}}\nOther than teleportation, the only exit is via the magic door leading to level 32 [[Wilderness]]. Players using this exit should be aware that no forms of teleportation work above level 30 Wilderness, and [[Wilderness#Teleport_restrictions|few forms of teleportation]] work above level 20. Due to the risk of encountering [[player killers]], it is inadvisable to use this exit while carrying items that you are unwilling to lose.\n\n{{Map|x=3250|y=3772|plane=0|mtype=pin|caption=The location the player gets teleported to.|align=left}}\n{{clear}}\n\n==Trivia==\n*[[Taverley Dungeon]] can be seen whilst in the dungeon, since it is part of the dungeon itself, but inaccessible from it. \n*As the dungeon is not considered part of Entrana, it is still possible to receive combat equipment from [[Treasure Trails|Treasure Trail]] [[Reward casket|reward caskets]] within the dungeon.\n\n{{Dungeons}}\n{{Lost City}}\n{{Entrana}}\n[[Category:Quest locations]]"
+        }
+      }
+    }
+  ]
+}

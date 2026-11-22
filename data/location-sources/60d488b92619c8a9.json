@@ -1,0 +1,19 @@
+{
+  "pageid": 202650,
+  "ns": 0,
+  "title": "Lizardman Temple",
+  "revisions": [
+    {
+      "revid": 15229068,
+      "parentid": 14848782,
+      "timestamp": "2026-06-07T19:26:42Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Lizardman Temple\n|image = [[File:Lizardman Temple.png|300px]]\n|release = [[10 January]] [[2019]]\n|update = The Kebos Lowlands\n|members = Yes\n|floors = One\n|location = [[Kebos Lowlands]]\n|race = [[Lizardman shaman]]s, [[Human]]s\n|music = [[Servants of Strife]]\n|map = {{Map|name=Lizardman Temple|x:1312,y:10079|plane=0|mapID=10102}}\n|type = dungeon\n|leagueRegion = Kourend\n}}\nThe '''Lizardman Temple''' is a temple dedicated to [[Xeric]] found beneath [[Molch]]. The [[lizard dwelling|entrances]] leading to the temple are a one-way trip, but players can leave via the [[strange hole (Lizardman Temple)|strange hole]] in the south-west corner of the temple, where they will end up on the top of the step pyramid in Molch.\n\nA lizardman shaman named [[Kaht B'alam]], the only lizardman players can talk to, can be found at the south-east end of the Temple, giving players insights into their culture. The [[stone chest (stone tablet)|stone chest]] near him can be searched to find a [[Stone tablet (Lizardman Temple)|stone tablet]] documenting the origins of the Temple.\n\nA [[Dwarf multicannon]] cannot be placed within the temple.\n\n==Lizardman shamans==\nSix [[Lizardman Shaman|shamans]] can be found in the area beyond the mystic barrier, with two in each chamber. These shamans share the same combat stats and drop table, and only differ in appearance.\n\nThe [[mystical barrier]]s can be passed through and back to avoid damage from the shaman's attacks, but doing so continuously will result in the barrier changing colours, which increases the damage dealt when passing through it. Crossing the barrier three times will result in the barriers turning orange and dealing 10 damage per passing. Doing so another three times will result in the barriers turning red, dealing 20 damage per passage.\n\nFor every time the players passes through the barrier, one minute must pass for the barrier to revert colours. For example, players wishing to revert a red barrier back to green must not use said barrier for at least four minutes, though to fully revert the barrier back to default would require six.\n\n==Stone chests==\nThere are [[stone chest]]s next to the [[Shayzien Infiltrator]] where players can steal from with level 64 [[Thieving]], granting 280 experience.\n\nThese chests contain various bolt tips and seeds, and respawn instantly. However, there is a small chance to get teleported out of the Temple if players fail to picklock the chest.\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"180\">\nLizardman Temple - unreachable dragon warhammers.png|An inaccessible stone chest containing two [[dragon warhammer]]s, between the second and third shaman chambers.\nLizardman Temple - stone chests dragonkin symbols.png|The stone chests by the Shayzien Infiltrator contain the symbol of the [[Dragonkin]].\nLizardman Temple strange hole.png|The strange hole, next to a statue of a cat. This is the only way to leave the Temple bar teleporting.\nXamphur's Laboratory.png|The lair of [[Xamphur]].\n</gallery>\n\n{{Molch}}\n{{Kebos Lowlands}}\n{{Dungeons}}\n{{Places of worship}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 17432,
+  "ns": 0,
+  "title": "Observatory Dungeon",
+  "revisions": [
+    {
+      "revid": 15267041,
+      "parentid": 15211826,
+      "timestamp": "2026-07-18T17:35:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Observatory dungeon}}\n{{Infobox Location\n|name = Observatory Dungeon\n|image = [[File:Observatory Dungeon.png|300px]]\n|release = [[17 March]] [[2003]]\n|update = Observatory Quest online!\n|members = Yes\n|floors = 1\n|location = [[Kandarin]]\n|race = [[goblin (race)|Goblins]], [[Spider]]s\n|music = [[Expedition]]\n|map = {{map|mapID = 10122|x=2335|y=9380}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\nThe '''Observatory Dungeon''' leads from the [[Goblin settlement]] found north-east of the Observatory, to the [[Observatory]]. The dungeon is a giant maze, infested with low-levelled [[goblin]]s and a few high-levelled [[goblin guard]]s.\n{{Map|x=2459|y=3184|mtype=square|align=left|caption=The entrance to the dungeon.}}\n\n==Transportation==\n* [[Ring of dueling]] or [[minigame teleport]] to [[Castle Wars]], then run north.\n* [[Ourania Teleport]], then run south.\n\n==Features==\nThis dungeon is used for the [[Observatory Quest]] and is also used to get to the Observatory for a [[Treasure Trail]]. It also contains various [[Chest (Observatory Dungeon)|chests]], with one [[Chest (Observatory Dungeon, antipoison)|specific chest]] containing an [[antipoison(1)]] potion.\n\n[[File:Observatory Dungeon map.png|300px]]\n\n==Personalities==\n<gallery>\nNaghead.png|[[Naghead]]\nWagchin.png|[[Wagchin]]\n</gallery>\n\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Goblin|levels=2, 5|spawns=31}}\n{{LocationMonsterTableLine|name=Goblin guard|levels=42|spawns=1}}\n{{LocationMonsterTableLine|name=Poison spider#Level_31|displayname=Poison spider|image=Poison spider (Level 31).png|levels=31|spawns=11{{efn|Spawns when opening [[Chest (Observatory Dungeon, spider)|chests]].}}}}\n{{LocationMonsterTableLine|name=Rat|levels=1|spawns=4}}\n{{LocationMonsterTableBottom}}\n{{Notelist}}\n\n==Gallery==\n<gallery>\nObservatory Dungeon entrance.png|The entrance to the Observatory Dungeon.\n</gallery>\n\n==Trivia==\n*The [[goblin (race)|goblins]] that live in the Observatory Dungeon seem to be somewhat more intelligent than normal goblins because they speak like ordinary humans, as opposed to goblins from other regions.\n\n{{Observatory Dungeon}}\n{{Observatory Quest}}\n{{Dungeons}}\n[[Category:Kandarin]]"
+        }
+      }
+    }
+  ]
+}

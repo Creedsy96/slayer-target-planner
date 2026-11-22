@@ -1,0 +1,19 @@
+{
+  "pageid": 667327,
+  "ns": 0,
+  "title": "Virer Hunting Ground",
+  "revisions": [
+    {
+      "revid": 15319892,
+      "parentid": 15281591,
+      "timestamp": "2026-08-25T16:51:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Virer Hunting Ground\n|image = [[File:Virer Hunting Ground.png|300px]]\n|release = [[30 June]] [[2026]]\n|update = The Blood Moon Rises - Out Today!\n|members = Yes\n|location = \n|wilderness = \n|teleport = \n|music = \n|type = \n|map = {{Map|x=2525|y=7762|mapID=-1|height=250}}\n}}\n{{Relative location\n|location = Virer Hunting Ground\n|south = Vampyrium Mine\n|north = Sangvesti\n|east = Apsul Hunting Ground\n}}\n'''Virer Hunting Ground''' is an area in [[Vampyrium]] located south-west of [[Sangvesti]]. Twelve [[venator]]s can be found to the west, while a swarm of [[Letvek (Hunter)|letvek]] can be found to the east. Of these twelve venators, one of them is on a hill overlooking the hunting grounds and can only be attacked with ranged.\n\n{{Vampyrium}}"
+        }
+      }
+    }
+  ]
+}

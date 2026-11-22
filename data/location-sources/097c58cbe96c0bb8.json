@@ -1,0 +1,19 @@
+{
+  "pageid": 15949,
+  "ns": 0,
+  "title": "McGrubor's Wood",
+  "revisions": [
+    {
+      "revid": 15290184,
+      "parentid": 15290180,
+      "timestamp": "2026-08-08T00:41:14Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = McGrubor's Wood\n|image = [[File:McGrubor's Wood.png]]\n|release = [[28 May]] [[2002]]\n|update = Latest RuneScape News (28 May 2002)\n|members = Yes\n|location = [[Kandarin]]\n|music = [[Talking Forest]]\n|map = {{Map|name=McGrubor's Wood|x=2652|y=3485|height=233|width=300|zoom=2}}\n|type = woods\n|leagueRegion = Kandarin\n}}\n{{Relative location\n|location = McGrubor's Wood\n|north = Lighthouse\n|west = Coal Trucks\n|south = Hemenster\n|east = Seers' Village\n}}\n'''McGrubor's Wood''' is a wooded, fenced-in area north of [[Hemenster]] and west of [[Seers' Village]], used primarily for [[quests]]. There are two ways in and out: a loose section of the northern railing, and a [[fairy ring]] with code {{fairycode|ALS}}. A [[forester (McGrubor's Wood)|forester]] can be found at the main entrance, preventing players from using it.\n\nThe loose section of the railing is immediately to the north-east of the small building that borders the fence, and is shown on the map in red, similarly to how a door is portrayed.\n\n==Features==\nInside the fence, guarding the wood, are aggressive level 44 [[guard dog]]s. A player can run past them getting hit only a few times.\n\nThe woods contain multiple [[dwellberries|dwellberry]] spawns, and is the only place where [[vine (McGrubor's Wood)|red worm vines]] can be found, which yield [[red vine worm]]s when dug with a [[spade]]. There is also a chance that [[Solus Dellagar]] will appear here during the [[Wanted!]] quest. \n\nThe little shack in the middle of the wood can be entered with a [[shiny key]] after completing the [[Temple of Ikov]] quest, and serves as a shortcut to enter the [[Temple of Ikov (dungeon)|temple]].\n\nThere is a crate that is the solution to a [[Treasure Trails/Guide/Maps|map clue]] during a [[Treasure Trail]].\n\n==Trivia==\n*McGrubor's Wood may be a reference to McGregor's garden from {{WP|Peter Rabbit}} by Beatrix Potter.\n\n[[Category:Kandarin]]"
+        }
+      }
+    }
+  ]
+}

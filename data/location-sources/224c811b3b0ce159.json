@@ -1,0 +1,19 @@
+{
+  "pageid": 17669,
+  "ns": 0,
+  "title": "Keep Le Faye",
+  "revisions": [
+    {
+      "revid": 15275380,
+      "parentid": 15099666,
+      "timestamp": "2026-07-25T22:19:47Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Keep LeFaye}}\n{{Infobox Location\n|name = Keep Le Faye\n|image = [[File:Keep Le Faye.png]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|members = Yes\n|location = [[Kandarin]]\n|map = {{Map|name=Keep Le Faye|x=2769|y=3401|height=350|width=300|zoom=4}}\n|type = building\n|leagueRegion = Kandarin\n}}\n\n'''Keep Le Faye''' is a tower south of [[Camelot Castle]], and directly east of [[Sorcerer's Tower]]. It plays a large role in the [[Merlin's Crystal]] and [[King's Ransom]] [[quests]]. The keep is the home of [[Morgan Le Faye]].\n\n==Transportation==\n*Teleport to [[Camelot]] and run south\n*Use [[fairy ring]] code {{fairycode|blr}} and run north-east\n*Use the [[Kandarin headgear 3]]/[[Kandarin headgear_4|4]] teleport to [[Sherlock]] and run east\n*Use the [[Ardougne cloak 2]]/[[Ardougne cloak 3|3]]/[[Ardougne cloak 4|4]] teleport to [[Ardougne]] farm and run east\n*Hide in the crate outside of the [[Candle Shop]] in [[Catherby]]\n\n== Quests ==\n\n=== Merlin's Crystal ===\nIn Merlin's Crystal, players must hide inside the crates near the candle shop in Catherby. Workers will load the crates onto a boat that brings the player to the keep, after which players must defeat [[Sir Mordred]]. After beating him in combat, [[Morgan Le Faye]] will appear and ask you to spare her son, which players will do in exchange for information on freeing [[Merlin]].\n\n=== King's Ransom ===\nAfter breaking out of jail during King's Ransom, players end up on the {{FloorNumber|uk=0}} of the keep, surrounded by knights in battle. With the Renegade Knights occupied, players can head to the top and obtain the [[Holy grail (item)|holy grail]].\n\n==Inhabitants==\n*[[Renegade Knight]]s (level 37)\n*[[Sir Mordred]] (Level 39)\n\n==Treasure Trails==\n{{EmoteClueHeader}}\n{{EmoteClue|tier=easy|emote=Raspberry|location=\n{{StashLocation\n|x=2756\n|y=3399\n|text=West of Keep Le Faye's entrance, north of [[Legends' Guild]]\n}}\n|item1=Coif|item2=iron platebody|item3=leather gloves}}\n{{EmoteClueBottom}}\n\n==Trivia==\n*A newspost advertising membership released on 21 February 2002 referred to a quest location \"Fort Grymwold\", possibly referring to an early name for Keep Le Faye.{{Citation needed|A link to the news post is missing}}\n*The [[raspberry]] [[Treasure Trails/Guide/Emote clues|emote clue]] is a reference to the French taunter scene in ''{{wp|Monty Python and the Holy Grail}}''.\n{{Merlin's Crystal}}\n{{King's Ransom}}\n[[Category:Kandarin]]\n[[Category:Towers]]"
+        }
+      }
+    }
+  ]
+}

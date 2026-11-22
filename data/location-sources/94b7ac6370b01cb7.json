@@ -1,0 +1,19 @@
+{
+  "pageid": 34836,
+  "ns": 0,
+  "title": "Combat Training Camp",
+  "revisions": [
+    {
+      "revid": 15367210,
+      "parentid": 15359561,
+      "timestamp": "2026-10-06T22:18:14Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Combat Training Camp\n|image = [[File:Combat Training Camp.png]]\n|release = [[23 October]] [[2002]]\n|update = Updates galore!\n|aka = King Lathas's training grounds\n|members = Yes\n|location = [[Kandarin]]\n|map = {{Map|name=Combat Training Camp|x=2515|y=3370|height=300|width=300|zoom=2}}\n|leagueRegion = Kandarin\n}}\n{{Relativelocation\n|location = Combat Training Camp\n|north = Baxtorian Falls\n|west = Outpost\n|south = West Ardougne\n|east = Fishing Guild\n}}\nThe '''Combat Training Camp''' is a combat training facility which players may access upon completion of the [[Biohazard]] quest. The camp is located north of [[West Ardougne]] and just east of the [[Gnome Stronghold]]'s entrance. It was established by [[King Lathas]] of [[East Ardougne]] to train his forces, and various [[Guard (Combat Training Camp)|guards]] can be seen within the camp.\n\n==Transportation==\n* [[Achievement diary cape]] to [[Two-pints]], open the door and run north-west.\n* [[Necklace of passage]] to [[The Outpost]] and run east.\n* [[Spirit tree]] to the [[Tree Gnome Stronghold]] exit the stronghold to the south, and run east.\n* [[Ardougne Teleport]] to [[East Ardougne]], run north, then run west, take the bridge south and run west past the Chaos Temple.\n* [[Canoe Station]] just north of the camp.\n\n==Features==\nThe training camp has several level-63 caged [[ogre]]s, which can be used for training [[Ranged]], [[Magic]], and [[Melee]] (only when using a [[halberd]]). The cage has a [[Loose Railing (Combat Training Camp)|loose railing]], which you can use to enter the cage to retrieve drops and spent ammunition. Attempting to attack the ogres while inside the cage results in a message saying {{mes|These ogres are for ranged combat only.}}\n\nInside the training grounds is [[Armoury|King Lathas's Armoury]] which sells melee and ranged items, including [[Arrowtips|arrowtips]] for [[Fletching]], albeit at a higher price than other fletching shops. There is also a group of [[Dummy#Combat Training Camp|dummies]] that can be attacked for 50 [[Attack]] experience per hit. This can only be done six times total, ever.\n\nThere are several [[beer]] spawns on the tables in the camp. Entering the Combat Training Camp is a requirement for the easy [[Ardougne Diary]].\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 13 November 2014\n|update = Time Played & Plenty More\n|change = The dialogue when entering King Lathas' training ground has been removed.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* When talking to one of the guards near the ogre cage, they reveal that the ogres have been terrorising the area, and that they've eaten four children this week alone, which is why the ogres are being used for target practice as punishment.{{CiteNPC|npc=Guard (Combat Training Camp)|quote=Well hello brave warrior. These ogres have been terrorising the area, they've eaten four children this week alone. So we decided to use them for target practice. A fair punishment.|loc=|notes=|name=}}\n\n==References==\n{{Reflist}}\n\n{{Combat Training Camp}}\n{{Biohazard}}\n[[Category:Arenas]]\n[[Category:Bases and camps]]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 22361,
+  "ns": 0,
+  "title": "Dorgesh-Kaan mine",
+  "revisions": [
+    {
+      "revid": 15057594,
+      "parentid": 15053769,
+      "timestamp": "2025-11-22T23:38:03Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Dorgesh-Kaan Mine\n|image = [[File:Dorgesh-Kaan mine.png|300px]]\n|release = [[31 May]] [[2005]]\n|update = New Appointment in Lumbridge\n|aka = Dorgeshuun Mines, Cave Goblin Mines\n|members = Yes\n|location = By the entrance to [[Dorgesh-Kaan]]\n|music = [[The Lost Melody]]\n|map = [[File:Dorgeshuun Tunnels.png|300px]]\n|type = mine\n|leagueRegion = Misthalin\n}}\nThe '''Dorgesh-Kaan Mine''' (also known as '''Dorgeshuun Mines''' or '''Cave Goblin Mines'''), is used by the [[Dorgeshuun]] tribe of Cave goblins. The mine contains 9 [[iron ore]] rocks and 12 [[silver ore]] rocks, and it requires [[The Lost Tribe]] [[quest]] to be started to use. It can be accessed via the tunnels from the [[Lumbridge Castle]] cellar by going through the tunnel entrance and talking to or following [[Kazgar]] in the tunnel. (A player could retrace the route followed during The Lost Tribe, but this is unnecessary and dangerous.) The mine has the entrance to [[Dorgesh-Kaan]], the Dorgeshuun underground city.\n\nAlthough the mine requires a [[light source]], it is possible to enter the mine from Dorgesh-Kaan without one. It is even possible to navigate in the mine after doing this by using the darkened image provided. However, players attempting to do this will find themselves swarmed by cave insects that will damage them slowly but regularly (constant 1s, and these hits ''cannot'' be blocked by any form of [[Defence]], including [[Prayer]]) until they either light up a light source, leave the mine, or die.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||9\n|-\n|{{plinkp|Silver ore}}||[[Silver rock|Silver]]\n|20||40||12\n|-\n|}\n\n==Mining==\n[[Mining]] in the [[Dorgeshuun]] mine is not recommended for most purposes, as better mining locations for speed or [[ore]]-gathering efficiency exist. While present in the mines, [[iron ore|iron]] or [[silver ore]] can be mined and sold to [[Mistag]] for a small amount of [[coins]]. However, it is more profitable to mine the ore, talk to Mistag, be taken to the entrance of the mine, bank the ore (preferably in the [[Culinaromancer's Chest]] if [[Recipe for Disaster]] is partially completed, or at the [[Lumbridge]] bank on the third floor of the castle), and then sell the ore over the [[Grand Exchange]]. Simply selling the ore to Mistag is recommended for those who care more about the experience rather than the profit, as it is considerably faster.\n\n==Quests==\n*[[The Lost Tribe]]\n*[[Death to the Dorgeshuun]]\n*[[Wanted!]]\n\n==Personalities==\n*[[Mistag]]\n\n{{Dorgesh-Kaan mine}}\n{{Mines}}\n{{Dungeons}}\n{{The Lost Tribe}}\n{{Death to the Dorgeshuun}}"
+        }
+      }
+    }
+  ]
+}

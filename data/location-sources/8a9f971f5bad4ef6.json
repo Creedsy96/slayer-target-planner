@@ -1,0 +1,19 @@
+{
+  "pageid": 273940,
+  "ns": 0,
+  "title": "Sourhog Cave",
+  "revisions": [
+    {
+      "revid": 14921878,
+      "parentid": 14905033,
+      "timestamp": "2025-06-17T23:34:39Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Sourhog Cave\n|image = [[File:Sourhog Cave.png|300px]]\n|release = [[10 September]] [[2020]]\n|update = A Porcine of Interest\n|members = Yes\n|floors = 1\n|location = East of [[Draynor Manor]], [[Misthalin]]\n|race = [[Sourhog]]\n|music = [[Safety in Numbers]]\n|map = {{Map|name=Sourhog Cave|3168,9696|mapID=12}}\n|type = dungeon\n|leagueRegion = Misthalin\n}}\n{{Relativelocation\n|location = Sourhog Cave\n|north = Cooks' Guild\n|east = Champions' Guild\n|south = Draynor Village\n|west = Draynor Manor\n}}\nThe '''Sourhog Cave''' is the home to the [[Sourhog]]. Located just east of [[Draynor Manor]], the cave serves as a battleground for the [[A Porcine of Interest]] [[quest]]. \n\nA [[Dwarf multicannon]] can be used here.\n\n{|\n|{{Map|x=3150|y=3347|caption=The entrance to the Sourhog Cave.|r=4|mtype=square|width=250|height=250}}\n|}\n\n==Monsters==\n* [[Sourhog]] (Level 37)\n\n{{A Porcine of Interest}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

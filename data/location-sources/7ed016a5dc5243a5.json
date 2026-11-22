@@ -1,0 +1,19 @@
+{
+  "pageid": 81136,
+  "ns": 0,
+  "title": "Settlement Ruins",
+  "revisions": [
+    {
+      "revid": 15222774,
+      "parentid": 15221833,
+      "timestamp": "2026-05-31T19:28:01Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Settlement Ruins\n|image = [[File:Settlement Ruins.png|300px]]\n|release = [[17 November]] [[2016]]\n|update = Great Kourend Rework\n|members = Yes\n|location = [[Northern Tundras]]\n|music = [[The Doors of Dinh]]\n|map = {{Map|name=Settlement Ruins|x=1560|y=3895|height=250|zoom=2}}\n|type = settlement\n|leagueRegion = Kourend\n}}\n\nThe '''Settlement Ruins''' are a village found south-west of the [[Wintertodt Camp]] in the [[Northern Tundras]]. The northern entrance is guarded by aggressive level-132 [[Ice wolf|ice wolves]], while the settlement itself is inhabited by [[ice giant]]s and [[ice spider]]s. The southern entrance can be accessed north of the [[Tower of Magic]].\n\nFrom the appearance of the settlement and the frozen warriors found there, it is assumed the settlement was destroyed after the [[Wintertodt]] ravaged [[Great Kourend]] during the Long Winter 1,400 years ago.\n\nNote that this is a [[multicombat area]], and can be threatening for lower level players. Be prepared to be attacked by the Level 53 Ice Giants and level 61 Ice Spiders.\n\n==Transportation==\n* [[Fairy rings|Fairy ring]] {{Fairycode|CIS}} and head west up the mountain to the southern entrance.\n* [[Games necklace]] to the [[Wintertodt Camp]] and head south-west down the path to the northern entrance.\n\nThe south entrance route via fairy ring is recommended, to avoid spending a games necklace charge and also to avoid the ice wolves.\n\n==Trivia==\n* A lone [[standing stone]], identical to one of the standing stones that can be found north of [[Falador]], can be seen overlooking the village on a hill to the south-east.\n* North of the settlement, there is a mysterious purple symbol on the ground, which vaguely resembles that of [[Zaros]]. Its origins, and its relation to the area around it, remain unknown.\n[[File:Settlement Ruins mysterious symbol.png|thumb|left|The mysterious symbol found north of the settlement.]]\n\n{{Relativelocation\n|location = Settlement Ruins\n|north = Unmarked Grave\n|west = Blast mine\n|south = Lovakengj\n|east = Wintertodt Camp\n}}\n\n{{Northern Tundras}}\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

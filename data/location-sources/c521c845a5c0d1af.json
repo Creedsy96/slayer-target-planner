@@ -1,0 +1,19 @@
+{
+  "pageid": 29125,
+  "ns": 0,
+  "title": "Temple of Marimbo",
+  "revisions": [
+    {
+      "revid": 15262724,
+      "parentid": 15229060,
+      "timestamp": "2026-07-14T01:19:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Temple of Marimbo\n|image = [[File:Temple of Marimbo.png]]\n|release = [[6 December]] [[2004]]\n|update = Monkey Madness\n|members = Yes\n|floors = 3\n|location = [[Ape Atoll]]\n|map = {{Map|name=Temple of Marimbo|x=2797|y=2787|height=250|zoom=3}}\n|type = building\n|leagueRegion = Kandarin\n}}\n[[File:Temple of Marimbo exterior.png|thumb|left|The temple from outside.]]\n\nThe '''Temple of Marimbo''' is a temple in [[Marim]], [[Ape Atoll]]; it is dedicated to the monkey goddess, [[Marimbo]]. Marimbo takes the shape of a giant gorilla, yet she is a shapeshifter. The temple is only accessible during and after [[Monkey Madness I]].\n\nPlayers can use the temple for melee training without needing [[food]] or [[prayer potion]]s, being able to top up their prayer at the nearby gorilla statue. Players may use [[Dharok the Wretched's equipment|Dharok the Wretched's]] set bonus along with the use of [[Protect from Melee]] to fight the [[Monkey Guard]]s within, as they will only fight using melee. Using this method, players can keep their [[hitpoints]] at 1 to maximize damage dealt. Taking a few anti-poisons with you is recommended as the nearby level 1 [[spider]]s can poison you. The altar being so close-by also allows the player to take advantage of extra damage boosting prayers, such as [[Incredible Reflexes]], [[Ultimate Strength]], [[Chivalry]], or [[Piety]].\n\nSince the guards occasionally heal, a single guard can award a large amount of exp whilst being relatively low effort. The bearded guards near the trapdoor will block players from moving past them, similar to [[barricade]]s in [[Castle Wars]], so it's best to avoid positioning yourself between two of them, as [[greegree]]s cannot be equipped during combat. A greegree is not required after completing [[Monkey Madness II]], but the guards will no longer be aggressive.\n\nThe [[Temple of Marimbo Dungeon]] is found under the temple, and is visited during Monkey Madness I and the [[Awowogei]] section of [[Recipe for Disaster#Awowogei|Recipe for Disaster]] quests.\n\n{{Ape Atoll}}\n{{Places of worship}}"
+        }
+      }
+    }
+  ]
+}

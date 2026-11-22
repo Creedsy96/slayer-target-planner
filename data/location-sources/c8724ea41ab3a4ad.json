@@ -1,0 +1,19 @@
+{
+  "pageid": 579720,
+  "ns": 0,
+  "title": "Jiggig Dungeon",
+  "revisions": [
+    {
+      "revid": 15365346,
+      "parentid": 15351889,
+      "timestamp": "2026-10-05T14:16:32Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Jiggig Dungeon\n|image = [[File:Jiggig Dungeon.png]]\n|release = [[17 May]] [[2005]]\n|update = Zogre Flesh Eaters\n|members = Yes\n|aka = Zogre cave\n|location = [[Feldip Hills]]\n|race = [[Zogre]]s and [[Skogre]]s\n|music = [[Wayward]]\n|map = {{Map|x:2463,y:9417|plane=2|mapID=10084|zoom=1}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\n'''Jiggig Dungeon''' is a dungeon in [[Jiggig]]. The dungeon is a large area swarming with [[zogre]]s and [[skogre]]s. The player can access it by climbing over [[crushed barricade]] and then climbing down the [[Stairs (Jiggig Dungeon)|stairs]]. They can only be climbed during and after the [[Zogre Flesh Eaters]] quest.\n\nThe main points of interest during the Zogre Flesh Eaters quest are the [[Skeleton (Zogre Flesh Eaters)|skeleton]] lying on a [[broken lectern]] in the north-west corner, and the entrance to the level below to the west. The locked [[ogre stone door]]s can only be opened during the quest, using the [[ogre gate key]] given to the player by [[Grish]]. The player will find [[Slash Bash]] in the bottom level.\n\nThere are many [[Ogre Coffin|ogre coffin]]s scattered inside the wall and on the ground. They can be opened either with an [[ogre coffin key]], which is a drop from zogres and skogres, or by picking the locks through the [[Thieving]] skill.\n\nWhen burying [[zogre]] bones in the dungeon, there's a 1 in 3 chance and to spawn a [[skogre]] alongside the regular experience drop. The skogre will despawn after 5 minutes. A message in the chatbox appears {{Mes|The creature rises from the grave... again!}}.\n\n==Transportation==\n* [[Ring of dueling]] teleport to [[Castle Wars]] then run south to Jiggig.\n* Using [[Fairy ring]] code {{fairycode|BKP}} and running east.\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Skogre|image=Skogre (1).png|levels=44|spawns=9}}\n{{LocationMonsterTableLine|name=Slash Bash|levels=111|spawns=1{{efn|Only during [[Zogre Flesh Eaters]].}}}}\n{{LocationMonsterTableLine|name=Zogre|image=Zogre (1).png|levels=44|spawns=27}}\n{{LocationMonsterTableBottom}}\n{{Notelist}}\n\n==Quests==\n* [[Zogre Flesh Eaters]]\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 26 July 2018\n|update = Revenant Cave Rewards and Troll Quest Announcement\n|change = We've fixed some strange isssues involving dying (or not dying properly) within the Zogre cave after being caught picklocking the Ogre Coffin.\n}}\n{{Subject changes footer}}\n\n{{Zogre Flesh Eaters}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 82643,
+  "ns": 0,
+  "title": "Xeric's Shrine",
+  "revisions": [
+    {
+      "revid": 15225571,
+      "parentid": 15223600,
+      "timestamp": "2026-06-05T03:24:24Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Xeric's Shrine\n|image = [[File:Xeric's Shrine.png|300px]]\n|release = [[5 January]] [[2017]]\n|update = Chambers of Xeric\n|members = Yes\n|location = [[Kebos Lowlands]]\n|map = {{Map|name=Xeric's Shrine|x=1310|y=3618|height=250|zoom=2}}\n|leagueRegion = Kourend\n}}\n'''Xeric's Shrine''' is a temple housed north-east of [[Mount Quidamortem]], north of the [[Lizardman Settlement]] in the [[Kebos Lowlands]].\n\nPlayers can recharge their [[prayer points]] at the [[altar]] in this location. The [[Swamp Priest]] lives right outside the shrine.\n\nIt is also the location for the third hole you climb into during the [[The Garden of Death]] quest.\n\nIt's recommended to bring [[antipoison]] potions while moving through this area since the [[lizardmen]] can [[poison]] you.\n[[File:Swamp Priest's living quarters.png|left|The Swamp Priest's living quarters just west of the shrine.|thumb|300px]]\n{{Relative location\n|location = Xeric's Shrine\n|north = Molch\n|east = Shayzien\n|south = Lizardman Settlement\n|west = Mount Quidamortem\n}}\n\n{{Kebos Lowlands}}\n{{Places of worship}}"
+        }
+      }
+    }
+  ]
+}

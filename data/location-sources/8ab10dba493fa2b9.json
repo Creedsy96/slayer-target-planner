@@ -1,0 +1,19 @@
+{
+  "pageid": 624312,
+  "ns": 0,
+  "title": "Gryphon Caves",
+  "revisions": [
+    {
+      "revid": 15411752,
+      "parentid": 15389214,
+      "timestamp": "2026-11-22T05:27:24Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|version1 = Regular\n|version2 = Task-only\n|name = Gryphon Caves\n|image1 = [[File:Gryphon Caves.png|300px]]\n|image2 = [[File:Gryphon Caves (task-only).png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[The Great Conch]]\n|wilderness = No\n|music = [[Below the Conch]]\n|map1 = {{Map|name=Gryphon Caves|x=3107|y=8868|plane=0|mapID=-1}}\n|map2 = {{Map|name=Gryphon Caves|x=3232|y=8865|plane=0|mapID=-1}}\n|type = Dungeon\n|leagueRegion = No\n}}\nThe '''Gryphon Caves''' are two caves found on [[The Great Conch]]. Both dungeons contain a number of [[Gryphon]]s, a [[Slayer monster]] requiring 51 [[Slayer]] to kill. A [[Dwarf multicannon]] can be used in both dungeons.\n\n{{Map|width=350|height=280|mtype=pin|zoom=1|y=2465|3120,2489|3235,2417|caption=The entrances to the caves, with the regular area in the north-west and the task-only area in the south-east.|align=left|icon=redPin}}\n[[File:Gryphon cave.png|thumb|right|Outside of the Gryphon cave.]]\n==South-eastern dungeon==\nThe dungeon on the eastern side is where Gryphons can only be killed if on a [[Slayer task|slayer task]]. This rule is enforced by [[Elder Kelmo]] who stands just inside the cave entrance. \n\nThe south west part of this dungeon is a [[Multicombat area|multicombat area]]. The other two thirds of the dungeon is [[Single-way combat|single-way combat]].\n\n==North-western dungeon==\nNo slayer task is needed to kill the Gryphons in the western dungeon. \n\nThis dungeon contains a [[knife]] [[Item spawn|spawn]] which can be used to cut the watermelons dropped by the gryphons to make [[watermelon slice]]s, which can be used to heal and prolong combat.\n\n{{The Great Conch}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

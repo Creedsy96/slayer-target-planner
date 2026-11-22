@@ -1,0 +1,19 @@
+{
+  "pageid": 26417,
+  "ns": 0,
+  "title": "Draynor Sewers",
+  "revisions": [
+    {
+      "revid": 15241686,
+      "parentid": 15090645,
+      "timestamp": "2026-06-28T14:58:12Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Draynor Sewers\n|image = [[File:Draynor Sewers.png|300px]]\n|release = [[18 April]] [[2005]]\n|update = Desert Treasure\n|members = No\n|floors = 1\n|location = [[Misthalin]]\n|race = [[Undead]]\n|music = [[Down Below]]\n|map = {{Map|name=Draynor Sewers|x=3103|y=9670|zoom=2|mapID=12}}\n|leagueRegion = Misthalin\n}}\nThe '''Draynor Village Sewers''' is a [[dungeons|dungeon]] found beneath [[Draynor Village]] that is mainly populated by [[undead]] [[monster]]s: [[skeleton]]s and [[zombie]]s. It has two [[trapdoor (Draynor Sewers)|entrances]]: one entrance is to the west of village, and the other is just west of the [[Draynor jail|jail]]. The sewers aren't a commonly ventured place since they only contain low level enemies.\n{{Map|3084,3272|mtype=pin|width=250|height=250|align=left|caption=The entrance to Draynor Sewers.}}\n\n==Notable features==\n*This area is an important part of the [[Desert Treasure I]] quest.\n*The [[anvil]] can be used for [[Smithing]], but it is highly unlikely to be used due to its far [[bank]]ing distance. Smithing an [[adamant platebody]] on the [[anvil]] is a requirement for the [[Lumbridge & Draynor Diary#Elite|Lumbridge & Draynor Elite Diary]].\n*A total of seven zombies and four skeletons inhabit the dungeon, making it a decent training spot for players seeking a champion scroll from one of the monsters.\n\n==Transportation==\nThe dungeon is located underneath a trapdoor north-west of [[Draynor]] (or north of the marketplace), and through an entrance west of the jailhouse.\n* [[Amulet of glory]] teleport to [[Draynor Village]]\n\n==Walkthrough==\nThe dungeon is very simple in layout; from the village entrance, it goes directly east with a small room connected, and then it turns directly south and continues until it reaches the second entrance. Throughout the entire complex are sewer pipes along the walls.\n\nThe room to the north is where [[Ruantun]] lives; it is unpopulated on [[F2P]] worlds. It has a derelict, fallen-down house in the centre. The house contains a straw bed, a chair, a burning [[fire]], and an [[anvil]]. It is used in part of the [[Desert Treasure I]] quest.\n\nThe large sewer pipes can be used to flinch zombies. In addition, the bricks at the entrance to the derelict house where Ruantun lives can be used to flinch. \n[[File:Draynor Sewers zombie safespot.png|thumb|An example of how to catch a Zombie on a pipe. ]]\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Rat|levels=1|spawns=10}}\n{{LocationMonsterTableLine|name=Zombie|image=Zombie (Level 13, 13).png|levels=13, 24|spawns=7}}\n{{LocationMonsterTableLine|name=Skeleton|image=Skeleton (level 22, 3).png|levels=22, 25|spawns=4}}\n{{LocationMonsterTableBottom}}\n\n==Quests==\n*[[Desert Treasure I]]\n\n==Personalities==\n*[[Ruantun]], a [[Vampyre]] involved in the [[Desert Treasure I]] quest.\n\n\n{{Draynor Village}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

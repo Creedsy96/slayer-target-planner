@@ -1,0 +1,19 @@
+{
+  "pageid": 6920,
+  "ns": 0,
+  "title": "Haunted Woods",
+  "revisions": [
+    {
+      "revid": 15211800,
+      "parentid": 14978154,
+      "timestamp": "2026-05-17T04:32:26Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Haunted Woods\n|image = [[File:Haunted Woods.png]]\n|release = [[14 October]] [[2004]]\n|update = Morytania Expansion\n|members = Yes\n|location = [[Morytania]]\n|teleport = Fairy ring {{Fairycode|ALQ}}\n|music = [[Deadlands]]\n|map = {{Map|name=Haunted Woods|x=3584|y=3492|height=250|zoom=1}}\n|type = woods\n|leagueRegion = Morytania\n}}\n{{Relative location\n|location = Haunted Woods\n|north = Fenkenstrain's Castle\n|west = Canifis\n|south = Darkmeyer\n|east = Port Phasmatys\n}}\nThe '''Haunted Woods''' is a large swampy forest in [[Morytania]]. It is located east of [[Canifis]] and is home to [[leech]]es, [[swamp crab]]s and [[feral vampyre]]s, all of which are aggressive. A certain kind of non-attackable [[spider (Morytania)|spider]] can also be found in the Haunted Woods that will summon a level 72 feral vampyre if a player gets too close. \nThere is a [[fairy ring]] (code {{Fairycode|ALQ}}) south of the [[Port Phasmatys]] farming patch. \n\nThe Haunted Woods is the only place where [[hollow tree]]s can be found, which can be cut for [[bark]]. It also contains a few [[yew tree]]s to the far east, as well as a large number of non-interactable dead trees and some dangerous [[undead tree]]s similar to those found around [[Draynor Manor]].\n\nIn the south-western corner is the entrance to the [[Werewolf Agility Course]] and [[Werewolf Skullball]]. The player is required to wear a [[Ring of Charos]] to gain access.\n\nDuring the [[Creature of Fenkenstrain]] quest, the player must dig at the grave of [[Gardener Ghost|Ed Lestwit]], which is located in the Haunted Woods.\nDuring [[Sins of the Father]] the player and [[the Myreque]] spy on [[Damien Leucurte]] after foiling his plan, this is also where they are first approached by [[Vanescula Drakan]].\n\nDuring a [[clue scroll (hard)|hard clue scroll]] you may be asked to perform the [[panic]] emote, provoking a visit from a [[double agent]] in the 'heart of the haunted woods'. This can be found by the hollow tree, just east of the 'ALQ' fairy ring. \n\n==Monsters==\n<gallery>\nSpider (Morytania).png|[[Spider (Morytania)|Spider]]\nUndead tree.png|[[Undead tree]]\nBat.png|[[Bat]], level 6\nOchre Blamish Snail (round).png|[[Ochre Blamish Snail]], level 10\nMyre blamish snail (pointed).png|[[Myre Blamish Snail]], level 10\nBlood Blamish Snail (round).png|[[Blood Blamish Snail]], level 20\nBruise Blamish Snail (pointed).png|[[Bruise Blamish Snail]], level 20\nLeech.png|[[Leech]], level 52\nSwamp Crab.png|[[Swamp Crab]], level 55\nFeral Vampyre.png|[[Feral Vampyre]], level 61\nFeral Vampyre (lv 72).png|[[Feral Vampyre]], level 72\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 14 October 2004\n|update = Morytania Expansion\n|change = The area was made accessible to players.\n}}\n{{Subject changes\n|date = 29 June 2004\n|update = Priest In Peril Quest\n|change = The area was first added ingame with the [[Priest in Peril]] quest, but was inaccessible as the bridge from Canifis was flooded.\n}}\n{{Subject changes footer}}\n\n{{Creature of Fenkenstrain}}\n{{Sins of the Father}}\n[[Category:Morytania]]"
+        }
+      }
+    }
+  ]
+}

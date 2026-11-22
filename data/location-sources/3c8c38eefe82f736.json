@@ -1,0 +1,19 @@
+{
+  "pageid": 612717,
+  "ns": 0,
+  "title": "Ynysdail Cavern",
+  "revisions": [
+    {
+      "revid": 15212230,
+      "parentid": 15157022,
+      "timestamp": "2026-05-17T04:35:19Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Ynysdail Cavern\n|image = [[File:Ynysdail Cavern.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|music = [[Subterranea]]\n|map = {{Map|x=2275|y=9880|mapID=-1|zoom=2}}\n|type = dungeon\n|leagueRegion = No\n}}\n'''Ynysdail Cavern''' is a dungeon beneath [[Ynysdail]]. \n\nThe dungeon contains several mining spots containing a total of seven [[mithril rocks|mithril]], eight [[Adamantite rocks|adamantite]] and two [[runite rocks]]. \n\nIt also contains a small assortment of Slayer monsters; [[rockslug]]s, [[jelly|jellies]] and is the only location to house [[aquanite]]s. The entire dungeon is a single-combat zone and [[Dwarf multicannon]]s cannot be set in the dungeon; attempting to do so will result in the message \"The ground is too damp to set up a cannon here.\"\n{{Map|x=2220|y=3475|mtype=pin|2218,3477|align=left|icon=redPin|caption=The entrance to the cavern.}}\n\n==Mining==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||7\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamantite]]\n|70||95||8\n|-\n|{{plinkp|Runite ore}}||[[Runite rock|Runite]]\n|85||125||2\n|-\n|}\n\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

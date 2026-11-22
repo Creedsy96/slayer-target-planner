@@ -1,0 +1,19 @@
+{
+  "pageid": 538040,
+  "ns": 0,
+  "title": "Mons Gratia",
+  "revisions": [
+    {
+      "revid": 15229212,
+      "parentid": 15211994,
+      "timestamp": "2026-06-07T23:43:50Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Mons Gratia\n|image = [[File:Mons Gratia.png|300px]]\n|release = [[25 September]] [[2024]]\n|update = Varlamore: The Rising Darkness is OUT NOW\n|members = Yes\n|location = [[Varlamore]]\n|music = [[Whispering Wind]]\n|map = {{Map|name=Mons Gratia|x=1440|y=3240|height=400}}\n|leagueRegion = Varlamore\n}}\n{{Relativelocation\n|location = Mons Gratia\n|north = Auburn Valley\n|west = Gloomthorn Trail\n|south = Ralos' Rise\n|east = Quetzacalli Gorge\n}}\n\n'''Mons Gratia''' is a mountain located west of the [[Quetzacalli Gorge]]. It lies along the \"Pilgrim Path,\" a sacred route in [[Losanium]] that involves walking from the [[Teomat]] to the [[Proudspire]]. \n\n==Transportation==\nTransport routes to the mountain include:\n*[[Quetzal Transport System]] to Quetzacalli Gorge.\n\n==Mountain features==\n\n===NPCs===\n*[[Pilgrim]]\n*[[Mountain goat]]\n\n===Monsters===\n*[[Icefiend]] (on the mountain)\n*[[Bandit (Varlamore)|Bandit]] (north-west of the mountain)\n* [[White jaguar]] (west of the mountain)\n\n===Hunter===\n*[[Cerulean twitch]]\n*[[Snowy knight]]\n*[[Sapphire glacialis]]\n\n==Trivia==\n* \"Mons Gratia\" translates to \"mountain grace\" in Latin.\n\n{{Varlamore}}\n[[Category:Terrain]]\n[[Category:Mountains and hills]]"
+        }
+      }
+    }
+  ]
+}

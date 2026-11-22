@@ -1,0 +1,19 @@
+{
+  "pageid": 106161,
+  "ns": 0,
+  "title": "The Warrens",
+  "revisions": [
+    {
+      "revid": 15317408,
+      "parentid": 15316623,
+      "timestamp": "2026-08-23T16:15:42Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = The Warrens\n|image = [[File:The Warrens.png|300px]]\n|release = [[9 November]] [[2017]]\n|update = The Queen of Thieves & The Depths of Despair\n|members = Yes\n|floors = 1\n|location = [[Great Kourend]]\n|race = [[Human]]s\n|music = [[What Happens Below...]]\n|map = {{Map|1774,10144|mapID=-1|zoom=1|height=200}}\n|type = dungeon\n|leagueRegion = Kourend\n}}\n'''The Warrens''' is a sewer located beneath [[Port Piscarilius]], accessed by climbing down the [[manhole (Port Piscarilius)|manhole]] located in the centre of the port. It is visited during [[The Queen of Thieves]] [[quest]].\n\nThe Warrens is home to pirates, thieves, and homeless men and women. The Saviours of Kourend gang, led by the [[Lady Shauna Piscarilius|Queen of Thieves]], makes their headquarters here, which is guarded by [[Devan Rutter]].\n\n==Transportation==\n{{Map|1813,3745|mtype=pin|caption=Location of the manhole leading to The Warrens}}\n\nThe manhole can be quickly accessed with the [[The Fisher's Flute]] teleport of [[Kharedst's memoirs]] or the [[Book of the Dead]].\n\n==Features==\nAside from the tents found throughout the Warrens, there is a pub, which contains a cooking range and a water source. In addition, the Saviours of Kourend's headquarters contains an [[anvil]].\n\nThere is also a [[poll booth]], and three shops: [[Warrens Fish Monger]], [[Warrens General Store]], and a [[Bartender (The Warrens)|Bartender]] that sells [[beer]].\n\n{{Port Piscarilius}}\n{{Dungeons}}\n{{Great Kourend}}\n{{Bars}}\n{{DEFAULTSORT:Warrens, The}}\n[[Category:Bases and camps]]"
+        }
+      }
+    }
+  ]
+}

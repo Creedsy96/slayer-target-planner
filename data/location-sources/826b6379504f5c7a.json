@@ -1,0 +1,19 @@
+{
+  "pageid": 514916,
+  "ns": 0,
+  "title": "Lumbridge pond",
+  "revisions": [
+    {
+      "revid": 15273130,
+      "parentid": 15211789,
+      "timestamp": "2026-07-23T03:47:55Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{No official name}}\n{{Infobox Location\n|name = Lumbridge pond\n|image = [[File:Lumbridge pond.png|300px]]\n|release = [[4 January]] [[2001]]\n|update = Runescape beta is now online!\n|members = No\n|location = [[Misthalin]]\n|race = [[Ducks]]\n|music = [[Harmony (music track)|Harmony]]\n|map = {{Map|name=Lumbridge pond|3171,3270|mtype=square|r=8}}\n|leagueRegion = Misthalin\n}}\n{{Relative location\n|location = Lumbridge pond\n|north = Mill Lane Mill\n|east = Fred's farm\n|south = H.A.M. Hideout\n|west = Draynor Village\n}}\n\nThe '''Lumbridge pond''' is a small body of water found amongst the farms of [[Lumbridge]] and [[Draynor]]. The pond features two [[duck]]s and two [[duckling]]s, all of whom are attackable, as well as two more ducks outside of the pond that can only be [[examined]]."
+        }
+      }
+    }
+  ]
+}

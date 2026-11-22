@@ -1,0 +1,19 @@
+{
+  "pageid": 483937,
+  "ns": 0,
+  "title": "Gordon and Mary's farm",
+  "revisions": [
+    {
+      "revid": 15379436,
+      "parentid": 15229525,
+      "timestamp": "2026-10-22T16:14:42Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Gordon and Mary's farm\n|image = [[File:Gordon and Mary's farm.png|300px]]\n|release = [[10 January]] [[2019]]\n|update = The Kebos Lowlands\n|members = Yes\n|location = [[Kebos Lowlands]]\n|map = {{Map|name=Gordon and Mary's farm|x=1250|y=3691|mtype=square|r=18|zoom=2}}\n|leagueRegion = Kourend\n}}\n\n'''Gordon and Mary's farm''' is a large [[list of farms|farm]] located in the [[Kebos Lowlands]] just north of the [[Kebos Swamp]]. The farm has small [[cabbage]] and [[onion]] fields, as well as pens with [[chicken]]s and [[cow]]s. A [[Barrel of flour (Gordon and Mary's farm)|barrel of flour]] is also located on the second floor of this farm. The [[quest]] [[Getting Ahead]] takes place here, with players helping [[Gordon]] and [[Mary]].\n\n{{Farms}}\n{{Getting Ahead}}"
+        }
+      }
+    }
+  ]
+}

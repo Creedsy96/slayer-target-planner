@@ -1,0 +1,19 @@
+{
+  "pageid": 31542,
+  "ns": 0,
+  "title": "Pirates' Hideout",
+  "revisions": [
+    {
+      "revid": 15302203,
+      "parentid": 15270631,
+      "timestamp": "2026-08-15T18:41:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Pirate Hall}}\n{{Infobox Location\n|name = Pirates' Hideout\n|image = [[File:Pirates' Hideout.png|300px]]\n|release = [[8 May]] [[2002]]\n|update = Latest RuneScape News (8 May 2002)\n|members = Yes\n|location = [[Wilderness]]\n|wilderness = 54\n|map = {{Map|3041,3954|height=250|zoom=1|mtype=rectangle|rectX=7|rectY=11}}\n|type = building\n|leagueRegion = Wilderness\n}}\n{{Relative location\n|location = Pirates' Hideout\n|north = Untamed Ocean\n|west = Wilderness Agility Course\n|south = Deep Wilderness Dungeon\n|east = Mage Arena\n}}\nThe '''Pirates' Hideout''' is a [[single-way combat]] building located in deep [[Wilderness]]. A [[lockpick]] and 39 [[Thieving]] are required to pick the door lock and gain entry.\n\nThe hideout features [[aggressive]] [[pirate]]s, as well as four [[Thieving#Chests|Thieving chests]] that have to be searched for traps before the player can loot them. There is also a half of a [[redberry pie]] spawn in the hideout.\n\n==Transportation==\n* Pull the lever in either [[Ardougne]] or [[Edgeville]] to teleport to the [[Deserted Keep]]. Run north and slash the [[web]], then run west.\n* [[Ice Plateau Teleport]] or [[Ghorrock Teleport]] to the [[Frozen Waste Plateau]], and then run east.\n\n==History==\nThe hideout was established by some of the former crew of [[Captain Bentley]] when their ship ran into a squall, which pushed the ship towards the rocky shore. Bentley himself and a few select men were able to escape in a small row boat, but the rest of the crew were washed ashore, as the ship was wrecked on the jagged rocks.{{CiteNPC|npc=Captain Bentley|quote=I was on a perfectly routine raiding expedition to the east of here, when we ran into a squall, that pushed us towards the rocky shore. A few select men and myself managed to escape with our lives intact on a small row boat, but the rest of my crew were washed ashore as the ship was wrecked on those jagged rocks.|loc=Lunar Diplomacy|notes=|name=}} The survivors then constructed the Pirates' Hideout, where they live to this day.{{CiteNPC|npc=Captain Bentley|quote=Actually, the last I had heard quite a few of them had survived, and had set up a little hideaway next to the remains of the shipwreck.|loc=Lunar Diplomacy|notes=|name=}}\n\nSome time after washing ashore, the pirates allied with the witch [[Krystilia]] to kill [[Larran]], a wealthy merchant who stores his possessions in two chests within the Wilderness. After succeeding, the pirates took [[Larran's big chest]] and stashed it on their ship.{{CiteNPC|npc=Larran|quote=Once I was a merchant. I worked hard and became wealthy, very wealthy. I was brave too, storing my possessions in two great chests here, where few would dare to interfere with them. But I was not strong enough. One day a witch allied with the pirates of the north; between their strength and her magic, they killed me. The pirates carried one of my chests away to their ship.|loc=|notes=|name=}}\n\n==References==\n{{Reflist}}\n\n{{Wilderness}}\n[[Category:Bases and camps]]"
+        }
+      }
+    }
+  ]
+}

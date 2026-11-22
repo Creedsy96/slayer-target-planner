@@ -1,0 +1,4018 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-11-22.2",
+  "aliases": {
+    "Godwars Dungeon": "God Wars Dungeon",
+    "Farming guild": "Farming Guild",
+    "Dwarven Mines": "Dwarven Mine",
+    "Clock Tower Dungeon": "Clock Tower dungeon",
+    "Burgh De Rott": "Burgh de Rott",
+    "Fremennik Slayer Cave": "Fremennik Slayer Dungeon",
+    "Stronghold Slayer Dungeon": "Stronghold Slayer Cave",
+    "Isle of Souls - Crumbling Tower basement": "Crumbling Tower",
+    "Black Knights' Fortress": "Black Knights' Fortress (location)",
+    "Legends'_Guild#Dungeon": "Legends' Guild",
+    "Scorpia's Cave": "Scorpia",
+    "Legends' Guild#Dungeon": "Legends' Guild",
+    "Skotizo’s arena (Catacombs of Kourend; boss summon)": "Skotizo",
+    "Wilderness (Mage Arena II roaming encounter)": "Mage Arena II",
+    "Branda and Eldric's Lair (Asgarnian Ice Dungeon)": "Asgarnian Ice Dungeon",
+    "Shellbane Gryphon Cave (The Great Conch)": "Shellbane Gryphon Cave",
+    "Vet’ion’s Rest / Skeletal Tomb (boss summons)": "Vet'ion's Rest",
+    "Ancient Pyramid (random spawns)": "Ancient Pyramid",
+    "Pyramid Plunder / Sophanem Dungeon (trap spawns)": "Sophanem Dungeon",
+    "TzHaar Fight Caves (final wave)": "TzHaar Fight Cave",
+    "Inferno (final wave)": "Inferno",
+    "Scorpia’s Cave (summoned guardians)": "Scorpia",
+    "Skeletal Tomb (level 21 Wilderness)": "Skeletal Tomb",
+    "Web Chasm (level 29 Wilderness)": "Web Chasm",
+    "Feldip Hills (baited chompy hunting)": "Feldip Hills",
+    "Ice Troll Caves (The Fremennik Isles quest encounter)": "Ice Troll Caves",
+    "Arceuus Dark Altar (reanimation area)": "Dark Altar",
+    "Canifis (transformed townsfolk)": "Canifis",
+    "Barbarian Agility Course": "Barbarian Outpost Agility Course",
+    "Chaos Druid Tower Dungeon": "Chaos Druid Tower",
+    "Dorgeshuun Mines": "Dorgesh-Kaan mine",
+    "Falador Castle": "White Knights' Castle",
+    "Grand Tree Mine": "Grand Tree mine",
+    "Gnome Maze": "Gnome maze",
+    "Lovakite Mine": "Lovakite mine",
+    "Pit of Pestilence": "Stronghold of Security",
+    "Revenant Cave": "Revenant Caves",
+    "Shayzien's Wall": "Shayziens' Wall",
+    "Skavid Caves": "Skavid caves",
+    "Troll Arena": "Troll arena",
+    "Tree Gnome Village dungeon": "Tree Gnome Village Dungeon",
+    "West Ruins": "Ruins (west)",
+    "White Knights Castle": "White Knights' Castle",
+    "Wilderness Bandit Camp": "Bandit Camp (Wilderness)",
+    "Yanille Dungeon": "Yanille Agility Dungeon"
+  },
+  "records": {
+    "abalone cliffs": {
+      "name": "Abalone Cliffs",
+      "source": {
+        "title": "Abalone Cliffs",
+        "url": "https://oldschool.runescape.wiki/w/Abalone_Cliffs",
+        "revision": 15212104,
+        "timestamp": "2026-05-17T04:34:27Z"
+      },
+      "quest": "Troubled Tortugans",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "abandoned mine": {
+      "name": "Abandoned Mine",
+      "source": {
+        "title": "Abandoned Mine",
+        "url": "https://oldschool.runescape.wiki/w/Abandoned_Mine",
+        "revision": 15372635,
+        "timestamp": "2026-10-14T21:01:04Z"
+      }
+    },
+    "abyssal area": {
+      "name": "Abyssal Area",
+      "source": {
+        "title": "Abyssal Area",
+        "url": "https://oldschool.runescape.wiki/w/Abyssal_Area",
+        "revision": 15169147,
+        "timestamp": "2026-04-07T20:37:19Z"
+      }
+    },
+    "abyssal nexus": {
+      "name": "Abyssal Nexus",
+      "source": {
+        "title": "Abyssal Nexus",
+        "url": "https://oldschool.runescape.wiki/w/Abyssal_Nexus",
+        "revision": 15380686,
+        "timestamp": "2026-10-23T22:14:09Z"
+      },
+      "confirmation": "Confirm fairy ring DIP access, or the Enter the Abyss approach (Wilderness, skull and Prayer-drain risk).",
+      "proof": [
+        "Fairytale II - Cure a Queen",
+        "Enter the Abyss"
+      ]
+    },
+    "agility pyramid": {
+      "name": "Agility Pyramid",
+      "source": {
+        "title": "Agility Pyramid",
+        "url": "https://oldschool.runescape.wiki/w/Agility_Pyramid",
+        "revision": 15402952,
+        "timestamp": "2026-11-15T02:50:39Z"
+      }
+    },
+    "ah za rhoon": {
+      "name": "Ah Za Rhoon",
+      "source": {
+        "title": "Ah Za Rhoon",
+        "url": "https://oldschool.runescape.wiki/w/Ah_Za_Rhoon",
+        "revision": 15229065,
+        "timestamp": "2026-06-07T19:25:11Z"
+      },
+      "skills": {
+        "agility": 32
+      }
+    },
+    "al kharid": {
+      "name": "Al Kharid",
+      "source": {
+        "title": "Al Kharid",
+        "url": "https://oldschool.runescape.wiki/w/Al_Kharid",
+        "revision": 15397410,
+        "timestamp": "2026-11-09T10:33:50Z"
+      }
+    },
+    "al kharid mine": {
+      "name": "Al Kharid mine",
+      "source": {
+        "title": "Al Kharid mine",
+        "url": "https://oldschool.runescape.wiki/w/Al_Kharid_mine",
+        "revision": 15322397,
+        "timestamp": "2026-08-27T21:39:23Z"
+      }
+    },
+    "aldarin": {
+      "name": "Aldarin",
+      "source": {
+        "title": "Aldarin",
+        "url": "https://oldschool.runescape.wiki/w/Aldarin",
+        "revision": 15315073,
+        "timestamp": "2026-08-21T03:55:23Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "alice's farm": {
+      "name": "Alice's farm",
+      "source": {
+        "title": "Alice's farm",
+        "url": "https://oldschool.runescape.wiki/w/Alice%27s_farm",
+        "revision": 14913062,
+        "timestamp": "2025-06-01T10:49:41Z"
+      }
+    },
+    "ancient cavern": {
+      "name": "Ancient Cavern",
+      "source": {
+        "title": "Ancient Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Ancient_Cavern",
+        "revision": 15358063,
+        "timestamp": "2026-09-29T00:54:14Z"
+      }
+    },
+    "ancient guthixian temple": {
+      "name": "Ancient Guthixian Temple",
+      "source": {
+        "title": "Ancient Guthixian Temple",
+        "url": "https://oldschool.runescape.wiki/w/Ancient_Guthixian_Temple",
+        "revision": 15404462,
+        "timestamp": "2026-11-17T16:34:47Z"
+      }
+    },
+    "ancient pyramid": {
+      "name": "Ancient Pyramid",
+      "source": {
+        "title": "Ancient Pyramid",
+        "url": "https://oldschool.runescape.wiki/w/Ancient_Pyramid",
+        "revision": 15358029,
+        "timestamp": "2026-09-29T00:09:37Z"
+      }
+    },
+    "ape atoll": {
+      "name": "Ape Atoll",
+      "source": {
+        "title": "Ape Atoll",
+        "url": "https://oldschool.runescape.wiki/w/Ape_Atoll",
+        "revision": 15317976,
+        "timestamp": "2026-08-24T10:31:03Z"
+      },
+      "quest": "Monkey Madness I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "ape atoll dungeon": {
+      "name": "Ape Atoll Dungeon",
+      "source": {
+        "title": "Ape Atoll Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Ape_Atoll_Dungeon",
+        "revision": 15263903,
+        "timestamp": "2026-07-15T07:42:28Z"
+      },
+      "quest": "Monkey Madness I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "apsul hunting ground": {
+      "name": "Apsul Hunting Ground",
+      "source": {
+        "title": "Apsul Hunting Ground",
+        "url": "https://oldschool.runescape.wiki/w/Apsul_Hunting_Ground",
+        "revision": 15266513,
+        "timestamp": "2026-07-17T22:37:24Z"
+      },
+      "quest": "The Blood Moon Rises",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "arandar": {
+      "name": "Arandar",
+      "source": {
+        "title": "Arandar",
+        "url": "https://oldschool.runescape.wiki/w/Arandar",
+        "revision": 15355252,
+        "timestamp": "2026-09-24T07:17:02Z"
+      },
+      "quest": "Regicide",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "arceuus": {
+      "name": "Arceuus",
+      "source": {
+        "title": "Arceuus",
+        "url": "https://oldschool.runescape.wiki/w/Arceuus",
+        "revision": 15386347,
+        "timestamp": "2026-10-30T14:30:49Z"
+      }
+    },
+    "ardougne": {
+      "name": "Ardougne",
+      "source": {
+        "title": "Ardougne",
+        "url": "https://oldschool.runescape.wiki/w/Ardougne",
+        "revision": 15400250,
+        "timestamp": "2026-11-11T23:35:56Z"
+      }
+    },
+    "ardougne sewers": {
+      "name": "Ardougne Sewers",
+      "source": {
+        "title": "Ardougne Sewers",
+        "url": "https://oldschool.runescape.wiki/w/Ardougne_Sewers",
+        "revision": 15390230,
+        "timestamp": "2026-11-02T22:14:38Z"
+      },
+      "confirmation": "Confirm the relevant sewer section: Clock Tower valve, Hazeel Cult route or Ratcatchers basement; they are not interchangeable."
+    },
+    "ardougne zoo": {
+      "name": "Ardougne Zoo",
+      "source": {
+        "title": "Ardougne Zoo",
+        "url": "https://oldschool.runescape.wiki/w/Ardougne_Zoo",
+        "revision": 15368190,
+        "timestamp": "2026-10-07T22:38:46Z"
+      }
+    },
+    "asgarnian ice dungeon": {
+      "name": "Asgarnian Ice Dungeon",
+      "source": {
+        "title": "Asgarnian Ice Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Asgarnian_Ice_Dungeon",
+        "revision": 15376429,
+        "timestamp": "2026-10-19T23:24:21Z"
+      }
+    },
+    "avium savannah": {
+      "name": "Avium Savannah",
+      "source": {
+        "title": "Avium Savannah",
+        "url": "https://oldschool.runescape.wiki/w/Avium_Savannah",
+        "revision": 15399378,
+        "timestamp": "2026-11-11T15:58:06Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "bandit camp (wilderness)": {
+      "name": "Bandit Camp (Wilderness)",
+      "source": {
+        "title": "Bandit Camp (Wilderness)",
+        "url": "https://oldschool.runescape.wiki/w/Bandit_Camp_%28Wilderness%29",
+        "revision": 15332929,
+        "timestamp": "2026-09-07T00:19:37Z"
+      }
+    },
+    "bandit camp mine": {
+      "name": "Bandit Camp mine",
+      "source": {
+        "title": "Bandit Camp mine",
+        "url": "https://oldschool.runescape.wiki/w/Bandit_Camp_mine",
+        "revision": 15276679,
+        "timestamp": "2026-07-27T14:09:10Z"
+      }
+    },
+    "barbarian outpost agility course": {
+      "name": "Barbarian Outpost Agility Course",
+      "source": {
+        "title": "Barbarian Outpost Agility Course",
+        "url": "https://oldschool.runescape.wiki/w/Barbarian_Outpost_Agility_Course",
+        "revision": 15352298,
+        "timestamp": "2026-09-20T19:12:28Z"
+      },
+      "quest": "Alfred Grimhand's Barcrawl",
+      "states": [
+        0,
+        0,
+        1
+      ],
+      "skills": {
+        "agility": 35
+      }
+    },
+    "barrows": {
+      "name": "Barrows",
+      "source": {
+        "title": "Barrows",
+        "url": "https://oldschool.runescape.wiki/w/Barrows",
+        "revision": 15410992,
+        "timestamp": "2026-11-21T16:01:26Z"
+      }
+    },
+    "battlefront": {
+      "name": "Battlefront",
+      "source": {
+        "title": "Battlefront",
+        "url": "https://oldschool.runescape.wiki/w/Battlefront",
+        "revision": 14774322,
+        "timestamp": "2024-10-13T04:45:48Z"
+      }
+    },
+    "black knights' base": {
+      "name": "Black Knights' Base",
+      "source": {
+        "title": "Black Knights' Base",
+        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Base",
+        "revision": 15398010,
+        "timestamp": "2026-11-10T01:33:25Z"
+      }
+    },
+    "black knights' fortress (location)": {
+      "name": "Black Knights' Fortress (location)",
+      "source": {
+        "title": "Black Knights' Fortress (location)",
+        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress_%28location%29",
+        "revision": 15398008,
+        "timestamp": "2026-11-10T01:33:09Z"
+      }
+    },
+    "bone yard": {
+      "name": "Bone Yard",
+      "source": {
+        "title": "Bone Yard",
+        "url": "https://oldschool.runescape.wiki/w/Bone_Yard",
+        "revision": 15285136,
+        "timestamp": "2026-08-01T14:53:18Z"
+      }
+    },
+    "bone yard hunter area": {
+      "name": "Bone Yard Hunter area",
+      "source": {
+        "title": "Bone Yard Hunter area",
+        "url": "https://oldschool.runescape.wiki/w/Bone_Yard_Hunter_area",
+        "revision": 15359489,
+        "timestamp": "2026-10-01T10:26:23Z"
+      }
+    },
+    "braindeath island": {
+      "name": "Braindeath Island",
+      "source": {
+        "title": "Braindeath Island",
+        "url": "https://oldschool.runescape.wiki/w/Braindeath_Island",
+        "revision": 15231735,
+        "timestamp": "2026-06-11T05:53:26Z"
+      },
+      "quest": "Rum Deal",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "brimhaven": {
+      "name": "Brimhaven",
+      "source": {
+        "title": "Brimhaven",
+        "url": "https://oldschool.runescape.wiki/w/Brimhaven",
+        "revision": 15361451,
+        "timestamp": "2026-10-03T11:20:18Z"
+      }
+    },
+    "brimhaven dungeon": {
+      "name": "Brimhaven Dungeon",
+      "source": {
+        "title": "Brimhaven Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Brimhaven_Dungeon",
+        "revision": 15385693,
+        "timestamp": "2026-10-29T16:21:57Z"
+      }
+    },
+    "brine rat cavern": {
+      "name": "Brine Rat Cavern",
+      "source": {
+        "title": "Brine Rat Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Brine_Rat_Cavern",
+        "revision": 15372634,
+        "timestamp": "2026-10-14T20:59:24Z"
+      }
+    },
+    "buccaneers' haven": {
+      "name": "Buccaneers' Haven",
+      "source": {
+        "title": "Buccaneers' Haven",
+        "url": "https://oldschool.runescape.wiki/w/Buccaneers%27_Haven",
+        "revision": 15356373,
+        "timestamp": "2026-09-26T08:57:13Z"
+      },
+      "skills": {
+        "sailing": 76
+      }
+    },
+    "buccaneers' laboratory": {
+      "name": "Buccaneers' Laboratory",
+      "source": {
+        "title": "Buccaneers' Laboratory",
+        "url": "https://oldschool.runescape.wiki/w/Buccaneers%27_Laboratory",
+        "revision": 15356366,
+        "timestamp": "2026-09-26T08:55:39Z"
+      },
+      "skills": {
+        "sailing": 76
+      }
+    },
+    "burgh de rott": {
+      "name": "Burgh de Rott",
+      "source": {
+        "title": "Burgh de Rott",
+        "url": "https://oldschool.runescape.wiki/w/Burgh_de_Rott",
+        "revision": 15321957,
+        "timestamp": "2026-08-27T09:14:47Z"
+      }
+    },
+    "cabin fever": {
+      "name": "Cabin Fever",
+      "source": {
+        "title": "Cabin Fever",
+        "url": "https://oldschool.runescape.wiki/w/Cabin_Fever",
+        "revision": 15365342,
+        "timestamp": "2026-10-05T14:12:43Z"
+      }
+    },
+    "cairn isle": {
+      "name": "Cairn Isle",
+      "source": {
+        "title": "Cairn Isle",
+        "url": "https://oldschool.runescape.wiki/w/Cairn_Isle",
+        "revision": 15385432,
+        "timestamp": "2026-10-29T11:31:48Z"
+      },
+      "skills": {
+        "agility": 15
+      }
+    },
+    "callisto's den": {
+      "name": "Callisto's Den",
+      "source": {
+        "title": "Callisto's Den",
+        "url": "https://oldschool.runescape.wiki/w/Callisto%27s_Den",
+        "revision": 15165439,
+        "timestamp": "2026-04-04T19:15:47Z"
+      },
+      "confirmation": "Requires medium Wilderness diary OR a specific Callisto boss task, plus the shared 50,000 coin entry fee."
+    },
+    "canifis": {
+      "name": "Canifis",
+      "source": {
+        "title": "Canifis",
+        "url": "https://oldschool.runescape.wiki/w/Canifis",
+        "revision": 15397565,
+        "timestamp": "2026-11-09T17:40:27Z"
+      }
+    },
+    "castle drakan": {
+      "name": "Castle Drakan",
+      "source": {
+        "title": "Castle Drakan",
+        "url": "https://oldschool.runescape.wiki/w/Castle_Drakan",
+        "revision": 15304993,
+        "timestamp": "2026-08-18T09:46:50Z"
+      }
+    },
+    "catacombs of kourend": {
+      "name": "Catacombs of Kourend",
+      "source": {
+        "title": "Catacombs of Kourend",
+        "url": "https://oldschool.runescape.wiki/w/Catacombs_of_Kourend",
+        "revision": 15366360,
+        "timestamp": "2026-10-05T23:01:17Z"
+      }
+    },
+    "cerberus' lair": {
+      "name": "Cerberus' Lair",
+      "source": {
+        "title": "Cerberus' Lair",
+        "url": "https://oldschool.runescape.wiki/w/Cerberus%27_Lair",
+        "revision": 15347785,
+        "timestamp": "2026-09-17T04:20:49Z"
+      }
+    },
+    "champions' guild": {
+      "name": "Champions' Guild",
+      "source": {
+        "title": "Champions' Guild",
+        "url": "https://oldschool.runescape.wiki/w/Champions%27_Guild",
+        "revision": 15364426,
+        "timestamp": "2026-10-04T12:36:12Z"
+      },
+      "questPoints": 32
+    },
+    "chaos druid tower": {
+      "name": "Chaos Druid Tower",
+      "source": {
+        "title": "Chaos Druid Tower",
+        "url": "https://oldschool.runescape.wiki/w/Chaos_Druid_Tower",
+        "revision": 15267034,
+        "timestamp": "2026-07-18T17:10:37Z"
+      },
+      "skills": {
+        "thieving": 46
+      }
+    },
+    "chaos temple (wilderness)": {
+      "name": "Chaos Temple (Wilderness)",
+      "source": {
+        "title": "Chaos Temple (Wilderness)",
+        "url": "https://oldschool.runescape.wiki/w/Chaos_Temple_%28Wilderness%29",
+        "revision": 15286798,
+        "timestamp": "2026-08-04T02:33:59Z"
+      }
+    },
+    "charred dungeon": {
+      "name": "Charred Dungeon",
+      "source": {
+        "title": "Charred Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Charred_Dungeon",
+        "revision": 15369999,
+        "timestamp": "2026-10-10T13:35:15Z"
+      },
+      "skills": {
+        "sailing": 60
+      }
+    },
+    "charred island": {
+      "name": "Charred Island",
+      "source": {
+        "title": "Charred Island",
+        "url": "https://oldschool.runescape.wiki/w/Charred_Island",
+        "revision": 15356367,
+        "timestamp": "2026-09-26T08:55:50Z"
+      },
+      "skills": {
+        "sailing": 60
+      }
+    },
+    "chasm of fire": {
+      "name": "Chasm of Fire",
+      "source": {
+        "title": "Chasm of Fire",
+        "url": "https://oldschool.runescape.wiki/w/Chasm_of_Fire",
+        "revision": 15309985,
+        "timestamp": "2026-08-19T21:32:00Z"
+      }
+    },
+    "clock tower (building)": {
+      "name": "Clock Tower (building)",
+      "source": {
+        "title": "Clock Tower (building)",
+        "url": "https://oldschool.runescape.wiki/w/Clock_Tower_%28building%29",
+        "revision": 15302409,
+        "timestamp": "2026-08-16T01:17:32Z"
+      }
+    },
+    "clock tower dungeon": {
+      "name": "Clock Tower dungeon",
+      "source": {
+        "title": "Clock Tower dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Clock_Tower_dungeon",
+        "revision": 15267035,
+        "timestamp": "2026-07-18T17:13:58Z"
+      }
+    },
+    "coal trucks": {
+      "name": "Coal Trucks",
+      "source": {
+        "title": "Coal Trucks",
+        "url": "https://oldschool.runescape.wiki/w/Coal_Trucks",
+        "revision": 15236528,
+        "timestamp": "2026-06-20T05:16:06Z"
+      }
+    },
+    "colossal wyrm remains": {
+      "name": "Colossal Wyrm Remains",
+      "source": {
+        "title": "Colossal Wyrm Remains",
+        "url": "https://oldschool.runescape.wiki/w/Colossal_Wyrm_Remains",
+        "revision": 15290136,
+        "timestamp": "2026-08-07T22:28:56Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "combat training camp": {
+      "name": "Combat Training Camp",
+      "source": {
+        "title": "Combat Training Camp",
+        "url": "https://oldschool.runescape.wiki/w/Combat_Training_Camp",
+        "revision": 15367210,
+        "timestamp": "2026-10-06T22:18:14Z"
+      },
+      "quest": "Biohazard",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "corsair cove": {
+      "name": "Corsair Cove",
+      "source": {
+        "title": "Corsair Cove",
+        "url": "https://oldschool.runescape.wiki/w/Corsair_Cove",
+        "revision": 15402538,
+        "timestamp": "2026-11-14T14:07:54Z"
+      }
+    },
+    "corsair cove dungeon": {
+      "name": "Corsair Cove Dungeon",
+      "source": {
+        "title": "Corsair Cove Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Corsair_Cove_Dungeon",
+        "revision": 15369031,
+        "timestamp": "2026-10-09T01:46:56Z"
+      }
+    },
+    "crabclaw caves": {
+      "name": "Crabclaw Caves",
+      "source": {
+        "title": "Crabclaw Caves",
+        "url": "https://oldschool.runescape.wiki/w/Crabclaw_Caves",
+        "revision": 15356301,
+        "timestamp": "2026-09-26T08:14:55Z"
+      },
+      "quest": "The Depths of Despair",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "crabclaw isle": {
+      "name": "Crabclaw Isle",
+      "source": {
+        "title": "Crabclaw Isle",
+        "url": "https://oldschool.runescape.wiki/w/Crabclaw_Isle",
+        "revision": 15362035,
+        "timestamp": "2026-10-03T12:41:22Z"
+      }
+    },
+    "crafting guild": {
+      "name": "Crafting Guild",
+      "source": {
+        "title": "Crafting Guild",
+        "url": "https://oldschool.runescape.wiki/w/Crafting_Guild",
+        "revision": 15362001,
+        "timestamp": "2026-10-03T12:38:49Z"
+      }
+    },
+    "crandor": {
+      "name": "Crandor",
+      "source": {
+        "title": "Crandor",
+        "url": "https://oldschool.runescape.wiki/w/Crandor",
+        "revision": 15386558,
+        "timestamp": "2026-10-30T18:17:41Z"
+      },
+      "quest": "Dragon Slayer I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "crandor and karamja dungeon": {
+      "name": "Crandor and Karamja Dungeon",
+      "source": {
+        "title": "Crandor and Karamja Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Crandor_and_Karamja_Dungeon",
+        "revision": 15351498,
+        "timestamp": "2026-09-20T01:13:18Z"
+      }
+    },
+    "crash site cavern": {
+      "name": "Crash Site Cavern",
+      "source": {
+        "title": "Crash Site Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Crash_Site_Cavern",
+        "revision": 15367024,
+        "timestamp": "2026-10-06T19:06:14Z"
+      }
+    },
+    "crumbling tower": {
+      "name": "Crumbling Tower",
+      "source": {
+        "title": "Crumbling Tower",
+        "url": "https://oldschool.runescape.wiki/w/Crumbling_Tower",
+        "revision": 15302441,
+        "timestamp": "2026-08-16T02:14:16Z"
+      }
+    },
+    "crypt of tonali": {
+      "name": "Crypt of Tonali",
+      "source": {
+        "title": "Crypt of Tonali",
+        "url": "https://oldschool.runescape.wiki/w/Crypt_of_Tonali",
+        "revision": 15319353,
+        "timestamp": "2026-08-25T05:38:48Z"
+      },
+      "quest": "The Final Dawn",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "custodia mountains": {
+      "name": "Custodia Mountains",
+      "source": {
+        "title": "Custodia Mountains",
+        "url": "https://oldschool.runescape.wiki/w/Custodia_Mountains",
+        "revision": 15254787,
+        "timestamp": "2026-07-06T02:57:13Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "custodia pass": {
+      "name": "Custodia Pass",
+      "source": {
+        "title": "Custodia Pass",
+        "url": "https://oldschool.runescape.wiki/w/Custodia_Pass",
+        "revision": 14960764,
+        "timestamp": "2025-08-07T05:05:28Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "dark altar": {
+      "name": "Dark Altar",
+      "source": {
+        "title": "Dark Altar",
+        "url": "https://oldschool.runescape.wiki/w/Dark_Altar",
+        "revision": 15386316,
+        "timestamp": "2026-10-30T14:24:16Z"
+      }
+    },
+    "dark warriors' fortress": {
+      "name": "Dark Warriors' Fortress",
+      "source": {
+        "title": "Dark Warriors' Fortress",
+        "url": "https://oldschool.runescape.wiki/w/Dark_Warriors%27_Fortress",
+        "revision": 15285152,
+        "timestamp": "2026-08-01T15:25:41Z"
+      }
+    },
+    "darkmeyer": {
+      "name": "Darkmeyer",
+      "source": {
+        "title": "Darkmeyer",
+        "url": "https://oldschool.runescape.wiki/w/Darkmeyer",
+        "revision": 15315679,
+        "timestamp": "2026-08-21T11:30:23Z"
+      }
+    },
+    "death altar": {
+      "name": "Death Altar",
+      "source": {
+        "title": "Death Altar",
+        "url": "https://oldschool.runescape.wiki/w/Death_Altar",
+        "revision": 15404374,
+        "timestamp": "2026-11-17T12:33:11Z"
+      }
+    },
+    "death plateau (location)": {
+      "name": "Death Plateau (location)",
+      "source": {
+        "title": "Death Plateau (location)",
+        "url": "https://oldschool.runescape.wiki/w/Death_Plateau_%28location%29",
+        "revision": 15342417,
+        "timestamp": "2026-09-13T02:44:23Z"
+      }
+    },
+    "deep wilderness dungeon": {
+      "name": "Deep Wilderness Dungeon",
+      "source": {
+        "title": "Deep Wilderness Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Deep_Wilderness_Dungeon",
+        "revision": 15293947,
+        "timestamp": "2026-08-12T18:11:30Z"
+      }
+    },
+    "deepfin mine": {
+      "name": "Deepfin Mine",
+      "source": {
+        "title": "Deepfin Mine",
+        "url": "https://oldschool.runescape.wiki/w/Deepfin_Mine",
+        "revision": 15212226,
+        "timestamp": "2026-05-17T04:35:18Z"
+      },
+      "skills": {
+        "sailing": 67
+      }
+    },
+    "deepfin point": {
+      "name": "Deepfin Point",
+      "source": {
+        "title": "Deepfin Point",
+        "url": "https://oldschool.runescape.wiki/w/Deepfin_Point",
+        "revision": 15356365,
+        "timestamp": "2026-09-26T08:55:16Z"
+      },
+      "skills": {
+        "sailing": 67
+      }
+    },
+    "digsite dungeon": {
+      "name": "Digsite Dungeon",
+      "source": {
+        "title": "Digsite Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Digsite_Dungeon",
+        "revision": 15365828,
+        "timestamp": "2026-10-05T18:02:49Z"
+      },
+      "quest": "The Dig Site",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "dorgesh-kaan south dungeon": {
+      "name": "Dorgesh-Kaan South Dungeon",
+      "source": {
+        "title": "Dorgesh-Kaan South Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Dorgesh-Kaan_South_Dungeon",
+        "revision": 15326661,
+        "timestamp": "2026-08-31T21:40:13Z"
+      },
+      "quest": "Death to the Dorgeshuun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "dorgesh-kaan mine": {
+      "name": "Dorgesh-Kaan mine",
+      "source": {
+        "title": "Dorgesh-Kaan mine",
+        "url": "https://oldschool.runescape.wiki/w/Dorgesh-Kaan_mine",
+        "revision": 15057594,
+        "timestamp": "2025-11-22T23:38:03Z"
+      },
+      "quest": "The Lost Tribe",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "dragon nest": {
+      "name": "Dragon Nest",
+      "source": {
+        "title": "Dragon Nest",
+        "url": "https://oldschool.runescape.wiki/w/Dragon_Nest",
+        "revision": 15359072,
+        "timestamp": "2026-09-30T19:21:21Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "draynor manor": {
+      "name": "Draynor Manor",
+      "source": {
+        "title": "Draynor Manor",
+        "url": "https://oldschool.runescape.wiki/w/Draynor_Manor",
+        "revision": 15363363,
+        "timestamp": "2026-10-03T21:39:33Z"
+      }
+    },
+    "draynor sewers": {
+      "name": "Draynor Sewers",
+      "source": {
+        "title": "Draynor Sewers",
+        "url": "https://oldschool.runescape.wiki/w/Draynor_Sewers",
+        "revision": 15241686,
+        "timestamp": "2026-06-28T14:58:12Z"
+      }
+    },
+    "draynor village": {
+      "name": "Draynor Village",
+      "source": {
+        "title": "Draynor Village",
+        "url": "https://oldschool.runescape.wiki/w/Draynor_Village",
+        "revision": 15398610,
+        "timestamp": "2026-11-11T04:10:59Z"
+      }
+    },
+    "dwarven mine": {
+      "name": "Dwarven Mine",
+      "source": {
+        "title": "Dwarven Mine",
+        "url": "https://oldschool.runescape.wiki/w/Dwarven_Mine",
+        "revision": 15376949,
+        "timestamp": "2026-10-20T11:29:49Z"
+      }
+    },
+    "ectofuntus": {
+      "name": "Ectofuntus",
+      "source": {
+        "title": "Ectofuntus",
+        "url": "https://oldschool.runescape.wiki/w/Ectofuntus",
+        "revision": 15364074,
+        "timestamp": "2026-10-04T10:13:56Z"
+      }
+    },
+    "edgeville dungeon": {
+      "name": "Edgeville Dungeon",
+      "source": {
+        "title": "Edgeville Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Edgeville_Dungeon",
+        "revision": 15369814,
+        "timestamp": "2026-10-10T00:34:18Z"
+      }
+    },
+    "edgeville dungeon mine": {
+      "name": "Edgeville Dungeon mine",
+      "source": {
+        "title": "Edgeville Dungeon mine",
+        "url": "https://oldschool.runescape.wiki/w/Edgeville_Dungeon_mine",
+        "revision": 15127888,
+        "timestamp": "2026-02-16T02:44:08Z"
+      }
+    },
+    "entrana": {
+      "name": "Entrana",
+      "source": {
+        "title": "Entrana",
+        "url": "https://oldschool.runescape.wiki/w/Entrana",
+        "revision": 15399173,
+        "timestamp": "2026-11-11T15:00:15Z"
+      }
+    },
+    "entrana dungeon": {
+      "name": "Entrana Dungeon",
+      "source": {
+        "title": "Entrana Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Entrana_Dungeon",
+        "revision": 15353043,
+        "timestamp": "2026-09-22T07:33:01Z"
+      }
+    },
+    "etceteria": {
+      "name": "Etceteria",
+      "source": {
+        "title": "Etceteria",
+        "url": "https://oldschool.runescape.wiki/w/Etceteria",
+        "revision": 15351047,
+        "timestamp": "2026-09-19T17:41:48Z"
+      }
+    },
+    "evil chicken's lair": {
+      "name": "Evil Chicken's Lair",
+      "source": {
+        "title": "Evil Chicken's Lair",
+        "url": "https://oldschool.runescape.wiki/w/Evil_Chicken%27s_Lair",
+        "revision": 15316939,
+        "timestamp": "2026-08-23T01:29:51Z"
+      }
+    },
+    "falador": {
+      "name": "Falador",
+      "source": {
+        "title": "Falador",
+        "url": "https://oldschool.runescape.wiki/w/Falador",
+        "revision": 15398202,
+        "timestamp": "2026-11-10T08:42:06Z"
+      }
+    },
+    "white knights' castle": {
+      "name": "White Knights' Castle",
+      "source": {
+        "title": "White Knights' Castle",
+        "url": "https://oldschool.runescape.wiki/w/White_Knights%27_Castle",
+        "revision": 15111281,
+        "timestamp": "2026-01-22T20:02:48Z"
+      }
+    },
+    "falador park": {
+      "name": "Falador Park",
+      "source": {
+        "title": "Falador Park",
+        "url": "https://oldschool.runescape.wiki/w/Falador_Park",
+        "revision": 15363368,
+        "timestamp": "2026-10-03T21:44:46Z"
+      }
+    },
+    "farming guild": {
+      "name": "Farming Guild",
+      "source": {
+        "title": "Farming Guild",
+        "url": "https://oldschool.runescape.wiki/w/Farming_Guild",
+        "revision": 15274002,
+        "timestamp": "2026-07-24T17:04:41Z"
+      },
+      "skills": {
+        "farming": 45
+      }
+    },
+    "feldip hills": {
+      "name": "Feldip Hills",
+      "source": {
+        "title": "Feldip Hills",
+        "url": "https://oldschool.runescape.wiki/w/Feldip_Hills",
+        "revision": 15381687,
+        "timestamp": "2026-10-25T11:09:11Z"
+      }
+    },
+    "ferox enclave": {
+      "name": "Ferox Enclave",
+      "source": {
+        "title": "Ferox Enclave",
+        "url": "https://oldschool.runescape.wiki/w/Ferox_Enclave",
+        "revision": 15397011,
+        "timestamp": "2026-11-08T22:27:54Z"
+      }
+    },
+    "fire altar": {
+      "name": "Fire Altar",
+      "source": {
+        "title": "Fire Altar",
+        "url": "https://oldschool.runescape.wiki/w/Fire_Altar",
+        "revision": 14925023,
+        "timestamp": "2025-06-24T16:28:09Z"
+      }
+    },
+    "fisher realm": {
+      "name": "Fisher Realm",
+      "source": {
+        "title": "Fisher Realm",
+        "url": "https://oldschool.runescape.wiki/w/Fisher_Realm",
+        "revision": 15372723,
+        "timestamp": "2026-10-14T23:49:24Z"
+      }
+    },
+    "fishing guild": {
+      "name": "Fishing Guild",
+      "source": {
+        "title": "Fishing Guild",
+        "url": "https://oldschool.runescape.wiki/w/Fishing_Guild",
+        "revision": 15409155,
+        "timestamp": "2026-11-19T17:09:13Z"
+      },
+      "skills": {
+        "fishing": 68
+      }
+    },
+    "forthos dungeon": {
+      "name": "Forthos Dungeon",
+      "source": {
+        "title": "Forthos Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Forthos_Dungeon",
+        "revision": 15371373,
+        "timestamp": "2026-10-12T17:17:34Z"
+      }
+    },
+    "fortis cothon": {
+      "name": "Fortis Cothon",
+      "source": {
+        "title": "Fortis Cothon",
+        "url": "https://oldschool.runescape.wiki/w/Fortis_Cothon",
+        "revision": 15375325,
+        "timestamp": "2026-10-18T21:16:26Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "fossil island": {
+      "name": "Fossil Island",
+      "source": {
+        "title": "Fossil Island",
+        "url": "https://oldschool.runescape.wiki/w/Fossil_Island",
+        "revision": 15369932,
+        "timestamp": "2026-10-10T10:53:14Z"
+      }
+    },
+    "fossil island volcano": {
+      "name": "Fossil Island Volcano",
+      "source": {
+        "title": "Fossil Island Volcano",
+        "url": "https://oldschool.runescape.wiki/w/Fossil_Island_Volcano",
+        "revision": 15057714,
+        "timestamp": "2025-11-23T00:18:49Z"
+      }
+    },
+    "fred's farm": {
+      "name": "Fred's farm",
+      "source": {
+        "title": "Fred's farm",
+        "url": "https://oldschool.runescape.wiki/w/Fred%27s_farm",
+        "revision": 15364552,
+        "timestamp": "2026-10-04T16:05:11Z"
+      }
+    },
+    "fremennik isles": {
+      "name": "Fremennik Isles",
+      "source": {
+        "title": "Fremennik Isles",
+        "url": "https://oldschool.runescape.wiki/w/Fremennik_Isles",
+        "revision": 15387847,
+        "timestamp": "2026-11-01T12:49:56Z"
+      }
+    },
+    "fremennik slayer dungeon": {
+      "name": "Fremennik Slayer Dungeon",
+      "source": {
+        "title": "Fremennik Slayer Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Fremennik_Slayer_Dungeon",
+        "revision": 15373588,
+        "timestamp": "2026-10-16T01:30:41Z"
+      }
+    },
+    "frozen waste plateau": {
+      "name": "Frozen Waste Plateau",
+      "source": {
+        "title": "Frozen Waste Plateau",
+        "url": "https://oldschool.runescape.wiki/w/Frozen_Waste_Plateau",
+        "revision": 15275973,
+        "timestamp": "2026-07-26T19:29:15Z"
+      }
+    },
+    "gertrude": {
+      "name": "Gertrude",
+      "source": {
+        "title": "Gertrude",
+        "url": "https://oldschool.runescape.wiki/w/Gertrude",
+        "revision": 15368537,
+        "timestamp": "2026-10-08T13:39:09Z"
+      }
+    },
+    "giant pit": {
+      "name": "Giant Pit",
+      "source": {
+        "title": "Giant Pit",
+        "url": "https://oldschool.runescape.wiki/w/Giant_Pit",
+        "revision": 15300164,
+        "timestamp": "2026-08-14T04:46:58Z"
+      }
+    },
+    "giants' den": {
+      "name": "Giants' Den",
+      "source": {
+        "title": "Giants' Den",
+        "url": "https://oldschool.runescape.wiki/w/Giants%27_Den",
+        "revision": 15386670,
+        "timestamp": "2026-10-30T23:06:41Z"
+      }
+    },
+    "giants' plateau": {
+      "name": "Giants' Plateau",
+      "source": {
+        "title": "Giants' Plateau",
+        "url": "https://oldschool.runescape.wiki/w/Giants%27_Plateau",
+        "revision": 15356442,
+        "timestamp": "2026-09-26T13:36:56Z"
+      }
+    },
+    "glarial's tomb": {
+      "name": "Glarial's Tomb",
+      "source": {
+        "title": "Glarial's Tomb",
+        "url": "https://oldschool.runescape.wiki/w/Glarial%27s_Tomb",
+        "revision": 15322676,
+        "timestamp": "2026-08-28T07:11:54Z"
+      },
+      "confirmation": "Requires Glarial's pebble and an unarmed, unarmoured, rune-free entry method."
+    },
+    "gloomthorn trail": {
+      "name": "Gloomthorn Trail",
+      "source": {
+        "title": "Gloomthorn Trail",
+        "url": "https://oldschool.runescape.wiki/w/Gloomthorn_Trail",
+        "revision": 15399724,
+        "timestamp": "2026-11-11T17:51:56Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "gnome maze": {
+      "name": "Gnome Maze",
+      "source": {
+        "title": "Gnome maze",
+        "url": "https://oldschool.runescape.wiki/w/Gnome_maze",
+        "revision": 15356972,
+        "timestamp": "2026-09-27T15:13:54Z"
+      }
+    },
+    "goblin cave": {
+      "name": "Goblin Cave",
+      "source": {
+        "title": "Goblin Cave",
+        "url": "https://oldschool.runescape.wiki/w/Goblin_Cave",
+        "revision": 15267039,
+        "timestamp": "2026-07-18T17:29:33Z"
+      }
+    },
+    "god wars dungeon": {
+      "name": "God Wars Dungeon",
+      "source": {
+        "title": "God Wars Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/God_Wars_Dungeon",
+        "revision": 15384639,
+        "timestamp": "2026-10-28T14:08:31Z"
+      }
+    },
+    "gordon and mary's farm": {
+      "name": "Gordon and Mary's farm",
+      "source": {
+        "title": "Gordon and Mary's farm",
+        "url": "https://oldschool.runescape.wiki/w/Gordon_and_Mary%27s_farm",
+        "revision": 15379436,
+        "timestamp": "2026-10-22T16:14:42Z"
+      }
+    },
+    "grand exchange": {
+      "name": "Grand Exchange",
+      "source": {
+        "title": "Grand Exchange",
+        "url": "https://oldschool.runescape.wiki/w/Grand_Exchange",
+        "revision": 15405638,
+        "timestamp": "2026-11-18T15:54:51Z"
+      }
+    },
+    "grand tree mine": {
+      "name": "Grand Tree Mine",
+      "source": {
+        "title": "Grand Tree mine",
+        "url": "https://oldschool.runescape.wiki/w/Grand_Tree_mine",
+        "revision": 15233015,
+        "timestamp": "2026-06-13T12:47:52Z"
+      },
+      "quest": "The Grand Tree",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "graveyard of heroes": {
+      "name": "Graveyard of Heroes",
+      "source": {
+        "title": "Graveyard of Heroes",
+        "url": "https://oldschool.runescape.wiki/w/Graveyard_of_Heroes",
+        "revision": 15316632,
+        "timestamp": "2026-08-22T17:41:22Z"
+      }
+    },
+    "graveyard of shadows": {
+      "name": "Graveyard of Shadows",
+      "source": {
+        "title": "Graveyard of Shadows",
+        "url": "https://oldschool.runescape.wiki/w/Graveyard_of_Shadows",
+        "revision": 15356294,
+        "timestamp": "2026-09-26T07:54:53Z"
+      }
+    },
+    "great kourend": {
+      "name": "Great Kourend",
+      "source": {
+        "title": "Great Kourend",
+        "url": "https://oldschool.runescape.wiki/w/Great_Kourend",
+        "revision": 15410533,
+        "timestamp": "2026-11-21T02:30:11Z"
+      }
+    },
+    "grimstone": {
+      "name": "Grimstone",
+      "source": {
+        "title": "Grimstone",
+        "url": "https://oldschool.runescape.wiki/w/Grimstone",
+        "revision": 15286898,
+        "timestamp": "2026-08-04T07:57:38Z"
+      },
+      "skills": {
+        "sailing": 87
+      }
+    },
+    "grimstone dungeon": {
+      "name": "Grimstone Dungeon",
+      "source": {
+        "title": "Grimstone Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Grimstone_Dungeon",
+        "revision": 15367865,
+        "timestamp": "2026-10-07T16:18:43Z"
+      },
+      "skills": {
+        "sailing": 87
+      }
+    },
+    "gryphon caves": {
+      "name": "Gryphon Caves",
+      "source": {
+        "title": "Gryphon Caves",
+        "url": "https://oldschool.runescape.wiki/w/Gryphon_Caves",
+        "revision": 15411752,
+        "timestamp": "2026-11-22T05:27:24Z"
+      },
+      "quest": "Troubled Tortugans",
+      "states": [
+        0,
+        null,
+        1
+      ],
+      "cannon": true
+    },
+    "gu'tanoth": {
+      "name": "Gu'Tanoth",
+      "source": {
+        "title": "Gu'Tanoth",
+        "url": "https://oldschool.runescape.wiki/w/Gu%27Tanoth",
+        "revision": 15366357,
+        "timestamp": "2026-10-05T22:59:28Z"
+      }
+    },
+    "h.a.m. hideout": {
+      "name": "H.A.M. Hideout",
+      "source": {
+        "title": "H.A.M. Hideout",
+        "url": "https://oldschool.runescape.wiki/w/H.A.M._Hideout",
+        "revision": 15394468,
+        "timestamp": "2026-11-05T07:20:56Z"
+      }
+    },
+    "handelmort mansion": {
+      "name": "Handelmort Mansion",
+      "source": {
+        "title": "Handelmort Mansion",
+        "url": "https://oldschool.runescape.wiki/w/Handelmort_Mansion",
+        "revision": 14925298,
+        "timestamp": "2025-06-25T04:08:20Z"
+      }
+    },
+    "haunted woods": {
+      "name": "Haunted Woods",
+      "source": {
+        "title": "Haunted Woods",
+        "url": "https://oldschool.runescape.wiki/w/Haunted_Woods",
+        "revision": 15211800,
+        "timestamp": "2026-05-17T04:32:26Z"
+      }
+    },
+    "heroes' guild": {
+      "name": "Heroes' Guild",
+      "source": {
+        "title": "Heroes' Guild",
+        "url": "https://oldschool.runescape.wiki/w/Heroes%27_Guild",
+        "revision": 15352680,
+        "timestamp": "2026-09-21T19:18:55Z"
+      },
+      "quest": "Heroes' Quest",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "hobgoblin peninsula": {
+      "name": "Hobgoblin Peninsula",
+      "source": {
+        "title": "Hobgoblin Peninsula",
+        "url": "https://oldschool.runescape.wiki/w/Hobgoblin_Peninsula",
+        "revision": 15376426,
+        "timestamp": "2026-10-19T23:14:27Z"
+      }
+    },
+    "hosidius": {
+      "name": "Hosidius",
+      "source": {
+        "title": "Hosidius",
+        "url": "https://oldschool.runescape.wiki/w/Hosidius",
+        "revision": 15369322,
+        "timestamp": "2026-10-09T09:34:48Z"
+      }
+    },
+    "hosidius mine": {
+      "name": "Hosidius mine",
+      "source": {
+        "title": "Hosidius mine",
+        "url": "https://oldschool.runescape.wiki/w/Hosidius_mine",
+        "revision": 15057725,
+        "timestamp": "2025-11-23T00:22:30Z"
+      }
+    },
+    "hunter's end": {
+      "name": "Hunter's End",
+      "source": {
+        "title": "Hunter's End",
+        "url": "https://oldschool.runescape.wiki/w/Hunter%27s_End",
+        "revision": 15292444,
+        "timestamp": "2026-08-11T01:46:39Z"
+      },
+      "confirmation": "Requires hard Wilderness diary OR a specific Callisto boss task, plus the shared 50,000 coin entry fee."
+    },
+    "ice mountain": {
+      "name": "Ice Mountain",
+      "source": {
+        "title": "Ice Mountain",
+        "url": "https://oldschool.runescape.wiki/w/Ice_Mountain",
+        "revision": 15390013,
+        "timestamp": "2026-11-02T16:54:59Z"
+      }
+    },
+    "ice path": {
+      "name": "Ice Path",
+      "source": {
+        "title": "Ice Path",
+        "url": "https://oldschool.runescape.wiki/w/Ice_Path",
+        "revision": 15363038,
+        "timestamp": "2026-10-03T17:03:53Z"
+      }
+    },
+    "ice queen's lair": {
+      "name": "Ice Queen's Lair",
+      "source": {
+        "title": "Ice Queen's Lair",
+        "url": "https://oldschool.runescape.wiki/w/Ice_Queen%27s_Lair",
+        "revision": 15312542,
+        "timestamp": "2026-08-20T03:32:29Z"
+      }
+    },
+    "ice troll caves": {
+      "name": "Ice Troll Caves",
+      "source": {
+        "title": "Ice Troll Caves",
+        "url": "https://oldschool.runescape.wiki/w/Ice_Troll_Caves",
+        "revision": 15389940,
+        "timestamp": "2026-11-02T15:34:58Z"
+      },
+      "quest": "The Fremennik Isles",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "iceberg": {
+      "name": "Iceberg",
+      "source": {
+        "title": "Iceberg",
+        "url": "https://oldschool.runescape.wiki/w/Iceberg",
+        "revision": 15317986,
+        "timestamp": "2026-08-24T10:37:34Z"
+      },
+      "quest": "Cold War",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "inferno": {
+      "name": "Inferno",
+      "source": {
+        "title": "Inferno",
+        "url": "https://oldschool.runescape.wiki/w/Inferno",
+        "revision": 15394933,
+        "timestamp": "2026-11-05T19:35:28Z"
+      },
+      "cannon": false,
+      "confirmation": "Requires showing a fire cape for Mor Ul Rek and sacrificing one to unlock the Inferno; use a full-wave method."
+    },
+    "iorwerth camp": {
+      "name": "Iorwerth Camp",
+      "source": {
+        "title": "Iorwerth Camp",
+        "url": "https://oldschool.runescape.wiki/w/Iorwerth_Camp",
+        "revision": 15302188,
+        "timestamp": "2026-08-15T18:37:04Z"
+      },
+      "quest": "Regicide",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "iorwerth dungeon": {
+      "name": "Iorwerth Dungeon",
+      "source": {
+        "title": "Iorwerth Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Iorwerth_Dungeon",
+        "revision": 15252556,
+        "timestamp": "2026-07-04T16:05:46Z"
+      }
+    },
+    "isafdar": {
+      "name": "Isafdar",
+      "source": {
+        "title": "Isafdar",
+        "url": "https://oldschool.runescape.wiki/w/Isafdar",
+        "revision": 15023312,
+        "timestamp": "2025-11-12T02:05:28Z"
+      },
+      "quest": "Regicide",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "isle of bones": {
+      "name": "Isle of Bones",
+      "source": {
+        "title": "Isle of Bones",
+        "url": "https://oldschool.runescape.wiki/w/Isle_of_Bones",
+        "revision": 15386008,
+        "timestamp": "2026-10-30T03:22:59Z"
+      },
+      "skills": {
+        "sailing": 56
+      }
+    },
+    "isle of souls": {
+      "name": "Isle of Souls",
+      "source": {
+        "title": "Isle of Souls",
+        "url": "https://oldschool.runescape.wiki/w/Isle_of_Souls",
+        "revision": 15368347,
+        "timestamp": "2026-10-08T04:01:37Z"
+      }
+    },
+    "isle of souls dungeon": {
+      "name": "Isle of Souls Dungeon",
+      "source": {
+        "title": "Isle of Souls Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Isle_of_Souls_Dungeon",
+        "revision": 15373662,
+        "timestamp": "2026-10-16T02:12:41Z"
+      }
+    },
+    "jatizso mine": {
+      "name": "Jatizso mine",
+      "source": {
+        "title": "Jatizso mine",
+        "url": "https://oldschool.runescape.wiki/w/Jatizso_mine",
+        "revision": 15127901,
+        "timestamp": "2026-02-16T02:52:54Z"
+      },
+      "quest": "The Fremennik Isles",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "jiggig": {
+      "name": "Jiggig",
+      "source": {
+        "title": "Jiggig",
+        "url": "https://oldschool.runescape.wiki/w/Jiggig",
+        "revision": 15233574,
+        "timestamp": "2026-06-14T17:51:00Z"
+      }
+    },
+    "jiggig dungeon": {
+      "name": "Jiggig Dungeon",
+      "source": {
+        "title": "Jiggig Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Jiggig_Dungeon",
+        "revision": 15365346,
+        "timestamp": "2026-10-05T14:16:32Z"
+      },
+      "quest": "Zogre Flesh Eaters",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "jolly boar inn": {
+      "name": "Jolly Boar Inn",
+      "source": {
+        "title": "Jolly Boar Inn",
+        "url": "https://oldschool.runescape.wiki/w/Jolly_Boar_Inn",
+        "revision": 15375629,
+        "timestamp": "2026-10-19T03:37:58Z"
+      }
+    },
+    "jormungand's prison": {
+      "name": "Jormungand's Prison",
+      "source": {
+        "title": "Jormungand's Prison",
+        "url": "https://oldschool.runescape.wiki/w/Jormungand%27s_Prison",
+        "revision": 15271568,
+        "timestamp": "2026-07-22T00:04:26Z"
+      }
+    },
+    "kalphite cave": {
+      "name": "Kalphite Cave",
+      "source": {
+        "title": "Kalphite Cave",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Cave",
+        "revision": 15320730,
+        "timestamp": "2026-08-26T13:12:16Z"
+      }
+    },
+    "kalphite lair": {
+      "name": "Kalphite Lair",
+      "source": {
+        "title": "Kalphite Lair",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Lair",
+        "revision": 15392929,
+        "timestamp": "2026-11-03T22:17:53Z"
+      }
+    },
+    "karamja": {
+      "name": "Karamja",
+      "source": {
+        "title": "Karamja",
+        "url": "https://oldschool.runescape.wiki/w/Karamja",
+        "revision": 15402128,
+        "timestamp": "2026-11-13T17:33:29Z"
+      }
+    },
+    "karamja volcano": {
+      "name": "Karamja Volcano",
+      "source": {
+        "title": "Karamja Volcano",
+        "url": "https://oldschool.runescape.wiki/w/Karamja_Volcano",
+        "revision": 15091267,
+        "timestamp": "2025-12-21T01:40:40Z"
+      }
+    },
+    "karuulm slayer dungeon": {
+      "name": "Karuulm Slayer Dungeon",
+      "source": {
+        "title": "Karuulm Slayer Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Karuulm_Slayer_Dungeon",
+        "revision": 15352190,
+        "timestamp": "2026-09-20T14:21:56Z"
+      }
+    },
+    "kebos lowlands": {
+      "name": "Kebos Lowlands",
+      "source": {
+        "title": "Kebos Lowlands",
+        "url": "https://oldschool.runescape.wiki/w/Kebos_Lowlands",
+        "revision": 15408281,
+        "timestamp": "2026-11-19T09:59:01Z"
+      }
+    },
+    "kebos swamp": {
+      "name": "Kebos Swamp",
+      "source": {
+        "title": "Kebos Swamp",
+        "url": "https://oldschool.runescape.wiki/w/Kebos_Swamp",
+        "revision": 15362643,
+        "timestamp": "2026-10-03T14:44:26Z"
+      }
+    },
+    "keep le faye": {
+      "name": "Keep Le Faye",
+      "source": {
+        "title": "Keep Le Faye",
+        "url": "https://oldschool.runescape.wiki/w/Keep_Le_Faye",
+        "revision": 15275380,
+        "timestamp": "2026-07-25T22:19:47Z"
+      }
+    },
+    "keldagrim": {
+      "name": "Keldagrim",
+      "source": {
+        "title": "Keldagrim",
+        "url": "https://oldschool.runescape.wiki/w/Keldagrim",
+        "revision": 15360711,
+        "timestamp": "2026-10-02T19:21:41Z"
+      }
+    },
+    "kharazi jungle": {
+      "name": "Kharazi Jungle",
+      "source": {
+        "title": "Kharazi Jungle",
+        "url": "https://oldschool.runescape.wiki/w/Kharazi_Jungle",
+        "revision": 15320771,
+        "timestamp": "2026-08-26T13:53:31Z"
+      },
+      "quest": "Legends' Quest",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "kharidian desert": {
+      "name": "Kharidian Desert",
+      "source": {
+        "title": "Kharidian Desert",
+        "url": "https://oldschool.runescape.wiki/w/Kharidian_Desert",
+        "revision": 15317996,
+        "timestamp": "2026-08-24T10:47:15Z"
+      }
+    },
+    "killerwatt plane": {
+      "name": "Killerwatt plane",
+      "source": {
+        "title": "Killerwatt plane",
+        "url": "https://oldschool.runescape.wiki/w/Killerwatt_plane",
+        "revision": 15375654,
+        "timestamp": "2026-10-19T03:56:36Z"
+      },
+      "quest": "Ernest the Chicken",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "king black dragon lair": {
+      "name": "King Black Dragon Lair",
+      "source": {
+        "title": "King Black Dragon Lair",
+        "url": "https://oldschool.runescape.wiki/w/King_Black_Dragon_Lair",
+        "revision": 15389040,
+        "timestamp": "2026-11-01T19:16:13Z"
+      }
+    },
+    "kingstown": {
+      "name": "Kingstown",
+      "source": {
+        "title": "Kingstown",
+        "url": "https://oldschool.runescape.wiki/w/Kingstown",
+        "revision": 15372150,
+        "timestamp": "2026-10-13T21:04:33Z"
+      }
+    },
+    "kourend castle": {
+      "name": "Kourend Castle",
+      "source": {
+        "title": "Kourend Castle",
+        "url": "https://oldschool.runescape.wiki/w/Kourend_Castle",
+        "revision": 15372149,
+        "timestamp": "2026-10-13T21:03:59Z"
+      }
+    },
+    "kourend woodland": {
+      "name": "Kourend Woodland",
+      "source": {
+        "title": "Kourend Woodland",
+        "url": "https://oldschool.runescape.wiki/w/Kourend_Woodland",
+        "revision": 15399345,
+        "timestamp": "2026-11-11T15:49:46Z"
+      }
+    },
+    "kraken cove": {
+      "name": "Kraken Cove",
+      "source": {
+        "title": "Kraken Cove",
+        "url": "https://oldschool.runescape.wiki/w/Kraken_Cove",
+        "revision": 15395547,
+        "timestamp": "2026-11-06T16:45:43Z"
+      }
+    },
+    "kruk's dungeon": {
+      "name": "Kruk's Dungeon",
+      "source": {
+        "title": "Kruk's Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Kruk%27s_Dungeon",
+        "revision": 15366052,
+        "timestamp": "2026-10-05T20:44:18Z"
+      },
+      "quest": "Monkey Madness II",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "kurask lair": {
+      "name": "Kurask Lair",
+      "source": {
+        "title": "Kurask Lair",
+        "url": "https://oldschool.runescape.wiki/w/Kurask_Lair",
+        "revision": 15389275,
+        "timestamp": "2026-11-01T22:47:36Z"
+      },
+      "skills": {
+        "sailing": 58
+      }
+    },
+    "lady zay": {
+      "name": "Lady Zay",
+      "source": {
+        "title": "Lady Zay",
+        "url": "https://oldschool.runescape.wiki/w/Lady_Zay",
+        "revision": 15369057,
+        "timestamp": "2026-10-09T02:09:27Z"
+      },
+      "quest": "Lunar Diplomacy",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "laguna aurorae": {
+      "name": "Laguna Aurorae",
+      "source": {
+        "title": "Laguna Aurorae",
+        "url": "https://oldschool.runescape.wiki/w/Laguna_Aurorae",
+        "revision": 15398536,
+        "timestamp": "2026-11-11T00:14:50Z"
+      },
+      "skills": {
+        "sailing": 58
+      }
+    },
+    "land's end": {
+      "name": "Land's End",
+      "source": {
+        "title": "Land's End",
+        "url": "https://oldschool.runescape.wiki/w/Land%27s_End",
+        "revision": 15399344,
+        "timestamp": "2026-11-11T15:49:02Z"
+      }
+    },
+    "lava dragon isle": {
+      "name": "Lava Dragon Isle",
+      "source": {
+        "title": "Lava Dragon Isle",
+        "url": "https://oldschool.runescape.wiki/w/Lava_Dragon_Isle",
+        "revision": 15361129,
+        "timestamp": "2026-10-03T10:27:27Z"
+      }
+    },
+    "lava maze": {
+      "name": "Lava Maze",
+      "source": {
+        "title": "Lava Maze",
+        "url": "https://oldschool.runescape.wiki/w/Lava_Maze",
+        "revision": 15290512,
+        "timestamp": "2026-08-08T17:11:16Z"
+      }
+    },
+    "lava maze dungeon": {
+      "name": "Lava Maze Dungeon",
+      "source": {
+        "title": "Lava Maze Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Lava_Maze_Dungeon",
+        "revision": 15210121,
+        "timestamp": "2026-05-13T03:20:05Z"
+      }
+    },
+    "legends' guild": {
+      "name": "Legends' Guild",
+      "source": {
+        "title": "Legends' Guild",
+        "url": "https://oldschool.runescape.wiki/w/Legends%27_Guild",
+        "revision": 15352122,
+        "timestamp": "2026-09-20T09:42:38Z"
+      },
+      "quest": "Legends' Quest",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "lighthouse": {
+      "name": "Lighthouse",
+      "source": {
+        "title": "Lighthouse",
+        "url": "https://oldschool.runescape.wiki/w/Lighthouse",
+        "revision": 15375076,
+        "timestamp": "2026-10-18T14:58:41Z"
+      }
+    },
+    "limbo": {
+      "name": "Limbo",
+      "source": {
+        "title": "Limbo",
+        "url": "https://oldschool.runescape.wiki/w/Limbo",
+        "revision": 15212072,
+        "timestamp": "2026-05-17T04:34:15Z"
+      },
+      "unsupported": true
+    },
+    "lithkren vault": {
+      "name": "Lithkren Vault",
+      "source": {
+        "title": "Lithkren Vault",
+        "url": "https://oldschool.runescape.wiki/w/Lithkren_Vault",
+        "revision": 14973033,
+        "timestamp": "2025-08-24T12:41:12Z"
+      }
+    },
+    "lizardman canyon": {
+      "name": "Lizardman Canyon",
+      "source": {
+        "title": "Lizardman Canyon",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Canyon",
+        "revision": 14841789,
+        "timestamp": "2025-01-24T04:15:27Z"
+      }
+    },
+    "lizardman caves": {
+      "name": "Lizardman Caves",
+      "source": {
+        "title": "Lizardman Caves",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Caves",
+        "revision": 15316640,
+        "timestamp": "2026-08-22T17:44:21Z"
+      }
+    },
+    "lizardman settlement": {
+      "name": "Lizardman Settlement",
+      "source": {
+        "title": "Lizardman Settlement",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Settlement",
+        "revision": 14941866,
+        "timestamp": "2025-07-22T01:06:46Z"
+      }
+    },
+    "lizardman temple": {
+      "name": "Lizardman Temple",
+      "source": {
+        "title": "Lizardman Temple",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_Temple",
+        "revision": 15229068,
+        "timestamp": "2026-06-07T19:26:42Z"
+      }
+    },
+    "lletya": {
+      "name": "Lletya",
+      "source": {
+        "title": "Lletya",
+        "url": "https://oldschool.runescape.wiki/w/Lletya",
+        "revision": 15379525,
+        "timestamp": "2026-10-22T18:30:53Z"
+      },
+      "quest": "Mourning's End Part I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "lovakengj": {
+      "name": "Lovakengj",
+      "source": {
+        "title": "Lovakengj",
+        "url": "https://oldschool.runescape.wiki/w/Lovakengj",
+        "revision": 15366423,
+        "timestamp": "2026-10-05T23:33:32Z"
+      }
+    },
+    "lovakite mine": {
+      "name": "Lovakite Mine",
+      "source": {
+        "title": "Lovakite mine",
+        "url": "https://oldschool.runescape.wiki/w/Lovakite_mine",
+        "revision": 15057693,
+        "timestamp": "2025-11-23T00:15:48Z"
+      }
+    },
+    "lumbridge": {
+      "name": "Lumbridge",
+      "source": {
+        "title": "Lumbridge",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge",
+        "revision": 15406247,
+        "timestamp": "2026-11-18T20:29:16Z"
+      }
+    },
+    "lumbridge castle": {
+      "name": "Lumbridge Castle",
+      "source": {
+        "title": "Lumbridge Castle",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_Castle",
+        "revision": 15399576,
+        "timestamp": "2026-11-11T17:07:24Z"
+      }
+    },
+    "lumbridge swamp": {
+      "name": "Lumbridge Swamp",
+      "source": {
+        "title": "Lumbridge Swamp",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_Swamp",
+        "revision": 15396661,
+        "timestamp": "2026-11-08T10:39:01Z"
+      }
+    },
+    "lumbridge swamp caves": {
+      "name": "Lumbridge Swamp Caves",
+      "source": {
+        "title": "Lumbridge Swamp Caves",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_Swamp_Caves",
+        "revision": 15396687,
+        "timestamp": "2026-11-08T11:50:31Z"
+      }
+    },
+    "lumbridge cow field": {
+      "name": "Lumbridge cow field",
+      "source": {
+        "title": "Lumbridge cow field",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_cow_field",
+        "revision": 15364557,
+        "timestamp": "2026-10-04T16:09:42Z"
+      }
+    },
+    "lumbridge cow field (north)": {
+      "name": "Lumbridge cow field (north)",
+      "source": {
+        "title": "Lumbridge cow field (north)",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_cow_field_%28north%29",
+        "revision": 15367708,
+        "timestamp": "2026-10-07T14:05:59Z"
+      }
+    },
+    "lumbridge pond": {
+      "name": "Lumbridge pond",
+      "source": {
+        "title": "Lumbridge pond",
+        "url": "https://oldschool.runescape.wiki/w/Lumbridge_pond",
+        "revision": 15273130,
+        "timestamp": "2026-07-23T03:47:55Z"
+      }
+    },
+    "lunar isle": {
+      "name": "Lunar Isle",
+      "source": {
+        "title": "Lunar Isle",
+        "url": "https://oldschool.runescape.wiki/w/Lunar_Isle",
+        "revision": 15375264,
+        "timestamp": "2026-10-18T18:39:25Z"
+      },
+      "quest": "Lunar Diplomacy",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "mage arena": {
+      "name": "Mage Arena",
+      "source": {
+        "title": "Mage Arena",
+        "url": "https://oldschool.runescape.wiki/w/Mage_Arena",
+        "revision": 15326168,
+        "timestamp": "2026-08-31T12:46:59Z"
+      }
+    },
+    "mage arena ii": {
+      "name": "Mage Arena II",
+      "source": {
+        "title": "Mage Arena II",
+        "url": "https://oldschool.runescape.wiki/w/Mage_Arena_II",
+        "revision": 15411195,
+        "timestamp": "2026-11-21T21:06:44Z"
+      }
+    },
+    "magic axe hut": {
+      "name": "Magic axe hut",
+      "source": {
+        "title": "Magic axe hut",
+        "url": "https://oldschool.runescape.wiki/w/Magic_axe_hut",
+        "revision": 15371731,
+        "timestamp": "2026-10-13T06:11:37Z"
+      },
+      "skills": {
+        "thieving": 32
+      }
+    },
+    "marim": {
+      "name": "Marim",
+      "source": {
+        "title": "Marim",
+        "url": "https://oldschool.runescape.wiki/w/Marim",
+        "revision": 15233635,
+        "timestamp": "2026-06-14T20:30:47Z"
+      },
+      "quest": "Monkey Madness I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "mcgrubor's wood": {
+      "name": "McGrubor's Wood",
+      "source": {
+        "title": "McGrubor's Wood",
+        "url": "https://oldschool.runescape.wiki/w/McGrubor%27s_Wood",
+        "revision": 15290184,
+        "timestamp": "2026-08-08T00:41:14Z"
+      }
+    },
+    "meiyerditch": {
+      "name": "Meiyerditch",
+      "source": {
+        "title": "Meiyerditch",
+        "url": "https://oldschool.runescape.wiki/w/Meiyerditch",
+        "revision": 15366174,
+        "timestamp": "2026-10-05T21:34:43Z"
+      }
+    },
+    "meiyerditch laboratories": {
+      "name": "Meiyerditch Laboratories",
+      "source": {
+        "title": "Meiyerditch Laboratories",
+        "url": "https://oldschool.runescape.wiki/w/Meiyerditch_Laboratories",
+        "revision": 15385627,
+        "timestamp": "2026-10-29T15:13:59Z"
+      }
+    },
+    "melzar's maze": {
+      "name": "Melzar's Maze",
+      "source": {
+        "title": "Melzar's Maze",
+        "url": "https://oldschool.runescape.wiki/w/Melzar%27s_Maze",
+        "revision": 15366285,
+        "timestamp": "2026-10-05T22:27:14Z"
+      },
+      "confirmation": "Requires the maze key from Dragon Slayer I and the correct coloured-door route."
+    },
+    "mind altar": {
+      "name": "Mind Altar",
+      "source": {
+        "title": "Mind Altar",
+        "url": "https://oldschool.runescape.wiki/w/Mind_Altar",
+        "revision": 15143887,
+        "timestamp": "2026-03-07T09:40:02Z"
+      }
+    },
+    "mining guild": {
+      "name": "Mining Guild",
+      "source": {
+        "title": "Mining Guild",
+        "url": "https://oldschool.runescape.wiki/w/Mining_Guild",
+        "revision": 15340890,
+        "timestamp": "2026-09-11T17:27:16Z"
+      },
+      "skills": {
+        "mining": 60
+      }
+    },
+    "miscellania": {
+      "name": "Miscellania",
+      "source": {
+        "title": "Miscellania",
+        "url": "https://oldschool.runescape.wiki/w/Miscellania",
+        "revision": 15351046,
+        "timestamp": "2026-09-19T17:41:45Z"
+      }
+    },
+    "miscellania and etceteria dungeon": {
+      "name": "Miscellania and Etceteria dungeon",
+      "source": {
+        "title": "Miscellania and Etceteria dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Miscellania_and_Etceteria_dungeon",
+        "revision": 15395716,
+        "timestamp": "2026-11-06T19:51:00Z"
+      },
+      "quest": "Royal Trouble",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "mistrock": {
+      "name": "Mistrock",
+      "source": {
+        "title": "Mistrock",
+        "url": "https://oldschool.runescape.wiki/w/Mistrock",
+        "revision": 15319362,
+        "timestamp": "2026-08-25T05:40:14Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "molch": {
+      "name": "Molch",
+      "source": {
+        "title": "Molch",
+        "url": "https://oldschool.runescape.wiki/w/Molch",
+        "revision": 15367080,
+        "timestamp": "2026-10-06T19:47:54Z"
+      }
+    },
+    "mons gratia": {
+      "name": "Mons Gratia",
+      "source": {
+        "title": "Mons Gratia",
+        "url": "https://oldschool.runescape.wiki/w/Mons_Gratia",
+        "revision": 15229212,
+        "timestamp": "2026-06-07T23:43:50Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "mor ul rek": {
+      "name": "Mor Ul Rek",
+      "source": {
+        "title": "Mor Ul Rek",
+        "url": "https://oldschool.runescape.wiki/w/Mor_Ul_Rek",
+        "revision": 15394862,
+        "timestamp": "2026-11-05T18:33:10Z"
+      }
+    },
+    "mort myre swamp": {
+      "name": "Mort Myre Swamp",
+      "source": {
+        "title": "Mort Myre Swamp",
+        "url": "https://oldschool.runescape.wiki/w/Mort_Myre_Swamp",
+        "revision": 15367022,
+        "timestamp": "2026-10-06T19:05:45Z"
+      }
+    },
+    "mort'ton": {
+      "name": "Mort'ton",
+      "source": {
+        "title": "Mort'ton",
+        "url": "https://oldschool.runescape.wiki/w/Mort%27ton",
+        "revision": 15359045,
+        "timestamp": "2026-09-30T19:00:01Z"
+      }
+    },
+    "morytania spider cave": {
+      "name": "Morytania Spider Cave",
+      "source": {
+        "title": "Morytania Spider Cave",
+        "url": "https://oldschool.runescape.wiki/w/Morytania_Spider_Cave",
+        "revision": 15211899,
+        "timestamp": "2026-05-17T04:33:08Z"
+      }
+    },
+    "mos le'harmless": {
+      "name": "Mos Le'Harmless",
+      "source": {
+        "title": "Mos Le'Harmless",
+        "url": "https://oldschool.runescape.wiki/w/Mos_Le%27Harmless",
+        "revision": 15315082,
+        "timestamp": "2026-08-21T03:57:29Z"
+      }
+    },
+    "mos le'harmless cave": {
+      "name": "Mos Le'Harmless Cave",
+      "source": {
+        "title": "Mos Le'Harmless Cave",
+        "url": "https://oldschool.runescape.wiki/w/Mos_Le%27Harmless_Cave",
+        "revision": 15375134,
+        "timestamp": "2026-10-18T15:43:32Z"
+      }
+    },
+    "moss giant island": {
+      "name": "Moss Giant Island",
+      "source": {
+        "title": "Moss Giant Island",
+        "url": "https://oldschool.runescape.wiki/w/Moss_Giant_Island",
+        "revision": 15211820,
+        "timestamp": "2026-05-17T04:32:35Z"
+      },
+      "skills": {
+        "agility": 10
+      }
+    },
+    "mount karuulm": {
+      "name": "Mount Karuulm",
+      "source": {
+        "title": "Mount Karuulm",
+        "url": "https://oldschool.runescape.wiki/w/Mount_Karuulm",
+        "revision": 15229213,
+        "timestamp": "2026-06-07T23:44:00Z"
+      }
+    },
+    "mount quidamortem": {
+      "name": "Mount Quidamortem",
+      "source": {
+        "title": "Mount Quidamortem",
+        "url": "https://oldschool.runescape.wiki/w/Mount_Quidamortem",
+        "revision": 15373629,
+        "timestamp": "2026-10-16T01:58:34Z"
+      }
+    },
+    "mourner tunnels": {
+      "name": "Mourner Tunnels",
+      "source": {
+        "title": "Mourner Tunnels",
+        "url": "https://oldschool.runescape.wiki/w/Mourner_Tunnels",
+        "revision": 15256429,
+        "timestamp": "2026-07-07T16:38:08Z"
+      }
+    },
+    "mudskipper point": {
+      "name": "Mudskipper Point",
+      "source": {
+        "title": "Mudskipper Point",
+        "url": "https://oldschool.runescape.wiki/w/Mudskipper_Point",
+        "revision": 15364640,
+        "timestamp": "2026-10-04T18:31:17Z"
+      }
+    },
+    "mushroom forest": {
+      "name": "Mushroom Forest",
+      "source": {
+        "title": "Mushroom Forest",
+        "url": "https://oldschool.runescape.wiki/w/Mushroom_Forest",
+        "revision": 15367251,
+        "timestamp": "2026-10-06T23:06:36Z"
+      }
+    },
+    "mynydd": {
+      "name": "Mynydd",
+      "source": {
+        "title": "Mynydd",
+        "url": "https://oldschool.runescape.wiki/w/Mynydd",
+        "revision": 15314382,
+        "timestamp": "2026-08-20T20:40:21Z"
+      }
+    },
+    "myreque hideout": {
+      "name": "Myreque Hideout",
+      "source": {
+        "title": "Myreque Hideout",
+        "url": "https://oldschool.runescape.wiki/w/Myreque_Hideout",
+        "revision": 15365046,
+        "timestamp": "2026-10-05T00:52:28Z"
+      }
+    },
+    "nardah": {
+      "name": "Nardah",
+      "source": {
+        "title": "Nardah",
+        "url": "https://oldschool.runescape.wiki/w/Nardah",
+        "revision": 15397328,
+        "timestamp": "2026-11-09T05:26:39Z"
+      }
+    },
+    "necropolis": {
+      "name": "Necropolis",
+      "source": {
+        "title": "Necropolis",
+        "url": "https://oldschool.runescape.wiki/w/Necropolis",
+        "revision": 15319297,
+        "timestamp": "2026-08-25T05:14:30Z"
+      },
+      "quest": "Beneath Cursed Sands",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "neypotzli": {
+      "name": "Neypotzli",
+      "source": {
+        "title": "Neypotzli",
+        "url": "https://oldschool.runescape.wiki/w/Neypotzli",
+        "revision": 15211966,
+        "timestamp": "2026-05-17T04:33:34Z"
+      }
+    },
+    "nightmare zone": {
+      "name": "Nightmare Zone",
+      "source": {
+        "title": "Nightmare Zone",
+        "url": "https://oldschool.runescape.wiki/w/Nightmare_Zone",
+        "revision": 15387539,
+        "timestamp": "2026-11-01T04:59:23Z"
+      }
+    },
+    "north brimhaven mine": {
+      "name": "North Brimhaven mine",
+      "source": {
+        "title": "North Brimhaven mine",
+        "url": "https://oldschool.runescape.wiki/w/North_Brimhaven_mine",
+        "revision": 15355209,
+        "timestamp": "2026-09-24T06:19:05Z"
+      }
+    },
+    "observatory": {
+      "name": "Observatory",
+      "source": {
+        "title": "Observatory",
+        "url": "https://oldschool.runescape.wiki/w/Observatory",
+        "revision": 15104819,
+        "timestamp": "2026-01-13T20:47:39Z"
+      }
+    },
+    "observatory dungeon": {
+      "name": "Observatory Dungeon",
+      "source": {
+        "title": "Observatory Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Observatory_Dungeon",
+        "revision": 15267041,
+        "timestamp": "2026-07-18T17:35:21Z"
+      }
+    },
+    "ogre enclave": {
+      "name": "Ogre Enclave",
+      "source": {
+        "title": "Ogre Enclave",
+        "url": "https://oldschool.runescape.wiki/w/Ogre_Enclave",
+        "revision": 15356155,
+        "timestamp": "2026-09-26T00:59:46Z"
+      }
+    },
+    "ortus farm": {
+      "name": "Ortus Farm",
+      "source": {
+        "title": "Ortus Farm",
+        "url": "https://oldschool.runescape.wiki/w/Ortus_Farm",
+        "revision": 15211968,
+        "timestamp": "2026-05-17T04:33:34Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "outer fortis": {
+      "name": "Outer Fortis",
+      "source": {
+        "title": "Outer Fortis",
+        "url": "https://oldschool.runescape.wiki/w/Outer_Fortis",
+        "revision": 15211969,
+        "timestamp": "2026-05-17T04:33:35Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "outpost": {
+      "name": "Outpost",
+      "source": {
+        "title": "Outpost",
+        "url": "https://oldschool.runescape.wiki/w/Outpost",
+        "revision": 15342905,
+        "timestamp": "2026-09-13T18:06:33Z"
+      }
+    },
+    "pandemonium cave": {
+      "name": "Pandemonium Cave",
+      "source": {
+        "title": "Pandemonium Cave",
+        "url": "https://oldschool.runescape.wiki/w/Pandemonium_Cave",
+        "revision": 15389931,
+        "timestamp": "2026-11-02T15:18:49Z"
+      },
+      "quest": "Pandemonium",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "pirates' cove": {
+      "name": "Pirates' Cove",
+      "source": {
+        "title": "Pirates' Cove",
+        "url": "https://oldschool.runescape.wiki/w/Pirates%27_Cove",
+        "revision": 15374671,
+        "timestamp": "2026-10-17T17:52:10Z"
+      },
+      "quest": "Lunar Diplomacy",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "pirates' hideout": {
+      "name": "Pirates' Hideout",
+      "source": {
+        "title": "Pirates' Hideout",
+        "url": "https://oldschool.runescape.wiki/w/Pirates%27_Hideout",
+        "revision": 15302203,
+        "timestamp": "2026-08-15T18:41:13Z"
+      },
+      "skills": {
+        "thieving": 39
+      }
+    },
+    "piscatoris fishing colony": {
+      "name": "Piscatoris Fishing Colony",
+      "source": {
+        "title": "Piscatoris Fishing Colony",
+        "url": "https://oldschool.runescape.wiki/w/Piscatoris_Fishing_Colony",
+        "revision": 15376333,
+        "timestamp": "2026-10-19T20:48:09Z"
+      },
+      "quest": "Swan Song",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "stronghold of security": {
+      "name": "Stronghold of Security",
+      "source": {
+        "title": "Stronghold of Security",
+        "url": "https://oldschool.runescape.wiki/w/Stronghold_of_Security",
+        "revision": 15402845,
+        "timestamp": "2026-11-14T21:58:48Z"
+      }
+    },
+    "poison waste dungeon": {
+      "name": "Poison Waste Dungeon",
+      "source": {
+        "title": "Poison Waste Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Poison_Waste_Dungeon",
+        "revision": 15293288,
+        "timestamp": "2026-08-12T02:56:07Z"
+      }
+    },
+    "pollnivneach": {
+      "name": "Pollnivneach",
+      "source": {
+        "title": "Pollnivneach",
+        "url": "https://oldschool.runescape.wiki/w/Pollnivneach",
+        "revision": 15402250,
+        "timestamp": "2026-11-13T23:09:01Z"
+      }
+    },
+    "port phasmatys": {
+      "name": "Port Phasmatys",
+      "source": {
+        "title": "Port Phasmatys",
+        "url": "https://oldschool.runescape.wiki/w/Port_Phasmatys",
+        "revision": 15381748,
+        "timestamp": "2026-10-25T14:33:12Z"
+      }
+    },
+    "port piscarilius": {
+      "name": "Port Piscarilius",
+      "source": {
+        "title": "Port Piscarilius",
+        "url": "https://oldschool.runescape.wiki/w/Port_Piscarilius",
+        "revision": 15372002,
+        "timestamp": "2026-10-13T16:29:56Z"
+      }
+    },
+    "port roberts": {
+      "name": "Port Roberts",
+      "source": {
+        "title": "Port Roberts",
+        "url": "https://oldschool.runescape.wiki/w/Port_Roberts",
+        "revision": 15368890,
+        "timestamp": "2026-10-08T23:15:51Z"
+      },
+      "skills": {
+        "sailing": 50
+      }
+    },
+    "port sarim": {
+      "name": "Port Sarim",
+      "source": {
+        "title": "Port Sarim",
+        "url": "https://oldschool.runescape.wiki/w/Port_Sarim",
+        "revision": 15359040,
+        "timestamp": "2026-09-30T18:56:26Z"
+      }
+    },
+    "port sarim jail": {
+      "name": "Port Sarim jail",
+      "source": {
+        "title": "Port Sarim jail",
+        "url": "https://oldschool.runescape.wiki/w/Port_Sarim_jail",
+        "revision": 14962645,
+        "timestamp": "2025-08-10T00:48:10Z"
+      }
+    },
+    "prifddinas": {
+      "name": "Prifddinas",
+      "source": {
+        "title": "Prifddinas",
+        "url": "https://oldschool.runescape.wiki/w/Prifddinas",
+        "revision": 15404429,
+        "timestamp": "2026-11-17T14:33:11Z"
+      }
+    },
+    "ralos' rise": {
+      "name": "Ralos' Rise",
+      "source": {
+        "title": "Ralos' Rise",
+        "url": "https://oldschool.runescape.wiki/w/Ralos%27_Rise",
+        "revision": 15319365,
+        "timestamp": "2026-08-25T05:40:38Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "ralos' rise mine": {
+      "name": "Ralos' Rise mine",
+      "source": {
+        "title": "Ralos' Rise mine",
+        "url": "https://oldschool.runescape.wiki/w/Ralos%27_Rise_mine",
+        "revision": 15211972,
+        "timestamp": "2026-05-17T04:33:36Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "ranging guild": {
+      "name": "Ranging Guild",
+      "source": {
+        "title": "Ranging Guild",
+        "url": "https://oldschool.runescape.wiki/w/Ranging_Guild",
+        "revision": 14922764,
+        "timestamp": "2025-06-19T15:37:22Z"
+      }
+    },
+    "rashiliyia's tomb": {
+      "name": "Rashiliyia's Tomb",
+      "source": {
+        "title": "Rashiliyia's Tomb",
+        "url": "https://oldschool.runescape.wiki/w/Rashiliyia%27s_Tomb",
+        "revision": 15364983,
+        "timestamp": "2026-10-05T00:25:25Z"
+      }
+    },
+    "rat pits": {
+      "name": "Rat Pits",
+      "source": {
+        "title": "Rat Pits",
+        "url": "https://oldschool.runescape.wiki/w/Rat_Pits",
+        "revision": 15324330,
+        "timestamp": "2026-08-29T06:12:45Z"
+      },
+      "quest": "Ratcatchers",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "red rock": {
+      "name": "Red Rock",
+      "source": {
+        "title": "Red Rock",
+        "url": "https://oldschool.runescape.wiki/w/Red_Rock",
+        "revision": 15248903,
+        "timestamp": "2026-07-02T21:50:18Z"
+      },
+      "quest": "The Red Reef",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "rellekka": {
+      "name": "Rellekka",
+      "source": {
+        "title": "Rellekka",
+        "url": "https://oldschool.runescape.wiki/w/Rellekka",
+        "revision": 15387537,
+        "timestamp": "2026-11-01T04:57:42Z"
+      }
+    },
+    "revenant caves": {
+      "name": "Revenant Caves",
+      "source": {
+        "title": "Revenant Caves",
+        "url": "https://oldschool.runescape.wiki/w/Revenant_Caves",
+        "revision": 15397220,
+        "timestamp": "2026-11-09T03:22:33Z"
+      },
+      "cannon": false
+    },
+    "rimmington": {
+      "name": "Rimmington",
+      "source": {
+        "title": "Rimmington",
+        "url": "https://oldschool.runescape.wiki/w/Rimmington",
+        "revision": 15364082,
+        "timestamp": "2026-10-04T10:17:43Z"
+      }
+    },
+    "river elid": {
+      "name": "River Elid",
+      "source": {
+        "title": "River Elid",
+        "url": "https://oldschool.runescape.wiki/w/River_Elid",
+        "revision": 15212923,
+        "timestamp": "2026-05-19T02:09:45Z"
+      }
+    },
+    "river hos": {
+      "name": "River Hos",
+      "source": {
+        "title": "River Hos",
+        "url": "https://oldschool.runescape.wiki/w/River_Hos",
+        "revision": 15366245,
+        "timestamp": "2026-10-05T22:09:28Z"
+      }
+    },
+    "river lum": {
+      "name": "River Lum",
+      "source": {
+        "title": "River Lum",
+        "url": "https://oldschool.runescape.wiki/w/River_Lum",
+        "revision": 15110836,
+        "timestamp": "2026-01-22T09:33:38Z"
+      }
+    },
+    "rogues' castle": {
+      "name": "Rogues' Castle",
+      "source": {
+        "title": "Rogues' Castle",
+        "url": "https://oldschool.runescape.wiki/w/Rogues%27_Castle",
+        "revision": 15370756,
+        "timestamp": "2026-10-11T20:27:59Z"
+      }
+    },
+    "ruins (east)": {
+      "name": "Ruins (east)",
+      "source": {
+        "title": "Ruins (east)",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_%28east%29",
+        "revision": 15267823,
+        "timestamp": "2026-07-19T21:37:33Z"
+      }
+    },
+    "ruins (west)": {
+      "name": "Ruins (west)",
+      "source": {
+        "title": "Ruins (west)",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_%28west%29",
+        "revision": 15275943,
+        "timestamp": "2026-07-26T17:57:08Z"
+      }
+    },
+    "ruins of tapoyauik": {
+      "name": "Ruins of Tapoyauik",
+      "source": {
+        "title": "Ruins of Tapoyauik",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_of_Tapoyauik",
+        "revision": 15387580,
+        "timestamp": "2026-11-01T06:37:51Z"
+      }
+    },
+    "ruins of ullek": {
+      "name": "Ruins of Ullek",
+      "source": {
+        "title": "Ruins of Ullek",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_of_Ullek",
+        "revision": 15385145,
+        "timestamp": "2026-10-29T02:58:14Z"
+      }
+    },
+    "ruins of unkah": {
+      "name": "Ruins of Unkah",
+      "source": {
+        "title": "Ruins of Unkah",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_of_Unkah",
+        "revision": 15387546,
+        "timestamp": "2026-11-01T05:03:21Z"
+      }
+    },
+    "ruins of uzer": {
+      "name": "Ruins of Uzer",
+      "source": {
+        "title": "Ruins of Uzer",
+        "url": "https://oldschool.runescape.wiki/w/Ruins_of_Uzer",
+        "revision": 15411596,
+        "timestamp": "2026-11-22T04:27:08Z"
+      }
+    },
+    "salvager overlook": {
+      "name": "Salvager Overlook",
+      "source": {
+        "title": "Salvager Overlook",
+        "url": "https://oldschool.runescape.wiki/w/Salvager_Overlook",
+        "revision": 15319348,
+        "timestamp": "2026-08-25T05:37:51Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "scabaras dungeon": {
+      "name": "Scabaras Dungeon",
+      "source": {
+        "title": "Scabaras Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Scabaras_Dungeon",
+        "revision": 15331290,
+        "timestamp": "2026-09-05T06:42:29Z"
+      },
+      "quest": "Beneath Cursed Sands",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "scorpia": {
+      "name": "Scorpia",
+      "source": {
+        "title": "Scorpia",
+        "url": "https://oldschool.runescape.wiki/w/Scorpia",
+        "revision": 15362166,
+        "timestamp": "2026-10-03T12:53:49Z"
+      }
+    },
+    "scorpion pit": {
+      "name": "Scorpion Pit",
+      "source": {
+        "title": "Scorpion Pit",
+        "url": "https://oldschool.runescape.wiki/w/Scorpion_Pit",
+        "revision": 15410982,
+        "timestamp": "2026-11-21T15:41:49Z"
+      }
+    },
+    "settlement ruins": {
+      "name": "Settlement Ruins",
+      "source": {
+        "title": "Settlement Ruins",
+        "url": "https://oldschool.runescape.wiki/w/Settlement_Ruins",
+        "revision": 15222774,
+        "timestamp": "2026-05-31T19:28:01Z"
+      }
+    },
+    "shade catacombs": {
+      "name": "Shade Catacombs",
+      "source": {
+        "title": "Shade Catacombs",
+        "url": "https://oldschool.runescape.wiki/w/Shade_Catacombs",
+        "revision": 15233566,
+        "timestamp": "2026-06-14T17:45:10Z"
+      },
+      "quest": "Shades of Mort'ton",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "shadow dungeon": {
+      "name": "Shadow Dungeon",
+      "source": {
+        "title": "Shadow Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Shadow_Dungeon",
+        "revision": 15127725,
+        "timestamp": "2026-02-15T22:23:10Z"
+      },
+      "confirmation": "Requires an equipped ring of visibility or ring of shadows for the ladder."
+    },
+    "shaman caves": {
+      "name": "Shaman Caves",
+      "source": {
+        "title": "Shaman Caves",
+        "url": "https://oldschool.runescape.wiki/w/Shaman_Caves",
+        "revision": 15369485,
+        "timestamp": "2026-10-09T15:14:06Z"
+      },
+      "quest": "Legends' Quest",
+      "states": [
+        0,
+        null,
+        1
+      ],
+      "cannon": false
+    },
+    "shantay pass": {
+      "name": "Shantay Pass",
+      "source": {
+        "title": "Shantay Pass",
+        "url": "https://oldschool.runescape.wiki/w/Shantay_Pass",
+        "revision": 15360728,
+        "timestamp": "2026-10-02T19:30:17Z"
+      }
+    },
+    "shayzien": {
+      "name": "Shayzien",
+      "source": {
+        "title": "Shayzien",
+        "url": "https://oldschool.runescape.wiki/w/Shayzien",
+        "revision": 15387113,
+        "timestamp": "2026-10-31T14:50:35Z"
+      }
+    },
+    "shayzien crypts": {
+      "name": "Shayzien Crypts",
+      "source": {
+        "title": "Shayzien Crypts",
+        "url": "https://oldschool.runescape.wiki/w/Shayzien_Crypts",
+        "revision": 15233580,
+        "timestamp": "2026-06-14T17:51:40Z"
+      }
+    },
+    "shayziens' wall": {
+      "name": "Shayziens' Wall",
+      "source": {
+        "title": "Shayziens' Wall",
+        "url": "https://oldschool.runescape.wiki/w/Shayziens%27_Wall",
+        "revision": 15212882,
+        "timestamp": "2026-05-19T01:31:29Z"
+      }
+    },
+    "shellbane gryphon cave": {
+      "name": "Shellbane Gryphon Cave",
+      "source": {
+        "title": "Shellbane Gryphon Cave",
+        "url": "https://oldschool.runescape.wiki/w/Shellbane_Gryphon_Cave",
+        "revision": 15388273,
+        "timestamp": "2026-11-01T16:48:55Z"
+      },
+      "quest": "Troubled Tortugans",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "shilo village (location)": {
+      "name": "Shilo Village (location)",
+      "source": {
+        "title": "Shilo Village (location)",
+        "url": "https://oldschool.runescape.wiki/w/Shilo_Village_%28location%29",
+        "revision": 15407179,
+        "timestamp": "2026-11-19T02:14:44Z"
+      },
+      "quest": "Shilo Village",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "shimmering atoll": {
+      "name": "Shimmering Atoll",
+      "source": {
+        "title": "Shimmering Atoll",
+        "url": "https://oldschool.runescape.wiki/w/Shimmering_Atoll",
+        "revision": 15356339,
+        "timestamp": "2026-09-26T08:50:38Z"
+      },
+      "skills": {
+        "sailing": 49
+      }
+    },
+    "silk chasm": {
+      "name": "Silk Chasm",
+      "source": {
+        "title": "Silk Chasm",
+        "url": "https://oldschool.runescape.wiki/w/Silk_Chasm",
+        "revision": 15165438,
+        "timestamp": "2026-04-04T19:15:17Z"
+      },
+      "confirmation": "Requires medium Wilderness diary OR a specific Venenatis boss task, plus the shared 50,000 coin entry fee."
+    },
+    "silvarea": {
+      "name": "Silvarea",
+      "source": {
+        "title": "Silvarea",
+        "url": "https://oldschool.runescape.wiki/w/Silvarea",
+        "revision": 15291177,
+        "timestamp": "2026-08-09T16:39:49Z"
+      }
+    },
+    "sinclair mansion": {
+      "name": "Sinclair Mansion",
+      "source": {
+        "title": "Sinclair Mansion",
+        "url": "https://oldschool.runescape.wiki/w/Sinclair_Mansion",
+        "revision": 15366035,
+        "timestamp": "2026-10-05T20:37:04Z"
+      }
+    },
+    "sisterhood sanctuary": {
+      "name": "Sisterhood Sanctuary",
+      "source": {
+        "title": "Sisterhood Sanctuary",
+        "url": "https://oldschool.runescape.wiki/w/Sisterhood_Sanctuary",
+        "revision": 15326049,
+        "timestamp": "2026-08-31T04:48:21Z"
+      }
+    },
+    "skavid caves": {
+      "name": "Skavid Caves",
+      "source": {
+        "title": "Skavid caves",
+        "url": "https://oldschool.runescape.wiki/w/Skavid_caves",
+        "revision": 15376557,
+        "timestamp": "2026-10-20T03:51:15Z"
+      },
+      "confirmation": "Bring the skavid map and a light source; the map is obtained during Watchtower."
+    },
+    "skeletal tomb": {
+      "name": "Skeletal Tomb",
+      "source": {
+        "title": "Skeletal Tomb",
+        "url": "https://oldschool.runescape.wiki/w/Skeletal_Tomb",
+        "revision": 15292449,
+        "timestamp": "2026-08-11T01:48:47Z"
+      },
+      "confirmation": "Requires hard Wilderness diary OR a specific Vet'ion boss task, plus the shared 50,000 coin entry fee."
+    },
+    "skotizo": {
+      "name": "Skotizo",
+      "source": {
+        "title": "Skotizo",
+        "url": "https://oldschool.runescape.wiki/w/Skotizo",
+        "revision": 15404238,
+        "timestamp": "2026-11-17T03:11:03Z"
+      }
+    },
+    "slayer tower": {
+      "name": "Slayer Tower",
+      "source": {
+        "title": "Slayer Tower",
+        "url": "https://oldschool.runescape.wiki/w/Slayer_Tower",
+        "revision": 15399874,
+        "timestamp": "2026-11-11T19:57:17Z"
+      }
+    },
+    "slepe": {
+      "name": "Slepe",
+      "source": {
+        "title": "Slepe",
+        "url": "https://oldschool.runescape.wiki/w/Slepe",
+        "revision": 15395146,
+        "timestamp": "2026-11-06T03:10:09Z"
+      }
+    },
+    "smoke devil dungeon": {
+      "name": "Smoke Devil Dungeon",
+      "source": {
+        "title": "Smoke Devil Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Smoke_Devil_Dungeon",
+        "revision": 15252276,
+        "timestamp": "2026-07-04T14:56:10Z"
+      }
+    },
+    "smoke dungeon": {
+      "name": "Smoke Dungeon",
+      "source": {
+        "title": "Smoke Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Smoke_Dungeon",
+        "revision": 15386435,
+        "timestamp": "2026-10-30T15:20:11Z"
+      }
+    },
+    "sophanem": {
+      "name": "Sophanem",
+      "source": {
+        "title": "Sophanem",
+        "url": "https://oldschool.runescape.wiki/w/Sophanem",
+        "revision": 15403197,
+        "timestamp": "2026-11-15T16:19:04Z"
+      }
+    },
+    "sophanem dungeon": {
+      "name": "Sophanem Dungeon",
+      "source": {
+        "title": "Sophanem Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Sophanem_Dungeon",
+        "revision": 15257158,
+        "timestamp": "2026-07-08T14:23:37Z"
+      }
+    },
+    "sourhog cave": {
+      "name": "Sourhog Cave",
+      "source": {
+        "title": "Sourhog Cave",
+        "url": "https://oldschool.runescape.wiki/w/Sourhog_Cave",
+        "revision": 14921878,
+        "timestamp": "2025-06-17T23:34:39Z"
+      }
+    },
+    "south falador farm": {
+      "name": "South Falador Farm",
+      "source": {
+        "title": "South Falador Farm",
+        "url": "https://oldschool.runescape.wiki/w/South_Falador_Farm",
+        "revision": 15366252,
+        "timestamp": "2026-10-05T22:15:01Z"
+      }
+    },
+    "south-west wilderness mine": {
+      "name": "South-west Wilderness mine",
+      "source": {
+        "title": "South-west Wilderness mine",
+        "url": "https://oldschool.runescape.wiki/w/South-west_Wilderness_mine",
+        "revision": 15267066,
+        "timestamp": "2026-07-18T18:39:46Z"
+      }
+    },
+    "stalker den": {
+      "name": "Stalker Den",
+      "source": {
+        "title": "Stalker Den",
+        "url": "https://oldschool.runescape.wiki/w/Stalker_Den",
+        "revision": 15410920,
+        "timestamp": "2026-11-21T11:05:37Z"
+      },
+      "quest": "Shadows of Custodia",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "stonecutter outpost": {
+      "name": "Stonecutter Outpost",
+      "source": {
+        "title": "Stonecutter Outpost",
+        "url": "https://oldschool.runescape.wiki/w/Stonecutter_Outpost",
+        "revision": 15315101,
+        "timestamp": "2026-08-21T04:11:25Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "stronghold slayer cave": {
+      "name": "Stronghold Slayer Cave",
+      "source": {
+        "title": "Stronghold Slayer Cave",
+        "url": "https://oldschool.runescape.wiki/w/Stronghold_Slayer_Cave",
+        "revision": 15372062,
+        "timestamp": "2026-10-13T17:13:03Z"
+      }
+    },
+    "sunbleak cave": {
+      "name": "Sunbleak Cave",
+      "source": {
+        "title": "Sunbleak Cave",
+        "url": "https://oldschool.runescape.wiki/w/Sunbleak_Cave",
+        "revision": 15212228,
+        "timestamp": "2026-05-17T04:35:18Z"
+      },
+      "skills": {
+        "sailing": 72
+      }
+    },
+    "sunbleak island": {
+      "name": "Sunbleak Island",
+      "source": {
+        "title": "Sunbleak Island",
+        "url": "https://oldschool.runescape.wiki/w/Sunbleak_Island",
+        "revision": 15396936,
+        "timestamp": "2026-11-08T18:44:47Z"
+      },
+      "skills": {
+        "sailing": 72
+      }
+    },
+    "tai bwo wannai": {
+      "name": "Tai Bwo Wannai",
+      "source": {
+        "title": "Tai Bwo Wannai",
+        "url": "https://oldschool.runescape.wiki/w/Tai_Bwo_Wannai",
+        "revision": 15362047,
+        "timestamp": "2026-10-03T12:42:20Z"
+      }
+    },
+    "tal teklan": {
+      "name": "Tal Teklan",
+      "source": {
+        "title": "Tal Teklan",
+        "url": "https://oldschool.runescape.wiki/w/Tal_Teklan",
+        "revision": 15319343,
+        "timestamp": "2026-08-25T05:37:06Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "tarn's lair": {
+      "name": "Tarn's Lair",
+      "source": {
+        "title": "Tarn's Lair",
+        "url": "https://oldschool.runescape.wiki/w/Tarn%27s_Lair",
+        "revision": 15327755,
+        "timestamp": "2026-09-01T20:23:45Z"
+      },
+      "quest": "Haunted Mine",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "taverley dungeon": {
+      "name": "Taverley Dungeon",
+      "source": {
+        "title": "Taverley Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Taverley_Dungeon",
+        "revision": 15405402,
+        "timestamp": "2026-11-18T13:39:20Z"
+      }
+    },
+    "tear of the soul": {
+      "name": "Tear of the Soul",
+      "source": {
+        "title": "Tear of the Soul",
+        "url": "https://oldschool.runescape.wiki/w/Tear_of_the_Soul",
+        "revision": 15396918,
+        "timestamp": "2026-11-08T18:13:58Z"
+      },
+      "confirmation": "The rowboat must first be built, or use the 61 Sailing mooring route with an inoculation station."
+    },
+    "temple of ikov (dungeon)": {
+      "name": "Temple of Ikov (dungeon)",
+      "source": {
+        "title": "Temple of Ikov (dungeon)",
+        "url": "https://oldschool.runescape.wiki/w/Temple_of_Ikov_%28dungeon%29",
+        "revision": 15358579,
+        "timestamp": "2026-09-29T22:55:21Z"
+      }
+    },
+    "temple of marimbo": {
+      "name": "Temple of Marimbo",
+      "source": {
+        "title": "Temple of Marimbo",
+        "url": "https://oldschool.runescape.wiki/w/Temple_of_Marimbo",
+        "revision": 15262724,
+        "timestamp": "2026-07-14T01:19:33Z"
+      },
+      "quest": "Monkey Madness I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "temple of marimbo dungeon": {
+      "name": "Temple of Marimbo Dungeon",
+      "source": {
+        "title": "Temple of Marimbo Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Temple_of_Marimbo_Dungeon",
+        "revision": 15382612,
+        "timestamp": "2026-10-26T08:52:26Z"
+      },
+      "quest": "Monkey Madness I",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "tenzing": {
+      "name": "Tenzing",
+      "source": {
+        "title": "Tenzing",
+        "url": "https://oldschool.runescape.wiki/w/Tenzing",
+        "revision": 15318801,
+        "timestamp": "2026-08-25T01:45:33Z"
+      }
+    },
+    "the dibber": {
+      "name": "The Dibber",
+      "source": {
+        "title": "The Dibber",
+        "url": "https://oldschool.runescape.wiki/w/The_Dibber",
+        "revision": 15376222,
+        "timestamp": "2026-10-19T19:26:33Z"
+      }
+    },
+    "the forgotten cemetery": {
+      "name": "The Forgotten Cemetery",
+      "source": {
+        "title": "The Forgotten Cemetery",
+        "url": "https://oldschool.runescape.wiki/w/The_Forgotten_Cemetery",
+        "revision": 15383465,
+        "timestamp": "2026-10-27T01:06:47Z"
+      }
+    },
+    "the great conch": {
+      "name": "The Great Conch",
+      "source": {
+        "title": "The Great Conch",
+        "url": "https://oldschool.runescape.wiki/w/The_Great_Conch",
+        "revision": 15376235,
+        "timestamp": "2026-10-19T19:34:22Z"
+      },
+      "quest": "Troubled Tortugans",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "the hollows": {
+      "name": "The Hollows",
+      "source": {
+        "title": "The Hollows",
+        "url": "https://oldschool.runescape.wiki/w/The_Hollows",
+        "revision": 15356762,
+        "timestamp": "2026-09-27T03:17:13Z"
+      }
+    },
+    "the node": {
+      "name": "The Node",
+      "source": {
+        "title": "The Node",
+        "url": "https://oldschool.runescape.wiki/w/The_Node",
+        "revision": 15401324,
+        "timestamp": "2026-11-12T18:36:14Z"
+      },
+      "unsupported": true
+    },
+    "the onyx crest": {
+      "name": "The Onyx Crest",
+      "source": {
+        "title": "The Onyx Crest",
+        "url": "https://oldschool.runescape.wiki/w/The_Onyx_Crest",
+        "revision": 15385664,
+        "timestamp": "2026-10-29T15:46:44Z"
+      },
+      "skills": {
+        "sailing": 47
+      }
+    },
+    "the pandemonium": {
+      "name": "The Pandemonium",
+      "source": {
+        "title": "The Pandemonium",
+        "url": "https://oldschool.runescape.wiki/w/The_Pandemonium",
+        "revision": 15387837,
+        "timestamp": "2026-11-01T12:37:02Z"
+      },
+      "quest": "Pandemonium",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "the proudspire": {
+      "name": "The Proudspire",
+      "source": {
+        "title": "The Proudspire",
+        "url": "https://oldschool.runescape.wiki/w/The_Proudspire",
+        "revision": 15376253,
+        "timestamp": "2026-10-19T19:39:33Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "the warrens": {
+      "name": "The Warrens",
+      "source": {
+        "title": "The Warrens",
+        "url": "https://oldschool.runescape.wiki/w/The_Warrens",
+        "revision": 15317408,
+        "timestamp": "2026-08-23T16:15:42Z"
+      }
+    },
+    "tonali cavern": {
+      "name": "Tonali Cavern",
+      "source": {
+        "title": "Tonali Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Tonali_Cavern",
+        "revision": 15319374,
+        "timestamp": "2026-08-25T05:44:00Z"
+      },
+      "quest": "The Final Dawn",
+      "states": [
+        0,
+        0,
+        1
+      ],
+      "cannon": false
+    },
+    "tree gnome stronghold": {
+      "name": "Tree Gnome Stronghold",
+      "source": {
+        "title": "Tree Gnome Stronghold",
+        "url": "https://oldschool.runescape.wiki/w/Tree_Gnome_Stronghold",
+        "revision": 15376538,
+        "timestamp": "2026-10-20T03:30:39Z"
+      }
+    },
+    "tree gnome village (location)": {
+      "name": "Tree Gnome Village (location)",
+      "source": {
+        "title": "Tree Gnome Village (location)",
+        "url": "https://oldschool.runescape.wiki/w/Tree_Gnome_Village_%28location%29",
+        "revision": 15368989,
+        "timestamp": "2026-10-09T01:06:52Z"
+      }
+    },
+    "tree gnome village dungeon": {
+      "name": "Tree Gnome Village dungeon",
+      "source": {
+        "title": "Tree Gnome Village Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Tree_Gnome_Village_Dungeon",
+        "revision": 15326958,
+        "timestamp": "2026-09-01T03:29:31Z"
+      }
+    },
+    "troll arena": {
+      "name": "Troll Arena",
+      "source": {
+        "title": "Troll arena",
+        "url": "https://oldschool.runescape.wiki/w/Troll_arena",
+        "revision": 15133880,
+        "timestamp": "2026-02-24T08:24:07Z"
+      },
+      "quest": "Troll Stronghold",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "troll stronghold (location)": {
+      "name": "Troll Stronghold (location)",
+      "source": {
+        "title": "Troll Stronghold (location)",
+        "url": "https://oldschool.runescape.wiki/w/Troll_Stronghold_%28location%29",
+        "revision": 15327907,
+        "timestamp": "2026-09-02T00:51:14Z"
+      }
+    },
+    "trollweiss dungeon": {
+      "name": "Trollweiss Dungeon",
+      "source": {
+        "title": "Trollweiss Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Trollweiss_Dungeon",
+        "revision": 15210008,
+        "timestamp": "2026-05-12T21:19:47Z"
+      }
+    },
+    "trollweiss mountain": {
+      "name": "Trollweiss Mountain",
+      "source": {
+        "title": "Trollweiss Mountain",
+        "url": "https://oldschool.runescape.wiki/w/Trollweiss_Mountain",
+        "revision": 15398454,
+        "timestamp": "2026-11-10T21:21:58Z"
+      },
+      "quest": "Troll Romance",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "twilight temple": {
+      "name": "Twilight Temple",
+      "source": {
+        "title": "Twilight Temple",
+        "url": "https://oldschool.runescape.wiki/w/Twilight_Temple",
+        "revision": 15390726,
+        "timestamp": "2026-11-03T10:16:09Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ]
+    },
+    "tyras camp": {
+      "name": "Tyras Camp",
+      "source": {
+        "title": "Tyras Camp",
+        "url": "https://oldschool.runescape.wiki/w/Tyras_Camp",
+        "revision": 15302186,
+        "timestamp": "2026-08-15T18:35:44Z"
+      },
+      "quest": "Regicide",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "tzhaar fight cave": {
+      "name": "TzHaar Fight Cave",
+      "source": {
+        "title": "TzHaar Fight Cave",
+        "url": "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave",
+        "revision": 15387577,
+        "timestamp": "2026-11-01T06:36:50Z"
+      },
+      "cannon": false
+    },
+    "underground pass (dungeon)": {
+      "name": "Underground Pass (dungeon)",
+      "source": {
+        "title": "Underground Pass (dungeon)",
+        "url": "https://oldschool.runescape.wiki/w/Underground_Pass_%28dungeon%29",
+        "revision": 15302569,
+        "timestamp": "2026-08-16T04:39:19Z"
+      }
+    },
+    "underwater": {
+      "name": "Underwater",
+      "source": {
+        "title": "Underwater",
+        "url": "https://oldschool.runescape.wiki/w/Underwater",
+        "revision": 15367021,
+        "timestamp": "2026-10-06T19:05:04Z"
+      }
+    },
+    "ungael": {
+      "name": "Ungael",
+      "source": {
+        "title": "Ungael",
+        "url": "https://oldschool.runescape.wiki/w/Ungael",
+        "revision": 15023397,
+        "timestamp": "2025-11-12T02:23:11Z"
+      }
+    },
+    "uzer oasis": {
+      "name": "Uzer Oasis",
+      "source": {
+        "title": "Uzer Oasis",
+        "url": "https://oldschool.runescape.wiki/w/Uzer_Oasis",
+        "revision": 15335249,
+        "timestamp": "2026-09-08T14:10:24Z"
+      }
+    },
+    "varrock": {
+      "name": "Varrock",
+      "source": {
+        "title": "Varrock",
+        "url": "https://oldschool.runescape.wiki/w/Varrock",
+        "revision": 15385112,
+        "timestamp": "2026-10-29T02:17:29Z"
+      }
+    },
+    "varrock palace": {
+      "name": "Varrock Palace",
+      "source": {
+        "title": "Varrock Palace",
+        "url": "https://oldschool.runescape.wiki/w/Varrock_Palace",
+        "revision": 15366276,
+        "timestamp": "2026-10-05T22:23:10Z"
+      }
+    },
+    "varrock sewers": {
+      "name": "Varrock Sewers",
+      "source": {
+        "title": "Varrock Sewers",
+        "url": "https://oldschool.runescape.wiki/w/Varrock_Sewers",
+        "revision": 15273145,
+        "timestamp": "2026-07-23T04:11:02Z"
+      }
+    },
+    "vatrachos island": {
+      "name": "Vatrachos Island",
+      "source": {
+        "title": "Vatrachos Island",
+        "url": "https://oldschool.runescape.wiki/w/Vatrachos_Island",
+        "revision": 15356550,
+        "timestamp": "2026-09-26T20:40:11Z"
+      },
+      "quest": "Children of the Sun",
+      "states": [
+        0,
+        0,
+        1
+      ],
+      "confirmation": "Confirm the built rowboat from Stonecutter Outpost, or the 46 Sailing mooring route."
+    },
+    "ver sinhaza": {
+      "name": "Ver Sinhaza",
+      "source": {
+        "title": "Ver Sinhaza",
+        "url": "https://oldschool.runescape.wiki/w/Ver_Sinhaza",
+        "revision": 15161910,
+        "timestamp": "2026-03-30T23:41:41Z"
+      }
+    },
+    "vet'ion's rest": {
+      "name": "Vet'ion's Rest",
+      "source": {
+        "title": "Vet'ion's Rest",
+        "url": "https://oldschool.runescape.wiki/w/Vet%27ion%27s_Rest",
+        "revision": 15360040,
+        "timestamp": "2026-10-02T03:42:08Z"
+      },
+      "confirmation": "Requires medium Wilderness diary OR a specific Vet'ion boss task, plus the shared 50,000 coin entry fee."
+    },
+    "virer hunting ground": {
+      "name": "Virer Hunting Ground",
+      "source": {
+        "title": "Virer Hunting Ground",
+        "url": "https://oldschool.runescape.wiki/w/Virer_Hunting_Ground",
+        "revision": 15319892,
+        "timestamp": "2026-08-25T16:51:21Z"
+      },
+      "quest": "The Blood Moon Rises",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "viyeldi caves": {
+      "name": "Viyeldi caves",
+      "source": {
+        "title": "Viyeldi caves",
+        "url": "https://oldschool.runescape.wiki/w/Viyeldi_caves",
+        "revision": 15369484,
+        "timestamp": "2026-10-09T15:13:18Z"
+      },
+      "quest": "Legends' Quest",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "warriors' guild": {
+      "name": "Warriors' Guild",
+      "source": {
+        "title": "Warriors' Guild",
+        "url": "https://oldschool.runescape.wiki/w/Warriors%27_Guild",
+        "revision": 15366588,
+        "timestamp": "2026-10-06T06:53:32Z"
+      },
+      "combinedMelee": 130
+    },
+    "waterbirth island": {
+      "name": "Waterbirth Island",
+      "source": {
+        "title": "Waterbirth Island",
+        "url": "https://oldschool.runescape.wiki/w/Waterbirth_Island",
+        "revision": 15240570,
+        "timestamp": "2026-06-27T05:55:49Z"
+      }
+    },
+    "waterbirth island dungeon": {
+      "name": "Waterbirth Island Dungeon",
+      "source": {
+        "title": "Waterbirth Island Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Waterbirth_Island_Dungeon",
+        "revision": 15369952,
+        "timestamp": "2026-10-10T12:42:11Z"
+      }
+    },
+    "waterfall dungeon": {
+      "name": "Waterfall Dungeon",
+      "source": {
+        "title": "Waterfall Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Waterfall_Dungeon",
+        "revision": 15372021,
+        "timestamp": "2026-10-13T16:48:24Z"
+      }
+    },
+    "web chasm": {
+      "name": "Web Chasm",
+      "source": {
+        "title": "Web Chasm",
+        "url": "https://oldschool.runescape.wiki/w/Web_Chasm",
+        "revision": 15292447,
+        "timestamp": "2026-08-11T01:48:29Z"
+      },
+      "confirmation": "Requires hard Wilderness diary OR a specific Venenatis boss task, plus the shared 50,000 coin entry fee."
+    },
+    "weiss": {
+      "name": "Weiss",
+      "source": {
+        "title": "Weiss",
+        "url": "https://oldschool.runescape.wiki/w/Weiss",
+        "revision": 15273365,
+        "timestamp": "2026-07-23T13:36:08Z"
+      },
+      "quest": "Making Friends with My Arm",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "west ardougne": {
+      "name": "West Ardougne",
+      "source": {
+        "title": "West Ardougne",
+        "url": "https://oldschool.runescape.wiki/w/West_Ardougne",
+        "revision": 15301290,
+        "timestamp": "2026-08-14T15:20:23Z"
+      },
+      "quest": "Plague City",
+      "states": [
+        0,
+        null,
+        1
+      ]
+    },
+    "white wolf mountain": {
+      "name": "White Wolf Mountain",
+      "source": {
+        "title": "White Wolf Mountain",
+        "url": "https://oldschool.runescape.wiki/w/White_Wolf_Mountain",
+        "revision": 15370252,
+        "timestamp": "2026-10-10T22:35:26Z"
+      }
+    },
+    "wilderness": {
+      "name": "Wilderness",
+      "source": {
+        "title": "Wilderness",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness",
+        "revision": 15405423,
+        "timestamp": "2026-11-18T14:01:13Z"
+      }
+    },
+    "wilderness agility course": {
+      "name": "Wilderness Agility Course",
+      "source": {
+        "title": "Wilderness Agility Course",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_Agility_Course",
+        "revision": 15351989,
+        "timestamp": "2026-09-20T04:50:39Z"
+      }
+    },
+    "wilderness agility course dungeon": {
+      "name": "Wilderness Agility Course Dungeon",
+      "source": {
+        "title": "Wilderness Agility Course Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_Agility_Course_Dungeon",
+        "revision": 14856301,
+        "timestamp": "2025-02-28T17:48:13Z"
+      }
+    },
+    "wilderness god wars dungeon": {
+      "name": "Wilderness God Wars Dungeon",
+      "source": {
+        "title": "Wilderness God Wars Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_God_Wars_Dungeon",
+        "revision": 15303152,
+        "timestamp": "2026-08-16T15:53:20Z"
+      },
+      "anySkills": {
+        "strength": 60,
+        "agility": 60
+      }
+    },
+    "wilderness pond": {
+      "name": "Wilderness Pond",
+      "source": {
+        "title": "Wilderness Pond",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_Pond",
+        "revision": 15321550,
+        "timestamp": "2026-08-26T21:58:06Z"
+      }
+    },
+    "wilderness slayer cave": {
+      "name": "Wilderness Slayer Cave",
+      "source": {
+        "title": "Wilderness Slayer Cave",
+        "url": "https://oldschool.runescape.wiki/w/Wilderness_Slayer_Cave",
+        "revision": 15351480,
+        "timestamp": "2026-09-20T00:32:40Z"
+      }
+    },
+    "wintumber island": {
+      "name": "Wintumber Island",
+      "source": {
+        "title": "Wintumber Island",
+        "url": "https://oldschool.runescape.wiki/w/Wintumber_Island",
+        "revision": 15396919,
+        "timestamp": "2026-11-08T18:14:58Z"
+      },
+      "skills": {
+        "sailing": 63
+      }
+    },
+    "witchaven dungeon": {
+      "name": "Witchaven Dungeon",
+      "source": {
+        "title": "Witchaven Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Witchaven_Dungeon",
+        "revision": 15343308,
+        "timestamp": "2026-09-14T13:38:26Z"
+      }
+    },
+    "wizards' guild": {
+      "name": "Wizards' Guild",
+      "source": {
+        "title": "Wizards' Guild",
+        "url": "https://oldschool.runescape.wiki/w/Wizards%27_Guild",
+        "revision": 15390077,
+        "timestamp": "2026-11-02T18:39:50Z"
+      },
+      "skills": {
+        "magic": 66
+      }
+    },
+    "wizards' tower": {
+      "name": "Wizards' Tower",
+      "source": {
+        "title": "Wizards' Tower",
+        "url": "https://oldschool.runescape.wiki/w/Wizards%27_Tower",
+        "revision": 15393782,
+        "timestamp": "2026-11-04T12:59:18Z"
+      }
+    },
+    "woodcutting guild": {
+      "name": "Woodcutting Guild",
+      "source": {
+        "title": "Woodcutting Guild",
+        "url": "https://oldschool.runescape.wiki/w/Woodcutting_Guild",
+        "revision": 15388967,
+        "timestamp": "2026-11-01T17:43:27Z"
+      },
+      "skills": {
+        "woodcutting": 60
+      }
+    },
+    "wyrmscraig": {
+      "name": "Wyrmscraig",
+      "source": {
+        "title": "Wyrmscraig",
+        "url": "https://oldschool.runescape.wiki/w/Wyrmscraig",
+        "revision": 15394575,
+        "timestamp": "2026-11-05T12:23:30Z"
+      },
+      "confirmation": "Confirm the first 62 Sailing visit or the unlocked Fallen From Grace teleport route.",
+      "proof": [
+        "Fallen From Grace"
+      ]
+    },
+    "wyrmscraig cavern": {
+      "name": "Wyrmscraig Cavern",
+      "source": {
+        "title": "Wyrmscraig Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Wyrmscraig_Cavern",
+        "revision": 15398402,
+        "timestamp": "2026-11-10T18:40:27Z"
+      }
+    },
+    "wyvern cave": {
+      "name": "Wyvern Cave",
+      "source": {
+        "title": "Wyvern Cave",
+        "url": "https://oldschool.runescape.wiki/w/Wyvern_Cave",
+        "revision": 15365542,
+        "timestamp": "2026-10-05T16:28:42Z"
+      }
+    },
+    "xeric's shrine": {
+      "name": "Xeric's Shrine",
+      "source": {
+        "title": "Xeric's Shrine",
+        "url": "https://oldschool.runescape.wiki/w/Xeric%27s_Shrine",
+        "revision": 15225571,
+        "timestamp": "2026-06-05T03:24:24Z"
+      }
+    },
+    "yanille": {
+      "name": "Yanille",
+      "source": {
+        "title": "Yanille",
+        "url": "https://oldschool.runescape.wiki/w/Yanille",
+        "revision": 15359059,
+        "timestamp": "2026-09-30T19:13:38Z"
+      }
+    },
+    "yanille agility dungeon": {
+      "name": "Yanille Agility Dungeon",
+      "source": {
+        "title": "Yanille Agility Dungeon",
+        "url": "https://oldschool.runescape.wiki/w/Yanille_Agility_Dungeon",
+        "revision": 15267053,
+        "timestamp": "2026-07-18T18:08:25Z"
+      }
+    },
+    "ynysdail": {
+      "name": "Ynysdail",
+      "source": {
+        "title": "Ynysdail",
+        "url": "https://oldschool.runescape.wiki/w/Ynysdail",
+        "revision": 15393692,
+        "timestamp": "2026-11-04T09:37:16Z"
+      },
+      "confirmation": "Confirm 73 Sailing mooring with an adamant keel, or the built Gwenith rowboat after Song of the Elves.",
+      "cannon": false
+    },
+    "ynysdail cavern": {
+      "name": "Ynysdail Cavern",
+      "source": {
+        "title": "Ynysdail Cavern",
+        "url": "https://oldschool.runescape.wiki/w/Ynysdail_Cavern",
+        "revision": 15212230,
+        "timestamp": "2026-05-17T04:35:19Z"
+      },
+      "confirmation": "Confirm 73 Sailing mooring with an adamant keel, or the built Gwenith rowboat after Song of the Elves.",
+      "cannon": false
+    },
+    "zanaris": {
+      "name": "Zanaris",
+      "source": {
+        "title": "Zanaris",
+        "url": "https://oldschool.runescape.wiki/w/Zanaris",
+        "revision": 15395652,
+        "timestamp": "2026-11-06T18:04:06Z"
+      }
+    },
+    "dense essence mine": {
+      "name": "dense essence mine",
+      "source": {
+        "title": "Dense essence mine",
+        "url": "https://oldschool.runescape.wiki/w/Dense_essence_mine",
+        "revision": 15366038,
+        "timestamp": "2026-10-05T20:37:56Z"
+      }
+    }
+  }
+}

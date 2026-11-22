@@ -1,0 +1,19 @@
+{
+  "pageid": 625469,
+  "ns": 0,
+  "title": "Shellbane Gryphon Cave",
+  "revisions": [
+    {
+      "revid": 15388273,
+      "parentid": 15212238,
+      "timestamp": "2026-11-01T16:48:55Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Shellbane Gryphon Cave\n|image = [[File:Shellbane Gryphon Cave.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[The Great Conch]]\n|music = [[What the Shell!]]\n|map = {{Map|x=3179|y=8876|mapID=-1|zoom=3}}\n|type = dungeon\n|leagueRegion = No\n}}\nThe '''Shellbane Gryphon Cave''' is a dungeon found on [[The Great Conch]] and is home to the [[Shellbane gryphon]] boss. The cave entrance is protected by [[Elder Nama]], who prevents players from entering unless they have an appropriate [[slayer task]] or an [[elite clue scroll]] directing them to kill the shellbane gryphon. Although the cave is a [[multicombat area]], the boss fight takes place in a solo [[instance]].\n\nThe entrance to the cave is north of the fairy ring {{Fairycode|CJQ}}. Players may not place a [[dwarf multicannon]] or light a [[fire]] within the cave; attempting to do so produces the messages {{mes|The ground is too unstable to set up a cannon here.}} and {{mes|The ground is too unstable to light a fire here.}} respectively.\n\n{{Map|width=250|height=250|zoom=1|align=left|mtype=pin|x=3176|y=2477|caption=The entrance to the dungeon.|icon=redPin}}\n\n{{The Great Conch}}\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

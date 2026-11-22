@@ -1,0 +1,19 @@
+{
+  "pageid": 28846,
+  "ns": 0,
+  "title": "Evil Chicken's Lair",
+  "revisions": [
+    {
+      "revid": 15316939,
+      "parentid": 15275450,
+      "timestamp": "2026-08-23T01:29:51Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Evil Chicken's Lair\n|image = [[File:Evil Chicken's Lair.png|300px]]\n|release = [[15 March]] [[2006]]\n|update = Hundredth Quest - Recipe for Disaster!\n|members = Yes\n|location = [[Zanaris]]\n|music = [[Chickened Out]]\n|map = {{Map|name=Evil Chicken's Lair|2464,4384|mapID=10058}}\n|type = dungeon\n|leagueRegion = Misthalin&Fremennik\n}}\nThe '''Evil Chicken's Lair''' is located on [[Zanaris]]{{CiteNPC|npc=Konar quo Maten|quote=The Evil Chicken's Lair is located on the moon of Zanaris. |loc=|notes=|name=}} and is accessed by using a [[raw chicken]] on the [[Chicken Shrine]]. [[Raw chicken (undead)|Undead raw chicken]] does not work.\n\nIt is accessible during and after the [[Recipe for Disaster]] subquest [[Freeing Sir Amik Varze]] during which players must kill the [[Evil Chicken (Recipe for Disaster)|Evil Chicken]]. To be able to access the Evil Chicken's Lair, the player must have spoken to the [[Wise Old Man]] in [[Draynor Village]] after speaking to the [[Cook (Lumbridge)|Cook]] to learn [[Sir Amik Varze]]'s recipe.\n\nThe area can be exited via the [[portal (Evil Chicken Lair)|portal]], which takes you next to the chicken shrine.\n\n==Monsters==\nFour level 227 [[black dragon]]s live here on the main level, making the lair an ideal location for [[Slayer task]]s, due to the proximity of the [[Zanaris]] bank. Before entering, players are suggested to wield an [[anti-dragon shield]] and turn on the [[Protect from Melee]] [[prayer]], as the black dragons are close to the portal and will attack on entry. A [[Dwarf multicannon|cannon]] can be placed in the lair. \n\nBlack dragons can be [[Safespot|safespotted]] in the entrance of eastern tunnel to the mine, or north using the bone piles before the cave with the evil chicken nest. Once the dragons become [[Tolerance|non-aggressive]], they can also be safespotted using the south-west corner of the middle pillar.\n\nA level 83 [[baby black dragon]] can be found down a level and is reached by using a [[rope]] on the tunnel entrance near the middle of the west wall, and then climbing down the rope. The rope will last for a few minutes, then disappear, requiring the player to bring a rope every trip.\n\n==Mine==\n{{main|Evil Chicken's Lair mine}}\nA mine in the south-east ([[Evil Chicken's Lair mine]]) has 4 [[Iron rocks|iron]], 4 [[Coal rocks|coal]], 3 [[Silver rocks|silver]], 4 [[Gold rocks|gold]], and 2 [[Mithril rocks|mithril]] rocks.\n\n==Personalities==\n*The [[Evil Chicken (Recipe for Disaster)|Evil Chicken]]\n*[[K'klik]]\n\n==Trivia==\n*Using an [[egg]] on the Evil Chicken's shrine will give the message, \"Nice idea, but nothing interesting happens\".\n*According to the [[Wise Old Man]], the reason that [[black dragon]]s can be found in the Evil Chicken's Lair is because it is forcing them to guard it.{{CiteNPC|npc=Wise Old Man|quote=(...) it's claimed that the chicken has forced some very powerful creatures to guard his lair.|loc=Recipe for Disaster/Freeing Sir Amik Varze|notes=|name=}}\n\n==References==\n{{Reflist}}\n\n{{Freeing Sir Amik Varze}}\n{{Dungeons}}\n{{Evil Chicken's Lair}}\n[[Category:Quest locations]]"
+        }
+      }
+    }
+  ]
+}

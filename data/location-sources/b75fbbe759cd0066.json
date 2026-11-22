@@ -1,0 +1,19 @@
+{
+  "pageid": 55440,
+  "ns": 0,
+  "title": "Cerberus' Lair",
+  "revisions": [
+    {
+      "revid": 15347785,
+      "parentid": 15334138,
+      "timestamp": "2026-09-17T04:20:49Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Cerberus' Lair\n|image = [[File:Cerberus' Lair.png|300px]]\n|release = [[27 August]] [[2015]]\n|update = Cerberus - The Hellhound Boss\n|members = Yes\n|floors = 1\n|location = [[Asgarnia]]\n|race = [[Key Master]], [[Summoned Soul]]s, [[Cerberus]]\n|music = [[That Sullen Hall]], [[Maws Jaws & Claws]]\n|map = {{Map|name=Key master in Cerberus' Lair|mapID=20|x=2688|y=9887|zoom=2}}{{Map|name=Three Cerberus lair rooms|mapID=10030|x=1305|y=1273|zoom=1}}\n|type = dungeon\n|leagueRegion = Asgarnia\n}}\n'''Cerberus' Lair''' is a dungeon that borders between the [[River of Souls]] and the rest of [[Gielinor]]. It is inhabited by [[Cerberus]], a three-headed [[hellhound]], who guards the River of Souls, preventing the living from entering, and the dead from escaping. The lair is also inhabited by the [[Key Master]], who is tasked with preventing Cerberus from escaping the iron gates that hold it.\n\nThe lair may be accessed via a cave entrance in the eastern wall of the hellhound area within the [[Taverley Dungeon]]. This leads to the Key Master, who guards three iron gates that lead to [[Cerberus]]. He will only allow players who are assigned hellhounds or Cerberus as a slayer task to fight it. Players can also teleport here directly with a [[Key master teleport]], an uncommon drop from Cerberus.\n[[File:Key Master dungeon.png|thumb|left|300px|The player speaks to the Key Master.]]\n\n==Gallery==\nWork in progress environment work of the lair by [[Mod Alfred]]:\n<gallery captionalign=\"center\" widths=\"200\">\nCerberus' Lair work-in-progress 1.jpg|\nCerberus' Lair work-in-progress 2.jpg|\nCerberus' Lair work-in-progress 3.jpg|\nCerberus' Lair work-in-progress 4.jpg|\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 10 March 2016\n|update = Custom Nightmare Zone Rumbles\n|change = The requirement to be on the necessary Slayer task to enter Cerberus' lair has been removed.\n}}\n{{Subject changes\n|date = 18 February 2016\n|update = Dragon Claws & 3rd Birthday\n|change = Random events will no longer trigger when in the Cerberus chambers.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* All non-overworld areas in ''Old School RuneScape'' are actually located above the [[Wilderness]] in a hidden section of the world map. However, as can be seen on the [[Music map]], Cerberus' Lair is the only underground location in the game that is ''below'' the world map rather than above it.\n** This could be a reference to the concept of the {{wp|underworld}}, given the thematic link between it and Cerberus Lair, and the fact that it is physically under the world.\n\n{{Cerberus}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

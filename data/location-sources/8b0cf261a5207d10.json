@@ -1,0 +1,19 @@
+{
+  "pageid": 29920,
+  "ns": 0,
+  "title": "Ah Za Rhoon",
+  "revisions": [
+    {
+      "revid": 15229065,
+      "parentid": 15096195,
+      "timestamp": "2026-06-07T19:25:11Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{otheruses|the Karamjan Temple visited during [[Shilo Village]]|the Karamjan Temple visited during [[Dragon Slayer II]]|Karamjan Temple}}\n{{Infobox Location\n|name = Ah Za Rhoon\n|image = [[File:Ah Za Rhoon.png]]\n|release = [[27 January]] [[2003]]\n|update = Shilo Village Quest online\n|members = Yes\n|location = [[Karamja]]\n|race = [[Undead one]]s\n|map = {{Map|name=Ah Za Rhoon|x=2922|y=3000|r=5|mtype=square}}\n|type = dungeon\n|leagueRegion = Karamja\n}}\n'''Ah Za Rhoon''', which means '''Magnificence Floating on Water''' in an ancient language, was an ancient temple in [[Karamja]] that was built by [[Zadimus]] and destroyed by [[Rashiliyia]].{{CiteNPC|npc=Trufitus|quote=It is from an ancient language. The direct translation is... 'Magnificence floating on water'. (...) Even the great priest Zadimus who built the temple did not survive. Some say that Rashiliyia caused the temple to collapse.|loc=Shilo Village}} After being lost for many years, the temple became a legend, making many doubt its existence. This temple is visited during the [[Shilo Village]] quest.\n\n==Transportation==\nTo get to the temple from [[Tai Bwo Wannai]], go east to the river, cross the log near the crashed glider, and go south along the river until you reach a [[mound of earth]].\n\nUse your [[spade]] on it to find a [[fissure]]. If you haven't done so already, use a lit light source on the fissure to light up the temple below. ('''Warning''': don't use an expensive light source as you will lose it. Therefore, it is recommended to use a [[candle]] or [[torch]]). Next, add a [[rope]] to the fissure, securing it to the lip. Search the fissure again to climb down into the dungeon below (32 [[Agility]] required). After a short period of time the fissure will be covered in earth again - use your spade to uncover the fissure, and the rope and torch will still be in place.\n\n==The dungeon==\n[[File:Ah Za Rhoon map.png]]\n#Entrance\n#[[Cave in]]\n#[[Smashed table]]\n#[[Strange looking stone]]\n#[[Waterfall rocks]]\n#[[Loose rocks]]\n#[[Old sacks]]\n#[[Ancient gallows]]\n\nThe only monsters in the dungeon are [[Undead one]]s that '''ARE''' aggressive.\n\n==References==\n{{Reflist}}\n\n{{Dungeons}}\n{{Shilo Village}}\n{{Places of worship}}\n[[Category:Karamja]]"
+        }
+      }
+    }
+  ]
+}

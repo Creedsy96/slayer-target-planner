@@ -1,0 +1,19 @@
+{
+  "pageid": 105117,
+  "ns": 0,
+  "title": "Gnome maze",
+  "revisions": [
+    {
+      "revid": 15356972,
+      "parentid": 15355240,
+      "timestamp": "2026-09-27T15:13:54Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs=Gnome Maze|rsc=Gnome Maze}}\n{{Infobox Location\n|name = Gnome maze\n|image = [[File:Gnome Maze.png]]\n|release = [[23 July]] [[2002]]\n|update = Members' quests\n|members = Yes\n|location = [[Tree Gnome Village (location)|Tree Gnome Village]]\n|map = No\n|leagueRegion = Kandarin\n|music = [[Emotion]]\n}}\nThe '''gnome maze''' is a large hedge maze that makes up the exterior part of the [[Tree Gnome Village (location)|Tree Gnome Village]]. The maze must be solved at least once in order to start the [[Tree Gnome Village]] [[quest]]. \n\nAfter the first completion, [[Elkoy]] will be available as an escort through the maze both to and from the village, although only if players have started the quest. The maze is also involved in other quests, such as [[Waterfall Quest]] (where the player enters the [[Tree Gnome Village Dungeon|maze dungeon]]) and [[Regicide]].\n\n==Transportation==\n*[[Spirit Tree]] teleport directly to the centre of the maze.\n*[[Fairy ring]] to ({{Fairycode|ciq}}) and run west and then north.\n*[[Ardougne cloak]] teleport to [[Ardougne Monastery]] and run west.\n*Inside the city is a [[Portal (Player-owned house)|house portal]], which can be reached with a [[Teleport to House|House Teleport]] spell or tablet if your [[player-owned house]] is located in Yanille.\n*A [[yanille tablet]] (made from using a [[scroll of redirection]] on a house tablet) can be used to teleport to the Yanille house portal, even if your house is located elsewhere.\n*[[Minigame teleport]] to [[fishing trawler]] and run west.\n*[[Ardougne Teleport]] [[Ardougne teleport|(tablet)]], run south.\n\n== Layout ==\n{| class=\"wikitable\"\n|+\n|{{Map:Gnome maze path}}\n|}\n\n\n{{Tree Gnome Village}}\n{{Tree Gnome Village (location)}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 612706,
+  "ns": 0,
+  "title": "Deepfin Mine",
+  "revisions": [
+    {
+      "revid": 15212226,
+      "parentid": 15157008,
+      "timestamp": "2026-05-17T04:35:18Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Deepfin Mine\n|image = [[File:Deepfin Mine.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Deepfin Point]]\n|requirement = {{SCP|Sailing|67}}\n|music = [[Underground (music track)|Underground]]\n|map = [[File:Deepfin_Mine_map.png|300px]]\n|type = Mine\n|leagueRegion = No\n}}\n'''Deepfin Mine''' is a [[List of dungeons|dungeon]] containing several mineable rocks including [[lead rocks]] and [[nickel rocks]]. It is accessible by entering the cave on [[Deepfin Point]], which requires level 67 [[Sailing]] to dock at (unboostable).\n\nThe dungeon contains two unbuilt [[bank chest space]]s as well as [[Durrik's Goods]], a [[general store]] with a unique stock of items for sale. Each bank chest requires 1 [[magic stone]], 2 [[cupronickel bar]]s, 2 [[adamantite bar]]s, and 4 [[ironwood plank]]s to build. The two eastern parts of the mine are linked with an agility shortcut, requiring 84 Agility to use.\n\nThere are also attackable [[aberrant spectre]]s, [[Ankou#Level 95|ankou]], and [[giant ant]]s to the east. A [[dwarf multicannon]] can be used in this dungeon, but the areas are [[single-way combat]].\n{{Map|x=1948|y=2782|align=left|mtype=pin|1940,2805|icon=redPin|caption=The entrance to the mine.}}\n\n==Mining==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||13\n|-\n|{{plinkp|Lead ore}}||[[Lead rock|Lead]]\n|25||40.5||7\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||42\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||3\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||10\n|-\n|{{plinkp|Nickel ore}}||[[Nickel rock|Nickel]]\n|74||80.5||12\n|-\n|{{plinkp|Runite ore}}||[[Runite rock|Runite]]\n|85||125||4\n|-\n|}\n\n==Monsters==\nMonsters that can be found in the mine include:\n\n{| class=\"wikitable sortable\"\n!Monster\n!Image\n!Combat level\n!Slayer level\n!Slayer XP\n!Quantity\n|-\n|[[Aberrant spectre]]\n|[[File:Aberrant spectre.png|center|70px]]\n|96\n|60\n|90\n|7\n|-\n|[[Ankou]]\n|[[File:Ankou.png|center|60px]]\n|95\n|1\n|60\n|10\n|-\n|[[Giant ant]]\n|[[File:Giant ant.png|center|100px]]\n|21\n|1\n|N/A\n|15\n|-\n|}\n\n==Trivia==\n* [[Durrik]] implies there is a specific reason beyond ore that the dwarves are mining here for, but does not clarify what that reason is. The dwarves are mining to the east; directly to the east of Deepfin Point lies the [[Isle of Souls]]. This may be related to their true reason for mining here.\n\n{{Mines}}\n{{Deepfin Point}}\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

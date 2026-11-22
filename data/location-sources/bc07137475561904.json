@@ -1,0 +1,19 @@
+{
+  "pageid": 223258,
+  "ns": 0,
+  "title": "River Hos",
+  "revisions": [
+    {
+      "revid": 15366245,
+      "parentid": 14871399,
+      "timestamp": "2026-10-05T22:09:28Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = River Hos\n|image = [[File:River Hos.png|300px]]\n|release = [[17 November]] [[2016]]\n|update = Great Kourend Rework\n|members = Yes\n|location = [[Hosidius]]\n|map = {{Map|name=River Hos|x=1700|y=3550|zoom=0}}\n|type = river\n|leagueRegion = Kourend\n}}\nThe '''River Hos''' is a [[river]] in [[Gielinor]] and runs through [[Hosidius]]. The river's mouth begins west of the [[mess]], and splits into two once it reaches the [[Forthos Ruin]].\n\nPer [[Kharedst's memoirs]] ''The Fisher's Flute'' section, a song named Mist on the River Hos was written after it.\n\n==Crossings==\n===By bridge===\n*West of the [[mess]] (the river's mouth)\n*Behind [[Watson's house]]\n*North of the [[Forthos Ruin]]\n*West of the [[bank]]\n*Near the [[saltpetre]] deposits\n*East of [[Kingstown]] park\n*East of the [[Arceuus]] church\n\n===By Agility===\n*Stepping stones south-east of the [[Infirmary]] and west of [[Watson's house]] (requires 40 [[Agility]])\n*Stepping stones west of the allotment patches (requires 45 [[Agility]])\n\n==Fishing spots==\nThe river has several [[fishing spots]] along it. These are:\n*North-west corner of [[Port Piscarilius]]\n*East of the [[Hosidius Kitchen]], by the patch of lancalliums\n*Outside [[Watson's house]]\n*West of the [[charcoal furnace]]s\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 June 2019\n|update = Changes to Teleblock and Extra Clan Wars Options\n|change = The in-game world map now shows the rivers Hos and Dougne.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n* The River Hos did not exist in the launch version of Zeah. It was added as part of the Great Kourend rework to make the continent look more natural.\n\n{{Terrain}}\n{{Great Kourend}}\n[[Category:Terrain]]\n[[Category:Bodies of water]]"
+        }
+      }
+    }
+  ]
+}

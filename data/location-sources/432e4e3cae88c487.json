@@ -1,0 +1,19 @@
+{
+  "pageid": 21891,
+  "ns": 0,
+  "title": "Goblin Cave",
+  "revisions": [
+    {
+      "revid": 15267039,
+      "parentid": 15209935,
+      "timestamp": "2026-07-18T17:29:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Goblin Cave\n|image = [[File:Goblin Cave.png|300px]]\n|release = [[27 May]] [[2003]]\n|update = New Dwarf Cannon Quest\n|members = Yes\n|floors = 1\n|location = [[Kandarin]]\n|race = [[goblin (race)|Goblins]]\n|music = [[Goblin Game]]\n|map = {{Map|name=Goblin cave|zoom=2|x=2592|y=9824|mapID=2}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\n{{Map|mtype=pin|x=2622|y=3393|align=right|caption=Above ground entrance.}}\nThe '''Goblin Cave''', known to the [[goblin (race)|goblins]] as the '''Plain of Mud''', is a [[Dungeons|dungeon]] filled with [[goblin]]s located east of the [[Fishing Guild]] and south of [[Hemenster]]. Some of its inhabitants are [[aggressive]] no matter what level you are. \n\nThe cave contains the entrance to the [[Goblin Temple]], built by goblin tribes for [[Bandos]] during the [[Fourth Age]] after the [[Battle of Plain of Mud]].\n\n==Transportation==\nThe fastest methods to get to the Goblin Cave include:\n*Using a [[plain of mud sphere]] to teleport directly inside the cave (requires Land of the Goblins)\n*Using a [[skills necklace]] to teleport directly outside the Fishing Guild and running east.\n*Using the [[Fishing cape]] to teleport directly to the guild, and running east.\n*[[Ardougne Teleport|Teleporting to Ardougne]] and running north (requires Plague City)\n*Using the [[Ardougne cloak]] 2/3/4, teleport to the farming patch north of Ardougne and head west.\n\n==Quests==\n*[[Dwarf Cannon]], when finding the missing dwarf child, [[Lollk]].\n*[[One Small Favour]], as [[Slagilith]] is encountered here.\n*[[Land of the Goblins]], as the entrance to the [[Goblin Temple]] is here.\n*[[The General's Shadow]] [[miniquest]], in which players need to kill [[Bouncer (Ghost)|Bouncer]].\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Bouncer (ghost)|displayname=Bouncer|levels=160|spawns=1{{efn|Only during [[The General's Shadow]].}}}}\n{{LocationMonsterTableLine|name=Chicken|image=Chicken (1).png|levels=1|spawns={{efn|name=BoxCrateSearch|Has a chance of spawning when searching [[Crate (Goblin Cave)|crates]] and [[Boxes (Goblin Cave)|boxes]]. <b>Note</b>: This causes surrounding goblins to become aggressive.}}}}\n{{LocationMonsterTableLine|name=Dungeon rat|levels=12|spawns=5}}\n{{LocationMonsterTableLine|name=Giant bat|levels=27|spawns=6}}\n{{LocationMonsterTableLine|name=Goblin|levels=2|spawns=24}}\n{{LocationMonsterTableLine|name=Rat|levels=1|spawns=19}}\n{{LocationMonsterTableLine|name=Slagilith|levels=92|spawns=1{{efn|Only during [[One Small Favour]].}}}}\n{{LocationMonsterTableLine|name=Spider|levels=1|spawns={{efn|name=BoxCrateSearch}}}}\n{{LocationMonsterTableBottom}}\n{{Notelist}}\n\n{{Goblin Cave}}\n{{One Small Favour}}\n{{Dwarf Cannon}}\n{{Dungeons}}\n[[Category:Kandarin]]"
+        }
+      }
+    }
+  ]
+}

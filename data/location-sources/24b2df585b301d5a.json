@@ -1,0 +1,19 @@
+{
+  "pageid": 538159,
+  "ns": 0,
+  "title": "Salvager Overlook",
+  "revisions": [
+    {
+      "revid": 15319348,
+      "parentid": 15255049,
+      "timestamp": "2026-08-25T05:37:51Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Salvager Overlook\n|image = [[File:Salvager Overlook.png|300px]]\n|release = [[25 September]] [[2024]]\n|update = Varlamore: The Rising Darkness is OUT NOW\n|members = Yes\n|location = [[Varlamore]]\n|race = [[Human]]s\n|music = [[Whispering Wind]]\n|map = {{Map|name=Salvager Overlook|width=300|height=250|zoom=2|x=1625|y=3295}}\n|type = settlement\n|leagueRegion = Varlamore\n}}\n'''Salvager Overlook''' is a small village north of [[Civitas illa Fortis]]. As its name suggests, it is inhabited by [[Salvager|salvagers,]] led by [[Izel]]. It contains a [[Landing Site|landing site]] (which is initially unbuilt), a general store, an armour store, a furnace, a range, and a water source. There is a [[STASH]] unit for the [[Clue scroll (master)|master clue scroll]] step here. \n\n[[The Proudspire]] is also located to the south-west of the overlook. A road leads south-east out of the Salvager Overlook to the [[Twilight Temple]].\n\n==Transportation==\n* Walk through the large gate in [[Quetzacalli Gorge]] and continue north then east.\n* After the [[Landing Site|landing site]] is built, the player can fly there via the [[Quetzal Transport System]].\n* After activating the [[Statue of Ates]], use the [[Pendant of Ates]] to teleport to [[Twilight Temple]] and run north-west.\n\n==Features==\n===Stores===\n* [[File:General store icon.png|Salvager Overlook General Store]] [[Salvager Overlook General Store]]\n* [[File:Platebody shop icon.png|Salius' Armour Shop]] [[Salius' Armour Shop]]\n\n===Mines===\n* [[East Salvager Overlook mine]]\n* [[South Salvager Overlook mine]]\n\n{{Salvager Overlook}}\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

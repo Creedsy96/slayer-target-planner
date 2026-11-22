@@ -1,0 +1,19 @@
+{
+  "pageid": 590503,
+  "ns": 0,
+  "title": "Buccaneers' Haven",
+  "revisions": [
+    {
+      "revid": 15356373,
+      "parentid": 15356368,
+      "timestamp": "2026-09-26T08:57:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Buccaneers' Haven\n|image = [[File:Buccaneers' Haven.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = East of [[Port Piscarilius]]\n|requirement = {{SCP|Sailing|76}}\n|music = [[Lighthouse (music track)|Lighthouse]]\n|map = {{Map|mapID=-1|x=2080|y=3685|zoom=2}}\n|type = Island\n|leagueRegion = No\n}}\n{{Relative location\n|north = Moonshadow\n|east = Piscatoris Sea\n|west = Gulf of Kourend\n|south = Vagabonds Rest\n}}\n'''Buccaneers' Haven''' is an island west of the [[Piscatoris Fishing Colony]] and east of [[Port Piscarilius]]. It requires 76 [[Sailing]] (not boostable) to moor on.\n\nA castle can be found on the eastern end of the island containing [[pirate]]s.\n\nOnce the rowboat is built, the player may travel to and from the island using a rowboat on the south coast of [[Pirates' Cove]], provided they've previously been taken to Pirates' Cove during [[Lunar Diplomacy]].\n\nThe [[Buccaneers' Laboratory]] can be accessed through this island.\n\n==Features==\n* A [[fishing spot]] for [[lantern harpooning]].\n* Anvil, furnace, rowboat ([[Pirate's Cove]]), and bank chest [[Hotspot|hotspots]].\n* [[Lockbox (Buccaneers' Haven)|Lockbox]] containing the [[eternal brazier schematic]], which is opened with a [[Small key (Tear of the Soul)|small key]] which is found on the [[Tear of the Soul]].\n* [[Small key (Buccaneers' Haven)]] can be dug up by entering the Buccaneers' Laboratory and digging on the red ball in the north-western prison room. This is used to unlock a [[Lockbox (Deepfin Point)|lockbox]] on [[Deepfin Point]] containing the [[dragon cannon schematic]].\n\n==Building the amenities==\nPlayers will need the following items to build all of the [[Island amenity|amenities]]:\n\n{{Checklist|\n*1 [[hammer]]  '''(required for all facilities)'''\n*1 [[saw]]  '''(required for all facilities)'''\n*4 [[lead bar]]s\n*4 [[iron bar]]s\n*1 [[tinderbox]]\n*2 [[coal]]\n*8 [[steel bar]]s\n*10 [[swamp paste]]\n*8 [[camphor plank]]s\n*1 [[magic stone]]\n*2 [[cupronickel bar]]s\n*2 [[adamantite bar]]s\n*4 [[ironwood plank]]s\n}}\n\n{| class=\"wikitable lighttable\"\n!Utility\n!Level\n!Materials\n!Experience\n|-\n|[[anvil space|Anvil]]\n|{{SCP|Construction|43}}\n|4 [[lead bar]]s, 4 [[iron bar]]s\n|50\n|-\n|[[furnace space|Furnace]]\n|{{SCP|Construction|56}}\n|[[Tinderbox]], 2 [[coal]], and 8 [[steel bar]]s\n|170\n|-\n|[[rowboat space|Rowboat]] <!--needs to be corrected-->\n|{{SCP|Construction|50}}\n|10 [[swamp paste]] and 8 [[camphor plank]]s\n|1,297\n|-\n|[[Bank chest (amenity)|Bank chest]]<!--needs to be corrected-->\n|{{SCP|Construction|70}}\n|[[Magic stone]], 2 [[cupronickel bar]]s, 2 [[adamantite bar]]s, and 4 [[ironwood plank]]s\n|1,787\n|-\n|}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 21 January 2026\n|update = Holy Moleys and the Hooded Slayer Helm are Here!\n|change = Fixed a bug where players could float above some stairs in Buccaneers' Haven.\n}}\n{{Subject changes footer}}\n\n{{Buccaneers' Haven}}\n{{Island amenities}}\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

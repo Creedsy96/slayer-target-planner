@@ -28,7 +28,6 @@ SPECIAL = {
     "vampyre-juvinate": "Confirm the special weapon/potion method needed to finish this vampyre rather than letting it escape.",
     "vyrewatch": "Confirm an effective vampyre weapon and repeatable method for the chosen location; ordinary weapons cannot be assumed effective.",
     "zombie-rat": "Confirm the key and repeatable Melzar's Maze route for this creature.",
-    **dict.fromkeys("mature-custodian-stalker elder-custodian-stalker".split(), "The Stalker Den encounter/route has not been fully reviewed. Confirm the location and repeatable method."),
     "ice-troll": "Confirm the relevant Ice Path or Trollweiss Dungeon quest-stage route; a generic area name does not prove that stage.",
 }
 
@@ -39,11 +38,11 @@ PROOFS = {
     "cave-goblin-guard": "The Lost Tribe", "icelord": "Cold War",
     "jungle-wolf": "Legends' Quest", "skogre": "Zogre Flesh Eaters", "zogre": "Zogre Flesh Eaters",
     "mourner": "Mourning's End Part II", "abyssal-sire": "Fairytale II - Cure a Queen",
-    "ancient-zygomite": "Bone Voyage", "sea-snake-young": "Royal Trouble", "iorwerth-warrior": "Regicide",
+    "sea-snake-young": "Royal Trouble", "iorwerth-warrior": "Regicide",
 }
 
 HARD_QUESTS = {"tortured-gorilla": "Monkey Madness II", "vorkath": "Dragon Slayer II", "albino-bat": "Cabin Fever", "amoxliatl": "The Heart of Darkness"}
-AREA_ALIASES = {"Godwars Dungeon": "God Wars Dungeon", "Fossil Island Volcano": "Fossil Island", "Mushroom Forest": "Fossil Island", "Underwater": "Fossil Island", "Tonali Cavern": "Neypotzli"}
+AREA_ALIASES = {"Godwars Dungeon": "God Wars Dungeon", "Fossil Island Volcano": "Fossil Island", "Mushroom Forest": "Fossil Island", "Underwater": "Fossil Island"}
 MORYTANIA = {"Haunted Woods", "Burgh De Rott", "Burgh de Rott", "Barrows", "Alice's farm", "Ectofuntus", "Port Phasmatys", "Morytania Spider Cave"}
 
 
@@ -70,9 +69,11 @@ def build():
                 continue
             area = loc["page"] or loc["name"]
             entry = {"name": loc["name"], "area": AREA_ALIASES.get(area, area), "requirements": []}
+            if 'Guild' in area and loc['name'].lower().startswith(('outside ', 'east of ', 'west of ', 'north of ', 'south of ', 'south-east of ', 'south-west of ', 'north-east of ', 'north-west of ')):
+                entry['area']=loc['name']
             if area in MORYTANIA:
                 entry["requirements"].append(quest("Priest in Peril"))
-            if area in {"Neypotzli", "Tonali Cavern"}:
+            if area == "Neypotzli":
                 entry["requirements"].append({"kind": "skill", "key": "slayer", "min": 48, "label": "Slayer"})
             if area == "Wilderness God Wars Dungeon":
                 entry["requirements"].append({"kind": "any", "label": "60 Strength or Agility", "items": [{"kind": "skill", "key": s, "min": 60, "label": s.title()} for s in ["strength", "agility"]]})
@@ -95,7 +96,7 @@ def build():
         "aberrant spectres": dict(requirements=[quest("Priest in Peril")], source=rules["deviant-spectre"]["source"]),
         "nechryael": dict(requirements=[quest("Priest in Peril")], source=rules["greater-nechryael"]["source"]),
     }
-    return dict(schemaVersion=1, version="2026-11-22.1", rules=rules, assignmentRequirements=assignment_requirements)
+    return dict(schemaVersion=1, version="2026-11-22.2", rules=rules, assignmentRequirements=assignment_requirements)
 
 
 if __name__ == "__main__":

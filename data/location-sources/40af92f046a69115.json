@@ -1,0 +1,19 @@
+{
+  "pageid": 18647,
+  "ns": 0,
+  "title": "Lava Maze",
+  "revisions": [
+    {
+      "revid": 15290512,
+      "parentid": 15270625,
+      "timestamp": "2026-08-08T17:11:16Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Otheruses|the maze itself|the dungeon|Lava Maze Dungeon}}\n{{Infobox Location\n|name = Lava Maze\n|image = [[File:Lava Maze.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness system online\n|members = No\n|location = [[Wilderness]]\n|wilderness = 40-45\n|map = {{Map|name=Lava Maze|x=3072|y=3854|height=200|zoom=1}}\n|leagueRegion = Wilderness\n}}\nThe '''Lava Maze''' is a maze located deep in the [[Wilderness]], around level 40-45. In the entrance and partway through the maze, there are [[web|spiderwebs]] that must be cut with a [[slash weapon]] or a [[knife]]. Should players somehow lose their slash weapon or knife while inside the maze, there are a couple of knife [[item spawn]]s.\n\nAn Agility shortcut ([[Stepping stone (Lava Maze)|stepping stone]]) on the north side of the maze allows you to go to the centre of the maze with 82 Agility.\n\n==Transportation==\n[[File:Lava Maze navigation.png|thumb|Navigating the Lava Maze.]]\nUsing a [[burning amulet]]'s Lava Maze teleport is the fastest method, and will teleport you directly to the maze's entrance on the west side. The [[Ghorrock Teleport]] and level 44 [[Wilderness Obelisk]] also provide quick access to the west side of the maze.\n\nThe level 35 [[Wilderness Obelisk]], the Wilderness [[canoe]] stop, and the [[Revenant cave teleport]] scroll all take the player near the south-east side of the lava maze, and can be good ways to access the Agility shortcut on the north side.\n\n==Features==\nIn the centre of the maze, the [[muddy chest]] can be found. A [[muddy key]] is required to open the chest, which contains a fair amount of treasure; looting the chest will earn the player two [[mithril bar]]s, 5 [[law rune]]s, 5 [[death rune]]s, 15 [[chaos rune]]s, an [[uncut ruby]], and a chance at receiving some additional rare loot, including a [[Larran's key]].\n\nOutside the maze to the north are two [[runite rocks]]. To the west is a metal fenced area containing more [[lesser demon]]s and one of the entrances to the [[Lava Maze Dungeon]]. This entrance is the one players use to reach the [[King Black Dragon Lair]]. To the south is the [[Bandit camp mining site|Hobgoblin Mine]].\n\n===Items spawns===\n*[[Knife]] (north of the lava eel spot)\n*15 [[body rune]]s\n*[[Steel platebody]] (Spawn rate is approximately 20 minutes)\n*[[Gold necklace]]\n*[[Coins]] (20-25)\n*[[Staff of earth]]\n*[[Iron full helm]]\n\n===Monsters===\n*[[Hill Giant]]s\n*[[King Scorpion]]s\n*[[Black Knight|Black knight]]s\n*[[Lesser demon]]s\n*[[Greater demon]]s\n*[[Black dragon]]s\n*[[Poison spider]]s\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 8 May 2024\n|update = Project Rebalance: Skilling & Poll 81 MTA Changes \n|change = The Achievement Diary requirement has been removed from the shortcut.\n}}\n{{Subject changes\n|date = 24 November 2021\n|update = Android Beta and Gold Sink Changes\n|change = As players can be teleported into the Lava Maze while they're unprepared to slash the web barriers around the exit, a couple of Knife spawns have been added to the Maze.\n}}\n{{Subject changes\n|date = 31 March 2016\n|update = Bugfixes & Combining Tentacles\n|poll = Old School Content Poll 40: Vanilla LootShare & QoL\n|change = A shortcut is added to the north side of the lava maze requiring 82 Agility to use.\n}}\n{{Subject changes footer}}\n\n{{Lava Maze}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

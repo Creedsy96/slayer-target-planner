@@ -1,0 +1,19 @@
+{
+  "pageid": 111999,
+  "ns": 0,
+  "title": "Wilderness Agility Course Dungeon",
+  "revisions": [
+    {
+      "revid": 14856301,
+      "parentid": 14856300,
+      "timestamp": "2025-02-28T17:48:13Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Wilderness Agility Course Pit}}\n{{Infobox Location\n|name = Wilderness Agility Course Dungeon\n|image = [[File:Wilderness Agility Course Dungeon.png|300px]]\n|release = [[28 January]] [[2003]]\n|update = Dangerous Agility\n|members = Yes\n|floors = 1\n|location = [[Wilderness]]\n|race = [[Skeleton]]s\n|music = N/A\n|map = [[File:Wilderness Agility Course Dungeon map.png]]\n|type = dungeon\n|leagueRegion = Wilderness\n}}\nThe '''Wilderness Agility Course Dungeon''' is a small dungeon beneath the [[Wilderness Agility Course]] in high level [[Wilderness]]. It covers level 53 to 56 Wilderness. The dungeon entrance is a ladder in the north-east corner of the Agility course, which is past the rope swing and before the stepping stones. The dungeon contains eight [[skeleton]]s and four [[bones|bone]] [[item spawn|spawns]].\n\nPlayers who fail the rope swing or log balance obstacles will enter the middle or end of the dungeon by falling on spikes, depending on the obstacle failed.\n\nPlayers who have a skeleton Wilderness [[Slayer task]] given by [[Krystilia]] may opt to kill them here as it is rarely visited by [[Player killing|PKers]]. Players who are under attack by PKers may use the ladder repeatedly to avoid being attacked for long enough to exit combat and be able to log out and escape.\n\n{{Dungeons}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

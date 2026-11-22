@@ -1,0 +1,19 @@
+{
+  "pageid": 29925,
+  "ns": 0,
+  "title": "Rashiliyia's Tomb",
+  "revisions": [
+    {
+      "revid": 15364983,
+      "parentid": 15306825,
+      "timestamp": "2026-10-05T00:25:25Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Rashiliyia's Tomb\n|image = [[File:Rashiliyia's Tomb.png|300px]]\n|release = [[27 January]] [[2003]]\n|update = Shilo Village Quest online\n|members = Yes\n|floors = 1\n|location = [[Karamja]]\n|race = [[Undead]]\n|music = [[Spooky Jungle]]\n|map = {{Map|name=Rashiliyia's Tomb|x=2914|y=3088|r=6|mtype=square}}\n[[File:Rashiliyia's Tomb map.png|300px]]\n|leagueRegion = Karamja\n}}\n'''Rashiliyia's Tomb''' is the final burial ground for the zombie queen, [[Rashiliyia]]. The tomb is visited during the [[Shilo Village]] quest, where it was taken over by [[Nazastarool]]. After the quest, the dungeon is filled with [[undead one]]s. If you are inside without wearing [[Beads of the Dead]], [[Rashiliyia]] will appear, briefly attack, and summon two level 68 and one level 73 [[undead one]].\n\n==Transportation==\n[[File:Shilo Village - Tomb of Rashiliyia entrance.png|left|thumb|The entrance to the tomb.]]\nTo get to the tomb, go north beyond the temple of [[Ah Za Rhoon]]. There will be stone doors in the ground to enter, provided a [[Bone key (Shilo Village)|bone key]] is used on them. It may be re-bought after the quest from [[Yanni Salika]].\n* Take the [[fairy ring]] code {{Fairycode|dkp}} and run south\n[[File:Rashiliyia's doors.png|thumb|left|The eerie skeletal doors guarding the dolmen chamber.]]\n{{Clear|left}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 18 April 2019\n|update = QoL and Treasure Trails Feedback Changes\n|change = The tomb of [[Rashiliyia]] has been changed from a [[multicombat area]] to a single way combat area.\n}}\n{{Subject changes\n|date = 5 April 2018\n|update = F2P PvP world & World Rota\n|change = A typo has been fixed in Rashiliyia's tomb. \n}}\n{{Subject changes footer}}\n\n{{Dungeons}}\n{{Shilo Village}}\n{{Burial sites}}"
+        }
+      }
+    }
+  ]
+}

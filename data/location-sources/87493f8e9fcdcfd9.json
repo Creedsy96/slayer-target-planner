@@ -1,0 +1,19 @@
+{
+  "pageid": 11437,
+  "ns": 0,
+  "title": "Mind Altar",
+  "revisions": [
+    {
+      "revid": 15143887,
+      "parentid": 14925021,
+      "timestamp": "2026-03-07T09:40:02Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Mind altar}}\n{{Infobox Scenery\n|name = Altar\n|image = [[File:Altar (mind).png|300px]]\n|release = [[29 March]] [[2004]]\n|update = RS2 Launched!\n|members = No\n|quest = No\n|location = East of [[Goblin Village]]\n|options = Craft-rune\n|examine = A mysterious power emanates from this shrine.\n|map = {{Map|mtype=pin|x = 2785|y = 4840|mapID=-1}}\n|id = 34761\n|leagueRegion = Asgarnia\n}}\nThe '''Mind Altar''' is a [[runic altar]] upon which [[mind rune]]s are crafted from [[rune essence]] or [[pure essence]], providing 5.5 [[Runecraft]] [[experience]] per essence imbued. Level 2 [[Runecraft]] is required to craft mind runes.\n\nPlayers may create a [[mind tiara]] here by using either a [[mind talisman]] or a [[tiara]] on the altar whilst having both in their inventory, granting 27.5 [[Runecraft]] [[experience]]. A [[catalytic tiara]] can also be created here by using a [[catalytic talisman]] and [[gold tiara]], granting 60 Runecraft experience.\n\nUpon entering the Mind Altar, the [[music]] track [[Miracle Dance]] plays.\n\n==Transportation==\n{{Map|name=Mind Altar|align=left|mtype=pin|x = 2981|y = 3513|height = 275|width = 275|caption = The location of the mysterious ruins used to enter the Mind Altar.}}\nThe entrance to the altar can be found between [[Ice Mountain]] and [[Goblin Village]], the altar can also be accessed through the [[Abyss]]. The [[Mind Altar Teleport]] can be used to teleport to the altar.\n\nTo enter the [[Mysterious ruins#Mind|mysterious ruins]], players either have to use a [[mind talisman]] on the ruins, or click \"Enter\" on the ruins while wearing a [[mind tiara]] or the runecrafting cape. Alternatively, a [[catalytic talisman]] or [[catalytic tiara|tiara]] can be used.\n{{Clear}}\n==Experience==\nThe maximum amount of mind runes that can be crafted in one run is 2256, by carrying one [[giant pouch]] full of essence and 27 [[mind core]]s with a Runecraft level of at least 98 (at level 98 players get eight times the amount of mind runes per essence). This would give 1,551 experience.\n\nHowever, obtaining considerable amounts of mind cores is time-consuming.\n\nThe maximum amount of mind runes crafted in one run without using cores is 536. This would be achieved by having 98 Runecraft and carrying 67 essence to craft (27 in the normal inventory along with 40 in a [[Colossal pouch]]). This would result in 368.5 experience.\n\n==Products==\n{{Uses facility list|Mind Altar, Catalytic runic altar}}\n\n==Changes==\n\n{{Subject changes header}}\n{{Subject changes\n|date = 23 March 2022\n|update = Guardians of the Rift Launch\n|poll = Old School Content Poll 76: Game Improvements\n|change = The pre-existing delay after using Essence on Runecraft Altars has been removed.\n}}\n{{Subject changes footer}}\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"150\">\nMind Altar outside.png|The entrance to the Mind Altar.\nMind Altar inside.png|The inside of the Mind Altar.\n</gallery>\n\n==Trivia==\n*The area inside the Mind Altar is shaped like a brain.\n\n{{Runecraft}}\n[[Category:Asgarnia]]"
+        }
+      }
+    }
+  ]
+}

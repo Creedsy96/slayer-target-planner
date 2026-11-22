@@ -1,8 +1,10 @@
 import type {Profile} from '../domain/types';
 import {TELEPORTS,teleportState} from '../state/travel';
-import {questState} from '../rules/access';
+import {questState,accessFactFilter} from '../rules/access';
+import {locationAccess} from '../rules/location-pool';
+import {locationReview} from '../rules/reviewed-locations';
 
-export interface TravelRoute {name:string;steps:string[];available:boolean;reason:string;methods:string[];rank:number;source:string}
+export interface TravelRoute {name:string;steps:string[];available:boolean;reason:string;methods:string[];rank:number;source:string;correctionRoute?:'account'|'settings';correctionFilter?:string}
 interface Rule {match:RegExp;methods:string[];name:string;steps:string[];rank:number;quest?:string;magic?:number}
 const rules:Rule[]=[];
 function add(match:RegExp,methods:string[],name:string,steps:string[],rank=10,quest?:string,magic?:number):void{rules.push({match,methods,name,steps,rank,quest,magic});}
@@ -46,8 +48,8 @@ add(/Smoke Devil Dungeon/i,['dueling'],'Ring of dueling to Castle Wars',['Castle
 add(/Smoke Dungeon/i,['nardah'],'Nardah scroll and desert route',['Nardah teleport','Travel north-west towards Pollnivneach','Enter the Smoke Dungeon well with protection'],15);
 add(/Asgarnian Ice Dungeon|Branda and Eldric/i,['fairy-rings'],'Fairy ring AIQ',['Fairy ring AIQ','Enter the dungeon trapdoor','Use the appropriate monster wing'],3);
 add(/Ancient Guthixian Temple/i,['guthixian'],'Guthixian temple teleport',['Use a Guthixian temple teleport','Enter the unlocked demon chamber'],1,'While Guthix Sleeps');
-add(/Lizardman|Molch|Shaman Caves/i,['xeric'],'Xeric’s Lookout',['Xeric’s Lookout','Run to the canyon, settlement or Molch entrance','Enter the correct shaman room with protection'],4);
-add(/Lizardman|Molch|Shaman Caves/i,['fairy-rings'],'Fairy ring DJR and Shayzien route',['Fairy ring DJR','Travel to the named Shayzien/Molch location'],12);
+add(/Lizardman|Molch/i,['xeric'],'Xeric’s Lookout',['Xeric’s Lookout','Run to the canyon, settlement or Molch entrance','Enter the correct shaman room with protection'],4);
+add(/Lizardman|Molch/i,['fairy-rings'],'Fairy ring DJR and Shayzien route',['Fairy ring DJR','Travel to the named Shayzien/Molch location'],12);
 add(/Wyvern Cave|Fossil Island|Mushroom Forest|Ammonite/i,['digsite','digsite-island'],'Digsite pendant: Fossil Island',['House on the Hill destination','Use unlocked mushroom routes or walk','Enter the creature’s section'],2,'Bone Voyage');
 add(/Wyvern Cave|Fossil Island|Ammonite/i,[],'Digsite boat to Fossil Island',['Reach the Digsite','Take the Fossil Island boat','Walk to the creature’s section'],25,'Bone Voyage');
 add(/Lighthouse/i,['fairy-rings'],'Fairy ring ALP',['Fairy ring ALP','Enter the Lighthouse basement'],2);
@@ -58,13 +60,16 @@ add(/Lumbridge Swamp Caves/i,['lumbridge'],'Lumbridge tablet',['Lumbridge telepo
 add(/Wilderness Slayer Cave|Revenant|Lava Maze/i,['dueling'],'Ferox Enclave and Wilderness approach',['Teleport to Ferox Enclave','Enter the Wilderness deliberately','Follow the route to the correct cave'],15);
 
 export function locationTravel(name:string,p:Profile,fallback:string[],sourcePage=name):TravelRoute[]{
- const matched=rules.filter(r=>r.match.test(name));
+ const review=locationReview(name,sourcePage),entry=locationAccess(name,p,sourcePage);
+ const correction=entry.value===1?{}:{correctionRoute:(entry.origin==='manual'&&p.restrictBasicAccess?'settings':'account') as 'settings'|'account',correctionFilter:accessFactFilter(entry.blockedBy||'location:'+sourcePage,p)};
+ const matched=rules.filter(r=>r.match.test(review?.name||name));
  const result=matched.map(rule=>{
   const states=rule.methods.map(id=>teleportState(p,TELEPORTS.find(t=>t.id===id)!));
   const gate=rule.quest&&questState(p,rule.quest)!==2?'Requires '+rule.quest+'.':rule.magic&&(p.levels.magic??0)<rule.magic?'Requires '+rule.magic+' Magic.':'';
-  const available=!gate&&states.every(s=>s.enabled);
-  return {name:rule.name,steps:rule.steps,methods:rule.methods,rank:rule.rank,available,reason:gate||states.filter(s=>!s.enabled).map(s=>s.reason).join(' '),source:'https://oldschool.runescape.wiki/w/'+encodeURIComponent((TELEPORTS.find(t=>t.id===rule.methods[0])?.source||sourcePage).replaceAll(' ','_'))};
+  const available=entry.value===1&&!gate&&states.every(s=>s.enabled);
+  const quest=rule.quest&&questState(p,rule.quest)!==2?rule.quest:rule.methods.map(id=>TELEPORTS.find(t=>t.id===id)!).find((t,i)=>states[i].blocked&&t.quest)?.quest;
+  return {name:rule.name,steps:rule.steps,methods:rule.methods,rank:rule.rank,available,...correction,...(entry.value===1&&quest?{correctionRoute:'account' as const,correctionFilter:quest}:{}),reason:entry.value!==1?entry.reason:gate||states.filter(s=>!s.enabled).map(s=>s.reason).join(' '),source:review?.source.url||'https://oldschool.runescape.wiki/w/'+encodeURIComponent((TELEPORTS.find(t=>t.id===rule.methods[0])?.source||sourcePage).replaceAll(' ','_'))};
  });
- if(!result.some(r=>r.methods.length===0))result.push({name:'Ordinary approach',steps:fallback,methods:[],rank:40,available:true,reason:'Follow the entrance route; fees, tools and local restrictions still apply.',source:'https://oldschool.runescape.wiki/w/'+encodeURIComponent(sourcePage.replaceAll(' ','_'))});
+ if(!result.some(r=>r.methods.length===0))result.push({name:'Ordinary approach',steps:fallback,methods:[],rank:40,available:entry.value===1&&!review?.unsupported,...correction,reason:entry.value!==1?entry.reason:'Entrance facts satisfied. Check the reviewed route notes for fees, tools and local restrictions.',source:review?.source.url||'https://oldschool.runescape.wiki/w/'+encodeURIComponent(sourcePage.replaceAll(' ','_'))});
  return result.sort((a,b)=>Number(b.available)-Number(a.available)||a.rank-b.rank||a.name.localeCompare(b.name));
 }

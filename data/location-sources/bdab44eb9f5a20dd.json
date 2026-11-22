@@ -1,0 +1,19 @@
+{
+  "pageid": 335249,
+  "ns": 0,
+  "title": "The Node",
+  "revisions": [
+    {
+      "revid": 15401324,
+      "parentid": 15380830,
+      "timestamp": "2026-11-12T18:36:14Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs=The Iron Enclave}}\n{{Otheruses|the Group Ironman players islands|other uses|Node}}\n{{Infobox Location\n|name = The Node\n|image = [[File:The Node.png|300px]]\n|release = [[6 October]] [[2021]]\n|update = Group Ironman\n|members = No\n|location = [[Misthalin]]\n|race = [[Human]]s, [[boar]]s and [[Enraged Boar]]s\n|music = [[Newbie Melody]]\n|map = {{Map|name=The Node|width=300|height=350|zoom=2|x=3106|y=3028}}\n|type = island\n|leagueRegion = Misthalin\n}}\n{{Relativelocation\n|location = The Node\n|north = Tutorial Island\n|west = Karamja\n|south = Kharidian Desert\n|east = Kharidian Desert\n}}\n'''The Node''' is a group of three small islands just south of [[Tutorial Island]] that are only accessible to [[Group Ironman]] players. The islands are connected to each other via bridges, resembling an upside-down [[Ironman helm]]. Together, the islands form the southern-most part of the kingdom of [[Misthalin]].\n\n=== Northern island ===\nPlayers can use either the boat on southern end of Tutorial Island or the portal near the [[Lumbridge General Store]] to reach the northern island of The Node, which connects via the docks to the central (largest) island of the area.\n\n=== Central island ===\nThere are several structures on the main island:\n{| class=\"wikitable\"\n!Structure\n!Description\n|-\n|Group ironman bank\n|A small booth where the [[Group Storage tutor]] teaches Group Ironmen about their shared bank.\n|-\n|Group ironman pavilion\n|A small building featuring the [[Group Ironman tutor]], who gives information and armour, and can help players set up their group or invite other members to it. \n|-\n|Statue\n|A statue dedicated to Group Ironmen.\n|}\n\n=== Southern island ===\nThis island contains [[boar]]s, [[Enraged Boar|enraged boar]]s, and [[The Node mine]], where [[iron rocks]] can be found.\n\n==NPC's==\n\n=== Personalities ===\n{| class=\"wikitable\"\n!Name\n!\n|-\n|{{Chatl|Boar31337Killer}}\n|A [[player spoof]] fighting the boars on the southern island.\n|-\n|{{Chatl|D3ad1i F15her}}\n|A player spoof fishing on the docks connecting the northern and central island.\n|-\n|{{Chatl|Group Ironman tutor}}\n|A helpful tutor who instructs Group Ironmen.\n|-\n|{{Chatl|Group Storage tutor}}\n|A banker who teachers Group Ironmen how to use the storage.\n|-\n|{{Chatl|Regent}}\n|A player spoof that sometimes receives ores from R0ck 5masher.\n|-\n|{{Chatl|R0ck 5masher}}\n|A player spoof mining on the southern island.\n|}\n\n=== Monsters ===\n{| class=\"wikitable sortable\" style=\"text-align:center\"\n!Monster !!Image !!Combat level !!Spawns\n!Aggressive?\n|-\n|[[Boar]]\n|[[File:Boar_(lv_5).png|100x100px]]\n|{{SCP|Combat|5}}\n|3\n|No\n|-\n|[[Enraged Boar]]\n|[[File:Enraged Boar.png|100x100px]]\n|{{SCP|Combat|12}}\n|1\n|Yes\n|-\n|[[Seagull]]\n|[[File:Seagull.png|alt=|center|110x110px]]\n|{{SCP|Combat|2}}\n|2\n|No\n|}\n\n{{The Node}}\n{{DEFAULTSORT:Node, The}}"
+        }
+      }
+    }
+  ]
+}

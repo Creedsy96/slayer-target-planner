@@ -1,0 +1,19 @@
+{
+  "pageid": 96168,
+  "ns": 0,
+  "title": "Magic axe hut",
+  "revisions": [
+    {
+      "revid": 15371731,
+      "parentid": 15271678,
+      "timestamp": "2026-10-13T06:11:37Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Axe Hut}}\n{{Infobox Location\n|name = Magic axe hut\n|image = [[File:Magic axe hut.png|300px]]\n|release = [[8 May]] [[2002]]\n|update = Latest RuneScape News (8 May 2002)\n|members = Yes\n|location = [[Wilderness]]\n|race = [[Magic axe]]s\n|wilderness = 54\n|map = {{Map|name=Magic axe hut|x=3190|y=3960|height=350|width=300|zoom=3}}\n|type = building\n|leagueRegion = Wilderness\n}}\nThe '''magic axe hut''' is a small hut located in the north of the [[Wilderness]] at level 54 Wilderness. A [[lockpick]] and level 32 [[Thieving]] are required to unlock either of the [[Door (Magic axe hut)|doors]] to the hut. It is infested with [[aggressive]] [[magic axe]]s and also contains [[Chest (10 coins)|three chests]] which may be searched for traps, then looted for 8 [[Thieving]] experience and 10 [[coins]].\n\nA [[Dwarf multicannon]] may be put down within the hut, but the area is [[single-way combat]]. A [[plaque]] can be found on the eastern wall inside the hut.\n\n==Transportation==\n* Pull the lever in either [[Ardougne]] or [[Edgeville]] to teleport to the [[Deserted Keep]]. Run north and slash the [[web]], then run east to the hut.\n* Use a [[Wilderness Obelisk]] to travel to level 50 Wilderness. Run west past the [[Rogues' Castle]] and the [[Chaos Elemental]], then north-west to the hut.\n\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

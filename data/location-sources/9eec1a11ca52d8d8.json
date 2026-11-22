@@ -1,0 +1,19 @@
+{
+  "pageid": 16171,
+  "ns": 0,
+  "title": "Kharidian Desert",
+  "revisions": [
+    {
+      "revid": 15317996,
+      "parentid": 15276609,
+      "timestamp": "2026-08-24T10:47:15Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Kharidian Desert\n|image = [[File:Kharidian Desert.png]]\n|release = [[14 April]] [[2003]]\n|update = Tourist Trap Quest Online!\n|members = Yes, besides [[Al Kharid]]\n|race =  [[Menaphites|Menaphite]] [[Human]]s, [[clay golem]]s, [[scabarites]], [[camel]]s\n|map = {{Map:Kharidian Desert}}\n|type = region\n|leagueRegion = Desert\n}}\n{{Relativelocation\n|location = Kharidian Desert\n|north = Kingdom of Misthalin\n|south = The Great Conch\n|west = Karamja\n|east = Mos Le'Harmless\n}}\nThe '''Kharidian Desert''' is an expansive region located south of the nations of [[Misthalin]] and [[Morytania]]. The desert becomes a dangerous region south of the [[Shantay Pass]], requiring a player to drink from [[waterskin]]s or other [[sources of water]] to avoid dehydration. The player will automatically drink every 90 seconds if they have a waterskin with charges in their inventory; the time between drinks can be extended by wearing [[heat-resistant gear]]. Failing to drink will cause the player to periodically lose [[hitpoints]]. Within the boundaries of towns, players are immune to the [[desert heat]] and do not need to drink.\n\nPlayers may quickly travel to certain locations by using [[magic carpet]] rides, though some destinations are unavailable until certain quests have been completed.\n\nThis region also has its own [[Desert Diary|achievement diary]] that was released on [[5 March]] [[2015]], along with many other diaries.\n\n==Quests==\n===Free-to-play===\n*[[Prince Ali Rescue]]\n===Members-only===\n*[[Beneath Cursed Sands]]\n*[[Contact!]]\n*[[Desert Treasure I]]\n*[[Desert Treasure II - The Fallen Empire]]\n*[[Enakhra's Lament]]\n*[[The Feud]]\n*[[The Golem]]\n*[[Icthlarin's Little Helper]]\n*[[Shadow of the Storm]]\n*[[Sleeping Giants]]\n*[[Spirits of the Elid]]\n*[[The Tourist Trap]]\n\n==Areas==\n===Free-to-play===\n*[[Al Kharid]]\n*[[Emir's Arena]]\n*[[Giants' Plateau]]\n*[[Shantay Pass]]\n===Members-only===\n*[[Agility Pyramid]]\n*[[Ancient Vault]]\n*[[Bandit Camp (Kharidian Desert)|Bandit Camp]]\n*[[Quarry]]\n*[[Bedabin Camp]]\n*[[Desert Mining Camp]]\n*[[Ancient Pyramid]]\n*[[Menaphos]]\n*[[Nardah]]\n*[[Necropolis]]\n*[[Pollnivneach]]\n*[[River Elid]]\n*[[Ruins of Ullek]]\n*[[Ruins of Unkah]]\n*[[Ruins of Uzer]]\n*[[Sophanem]]\n*[[Uzer Oasis]]\n\n===Dungeons===\n* [[Enakhra's Temple]]\n* [[Kalphite Cave]]\n* [[Kalphite Lair]]\n* [[Scabaras Dungeon]]\n* [[Smoke Dungeon]]\n* [[Sophanem Dungeon]]\n* [[Water Ravine Dungeon]]\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 April 2022\n|update = Beneath Cursed Sands\n|change = Added a music area for the Modern Music Area Mode to the Kharidian Desert.\n}}\n{{Subject changes\n|date = 7 April 2021\n|update = Collection Log Improvements and The Last of Poll 74\n|change = Some jagged terrain in the Kharidian Desert, west of the Shantay Pass, has been smoothed out.\n}}\n{{Subject changes\n|date = 5 March 2015\n|update = Achievement Diaries\n|poll = Old School Achievement Diary Rewards Poll\n|change = There is now a shortcut between [[Lumbridge Swamp]] and the Kharidian Desert that you can use at level 66 [[agility]] if you have completed the [[Hard Lumbridge|Hard Lumbridge & Draynor Diary]].\n}}\n{{Subject changes footer}}\n\n{{Regions}}\n[[Category:Kharidian Desert]]"
+        }
+      }
+    }
+  ]
+}

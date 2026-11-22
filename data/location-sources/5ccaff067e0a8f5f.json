@@ -1,0 +1,19 @@
+{
+  "pageid": 463253,
+  "ns": 0,
+  "title": "Tal Teklan",
+  "revisions": [
+    {
+      "revid": 15319343,
+      "parentid": 15273001,
+      "timestamp": "2026-08-25T05:37:06Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Tal Teklan\n|image = [[File:Tal Teklan.png]]\n|release = [[23 July]] [[2025]]\n|update = Varlamore: The Final Dawn Out Now\n|members = Yes\n|location = [[Varlamore]]\n|teleport = [[Quetzal Transport System]]\n|music = [[Teklan]]\n|map = {{Map|name=Tal Teklan|height=240|1223,3111|zoom=2}}\n|type = settlement\n|leagueRegion = Varlamore\n}}\n{{Relative location\n|location = Tal Teklan\n|north = Tal Teok\n|east = Tlati Rainforest\n}}\n'''Tal Teklan''' is a location in [[Varlamore]], within the [[Tlati Rainforest]]. It was the first major settlement of the [[Talkasti]] people.{{CiteNPC|npc=Curator Herminius|quote=While [the Talkasti] initially lived nomadic lives, they eventually started to establish more permanent settlements, with Tal Teklan being the first.}}\n\n[[Scrambled!]] takes place in Tal Teklan.\n\n==Transportation==\nTo get to this location, players can use:\n* The [[Quetzal Transport System]]. The landing site does not have to be built.\n* [[Achilka|Achilka's boat service]] from [[Kastori]]. (Travel to Kastori with the [[Pendant of Ates]] and then run a short distance south-east to Achilka.)\n\n==Features==\n* [[File:Bank icon.png|link=Tal Teklan bank]] [[Tal Teklan bank]]\n* [[File:Archery shop icon.png|link=Arcuani's Archery Supplies]] [[Arcuani's Archery Supplies]] - run by [[Arcuani]]\n* [[File:Dye trader icon.png|link=Dyes to Die For]] [[Dyes to Die For]] - run by [[Xochitl]]\n* [[File:General store icon.png|link=Tal Teklan General Store]] [[Tal Teklan General Store]]\n* [[File:Magic shop icon.png|link=Tal Teklan Rune Shop]] [[Tal Teklan Rune Shop]] - run by [[Teicuh]]\n* [[File:Pub icon.png|link=The King's Inn]] [[The King's Inn]] - run by [[King (Tal Teklan)|King]]\n* [[File:Altar icon.png|link=Tal Teklan temple]] A [[Tal Teklan temple|temple]] with an [[Altar (Varlamore)|altar]]\n* [[File:Furnace icon.png|link=Furnace]] The blacksmith with a [[furnace]] and [[anvil]]\n* [[File:Fishing spot icon.png]] Just north of the town are two [[Fishing spot (big net, harpoon)|big net/harpoon]] [[Fishing]] spots\n* [[File:Water source icon.png]] A [[fountain]] just west of the bank\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"150\" style=\"text-align:left\">\nTal Teklan concept art.png|Concept art for Tal Teklan, by [[Mod Jerv]].\nTal Teklan citizens concept art.png|Concept art for citizens of Tal Teklan, by [[Mod Jerv]].\nTal Tlekan, Kastori, Auburnvale shopkeepers concept art.png|Concept art for shopkeepers around Varlamore, by [[Mod Jerv]].\n</gallery>\n\n==References==\n{{Reflist}}\n\n{{Tal Teklan}}\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

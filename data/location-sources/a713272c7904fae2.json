@@ -1,0 +1,19 @@
+{
+  "pageid": 46805,
+  "ns": 0,
+  "title": "Skavid caves",
+  "revisions": [
+    {
+      "revid": 15376557,
+      "parentid": 15211856,
+      "timestamp": "2026-10-20T03:51:15Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Skavid caves\n|image = [[File:Skavid caves.png|300px]]\n|release = [[7 May]] [[2003]]\n|update = New - Watch Tower Quest!\n|members = Yes\n|location = [[Feldip Hills]]\n|map = {{Map|name=Skavid caves|x=2529|y=9437|height=300|width=300|mapID=-1|zoom=2}}\n|leagueRegion = Kandarin\n}}\n\nThe '''Skavid caves''' are a set of six caves around the ogre city of [[Gu'Tanoth]]. The caves are inhabited by the [[Skavid]], a race of creatures enslaved by the [[Ogre (race)|Ogre]]s. The caves are an important feature of the [[Watchtower]] quest. Also, two caves each have a slow spawn of [[cave nightshade]] (also known as nightshade or belladonna), the collection of which is a part of the [[Ardougne Diary#Medium|medium Ardougne Diary]].\n\nPlayers need a [[Light sources|light source]] and [[skavid map]] to enter any of the caves. If players attempt to enter a skavid cave without having a skavid map in their inventory, they become confused and end up outside another skavid cave.\n\n[[File:Skavid caves map.png|400px|thumb|left|A map of which entrance leads to where.]]\n\n==Skavid caves 'transport system'==\nIn some cases, entering a skavid cave without a skavid map can be exploited as a transport system since it follows a fixed route. For example, a player running from [[Castle Wars]] to [[Gu'Tanoth]] could attempt to enter the north-west cave (ending up at the north-central one), attempt to enter the north-central one (ending up at the north-east one), and then run up the hill to the city gates. The player does not need to have a light source to use this feature.\n\nUsing the Skavid caves as a transport system is faster than walking from cave to cave and does not use run energy.\n\n''<u>'''Note'''</u>:'' This feature cannot be used if the player has a [[skavid map]] in their inventory.\n\n[[File: Skavid caves transport system.png|thumb|400px|left|An image of skavid transport system.]]\n\n{{Watchtower}}\n{{Gu'Tanoth}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 671901,
+  "ns": 0,
+  "title": "Wilderness Pond",
+  "revisions": [
+    {
+      "revid": 15321550,
+      "parentid": 15273055,
+      "timestamp": "2026-08-26T21:58:06Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Wilderness Pond\n|image = [[File:Wilderness Pond.png|300px]]\n|release = [[29 March]] [[2004]]\n|update = RS2 Launched!\n|members = No\n|location = [[Wilderness]]\n|wilderness = 35\n|teleport = [[Canoe]]\n|music = \n|map = {{Map|name=Wilderness Pond|x=3144|y=3800}}\n}}\nThe '''Wilderness Pond''' is located in the centre of the [[Wilderness]]. It is one of the locations on the [[River Lum]] [[canoe]] system, which players can travel to by making a [[waka canoe]]. There is no [[canoe station]] at the pond, so travelling here via canoe is a one way trip.\n\n[[Moss giant]]s can be found around the pond, being the only ones that can be found in the Wilderness. [[Skeleton]]s and 6 [[chaos rune]] spawns can also be found around the pond.\n\nNear the pond, there is entrance as well to as a one-way from the [[Revenant Caves]], and to the west, a [[Wilderness Obelisk]] can be found.\n\n==Transportation==\n* [[Canoe]] directly to the pond.\n* [[Wilderness obelisk]] to level 35 Wilderness and run east.\n* [[Revenant cave teleport]] and run south.\n\n==Hunter==\n{{Main|Wilderness Hunter area}}\nTo the south of the pond, a forest of dead trees can be found. Roaming amongst the trees, [[black chinchompa (Hunter)|black chinchompas]] can be found and captured with [[box trap]]s.\n\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

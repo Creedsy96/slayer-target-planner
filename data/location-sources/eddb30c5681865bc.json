@@ -1,0 +1,19 @@
+{
+  "pageid": 316871,
+  "ns": 0,
+  "title": "Giant Pit",
+  "revisions": [
+    {
+      "revid": 15300164,
+      "parentid": 15210376,
+      "timestamp": "2026-08-14T04:46:58Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Giant Pit\n|image = [[File:Giant Pit.png|300px]]\n|release = [[16 June]] [[2021]]\n|update = A Kingdom Divided\n|members = Yes\n|location = [[Shayzien]]\n|teleport = None\n|map = {{Map\n        |mtype=polygon\n        |name=Giant Pit\n        |1436,3620\n        |1440,3624\n        |1450,3624\n        |1454,3620\n        |1454,3606\n        |1450,3602\n        |1440,3602\n        |1436,3606\n       }}\n|leagueRegion = Kourend\n}}\n{{Relativelocation\n|location = Giant Pit\n|north = Chasm of Fire\n|west = Lake Molch\n|south = Secluded Chapel\n|east = Shayzien Encampment\n}}\nThe '''Giant Pit''' is a small enclosure found north-west of [[Shayzien]]. Occupied by 13 [[Hill Giant]]s, the pit is guarded by three [[Soldier (Shayzien)|soldiers]] and their [[Sergeant (Shayzien)|sergeant]]. A jetty can be found just west where players can board the [[boaty]] to [[Molch]], [[Lake Molch]], or the [[Battlefront]].\n\nJust south-west of the pit is a cave entrance that leads to the [[Giants' Den]], which is inhabited by more dangerous giants that have been corrupted by the power of the [[Dark Altar]]. Immediately south of the den is the [[Secluded Chapel]].\n\nAn easy way to travel to the Giant Pit is to use [[Fairy rings|fairy ring]] {{Fairycode|DJR}} and run south; or travel to History and Hearsay via the [[Kharedst's memoirs]] or the [[Book of the Dead]] and run north then west.\n\n\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

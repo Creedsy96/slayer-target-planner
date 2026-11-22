@@ -1,0 +1,19 @@
+{
+  "pageid": 612715,
+  "ns": 0,
+  "title": "Sunbleak Cave",
+  "revisions": [
+    {
+      "revid": 15212228,
+      "parentid": 15200821,
+      "timestamp": "2026-05-17T04:35:18Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Sunbleak Cave\n|image = [[File:Sunbleak Cave.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Sunbleak Island]]\n|music = [[Mysterious Lands]]\n|map = {{Map|2227,8738|zoom=2|mapID=-1}}\n|type = Mine\n|leagueRegion = No\n}}\n'''Sunbleak Cave''' is a dungeon found in the middle of [[Sunbleak Island]].\n\nThe cave contains some rocks which can be [[mining|mined]] and a few [[Giant bat|giant bats]] and [[Spider|spiders]].\n\nA [[Skeleton|skeleton]] is in an inaccessible room behind a barred door.\n{{Map|x=2209|y=2330|mtype=pin|2218,2329|align=left|icon=redPin|caption=The [[Cave entrance (Sunbleak Cave)|entrance]] to the cave.}}\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||7\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||5\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||4\n|-\n|}\n\n''Note: There is a [[Gold rocks|gold rock]] in the cave, however it is inaccessible''\n\n==Monsters==\n* [[Skeleton]]\n* [[Giant bat]]\n* [[Spider]]\n\n{{Mines}}\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 22514,
+  "ns": 0,
+  "title": "Jatizso mine",
+  "revisions": [
+    {
+      "revid": 15127901,
+      "parentid": 15057537,
+      "timestamp": "2026-02-16T02:52:54Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Jatizso dungeon mine}}\n{{Infobox Location\n|name = Jatizso mine\n|image = [[File:Jatizso mine.png|300px]]\n|release = [[6 February]] [[2007]]\n|update = Fremennik Isles\n|members = Yes\n|location = Entrance by the north wall of [[Jatizso]]\n|music = [[Major Miner]]\n|map = {{Map|name=Jatizso mine|x=2400|y=10208|mapID=10083|height=250}}{{Map|name=Jatizso mine|x=2397|y=3812}}\n|type = mine\n|leagueRegion = Fremennik\n}}\nThe '''Jatizso mine''' is found just outside the western gates of [[Jatizso]]. The [[mine]] is accessed from a [[staircase (Jatizso)|staircase]] just outside the city proper. [[The Fremennik Isles]] quest has to be started in order to go in the mine.\n\nIt is more dangerous than most mines, as it is inhabited by aggressive ice trolls - [[Ice troll male|male]], [[Ice troll female|female]] and [[Ice troll runt|runts]] in the northern half of the mine. However, it may be worthwhile as players can obtain plenty of [[mithril ore|mithril]] and [[adamantite ore]]s fairly close to a [[bank]], which is located in the city.\n\n[[Gruva Patrull]] guards the entrance of the mine.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Tin ore}}||[[Tin rock|Tin]]\n| 1 || 17.5 || 11\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n| 15 || 35 || 10\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n| 30 || 50 || 8\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n| 55 || 80 || 16\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n| 70 || 95 || 14\n|}\n\n==Monsters==\n*[[Ice troll runt]]\n*[[Ice troll female]]\n*[[Ice troll male]]\n\n==Quests==\n*[[The Fremennik Isles]] needs to be started to access the mine.\n\n{{The Fremennik Isles}}\n{{Jatizso}}\n{{Mines}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

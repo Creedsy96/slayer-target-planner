@@ -1,6 +1,7 @@
 {
-  "calculationVersion": "b7d4a345b5481b1017dfd7e6dd68fd4f83b80ab34cb5472e37829a7c3b325f07",
-  "creatureAccess": "2026-11-22.1",
+  "calculationVersion": "8e3be5bd51faad8bfbe766c6135562405f44243656f117886531bf60e23e0572",
+  "locationReviews": "2026-11-22.2",
+  "creatureAccess": "2026-11-22.2",
   "travelOptions": "2026-11-22.1",
   "equipmentRequirementReviews": "2026-11-21.1",
   "slayerUnlocks": "2026-11-21.1",
@@ -15,5 +16,5 @@
   "mortimerRules": "2026-11-19.1",
   "areaRules": "2026-11-21.1",
   "version": "2026-11-19.2",
-  "application": "4.0.2"
+  "application": "4.1.0"
 }

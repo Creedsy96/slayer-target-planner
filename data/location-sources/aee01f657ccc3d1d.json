@@ -1,0 +1,19 @@
+{
+  "pageid": 29791,
+  "ns": 0,
+  "title": "Killerwatt plane",
+  "revisions": [
+    {
+      "revid": 15375654,
+      "parentid": 15356811,
+      "timestamp": "2026-10-19T03:56:36Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Killerwatt plane\n|image = [[File:Killerwatt plane.png|300px]]\n|release = [[20 February]] [[2006]]\n|update = Updates, updates and more updates...\n|members = Yes\n|location = None\n|teleport = None\n|music = [[Storm Brew]]\n|map = {{Map|x=2659|y=5216|mapID=-1|plane=2}}\n|leagueRegion = Misthalin\n}}\nThe '''Killerwatt plane''' is an area where [[Killerwatt]]s are found. It is accessed by [[Professor Oddenstein]]'s [[portal machine]], found atop [[Draynor Manor]] after completion of the [[quest]] [[Ernest the Chicken]].\n\nThe plane hosts some Killerwatts, and some small storm clouds, like the ones found in [[Zanaris]], are also seen here. Players can exit via the [[Portal Home|portal home]] going back to Professor Oddenstein's room or by simply [[teleporting]] out.\n\nDuring the [[Enlightened Journey]] quest, it was revealed by the balloon travelling screen that killerwatts inhabit clouds. However, players cannot engage them in battle there.\n\nPlayers cannot use the [[dwarf multicannon]] in the Killerwatt plane.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 21 February 2024\n|update = Defender of Varrock\n|change = The killerwatt's flickering has been toned down, so the epilepsy warning when entering the killerwatt plane has been removed.\n}}\n{{Subject changes\n|date = 11 April 2013\n|update = Patch Notes (11 April 2013)\n|change = For the benefit of players with certain medical conditions, the flashing effects in the Killerwatt plane was toned down.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n*The name is a play on \"{{Wp|Watt#Kilowatt|kilowatt}}\", a unit of power, with the word \"killer\" included to imply its hostility.\n*The \"ground\" in this area doesn't appear on the [[minimap]]; it is empty aside from the portal icon.\n\n{{Realms}}"
+        }
+      }
+    }
+  ]
+}

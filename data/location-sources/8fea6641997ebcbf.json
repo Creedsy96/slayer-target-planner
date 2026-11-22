@@ -1,0 +1,19 @@
+{
+  "pageid": 571231,
+  "ns": 0,
+  "title": "The Dibber",
+  "revisions": [
+    {
+      "revid": 15376222,
+      "parentid": 15355162,
+      "timestamp": "2026-10-19T19:26:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{otheruses|the area|the item|Seed dibber}}\n{{Infobox Location\n|name = The Dibber\n|image = [[File:The Dibber.png|300px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|location = East of [[Hosidius]]\n|map = {{Map|1836,3619}}\n|leagueRegion = No\n}}\n'''The Dibber''' is a peninsula, north-east of the [[Vinery|Hosidius Vinery]]. It is populated by [[Hobgoblin]]s. [[Seaweed]] and [[snape grass]] can be found along the coastline.\n\n==Monsters==\n*[[Hobgoblin]]s\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = The area was given a name on the world map.\n}}\n{{Subject changes footer}}\n\n{{Hosidius}}\n{{Terrain}}\n{{DEFAULTSORT:Dibber, The}}"
+        }
+      }
+    }
+  ]
+}

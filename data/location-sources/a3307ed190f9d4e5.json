@@ -1,0 +1,19 @@
+{
+  "pageid": 68652,
+  "ns": 0,
+  "title": "Dense essence mine",
+  "revisions": [
+    {
+      "revid": 15366038,
+      "parentid": 15360424,
+      "timestamp": "2026-10-05T20:37:56Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Dense essence mine\n|image = [[File:Dense essence mine.png]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|location = [[Arceuus]] ([[Great Kourend]])\n|race = [[Citizens of Arceuus]]\n|map = {{Map|name=Dense essence mine|x=1764|y=3853|height=300|width=300|zoom=2}}\n|type = mine\n|leagueRegion = Kourend\n}}\nThe '''dense essence mine''' is located north-east of [[Arceuus]]. Overseen by [[Clerris]], the mine contains two [[dense runestone]]s, where players can mine [[dense essence block]]s, which are then used on the [[Dark Altar]] to create [[dark essence block]]s.\n\nIn order to use this mine, players require level 38 [[Mining]] and 38 [[Crafting]]. A [[pickaxe]] and [[chisel]] in the player's inventory is required to mine the dense runestone, granting 12 Mining and 8 Crafting experience per block mined. It is not possible to get a [[rock golem]] pet from mining here.{{CiteTwitter|author=Mod Ash|url=https://twitter.com/JagexAsh/status/761138207593533440|date=4 August 2016|archiveurl=https://reldo.runescape.wiki/i/97794|archivedate=13 April 2020|quote=Nope.}}\n\nAfter completion of the medium tasks in the [[Kourend & Kebos Diary]], players have a chance to mine two dense essence blocks at once. No additional experience is awarded for the extra block.\n\nWhile only 38 Mining is required to mine the essence, a higher Mining level is slightly helpful, as the essence stone depletes less frequently with a higher Mining level.{{CiteTwitter|author=Mod Ash|url=https://twitter.com/JagexAsh/status/973319634421239808|date=13 March 2018|archiveurl=https://reldo.runescape.wiki/i/101743|archivedate=25 May 2020|quote=Yes, slightly.}} At level 38 Mining there is a 85% chance to not deplete the dense runestone when successfully mining a dense essence block, increasing to 90% at level 99.{{CiteTwitter|author=Mod Ash|url=https://twitter.com/JagexAsh/status/1057703180816080896|date=31 October 2018|archiveurl=https://reldo.runescape.wiki/i/106193|archivedate=25 May 2020|quote=82% -> 90% from 1 to 99}}\n\nIn order to use the shortcuts leading to and from the mine, players need to have 73 [[Agility]] for the [[Rocks (dense essence mine, west)|western rock scramble]], 69 for the [[Rocks (dense essence mine, north)|northern scramble]] and 52 for the [[Rocks (dense essence mine, east)|eastern scramble]]. A [[Boulder (dense essence mine)|boulder]] a little further to the north-east meanwhile requires 49 Agility to jump over.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Dense essence block}}||[[Dense runestone|Dense essence]]\n|38||12||2\n|-\n|}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 10 January 2024\n|update = Children of the Sun\n|poll = Varlamore Activities & Kourend Changes\n|change = As [[Kourend Favour]] has been removed, mining dense essence blocks no longer requires it, nor can players donate them to [[Clerris]].\n}}\n{{Subject changes\n|date = 31 January 2019\n|update = Chambers of Xeric, Kebos, and Collection Log Changes\n|change = The Arceuus essence mine now has a handy chisel spawn.\n}}\n{{Subject changes\n|date = 21 January 2016\n|update = The Dragon Warhammer\n|change = The dense runestones can now deplete and has been graphically changed.\n}}\n{{Subject changes footer}}\n\n==References==\n{{Reflist}}\n\n{{Arceuus}}\n{{Mines}}\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

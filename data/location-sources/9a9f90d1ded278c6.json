@@ -1,0 +1,19 @@
+{
+  "pageid": 14738,
+  "ns": 0,
+  "title": "Tree Gnome Village (location)",
+  "revisions": [
+    {
+      "revid": 15368989,
+      "parentid": 15355242,
+      "timestamp": "2026-10-09T01:06:52Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Confuse|Tree Gnome Stronghold}}\n{{Otheruses|the village|the quest|Tree Gnome Village|the music track|Gnome Village}}\n{{Infobox Location\n|name = Tree Gnome Village\n|image = [[File:Tree Gnome Village (location).png|300px]]\n|release = [[23 July]] [[2002]]\n|update = Members' quests\n|members = Yes\n|location = [[Kandarin]]\n|race = [[Gnome]]s\n|teleport = [[Spirit Tree]]\n|music = [[Emotion]]\n|map = {{Map|name=Tree Gnome Village (location)|x=2520|y=3167|height=250|zoom=1}}\n|leagueRegion = Kandarin\n}}\n{{Relativelocation\n|location = Tree Gnome Village\n|north = Battlefield\n|west = Observatory\n|south = Yanille\n|east = Fight Arena (location)\n}}\n{{Map:Gnome maze path}}\nThe '''Tree Gnome Village''' is a village led by [[King Bolren]]. Part of the [[Gnomish Kingdoms]], it lies at the centre of a [[Gnome maze|giant hedge maze]]. To enter the village, navigate the gnome maze and then squeeze through the loose railing. Once you've reached the centre and started the [[Tree Gnome Village]] quest, [[Elkoy]] will offer you quick travel between the maze entrance and the village.\n\n==Transportation==\n*[[Spirit Tree]] teleport directly to the centre of the maze.\n*[[Fairy ring]] to ({{Fairycode|ciq}}) and run west and then north.\n*[[Ardougne cloak]] teleport to [[Ardougne Monastery]] and run west.\n*Inside the city is a [[Portal (Player-owned house)|house portal]], which can be reached with a [[Teleport to House|House Teleport]] spell or tablet if your [[player-owned house]] is located in Yanille.\n*A [[Yanille tablet]] (made from using a [[scroll of redirection]] on a house tablet) can be used to teleport to the Yanille house portal, even if your house is located elsewhere.\n*[[Minigame teleport]] to [[fishing trawler|Fishing Trawler]] and run west.\n*[[Ardougne Teleport]] [[Ardougne teleport|(tablet)]], run south.\n*[[Ring of dueling]], from [[Castle Wars]]--this is a longer walk but has no skill or quest requirements.\n\n==Notable features==\n*[[Tree Gnome Village dungeon]] - There are [[skeleton]]s, [[giant bat]]s, and [[hobgoblin]]s in here, as well as a jail with a gnome called [[Golrie]] (he is featured in the [[Waterfall Quest]] and [[Regicide]] and [[Roving Elves]] quests).\n*[[Spirit Tree]] - After completing [[Tree Gnome Village]] quest, you can use this. It can teleport you to the [[Grand Exchange]], south of [[Ardougne]], and the [[Tree Gnome Stronghold]].\n*[[Bolkoy's Village Shop]] - A [[general store]] ran by [[Bolkoy]].\n\n==Inhabitants==\n===Non-player characters===\n*[[King Bolren]]\n*[[Elkoy]]\n*[[Golrie]]\n*[[Local Gnome]]\n*[[Commander Montai]]\n*[[Bolkoy]]\n*[[Remsai]]\n*[[Kalron]]\n*[[Lieutenant Schepbur]]\n\n===Monsters===\nHere is a list of creatures that inhabit the maze:\n*[[Rat]] - level 1\n*[[Gnome]] - level 1\n*[[Spider]] - level 1\n*[[Giant rat]] - level 3\n*[[Goblin]] - level 5\n*[[Zombie]] - level 13 or 24 (dungeon)\n*[[Bear]] - level 19\n*[[Giant Bat]] - level 27 (dungeon)\n*[[Terrorbird]] - level 28\n*[[Hill Giant]] - level 28\n*[[Hobgoblin]] - level 28 (dungeon)\n*[[Ogre]] - level 53\n*[[Wolf]] - level 64\n\n==Quests==\n*[[The Path of Glouphrie]]\n*[[Tree Gnome Village]]\n*Part of the [[Waterfall Quest]]\n\n==Music==\n*[[Emotion]]\n*[[Attack 1]]\n\n{{Tree Gnome Village}}\n{{Tree Gnome Village (location)}}\n[[Category:Gnomes]]"
+        }
+      }
+    }
+  ]
+}

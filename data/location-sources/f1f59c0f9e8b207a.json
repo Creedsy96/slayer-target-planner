@@ -1,0 +1,19 @@
+{
+  "pageid": 46499,
+  "ns": 0,
+  "title": "South-west Wilderness mine",
+  "revisions": [
+    {
+      "revid": 15267066,
+      "parentid": 15267065,
+      "timestamp": "2026-07-18T18:39:46Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Wilderness (level 9) south-west mine|rsc=Wilderness skeleton mine}}\n{{Infobox Location\n|name = South-west Wilderness mine\n|image = [[File:South-west Wilderness mine.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness system online\n|aka = Skeleton mine, Wilderness coal mine\n|members = No\n|location = North-west of [[Edgeville]] in level 12 [[Wilderness]]\n|map = {{Map|name=South-west Wilderness mine|x=3014|y=3589}}\n|type = mine\n|leagueRegion = Wilderness\n}}\nThe '''south-west Wilderness mine''' is located in level 9 [[Wilderness]], just north-west of [[Edgeville]], north of the [[Black Knights' Fortress (location)|Black Knights' Fortress]], and south of the [[Dark Warriors' Fortress]]. This [[Mining]] site is a very rich [[coal]] mine since it contains over 30 [[coal rocks]], which is sizeable in comparison to the [[Mining Guild]], but players have to rely on running to safety or teleporting if attacked by [[player killer]]s. This mine is recommended when the Mining Guild or other coal sites are crowded, or for players with a high [[Combat level]].\n\n*The level 22 [[Skeleton#Lvl_22|skeletons]] are [[Aggressiveness|aggressive]] to players of all levels and become [[tolerant]] after 10 minutes. Only the three skeletons carrying circular shields drop anything beside bones.\n*If players want to avoid additional [[monster]] encounters, they should travel north/south along the edge of the Black Knights' Fortress.\n*The closest bank is in [[Edgeville]].\n*Because of the large amount of coal present here, this place is excellent for players wishing to use [[Superheat Item]] to smelt [[ores]] into [[bar]]s.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||34\n|-\n|}\n\n{{Mines}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

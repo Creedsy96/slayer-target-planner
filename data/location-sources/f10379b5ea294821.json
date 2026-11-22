@@ -1,0 +1,19 @@
+{
+  "pageid": 97013,
+  "ns": 0,
+  "title": "Bone Yard Hunter area",
+  "revisions": [
+    {
+      "revid": 15359489,
+      "parentid": 15285139,
+      "timestamp": "2026-10-01T10:26:23Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Boneyard Hunter area}}\n{{otheruses|the area north of the eastern ruins containing black chinchompas|Wilderness Hunter area|def=no}}\n{{Infobox Location\n|name = Bone Yard Hunter area\n|image = [[File:Bone Yard Hunter area.png|300px]]\n|release = [[21 November]] [[2006]]\n|update = HUNTER SKILL!\n|members = No\n|location = [[Wilderness]]\n|wilderness = 20\n|music = [[Dark]]\n|map = {{Map|name=Bone Yard Hunter area|x=3297|y=3673}}\n|type = hunter area\n|leagueRegion = Wilderness\n}}\n{{Relativelocation\n|location = Bone Yard Hunter area\n|north = Bone Yard\n|west = Graveyard of Shadows\n|south = Lumber Yard\n|east = Untamed Ocean\n}}\nThe '''Bone Yard Hunter area''' is located slightly south-east of the [[Bone Yard]] in the [[Wilderness]]. Players with 67 [[Hunter]] can catch [[Black salamander (Hunter)|black salamander]]s here. Since this Hunter area is located in the Wilderness, an additional trap can be set in the area.\n\n==Transportation==\n*[[Burning amulet]] teleport to the Chaos Temple and run north-east from there.\n*Teleport to the level 19 [[Wilderness Obelisk]].\n*[[Carrallanger Teleport]] ([[Carrallanger teleport (tablet)|tablet]]) and run east from there.\n*[[Games necklace]] teleport to the [[Corporeal Beast]] lair and run east.\n*Enter the [[Wilderness]] from [[Varrock]] and run north-east.\n\n==Hunter creatures==\nThe following [[Hunter]] creature is found in this area:\n\n{|class=\"wikitable\"\n!Level\n! colspan=2 |Creature\n!Technique\n|-\n|67||{{plinkt|Black salamander (Hunter)|pic=Black salamander|txt=Black salamander}}||[[Net trap]]\n|}\n\nTo trap black salamanders, use a [[small fishing net]] and [[rope]] on a [[young tree]]. [[Harralander tar]] may be used to bait the trap and a lit [[torch]] may be used on it to reduce the player's scent, slightly increasing chances of catching a salamander. Since this is the Wilderness as with the threat of [[player killers]], do '''NOT''' take items you cannot afford to lose.\n\n==Monsters==\nPlayers should be aware of [[player killer]]s when training in this hunter spot.\n\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Hill Giant|levels=28|spawns=2}}\n{{LocationMonsterTableBottom}}\n\n==Personalities==\n*[[Larran]] is located just west of this hunting spot, west of the lava crevice.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 24 September 2015\n|update = New Animations & Barbarian Assault Changes\n|poll = \n|change = A tile which could not be walked onto near black salamanders has been fixed.\n}}\n{{Subject changes\n|date = 26 June 2014\n|update = Midsummer Event\n|poll = Old School feature poll - Rewarding Rewards\n|change = You can use one more trap than you have the level for in all wilderness hunter areas.\n}}\n{{Subject changes\n|date = 29 May 2014\n|update = Salamanders and Special Attack\n|change = * Hunting black salamanders has been substantially improved with there now being 6 trees for setting up traps in the area and they've been rearranged in one group near the western body of lava. \n* Increased the catching experience by 5% from 304 to 319.2 and relocated the spawns nearer to the trees.\n}}\n{{Subject changes footer}}\n\n{{Hunter}}\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 590486,
+  "ns": 0,
+  "title": "Red Rock",
+  "revisions": [
+    {
+      "revid": 15248903,
+      "parentid": 15218420,
+      "timestamp": "2026-07-02T21:50:18Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Red Rock\n|image = [[File:Red Rock.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Unquiet Ocean]]\n|map = {{Map|x=2799|y=2517}}\n|type = Island\n|leagueRegion = No\n}}\n[[File:Red Rock icon detail.png|left|130px]]\n{{Relative location\n|north = The Simian Sea\n|east = Red Reef\n|west = Pest Control\n|south = Anglerfish's Light\n}}\n'''Red Rock''' is an island in the [[Unquiet Ocean]], located south-east of the [[Void Knights' Outpost]]. It can be accessed following partial completion of the [[The Red Reef]] quest.\n\nIt includes a [[bank chest]], [[Sailors' Marker|sailors' marker]], [[salvaging station]], [[notice board]], and [[ledger table]].\n\n==Transportation==\nPartial completion of the quest [[The Red Reef]] is required to access Red Rock\n* Teleport with the [[sailors' amulet]] (requires inspecting [[Sailors' Marker]] before using)\n* Sailing to the gangplank on the east of the dock\n* [[Charter ship]] {{Charter ship fares}}\n\n==Features==\n* [[File:Bank icon.png|link=Bank chest]] [[Bank chest|Bank chest]]\n* [[File:Transportation icon.png|link=Charter ship]] [[Charter ship]]\n* 3 [[Seagull#Level_3|seagulls]]\n* A [[rope]] spawn on the south-west dock\n* A [[saw]] spawn on a crate in the south-west of the building\n* A [[hammer]] spawn on a crate in the middle of the building\n* 4 [[seaweed]] spawns which are unreachable from the docks\n\n==Sailing info==\nPlayers can [[mooring point|dock]] at Red Rock with level 52 [[Sailing]]. The dock offers the following utilities for sailors:\n*[[File:Shipwright map icon.png|link=Shipwright]] [[Shipwright]]\n*[[File:Port task board icon.png|link=Notice board]] [[Notice board]] - requires completion of [[The Red Reef]]\n*[[File:Salvaging station map icon.png|link=Salvaging station]] [[Salvaging station]]\n*[[File:Ledger table icon.png|link=Ledger table]] [[Ledger table]]\n\n===Port tasks===\nThe notice board offers eight [[port tasks]] selected from the following lists.\n\n'''[[Bounty tasks]]'''\n{{BountyTaskList|location=Red Rock}}\n\n'''[[Courier tasks]]'''\n{{CourierTaskList|location=Red Rock}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 20 May 2026\n|update = The Red Reef is Out Today!\n|change = Players can now dock on the island.\n}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Island names were added to the world map.\n}}\n{{Subject changes footer}}\n\n{{The Red Reef}}\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

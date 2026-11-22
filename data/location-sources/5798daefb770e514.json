@@ -1,0 +1,19 @@
+{
+  "pageid": 372316,
+  "ns": 0,
+  "title": "Scabaras Dungeon",
+  "revisions": [
+    {
+      "revid": 15331290,
+      "parentid": 15292259,
+      "timestamp": "2026-09-05T06:42:29Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Scabaras Dungeon\n|image = [[File:Scabaras Dungeon.png|300px]]\n|release = [[27 April]] [[2022]]\n|update = Beneath Cursed Sands\n|members = Yes\n|location = [[Ullek]]\n|music = [[The Forgotten Tomb]], [[Thrall of the Devourer]]\n|map = {{Map|3403,9250|width=310|mapID=-1}}\n|type = dungeon\n|leagueRegion = Desert\n}}\n{{Map|x=3408|y=2848|mtype=pin|align=left|width=220|height=220|caption=The location of the dungeon.}}\nThe '''Scabaras Dungeon''' is located underground in the [[Ruins of Ullek]] area. The dungeon plays a major role in the [[Beneath Cursed Sands]] quest. Its entrance is on the plateau, just north of the anvil and furnace, in an area surrounded by broken pillars. The Ruins of Ullek are in the south-eastern [[Kharidian Desert]] and are subject to [[desert heat]], so players are advised to bring a [[water source]]. The dungeon itself is not subject to desert heat.\n\nAggressive [[Scabarites]] can be found here on the 2nd level which attack with melee, ranged, and magic. They are found close together and in high numbers, making this an effective place to kill them for [[Slayer]] assignments, though the [[Sophanem Dungeon]] may be a better alternative for lower level players (maze level) and players wishing to use a [[dwarf multicannon]] (cavern level).\n\n==Upper level==\nWhen first entering the upper level during the quest, the player is attacked by two level 119 [[Scarab Mage|scarab mages]]. After the quest they are no longer attackable and are found guarding the [[High Priest of Scabaras]] in the westernmost room. This room is also where the player fights the [[Champion of Scabaras]] during the quest.\n\n==Lower level==\nDuring the quest, the bottom floor has projectiles shooting out of the [[tomb wall|tomb walls]] that damage the player if not avoided. After the quest, this area contains many [[locust rider]]s (both ranged and melee) and [[Scarab Mage|scarab mages]]. Cannons cannot be used here. The westernmost room contains a sarcophagus with [[Mehhar]] nearby. \n{{clear}}\n\n==Monsters==\n<gallery>\nLocust rider (ranged).png|[[Locust rider]] (ranger), level 98\nLocust rider (melee).png|[[Locust rider]] (lancer), level 106\nScarab Mage.png|[[Scarab Mage]], level 93, level 119 (during Beneath Cursed Sands)\nChampion of Scabaras.png|[[Champion of Scabaras]], level 379 (during Beneath Cursed Sands)\nScarab Swarm (Beneath Cursed Sands).png|[[Scarab Swarm (Beneath Cursed Sands)|Scarab Swarm]], level 98 (summoned by Champion of Scabaras)\n</gallery>\n\n==Personalities==\n<gallery>\nHigh Priest of Scabaras.png|[[High Priest of Scabaras]]\nMehhar.png|[[Mehhar]]\n</gallery>\n\n{{Beneath Cursed Sands}}\n{{Dungeons}}\n{{Places of worship}}\n[[Category:Kharidian Desert]]"
+        }
+      }
+    }
+  ]
+}

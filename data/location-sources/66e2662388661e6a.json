@@ -1,0 +1,19 @@
+{
+  "pageid": 46378,
+  "ns": 0,
+  "title": "Edgeville Dungeon mine",
+  "revisions": [
+    {
+      "revid": 15127888,
+      "parentid": 15057641,
+      "timestamp": "2026-02-16T02:44:08Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Edgeville dungeon mine|rsc=Edgeville dungeon mine}}\n{{Infobox Location\n|name = Edgeville Dungeon mine\n|image = [[File:Edgeville dungeon mine.png|300px]]\n|release = [[4 January]] [[2001]]\n|update = Runescape beta is now online!\n|aka = Skeleton Mine\n|members = No\n|location = [[Edgeville Dungeon]]\n|map = {{Map|name=Edgeville Dungeon mine|x=3140|y=9874|zoom=2|mapID=12}}\n|type = mine\n|leagueRegion = Misthalin\n}}\nThe '''Edgeville Dungeon mine''' is a [[mines and mining sites|mine]] near the centre of the [[Edgeville Dungeon]]. The mine itself is north of the [[hill giant]]s and the ladder near the [[brass key]]. It is south of [[Vannaka]] and the [[Agility shortcut]] to [[Varrock Sewers]]. It is sometimes called the '''Skeleton Mine''' by some; similar to how several other mines guarded by skeletons are called the same, such as the [[Southern Wilderness mine]]. Due to being so far out of the way, the mine is almost never used by non-[[Free-to-play]] players.\n\nIt is a compact mine with a variety of [[ore]]s. The resident skeletons and the occasionally visiting [[hobgoblin]] may be dangerous for players with low [[combat level]]s.\n\n==Transportation==\n* The long way: From the dungeon entrance at [[Edgeville]], through the dungeon.\n* The short way: In a small room north of the [[hill giant]]s but south of the mine, there is the [[brass key]] spawn. This key can be used to enter and exit the [[Edgeville Dungeon]] via the ladder just north of the hill giants. This is by far the fastest walking route to and from the mine.\n* Nearest [[bank]]: [[Varrock west bank]], with the brass key. However, if a player has [[Varrock armour 3]], from completing their hard [[Varrock Diary]], they can use the bank within the [[Cooks' Guild]]. This bank is closer than [[Varrock west bank]].\n* Teleportation: [[Paddewwa Teleport]], from the [[Ancient Magicks]] [[spellbook]], teleports the user to the entrance of Edgeville Dungeon. However, this is not recommended for long-term mining due to the distance to the mine from the teleport.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Copper ore}}||[[Copper rock|Copper]]\n|1||17.5||2\n|-\n|{{plinkp|Tin ore}}||[[Tin rock|Tin]]\n|1||17.5||2\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||3\n|-\n|{{plinkp|Silver ore}}||[[Silver rock|Silver]]\n|20||40||3\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||6\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||1\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||2\n|-\n|}\n\n{{Mines}}\n{{Edgeville Dungeon}}"
+        }
+      }
+    }
+  ]
+}

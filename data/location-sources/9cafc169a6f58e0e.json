@@ -1,0 +1,19 @@
+{
+  "pageid": 9434,
+  "ns": 0,
+  "title": "Death Plateau (location)",
+  "revisions": [
+    {
+      "revid": 15342417,
+      "parentid": 15329229,
+      "timestamp": "2026-09-13T02:44:23Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs}}\n{{otheruses|the location|the quest|Death Plateau}}\n{{Infobox Location\n|name = Death Plateau\n|image = [[File:Death Plateau.png|300px]]\n|release = [[9 August]] [[2004]]\n|update = Death Plateau Quest\n|members = Yes\n|location = [[Troll Country]]\n|map = {{Map|name=Death Plateau (location)|x=2868|y=3586}}\n|leagueRegion = Asgarnia\n}}\n{{relativelocation\n|location = Death Plateau\n|north = Trollheim\n|east = Burthorpe\n|south = Warriors' Guild\n|west = Fremennik Slayer Dungeon\n}}\nThe '''Death Plateau''' is a tall, flat land formation, surrounded by steep ascents, north-west of [[Burthorpe]] and directly north of the [[Warriors' Guild]]. This area is inhabited by various [[troll]]s, who have recently set up camp in the area.{{CiteNPC|npc=Denulth|quote=The trolls have taken up camp on Death Plateau! They are using it to launch raids at night on the village. We have tried to attack the camp but the main path is heavily guarded!|loc=Death Plateau|notes=|name=}}{{CiteNPC|npc=Tenzing|quote=I used to take adventurers up Death Plateau and further north before the trolls came. I know these mountains well.|loc=|notes=|name=}} Though the plateau is not a multi-combat area, the path leading around the plateau is riddled with thrower trolls and is multi-combat. Extreme caution is advised here, and players should take advantage of [[protection prayers]] as certain monsters can hit very high here.\n\nA [[dwarf multicannon]] may be used here.\n\n==Transportation==\nA few teleports bring the player to [[Burthorpe]], close to the plateau:\n* {{Plink|Games necklace}} or {{Plink|Minigame Teleport}} — to the [[Burthorpe Games Room]] and walking north-west along the path.\n* {{Plink|Combat bracelet}} — to the [[Warriors' Guild]] (then along the same path).\n\n''Note that you will need [[climbing boots]] to pass the various rock obstacles on some paths.''\n\n==Inhabitants==\n*[[Saba]], located in a cave to the south of Death Plateau. He plays a role in the quest [[Death Plateau]], and in treasure trails clues.\n*[[Tenzing]], located in a house west of the plateau. He sells [[climbing boots]], after completion of the quest [[Death Plateau]]\n*[[Ash]]\n*[[Dung]]\n\n==Quests==\nThe plateau plays a part in a few quests:\n*[[Death Plateau]]\n*[[My Arm's Big Adventure]]\n*[[Troll Stronghold]]\n\n{{clear}}\n==Monsters==\nThe Plateau is occupied by mountain trolls of various levels, which can be attacked from safe spots.\n[[File:Death Plateau Cannon safespot.png||right|alt=Cannon safespot|thumb|Cannon safespot]]\n<gallery>\nThrower Troll.png|[[Thrower Troll|Thrower troll]], level 67\nMountain troll.png|[[Mountain troll]], level 69\nPee Hat.png|[[Pee Hat]], level 91\nKraka.png|[[Kraka]], level 91\nStick.png|[[Stick]], level 104\nRock.png|[[Rock (Troll)|Rock]], level 111\n</gallery>\n\n==References==\n{{Reflist}}\n\n{{My Arm's Big Adventure}}\n[[Category:Troll Country]]"
+        }
+      }
+    }
+  ]
+}

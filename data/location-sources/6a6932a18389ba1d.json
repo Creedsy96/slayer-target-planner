@@ -1,0 +1,19 @@
+{
+  "pageid": 9423,
+  "ns": 0,
+  "title": "Iceberg",
+  "revisions": [
+    {
+      "revid": 15317986,
+      "parentid": 15142628,
+      "timestamp": "2026-08-24T10:37:34Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Iceberg\n|image = [[File:Iceberg.png|300px]]\n|release = [[29 January]] [[2007]]\n|update = What's black and white and goes green when it's finished?\n|aka = Penguin island\n|members = Yes\n|location = [[Fremennik Province]]\n|race = [[Penguin]]s\n|teleport = None\n|music = [[Have an Ice Day]]\n|map = {{Map|name=Iceberg|x=2652|y=4029|height=300|width=300|zoom=1}}\n|type = island\n|leagueRegion = Fremennik\n}}\n{{Relativelocation\n|location = Iceberg\n|north = Northern Ocean\n|east = Northern Ocean\n|south = Etceteria\n|west = Island of Stone\n}}\nThe '''iceberg''' is a plain iceberg in the sea. It is the location of the [[KGP Headquarters]] [[Penguin (race)|penguin]] base. It can only be accessed by those who have gone halfway through [[Cold War]].\n\nPlayers can travel back to the iceberg after the quest is completed by talking to [[Larry]] on the dock north-east of [[Rellekka]].\n\nIf one is wearing a [[clockwork suit]], it can be entered via the [[Avalanche (scenery)]] to the north-west of [[Larry's boat]]. This is required for the [[Clue scroll (master)|master clue]] [[Treasure Trails/Guide/Cryptic clues|cryptic step]].\n\n==Notable features==\n*[[Penguin agility course]]\n\n==Personalities==\n*[[Pescaling Pax]] - Son of the king of the penguins, and is also leading the penguins to war against the rest of the world.\n*[[Ping]] and [[Pong]] - These are two musical penguins who are annoyed that most instruments require thumbs and fingers to play. During [[Cold War]], you have to give them some bongos and a cowbell. Because of this, they nearly get thrown into solitary.\n\n==Monsters==\n*[[Icelord]] (level 51)\n\n==Quests==\n*[[Cold War]] is greatly involved with the iceberg.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 17 January 2019\n|update = Kebos Graphical Changes and Other Fixes\n|change = A black tile which was visible on the Iceberg when [[Settings#Basic Display Settings|roofs were hidden]] has been fixed.\n}}\n{{Subject changes footer}}\n\n{{Cold War}}\n{{Penguins}}\n[[Category:Quest locations]]"
+        }
+      }
+    }
+  ]
+}

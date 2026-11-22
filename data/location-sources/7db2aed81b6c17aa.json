@@ -1,0 +1,19 @@
+{
+  "pageid": 612719,
+  "ns": 0,
+  "title": "Buccaneers' Laboratory",
+  "revisions": [
+    {
+      "revid": 15356366,
+      "parentid": 15347214,
+      "timestamp": "2026-09-26T08:55:39Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Buccaneers' Laboratory\n|image = [[File:Buccaneers' Laboratory.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = [[Buccaneers' Haven]]\n|requirement = {{SCP|Sailing|76}}\n|music = [[Lurking Threats]]\n|map = {{Map|2081,10073|zoom=2|mapID=-1}}\n|type = Dungeon\n|leagueRegion = No\n}}\n'''Buccaneers' Laboratory''' is located on [[Buccaneers' Haven]], therefore requiring 76 [[Sailing]] to access.\n\nThe entire laboratory is a [[multicombat area]], and a [[dwarven multicannon]] can be used here. There are a total of:\n\n*8 [[Mutated Bloodveld|mutated bloodveld]]s to the north-east\n*5 [[hellhound]]s in the centre\n*11 [[shadow spider]]s to the south-east\n*2 [[skeleton]]s to the west\n\nThe [[small key (Buccaneers' Haven)]] can be dug up by digging on the [[Ball (scenery)|red ball]] in the second-most westward prison cell in the north-west of the laboratory.\n{{Map|x=2080|y=3685|mtype=pin|2075,3688|align=left|caption=The entrance to the laboratory|icon=redPin}}\n[[File:Small key (Buccaneers' Haven) dig location.png|left|thumb|The tile to dig on.]]\n{{Buccaneers' Haven}}\n{{Ocean locations}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

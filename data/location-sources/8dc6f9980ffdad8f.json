@@ -1,0 +1,19 @@
+{
+  "pageid": 460100,
+  "ns": 0,
+  "title": "Ortus Farm",
+  "revisions": [
+    {
+      "revid": 15211968,
+      "parentid": 14798758,
+      "timestamp": "2026-05-17T04:33:34Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Ortus Farm\n|image = [[File:Ortus Farm.png]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|location = [[Varlamore]]\n|map = {{Map|name=Ortus Farm|x=1569|y=3126}}\n|leagueRegion = Varlamore\n}}\n{{Relative location\n|location = Ortus Farm\n|north = Quetzacalli Gorge\n|east = Civitas illa Fortis\n|south = Avium Savannah\n|west = Ralos Rise\n}}\nThe '''Ortus Farm''' is a farm to the west of [[Civitas illa Fortis]]. The farm has [[chicken]]s, [[buffalo]]s, and [[alpaca]]s. Part of the [[Fortis Aqueduct]] also transports freshwater from [[Ralos' Rise]] to it.\n\n==Features==\n* A water pump is located in the northern part of the farm, which can be used as a [[water|water source]]. It is the closest water source to the nearby [[allotment patch]].\n* An [[allotment patch]], [[herb patch]], and [[flower patch]] are on the south side of the farm.\n** [[Harminia]] can be paid nearby to watch over the allotments.\n** When the player has achieved the rank of Champion or higher at the [[Fortis Colosseum]], citizens will provide protection to the herb patch. \n* [[Agelus]] runs [[Agelus' Farm Shop]] next to the farming patches\n* A number of animals can be found around the farm:\n**12 [[buffalo]]\n**11 [[chicken]]s\n**7 [[alpaca]]s, which can be sheared for [[wool]]\n**1 [[Dairy Buffalo]], which can be [[Bucket of milk|milked]]\n\n{{Ortus Farm}}\n{{Varlamore}}\n{{Farms}}"
+        }
+      }
+    }
+  ]
+}

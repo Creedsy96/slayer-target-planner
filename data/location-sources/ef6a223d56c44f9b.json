@@ -1,0 +1,19 @@
+{
+  "pageid": 228515,
+  "ns": 0,
+  "title": "Mynydd",
+  "revisions": [
+    {
+      "revid": 15314382,
+      "parentid": 15229215,
+      "timestamp": "2026-08-20T20:40:21Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Mynydd\n|image = [[File:Mynydd.png|300px]]\n|release = [[25 July]] [[2019]]\n|update = Song of the Elves\n|members = Yes\n|location = [[Tirannwn]]\n|teleport = No\n|music = [[Everywhere]]\n|map = {{Map|name=Mynydd|x=2158|y=3423|height=350|width=300|zoom=2}}\n|leagueRegion = Tirannwn\n}}\n'''Mynydd''' is a lone mountain located just north-west of [[Prifddinas]]. It is dotted with [[dead tree]]s, and towers over the small village of [[Gwenith]]. It is also the only mountain in [[Tirannwn]] aside from the [[Arandar]] mountain pass.\n\nIn order to reach the mountain, players must travel to its base in the south-west. There is no other way to ascend the mountain.\n\nThe book [[Legends of the Mountain]] provides the player with three local folktales about Mynydd.\n\n==Mountain features==\n*A single [[stag]] can be found at the base of the mountain near the cenotaph.\n*Four [[dire wolves]] can be found, with the first one the player encounters being albino.\n*There is a [[Mynydd mine|small mine]] containing ten [[gold rocks]]. [[Ed]] can be found here, hunting for treasure.\n*The summit contains some ruins of a castle. A single [[black dragon]] can be found on the summit.\n*Wearing a [[ring of visibility]] will cause an unattackable [[Ghost (Mynydd)|ghost]] to appear.\n\n==Gallery==\n<gallery captionalign=\"center\" widths=\"200\">\nCenotaph surroundings.png|A [[cenotaph]] found at the base of the mountain.\nMynydd mine.png|The Mynydd mine where [[Ed]] can be found.\nMynydd summit.png|The ruins of a small castle on the mountain summit.\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Mynydd now appears with a label on the World map.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n*Mynydd is a Welsh word meaning \"mountain\".\n*The entire area with its dire wolves (one being albino), destroyed throne and three dragon eggs appears to be a reference to the fantasy series ''{{wp|A Song of Ice and Fire}}''.\n\n{{Terrain}}\n[[Category:Tirannwn]]\n[[Category:Terrain]]\n[[Category:Mountains and hills]]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 27891,
+  "ns": 0,
+  "title": "Clock Tower (building)",
+  "revisions": [
+    {
+      "revid": 15302409,
+      "parentid": 15302407,
+      "timestamp": "2026-08-16T01:17:32Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Otheruses|the building|the quest|Clock Tower}}\n{{Infobox Location\n|name = Clock Tower\n|image = [[File:Clock Tower.png|300px]]\n|release = [[17 June]] [[2002]]\n|update = Latest RuneScape News (17 June 2002)\n|members = Yes\n|floors = 4\n|location = [[Kandarin]]\n|music = [[Ballad of Enchantment]]\n|map = {{Map|name=Clock Tower (building)|zoom=2|mtype=polygon|2567,3233|2572,3233|2572,3239|2574,3239|2574,3246|2569,3246|2569,3248|2574,3248|2574,3253|2572,3255|2569,3255|2567,3253|2567,3246|2564,3246|2564,3239|2567,3239}}\n|type = building\n|leagueRegion = Kandarin\n}}\n{{Relativelocation\n|location = Clock Tower\n|north = East Ardougne\n|west = Observatory\n|south = Tree Gnome Village (location){{!}}Tree Gnome Village\n|east = Ardougne Zoo\n}}\nThe '''Clock Tower''' is a tower south of [[Ardougne]]. There are 4 floors, the fourth one being the basement. During the quest of the same name, you have to find 4 cogs in different colours.\n\nThe owner and monk of the Clock Tower is [[Brother Kojo]], the giver of the [[Clock Tower]] quest. Kojo also gives the player a [[watch]] for use in [[Treasure Trails]].\n\nThe Clock Tower seems to be quite broken down, due to the large number of missing floorboards as well as several broken windows and a [[Boarded-up door|boarded-up door]]. The basement is also infested with a number of different monsters.\n\n==Transportation==\nThe quickest way to get to the Clock Tower is by using the [[Ardougne cloak]]'s teleport to the [[Ardougne Monastery]].\n\nThe next best way to get to the Clock Tower is to use the [[spirit tree]] teleportation system and go to 'Battlefield of Khazard', which lands you slightly north-west of the Clock Tower as can be seen in the above image.\n\n==Dungeon==\n{{main|Clock Tower dungeon}}\n\n==Quests==\n*[[Clock Tower]]\n\n==Personalities==\n*[[Brother Kojo]]\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 12 August 2026\n|update = Summer Sweep Up - Agility & Chambers of Xeric Changes\n|change = * Slightly opened up the eastern fence around the Clock Tower, allowing you to pass through a new gap and walk around the building.\n* Repaired the fence that was broken with the last changes.\n}}\n{{Subject changes\n|date = 1 April 2026\n|update = Remaining Getting Around Changes\n|change = The bushes were readded behind the fences, and part of one of the fences was slightly broken.\n}}\n{{Subject changes\n|date = 11 February 2026\n|update = Music System Improvements & Deadman Tweaks\n|change = Fences have been added, replacing the bushes and surrounding the ladders to the south of the building.\n}}\n{{Subject changes\n|date = 11 January 2023\n|update = Secrets of the North & More!\n|change = A [[Boarded-up door|door]] in the Ardougne Clock Tower has been refitted so that it no longer extends into the roof. It is also no longer possible to use the [[Key (Ernest the Chicken)|key]] from the Ernest the Chicken quest to pass through it.\n}}\n{{Subject changes footer}}\n\n{{Clock Tower}}\n[[Category:Kandarin]]\n[[Category:Locations]]\n[[Category:Buildings]]\n[[Category:Ardougne]]\n[[Category:Towers]]"
+        }
+      }
+    }
+  ]
+}

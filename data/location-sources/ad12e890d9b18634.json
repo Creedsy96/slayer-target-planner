@@ -1,0 +1,19 @@
+{
+  "pageid": 17871,
+  "ns": 0,
+  "title": "Sinclair Mansion",
+  "revisions": [
+    {
+      "revid": 15366035,
+      "parentid": 15323428,
+      "timestamp": "2026-10-05T20:37:04Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Sinclair Mansion\n|image = [[File:Sinclair Mansion.png]]\n|release = [[9 June]] [[2003]]\n|update = New Murder Mystery Quest!\n|members = Yes\n|floors = 2\n|location = [[Kandarin]]\n|map = {{Map|name=Sinclair Mansion|x=2743|y=3555|height=250|zoom=2}}\n|type = building\n|leagueRegion = Kandarin\n}}\n{{Relativelocation\n|location = Sinclair Mansion\n|north = Rellekka\n|west = Barbarian Outpost\n|south = Seers' Village\n|east = Mac's island\n}}\n'''Sinclair Mansion''' is a large mansion owned by the Sinclair family that plays a significant role in the [[Murder Mystery]] [[Quests|quest]]. It is located north of [[Camelot]], along the path that leads from [[Seers' Village]] to [[Rellekka]]. The [[fairy ring]] {{Fairycode|cjr}} is located just west of the mansion. An [[Agility]] [[shortcut]] north of the mansion leads to [[Fremennik Province]] (48 Agility required).\n\n==Transportation==\nThe fastest way to Sinclair Mansion is via [[fairy ring]], using code {{Fairycode|cjr}}. Other routes include:\n* [[Music cape]] teleport to [[Falo the Bard]], then run east.\n* Teleport to [[Camelot]] or [[Seers' Village]] via the Camelot Teleport [[Camelot Teleport|spell]] or [[Camelot teleport (tablet)|tablet]], then running north along the road.\n* [[Kandarin headgear]] teleport to [[Sherlock]], then run north.\n* Travel to [[Catherby]] via the Catherby Teleport [[Catherby Teleport|spell]] or [[Catherby teleport (tablet)|tablet]] or by [[charter ship]], then run north-west to the road between Camelot and the Seers' Village bank.\n\n==Features==\nSinclair Mansion has [[cabbage]], [[grain]], and [[potato]] spawns, as well as a [[willow tree]]. A [[Barrel of flour (Sinclair Mansion)|barrel of flour]] that serves as an infinite source for filling [[pot of flour|pots of flour]] is located in the kitchen. A [[dairy churn]] is located outside the garden shed.\n\n==Inhabitants==\nThere are a total of 17 [[Non-player character|NPCs]].\n\n===Sinclair children===\n*[[Anna]]\n*[[Bob (Sinclair)|Bob]]\n*[[Carol]]\n*[[David (Murder Mystery)|David]]\n*[[Elizabeth (Murder Mystery)|Elizabeth]]\n*[[Frank]]\n\n===Mansion staff===\n*[[Hobbes]]\n*[[Stanford]]\n*[[Pierre]]\n*[[Donovan the Family Handyman]]\n*[[Louisa]]\n*[[Mary (Murder Mystery)|Mary]]\n\n===Other NPCs===\n*3 [[Guard (Sinclair Mansion)|Guards]]\n*[[Gossip]]\n\n===Animals===\n*1 [[Dairy cow]]\n*1 [[Cow]]\n*4 [[Rat]]s\n*3 [[Chicken]]s\n*1 [[Sinclair Guard dog]] (non-attackable)\n\n==Quests==\n* [[Murder Mystery]]\n* [[King's Ransom]]\n\n==Treasure Trails==\n*{{CrypticNPC|Louisa|easy|Speak to the staff of Sinclair mansion.}}\n*{{CrypticNPC|Donovan the Family Handyman|medium|Speak to Donovan, the Family Handyman.}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 31 January 2019\n|update = Chambers of Xeric, Kebos, and Collection Log Changes\n|change = The water sink at the Sinclair Mansion has been unclogged and now works properly.\n}}\n{{Subject changes footer}}\n\n{{Murder Mystery}}\n[[Category:Quest locations]]\n[[Category:Kandarin]]\n[[Category:Manors and mansions]]"
+        }
+      }
+    }
+  ]
+}

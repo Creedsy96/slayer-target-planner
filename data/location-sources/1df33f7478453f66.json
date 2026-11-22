@@ -1,0 +1,19 @@
+{
+  "pageid": 54608,
+  "ns": 0,
+  "title": "Ice Queen's Lair",
+  "revisions": [
+    {
+      "revid": 15312542,
+      "parentid": 15259503,
+      "timestamp": "2026-08-20T03:32:29Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Ice Queen Maze}}\n{{Infobox Location\n|name = Ice Queen's Lair\n|image = [[File:Ice Queen's Lair.png|300px]]\n|release = [[27 February]] [[2002]]\n|update = Latest RuneScape News (27 February 2002)\n|members = Yes\n|floors = 1\n|location = [[Asgarnia]]\n|music = [[Beyond]]\n|map = {{Map|name=Ice Queen's lair|x=2853|y=9940|mapID=20}}\n|type = dungeon\n|leagueRegion = Asgarnia\n}}\nThe '''Ice Queen's Lair''' is a dungeon located under the [[White Wolf Mountain]]. The entrance is blocked by a [[rock slide]] requiring a [[pickaxe]] and level 50 [[Mining]] to remove. The rock slide can not be mined by another player. The lair plays a major role in [[Heroes' Quest]], where players must kill the [[Ice Queen]] to obtain [[ice gloves]]. Player can get there quickly via the [[Gnome glider|gnome glider]].\n\nIf a player loses their ice gloves, they may acquire a new pair by slaying the queen again, but because the dungeon is out of the way, it's recommended to get multiple pairs during the quest.\n\n==Reaching the Ice Queen==\nThe Ice Queen can be found at the end of a small maze, with [[ice warrior]]s and [[Ice spider|spiders]] throughout. To enter, head toward the northern tip of [[White Wolf Mountain]]. You will need to mine the rock slide to the north-west of the gnome glider to enter.\n\n;Steps\n#After the rock slide, head '''down''' the '''southernmost''' ladder\n#Go down the '''south-west''' tunnel and climb '''up''' the ladder at the end\n#Avoiding the [[Ice giant|ice giants]], climb down the '''easternmost''' ladder\n#Go '''north''' through the long tunnel, and climb '''up''' the ladder at the end\n#Climb '''down''' the ladder immediately next to it\n#Follow the tunnel '''north''' until it opens into a large room\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Ice giant|levels=53|spawns=7}}\n{{LocationMonsterTableLine|name=Ice warrior#Ice Queen's Lair|displayname=Ice warrior|image=Ice warrior (Ice Queen's Lair).png|levels=57|spawns=14}}\n{{LocationMonsterTableLine|name=Ice spider|levels=61|spawns=9}}\n{{LocationMonsterTableLine|name=Ice Queen|levels=111|spawns=1}}\n{{LocationMonsterTableBottom}}\n\n{{Freeing the Mountain Dwarf}}\n{{White Wolf Mountain}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

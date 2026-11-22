@@ -1,0 +1,19 @@
+{
+  "pageid": 417264,
+  "ns": 0,
+  "title": "Ralos' Rise",
+  "revisions": [
+    {
+      "revid": 15319365,
+      "parentid": 15229217,
+      "timestamp": "2026-08-25T05:40:38Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Ralos' Rise\n|image = [[File:Ralos' Rise.png|300px]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|location = [[Varlamore]]\n|teleport = [[Quetzal Transport System]]\n|music = [[The Guidance of Ralos]]\n|map = {{Map|name=Ralos' Rise|height=400|1450,3140|zoom=1}}\n|leagueRegion = Varlamore\n}}\n{{Relative location\n|location = Ralos' Rise\n|north = Mons Gratia\n|east = Ortus Farm\n|south = Sunset Coast\n|west = River Varla\n}}\n'''Ralos' Rise''' is a mountain found west of [[Civitas illa Fortis]] in [[Varlamore]]. At the summit is [[the Teomat]], home to both the Church of [[Ralos]] and the Sect of [[Ranul]]. The mountain is considered a holy site, as it is said that the mountain was where Ralos made his first and only appearance. The summit also houses a step pyramid with an [[exposed altar]], a place where players can bless bones and jugs of wines for [[Prayer]] training at the [[libation bowl]].\n\nAt the southern face of the mountain lies the entrance to [[Cam Torum]], the last bastion of the [[Imcando dwarves]]. The city, along with [[Neypotzli]], a prison built by the [[Old Ones]], are accessed as part of the [[Perilous Moons]] quest.\n\nLastly, the mountain also has an outflow spring that leads to the [[Fortis Aqueduct]], serving as the source of freshwater for [[Civitas illa Fortis]].\n\n==Transportation==\n* [[Pendant of Ates]] to Ralos' Rise (With the [[Statue (Ates)|statue of ates]] unlocked at this location.)\n* [[Quetzal Transport System]] to the Teomat. The Quetzal Transport System can be accessed in several ways:\n** [[Ring of dueling]] to [[Fortis Colosseum]] and run west (this requires [[Glory|Hero status]] in the Colosseum)\n** [[Hunter cape]] to [[Hunter Guild]] and run west\n** [[Quetzal whistle]]\n** [[Civitas illa Fortis Teleport]] and run north-east\n** The east gate of [[Varrock]]\n* [[Civitas illa Fortis Teleport]] and run west\n\n==Gallery==\n<gallery mode=\"packed\" heights=\"200\" style=\"text-align:left\">\nExposed altar concept art.png|Concept art of the exposed altar on Ralos' Rise, by [[Mod Jerv]].\n</gallery>\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 27 March 2024\n|update = Easter & Varlamore Updates\n|poll = \n|change = A certain tile on Ralos' Rise has had its blocking corrected.\n}}\n{{Subject changes footer}}\n\n{{Varlamore}}\n[[Category:Terrain]]\n[[Category:Mountains and hills]]"
+        }
+      }
+    }
+  ]
+}

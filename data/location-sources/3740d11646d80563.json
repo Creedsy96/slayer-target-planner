@@ -1,0 +1,19 @@
+{
+  "pageid": 378288,
+  "ns": 0,
+  "title": "Fred's farm",
+  "revisions": [
+    {
+      "revid": 15364552,
+      "parentid": 15364550,
+      "timestamp": "2026-10-04T16:05:11Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Fred's farm\n|image = [[File:Fred's farm.png|300px]]\n|release = [[4 January]] [[2001]]\n|update = Runescape beta is now online!\n|aka = Lumbridge farm\n|members = No\n|location = [[Lumbridge]]\n|teleport = [[Lumbridge teleport]]\n|music = [[Harmony]]\n|map = {{Map|3193,3282|rectX=50|rectY=52|zoom=1|mtype=rectangle}}\n|type = farm\n|leagueRegion = Misthalin\n}}\n'''Fred's farm''', also known as the '''Lumbridge farm''', is a large farm in Lumbridge found north of the [[Lumbridge Castle]]. The farm is owned by [[Fred the Farmer]], and is worked by Fred and several [[farmers]].\n\n==Quests==\n* Players commence [[Sheep Shearer]] by speaking to Fred the Farmer, who will request the player to shear his sheep.\n* During [[Cold War]], players will talk to the [[Sheep (penguins)]].\n\n==Gallery==\n[[File:Lumbridge pasture.png|thumb|none|The cow pen.]]\n\n{{Farms}}"
+        }
+      }
+    }
+  ]
+}

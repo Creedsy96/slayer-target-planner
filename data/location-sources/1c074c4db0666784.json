@@ -1,0 +1,19 @@
+{
+  "pageid": 461212,
+  "ns": 0,
+  "title": "Ralos' Rise mine",
+  "revisions": [
+    {
+      "revid": 15211972,
+      "parentid": 15057761,
+      "timestamp": "2026-05-17T04:33:36Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Ralos' Rise mine\n|image = [[File:Ralos' Rise mine.png|300px]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|aka = <!-- if not applicable, remove this parameter -->\n|members = Yes\n|floors = <!-- if single-floored, remove this parameter -->\n|location = South-east of [[Ralos' Rise]], [[Varlamore]]\n|capital = <!-- if not applicable, remove this parameter -->\n|requirement = <!-- if no requirements, remove this parameter -->\n|race = <!-- if not applicable, remove this parameter -->\n|wilderness = <!-- range of wilderness levels for location; if not applicable, remove this parameter -->\n|teleport = <!-- teleports to this location; if not applicable, remove this parameter -->\n|map = {{Map|name=Ralos' Rise mine|x=1482|y=3085|zoom=2}}\n|type = mine\n|leagueRegion = Varlamore\n}}\n'''Ralos' Rise mine''' is a mine located to the south-east of [[Ralos' Rise]], and west of the [[Avium Savannah]]. \nThree level 14 [[scorpion]]s inhabit the mine as well as 3 [[sunbeam skink]]s.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Copper ore}}||[[Copper rock|Copper]]\n|1||17.5||4\n|-\n|{{plinkp|Tin ore}}||[[Tin rock|Tin]]\n|1||17.5||4\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||4\n|-\n|{{plinkp|Adamantite ore}}||[[Adamantite rock|Adamant]]\n|70||95||3\n|-\n|}\n\n{{Varlamore}}\n{{Mines}}"
+        }
+      }
+    }
+  ]
+}

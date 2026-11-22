@@ -1,0 +1,19 @@
+{
+  "pageid": 553599,
+  "ns": 0,
+  "title": "Custodia Pass",
+  "revisions": [
+    {
+      "revid": 14960764,
+      "parentid": 14949994,
+      "timestamp": "2025-08-07T05:05:28Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Custodia Pass\n|image = [[File:Custodia Pass.png|300px]]\n|release = [[23 July]] [[2025]]\n|update = Varlamore: The Final Dawn Out Now\n|members = Yes\n|location = [[Varlamore]]\n|race = [[Custodia Stalker]], [[Ancient Zygomite]]\n|music = [[Over the Mountains]]\n|map = {{Map|1271,3349}}\n|type = dungeon\n|leagueRegion = Varlamore\n}}\n{{Relative location\n|location = Custodia Pass\n|north = Kebos Lowlands\n|east = Auburnvale\n|south = Tempestus\n|west = The Stranglewood\n}}\n'''Custodia Pass''' is a trail in the [[Custodia Mountains]] allowing travel between [[Auburnvale]] and the [[Kebos Lowlands]]. The pass is briefly visited during the [[Shadows of Custodia]] quest.\n\nThe pass contains the entrances to the [[Stalker Den]], a dungeon where [[custodian stalker]]s are found.\n\n==Points of interest==\n*[[Dead tree]]\n*[[Rod Fishing spot (lure, bait)|Rod fishing spots]]\n*Entrances to the [[Stalker Den]]\n\n==Inhabitants==\n*[[Alpaca]] and their [[Alpaca cria|cria]]\n*[[Bear cub]] (level 15)\n*[[Giant bat]] (level 27)\n*[[Grizzly bear]] (level 21)\n*[[Harpy eagle]]\n*[[Lynx]] (level 21)\n*[[Rabbit]] (level 2)\n*[[Stag]] (level 15)\n*[[Viceroy butterfly]]\n*[[Wolf]] (level 64)\n\n==Item spawns==\n*[[Tinderbox]]\n*[[Rope]]\n*[[Fishing rod]]\n\n==Music==\n{{MusicList\n|Over the Mountains|This track unlocks in the Custodia Mountains.\n}}\n\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

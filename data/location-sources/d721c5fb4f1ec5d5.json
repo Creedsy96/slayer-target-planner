@@ -1,0 +1,19 @@
+{
+  "pageid": 43948,
+  "ns": 0,
+  "title": "Trollweiss Dungeon",
+  "revisions": [
+    {
+      "revid": 15210008,
+      "parentid": 15025199,
+      "timestamp": "2026-05-12T21:19:47Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Troll tunnels}}\n{{Infobox Location\n|name = Trollweiss Dungeon\n|image = [[File:Trollweiss Dungeon.png|300px]]\n|release = [[5 January]] [[2005]]\n|update = Troll Romance, Banks and Chat\n|members = Yes\n|floors = 1\n|location = [[Troll Country]]\n|race = [[Troll]]s\n|music = Various\n|map = {{Map|name=Trollweiss Dungeon|2784,10208|mapID=10157}}\n|type = dungeon\n|leagueRegion = Asgarnia\n}}\nThe '''Trollweiss Dungeon''' is a dangerous tunnel filled with [[ice troll]]s. These always appear in groups of four and can hit very high. The entrance to the dungeon is located by the [[Ice gate|Ice Gate]], a few steps north-west of the [[troll child]] and his parents. In the north-west of the dungeon is a small crevasse in a wall. When climbed through, you emerge at the brow of [[Trollweiss Mountain]]. You can sled down (beware of [[Ice wolf|ice wolves]]) to get a [[trollweiss]] flower or go east to [[Brambickle]] the gnome explorer. The dungeon is mostly abandoned.\n{{Map|2822,3744|r=3|mtype=square|align=left|caption=The entrance to the caves on the map.}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 23 May 2024\n|update = Minigame Tweaks, Skilling Adjustments & more!\n|change = The cave was reverted to singles combat.\n}}\n{{Subject changes\n|date = 21 February 2024\n|update = Defender of Varrock\n|change = The cave was changed from singles combat to multi combat.{{CiteTwitter|author=Mod Ash|url=https://x.com/JagexAsh/status/1767530101858549970|date=12 March 2024|quote=[@JagexAsh has the trollweiss dungeon with the ice trolls always been multicombat? Coulda sworn it used to be singles up until a few weeks ago.] I think that changed when Defender of Varrock came out. I'm not familiar with what part of the quest required it, though.)|archiveurl=https://reldo.runescape.wiki/i/27963403|archivedate=7 April 2026}}\n}}\n{{Subject changes footer}}\n\n==References==\n{{Reflist}}\n\n{{Troll Romance}}\n{{Dungeons}}"
+        }
+      }
+    }
+  ]
+}

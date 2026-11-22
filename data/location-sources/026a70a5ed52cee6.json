@@ -1,0 +1,19 @@
+{
+  "pageid": 20636,
+  "ns": 0,
+  "title": "Karamja Volcano",
+  "revisions": [
+    {
+      "revid": 15091267,
+      "parentid": 15064064,
+      "timestamp": "2025-12-21T01:40:40Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc}}\n{{Infobox Location\n|name = Karamja Volcano\n|image = [[File:Karamja Volcano.png]]\n|release = [[11 June]] [[2001]]\n|update = The island of Karamja is open\n|members = No\n|location = [[Karamja]]\n|map = {{Map|name=Karamja Volcano|x=2845|y=3174|height=350|width=300|zoom=3}}\n|type = volcano\n|leagueRegion = Karamja\n}}\n{{Relativelocation\n|location = Karamja Volcano\n|north = Crandor\n|east = Musa Point\n|south = Karamja\n|west = Brimhaven\n}}\nThe '''Karamja Volcano''' is located on the island of [[Karamja]] between [[Brimhaven]] to [[Musa Point]]. An [[rocks (Karamja Volcano)|entrance]] at the top leads to the [[Crandor and Karamja Dungeon]], providing passage to [[Mor Ul Rek]] and [[Crandor]].\n\n==Transportation==\nTo reach the Karamja Volcano, one can use one of the following methods. \n\n* Teleport with an [[amulet of glory]] to the docks north-east in Musa Point, and run west.\n* From [[Port Sarim]], pay the 30-coin fare to [[Captain Tobias]], [[Seaman Lorris]], or [[Seaman Thresnor]] to sail to Musa Point, then run west.\n* Sail to Musa Point using [[Sailing#Shipbuilding|your ship]], or any [[Charter ship|charter ship]], then run west.\n* Sail to Brimhaven using any charter ship, then run south-east.\n* From [[Shilo Village]], pay the 200 coin fare for the [[Shilo Village cart system]] to travel to Brimhaven, then run south-east.\n* Take a [[Fairy rings|fairy ring]] to {{Fairycode|blp}} to  arrive in Mor UI Rek, run north-east to the [[cave exit (Mor Ul Rek)|Cave exit]], then climb the nearby rope to reach the surface.\n\n== Features ==\n* Several low-level monsters, such as [[Imp|imps]], [[Scorpion|scorpions]], [[Snake|snakes]], and [[Monkey|monkeys]] can be found roaming around.\n* There is one [[seaweed]] spawn at the north-east edge of the volcano near a group of tropical trees.\n* Many [[Dead tree|dead trees]] can be found at the top of the volcano.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 5 November 2025\n|update = Sailing Technical Pre-Release\n|change = Karamja Volcano now appears with a label on the World map.\n}}\n{{Subject changes footer}}\n\n{{Terrain}}\n{{Musa Point}}\n{{2013 Christmas event}}\n[[Category:Terrain]]"
+        }
+      }
+    }
+  ]
+}

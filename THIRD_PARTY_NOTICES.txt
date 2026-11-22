@@ -96,3 +96,9 @@ Travel capability definitions and Eclipse burn mechanics are adapted from the
 Old School RuneScape Wiki under the same CC BY-NC-SA 3.0 terms. Public retained
 page revisions are in data/travel-sources/. Source links appear beside travel
 controls/routes; docs/eclipse-travel-options.md records the calculation model.
+
+Location reviews in 4.1.0 retain OSRS Wiki entrance and transport excerpts under
+the same CC BY-NC-SA 3.0 terms. data/location-sources/ contains revisioned captures;
+data/location-reviews.json and docs/reference/location-route-audit.csv attribute
+each location and its page history. Source excerpts remain separate from curated
+route instructions and character-specific entrance/teleport availability.

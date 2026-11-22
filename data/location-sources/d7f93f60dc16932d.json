@@ -1,0 +1,19 @@
+{
+  "pageid": 21650,
+  "ns": 0,
+  "title": "Frozen Waste Plateau",
+  "revisions": [
+    {
+      "revid": 15275973,
+      "parentid": 15270782,
+      "timestamp": "2026-07-26T19:29:15Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Ice Plateau}}\n{{Infobox Location\n|name = Frozen Waste Plateau\n|image = [[File:Frozen Waste Plateau.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness system online\n|aka = Ice Plateau\n|members = Partially\n|location = [[Wilderness]]\n|wilderness = 50\n|teleport = [[Ghorrock Teleport]], [[Ice Plateau Teleport]]\n|map = {{Map|name=Frozen Waste Plateau|x=2964|y=3903|height=400|width=300|zoom=2}}\n|leagueRegion = Wilderness\n}}\n{{Relativelocation\n|location = Frozen Waste Plateau\n|north = Northern Ocean\n|west = Ghorrock\n|south = Chaos Temple (church)\n|east = Wilderness Agility Course\n}}\nThe '''Frozen Waste Plateau''', also known as '''Ice Plateau ''' (or historically [[Ghorrock]]), is located in the north-west corner of the [[Wilderness]]. The area spans both [[free-to-play]] and [[members]] areas. It contains [[ice giant]]s and [[ice warrior]]s in the free-to-play area. In the member's area, [[ice spider]]s can also be found. There are also spawns of [[water rune]]s and [[cosmic rune]]s.\n\nNotably, three [[runite rocks]] can be found in the members' only area of the plateau.\n\n==Transportation==\nThe area can be quickly accessed using the [[Ghorrock Teleport]] from the [[Ancient Magicks]] spellbook (south of the [[Wilderness fence]]) at Level 96 Magic, or the [[Ice Plateau Teleport]] from the [[Lunar spells|Lunar spellbook]] (north of the wilderness fence) at Level 89 Magic. Portals to each of these locations can be built in a [[Portal chamber]] in a [[Player-owned house]].\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Runite ore}}||[[Runite rock|Runite]]\n|85||125||3\n|}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 13 March 2014\n|update = Rejuvenating the Wilderness: More risk, more reward\n|poll = Old School feature poll 15: Rejuvenating the Wilderness\n|change = Three runite rocks were added to the mining area.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n*To the west, a large fortress can be seen, this is the abandoned [[Zaros]]ian fortress known as [[Ghorrock]]. The plateau is often named after it because of the proximity of the fortress.\n<gallery captionalign=\"center\" widths=\"200\">\nGhorrock.png|The inaccessible fortress just west of the plateau.\n</gallery>\n\n{{Wilderness}}\n{{Mines}}\n{{Terrain}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 593879,
+  "ns": 0,
+  "title": "Gloomthorn Trail",
+  "revisions": [
+    {
+      "revid": 15399724,
+      "parentid": 15397528,
+      "timestamp": "2026-11-11T17:51:56Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Gloomthorn Trail\n|image = [[File:Gloomthorn Trail.png|300px]]\n|release = [[23 July]] [[2025]]\n|update = Varlamore: The Final Dawn Out Now\n|members = Yes\n|location = [[Varlamore]]\n|teleport = [[Pendant of Ates]]\n|music = [[Spiritbloom]], [[Spirit of the Forest]]\n|map = {{Map|name=Gloomthorn Trail|height=400|1381,3226|zoom=2}}\n|leagueRegion = Varlamore\n}}\n{{Relative location\n|location = Gloomthorn Trail\n|north = Nemus Retreat\n|east = Mons Gratia\n|south = Tlati Rainforest\n|west = Tempestus\n}}\n'''Gloomthorn Trail''' is a trail connecting the [[Tlati Rainforest]] and [[Nemus Retreat]]. The trail runs between a tributary of [[River Varla]] to the east and the sea surrounding [[Tempestus]] to the west. The landscape is mostly featureless except for a number of [[dead trees]] and an abandoned keep with a [[crate (Gloomthorn Trail)|crate]] that is used for a [[Clue scroll (medium) - Search the crate abandoned in the shadow of a mountain's grace|medium clue step]]. At the north end of the trail, [[Achilka]] has a ferry service that can take the player to [[Tal Teklan]] and [[Kastori]] free of charge.\n\n==Transportation==\n* Using the [[Quetzal Transport System]] (must be built before it can be used) to [[Kastori]] and then running east to use [[Achilka|Achilka's boat service]].\n* [[Pendant of Ates]] teleport to Kastori and run south east to use Achilka's boat service.\n* Pendant of Ates teleport to [[Nemus Retreat]] and run south\n* If you don't have the Kastori Quetzal landing site or the Pendant of Ates: Use the [[Quetzal Transport System]] to [[Quetzacalli Gorge]], follow the [[mountain Guide (Auburn Valley)|mountain guide]] to [[Auburn Valley]], then run south.\n\n==Inhabitants==\n* [[Achilka]]\n* [[Black unicorn]]\n* [[Crow]]\n* [[Giant bat]] (level 27)\n* [[Grizzly bear]]\n* [[Imp]] (level 2)\n* [[Rat]]\n* [[Squirrel]]\n* [[Wolf]] (level 64)\n\n==Treasure Trails==\n[[Clue scroll (medium) - Search the crate abandoned in the shadow of a mountain's grace|Search the crate abandoned in the shadow of a mountain's grace]] - Search the [[Crate (Gloomthorn Trail)|crate]] inside the lone building\n\n==Music==\n{{MusicList\n|Spiritbloom|This track unlocks in the Auburn Valley.\n|Spirit of the Forest|This track unlocks in the Auburn Valley.\n}}\n\n{{Auburn Valley}}\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pageid": 299976,
+  "ns": 0,
+  "title": "Crumbling Tower",
+  "revisions": [
+    {
+      "revid": 15302441,
+      "parentid": 15211894,
+      "timestamp": "2026-08-16T02:14:16Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Crumbling Tower\n|image = [[File:Crumbling Tower.png]]\n|release = [[3 February]] [[2021]]\n|update = The Isle of Souls\n|members = Yes\n|floors = 3\n|location = [[Isle of Souls]]\n|teleport = No\n|music = [[Doorways]], [[Spooky 2]]\n|map = {{Map|name=Crumbling Tower|x=2135|y=2996}}\n|leagueRegion = Misthalin\n}}\n\nThe '''Crumbling Tower''' is a tower located on a small island off the north-west coast of [[Isle of Souls]], which can be reached by using the [[fairy ring]] code {{Fairycode|BJP}} and running westward. Several [[Forgotten Soul]]s can be found on all three of the tower's floors. On the {{FloorNumber|uk=1}}, a [[rope]] spawn can be found, and on the {{FloorNumber|uk=2}}, a [[pestle and mortar]] spawns.\n[[File:Crumbling Tower basement.png|thumb|left|250px|The tower basement.]]\nIn the basement, players can find [[Dark Chest]]s, which can only be opened with a [[dark key]]. Some [[bones]], [[leather gloves]], and a [[bronze pickaxe]] spawn down here as well. A few [[spider]]s also inhabit the basement.\n\nA part of the basement [[Wall (Crumbling Tower)|wall]], directly south of the table, can be inspected, giving a message in the chatbox stating ''Someone has crudely carved a message into the wall: 'The [[Soul Stone]] was here. Where is it now?'''\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 3 February 2021\n|update = The Isle of Souls\n|poll = Old School Content Poll 74: Collection Log & Game Improvements\n|change = The area  is now accessible by players.\n}}\n{{Subject changes\n|date = 9 December 2020\n|update = Christmas 2020\n|change = The area was added to the game, albeit inaccessible.\n}}\n{{Subject changes footer}}\n\n{{Isle of Souls}}\n[[Category:Towers]]"
+        }
+      }
+    }
+  ]
+}

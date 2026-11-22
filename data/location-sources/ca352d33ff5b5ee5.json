@@ -1,0 +1,19 @@
+{
+  "pageid": 415993,
+  "ns": 0,
+  "title": "Lumbridge cow field (north)",
+  "revisions": [
+    {
+      "revid": 15367708,
+      "parentid": 15367691,
+      "timestamp": "2026-10-07T14:05:59Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Lumbridge cow field\n|image = [[File:Lumbridge cow field (north).png]]\n|release = [[4 January]] [[2001]]\n|update = Runescape beta is now online!\n|members = No\n|location = [[Lumbridge]]\n|map = {{Map|name=Lumbridge cow field|zoom=1|mtype=polygon|3156,3349|3153,3346|3153,3344|3152,3343|3152,3339|3153,3338|3153,3335|3154,3334|3154,3331|3153,3330|3153,3327|3152,3326|3152,3323|3153,3322|3153,3319|3154,3318|3154,3316|3156,3314|3161,3314|3165,3318|3169,3318|3171,3316|3178,3316|3180,3314|3185,3314|3188,3310|3190,3310|3191,3308|3195,3308|3196,3307|3199,3307|3200,3308|3202,3308|3203,3309|3208,3309|3209,3308|3213,3308|3213,3313|3213,3314|3210,3321|3206,3323|3206,3325|3204,3328|3204,3330|3200,3337|3197,3337|3192,3340|3189,3341|3186,3343|3182,3346|3177,3346|3174,3344|3168,3344|3164,3346|3162,3348|3160,3348}}\n|leagueRegion = Misthalin\n}}\n{{Relativelocation\n|location = Lumbridge cow field (north)\n|north = Champions' Guild\n|west = Draynor Manor\n|south = Lumbridge\n|east = Al Kharid mine\n}}\nThe northern '''Lumbridge cow field''' is a field containing [[cows]], [[Cow calf|cow calves]], a [[dairy cow]], and attackable [[farmers]] located in the north of [[Lumbridge]]. This is a good place to train [[combat skills]] at low levels and can be preferred over the [[Lumbridge cow field|eastern cow field]] or [[Fred's farm]] due to more players training in those fields in [[free-to-play]]. This place is also a good place for early [[Prayer]] training due to the bones dropped by the cows.\n\n==Transportation==\nThe easiest mode of transportation for a new player is to teleport to Lumbridge using either the [[Lumbridge Home Teleport]] or [[Lumbridge Teleport]] spell, and walk north from there.\n\n{{Farms}}"
+        }
+      }
+    }
+  ]
+}

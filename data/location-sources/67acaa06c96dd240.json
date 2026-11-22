@@ -1,0 +1,19 @@
+{
+  "pageid": 28980,
+  "ns": 0,
+  "title": "Graveyard of Shadows",
+  "revisions": [
+    {
+      "revid": 15356294,
+      "parentid": 15233557,
+      "timestamp": "2026-09-26T07:54:53Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs|rsc=Wilderness graveyard}}\n{{Confuse|Forgotten Cemetery}}\n{{Infobox Location\n|name = Graveyard of Shadows\n|image = [[File:Graveyard of Shadows.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness system online\n|members = No\n|location = [[Wilderness]]\n|wilderness = 18-21\n|teleport = [[Carrallanger Teleport]]\n|music = {{*}} [[Map:Wilderness music|Wilderness tracks]] <br> {{*}} [[Dead Can Dance]] (Classic mode)\n|map = {{Map|name=Graveyard of Shadows|x=3164|y=3672|height=300|width=300|zoom=2}}\n|leagueRegion = Wilderness\n}}\n{{Relativelocation\n|location = Graveyard of Shadows\n|north = Ruins (east)\n|west = Dark Warriors' Fortress\n|south = Ferox Enclave\n|east = Chaos Temple (Wilderness)\n}}\nThe '''Graveyard of Shadows,''' located at levels 18–21 in the [[Wilderness]], occupies a section of what was once the [[Zarosian Empire|Zarosian fortress]] of [[Carrallanger]]. This area is a large, seemingly forgotten graveyard filled with [[dead tree]]s, wandering [[zombie]]s, and derelict gravestones. Within the graveyard lies the [[Skeletal Tomb]], the lair of [[Calvar'ion]].\n\n==Transportation==\n* [[Carrallanger Teleport]], part of [[Ancient Magicks]], goes directly to the graveyard.\n* Run north from [[Ferox Enclave]].\n\n==Item spawns==\nThe graveyard features many item spawns. There are 5 [[plank]]s, 4 [[tile]]s, a [[crossbow]], an [[iron dagger]], a [[steel dagger]], and an [[iron med helm]] spawn.\n\n==Treasure Trails==\nDigging directly under the [[crossbow]] respawn in level 18 Wilderness is the solution to a hard [[cryptic clue]]: ''[[Clue scroll (hard) - I lie lonely and forgotten in mid wilderness|I lie lonely and forgotten in mid wilderness, where the dead rise from their beds. Feel free to quarrel and wind me up and dig while you shoot their heads.]]''\n\n\n{{Wilderness}}\n{{Burial sites}}"
+        }
+      }
+    }
+  ]
+}

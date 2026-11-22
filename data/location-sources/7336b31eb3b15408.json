@@ -1,0 +1,19 @@
+{
+  "pageid": 102872,
+  "ns": 0,
+  "title": "Mushroom Forest",
+  "revisions": [
+    {
+      "revid": 15367251,
+      "parentid": 15136076,
+      "timestamp": "2026-10-06T23:06:36Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Mushroom Forest\n|image = [[File:Mushroom Forest.png|300px]]\n|release = [[7 September]] [[2017]]\n|update = Fossil Island\n|members = Yes\n|location = [[Fossil Island]]\n|teleport = [[Magic Mushtree]]\n|music = [[Preservation]]\n|map = {{Map|name=Mushroom Forest|x=3688|y=3857|height=350|width=300|zoom=2}}\n|leagueRegion = Misthalin\n}}\n'''Mushroom Forest''' is a location on [[Fossil Island]]. It is home to a very large variety of fungi, particularly mushrooms.\n\nThis area is notorious for causing frame rate drops for players with low-performance devices, due to the large amount of mushrooms on-screen at any given time. Players can consider zooming in their camera to reduce the number of visible mushrooms.\n\n==Transportation==\n*From the [[Museum Camp]], run north-west to reach the Mushroom Forest.\n*If players have unlocked the [[magic mushtree]] in the Forest, they can teleport to it via other magic mushtrees. Using a [[digsite pendant]] to teleport to the [[House on the Hill]] and using the magic mushtree there is a quick way to reach the Forest.\n*If players have used the rowboat in the north-east corner of the Forest, they can row the boat from the Museum Camp to get there.\n\n==Features==\nScattered throughout the forest are level 109 [[Ancient Zygomite]]s (in mushroom form). These can be killed as part of a [[Zygomite]] [[slayer task]].\n\n===Hardwood tree farming===\nWithin the Forest's south-east corner, there are three [[Special patches]] in which hardwood trees can be grown. Players can pay the [[Squirrel (Fossil Island)|squirrels]] to have them look after their hardwood trees while they grow.\n\n===Prayer training===\nWithin the Mushroom Forest is a [[mycelium pool]] full of fungal life. Adding [[pyrophosphate]] and [[calcite]] (both of which are found around the island) will fuel a chemical process which will recalcify [[Fossil Island fossil|fossils]] into [[enriched bone]]s which can be used to grant [[Prayer]] experience. The fossils which are used are non-tradeable, as are the resultant bones received. Players can speak to [[Irene]] to learn more.\n\n===Tracking and Herblore===\nThroughout the forest, [[herbiboar]]s can be tracked similar to [[kebbit]]s. To track them, players will require level 80 [[Hunter]] and 31 [[Herblore]] to harvest their herbs.\n\n[[Tracking]] the creatures involves inspecting rocks, seaweed, muddy patches, and mushrooms around the area to find tracks, each inspection earning 50 Hunter experience, and occasionally giving [[numulite]] and/or unidentified fossils. By following the tracks more objects can be inspected to eventually reveal a tunnel containing a herbiboar. A [[ring of pursuit]] '''cannot''' be used to track herbiboars.\n\nOnce the player attacks the tunnel, Hunter experience is earned and herbs can be harvested from the creature. When harvesting herbs, the herbs received are appropriate for the player's Herblore level.\n\n===Wyvern Cave===\nFor players with a slayer task of Fossil Island [[Wyverns]], a second [[Wyvern Cave]] can be found in the Mushroom Forest, beneath a trapdoor. This cave is task only, and is guarded by [[Weve]]. [[Ammonite Crab]]s can be found inside, and can be killed off-task.\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 23 June 2021\n|update = New Client Features: Milestone 1\n|change = Models within Mushroom Meadows have been optimised to improve performance.\n}}\n{{Subject changes footer}}\n\n{{Fossil Island}}"
+        }
+      }
+    }
+  ]
+}

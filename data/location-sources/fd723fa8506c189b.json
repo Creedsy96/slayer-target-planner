@@ -1,0 +1,19 @@
+{
+  "pageid": 28983,
+  "ns": 0,
+  "title": "The Forgotten Cemetery",
+  "revisions": [
+    {
+      "revid": 15383465,
+      "parentid": 15266153,
+      "timestamp": "2026-10-27T01:06:47Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Confuse|Graveyard of Shadows}}\n{{Infobox Location\n|name = The Forgotten Cemetery\n|image = [[File:The Forgotten Cemetery.png|300px]]\n|release = [[29 March]] [[2004]]\n|update = RS2 Launched!\n|members = No\n|location = [[Wilderness]]\n|race = [[Ankou]], [[ghost]], [[skeleton]], [[zombie]]\n|wilderness = 30\n|teleport = [[Cemetery Teleport]]\n|map = {{Map|name=The Forgotten Cemetery|x=2976|y=3750|height=250|zoom=2}}\n|leagueRegion = Wilderness\n}}\n{{Relativelocation\n|location = Forgotten Cemetery\n|north = King Black Dragon Lair\n|west = God Wars Dungeon\n|south = Ruins (west)\n|east = Wilderness God Wars Dungeon\n}}\n'''The Forgotten Cemetery''' is a minor area in the [[Wilderness]] at around level 30. It contains [[ankou]], [[ghosts]], [[skeletons]], [[zombies]], and a [[man]]. The cemetery is visited by those wishing to complete the [[Wilderness Diary]], as a medium task requires the player to kill an ankou in the Wilderness and is the one of the two locations where they can be found.\n\nThe [[Agility shortcut]] (level 60) just north-west of the cemetery is a one-way shortcut from the [[God Wars Dungeon]] into the Wilderness.\n\n[[Ian's Wilderness Cape Shop]], which sells the “X” pattern [[team cape]]s, can be found inside the cemetery itself.\n\nThe cemetery is often visited as it contains a location for a coordinate [[Treasure Trails/Guide/Coordinates/Hard|hard clue]].\n\n==Transportation==\n*Use [[Cemetery Teleport]] (spell or portal in POH) or the [[Cemetery teleport (tablet)|Cemetery teleport tablet]], which will teleport you directly to the cemetery.\n*Use [[Dareeyak Teleport]] or [[Dareeyak teleport]] tablet, which will teleport you to ruins, south of the cemetery.\n*\n*Use [[burning amulet]] to teleport to [[Lava Maze]], then run south-west. This WILL take you to level 41 Wilderness.\n*If you have access to choose a [[Wilderness Obelisk]], you can select the level 27, teleport, and run west.\n\n==Trivia==\n*Interestingly enough, there is a single [[man]] who wanders the cemetery. His dialogue is the same as other men found throughout [[Gielinor]] and he doesn't show any signs that he is in an extremely dangerous area. His drops and [[pickpocketing]] loot are also the same as other men.\n\n{{Wilderness}}\n{{DEFAULTSORT:Forgotten Cemetery, The}}\n{{Burial sites}}"
+        }
+      }
+    }
+  ]
+}

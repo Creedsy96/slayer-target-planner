@@ -1,0 +1,19 @@
+{
+  "pageid": 459023,
+  "ns": 0,
+  "title": "Fortis Cothon",
+  "revisions": [
+    {
+      "revid": 15375325,
+      "parentid": 15211964,
+      "timestamp": "2026-10-18T21:16:26Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Fortis Cothon\n|image = [[File:Fortis Cothon.png|300px]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|location = [[Civitas illa Fortis]]\n|map = {{Map|name=Fortis Cothon|height=240|1760,3158|zoom=1}}\n|leagueRegion = Varlamore\n}}\nThe '''Fortis Cothon''' is a large harbour on the north side of [[Civitas illa Fortis]]. Players who sail to Fortis via [[charter ship]] will arrive here.\n\nDuring the [[Twilight's Promise]] quest, the player must travel to the Fortis Cothon to speak with Nel, a Knight of Varlamore.  \n\nIf you have completed the quest [[Children of the Sun]] you can travel there by talking with [[Regulus Cento]]. He can be found outside Varrock's east gate.\n\nPlayers may dock their own boats here at level 38 Sailing.\n\n==Trivia==\n* {{Wp|Cothon}}s are Phoenician ports that were used by states such as {{Wp|Ancient Carthage|Carthage}}. This can generally be attributed to the fact that Varlamore was in part inspired by Roman aesthetics.\n\n{{Civitas illa Fortis}}\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

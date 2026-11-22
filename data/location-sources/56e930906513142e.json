@@ -1,0 +1,19 @@
+{
+  "pageid": 69381,
+  "ns": 0,
+  "title": "Lovakite mine",
+  "revisions": [
+    {
+      "revid": 15057693,
+      "parentid": 15056478,
+      "timestamp": "2025-11-23T00:15:48Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Lovakite mine\n|image = [[File:Lovakite mine.png|300px]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|location = [[Lovakengj]]\n|map = {{Map|name=Lovakite mine|x=1433|y=3830|width=300|height=300|zoom=2}}\n|type = mine\n|leagueRegion = Kourend\n}}\nThe '''lovakite mine''' is located in the north-western section of [[Lovakengj]] in [[Great Kourend]]. [[Lovakite rocks]] are found here, which requires level 65 [[Mining]] and grants 60 Mining experience per [[lovakite ore]] mined. [[Coal rocks]] can be found here as well.\n\nA bank is available within the mine, making this mine one of the best places to mine [[coal]], as it is very close to a bank.\n\nPlayers may consider bringing [[nature runes]] and a [[staff of fire]] (or any other staff that provides unlimited [[fire runes]]) to cast [[Superheat Item]] on the ores to get the [[Lovakite bar|bars]], as there are plenty of coal within the mine as well. This may save players trouble of having to walk to the special furnace, which is far from the bank.\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||45\n|-\n|{{plinkp|Lovakite ore}}||[[Lovakite rock|Lovakite]]\n|65||60||81\n|-\n|}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 10 January 2024\n|update = Children of the Sun\n|poll = Varlamore Activities & Kourend Changes\n|change = As [[Kourend Favour]] has been removed, mining rocks within the mine no longer requires it.\n}}\n{{Subject changes footer}}\n\n{{Lovakengj}}\n{{Mines}}\n{{Great Kourend}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-22.1",
+  "version": "2026-11-22.2",
   "rules": {
     "deviant-spectre": {
       "name": "Deviant spectre",
@@ -515,7 +515,7 @@
     },
     "mature-custodian-stalker": {
       "name": "Mature custodian stalker",
-      "mode": "confirmation",
+      "mode": "derived",
       "requirements": [
         {
           "kind": "skill",
@@ -538,7 +538,7 @@
       ],
       "proofAreas": [],
       "proof": [],
-      "note": "The Stalker Den encounter/route has not been fully reviewed. Confirm the location and repeatable method.",
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
       "source": {
         "title": "Mature custodian stalker",
         "url": "https://oldschool.runescape.wiki/w/Mature_custodian_stalker",
@@ -547,7 +547,7 @@
     },
     "elder-custodian-stalker": {
       "name": "Elder custodian stalker",
-      "mode": "confirmation",
+      "mode": "derived",
       "requirements": [
         {
           "kind": "skill",
@@ -570,7 +570,7 @@
       ],
       "proofAreas": [],
       "proof": [],
-      "note": "The Stalker Den encounter/route has not been fully reviewed. Confirm the location and repeatable method.",
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
       "source": {
         "title": "Elder custodian stalker",
         "url": "https://oldschool.runescape.wiki/w/Elder_custodian_stalker",
@@ -1274,7 +1274,7 @@
     },
     "ancient-zygomite": {
       "name": "Ancient Zygomite",
-      "mode": "confirmation",
+      "mode": "derived",
       "requirements": [
         {
           "kind": "skill",
@@ -1298,15 +1298,8 @@
       "proofAreas": [
         "Fossil Island"
       ],
-      "proof": [
-        {
-          "kind": "quest",
-          "key": "Bone Voyage",
-          "min": 2,
-          "label": "Bone Voyage"
-        }
-      ],
-      "note": "Completed Bone Voyage proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
       "source": {
         "title": "Ancient Zygomite",
         "url": "https://oldschool.runescape.wiki/w/Ancient_Zygomite",
@@ -3397,27 +3390,13 @@
         },
         {
           "name": "Tonali Cavern - Moon Chamber",
-          "area": "Neypotzli",
-          "requirements": [
-            {
-              "kind": "skill",
-              "key": "slayer",
-              "min": 48,
-              "label": "Slayer"
-            }
-          ]
+          "area": "Tonali Cavern",
+          "requirements": []
         },
         {
           "name": "Tonali Cavern - Southern Chamber (1)",
-          "area": "Neypotzli",
-          "requirements": [
-            {
-              "kind": "skill",
-              "key": "slayer",
-              "min": 48,
-              "label": "Slayer"
-            }
-          ]
+          "area": "Tonali Cavern",
+          "requirements": []
         }
       ],
       "proofAreas": [],

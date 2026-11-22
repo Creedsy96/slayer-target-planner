@@ -1,0 +1,19 @@
+{
+  "pageid": 590426,
+  "ns": 0,
+  "title": "Laguna Aurorae",
+  "revisions": [
+    {
+      "revid": 15398536,
+      "parentid": 15396920,
+      "timestamp": "2026-11-11T00:14:50Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Laguna Aurorae\n|image = [[File:Laguna Aurorae.png|300px]]\n|release = [[19 November]] [[2025]]\n|update = Sailing is OUT TODAY!\n|members = Yes\n|location = South-west of [[Aldarin]]\n|requirement = {{SCP|Sailing|58}}\n|music = [[Waterlogged]]\n|map = {{Map|x=1195|y=2772|zoom=1|mapID=-1}}\n|type = Island\n|leagueRegion = No\n}}\n'''Laguna Aurorae''' is an island located in the [[Sunset Ocean]], requiring level 58 [[Sailing]] to moor at. The island is notable for containing the [[Kurask Lair]]. Laguna Aurorae is inhabited by multiple [[moss giant]]s, [[leech]]es, [[giant mosquito]]es, [[Pirate (Thieving)|pirates]], and [[giant toad]]s, and is currently the only location where [[mangrove]] trees are found. It contains one [[clue scroll (hard)|hard]]-tier [[Treasure Trails]] clue step location.\n\n==Transportation==\n* [[Mooring point]] (requires {{SCP|Sailing|58}})\n** The mooring point is surrounded by aggressive [[pygmy kraken]]s, so it's safest to approach the mooring point fast and dock quickly.\n** The nearest port with a [[shipwright]] to retrieve a boat and sail over is located on [[Aldarin]].\n* [[Spirit tree]] (requires having moored at the island, but does not require talking to the tree first)\n\n==Utilities and resources==\n* [[Loom (amenity)|Loom]] (needs to be built first)\n* [[Cooking pot (amenity)|Cooking pot]] (needs to be built first)\n* [[Water pump (amenity)|Water pump]] (needs to be built first)\n* Several [[fishing spots]] ([[fishing spot (lantern)|lantern harpooning]] on the southern shore, [[Fishing spot (big net, harpoon)|harpoon/big net]] next to spirit tree)\n* A [[yew tree]]\n* A [[Chest (Laguna Aurorae)|locked chest]] (unlocked with the [[serrated key]] to obtain the [[crystal glider's outfit]])\n* A [[Small key (Laguna Aurorae)|small key]] can be dug up 4 tiles east of the western house door.\n* 8 [[kurask]] found in the [[Kurask Lair]], next to the spirit tree\n\n==Building the amenities==\nPlayers will need the following items to build all of the [[Island amenity|amenities]]:\n\n{{Checklist|\n*1 [[hammer]]  '''(required for all facilities)'''\n*1 [[saw]]  '''(required for all facilities)'''\n*1 [[tinderbox]]\n*1 [[bucket]]\n*1 [[rope]]\n*2 [[logs]]\n*5 [[iron bar]]s\n*2 [[oak plank]]s}}\n{| class=\"wikitable lighttable\"\n!Utility\n!Level\n!Materials\n!Experience\n|-\n|[[Water pump space|Water pump]]\n|{{SCP|Construction|17}}\n|[[Bucket]], 2 [[iron bar]]s\n|21\n|-\n|[[Cooking pot space|Cooking pot]]\n|{{SCP|Construction|19}}\n|[[Tinderbox]], 2 [[logs]], 2 [[iron bar]]s\n|23\n|-\n|[[Loom space|Loom]]\n|{{SCP|Construction|31}}\n|[[Rope]], 2 [[oak plank]]s, 1 [[iron bar]]\n|134\n|}\n\n== Treasure Trails ==\n[[Clue scroll (hard)|Hard]] tier - [[Treasure Trails/Guide/Coordinates|Coordinate]]: [[Treasure Trails/Guide/Coordinates#312|'''12 degrees 05 minutes south,''' '''38 degrees 58 minutes west''']]\n\n== Trivia ==\n* The island's name is Latin for \"lake of the dawn\".\n* Although it was found on the map in the [[June 2025 Sailing Beta|Sailing beta]], the island was not accessible by players until the skill's full release.\n\n{{Island amenities}}\n{{Ocean locations}}"
+        }
+      }
+    }
+  ]
+}

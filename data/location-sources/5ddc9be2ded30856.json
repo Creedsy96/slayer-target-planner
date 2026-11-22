@@ -1,0 +1,19 @@
+{
+  "pageid": 9404,
+  "ns": 0,
+  "title": "Jiggig",
+  "revisions": [
+    {
+      "revid": 15233574,
+      "parentid": 15030184,
+      "timestamp": "2026-06-14T17:51:00Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox Location\n|name = Jiggig\n|image = [[File:Jiggig.png]]\n|release = [[17 May]] [[2005]]\n|update = Zogre Flesh Eaters\n|aka = Ogre burial grounds\n|members = Yes\n|location = [[Feldip Hills]]\n|race = [[Ogre]]s, [[Zogre]]s and [[Skogre]]s\n|music = [[Zogre Dance]]\n|map = {{Map|name=Jiggig|x=2465|y=3046|zoom=2}}\n|type = dungeon\n|leagueRegion = Kandarin\n}}\n\n{{Relativelocation\n|location = Jiggig\n|north = Castle Wars\n|east = Gu'Tanoth\n|south = Feldip Hills\n|west = Chompy Marsh\n}}\n'''Jiggig''' is a former [[ogre (race)|ogre]] ritual site, located south of [[Castle Wars]]. Its primary known uses were to house the corpses of ogre ancestors and to serve as a site for ceremonial dancing. Due to the suspicious activities of a renegade wizard leading up to the events shown in the [[Zogre Flesh Eaters]] quest, some of the ogre corpses have been raised as undead [[zogre]]s and [[skogre]]s. Ogre guards have installed barricades around Jiggig to stop these undead ogres from escaping. The [[Jiggig Dungeon|dungeon]] inside can only be entered during and after the [[Zogre Flesh Eaters]] quest.\n\nUndead ogres may [[disease]] a player. This can be countered with [[Relicym's balm]]. They are also very resistant to normal [[weapons]], but [[Brutal arrows]] work on them very well.\n\nThere are many [[ogre coffin]]s scattered about Jiggig. They can be opened either with an [[ogre coffin key]], which is a drop from zogres and skogres, or by picking the locks through the [[Thieving]] skill.\n\n==Transportation==\n* [[Ring of dueling]] teleport to [[Castle Wars]] then run south to Jiggig.\n* Using [[Fairy ring]] code {{fairycode|BKP}} and running east.\n\n==Inhabitants==\nThe entrance to Jiggig is guarded by several Ogres. [[Uglug Nar]] is a shaman who will [[Uglug's Stuffsies|sell]] the player supplies useful for fighting in Jiggig, although many of his items are not in stock by default. [[Grish]] is another shaman who starts the Zogre Flesh Eaters quest. [[Pilg]] and [[Grug]] are wounded ogres who have been injured while fending off the undead ogres. There are also two uninjured [[ogre guard]]s. The first guards the barricade which blocks the way into Jiggig itself, and will let the player in during the Zogre Flesh Eaters quest. The second guards the only three ogre coffins that are outside the barricade, and will throw the player inside the Jiggig dungeon if they fail to steal from the coffins.\n\n==Trivia==\n* Jiggig is named Jiggig because the ogres jig at Jiggig.{{CiteNPC|npc=Grish|quote=It's da place where da Jiggig is done...we's jig at Jiggig...}}\n\n==References==\n{{Reflist}}\n\n{{Zogre Flesh Eaters}}\n{{Dungeons}}\n[[Category:Quest locations]]\n{{Burial Sites}}"
+        }
+      }
+    }
+  ]
+}

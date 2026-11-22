@@ -1,0 +1,19 @@
+{
+  "pageid": 459649,
+  "ns": 0,
+  "title": "Stonecutter Outpost",
+  "revisions": [
+    {
+      "revid": 15315101,
+      "parentid": 15235144,
+      "timestamp": "2026-08-21T04:11:25Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox Location\n|name = Stonecutter Outpost\n|image = [[File:Stonecutter Outpost.png|300px]]\n|release = [[20 March]] [[2024]]\n|update = Varlamore: Part One\n|members = Yes\n|location = [[Avium Savannah]]\n|map = {{Map|name=Stonecutter Outpost|x=1740|y=2963}}\n|type = mine\n|leagueRegion = Varlamore\n}}\nThe '''Stonecutter Outpost''' is a mining site located at the eastern coast of the [[Avium Savannah]], just south-east of the [[Locus Oasis]] in the continent of [[Varlamore]]. [[Metla]], a dwarven stonemason, sells high-level Construction materials in [[Stonecutter Supplies|her store]], similar to the [[Keldagrim Stonemason]]. [[Avinia]] can be seen wandering around the mining site.\n\nThis [[List of mines|mine]] is one of many where three iron rocks can be mined without moving, thus ideal for [[Iron rocks#Power-mining Locations|power-mining]].\n\nSouth of the outpost is a [[Cave Entrance (Stonecutter Outpost)|cave entrance]], where players can attempt to enter. However, the cave is currently inaccessible due to a large amount of rocks blocking the way.\n\nThere is a [[Rowboat (amenity)|rowboat]] east of the outpost, which can be unlocked by building the utility at the destination, [[Vatrachos Island]], with 10 [[swamp paste]] and 8 [[Camphor plank|camphor planks]]. This requires 46 [[Sailing]], 50 [[Construction]], and completion of the quest [[Children of the Sun]].\n\n==Rocks==\n{| class=\"wikitable sortable align-center-1 align-left-2\" style=\"text-align:right;\"\n! rowspan=2 colspan=2 | Rock\n! colspan=2 | {{SCP|Mining}} [[Mining]]\n! rowspan=2 | Quantity\n|-\n!Level\n!Exp\n|-\n|{{plinkp|Clay}}||[[Clay rock|Clay]]\n|1||5||5\n|-\n|{{plinkp|Iron ore}}||[[Iron rock|Iron]]\n|15||35||6\n|-\n|{{plinkp|Silver ore}}||[[Silver rock|Silver]]\n|20||40||4\n|-\n|{{plinkp|Coal}}||[[Coal rock|Coal]]\n|30||50||10{{Refn|name=LongWay|group=a|One is inaccessible}}\n|-\n|{{plinkp|Gold ore}}||[[Gold rock|Gold]]\n|40||65||3\n|-\n|{{plinkp|Mithril ore}}||[[Mithril rock|Mithril]]\n|55||80||4\n|-\n|}\n{{reflist|group=a}}\n\n{{Mines}}\n{{Varlamore}}"
+        }
+      }
+    }
+  ]
+}

@@ -46,8 +46,9 @@ export function resolveCreatureAccess(key:string,p:Profile,area:AreaLookup,quest
  if(rule.mode==='confirmation'&&base!==0&&route!==0){
   const proven=rule.proof.length>0&&all(rule.proof.map(r=>requirement(r,p,area,quest)))===1&&(!location||!rule.proofAreas.length||matches.some(l=>rule.proofAreas.includes(l.area)));
   const manual=p.access[key];
-  if(proven){value=base;origin='quest';}
-  else{value=manual===0?0:manual===1?base:null;origin=manual==null?'unknown':'manual';}
+  const confirmed=all([base,matches.length?route:1]);
+  if(proven){value=confirmed;origin='quest';}
+  else{value=manual===0?0:manual===1?confirmed:null;origin=manual==null?'unknown':'manual';}
  }
  if(p.restrictBasicAccess&&p.access[key]===0){value=0;origin='manual';missing.push('Disabled by this character’s manual creature restriction.');}
  const reason=label+': '+(value===1?'recorded requirements satisfied. ':missing.length?missing.join('; ')+'. ':value===0?'completion method marked unavailable. ':'completion method needs confirmation. ')+rule.note;

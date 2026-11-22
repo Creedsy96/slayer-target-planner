@@ -1,0 +1,19 @@
+{
+  "pageid": 18869,
+  "ns": 0,
+  "title": "Tenzing",
+  "revisions": [
+    {
+      "revid": 15318801,
+      "parentid": 15229195,
+      "timestamp": "2026-08-25T01:45:33Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs}}\n{{Infobox NPC\n|name = Tenzing\n|image = [[File:Tenzing.png|140px]]\n|release = [[9 August]] [[2004]]\n|update = Death Plateau Quest\n|members = Yes\n|race = [[Human]]\n|quest = [[Death Plateau]] [[Troll Romance]]\n|location = [[Death Plateau (location)|Death Plateau]]\n|shop = Yes\n|gender = Male\n|options = Talk-to\n|examine = An experienced sherpa.\n|map = {{Map|name=Tenzing|x=2821|y=3556|plane=0|r=4|mtype=square|bucket=yes}}\n|id = 4094\n|leagueRegion = Asgarnia\n}}\n[[File:Tenzing chathead.png|left]]\n'''Tenzing''' is a {{wp|Sherpa people|sherpa}} living in the house just west of [[Burthorpe]]. The player needs to go through his house to take the secret path past [[Death Plateau (location)|Death Plateau]] on the way to [[Trollheim]].\n\nHe is involved in the [[Death Plateau]] and [[Troll Romance]] quests. He sells [[climbing boots]] for 12 coins each.\n\nTo get to him, follow the path north of the [[Warriors' Guild]] then go west once there's a fork in the path. Continue up to reach the house. Open the gate, knock on the door and talk to him (you must have completed Death Plateau to equip these boots).\n\nIf you try to open the door before learning of the secret path, he will shoo the player away saying \"No milk today! Thank you!\"\n\n==Stock==\n{{StoreTableHead|hidebuy=y|hidecaption=y|hidestock=y|hiderestock=y}}\n{{StoreLine|name=Climbing boots|sell=12|buy=N/A|stock=inf}}\n{{StoreTableBottom}}\n\n==Dialogue==\n{{Hastranscript|NPC}}\n\n==Trivia==\n*In the original version of [[Death Plateau]] featured in the ''RuneScape 2'' beta files, Tenzing was known as [[Sherpa (RuneScape 2 Beta)|Sherpa]].\n*Tenzing has a pet goat named [[Billy]].\n*{{wp|Tenzing Norgay}} was a Sherpa and guide to {{wp|Sir Edmund Hillary}} who together became the first men to summit Mount Everest on 29 May 1953.\n\n{{Troll Romance}}\n{{Death Plateau}}\n{{Troll Stronghold}}"
+        }
+      }
+    }
+  ]
+}

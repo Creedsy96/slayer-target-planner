@@ -1,5 +1,30 @@
 # Verification
 
+## 4.1.0 release — 22 November 2026
+
+- Production build and TypeScript checks: passed.
+- Complete suite: 552 tests passed, none failed or skipped. This includes
+  2,062 rendered creature-form/location combinations, all 375 canonical location
+  reviews, reproducible retained-source generation, alias handling, hard quest
+  and stat gates, guild exteriors, alternate entrances, manual restrictions,
+  existing Maxed characters, rendered source notes and correction links.
+- Regression coverage verifies that source-excerpt data contributes zero bytes
+  to the production worker, while compact entrance rules remain included.
+- Stalker Den, Tonali Cavern, Shaman Caves, Wilderness GWD, Scorpia and Ferox
+  route/access corrections are described in the feature record. The existing
+  creature audit now has 103 derived entries and 64 special method confirmations.
+- Character storage and backup schema are unchanged. Known facts and deliberate
+  overrides are retained; Maxed assumes new ordinary routes when no choice exists.
+  Changed rule fingerprints invalidate earlier saved calculation results once.
+- Cached primary sources were reused; missing references were fetched through
+  spaced, sequential MediaWiki API batches. Builds and selections make no requests.
+- Source inspection and automated rendering do not establish interactive UI or
+  in-game route acceptance. Temporary boosts, supplies, untracked destination
+  steps and special encounters retain the qualifications in the source notes.
+
+Packaging, publication and Desktop replacement results are recorded after those
+operations finish. [Scope and maintenance](docs/features/location-route-reviews.md).
+
 ## 4.0.2 release — 22 November 2026
 
 - Production build and TypeScript checks: passed.

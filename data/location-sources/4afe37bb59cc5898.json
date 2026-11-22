@@ -1,0 +1,19 @@
+{
+  "pageid": 15367,
+  "ns": 0,
+  "title": "Bone Yard",
+  "revisions": [
+    {
+      "revid": 15285136,
+      "parentid": 15272914,
+      "timestamp": "2026-08-01T14:53:18Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{External|rs=Boneyard|rsc}}\n{{Infobox Location\n|name = Bone Yard\n|image = [[File:Bone Yard.png|300px]]\n|release = [[13 August]] [[2001]]\n|update = Wilderness_system_online\n|members = No\n|location = [[Wilderness]]\n|wilderness = 32\n|map = {{Map|name=Bone Yard|x=3236|y=3746|height=300|width=300|zoom=2}}\n|leagueRegion = Wilderness\n}}\n{{Relativelocation\n|location = Bone Yard\n|north = Lava Dragon Isle\n|west = Ruins (east)\n|south = Chaos Temple (Wilderness)\n|east = Unknown\n}}\nThe '''Bone Yard''' is located in level 32 [[Wilderness]], and is populated by aggressive level 25 [[Skeleton|skeletons]]. It is notable for the large amounts of [[bones]] and [[big bones]] that can be found there. Due to the fast respawn rate of the bones there, the Bone Yard is an effective way for [[free-to-play]] players to train [[Prayer]], by picking up and burying the bones and big bones as they spawn.\n\nTo the south-east of the Bone Yard is the [[Bone Yard Hunter area]], which contains [[black salamander (Hunter)|black salamanders]] which can be caught with [[Hunter]].\n\n==Transportation==\n* [[Games necklace]] to the [[Corporeal Beast]], exit the lair and run north-east.\n* [[Carrallanger Teleport]] to the [[Graveyard of Shadows]] and run north-east.\n* [[Ring of dueling]] to [[Ferox Enclave]] and run north-east.\n\n==Monsters==\n{{LocationMonsterTableHead}}\n{{LocationMonsterTableLine|name=Skeleton#Lvl 25|displayname=Skeleton|image=Skeleton (level 25, 1).png|levels=25|spawns=14}}\n{{LocationMonsterTableBottom}}\n\n==Prayer training==\nPlayers intending to train Prayer at the Bone Yard are recommended to only bring items they are willing to lose, due to its dangerous location and inhabitants. [[Armour]] and [[food]] can help to mitigate the damage taken from the skeletons until they lose their [[aggressiveness]] after 10 minutes, however it may be beneficial to discard them after this due to their added [[weight]] increasing the player's [[Energy|run energy]] drain rate. In total, there are six big bones spawns and 34 bones spawns at the Bone Yard.\n\nAt maximum efficiency, a player can get 9,300 Prayer experience per hour training at the Bone Yard. By doing trips to the [[Chaos altar (Prayer)|Chaos altar]] in the [[Chaos Temple (church)|Chaos Temple]] to the west with big bones, members can increase this to around 18,000 Prayer experience per hour.\n\n===Spawns===\nBesides the bones and big bones, the following items also spawn at Bone Yard:\n*[[Iron scimitar]]\n*[[Skull (item)|Skull]] (3x)\n*[[Mind rune]] (6x)\n*[[Crossbow]]\n\n==Money making==\n{{Mmgsection|Collecting big bones from the Bone Yard}}\n\n{{Wilderness}}"
+        }
+      }
+    }
+  ]
+}
