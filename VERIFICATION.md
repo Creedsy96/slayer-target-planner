@@ -16,9 +16,18 @@
   layout introduced in 4.0.0. Release packaging verifies corresponding source,
   native/browser asset parity, all file hashes, ZIP CRC and the published digest.
 
-Native production-upgrade acceptance is checked after publishing the matching ZIP;
-its outcome is reported separately from synthetic helper tests. No production
-character database is replaced during the Desktop update.
+Native production acceptance passed after publication: the bundled 4.0.0 Windows
+helper installed the exact 4.0.1 ZIP, launched the new EXE and received its actual
+4.0.1 window-ready acknowledgement. All 1,474 installed file checksums, corresponding
+source, EXE metadata and the sharing ZIP matched. The Desktop has one 4.0.1 folder,
+with its ZIP/checksum under share/. The verified old application/rollback copy and
+duplicate packaging artifacts were recycled as requested; live character storage
+was reused and was not replaced.
+
+Windows UI control was stopped before the in-app download action, so the installer
+received the local ZIP whose hash matched GitHub's published asset digest. This
+verifies real installation/relaunch/startup, not an end-to-end UI-mediated download.
+The anonymous live release feed selected the correct version, asset and digest.
 
 
 ## 4.0.0 release — 22 November 2026
