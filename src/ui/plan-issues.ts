@@ -6,7 +6,8 @@ const esc=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 
 export function renderPlanIssues(data:Catalogue,plan:Plan,p:Profile,expanded=false):string{
   const issues=explainPlanIssues(data,plan,p);if(!issues.length)return '';
-  return `<details class="plan-issues" ${expanded?'open':''}><summary>${requiredTargetUnlocks(data,plan,p).length?'Requirements to review':plan.reason?'Why unavailable?':'Assumptions to review'} (${issues.length})</summary><ul class="plan-issue-list">${issues.map(issue=>{
+  const master=masterEligibility(plan.master,p),masterBlocked=master.failed.length||master.unknown.length&&!p.assumeUnknown;
+  return `<details class="plan-issues" ${expanded?'open':''}><summary>${requiredTargetUnlocks(data,plan,p).length?'Requirements to review':plan.reason?masterBlocked?'Why unavailable?':'Plan needs attention':'Assumptions to review'} (${issues.length})</summary><ul class="plan-issue-list">${issues.map(issue=>{
     const source=issue.source.url+(issue.source.revision?(issue.source.url.includes('?')?'&':'?')+'oldid='+issue.source.revision:'');
     return `<li><strong>${esc(issue.title)}</strong><p>${esc(issue.detail)}</p><div class="tools"><button data-issue-route="${issue.route}" data-issue-master="${plan.master.id}" data-issue-assignment="${esc(issue.assignmentId)}" data-issue-variant="${esc(issue.variantId)}" data-issue-filter="${esc(issue.filter)}" data-issue-field="${esc(issue.field)}">${esc(issue.action)}</button><a href="${esc(source)}" target="_blank" rel="noopener">Wiki source: ${esc(issue.source.title)}</a></div></li>`;
   }).join('')}</ul></details>`;

@@ -4,7 +4,8 @@ import type {Catalogue} from './domain/types';
 import {applyMortimerRules} from './rules/mortimer';
 import {applyVariantAdditions} from './rules/variant-additions';
 import {applyKonarLocations} from './rules/konar-locations';
-export const catalogue=applyKonarLocations(applyVariantAdditions(applyMortimerRules(raw as unknown as Catalogue)));
+import {applyCreatureRequirements} from './rules/creature-access';
+export const catalogue=applyCreatureRequirements(applyKonarLocations(applyVariantAdditions(applyMortimerRules(raw as unknown as Catalogue))));
 export * from './rules/konar-locations';
 export * from './rules/variant-additions';
 export * from './rules/mortimer';
@@ -79,3 +80,5 @@ export {removeCharacter,persistCharacterRemoval} from './state/character-removal
 export {eclipseBurnDps,eclipseKillTime} from './combat/eclipse';
 export {TELEPORTS,teleportState,setTeleport,travelStock,learnImportedTeleports} from './state/travel';
 export {isDerivedArea} from './rules/access';
+
+export {CREATURE_ACCESS,CREATURE_ACCESS_VERSION,isDerivedCreature,creatureAccessLabel} from './rules/creature-access';

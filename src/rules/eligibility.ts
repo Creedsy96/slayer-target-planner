@@ -6,6 +6,7 @@ import {allVariantLocationsDisabled,locationAccess} from './location-pool';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
   const result:Eligibility={eligible:true,unknown:[],failed:[]};
   for(const r of requirements){
+    if(r.kind==='skill'&&r.min===0)continue;
     if(r.kind==='any'){
       const states=(r.items||[]).map(item=>check([item],p));
       if(states.some(s=>s.eligible&&!s.unknown.length))continue;
@@ -13,9 +14,11 @@ export function check(requirements:Requirement[],p:Profile):Eligibility{
       result.failed.push(r.label);continue;
     }
     const group=r.kind==='skill'?p.levels:r.kind==='quest'?p.quests:r.kind==='unlock'?p.unlocks:p.access;
-    const n=r.kind==='quest'?questState(p,r.key!):r.kind==='access'?resolveAccess(r.key!,p).value:group[r.key!];
-    if(n===null||n===undefined){result.unknown.push(r.label);continue;}
-    if(r.kind==='unlock'&&r.min===0?n!==0:n<(r.min??1))result.failed.push(`${r.label}${r.min&&r.min>2?' '+r.min:''}`);
+    const access=r.kind==='access'?resolveAccess(r.key!,p):undefined;
+    const n=r.kind==='quest'?questState(p,r.key!):access?access.value:group[r.key!];
+    const label=r.key?.startsWith('variant:')&&access?access.reason:r.label;
+    if(n===null||n===undefined){result.unknown.push(label);continue;}
+    if(r.kind==='unlock'&&r.min===0?n!==0:n<(r.min??1))result.failed.push(`${label}${r.min&&r.min>2?' '+r.min:''}`);
   }
   result.eligible=!result.failed.length;return result;
 }

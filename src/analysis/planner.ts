@@ -12,7 +12,8 @@ import {offerMoments} from './offer-moments';
 import {resetEstimate} from './reset-estimate';
 import {taskTiming} from './timing';
 import {selectionProbabilities} from './offers';
-import {resolveAccess} from '../rules/access';
+import {resolveAccess,questState} from '../rules/access';
+import {resolveCreatureAccess} from '../rules/creature-access';
 import {methodLocationRestriction} from '../rules/variant-additions';
 import {protectedTask,skipPreference,shouldReset,paidSkipFraction} from '../rules/task-policy';
 const sum=(rows:Row[],fn:(r:Row)=>number)=>rows.reduce((s,r)=>s+fn(r),0);
@@ -41,6 +42,9 @@ function prepareBaseRows(data:Catalogue,m:Master,p:Profile,progress?:(done:numbe
     const eligibility=check(entry.requirements,p),variant=variantEligibility(v,p,m,entry.id),loc=locationFraction(entry,v,method,m,p);
     if(m.id==='konar'&&entry.locations?.length&&entry.locations.every(l=>resolveAccess('location:'+l,p).value===0))eligibility.failed.push('No accessible assignment location');
     const methodAccess=method.location?(p.restrictBasicAccess?locationAccess(method.location,p):resolveAccess('location:'+method.location,p)):null;
+    const creaturePlace=method.location?resolveCreatureAccess('variant:'+v.id,p,resolveAccess,questState,method.location):undefined;
+    if(creaturePlace?.value===0)variant.failed.push(creaturePlace.reason);
+    if(creaturePlace?.value===null)variant.unknown.push(creaturePlace.reason);
     if(methodAccess?.value===0)variant.failed.push(`Method location ${method.location} is locked: ${methodAccess.reason}`);
     if(methodAccess?.value===null)variant.unknown.push(`Method location ${method.location}: ${methodAccess.reason}`);
     const locationRestriction=methodLocationRestriction(v,m,method.location);
@@ -120,7 +124,11 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   const rowUnknown=(r:Row):string[]=>{
     const original=resets(r)&&!r.isTarget?[...check(r.entry.requirements,p).unknown,...(r.entry.unlockWeight&&p.unlocks[r.entry.unlockWeight.key]==null?['Frost dragon weighting reward is unknown']:[])]:r.unknown;
     const other=fallback.get(r);
-    return [...original,...(other&&r.targetFraction<1&&!resets(r)?other.unknown:[])];
+    const unnecessary=!r.isTarget&&r.skip>=1-1e-9?new Set(check(r.variant.requirements,p).unknown):new Set<string>();
+    if(!r.isTarget&&r.skip>=1-1e-9&&r.method.location){const place=resolveCreatureAccess('variant:'+r.variant.id,p,resolveAccess,questState,r.method.location);if(place?.value===null)unnecessary.add(place.reason);}
+    const required=original.filter(message=>!unnecessary.has(message));
+    if(unnecessary.size)required.push(...check(r.entry.requirements,p).unknown);
+    return [...required,...(other&&r.targetFraction<1&&!resets(r)?other.unknown:[])];
   };
   const targetProb=sum(active,r=>r.isTarget?r.probability*r.targetFraction:0);
   const moments=offerMoments(active,p,fallback);
@@ -134,7 +142,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
   if(!reason&&conflicts.length)reason=conflicts.join(' ');
   if(!reason&&!targetProb&&!active.some(resets)&&!boosting)reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
-  if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete requirements: confirm account facts or enable a conditional scenario.';
+  if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete requirements: '+unknown[0].slice(0,240)+(unknown.length>1?' Review the remaining requirements below.':'');
   if(!reason&&active.some(r=>!r.isTarget&&r.methodReason&&r.skip<1&&!resets(r)))reason='A non-target assignment has no available completion method; change the method or block/skip it.';
   if(!reason&&p.cape)reason='Cape repeat policies require simulation; analytical ranking is unavailable.';
   const actual=p.blocks[m.group]||[],setupCost=blocks.filter(id=>!actual.includes(id)).length*m.blockCost;

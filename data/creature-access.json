@@ -1,0 +1,5636 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-11-22.1",
+  "rules": {
+    "deviant-spectre": {
+      "name": "Deviant spectre",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 60,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Deviant spectre",
+        "url": "https://oldschool.runescape.wiki/w/Deviant_spectre",
+        "revision": 15360075
+      }
+    },
+    "abyssal-sire": {
+      "name": "Abyssal Sire",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 85,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Abyssal Nexus",
+          "area": "Abyssal Nexus",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Fairytale II - Cure a Queen",
+          "min": 2,
+          "label": "Fairytale II - Cure a Queen"
+        }
+      ],
+      "note": "Completed Fairytale II - Cure a Queen proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Abyssal Sire",
+        "url": "https://oldschool.runescape.wiki/w/Abyssal_Sire",
+        "revision": 15392068
+      }
+    },
+    "dark-ankou": {
+      "name": "Dark Ankou",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Dark Ankou",
+        "url": "https://oldschool.runescape.wiki/w/Dark_Ankou",
+        "revision": 15375068
+      }
+    },
+    "araxxor": {
+      "name": "Araxxor",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 92,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Morytania Spider Cave",
+          "area": "Morytania Spider Cave",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Araxxor",
+        "url": "https://oldschool.runescape.wiki/w/Araxxor",
+        "revision": 15396994
+      }
+    },
+    "kree-arra": {
+      "name": "Kree'arra",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "ranged",
+          "min": 70,
+          "label": "Ranged"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Armadyl boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Kree'arra",
+        "url": "https://oldschool.runescape.wiki/w/Kree%27arra",
+        "revision": 15337073
+      }
+    },
+    "flight-kilisa": {
+      "name": "Flight Kilisa",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "ranged",
+          "min": 70,
+          "label": "Ranged"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Armadyl boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Flight Kilisa",
+        "url": "https://oldschool.runescape.wiki/w/Flight_Kilisa",
+        "revision": 15298482
+      }
+    },
+    "flockleader-geerin": {
+      "name": "Flockleader Geerin",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "ranged",
+          "min": 70,
+          "label": "Ranged"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Armadyl boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Flockleader Geerin",
+        "url": "https://oldschool.runescape.wiki/w/Flockleader_Geerin",
+        "revision": 15329496
+      }
+    },
+    "wingman-skree": {
+      "name": "Wingman Skree",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "ranged",
+          "min": 70,
+          "label": "Ranged"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Godwars Dungeon, Armadyl bossroom",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Wingman Skree",
+        "url": "https://oldschool.runescape.wiki/w/Wingman_Skree",
+        "revision": 15298484
+      }
+    },
+    "reanimated-aviansie": {
+      "name": "Reanimated aviansie",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated aviansie",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_aviansie",
+        "revision": 15302167
+      }
+    },
+    "balfrug-kreeyath": {
+      "name": "Balfrug Kreeyath",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "hitpoints",
+          "min": 70,
+          "label": "Hitpoints"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Zamorak Boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Balfrug Kreeyath",
+        "url": "https://oldschool.runescape.wiki/w/Balfrug_Kreeyath",
+        "revision": 15375070
+      }
+    },
+    "porazdir": {
+      "name": "Porazdir",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Porazdir",
+        "url": "https://oldschool.runescape.wiki/w/Porazdir",
+        "revision": 15398625
+      }
+    },
+    "skotizo": {
+      "name": "Skotizo",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the required boss-entry item and a repeatable completion method; stock is not inferred from a gear-only bank import.",
+      "source": {
+        "title": "Skotizo",
+        "url": "https://oldschool.runescape.wiki/w/Skotizo",
+        "revision": 15404238
+      }
+    },
+    "king-black-dragon": {
+      "name": "King Black Dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "King Black Dragon Lair (Wilderness)",
+          "area": "King Black Dragon Lair",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "King Black Dragon",
+        "url": "https://oldschool.runescape.wiki/w/King_Black_Dragon",
+        "revision": 15385987
+      }
+    },
+    "brutal-black-dragon": {
+      "name": "Brutal black dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 77,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Brutal black dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_black_dragon",
+        "revision": 15377774
+      }
+    },
+    "mutated-bloodveld": {
+      "name": "Mutated Bloodveld",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 50,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Buccaneers' Laboratory",
+          "area": "Buccaneers' Laboratory",
+          "requirements": []
+        },
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        },
+        {
+          "name": "Iorwerth Dungeon",
+          "area": "Iorwerth Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Meiyerditch Laboratories",
+          "area": "Meiyerditch Laboratories",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Mutated Bloodveld",
+        "url": "https://oldschool.runescape.wiki/w/Mutated_Bloodveld",
+        "revision": 15338397
+      }
+    },
+    "brutal-blue-dragon": {
+      "name": "Brutal blue dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend (north-west)",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        },
+        {
+          "name": "Ruins of Tapoyauik",
+          "area": "Ruins of Tapoyauik",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Brutal blue dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_blue_dragon",
+        "revision": 15406593
+      }
+    },
+    "vorkath": {
+      "name": "Vorkath",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "quest",
+          "key": "Dragon Slayer II",
+          "min": 2,
+          "label": "Dragon Slayer II"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ungael",
+          "area": "Ungael",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Vorkath",
+        "url": "https://oldschool.runescape.wiki/w/Vorkath",
+        "revision": 15404047
+      }
+    },
+    "mature-custodian-stalker": {
+      "name": "Mature custodian stalker",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 67,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Stalker Den (single-combat)",
+          "area": "Stalker Den",
+          "requirements": []
+        },
+        {
+          "name": "Stalker Den (multicombat)",
+          "area": "Stalker Den",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "The Stalker Den encounter/route has not been fully reviewed. Confirm the location and repeatable method.",
+      "source": {
+        "title": "Mature custodian stalker",
+        "url": "https://oldschool.runescape.wiki/w/Mature_custodian_stalker",
+        "revision": 15341242
+      }
+    },
+    "elder-custodian-stalker": {
+      "name": "Elder custodian stalker",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 76,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Stalker Den (single-combat)",
+          "area": "Stalker Den",
+          "requirements": []
+        },
+        {
+          "name": "Stalker Den (multicombat)",
+          "area": "Stalker Den",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "The Stalker Den encounter/route has not been fully reviewed. Confirm the location and repeatable method.",
+      "source": {
+        "title": "Elder custodian stalker",
+        "url": "https://oldschool.runescape.wiki/w/Elder_custodian_stalker",
+        "revision": 15353320
+      }
+    },
+    "dagannoth-spawn": {
+      "name": "Dagannoth spawn",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Waterbirth Island Dungeon (Entrance Hall)",
+          "area": "Waterbirth Island Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Dagannoth spawn",
+        "url": "https://oldschool.runescape.wiki/w/Dagannoth_spawn",
+        "revision": 15406480
+      }
+    },
+    "dagannoth-fledgeling": {
+      "name": "Dagannoth fledgeling",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Waterbirth Island Dungeon",
+          "area": "Waterbirth Island Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Dagannoth fledgeling",
+        "url": "https://oldschool.runescape.wiki/w/Dagannoth_fledgeling",
+        "revision": 15406481
+      }
+    },
+    "mourner": {
+      "name": "Mourner",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Arandar",
+          "area": "Arandar",
+          "requirements": []
+        },
+        {
+          "name": "Mourner Tunnels",
+          "area": "Mourner Tunnels",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Mourning's End Part II",
+          "min": 2,
+          "label": "Mourning's End Part II"
+        }
+      ],
+      "note": "Completed Mourning's End Part II proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Mourner",
+        "url": "https://oldschool.runescape.wiki/w/Mourner",
+        "revision": 15372803
+      }
+    },
+    "guard-prifddinas": {
+      "name": "Guard (Prifddinas)",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Prifddinas",
+          "area": "Prifddinas",
+          "requirements": []
+        },
+        {
+          "name": "Prifddinas upper level",
+          "area": "Prifddinas",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Guard (Prifddinas)",
+        "url": "https://oldschool.runescape.wiki/w/Guard_%28Prifddinas%29",
+        "revision": 15369172
+      }
+    },
+    "reanimated-elf": {
+      "name": "Reanimated elf",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated elf",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_elf",
+        "revision": 15366402
+      }
+    },
+    "branda-the-fire-queen": {
+      "name": "Branda the Fire Queen",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Branda the Fire Queen",
+        "url": "https://oldschool.runescape.wiki/w/Branda_the_Fire_Queen",
+        "revision": 15390244
+      }
+    },
+    "taloned-wyvern": {
+      "name": "Taloned Wyvern",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 66,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Wyvern Cave",
+          "area": "Wyvern Cave",
+          "requirements": []
+        },
+        {
+          "name": "Wyvern Cave (Slayer task only)",
+          "area": "Wyvern Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Taloned Wyvern",
+        "url": "https://oldschool.runescape.wiki/w/Taloned_Wyvern",
+        "revision": 15366069
+      }
+    },
+    "long-tailed-wyvern": {
+      "name": "Long-tailed Wyvern",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 66,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Wyvern Cave",
+          "area": "Wyvern Cave",
+          "requirements": []
+        },
+        {
+          "name": "Wyvern Cave (Slayer task only)",
+          "area": "Wyvern Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Long-tailed Wyvern",
+        "url": "https://oldschool.runescape.wiki/w/Long-tailed_Wyvern",
+        "revision": 15366070
+      }
+    },
+    "ancient-wyvern": {
+      "name": "Ancient Wyvern",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 82,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Wyvern Cave (Slayer task only)",
+          "area": "Wyvern Cave",
+          "requirements": []
+        },
+        {
+          "name": "Wyvern Cave",
+          "area": "Wyvern Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Ancient Wyvern",
+        "url": "https://oldschool.runescape.wiki/w/Ancient_Wyvern",
+        "revision": 15394980
+      }
+    },
+    "k-ril-tsutsaroth": {
+      "name": "K'ril Tsutsaroth",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "hitpoints",
+          "min": 70,
+          "label": "Hitpoints"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Zamorak boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "K'ril Tsutsaroth",
+        "url": "https://oldschool.runescape.wiki/w/K%27ril_Tsutsaroth",
+        "revision": 15357597
+      }
+    },
+    "tstanon-karlak": {
+      "name": "Tstanon Karlak",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "hitpoints",
+          "min": 70,
+          "label": "Hitpoints"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Zamorak boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Tstanon Karlak",
+        "url": "https://oldschool.runescape.wiki/w/Tstanon_Karlak",
+        "revision": 15298479
+      }
+    },
+    "shellbane-gryphon": {
+      "name": "Shellbane gryphon",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 51,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Shellbane gryphon",
+        "url": "https://oldschool.runescape.wiki/w/Shellbane_gryphon",
+        "revision": 15387213
+      }
+    },
+    "skeleton-hellhound-vet-ion": {
+      "name": "Skeleton Hellhound (Vet'ion)",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Skeleton Hellhound (Vet'ion)",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_Hellhound_%28Vet%27ion%29",
+        "revision": 15358786
+      }
+    },
+    "greater-skeleton-hellhound-vet-ion": {
+      "name": "Greater Skeleton Hellhound (Vet'ion)",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Greater Skeleton Hellhound (Vet'ion)",
+        "url": "https://oldschool.runescape.wiki/w/Greater_Skeleton_Hellhound_%28Vet%27ion%29",
+        "revision": 15358787
+      }
+    },
+    "kalphite-soldier": {
+      "name": "Kalphite Soldier",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kalphite Lair",
+          "area": "Kalphite Lair",
+          "requirements": []
+        },
+        {
+          "name": "Kalphite Cave (on Slayer task)",
+          "area": "Kalphite Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Kalphite Soldier",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Soldier",
+        "revision": 15240656
+      }
+    },
+    "kalphite-guardian": {
+      "name": "Kalphite Guardian",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kalphite Lair",
+          "area": "Kalphite Lair",
+          "requirements": []
+        },
+        {
+          "name": "Kalphite Cave (on Slayer task)",
+          "area": "Kalphite Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Kalphite Guardian",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Guardian",
+        "revision": 15392090
+      }
+    },
+    "kalphite-queen": {
+      "name": "Kalphite Queen",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kalphite Lair",
+          "area": "Kalphite Lair",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Kalphite Queen",
+        "url": "https://oldschool.runescape.wiki/w/Kalphite_Queen",
+        "revision": 15387547
+      }
+    },
+    "lizardman-brute": {
+      "name": "Lizardman brute",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "South of Xeric's Shrine",
+          "area": "Xeric's Shrine",
+          "requirements": []
+        },
+        {
+          "name": "Shayzien's Wall",
+          "area": "Shayzien's Wall",
+          "requirements": []
+        },
+        {
+          "name": "Molch",
+          "area": "Molch",
+          "requirements": []
+        },
+        {
+          "name": "Lizardman Settlement",
+          "area": "Lizardman Settlement",
+          "requirements": []
+        },
+        {
+          "name": "Kebos Swamp",
+          "area": "Kebos Swamp",
+          "requirements": []
+        },
+        {
+          "name": "Lizardman Canyon",
+          "area": "Lizardman Canyon",
+          "requirements": []
+        },
+        {
+          "name": "Battlefront",
+          "area": "Battlefront",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Lizardman brute",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_brute",
+        "revision": 15406827
+      }
+    },
+    "lizardman-shaman": {
+      "name": "Lizardman shaman",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lizardman Canyon, west side",
+          "area": "Lizardman Canyon",
+          "requirements": []
+        },
+        {
+          "name": "Lizardman Caves, underneath Lizardman Settlement (Slayer task only)",
+          "area": "Lizardman Caves",
+          "requirements": []
+        },
+        {
+          "name": "Lizardman Temple, beneath Molch",
+          "area": "Lizardman Temple",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Lizardman shaman",
+        "url": "https://oldschool.runescape.wiki/w/Lizardman_shaman",
+        "revision": 15371945
+      }
+    },
+    "bronze-dragon": {
+      "name": "Bronze dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Brimhaven Dungeon",
+          "area": "Brimhaven Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Brimhaven Dungeon (Task only area)",
+          "area": "Brimhaven Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Bronze dragon",
+        "url": "https://oldschool.runescape.wiki/w/Bronze_dragon",
+        "revision": 15351936
+      }
+    },
+    "mithril-dragon": {
+      "name": "Mithril dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ancient Cavern (upper level)",
+          "area": "Ancient Cavern",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Mithril dragon",
+        "url": "https://oldschool.runescape.wiki/w/Mithril_dragon",
+        "revision": 15351490
+      }
+    },
+    "adamant-dragon": {
+      "name": "Adamant dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lithkren Vault",
+          "area": "Lithkren Vault",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Adamant dragon",
+        "url": "https://oldschool.runescape.wiki/w/Adamant_dragon",
+        "revision": 15373867
+      }
+    },
+    "rune-dragon": {
+      "name": "Rune dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lithkren Vault",
+          "area": "Lithkren Vault",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Rune dragon",
+        "url": "https://oldschool.runescape.wiki/w/Rune_dragon",
+        "revision": 15364710
+      }
+    },
+    "ancient-zygomite": {
+      "name": "Ancient Zygomite",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 57,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Fossil Island",
+          "area": "Fossil Island",
+          "requirements": []
+        },
+        {
+          "name": "Stalker Den",
+          "area": "Stalker Den",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [
+        "Fossil Island"
+      ],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Bone Voyage",
+          "min": 2,
+          "label": "Bone Voyage"
+        }
+      ],
+      "note": "Completed Bone Voyage proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Ancient Zygomite",
+        "url": "https://oldschool.runescape.wiki/w/Ancient_Zygomite",
+        "revision": 15375038
+      }
+    },
+    "greater-nechryael": {
+      "name": "Greater Nechryael",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 80,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        },
+        {
+          "name": "Iorwerth Dungeon",
+          "area": "Iorwerth Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Wilderness Slayer Cave",
+          "area": "Wilderness Slayer Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Greater Nechryael",
+        "url": "https://oldschool.runescape.wiki/w/Greater_Nechryael",
+        "revision": 15341801
+      }
+    },
+    "brutal-red-dragon": {
+      "name": "Brutal red dragon",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Brutal red dragon",
+        "url": "https://oldschool.runescape.wiki/w/Brutal_red_dragon",
+        "revision": 15355325
+      }
+    },
+    "scarabs": {
+      "name": "Scarabs",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Scarabs",
+        "url": "https://oldschool.runescape.wiki/w/Scarabs",
+        "revision": 15215922
+      }
+    },
+    "scarab-swarm": {
+      "name": "Scarab Swarm",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Scarab Swarm",
+        "url": "https://oldschool.runescape.wiki/w/Scarab_Swarm",
+        "revision": 15376011
+      }
+    },
+    "scarab-mage": {
+      "name": "Scarab Mage",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Scabaras Dungeon",
+          "area": "Scabaras Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Sophanem Dungeon (cavern level)",
+          "area": "Sophanem Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Sophanem Dungeon (maze level)",
+          "area": "Sophanem Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Scarab Mage",
+        "url": "https://oldschool.runescape.wiki/w/Scarab_Mage",
+        "revision": 15281960
+      }
+    },
+    "thermonuclear-smoke-devil": {
+      "name": "Thermonuclear smoke devil",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 93,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Smoke Devil Dungeon",
+          "area": "Smoke Devil Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Thermonuclear smoke devil",
+        "url": "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil",
+        "revision": 15369525
+      }
+    },
+    "spiritual-ranger": {
+      "name": "Spiritual ranger",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 63,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "God Wars Dungeon - Ancient Prison",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Wilderness God Wars Dungeon",
+          "area": "Wilderness God Wars Dungeon",
+          "requirements": [
+            {
+              "kind": "any",
+              "label": "60 Strength or Agility",
+              "items": [
+                {
+                  "kind": "skill",
+                  "key": "strength",
+                  "min": 60,
+                  "label": "Strength"
+                },
+                {
+                  "kind": "skill",
+                  "key": "agility",
+                  "min": 60,
+                  "label": "Agility"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Spiritual ranger",
+        "url": "https://oldschool.runescape.wiki/w/Spiritual_ranger",
+        "revision": 15341103
+      }
+    },
+    "spiritual-mage": {
+      "name": "Spiritual mage",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 83,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "God Wars Dungeon - Ancient Prison",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Wilderness God Wars Dungeon",
+          "area": "Wilderness God Wars Dungeon",
+          "requirements": [
+            {
+              "kind": "any",
+              "label": "60 Strength or Agility",
+              "items": [
+                {
+                  "kind": "skill",
+                  "key": "strength",
+                  "min": 60,
+                  "label": "Strength"
+                },
+                {
+                  "kind": "skill",
+                  "key": "agility",
+                  "min": 60,
+                  "label": "Agility"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Spiritual mage",
+        "url": "https://oldschool.runescape.wiki/w/Spiritual_mage",
+        "revision": 15392596
+      }
+    },
+    "ice-troll": {
+      "name": "Ice troll",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ice Path",
+          "area": "Ice Path",
+          "requirements": []
+        },
+        {
+          "name": "Trollweiss Dungeon",
+          "area": "Trollweiss Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the relevant Ice Path or Trollweiss Dungeon quest-stage route; a generic area name does not prove that stage.",
+      "source": {
+        "title": "Ice troll",
+        "url": "https://oldschool.runescape.wiki/w/Ice_troll",
+        "revision": 15199343
+      }
+    },
+    "troll-general": {
+      "name": "Troll general",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Troll Stronghold (2)",
+          "area": "Troll Stronghold (location)",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Troll general",
+        "url": "https://oldschool.runescape.wiki/w/Troll_general",
+        "revision": 15406525
+      }
+    },
+    "tztok-jad": {
+      "name": "TzTok-Jad",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm entry/progression and a full-wave completion method. The boss's HP alone does not represent the whole encounter.",
+      "source": {
+        "title": "TzTok-Jad",
+        "url": "https://oldschool.runescape.wiki/w/TzTok-Jad",
+        "revision": 15394926
+      }
+    },
+    "tzkal-zuk": {
+      "name": "TzKal-Zuk",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm entry/progression and a full-wave completion method. The boss's HP alone does not represent the whole encounter.",
+      "source": {
+        "title": "TzKal-Zuk",
+        "url": "https://oldschool.runescape.wiki/w/TzKal-Zuk",
+        "revision": 15394919
+      }
+    },
+    "feral-vampyre": {
+      "name": "Feral Vampyre",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Haunted Woods Fairy ring ALQ",
+          "area": "Haunted Woods",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        },
+        {
+          "name": "West of Burgh De Rott",
+          "area": "Burgh De Rott",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        },
+        {
+          "name": "God Wars Dungeon",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Wilderness God Wars Dungeon",
+          "area": "Wilderness God Wars Dungeon",
+          "requirements": [
+            {
+              "kind": "any",
+              "label": "60 Strength or Agility",
+              "items": [
+                {
+                  "kind": "skill",
+                  "key": "strength",
+                  "min": 60,
+                  "label": "Strength"
+                },
+                {
+                  "kind": "skill",
+                  "key": "agility",
+                  "min": 60,
+                  "label": "Agility"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Feral Vampyre",
+        "url": "https://oldschool.runescape.wiki/w/Feral_Vampyre",
+        "revision": 15356500
+      }
+    },
+    "vampyre-juvinate": {
+      "name": "Vampyre Juvinate",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ver Sinhaza",
+          "area": "Ver Sinhaza",
+          "requirements": []
+        },
+        {
+          "name": "East of Burgh de Rott",
+          "area": "Burgh de Rott",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        },
+        {
+          "name": "Darkmeyer",
+          "area": "Darkmeyer",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the special weapon/potion method needed to finish this vampyre rather than letting it escape.",
+      "source": {
+        "title": "Vampyre Juvinate",
+        "url": "https://oldschool.runescape.wiki/w/Vampyre_Juvinate",
+        "revision": 15392016
+      }
+    },
+    "vyrewatch": {
+      "name": "Vyrewatch",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Meiyerditch",
+          "area": "Meiyerditch",
+          "requirements": []
+        },
+        {
+          "name": "Meiyerditch 1",
+          "area": "Meiyerditch",
+          "requirements": []
+        },
+        {
+          "name": "Meiyerditch 2",
+          "area": "Meiyerditch",
+          "requirements": []
+        },
+        {
+          "name": "Meiyerditch 3",
+          "area": "Meiyerditch",
+          "requirements": []
+        },
+        {
+          "name": "Slepe",
+          "area": "Slepe",
+          "requirements": []
+        },
+        {
+          "name": "Darkmeyer",
+          "area": "Darkmeyer",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm an effective vampyre weapon and repeatable method for the chosen location; ordinary weapons cannot be assumed effective.",
+      "source": {
+        "title": "Vyrewatch",
+        "url": "https://oldschool.runescape.wiki/w/Vyrewatch",
+        "revision": 15380818
+      }
+    },
+    "warped-terrorbird": {
+      "name": "Warped Terrorbird",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 56,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Poison Waste Dungeon - main level",
+          "area": "Poison Waste Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Poison Waste Dungeon - lower level",
+          "area": "Poison Waste Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Warped Terrorbird",
+        "url": "https://oldschool.runescape.wiki/w/Warped_Terrorbird",
+        "revision": 15406498
+      }
+    },
+    "lava-strykewyrm": {
+      "name": "Lava Strykewyrm",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 62,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Charred Dungeon",
+          "area": "Charred Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Wyrmscraig Cavern",
+          "area": "Wyrmscraig Cavern",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Lava Strykewyrm",
+        "url": "https://oldschool.runescape.wiki/w/Lava_Strykewyrm",
+        "revision": 15397759
+      }
+    },
+    "wyrmling": {
+      "name": "Wyrmling",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 62,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Neypotzli - Earthbound Cavern",
+          "area": "Neypotzli",
+          "requirements": [
+            {
+              "kind": "skill",
+              "key": "slayer",
+              "min": 48,
+              "label": "Slayer"
+            }
+          ]
+        },
+        {
+          "name": "Wyrmscraig",
+          "area": "Wyrmscraig",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Wyrmling",
+        "url": "https://oldschool.runescape.wiki/w/Wyrmling",
+        "revision": 15321695
+      }
+    },
+    "twisted-banshee": {
+      "name": "Twisted Banshee",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 15,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Twisted Banshee",
+        "url": "https://oldschool.runescape.wiki/w/Twisted_Banshee",
+        "revision": 15339672
+      }
+    },
+    "giant-bat": {
+      "name": "Giant bat",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Mount Karuulm",
+          "area": "Mount Karuulm",
+          "requirements": []
+        },
+        {
+          "name": "Dark Altar",
+          "area": "Dark Altar",
+          "requirements": []
+        },
+        {
+          "name": "Lovakengj",
+          "area": "Lovakengj",
+          "requirements": []
+        },
+        {
+          "name": "North of Slepe",
+          "area": "Slepe",
+          "requirements": []
+        },
+        {
+          "name": "West of Mage Arena",
+          "area": "Mage Arena",
+          "requirements": []
+        },
+        {
+          "name": "Coal Trucks",
+          "area": "Coal Trucks",
+          "requirements": []
+        },
+        {
+          "name": "Outside Keep Le Faye",
+          "area": "Keep Le Faye",
+          "requirements": []
+        },
+        {
+          "name": "North of Hosidius mine",
+          "area": "Hosidius mine",
+          "requirements": []
+        },
+        {
+          "name": "Arceuus",
+          "area": "Arceuus",
+          "requirements": []
+        },
+        {
+          "name": "Legends' Guild Basement",
+          "area": "Legends' Guild",
+          "requirements": []
+        },
+        {
+          "name": "Chaos Druid Tower Dungeon",
+          "area": "Chaos Druid Tower",
+          "requirements": []
+        },
+        {
+          "name": "Goblin Cave",
+          "area": "Goblin Cave",
+          "requirements": []
+        },
+        {
+          "name": "Crandor and Karamja Dungeon",
+          "area": "Crandor and Karamja Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Grand Tree Mine",
+          "area": "Grand Tree Mine",
+          "requirements": []
+        },
+        {
+          "name": "Heroes' Guild Basement",
+          "area": "Heroes' Guild",
+          "requirements": []
+        },
+        {
+          "name": "Taverley Dungeon",
+          "area": "Taverley Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Yanille Agility Dungeon",
+          "area": "Yanille Agility Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Abandoned Mine (Level 1)",
+          "area": "Abandoned Mine",
+          "requirements": []
+        },
+        {
+          "name": "Abandoned Mine (Level 4)",
+          "area": "Abandoned Mine",
+          "requirements": []
+        },
+        {
+          "name": "Ogre Enclave",
+          "area": "Ogre Enclave",
+          "requirements": []
+        },
+        {
+          "name": "Temple of Ikov",
+          "area": "Temple of Ikov (dungeon)",
+          "requirements": []
+        },
+        {
+          "name": "Tree Gnome Village dungeon",
+          "area": "Tree Gnome Village dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Underground Pass (Part 1)",
+          "area": "Underground Pass (dungeon)",
+          "requirements": []
+        },
+        {
+          "name": "Underground Pass (Part 2)",
+          "area": "Underground Pass (dungeon)",
+          "requirements": []
+        },
+        {
+          "name": "Shadow Dungeon",
+          "area": "Shadow Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Custodia Mountains",
+          "area": "Custodia Mountains",
+          "requirements": []
+        },
+        {
+          "name": "Gloomthorn Trail",
+          "area": "Gloomthorn Trail",
+          "requirements": []
+        },
+        {
+          "name": "Sunbleak Cave",
+          "area": "Sunbleak Cave",
+          "requirements": []
+        },
+        {
+          "name": "Secret cavern to Castle Drakan",
+          "area": "Castle Drakan",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Giant bat",
+        "url": "https://oldschool.runescape.wiki/w/Giant_bat",
+        "revision": 15258141
+      }
+    },
+    "albino-bat": {
+      "name": "Albino bat",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "quest",
+          "key": "Cabin Fever",
+          "min": 2,
+          "label": "Cabin Fever"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Mos Le'Harmless Cave",
+          "area": "Mos Le'Harmless Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Albino bat",
+        "url": "https://oldschool.runescape.wiki/w/Albino_bat",
+        "revision": 15199384
+      }
+    },
+    "death-wing": {
+      "name": "Death wing",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shaman Caves",
+          "area": "Shaman Caves",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Legends' Quest",
+          "min": 2,
+          "label": "Legends' Quest"
+        }
+      ],
+      "note": "Completed Legends' Quest proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Death wing",
+        "url": "https://oldschool.runescape.wiki/w/Death_wing",
+        "revision": 15199521
+      }
+    },
+    "grizzly-bear-cub": {
+      "name": "Grizzly bear cub",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Isafdar",
+          "area": "Isafdar",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Regicide",
+          "min": 2,
+          "label": "Regicide"
+        }
+      ],
+      "note": "Completed Regicide proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Grizzly bear cub",
+        "url": "https://oldschool.runescape.wiki/w/Grizzly_bear_cub",
+        "revision": 15199984
+      }
+    },
+    "bear-cub": {
+      "name": "Bear Cub",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "West Aldarin",
+          "area": "Aldarin",
+          "requirements": []
+        },
+        {
+          "name": "North of Land's End",
+          "area": "Land's End",
+          "requirements": []
+        },
+        {
+          "name": "Woods outside of Rellekka",
+          "area": "Rellekka",
+          "requirements": []
+        },
+        {
+          "name": "Kebos Lowlands - west of Gordon's farm",
+          "area": "Kebos Lowlands",
+          "requirements": []
+        },
+        {
+          "name": "Kebos Lowlands - south of Mount Quidamortem",
+          "area": "Kebos Lowlands",
+          "requirements": []
+        },
+        {
+          "name": "South-east of Custodia Pass",
+          "area": "Custodia Pass",
+          "requirements": []
+        },
+        {
+          "name": "Custodia Mountains",
+          "area": "Custodia Mountains",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Bear Cub",
+        "url": "https://oldschool.runescape.wiki/w/Bear_Cub",
+        "revision": 15210521
+      }
+    },
+    "reanimated-bear": {
+      "name": "Reanimated bear",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated bear",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_bear",
+        "revision": 15290828
+      }
+    },
+    "callisto": {
+      "name": "Callisto",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Callisto's Den",
+          "area": "Callisto's Den",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Callisto",
+        "url": "https://oldschool.runescape.wiki/w/Callisto",
+        "revision": 15360463
+      }
+    },
+    "artio": {
+      "name": "Artio",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Hunter's End",
+          "area": "Hunter's End",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Artio",
+        "url": "https://oldschool.runescape.wiki/w/Artio",
+        "revision": 15358758
+      }
+    },
+    "terrorbird": {
+      "name": "Terrorbird",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Tree Gnome Stronghold",
+          "area": "Tree Gnome Stronghold",
+          "requirements": []
+        },
+        {
+          "name": "Tree Gnome Village maze",
+          "area": "Tree Gnome Village (location)",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Terrorbird",
+        "url": "https://oldschool.runescape.wiki/w/Terrorbird",
+        "revision": 15406496
+      }
+    },
+    "rooster": {
+      "name": "Rooster",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Rellekka chicken pen",
+          "area": "Rellekka",
+          "requirements": []
+        },
+        {
+          "name": "Tenzing's yard",
+          "area": "Tenzing",
+          "requirements": []
+        },
+        {
+          "name": "Miscellania",
+          "area": "Miscellania",
+          "requirements": []
+        },
+        {
+          "name": "Etceteria",
+          "area": "Etceteria",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Rooster",
+        "url": "https://oldschool.runescape.wiki/w/Rooster",
+        "revision": 15406631
+      }
+    },
+    "chompy-bird": {
+      "name": "Chompy bird",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the quest method, ogre bow/ammunition and bait supplies needed to spawn and kill Chompy birds.",
+      "source": {
+        "title": "Chompy bird",
+        "url": "https://oldschool.runescape.wiki/w/Chompy_bird",
+        "revision": 15381197
+      }
+    },
+    "seagull": {
+      "name": "Seagull",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Corsair Cove",
+          "area": "Corsair Cove",
+          "requirements": []
+        },
+        {
+          "name": "Port Sarim",
+          "area": "Port Sarim",
+          "requirements": []
+        },
+        {
+          "name": "Port Piscarilius",
+          "area": "Port Piscarilius",
+          "requirements": []
+        },
+        {
+          "name": "Ruins of Unkah",
+          "area": "Ruins of Unkah",
+          "requirements": []
+        },
+        {
+          "name": "Uzer Oasis",
+          "area": "Uzer Oasis",
+          "requirements": []
+        },
+        {
+          "name": "The Node",
+          "area": "The Node",
+          "requirements": []
+        },
+        {
+          "name": "Aldarin",
+          "area": "Aldarin",
+          "requirements": []
+        },
+        {
+          "name": "Vatrachos Island",
+          "area": "Vatrachos Island",
+          "requirements": []
+        },
+        {
+          "name": "The Pandemonium",
+          "area": "The Pandemonium",
+          "requirements": []
+        },
+        {
+          "name": "Wyrmscraig",
+          "area": "Wyrmscraig",
+          "requirements": []
+        },
+        {
+          "name": "Red Rock",
+          "area": "Red Rock",
+          "requirements": []
+        },
+        {
+          "name": "Shimmering Atoll",
+          "area": "Shimmering Atoll",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Seagull",
+        "url": "https://oldschool.runescape.wiki/w/Seagull",
+        "revision": 15406500
+      }
+    },
+    "penguin-monster": {
+      "name": "Penguin (monster)",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ardougne Zoo",
+          "area": "Ardougne Zoo",
+          "requirements": []
+        },
+        {
+          "name": "North of Miscellania",
+          "area": "Miscellania",
+          "requirements": []
+        },
+        {
+          "name": "North-west of Miscellania (Fairy ring AJS)",
+          "area": "Miscellania",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Penguin (monster)",
+        "url": "https://oldschool.runescape.wiki/w/Penguin_%28monster%29",
+        "revision": 15342942
+      }
+    },
+    "duck": {
+      "name": "Duck",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Along the River Lum south of Varrock",
+          "area": "River Lum",
+          "requirements": []
+        },
+        {
+          "name": "Along the River Lum north of Lumbridge",
+          "area": "River Lum",
+          "requirements": []
+        },
+        {
+          "name": "Lumbridge pond",
+          "area": "Lumbridge pond",
+          "requirements": []
+        },
+        {
+          "name": "South Falador Farm",
+          "area": "South Falador Farm",
+          "requirements": []
+        },
+        {
+          "name": "Falador Park",
+          "area": "Falador Park",
+          "requirements": []
+        },
+        {
+          "name": "Moat around Falador Castle",
+          "area": "Falador Castle",
+          "requirements": []
+        },
+        {
+          "name": "Fishing Guild",
+          "area": "Fishing Guild",
+          "requirements": []
+        },
+        {
+          "name": "Tree Gnome Stronghold",
+          "area": "Tree Gnome Stronghold",
+          "requirements": []
+        },
+        {
+          "name": "Along the River Hos",
+          "area": "River Hos",
+          "requirements": []
+        },
+        {
+          "name": "Farming guild",
+          "area": "Farming guild",
+          "requirements": []
+        },
+        {
+          "name": "Woodcutting Guild",
+          "area": "Woodcutting Guild",
+          "requirements": []
+        },
+        {
+          "name": "Fisher Realm",
+          "area": "Fisher Realm",
+          "requirements": []
+        },
+        {
+          "name": "Limbo",
+          "area": "Limbo",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Duck",
+        "url": "https://oldschool.runescape.wiki/w/Duck",
+        "revision": 15395111
+      }
+    },
+    "duckling": {
+      "name": "Duckling",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lumbridge",
+          "area": "Lumbridge",
+          "requirements": []
+        },
+        {
+          "name": "Farming Guild",
+          "area": "Farming Guild",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Duckling",
+        "url": "https://oldschool.runescape.wiki/w/Duckling",
+        "revision": 15199375
+      }
+    },
+    "brutus": {
+      "name": "Brutus",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lumbridge cow field",
+          "area": "Lumbridge cow field",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Brutus",
+        "url": "https://oldschool.runescape.wiki/w/Brutus",
+        "revision": 15406730
+      }
+    },
+    "buffalo": {
+      "name": "Buffalo",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ortus Farm",
+          "area": "Ortus Farm",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Buffalo",
+        "url": "https://oldschool.runescape.wiki/w/Buffalo",
+        "revision": 15364593
+      }
+    },
+    "cow-calf": {
+      "name": "Cow calf",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lumbridge cow field",
+          "area": "Lumbridge cow field",
+          "requirements": []
+        },
+        {
+          "name": "Lumbridge cow field (north)",
+          "area": "Lumbridge cow field (north)",
+          "requirements": []
+        },
+        {
+          "name": "Fred's farm",
+          "area": "Fred's farm",
+          "requirements": []
+        },
+        {
+          "name": "South Falador Farm",
+          "area": "South Falador Farm",
+          "requirements": []
+        },
+        {
+          "name": "Crafting Guild",
+          "area": "Crafting Guild",
+          "requirements": []
+        },
+        {
+          "name": "North of Hosidius Town Square",
+          "area": "Hosidius",
+          "requirements": []
+        },
+        {
+          "name": "Kebos Lowlands - Keith's farm",
+          "area": "Kebos Lowlands",
+          "requirements": []
+        },
+        {
+          "name": "Kebos Lowlands - Gordon's farm",
+          "area": "Kebos Lowlands",
+          "requirements": []
+        },
+        {
+          "name": "South-west Isle of Souls",
+          "area": "Isle of Souls",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Cow calf",
+        "url": "https://oldschool.runescape.wiki/w/Cow_calf",
+        "revision": 15406729
+      }
+    },
+    "undead-cow": {
+      "name": "Undead cow",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Alice's farm, west of the Ectofuntus",
+          "area": "Alice's farm",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Undead cow",
+        "url": "https://oldschool.runescape.wiki/w/Undead_cow",
+        "revision": 15406501
+      }
+    },
+    "jackal": {
+      "name": "Jackal",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "South of the Ancient Pyramid",
+          "area": "Ancient Pyramid",
+          "requirements": []
+        },
+        {
+          "name": "North-west of the Agility Pyramid",
+          "area": "Agility Pyramid",
+          "requirements": []
+        },
+        {
+          "name": "Immediately south-west of Pollnivneach",
+          "area": "Pollnivneach",
+          "requirements": []
+        },
+        {
+          "name": "North of Sophanem",
+          "area": "Sophanem",
+          "requirements": []
+        },
+        {
+          "name": "East of Sophanem",
+          "area": "Sophanem",
+          "requirements": []
+        },
+        {
+          "name": "North of Nardah (Fairy Ring DLQ)",
+          "area": "Nardah",
+          "requirements": []
+        },
+        {
+          "name": "North-east of the Ancient Pyramid",
+          "area": "Ancient Pyramid",
+          "requirements": []
+        },
+        {
+          "name": "West of Nardah",
+          "area": "Nardah",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Jackal",
+        "url": "https://oldschool.runescape.wiki/w/Jackal",
+        "revision": 15406523
+      }
+    },
+    "wild-dog": {
+      "name": "Wild dog",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Brimhaven Dungeon",
+          "area": "Brimhaven Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Wild dog",
+        "url": "https://oldschool.runescape.wiki/w/Wild_dog",
+        "revision": 15360769
+      }
+    },
+    "reanimated-dog": {
+      "name": "Reanimated dog",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated dog",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_dog",
+        "revision": 15273518
+      }
+    },
+    "black-guard": {
+      "name": "Black Guard",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ice Mountain - Black Guard base",
+          "area": "Ice Mountain",
+          "requirements": []
+        },
+        {
+          "name": "Keldagrim",
+          "area": "Keldagrim",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Black Guard",
+        "url": "https://oldschool.runescape.wiki/w/Black_Guard",
+        "revision": 15390157
+      }
+    },
+    "chaos-dwarf": {
+      "name": "Chaos dwarf",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "North of Wilderness Bandit Camp",
+          "area": "Wilderness Bandit Camp",
+          "requirements": []
+        },
+        {
+          "name": "South-east of Lava Dragon Isle",
+          "area": "Lava Dragon Isle",
+          "requirements": []
+        },
+        {
+          "name": "Taverley Dungeon",
+          "area": "Taverley Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Deep Wilderness Dungeon",
+          "area": "Deep Wilderness Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Chaos dwarf",
+        "url": "https://oldschool.runescape.wiki/w/Chaos_dwarf",
+        "revision": 15398096
+      }
+    },
+    "dwarf-gang-member": {
+      "name": "Dwarf gang member",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Dwarven Mine",
+          "area": "Dwarven Mine",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Dwarf gang member",
+        "url": "https://oldschool.runescape.wiki/w/Dwarf_gang_member",
+        "revision": 15199785
+      }
+    },
+    "tortured-soul": {
+      "name": "Tortured soul",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Outside Ectofuntus",
+          "area": "Ectofuntus",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        },
+        {
+          "name": "West of Port Phasmatys",
+          "area": "Port Phasmatys",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Tortured soul",
+        "url": "https://oldschool.runescape.wiki/w/Tortured_soul",
+        "revision": 15283390
+      }
+    },
+    "forgotten-soul": {
+      "name": "Forgotten Soul",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Crumbling Tower (0)",
+          "area": "Crumbling Tower",
+          "requirements": []
+        },
+        {
+          "name": "Crumbling Tower (1)",
+          "area": "Crumbling Tower",
+          "requirements": []
+        },
+        {
+          "name": "Crumbling Tower (2)",
+          "area": "Crumbling Tower",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Forgotten Soul",
+        "url": "https://oldschool.runescape.wiki/w/Forgotten_Soul",
+        "revision": 15295341
+      }
+    },
+    "cave-goblin-guard": {
+      "name": "Cave goblin guard",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Dorgeshuun Mines",
+          "area": "Dorgeshuun Mines",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "The Lost Tribe",
+          "min": 2,
+          "label": "The Lost Tribe"
+        }
+      ],
+      "note": "Completed The Lost Tribe proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Cave goblin guard",
+        "url": "https://oldschool.runescape.wiki/w/Cave_goblin_guard",
+        "revision": 15406518
+      }
+    },
+    "sergeant-strongstack": {
+      "name": "Sergeant Strongstack",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "strength",
+          "min": 70,
+          "label": "Strength"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Bandos boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Sergeant Strongstack",
+        "url": "https://oldschool.runescape.wiki/w/Sergeant_Strongstack",
+        "revision": 15298419
+      }
+    },
+    "sergeant-steelwill": {
+      "name": "Sergeant Steelwill",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "strength",
+          "min": 70,
+          "label": "Strength"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Bandos boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Sergeant Steelwill",
+        "url": "https://oldschool.runescape.wiki/w/Sergeant_Steelwill",
+        "revision": 15298417
+      }
+    },
+    "sergeant-grimspike": {
+      "name": "Sergeant Grimspike",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "skill",
+          "key": "strength",
+          "min": 70,
+          "label": "Strength"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Bandos boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Sergeant Grimspike",
+        "url": "https://oldschool.runescape.wiki/w/Sergeant_Grimspike",
+        "revision": 15298415
+      }
+    },
+    "small-lizard": {
+      "name": "Small Lizard",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 22,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "North of Nardah",
+          "area": "Nardah",
+          "requirements": []
+        },
+        {
+          "name": "West of Ruins of Ullek",
+          "area": "Ruins of Ullek",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Small Lizard",
+        "url": "https://oldschool.runescape.wiki/w/Small_Lizard",
+        "revision": 15389341
+      }
+    },
+    "sulphur-lizard": {
+      "name": "Sulphur Lizard",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 44,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Karuulm Slayer Dungeon (1)",
+          "area": "Karuulm Slayer Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Sulphur Lizard",
+        "url": "https://oldschool.runescape.wiki/w/Sulphur_Lizard",
+        "revision": 15339650
+      }
+    },
+    "grimy-lizard": {
+      "name": "Grimy Lizard",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 44,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Neypotzli - Streambound Cavern",
+          "area": "Neypotzli",
+          "requirements": [
+            {
+              "kind": "skill",
+              "key": "slayer",
+              "min": 48,
+              "label": "Slayer"
+            }
+          ]
+        },
+        {
+          "name": "Tonali Cavern - Moon Chamber",
+          "area": "Neypotzli",
+          "requirements": [
+            {
+              "kind": "skill",
+              "key": "slayer",
+              "min": 48,
+              "label": "Slayer"
+            }
+          ]
+        },
+        {
+          "name": "Tonali Cavern - Southern Chamber (1)",
+          "area": "Neypotzli",
+          "requirements": [
+            {
+              "kind": "skill",
+              "key": "slayer",
+              "min": 48,
+              "label": "Slayer"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Grimy Lizard",
+        "url": "https://oldschool.runescape.wiki/w/Grimy_Lizard",
+        "revision": 15366465
+      }
+    },
+    "monkey-guard": {
+      "name": "Monkey Guard",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Temple of Marimbo",
+          "area": "Temple of Marimbo",
+          "requirements": []
+        },
+        {
+          "name": "Temple of Marimbo (1)",
+          "area": "Temple of Marimbo",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Monkey Madness I",
+          "min": 2,
+          "label": "Monkey Madness I"
+        }
+      ],
+      "note": "Completed Monkey Madness I proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Monkey Guard",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Guard",
+        "revision": 15199592
+      }
+    },
+    "monkey-archer": {
+      "name": "Monkey Archer",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Marim",
+          "area": "Marim",
+          "requirements": []
+        },
+        {
+          "name": "Marim gates",
+          "area": "Marim",
+          "requirements": []
+        },
+        {
+          "name": "Marim (1)",
+          "area": "Marim",
+          "requirements": []
+        },
+        {
+          "name": "Marim (2)",
+          "area": "Marim",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Monkey Madness I",
+          "min": 2,
+          "label": "Monkey Madness I"
+        }
+      ],
+      "note": "Completed Monkey Madness I proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Monkey Archer",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Archer",
+        "revision": 15199637
+      }
+    },
+    "monkey-zombie": {
+      "name": "Monkey Zombie",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ape Atoll Dungeon",
+          "area": "Ape Atoll Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Temple of Marimbo Dungeon",
+          "area": "Temple of Marimbo Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Monkey Madness I",
+          "min": 2,
+          "label": "Monkey Madness I"
+        }
+      ],
+      "note": "Completed Monkey Madness I proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Monkey Zombie",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Zombie",
+        "revision": 15322124
+      }
+    },
+    "tortured-gorilla": {
+      "name": "Tortured gorilla",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        },
+        {
+          "kind": "quest",
+          "key": "Monkey Madness II",
+          "min": 2,
+          "label": "Monkey Madness II"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Crash Site Cavern",
+          "area": "Crash Site Cavern",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Tortured gorilla",
+        "url": "https://oldschool.runescape.wiki/w/Tortured_gorilla",
+        "revision": 15373438
+      }
+    },
+    "dungeon-rat": {
+      "name": "Dungeon rat",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Goblin Cave",
+          "area": "Goblin Cave",
+          "requirements": []
+        },
+        {
+          "name": "Ardougne Sewers",
+          "area": "Ardougne Sewers",
+          "requirements": []
+        },
+        {
+          "name": "Clock Tower Dungeon",
+          "area": "Clock Tower Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Dungeon rat",
+        "url": "https://oldschool.runescape.wiki/w/Dungeon_rat",
+        "revision": 15389209
+      }
+    },
+    "crypt-rat": {
+      "name": "Crypt rat",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Barrows (tunnels)",
+          "area": "Barrows",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Crypt rat",
+        "url": "https://oldschool.runescape.wiki/w/Crypt_rat",
+        "revision": 15406456
+      }
+    },
+    "giant-crypt-rat": {
+      "name": "Giant crypt rat",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Barrows tunnel",
+          "area": "Barrows",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Giant crypt rat",
+        "url": "https://oldschool.runescape.wiki/w/Giant_crypt_rat",
+        "revision": 15199840
+      }
+    },
+    "scurrius": {
+      "name": "Scurrius",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Varrock Sewers",
+          "area": "Varrock Sewers",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Scurrius",
+        "url": "https://oldschool.runescape.wiki/w/Scurrius",
+        "revision": 15402984
+      }
+    },
+    "king-scorpion": {
+      "name": "King Scorpion",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Lovakite Mine",
+          "area": "Lovakite Mine",
+          "requirements": []
+        },
+        {
+          "name": "Lava Maze",
+          "area": "Lava Maze",
+          "requirements": []
+        },
+        {
+          "name": "Crandor",
+          "area": "Crandor",
+          "requirements": []
+        },
+        {
+          "name": "Dwarven Mine",
+          "area": "Dwarven Mine",
+          "requirements": []
+        },
+        {
+          "name": "The Great Conch",
+          "area": "The Great Conch",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "King Scorpion",
+        "url": "https://oldschool.runescape.wiki/w/King_Scorpion",
+        "revision": 15199348
+      }
+    },
+    "poison-scorpion": {
+      "name": "Poison Scorpion",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Near North Brimhaven mine",
+          "area": "North Brimhaven mine",
+          "requirements": []
+        },
+        {
+          "name": "Taverley Dungeon",
+          "area": "Taverley Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Poison Scorpion",
+        "url": "https://oldschool.runescape.wiki/w/Poison_Scorpion",
+        "revision": 15199675
+      }
+    },
+    "pit-scorpion": {
+      "name": "Pit Scorpion",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ardougne Zoo",
+          "area": "Ardougne Zoo",
+          "requirements": []
+        },
+        {
+          "name": "Legends' Guild dungeon",
+          "area": "Legends' Guild",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Pit Scorpion",
+        "url": "https://oldschool.runescape.wiki/w/Pit_Scorpion",
+        "revision": 15199892
+      }
+    },
+    "scorpia": {
+      "name": "Scorpia",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Cave in the Scorpion Pit (north-east Wilderness)",
+          "area": "Scorpion Pit",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Scorpia",
+        "url": "https://oldschool.runescape.wiki/w/Scorpia",
+        "revision": 15362166
+      }
+    },
+    "lobstrosity": {
+      "name": "Lobstrosity",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Underwater area of Fossil Island",
+          "area": "Fossil Island",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Lobstrosity",
+        "url": "https://oldschool.runescape.wiki/w/Lobstrosity",
+        "revision": 15316850
+      }
+    },
+    "reanimated-scorpion": {
+      "name": "Reanimated scorpion",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated scorpion",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_scorpion",
+        "revision": 15273528
+      }
+    },
+    "scorpia-s-offspring-monster": {
+      "name": "Scorpia's offspring (monster)",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Scorpia's Cave",
+          "area": "Scorpia",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Scorpia's offspring (monster)",
+        "url": "https://oldschool.runescape.wiki/w/Scorpia%27s_offspring_%28monster%29",
+        "revision": 15301421
+      }
+    },
+    "scorpia-s-guardian": {
+      "name": "Scorpia's guardian",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "No repeatable spawn location was reviewed in the retained source. Confirm the creature's location and task-compatible completion method.",
+      "source": {
+        "title": "Scorpia's guardian",
+        "url": "https://oldschool.runescape.wiki/w/Scorpia%27s_guardian",
+        "revision": 15265728
+      }
+    },
+    "skeleton-mage": {
+      "name": "Skeleton Mage",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Charred Dungeon",
+          "area": "Charred Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Piscatoris Fishing Colony",
+          "area": "Piscatoris Fishing Colony",
+          "requirements": []
+        },
+        {
+          "name": "Waterfall Dungeon",
+          "area": "Waterfall Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Skeleton Mage",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_Mage",
+        "revision": 15363021
+      }
+    },
+    "vet-ion": {
+      "name": "Vet'ion",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Vet'ion's Rest",
+          "area": "Vet'ion's Rest",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Vet'ion",
+        "url": "https://oldschool.runescape.wiki/w/Vet%27ion",
+        "revision": 15360817
+      }
+    },
+    "skogre": {
+      "name": "Skogre",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Jiggig",
+          "area": "Jiggig",
+          "requirements": []
+        },
+        {
+          "name": "Jiggig Dungeon",
+          "area": "Jiggig Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Zogre Flesh Eaters",
+          "min": 2,
+          "label": "Zogre Flesh Eaters"
+        }
+      ],
+      "note": "Completed Zogre Flesh Eaters proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Skogre",
+        "url": "https://oldschool.runescape.wiki/w/Skogre",
+        "revision": 15406471
+      }
+    },
+    "skeleton-shayzien-crypts": {
+      "name": "Skeleton (Shayzien Crypts)",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shayzien Crypts - upper level",
+          "area": "Shayzien Crypts",
+          "requirements": []
+        },
+        {
+          "name": "Shayzien Crypts - middle level",
+          "area": "Shayzien Crypts",
+          "requirements": []
+        },
+        {
+          "name": "Shayzien Crypts - lower level",
+          "area": "Shayzien Crypts",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Skeleton (Shayzien Crypts)",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_%28Shayzien_Crypts%29",
+        "revision": 15392093
+      }
+    },
+    "skeleton-fremennik": {
+      "name": "Skeleton fremennik",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Brine Rat Cavern",
+          "area": "Brine Rat Cavern",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Skeleton fremennik",
+        "url": "https://oldschool.runescape.wiki/w/Skeleton_fremennik",
+        "revision": 15392101
+      }
+    },
+    "calvar-ion": {
+      "name": "Calvar'ion",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Calvar'ion",
+        "url": "https://oldschool.runescape.wiki/w/Calvar%27ion",
+        "revision": 15397210
+      }
+    },
+    "shadow-spider": {
+      "name": "Shadow spider",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Deep Wilderness Dungeon",
+          "area": "Deep Wilderness Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Waterfall Dungeon",
+          "area": "Waterfall Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Buccaneers' Laboratory",
+          "area": "Buccaneers' Laboratory",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Shadow spider",
+        "url": "https://oldschool.runescape.wiki/w/Shadow_spider",
+        "revision": 15199632
+      }
+    },
+    "giant-crypt-spider": {
+      "name": "Giant crypt spider",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Barrows tunnel",
+          "area": "Barrows",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Giant crypt spider",
+        "url": "https://oldschool.runescape.wiki/w/Giant_crypt_spider",
+        "revision": 15330934
+      }
+    },
+    "sarachnis": {
+      "name": "Sarachnis",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Forthos Dungeon — Burial tomb",
+          "area": "Forthos Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Sarachnis",
+        "url": "https://oldschool.runescape.wiki/w/Sarachnis",
+        "revision": 15398565
+      }
+    },
+    "temple-spider": {
+      "name": "Temple Spider",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Forthos Dungeon",
+          "area": "Forthos Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Temple Spider",
+        "url": "https://oldschool.runescape.wiki/w/Temple_Spider",
+        "revision": 15215948
+      }
+    },
+    "venenatis": {
+      "name": "Venenatis",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Silk Chasm",
+          "area": "Silk Chasm",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Venenatis",
+        "url": "https://oldschool.runescape.wiki/w/Venenatis",
+        "revision": 15403230
+      }
+    },
+    "spindel": {
+      "name": "Spindel",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the selected Wilderness lair's entry, diary/level and fee requirements; the relevant diary/entry facts are not fully imported.",
+      "source": {
+        "title": "Spindel",
+        "url": "https://oldschool.runescape.wiki/w/Spindel",
+        "revision": 15358779
+      }
+    },
+    "big-wolf": {
+      "name": "Big Wolf",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Feldip Hills",
+          "area": "Feldip Hills",
+          "requirements": []
+        },
+        {
+          "name": "White Wolf Mountain",
+          "area": "White Wolf Mountain",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Big Wolf",
+        "url": "https://oldschool.runescape.wiki/w/Big_Wolf",
+        "revision": 15406440
+      }
+    },
+    "desert-wolf": {
+      "name": "Desert Wolf",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kharidian Desert",
+          "area": "Kharidian Desert",
+          "requirements": []
+        },
+        {
+          "name": "Necropolis",
+          "area": "Necropolis",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Desert Wolf",
+        "url": "https://oldschool.runescape.wiki/w/Desert_Wolf",
+        "revision": 15406447
+      }
+    },
+    "ice-wolf": {
+      "name": "Ice wolf",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Trollweiss Mountain",
+          "area": "Trollweiss Mountain",
+          "requirements": []
+        },
+        {
+          "name": "Settlement Ruins",
+          "area": "Settlement Ruins",
+          "requirements": []
+        },
+        {
+          "name": "Weiss",
+          "area": "Weiss",
+          "requirements": []
+        },
+        {
+          "name": "Ice Path",
+          "area": "Ice Path",
+          "requirements": []
+        },
+        {
+          "name": "Outside God Wars Dungeon",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Ice wolf",
+        "url": "https://oldschool.runescape.wiki/w/Ice_wolf",
+        "revision": 15406444
+      }
+    },
+    "jungle-wolf": {
+      "name": "Jungle Wolf",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kharazi Jungle",
+          "area": "Kharazi Jungle",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Legends' Quest",
+          "min": 2,
+          "label": "Legends' Quest"
+        }
+      ],
+      "note": "Completed Legends' Quest proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Jungle Wolf",
+        "url": "https://oldschool.runescape.wiki/w/Jungle_Wolf",
+        "revision": 15406449
+      }
+    },
+    "undead-chicken": {
+      "name": "Undead chicken",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Alice's farm, west of the Ectofuntus",
+          "area": "Alice's farm",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Undead chicken",
+        "url": "https://oldschool.runescape.wiki/w/Undead_chicken",
+        "revision": 15331040
+      }
+    },
+    "undead-druid": {
+      "name": "Undead Druid",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Forthos Dungeon",
+          "area": "Forthos Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Undead Druid",
+        "url": "https://oldschool.runescape.wiki/w/Undead_Druid",
+        "revision": 15396837
+      }
+    },
+    "undead-one": {
+      "name": "Undead one",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shilo Village Entrance",
+          "area": "Shilo Village (location)",
+          "requirements": []
+        },
+        {
+          "name": "Ah Za Rhoon",
+          "area": "Ah Za Rhoon",
+          "requirements": []
+        },
+        {
+          "name": "Rashiliyia's Tomb",
+          "area": "Rashiliyia's Tomb",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Undead one",
+        "url": "https://oldschool.runescape.wiki/w/Undead_one",
+        "revision": 15402096
+      }
+    },
+    "zombie-rat": {
+      "name": "Zombie rat",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Melzar's Maze",
+          "area": "Melzar's Maze",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key and repeatable Melzar's Maze route for this creature.",
+      "source": {
+        "title": "Zombie rat",
+        "url": "https://oldschool.runescape.wiki/w/Zombie_rat",
+        "revision": 15199680
+      }
+    },
+    "zogre": {
+      "name": "Zogre",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Jiggig",
+          "area": "Jiggig",
+          "requirements": []
+        },
+        {
+          "name": "Jiggig Dungeon (lower level)",
+          "area": "Jiggig Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Jiggig Dungeon",
+          "area": "Jiggig Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Zogre Flesh Eaters",
+          "min": 2,
+          "label": "Zogre Flesh Eaters"
+        }
+      ],
+      "note": "Completed Zogre Flesh Eaters proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Zogre",
+        "url": "https://oldschool.runescape.wiki/w/Zogre",
+        "revision": 15406470
+      }
+    },
+    "moonlight-cockatrice": {
+      "name": "Moonlight Cockatrice",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 25,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Neypotzli - Earthbound Cavern",
+          "area": "Neypotzli",
+          "requirements": [
+            {
+              "kind": "skill",
+              "key": "slayer",
+              "min": 48,
+              "label": "Slayer"
+            }
+          ]
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Moonlight Cockatrice",
+        "url": "https://oldschool.runescape.wiki/w/Moonlight_Cockatrice",
+        "revision": 15391777
+      }
+    },
+    "ammonite-crab": {
+      "name": "Ammonite Crab",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Mushroom Forest",
+          "area": "Fossil Island",
+          "requirements": []
+        },
+        {
+          "name": "Fossil Island Volcano",
+          "area": "Fossil Island",
+          "requirements": []
+        },
+        {
+          "name": "Wyvern Cave - northern cave",
+          "area": "Wyvern Cave",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Ammonite Crab",
+        "url": "https://oldschool.runescape.wiki/w/Ammonite_Crab",
+        "revision": 15367275
+      }
+    },
+    "frost-crab": {
+      "name": "Frost Crab",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ruins of Tapoyauik bottom floor",
+          "area": "Ruins of Tapoyauik",
+          "requirements": []
+        },
+        {
+          "name": "Ruins of Tapoyauik middle floor",
+          "area": "Ruins of Tapoyauik",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Frost Crab",
+        "url": "https://oldschool.runescape.wiki/w/Frost_Crab",
+        "revision": 15200547
+      }
+    },
+    "rock-crab": {
+      "name": "Rock Crab",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "North of Rellekka",
+          "area": "Rellekka",
+          "requirements": []
+        },
+        {
+          "name": "Waterbirth Island",
+          "area": "Waterbirth Island",
+          "requirements": []
+        },
+        {
+          "name": "West of Mount Quidamortem",
+          "area": "Mount Quidamortem",
+          "requirements": []
+        },
+        {
+          "name": "Waterbirth Island Dungeon",
+          "area": "Waterbirth Island Dungeon",
+          "requirements": []
+        },
+        {
+          "name": "Brine Rat Cavern",
+          "area": "Brine Rat Cavern",
+          "requirements": []
+        },
+        {
+          "name": "Charred Island",
+          "area": "Charred Island",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Rock Crab",
+        "url": "https://oldschool.runescape.wiki/w/Rock_Crab",
+        "revision": 15351395
+      }
+    },
+    "swamp-crab": {
+      "name": "Swamp Crab",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Haunted Woods",
+          "area": "Haunted Woods",
+          "requirements": [
+            {
+              "kind": "quest",
+              "key": "Priest in Peril",
+              "min": 2,
+              "label": "Priest in Peril"
+            }
+          ]
+        },
+        {
+          "name": "Slepe",
+          "area": "Slepe",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Swamp Crab",
+        "url": "https://oldschool.runescape.wiki/w/Swamp_Crab",
+        "revision": 15200068
+      }
+    },
+    "obor": {
+      "name": "Obor",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Obor's Lair (Edgeville Dungeon)",
+          "area": "Edgeville Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the lair gate has been opened with a giant key. The retained source describes repeat fights after this one-time entry unlock.",
+      "source": {
+        "title": "Obor",
+        "url": "https://oldschool.runescape.wiki/w/Obor",
+        "revision": 15383989
+      }
+    },
+    "cyclops": {
+      "name": "Cyclops",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Warriors' Guild (2)",
+          "area": "Warriors' Guild",
+          "requirements": []
+        },
+        {
+          "name": "Warriors' Guild (basement)",
+          "area": "Warriors' Guild",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm Warriors' Guild entry, available tokens or the permanent diary exemption, and the defender requirement for the selected floor.",
+      "source": {
+        "title": "Cyclops",
+        "url": "https://oldschool.runescape.wiki/w/Cyclops",
+        "revision": 15406749
+      }
+    },
+    "icelord": {
+      "name": "Icelord",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Iceberg",
+          "area": "Iceberg",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Cold War",
+          "min": 2,
+          "label": "Cold War"
+        }
+      ],
+      "note": "Completed Cold War proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Icelord",
+        "url": "https://oldschool.runescape.wiki/w/Icelord",
+        "revision": 15199467
+      }
+    },
+    "pyrelord": {
+      "name": "Pyrelord",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 30,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Isle of Souls",
+          "area": "Isle of Souls",
+          "requirements": []
+        },
+        {
+          "name": "Sisterhood Sanctuary",
+          "area": "Sisterhood Sanctuary",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Pyrelord",
+        "url": "https://oldschool.runescape.wiki/w/Pyrelord",
+        "revision": 15338384
+      }
+    },
+    "phrin-shade": {
+      "name": "Phrin Shade",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shade Catacombs",
+          "area": "Shade Catacombs",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key/door access needed for this Shade Catacombs section; current exports do not identify it.",
+      "source": {
+        "title": "Phrin Shade",
+        "url": "https://oldschool.runescape.wiki/w/Phrin_Shade",
+        "revision": 15199728
+      }
+    },
+    "riyl-shade": {
+      "name": "Riyl Shade",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shade Catacombs",
+          "area": "Shade Catacombs",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key/door access needed for this Shade Catacombs section; current exports do not identify it.",
+      "source": {
+        "title": "Riyl Shade",
+        "url": "https://oldschool.runescape.wiki/w/Riyl_Shade",
+        "revision": 15199707
+      }
+    },
+    "asyn-shade": {
+      "name": "Asyn Shade",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shade Catacombs",
+          "area": "Shade Catacombs",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key/door access needed for this Shade Catacombs section; current exports do not identify it.",
+      "source": {
+        "title": "Asyn Shade",
+        "url": "https://oldschool.runescape.wiki/w/Asyn_Shade",
+        "revision": 15199705
+      }
+    },
+    "fiyr-shade": {
+      "name": "Fiyr Shade",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shade Catacombs",
+          "area": "Shade Catacombs",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key/door access needed for this Shade Catacombs section; current exports do not identify it.",
+      "source": {
+        "title": "Fiyr Shade",
+        "url": "https://oldschool.runescape.wiki/w/Fiyr_Shade",
+        "revision": 15229541
+      }
+    },
+    "urium-shade": {
+      "name": "Urium Shade",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shade Catacombs",
+          "area": "Shade Catacombs",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the key/door access needed for this Shade Catacombs section; current exports do not identify it.",
+      "source": {
+        "title": "Urium Shade",
+        "url": "https://oldschool.runescape.wiki/w/Urium_Shade",
+        "revision": 15200239
+      }
+    },
+    "eldric-the-ice-king": {
+      "name": "Eldric the Ice King",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Eldric the Ice King",
+        "url": "https://oldschool.runescape.wiki/w/Eldric_the_Ice_King",
+        "revision": 15390296
+      }
+    },
+    "warped-jelly": {
+      "name": "Warped Jelly",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 52,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "area": "Catacombs of Kourend",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Warped Jelly",
+        "url": "https://oldschool.runescape.wiki/w/Warped_Jelly",
+        "revision": 15339567
+      }
+    },
+    "chilled-jelly": {
+      "name": "Chilled jelly",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 52,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ruins of Tapoyauik",
+          "area": "Ruins of Tapoyauik",
+          "requirements": []
+        },
+        {
+          "name": "Grimstone Dungeon",
+          "area": "Grimstone Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Chilled jelly",
+        "url": "https://oldschool.runescape.wiki/w/Chilled_jelly",
+        "revision": 15352393
+      }
+    },
+    "zakl-n-gritch": {
+      "name": "Zakl'n Gritch",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "God Wars Dungeon (Zamorak boss room)",
+          "area": "God Wars Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Zakl'n Gritch",
+        "url": "https://oldschool.runescape.wiki/w/Zakl%27n_Gritch",
+        "revision": 15298478
+      }
+    },
+    "bryophyta": {
+      "name": "Bryophyta",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Bryophyta's Lair (Varrock Sewers)",
+          "area": "Varrock Sewers",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the required boss-entry item and a repeatable completion method; stock is not inferred from a gear-only bank import.",
+      "source": {
+        "title": "Bryophyta",
+        "url": "https://oldschool.runescape.wiki/w/Bryophyta",
+        "revision": 15406491
+      }
+    },
+    "ogress-shaman": {
+      "name": "Ogress Shaman",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Corsair Cove Dungeon",
+          "area": "Corsair Cove Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Ogress Shaman",
+        "url": "https://oldschool.runescape.wiki/w/Ogress_Shaman",
+        "revision": 15406467
+      }
+    },
+    "ogress-warrior": {
+      "name": "Ogress Warrior",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Corsair Cove Dungeon",
+          "area": "Corsair Cove Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Ogress Warrior",
+        "url": "https://oldschool.runescape.wiki/w/Ogress_Warrior",
+        "revision": 15406468
+      }
+    },
+    "sea-snake-young": {
+      "name": "Sea Snake Young",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 1,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Miscellania and Etceteria dungeon",
+          "area": "Miscellania and Etceteria dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Royal Trouble",
+          "min": 2,
+          "label": "Royal Trouble"
+        }
+      ],
+      "note": "Completed Royal Trouble proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Sea Snake Young",
+        "url": "https://oldschool.runescape.wiki/w/Sea_Snake_Young",
+        "revision": 15386876
+      }
+    },
+    "reanimated-horror": {
+      "name": "Reanimated horror",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated horror",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_horror",
+        "revision": 15273522
+      }
+    },
+    "amoxliatl": {
+      "name": "Amoxliatl",
+      "mode": "derived",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 48,
+          "label": "Slayer"
+        },
+        {
+          "kind": "quest",
+          "key": "The Heart of Darkness",
+          "min": 2,
+          "label": "The Heart of Darkness"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ruins of Tapoyauik",
+          "area": "Ruins of Tapoyauik",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Access follows recorded skills, quests and at least one listed area. Required combat gear and travel supplies remain part of the chosen method.",
+      "source": {
+        "title": "Amoxliatl",
+        "url": "https://oldschool.runescape.wiki/w/Amoxliatl",
+        "revision": 15401516
+      }
+    },
+    "reanimated-abyssal": {
+      "name": "Reanimated abyssal",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 85,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated abyssal",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_abyssal",
+        "revision": 15302057
+      }
+    },
+    "reanimated-bloodveld": {
+      "name": "Reanimated bloodveld",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 50,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated bloodveld",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_bloodveld",
+        "revision": 15302125
+      }
+    },
+    "reanimated-dagannoth": {
+      "name": "Reanimated dagannoth",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated dagannoth",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_dagannoth",
+        "revision": 15406483
+      }
+    },
+    "iorwerth-warrior": {
+      "name": "Iorwerth Warrior",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Iorwerth Camp",
+          "area": "Iorwerth Camp",
+          "requirements": []
+        },
+        {
+          "name": "Iorwerth Dungeon",
+          "area": "Iorwerth Dungeon",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [
+        {
+          "kind": "quest",
+          "key": "Regicide",
+          "min": 2,
+          "label": "Regicide"
+        }
+      ],
+      "note": "Completed Regicide proves the route; otherwise confirm the applicable partial quest stage and repeatable method.",
+      "source": {
+        "title": "Iorwerth Warrior",
+        "url": "https://oldschool.runescape.wiki/w/Iorwerth_Warrior",
+        "revision": 15357164
+      }
+    },
+    "reanimated-hellhound": {
+      "name": "Reanimated hellhound",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated hellhound",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_hellhound",
+        "revision": 15358474
+      }
+    },
+    "reanimated-kalphite": {
+      "name": "Reanimated kalphite",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated kalphite",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_kalphite",
+        "revision": 15355223
+      }
+    },
+    "reanimated-troll": {
+      "name": "Reanimated troll",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm the reanimation spellbook/spell, heads and rune supplies, and a task-compatible casting location. Gear imports do not prove these consumables.",
+      "source": {
+        "title": "Reanimated troll",
+        "url": "https://oldschool.runescape.wiki/w/Reanimated_troll",
+        "revision": 15406540
+      }
+    },
+    "dad": {
+      "name": "Dad",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Troll Arena",
+          "area": "Troll Arena",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Dad",
+        "url": "https://oldschool.runescape.wiki/w/Dad",
+        "revision": 15352679
+      }
+    },
+    "ice-troll-king": {
+      "name": "Ice Troll King",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Ice Troll King",
+        "url": "https://oldschool.runescape.wiki/w/Ice_Troll_King",
+        "revision": 15380078
+      }
+    },
+    "arrg": {
+      "name": "Arrg",
+      "mode": "confirmation",
+      "requirements": [
+        {
+          "kind": "skill",
+          "key": "slayer",
+          "min": 0,
+          "label": "Slayer"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Troll Stronghold (Middle Level)",
+          "area": "Troll Stronghold (location)",
+          "requirements": []
+        }
+      ],
+      "proofAreas": [],
+      "proof": [],
+      "note": "Confirm a repeatable, task-crediting encounter. A quest-stage or limited spawn is not assumed repeatable.",
+      "source": {
+        "title": "Arrg",
+        "url": "https://oldschool.runescape.wiki/w/Arrg",
+        "revision": 15406527
+      }
+    }
+  },
+  "assignmentRequirements": {
+    "aberrant spectres": {
+      "requirements": [
+        {
+          "kind": "quest",
+          "key": "Priest in Peril",
+          "min": 2,
+          "label": "Priest in Peril"
+        }
+      ],
+      "source": {
+        "title": "Deviant spectre",
+        "url": "https://oldschool.runescape.wiki/w/Deviant_spectre",
+        "revision": 15360075
+      }
+    },
+    "nechryael": {
+      "requirements": [
+        {
+          "kind": "quest",
+          "key": "Priest in Peril",
+          "min": 2,
+          "label": "Priest in Peril"
+        }
+      ],
+      "source": {
+        "title": "Greater Nechryael",
+        "url": "https://oldschool.runescape.wiki/w/Greater_Nechryael",
+        "revision": 15341801
+      }
+    }
+  }
+}

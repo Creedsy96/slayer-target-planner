@@ -14,3 +14,6 @@ The 4.0.0 changes are [automatic updates](features/automatic-updates.md),
 [saved calculations](features/calculation-persistence.md),
 [Eclipse burn and travel](features/eclipse-travel-options.md) and
 [the project/distribution layout](features/folder-layout.md).
+
+Pending fixes: [derived creature access](features/creature-access.md) and
+[the extracted-folder updater check](features/extracted-update-check.md).

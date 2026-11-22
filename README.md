@@ -4,6 +4,10 @@ An offline-capable creature hunt planner for the private website, local browser 
 
 ## Start
 
+Pending fixes derive 100 ordinary creature gates from known requirements, clarify
+the remaining creature/location warnings, and repair the extracted-folder updater
+check. [Creature audit](docs/features/creature-access.md) · [Updater regression](docs/features/extracted-update-check.md).
+
 Version 4.0.1 responsiveness fixes move block explanations/reviews out of the UI
 thread, bound saved-calculation lookup, display completed results before storage
 finishes, and reduce progress/redraw traffic. [Details and focused verification](docs/features/ui-responsiveness.md).

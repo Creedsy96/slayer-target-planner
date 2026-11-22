@@ -1,4 +1,5 @@
 import {isDerivedArea} from '../rules/access';
+import {creatureAccessLabel,creatureAccessRule,isDerivedCreature} from '../rules/creature-access';
 import type {Catalogue,Profile} from '../domain/types';
 import {questState,resolveAccess,isOpenArea} from '../rules/access';
 import type {QuestPreview} from '../state/quest-import';
@@ -32,6 +33,23 @@ export function visibleFactKeys(p:Profile,group:string,keys:string[],complete:(k
 export function visibleQuestNames(p:Profile,quests:string[],showCompleted=false):string[]{
  const key=p.id+':quests';if(!answeredAtVisit.has(key))answeredAtVisit.set(key,new Set(quests.filter(q=>questState(p,q)===2)));
  return quests.filter(q=>showCompleted||!answeredAtVisit.get(key)!.has(q));
+}
+export function renderSpecialAccess(data:Catalogue,p:Profile,keys:string[],query='',showCompleted=false):string{
+ const label=(key:string)=>{
+  if(key.startsWith('variant:'))return creatureAccessLabel(key);
+  if(key==='boss-pool-method')return 'Mixed boss assignment — location depends on the rolled boss';
+  return data.variants.flatMap(v=>v.requirements).find(r=>r.kind==='access'&&r.key===key)?.label||key;
+ };
+ const candidates=keys.filter(key=>!key.startsWith('location:')&&(!isDerivedCreature(key)||p.restrictBasicAccess));
+ const visible=visibleFactKeys(p,'special-access',candidates,key=>resolveAccess(key,p).value===1,showCompleted||p.restrictBasicAccess);
+ return visible.filter(key=>(label(key)+' '+key).toLowerCase().includes(query.toLowerCase())).map(key=>{
+  const result=resolveAccess(key,p),rule=key.startsWith('variant:')?creatureAccessRule(key):undefined;
+  const autoProfile={...p,restrictBasicAccess:false,access:{...p.access}};delete autoProfile.access[key];
+  const baseline=resolveAccess(key,autoProfile);
+  const automatic=(isDerivedCreature(key)||result.origin==='quest')&&!p.restrictBasicAccess;
+  const gated=rule&&(baseline.value===0||rule.mode==='derived'&&baseline.value!==1);
+  return `<div class="access-fact">${factCard(label(key),result.value,`data-fact-toggle="access" data-key="${esc(key)}" ${automatic||gated?'disabled':''}`,interfaceIcon('guide'),rule?result.reason:'Confirm this specific completion method. Known creature and area requirements still apply.')}${p.access[key]!=null?`<button class="text-button" data-creature-access-auto="${esc(key)}">Use known requirements</button>`:''}</div>`;
+ }).join('');
 }
 export function renderAreaAccess(p:Profile,keys:string[],query:string,showCompleted=false,embedded=false,wizard=false):string {
  const visit=p.id+':areas';if(!answeredAtVisit.has(visit))answeredAtVisit.set(visit,new Set(keys.filter(key=>resolveAccess(key,p).value===1)));

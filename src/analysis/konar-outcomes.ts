@@ -19,7 +19,10 @@ export function addKonarOutcomes(data:Catalogue,m:Master,p:Profile,rows:Row[],pr
       const saved=choices.find(v=>v.id===p.methods[parent.id]?.variantId);
       const variant=target?available.find(v=>v.id===target.variantId):saved||choices[0];
       progress?.(parent.name+' / '+location+' / '+(variant?.name||'completion access'));
-      if(!variant)return {location,weight:1/pool.locations.length,row:{...parent,locationOutcomes:undefined,isTarget:false,targetFraction:0,methodReason:'No reviewed available completion creature at '+location,unknown:[...pool.unknown]}};
+      if(!variant){
+        const expected=data.variants.filter(v=>v.assignmentIds.includes(parent.id)&&here(v));
+        return {location,weight:1/pool.locations.length,row:{...parent,variant:expected[0]||parent.variant,locationOutcomes:undefined,isTarget:false,targetFraction:0,method:{...parent.method,location},methodReason:'No available completion method for '+(expected.map(v=>v.name).join(' / ')||parent.variant.name)+' at '+location+'. '+expected.flatMap(v=>variantEligibility(v,p,m,parent.id).failed).join('; '),unknown:[...pool.unknown]}};
+      }
       // Resolve the assignment-area alias to the actual guide chamber name so
       // bursting and form-specific DPS use the assigned area, not a default pod.
       const actual=GUIDE.records[variant.id]?.locations.find(l=>(sameKonarLocation(l.name,location)||sameKonarLocation(l.page||'',location))&&(!p.restrictBasicAccess||locationAccess(l.name,p,l.page).value!==0))?.name||location;

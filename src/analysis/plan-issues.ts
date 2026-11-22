@@ -2,6 +2,7 @@ import type {Catalogue,Plan,Profile,Requirement,Source,Row} from '../domain/type
 import {check,masterRequirements} from '../rules/eligibility';
 import {resolveAccess,accessFactFilter} from '../rules/access';
 import {firstDisabledLocation} from '../rules/location-pool';
+import {creatureAccessLabel} from '../rules/creature-access';
 
 export interface PlanIssue {
   title:string;detail:string;route:'account'|'methods'|'tasks'|'plan'|'data'|'settings';action:string;source:Source;
@@ -15,29 +16,33 @@ export function explainPlanIssues(data:Catalogue,plan:Plan,p:Profile):PlanIssue[
     for(const r of requirements){
       const state=check([r],p);if(state.eligible&&!state.unknown.length)continue;
       represented.add(r.label);
+      [...state.unknown,...state.failed].forEach(message=>represented.add(message));
       const instruction=r.kind==='unlock'?(r.min===0?'This reward must be off for this assignment.':'Record this reward as purchased only if you own it, or choose another target.'):
         r.kind==='quest'?`Required quest stage: ${(r.min??1)>=2?'completed':'started'}. Import quests or update the manual stage.`:
         r.kind==='skill'?`Required level: ${r.min??1}. Check the recorded level or choose another target.`:
         r.kind==='access'?'Confirm this access requirement or choose another method.':'At least one listed alternative requirement must be satisfied.';
-      add({title:r.label,detail:`${context}: ${state.unknown.length?'unknown':'not satisfied'}. ${instruction}`,route:'account',action:'Review account requirement',source,filter:r.kind==='skill'||r.kind==='any'?'':r.kind==='unlock'?r.label:r.kind==='access'?accessFactFilter(r.key||'',p):r.key});
+      const creature=r.kind==='access'&&r.key?.startsWith('variant:');
+      add({title:creature?creatureAccessLabel(r.key!):r.label,detail:`${context}: ${state.unknown.length?'unknown':'not satisfied'}. ${creature?[...state.unknown,...state.failed].join('; '):instruction}`,route:'account',action:'Review account requirement',source,filter:r.kind==='skill'||r.kind==='any'?'':r.kind==='unlock'?r.label:r.kind==='access'?accessFactFilter(r.key||'',p):r.key});
     }
   };
   facts(masterRequirements(plan.master,p),plan.master.source,plan.master.name);
-  const relevantRows=plan.rows.filter(r=>r.isTarget||(!r.reason&&!r.blocked)).sort((a,b)=>Number(b.isTarget)-Number(a.isTarget));
+  const relevantRows=plan.rows.filter(r=>r.isTarget||(!r.reason&&!r.blocked)).flatMap(row=>row.locationOutcomes?.length?[...(row.isTarget&&row.methodReason?[row]:[]),...row.locationOutcomes.filter(o=>o.row.isTarget||o.row.skip<1).map(o=>({...o.row,method:{...o.row.method,location:o.location}}))]:row.isTarget||row.skip<1?[row]:[]).sort((a,b)=>Number(b.isTarget)-Number(a.isTarget));
   for(const row of relevantRows){
     facts(row.entry.requirements,row.entry.source,row.name);
-    facts(row.variant.requirements,row.variant.source,row.variant.name);
+    const place=row.method.location||'';
+    const creatureContext=row.variant.name+(place?' at '+place:'');
+    facts(row.variant.requirements,row.variant.source,creatureContext);
     if(row.methodReason&&(row.isTarget||row.skip<1)){
       const pool=p.restrictBasicAccess&&/location pool|method location.*locked/i.test(row.methodReason);
-      add({title:`${row.isTarget?'Target method':'Non-target method'}: ${row.name} → ${row.variant.name}`,detail:row.methodReason+'. '+(pool?'Review the character location restrictions or choose another creature.':row.isTarget?'Choose a supported target variant.':'This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment.'),route:pool?'settings':row.isTarget?'plan':'methods',action:pool?'Review location pool':row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:pool?undefined:'variantId',filter:pool?firstDisabledLocation(row.variant.id,p)?.slice(9):undefined});
+      add({title:`${row.isTarget?'Target method':'Non-target method'}: ${row.name} → ${creatureContext}`,detail:row.methodReason+'. '+(pool?'Review the character location restrictions or choose another creature.':row.isTarget?'Choose a supported target variant.':'This assignment can still be offered while waiting for your target; its configured completion method is incompatible. Review that method or block/skip the assignment.'),route:pool?'settings':row.isTarget?'plan':'methods',action:pool?'Review location pool':row.isTarget?'Review target variant':'Review completion method',source:row.variant.source,assignmentId:row.id,variantId:row.variant.id,field:pool?undefined:'variantId',filter:pool?firstDisabledLocation(row.variant.id,p)?.slice(9):undefined});
     }
-    if(row.isTarget&&plan.master.id==='konar')locationIssues(row,p,add);
   }
+  if(plan.master.id==='konar')for(const row of plan.rows.filter(r=>r.isTarget))locationIssues(row,p,add);
   for(const message of plan.unknown){
     if(represented.has(message)||issues.some(i=>i.title===message))continue;
-    const row=plan.rows.find(r=>r.isTarget&&r.unknown.includes(message));
+    const row=relevantRows.find(r=>r.unknown.includes(message));
     const modelling=/Konar|compatibility|uniform|estimated|modifier range/i.test(message);
-    add({title:message,detail:modelling?'This is a model assumption, not missing account access. Review its source; use a conditional scenario only if you accept the assumption.':'This account fact needs confirmation before an unconditional calculation.',route:row?'methods':modelling?'data':'account',action:row?'Review target method':modelling?'Review model information':'Review account facts',source:row?.entry.source??plan.master.source,assignmentId:row?.id,variantId:row?.variant.id,field:row?'locationChance':undefined});
+    add({title:message,detail:(row?row.variant.name+' at '+(row.method.location||'the configured location')+': ':'')+(modelling?'This is a model assumption, not missing account access. Review its source; use a conditional scenario only if you accept the assumption.':'This account fact needs confirmation before an unconditional calculation.'),route:modelling&&row?'methods':modelling?'data':'account',action:modelling&&row?'Review target method':modelling?'Review model information':'Review account facts',source:row?.entry.source??plan.master.source,assignmentId:row?.id,variantId:row?.variant.id,field:modelling&&row?'locationChance':undefined,filter:row&&!modelling?row.variant.name:undefined});
   }
   for(const conflict of plan.conflicts)add({title:conflict,detail:'Review the actual and proposed block lists for this master. Targets cannot be blocked.',route:'tasks',action:'Review blocks',source:plan.master.source});
   if(plan.reason&&!issues.length){

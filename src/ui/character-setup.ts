@@ -5,7 +5,7 @@ import type {Catalogue,Profile} from '../domain/types';
 import type {AccountExportPreview} from '../state/account-exports';
 import {SETUP_STEPS,setupUnanswered} from '../state/onboarding';
 import {knownAccessKeys,relevantQuests,questState} from '../rules/access';
-import {renderAreaAccess,visibleQuestNames,visibleFactKeys,questLabel} from './account-import';
+import {renderAreaAccess,visibleQuestNames,visibleFactKeys,renderSpecialAccess,questLabel} from './account-import';
 import {rewardCards,factCard} from './fact-cards';
 import {interfaceIcon} from './interface-icons';
 import {escapeHtml as esc} from './html';
@@ -25,7 +25,7 @@ function combatFacts(p:Profile,showCompleted:boolean):string{
 }
 function accessFacts(data:Catalogue,p:Profile,showCompleted:boolean):string{
  const quests=visibleQuestNames(p,relevantQuests(data),showCompleted).filter(q=>questState(p,q)===null);
- return `<h2>Confirm remaining access</h2><p>Ordinary entrances default to Yes. Only hard quest, miniquest, skill gates and unresolved special encounters need attention. You can leave unknown facts for later; plans explain missing requirements.</p>${renderAreaAccess(p,p.restrictBasicAccess?locationPoolKeys(data,p):knownAccessKeys(data),'',showCompleted,false,true)}<section class="card"><h3>Quest stages not yet confirmed complete</h3><div class="formgrid">${quests.map(q=>`<label>${esc(q)}<select data-fact="quests" data-key="${esc(q)}"><option value="" ${p.quests[q]==null?'selected':''}>Auto: ${questLabel(p.questImport?.states[q]??null)}</option>${[0,1,2].map(v=>`<option value="${v}" ${p.quests[q]===v?'selected':''}>${questLabel(v)}</option>`).join('')}</select></label>`).join('')}</div></section><details><summary>Special creature and repeatable-method confirmations</summary><div class="fact-grid">${visibleFactKeys(p,'special-access',knownAccessKeys(data).filter(k=>!k.startsWith('location:')),k=>p.access[k]===1,showCompleted).map(k=>factCard(k,p.access[k],`data-fact-toggle="access" data-key="${esc(k)}"`,interfaceIcon('guide'))).join('')}</div></details>`;
+ return `<h2>Confirm remaining access</h2><p>Ordinary entrances default to Yes. Only hard quest, miniquest, skill gates and unresolved special encounters need attention. You can leave unknown facts for later; plans explain missing requirements.</p>${renderAreaAccess(p,p.restrictBasicAccess?locationPoolKeys(data,p):knownAccessKeys(data),'',showCompleted,false,true)}<section class="card"><h3>Quest stages not yet confirmed complete</h3><div class="formgrid">${quests.map(q=>`<label>${esc(q)}<select data-fact="quests" data-key="${esc(q)}"><option value="" ${p.quests[q]==null?'selected':''}>Auto: ${questLabel(p.questImport?.states[q]??null)}</option>${[0,1,2].map(v=>`<option value="${v}" ${p.quests[q]===v?'selected':''}>${questLabel(v)}</option>`).join('')}</select></label>`).join('')}</div></section><details><summary>Special creature and repeatable-method confirmations</summary><div class="fact-grid">${renderSpecialAccess(data,p,knownAccessKeys(data),'',showCompleted)}</div></details>`;
 }
 export function renderCharacterSetup(data:Catalogue,p:Profile,preview:AccountExportPreview|null,showCompleted=false,discovery:ExportDiscoveryView={busy:false,message:'',folders:[]},desktop=false):string{
  const step=p.setup?.step??0,unanswered=setupUnanswered(data,p);
