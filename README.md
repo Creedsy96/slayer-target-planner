@@ -1,20 +1,20 @@
-# Slayer Target Planner 4.0.1
+# Slayer Target Planner 4.0.2
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-Pending fixes derive 100 ordinary creature gates from known requirements, clarify
-the remaining creature/location warnings, and repair the extracted-folder updater
+Version 4.0.2 derives 100 ordinary creature gates from known requirements, clarifies
+the remaining creature/location warnings, and repairs the extracted-folder updater
 check. [Creature audit](docs/features/creature-access.md) · [Updater regression](docs/features/extracted-update-check.md).
 
 Version 4.0.1 responsiveness fixes move block explanations/reviews out of the UI
 thread, bound saved-calculation lookup, display completed results before storage
 finishes, and reduce progress/redraw traffic. [Details and focused verification](docs/features/ui-responsiveness.md).
 
-[Download the Windows release](https://github.com/Lolager23/slayer-target-planner/releases/tag/v4.0.1). The portable app checks for future stable releases at startup.
+[Download the Windows release](https://github.com/Lolager23/slayer-target-planner/releases/tag/v4.0.2). The portable app checks for future stable releases at startup. Copies of 4.0.0/4.0.1 need one manual upgrade to receive the updater fix.
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 4.0.1 - Windows** folder on the Desktop. The matching ZIP is in its `share/` subfolder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 4.0.2 - Windows** folder on the Desktop. The matching ZIP is in its `share/` subfolder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
 

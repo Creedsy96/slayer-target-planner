@@ -15,5 +15,5 @@ The 4.0.0 changes are [automatic updates](features/automatic-updates.md),
 [Eclipse burn and travel](features/eclipse-travel-options.md) and
 [the project/distribution layout](features/folder-layout.md).
 
-Pending fixes: [derived creature access](features/creature-access.md) and
+The 4.0.2 bugfix includes: [derived creature access](features/creature-access.md) and
 [the extracted-folder updater check](features/extracted-update-check.md).

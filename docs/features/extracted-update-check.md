@@ -1,4 +1,4 @@
-# Complete extracted folders rejected by updater — unreleased
+# Complete extracted folders rejected by updater — 4.0.2
 
 4.0.0/4.0.1 checked `fs.statSync(resources/app.asar).isFile()`. In Electron,
 `node:fs` treats a valid ASAR archive as a virtual directory, so that check can

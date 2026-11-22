@@ -1,5 +1,27 @@
 # Verification
 
+## 4.0.2 release — 22 November 2026
+
+- Production build and TypeScript checks: passed.
+- Full suite: 541 tests passed, none failed or skipped. Coverage includes the
+  real Electron ASAR regression, Windows extraction/rollback, all 167 reviewed
+  creature gates, custom characters, strict Konar planning and named warnings.
+- Two older tests expected Cow calves to retain a generic confirmation. Their
+  replacements verify derived ordinary access, deliberate restricted-account
+  exclusions and genuinely unconfirmed Bryophyta methods.
+- 100 ordinary creature gates derive access. The 67 special method checks retain
+  named explanations; actual quest/skill/location restrictions remain enforced.
+- Calculation fingerprints change with the access rules; character storage and
+  schema remain unchanged. No character data was rewritten for release preparation.
+- The updater validates app.asar through Electron original-fs. The real Electron
+  test loads the updater/helper from a packaged ASAR against disposable data.
+  4.0.0/4.0.1 copies need a manual upgrade to receive this correction.
+- The broader review of every guide location/travel route remains pending outside
+  this bugfix; generic/unreviewed routes are not relabelled as reviewed.
+
+Package, publication and Desktop installation evidence is recorded after those
+operations complete. No interactive UI acceptance is inferred from automated tests.
+
 ## 4.0.1 release — 22 November 2026
 
 - Production build and TypeScript checks: passed.

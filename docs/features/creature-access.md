@@ -1,4 +1,4 @@
-# Derived creature access — unreleased
+# Derived creature access — 4.0.2
 
 The reported Konar failure came from a generated `variant:deviant-spectre`
 confirmation, not a purchased game unlock. The catalogue generator added the same
@@ -58,6 +58,7 @@ Build and TypeScript checks passed. 124 focused tests passed, covering the repor
 strict Konar/Deviant case, all 167 audited keys, deterministic regeneration,
 derived variants, real Slayer/quest gates, alternative locations, quest imports,
 manual restrictions, saved-character compatibility, fully skipped methods,
-named warnings and wizard/account rendering. No full-suite run or release was
-performed for this development change. Retained Wiki captures were reused with
-zero new game-Wiki requests.
+named warnings and wizard/account rendering. The requested 4.0.2 release then passed the full 541-test suite; see the root
+verification record. Retained Wiki captures were reused with zero new game-Wiki
+requests. The broader review of every guide travel route is separate and remains
+pending outside this creature-gate bugfix.

@@ -22,15 +22,18 @@ test('unconfirmed block capacity still gates proposed blocks and known capacity 
  p.blockLimit=null;p.questPoints=300;p.diaries.lumbridge=null;const withinMinimum=c.evaluate(d,m,p,['bats']);assert.ok(withinMinimum.chance>0);assert.ok(!withinMinimum.unknown.includes('Block-slot eligibility'));
 });
 
-test('automatic non-target methods prefer a confirmed ordinary variant over an unconfirmed low-HP specialist',()=>{
+test('automatic non-target methods accept ordinary variants whose access follows known requirements',()=>{
  const p=profile(),rows=c.prepareRows(d,master('spria'),p);
  for(const row of rows.filter(r=>!r.reason&&!r.isTarget))assert.ok(!row.unknown.some(s=>s.includes('Confirm access and repeatable method')),row.name+' / '+row.variant.name);
- const cows=rows.find(r=>r.id==='cows');assert.notEqual(cows.variant.id,'cow-calf');assert.deepEqual(c.check(cows.variant.requirements,p).unknown,[]);
+ const cows=rows.find(r=>r.id==='cows');assert.equal(cows.variant.id,'cow-calf');assert.deepEqual(c.check(cows.variant.requirements,p).unknown,[]);
+ p.restrictBasicAccess=true;p.access['variant:cow-calf']=0;
+ assert.notEqual(c.prepareRows(d,master('spria'),p).find(r=>r.id==='cows').variant.id,'cow-calf');
 });
 
 test('an explicitly chosen unconfirmed method is retained and its requirement is still actionable',()=>{
- const p=profile();p.methods.cows={...c.defaultMethod(d,p,'cows'),variantId:'cow-calf'};
- const result=c.evaluate(d,master('spria'),p,[]),row=result.rows.find(r=>r.id==='cows');assert.equal(row.variant.id,'cow-calf');assert.ok(row.unknown.length);assert.equal(result.chance,null);assert.ok(c.explainPlanIssues(d,result,p).some(i=>i.title.includes('Cow calf')));
+ const p=profile();p.methods['moss giants']={...c.defaultMethod(d,p,'moss giants'),variantId:'bryophyta',location:'Varrock Sewers'};
+ const m={...master('vannaka'),tasks:master('vannaka').tasks.filter(t=>['dogs','moss giants'].includes(t.id))};
+ const data={...d,masters:[m]},result=c.evaluate(data,m,p,[]),row=result.rows.find(r=>r.id==='moss giants');assert.equal(row.variant.id,'bryophyta');assert.ok(row.unknown.length);assert.equal(result.chance,null);assert.ok(c.explainPlanIssues(data,result,p).some(i=>i.title.includes('Bryophyta')&&i.detail.includes('Varrock Sewers')));
 });
 
 test('all-hidden master view explains the most relevant capable master and links to account corrections',()=>{
