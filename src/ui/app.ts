@@ -35,7 +35,6 @@ import {renderBank,type BankView} from './bank';
 import {loadDisplay,saveDisplay,applyDisplay,renderSettings,type DisplaySettings} from './settings';
 import {emptyBank,defaultCombat,ownedQuantities,applyBankSnapshots,parseBankImport,parseCharacterLevels,type BankPreview} from '../state/bank';
 import type {BankKind} from '../combat/types';
-import {withCalculatedTiming} from '../combat/timing';
 import {canonicalInventoryId} from '../combat/item-ids';
 import {offerTimeLabel,renderBoostEstimate} from './strategy-summary';
 import {creatureIcon,creatureName,assignmentName,creatureOptions} from './creature-art';
@@ -61,7 +60,7 @@ import {renderMortimerRules,renderMortimerSummary} from './mortimer-rules';
 import {loadShowUnavailable,saveShowUnavailable} from './visibility';
 import {requestRate,measuredRateLabel} from './rate-dialog';
 import {THEMES,loadTheme,themeId,applyTheme,saveTheme} from './themes';
-import {catalogue as data,MORTIMER_VERSION,VARIANT_VERSION,withDefaultMaxedProfile,knownAccessKeys,customProfileCount,MAX_CUSTOM_PROFILES,MAXED_PROFILE_ID,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,blockImpacts,evaluate,AREA_RULES,relevantQuests,questState,parseQuestImport,applyQuestImport,type QuestPreview} from '../core';
+import {catalogue as data,MORTIMER_VERSION,VARIANT_VERSION,withDefaultMaxedProfile,knownAccessKeys,customProfileCount,MAX_CUSTOM_PROFILES,MAXED_PROFILE_ID,newProfile,defaultMethod,clone,migrateV1,importProfiles,rebaseProfiles,exportProfiles,validateProfile,STORAGE,blockSlots,AREA_RULES,relevantQuests,questState,parseQuestImport,applyQuestImport,type QuestPreview} from '../core';
 import type {Profile,Plan,Simulation,Method,Requirement} from '../domain/types';
 declare const WORKER_SOURCE:string;
 declare global {interface Window {slayerDesktop?:Partial<UpdateBridge>&{characterExports?:(mode:'auto'|'choose')=>Promise<{source:'automatic'|'selected';folder:string;files:{name:string;text:string}[]}|null>;hiscores:(name:string)=>Promise<string>;compact?:(enabled:boolean,pin:boolean)=>Promise<void>}}}
@@ -118,14 +117,14 @@ class AppState{
       if(result.kind==='combat-cache'){this.combatCache.put(identity,result.key,result.result);return;}
       if(result.fromCache)this.restoredCalculations=true;
       if(result.kind==='progress'){this.busy[channel]={done:result.done,total:result.total,current:result.current||'Calculating'};renderStatus();return;}
-      if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderContent();}return;}
+      if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderBackground();}return;}
       if(result.kind==='plan-ready'){
         if(channel==='plans'||channel==='gear-selection'){
           if(channel==='plans'&&this.gearPlanOverrides.has(result.plan.master.id))return;
           if(channel==='gear-selection')this.gearPlanOverrides.set(result.plan.master.id,result.plan);
           this.plans=[...this.plans.filter(p=>p.master.id!==result.plan.master.id),result.plan].sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
           if(!this.selected)this.selected=this.plans.find(plan=>canRankPlan(plan,profile))?.master.id||this.plans.find(plan=>canShowAvailableMaster(data,plan,profile))?.master.id||this.plans[0]?.master.id||'';
-          if(this.route==='plan')renderContent();
+          if(this.route==='plan')renderBackground();
         }
         return;
       }
@@ -148,7 +147,7 @@ class AppState{
       else {if(result.plan){this.plans=this.plans.map(p=>p.master.id===result.masterId?result.plan:p);}this.simulation=result.result;this.simulations.set(result.masterId,result.result);}
       if(channel==='plans'&&this.route==='guide'&&!this.gearResults&&!this.workers.has('gear'))this.run('gear','gear',this.profile,undefined,guideState);
       if(channel==='plans')void this.restoreSelectedResults();
-      renderContent();renderStatus();
+      renderBackground();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);reportActionError('Calculation worker failed. Reload or export the character before trying again.',origin||null);renderStatus();};
     worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,variantId:requestedGuide.variantId,variantIds:[...this.gearPendingVariants],blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
@@ -198,7 +197,9 @@ function applyGearSelection(choice:GearSelection,context:{key:string;guide:Guide
   try{const copy=clone(p());selectCreatureGear(data,copy,context.guide,result,choice);state.profiles[state.profiles.findIndex(q=>q.id===state.activeId)]=validateProfile(data,copy);state.gearChanged(context.guide.variantId);}
   catch(error){reportActionError(error,lastOrigin||null);}
 }
-const methodPreview=new MethodPreview(WORKER_SOURCE,()=>{if(state.route==='methods')renderContent();},state.combatCache);
+let backgroundRenderPending=false;
+function renderBackground():void{if(backgroundRenderPending)return;backgroundRenderPending=true;requestAnimationFrame(()=>{backgroundRenderPending=false;renderContent();});}
+const methodPreview=new MethodPreview(WORKER_SOURCE,()=>{if(state.route==='methods')renderBackground();},state.combatCache);
 let lastOrigin:ActionOrigin|undefined,displayedMessage='';
 const actionNotice=new ActionNotice(()=>({route:state.route,characterId:state.activeId}),openFeedbackFix,()=>{state.message='';displayedMessage='';});
 let renderedRoute='';
@@ -287,7 +288,7 @@ function renderResetEstimate(plan:Plan):string{
 
 function planDetails(plan:Plan,compact=false):string{
   if(plan.chance===null&&requiredTargetUnlocks(data,plan,p()).length)return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED MASTER</div><h2 id="selected-plan-title">${esc(plan.master.name)}</h2>${renderTargetUnlockWarning(data,plan,p())}${renderPlanIssues(data,plan,p())}</section>`;
-  const impacts=blockImpacts(data,plan,p());
+  const impacts=plan.review?.impacts||[];
   const blockDetails=plan.blocks.length?`<details><summary>Why these blocks?</summary><p class="small muted">Each delta removes one block from this proposal. Deltas are not additive.</p><div class="tablewrap"><table><thead><tr><th>Block</th><th>Chance gain</th><th>Hours saved</th><th>New cost</th></tr></thead><tbody>${impacts.map(i=>`<tr><td>${assignmentName(data,i.id)}</td><td>${pct(i.chanceDelta)}</td><td>${num(i.hoursSaved)}</td><td>${i.cost}</td></tr>`).join('')}</tbody></table></div></details>`:'';
   const unknownDetails=plan.unknown.length?`<details><summary>Unconfirmed requirements and modelling assumptions (${plan.unknown.length})</summary><ul class="issues">${plan.unknown.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></details>`:'';
   return `<section class="card" id="selected-plan" tabindex="-1" aria-labelledby="selected-plan-title"><div class="eyebrow">SELECTED STRATEGY</div><h2 id="selected-plan-title">${esc(plan.master.name)}</h2>${plan.reason?`<div class="notice error">${esc(plan.reason)}</div>`:''}${renderPlanIssues(data,plan,p(),!!plan.reason)}${plan.master.id==='mortimer'?renderMortimerSummary(p()):''}${renderResetEstimate(plan)}${renderBoostEstimate(data,plan)}${renderKonarLocations(data,plan,p())}<p class="small muted">${esc(plan.quality)}</p>${renderTargetUnlockWarning(data,plan,p())}${renderExtensionAdvice(data,plan,p())}<div class="task-lookup"><label>Look up an offered task<input id="hunt-task-search" type="search" placeholder="Assignment or monster variant" value="${esc(state.huntSearch)}"></label><div id="hunt-task-results" aria-live="polite">${renderLookup(data,plan,p(),state.huntSearch)}</div></div><div class="split"><div><h3>Proposed blocks</h3><div class="chips">${plan.blocks.map(id=>`<span class="chip">${assignmentName(data,id)}</span>`).join('')||'None'}</div><div class="tools block-actions"><button data-action="use-proposal">Fix this proposal</button><button data-action="clear-proposal">Return to automatic blocks</button><button data-action="apply-proposal">Review & record actual list</button></div><p class="small muted">New blocks cost ${plan.setupCost} points. Removing a block is not treated as a refund.</p></div><div>${renderSkipPolicy(data,plan,p())}</div></div>${renderForecast(plan,p(),state.simulations.get(plan.master.id)||null)}${blockDetails}${unknownDetails}${renderTaskHistory(data,p())}</section>${compact?'':simulationPanel(plan)}`;

@@ -1,9 +1,8 @@
 import type {Catalogue,Plan,Profile} from '../domain/types';
 import {assignmentName,creatureName} from './creature-art';
-import {blockPreview} from '../analysis/hunt-tools';
 import {loadHunt,recordTask,saveHunt,timingSuggestion,type TaskInput} from '../state/hunts';
 import {clone} from '../state/profiles';
-import {prepareRows} from '../analysis/planner';
+import {configuredMethod} from '../combat/priority';
 import {modifierKinds,rangeValues} from '../rules/points';
 import {escapeHtml as esc,renderBlockChanges,reviewDialog} from './hunt-tools';
 
@@ -33,7 +32,7 @@ export async function deleteHuntDialog(ctx:HuntContext,id:string):Promise<void>{
 }
 export async function reviewBlocks(ctx:HuntContext):Promise<void>{
   const p=ctx.profile(),before=JSON.stringify(p),plan=ctx.plan();if(!plan)throw Error('Select a master first.');
-  const changes=blockPreview(ctx.data,plan,p);
+  const changes=plan.review?.blocks;if(!changes)throw Error('Wait for the master block comparison to finish, then review it again.');
   if(plan.conflicts.length)throw Error(plan.conflicts.join(' '));
   const fields=await reviewDialog('Apply block-list changes',renderBlockChanges(ctx.data,plan,p)+`<label class="check"><input type="checkbox" name="deduct" checked>Deduct ${changes.cost} new-block points from my recorded balance</label><p class="small muted">Uncheck only if your current balance already reflects these purchases. This records changes you make in game; it cannot change your game account.</p>`,'Record actual list');
   if(!fields)return;guard(ctx,before);const q=clone(p);
@@ -42,13 +41,13 @@ export async function reviewBlocks(ctx:HuntContext):Promise<void>{
 }
 export async function recordTaskDialog(ctx:HuntContext,assignmentId:string,action:TaskInput['action']):Promise<void>{
   const p=ctx.profile(),before=JSON.stringify(p),plan=ctx.plan();if(!plan)throw Error('Select a master first.');
-  const row=prepareRows(ctx.data,plan.master,p).find(r=>r.id===assignmentId);if(!row)throw Error('Task not found.');
+  const row=plan.rows.find(r=>r.id===assignmentId);if(!row)throw Error('Task not found.');
   const mortimer=plan.master.id==='mortimer'&&action==='complete';
   const kinds=modifierKinds(p.mortimerTasks??0,row.entry);
   const fields=await reviewDialog(action==='complete'?'Record completed task':'Record paid skip',`<p>${esc(plan.master.name)} · <strong>${assignmentName(ctx.data,row.id,row.name)}</strong><br>Completion method: ${creatureName(row.variant.id,row.variant.name)}. Record actions already performed in game.</p>${mortimer?`<label>Actual modifier<select name="modifier">${kinds.map(k=>`<option value="${k}">${k}</option>`).join('')}</select></label><label>Actual point modifier<input name="points" type="number" value="${rangeValues(row.entry.pointsRange)[0]}" step="5" min="0" max="10000"></label><p class="small muted">For points, valid values: ${rangeValues(row.entry.pointsRange).join(', ')}. Other modifiers do not award completion points.</p>`:''}${action==='complete'?'<div class="formgrid"><label>Actual kills (optional)<input name="kills" type="number" min="1" max="10000000" step="1"></label><label>Combat minutes (optional, exclude travel/banking)<input name="minutes" type="number" min="0.01" max="10000000" step="any"></label></div><p class="small muted">Enter real kills, including bracelet effects. Both values are needed for a timing suggestion. Check the configured method matches what you used.</p>':'<p>A paid skip costs '+plan.master.skipCost+' points, earns no reward and leaves the streak unchanged. This can record an intentional skip even when the recommended action differs.</p>'}`,'Preview changes');
   if(!fields)return;guard(ctx,before);
   const numeric=(key:string)=>fields.get(key)?Number(fields.get(key)):null;
-  const next=recordTask(ctx.data,p,{masterId:plan.master.id,assignmentId,action,modifier:String(fields.get('modifier')||'none'),modifierPoints:Number(fields.get('points')||0),combatMinutes:numeric('minutes'),kills:numeric('kills')},new Date().toISOString(),crypto.randomUUID());
+  const next=recordTask(ctx.data,p,{masterId:plan.master.id,assignmentId,action,modifier:String(fields.get('modifier')||'none'),modifierPoints:Number(fields.get('points')||0),combatMinutes:numeric('minutes'),kills:numeric('kills')},new Date().toISOString(),crypto.randomUUID(),row);
   const r=next.taskHistory!.at(-1)!;
   if(!await reviewDialog('Confirm task record',`<p>${assignmentName(ctx.data,row.id,row.name)} · ${esc(action)}</p><p>Points: <strong>${r.pointsBefore} → ${r.pointsAfter}</strong><br>${esc(plan.master.streakGroup)} streak: <strong>${r.streakBefore} → ${r.streakAfter}</strong>${mortimer?`<br>Completed Mortimer tasks: ${p.mortimerTasks} → ${next.mortimerTasks}`:''}</p><p>This updates this planner only. Undo can reverse this record.</p>`,'Record task'))return;
   guard(ctx,before);ctx.commit(next);
@@ -59,6 +58,6 @@ export async function applyTimingDialog(ctx:HuntContext,aid:string,vid:string):P
   if(!await reviewDialog('Apply measured combat rate',`<p>Use ${suggestion.rate.toFixed(1)} actual kills/hour from ${suggestion.samples} completed tasks? Travel/banking remains separate. Review equipment and locations before combining samples.</p>`,'Use measured rate'))return;
   guard(ctx,before);
   const q=clone(p),key=aid+'::'+vid;
-  const m=q.methods[key]||q.methods[aid]||prepareRows(ctx.data,ctx.data.masters.find(m=>m.tasks.some(t=>t.id===aid))!,p).find(r=>r.id===aid)!.method;
+  const m=configuredMethod(ctx.data,q,aid,vid);
   q.methods[key]={...m,variantId:vid,timing:'kills-hour',rate:suggestion.rate};ctx.commit(q);
 }

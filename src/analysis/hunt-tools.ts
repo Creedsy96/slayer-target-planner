@@ -21,10 +21,10 @@ export function fundingForecast(plan:Plan,p:Profile){
     setupAffordable:p.points===null?null:p.points-setup>=p.reserve,
     drift:plan.pointsEarned===null||plan.pointsSpent===null?null:plan.pointsEarned-plan.pointsSpent};
 }
-export function blockPreview(data:Catalogue,plan:Plan,p:Profile){
+export function blockPreview(data:Catalogue,plan:Plan,p:Profile,prepared?:Row[]){
   const actual=p.blocks[plan.master.group]||[],added=plan.blocks.filter(id=>!actual.includes(id)),removed=actual.filter(id=>!plan.blocks.includes(id));
   const scenario={...p,applySetup:false};
-  const before=evaluate(data,plan.master,scenario,actual),after=evaluate(data,plan.master,scenario,plan.blocks);
+  const before=evaluate(data,plan.master,scenario,actual,'Evaluated configuration',false,prepared),after=evaluate(data,plan.master,scenario,plan.blocks,'Evaluated configuration',false,prepared);
   return {added,removed,cost:added.length*plan.master.blockCost,before,after,
     minutesSaved:before.hours!==null&&after.hours!==null?(before.hours-after.hours)*60:null,
     chanceGain:before.chance!==null&&after.chance!==null?after.chance-before.chance:null};

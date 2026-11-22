@@ -4,6 +4,10 @@ An offline-capable creature hunt planner for the private website, local browser 
 
 ## Start
 
+Unreleased responsiveness fixes move block explanations/reviews out of the UI
+thread, bound saved-calculation lookup, display completed results before storage
+finishes, and reduce progress/redraw traffic. [Details and focused verification](docs/features/ui-responsiveness.md).
+
 [Download the Windows release](https://github.com/Lolager23/slayer-target-planner/releases/tag/v4.0.0). The portable app checks for future stable releases at startup.
 
 Open `Slayer Target Planner.exe` in the **Slayer Target Planner 4.0.0 - Windows** folder on the Desktop. The matching ZIP is in its `share/` subfolder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.

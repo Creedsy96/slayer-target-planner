@@ -1,3 +1,5 @@
+import {workerPublisher} from './worker-messages';
+import {withPlanReview} from './analysis/plan-review';
 import {gearAffectedMasters} from './combat/gear-selection';
 import {calculateGuideCombat} from './combat/guide';
 import {calculateMethodPreview} from './combat/method-preview';
@@ -11,63 +13,65 @@ import {catalogue,evaluate,optimise,simulate,searchHunt,prepareRows} from './cor
 import {withExtensionComparisons} from './analysis/extensions';
 import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
+  const publish=workerPublisher(message=>self.postMessage(message));
+  const reviewed=(plan:ReturnType<typeof evaluate>,p:Profile)=>withPlanReview(catalogue,withExtensionComparisons(catalogue,plan,p),p);
   const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId,variantIds}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string;variantIds?:string[]};
   try{
     restoreCombatCache(profile,combatCache);
     const identity=combatIdentity(profile);let calculated=0;
-    observeCombatCache((signature,key,result)=>{if(signature===identity){calculated++;self.postMessage({id,kind:'combat-cache',key,result});}});
+    observeCombatCache((signature,key,result)=>{if(signature===identity){calculated++;publish({id,kind:'combat-cache',key,result});}});
     if(kind==='method-timing'){
       const name=catalogue.variants.find(v=>v.id===variantId)?.name||'selected method';
-      self.postMessage({id,kind:'progress',done:0,total:1,current:'Calculating '+name+' / selected completion method'});
+      publish({id,kind:'progress',done:0,total:1,current:'Calculating '+name+' / selected completion method'});
       const result=calculateMethodPreview(catalogue,profile,assignmentId!,variantId!);
-      self.postMessage({id,kind:'progress',done:1,total:1,current:name+' / method ready'});
-      self.postMessage({id,kind,result});
+      publish({id,kind:'progress',done:1,total:1,current:name+' / method ready'});
+      publish({id,kind,result});
     }else if(kind==='gear-detail'){
-      self.postMessage({id,kind,result:compareOwnedSlot(profile,guide!,combat!,slot!)});
+      publish({id,kind,result:compareOwnedSlot(profile,guide!,combat!,slot!)});
     }else if(kind==='gear'){
-      const result=calculateGuideCombat(profile,guide!, (done,current)=>self.postMessage({id,kind:'progress',done,total:5,current}));
-      self.postMessage({id,kind:'gear',result});
+      const result=calculateGuideCombat(profile,guide!, (done,current)=>publish({id,kind:'progress',done,total:5,current}));
+      publish({id,kind:'gear',result});
     }else if(kind==='gear-selection'){
       const ids=new Set((variantIds?.length?variantIds:[variantId!]).flatMap(variant=>gearAffectedMasters(catalogue,profile,variant).map(master=>master.id)));
       const masters=catalogue.masters.filter(master=>ids.has(master.id));
-      const result=calculateGuideCombat(profile,guide!,(done,current)=>self.postMessage({id,kind:'progress',done,total:5+masters.length,current}));
-      self.postMessage({id,kind:'priority-gear',result});
+      const result=calculateGuideCombat(profile,guide!,(done,current)=>publish({id,kind:'progress',done,total:5+masters.length,current}));
+      publish({id,kind:'priority-gear',result});
       const plans=[];
       for(const [index,master]of masters.entries()){
-        const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250,(fraction,current)=>self.postMessage({id,kind:'progress',done:5+index+fraction,total:5+masters.length,current:master.name+' / '+current}));
-        plans.push(withExtensionComparisons(catalogue,plan,profile));
-        self.postMessage({id,kind:'plan-ready',plan:plans[plans.length-1]});
+        const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250,(fraction,current)=>publish({id,kind:'progress',done:5+index+fraction,total:5+masters.length,current:master.name+' / '+current}));
+        plans.push(reviewed(plan,profile));
+        publish({id,kind:'plan-ready',plan:plans[plans.length-1]});
       }
-      self.postMessage({id,kind,plans,combatCalculated:calculated});
+      publish({id,kind,plans,combatCalculated:calculated});
     }else if(kind==='plans'){
-      const offset=preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>self.postMessage({id,kind:'progress',done,total,current}),result=>self.postMessage({id,kind:'priority-gear',result}));
+      const offset=preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>publish({id,kind:'progress',done,total,current}),result=>publish({id,kind:'priority-gear',result}));
       const plans=[],total=offset+catalogue.masters.length;
       for(const [index,master]of prioritisedMasters(catalogue,profile).entries()){
-        self.postMessage({id,kind:'progress',done:offset+index,total,current:master.name+' / preparing methods'});
-        const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250,(fraction,current)=>self.postMessage({id,kind:'progress',done:offset+index+.9*fraction,total,current:master.name+' / '+current}));
-        self.postMessage({id,kind:'progress',done:offset+index+.9,total,current:master.name+' / Comparing task extensions'});
-        plans.push(withExtensionComparisons(catalogue,plan,profile));
-        self.postMessage({id,kind:'plan-ready',plan:plans[plans.length-1]});
-        self.postMessage({id,kind:'progress',done:offset+plans.length,total,current:master.name+' / finished'});
+        publish({id,kind:'progress',done:offset+index,total,current:master.name+' / preparing methods'});
+        const plan=optimise(catalogue,master,profile,master.id==='mortimer'?60:250,(fraction,current)=>publish({id,kind:'progress',done:offset+index+.9*fraction,total,current:master.name+' / '+current}));
+        publish({id,kind:'progress',done:offset+index+.9,total,current:master.name+' / Comparing task extensions'});
+        plans.push(reviewed(plan,profile));
+        publish({id,kind:'plan-ready',plan:plans[plans.length-1]});
+        publish({id,kind:'progress',done:offset+plans.length,total,current:master.name+' / finished'});
       }
-      self.postMessage({id,kind:'plans',plans,combatCalculated:calculated,combatRestored:combatCache?.identity===identity?combatCache.entries.length:0});
-    }else if(kind==='hunt'){const master=catalogue.masters.find(m=>m.id===masterId)!;self.postMessage({id,kind:'progress',done:0,total:1,current:'Preparing full-hunt search / '+master.name});const found=searchHunt(catalogue,master,profile,(done,total)=>self.postMessage({id,kind:'progress',done,total,current:'Searching full-hunt block candidates'}));found.plan=withExtensionComparisons(catalogue,found.plan,profile);self.postMessage({id,kind:'hunt',...found,masterId});
+      publish({id,kind:'plans',plans,combatCalculated:calculated,combatRestored:combatCache?.identity===identity?combatCache.entries.length:0});
+    }else if(kind==='hunt'){const master=catalogue.masters.find(m=>m.id===masterId)!;publish({id,kind:'progress',done:0,total:1,current:'Preparing full-hunt search / '+master.name});const found=searchHunt(catalogue,master,profile,(done,total)=>publish({id,kind:'progress',done,total,current:'Searching full-hunt block candidates'}));found.plan=reviewed(found.plan,profile);publish({id,kind:'hunt',...found,masterId});
     }else if(kind==='strategies'){
       const master=catalogue.masters.find(m=>m.id===masterId)!;
       const strategies=['none','sustainable','funded','boost-turael','boost-mazchna','reset-turael'] as const,results=[];
       for(const strategy of strategies){
-        try{const scenario={...profile,strategy};const index=results.length;self.postMessage({id,kind:'progress',done:index,total:strategies.length,current:'Preparing strategy / '+strategy});const plan=optimise(catalogue,master,scenario,50,(fraction,current)=>self.postMessage({id,kind:'progress',done:index+.25*fraction,total:strategies.length,current:strategy+' / '+current}));results.push({strategy,result:simulate(catalogue,plan,scenario,done=>self.postMessage({id,kind:'progress',done:index+.25+.75*done/scenario.simulation.trials,total:strategies.length,current:'Simulating / '+strategy}))});}
+        try{const scenario={...profile,strategy};const index=results.length;publish({id,kind:'progress',done:index,total:strategies.length,current:'Preparing strategy / '+strategy});const plan=optimise(catalogue,master,scenario,50,(fraction,current)=>publish({id,kind:'progress',done:index+.25*fraction,total:strategies.length,current:strategy+' / '+current}));results.push({strategy,result:simulate(catalogue,plan,scenario,done=>publish({id,kind:'progress',done:index+.25+.75*done/scenario.simulation.trials,total:strategies.length,current:'Simulating / '+strategy}))});}
         catch(error){results.push({strategy,error:error instanceof Error?error.message:String(error)});}
-        self.postMessage({id,kind:'progress',done:results.length,total:strategies.length,current:'Strategy / '+strategy});
+        publish({id,kind:'progress',done:results.length,total:strategies.length,current:'Strategy / '+strategy});
       }
-      self.postMessage({id,kind:'strategies',results});
+      publish({id,kind:'strategies',results});
     }else{
       const master=catalogue.masters.find(m=>m.id===masterId)!;
-      const preparing=(fraction:number,current:string)=>self.postMessage({id,kind:'progress',done:.2*fraction*profile.simulation.trials,total:profile.simulation.trials,current:master.name+' / '+current});
+      const preparing=(fraction:number,current:string)=>publish({id,kind:'progress',done:.2*fraction*profile.simulation.trials,total:profile.simulation.trials,current:master.name+' / '+current});
       const plan=blocks?evaluate(catalogue,master,profile,blocks,'Evaluated configuration',false,prepareRows(catalogue,master,profile,(done,total,current)=>preparing(done/Math.max(1,total),'Gear / '+current))):optimise(catalogue,master,profile,master.id==='mortimer'?60:250,preparing);
-      const result=simulate(catalogue,plan,profile,done=>self.postMessage({id,kind:'progress',done:.2*profile.simulation.trials+.8*done,total:profile.simulation.trials,current:'Simulating hunt trials'}));
-      self.postMessage({id,kind:'simulation',result,masterId});
+      const result=simulate(catalogue,plan,profile,done=>publish({id,kind:'progress',done:.2*profile.simulation.trials+.8*done,total:profile.simulation.trials,current:'Simulating hunt trials'}));
+      publish({id,kind:'simulation',result,masterId});
     }
-  }catch(error){self.postMessage({id,kind:'error',message:error instanceof Error?error.message:String(error)});}
+  }catch(error){publish({id,kind:'error',message:error instanceof Error?error.message:String(error)});}
   finally{observeCombatCache(undefined);}
 };

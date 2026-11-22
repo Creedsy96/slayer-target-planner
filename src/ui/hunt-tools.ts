@@ -2,7 +2,7 @@ import type {Catalogue,Plan,Profile,Simulation} from '../domain/types';
 import {masterOptionLabel} from './master-availability';
 import {creatureName,assignmentName} from './creature-art';
 import {enhanceCreaturePickers} from './creature-picker';
-import {blockPreview,fundingForecast,taskAdvice} from '../analysis/hunt-tools';
+import {fundingForecast,taskAdvice} from '../analysis/hunt-tools';
 import {timingSuggestion} from '../state/hunts';
 export const escapeHtml=(v:unknown)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const esc=escapeHtml;
@@ -28,7 +28,7 @@ export function renderForecast(plan:Plan,p:Profile,result:Simulation|null):strin
   return `<section class="forecast"><h3>Point budget</h3><p>${f.affordable===null?'Enter current points to calculate affordable skips.':`${f.affordable} paid skips affordable now · ${f.spendable!.toFixed(0)} spendable points after ${f.setup} setup points and the ${p.reserve} reserve.`}</p>${f.setupAffordable===false?'<p class="error">The recorded balance would be below your reserve after planned setup.</p>':''}${f.drift!==null&&f.drift<-.001?'<p class="notice">This policy spends more than its estimated long-run rewards. Reduce saved skip preferences or use a funded simulation.</p>':''}<p class="small muted">${f.drift===null?esc(plan.pointsRateReason||'Use simulation for point rewards.'):`Stationary balance: ${f.drift.toFixed(1)} points/hour. This average does not guarantee your next skip.`}${p.strategy.startsWith('boost')||p.strategy==='reset-turael'?' Use simulation for actual balances, warm-up and stopping-event rewards.':''}</p>${result?`<p>Simulated funding exhaustion: ${(result.exhaustionChance*100).toFixed(1)}% of trials. Mean remaining points: ${result.meanRemaining.toFixed(0)}.</p>`:'<button data-action="simulate">Simulate reserve risk</button>'}</section>`;
 }
 export function renderBlockChanges(data:Catalogue,plan:Plan,p:Profile):string{
-  const b=blockPreview(data,plan,p);
+  const b=plan.review?.blocks;if(!b)throw Error('Wait for the master block comparison to finish, then review it again.');
   return `<h3>Review block changes</h3><p><strong>Add:</strong> ${names(data,b.added)}<br><strong>Remove:</strong> ${names(data,b.removed)}<br><strong>New cost:</strong> ${b.cost} points. Removals give no refund.</p><p>${b.minutesSaved===null?'Time comparison unavailable for one configuration.':`${b.minutesSaved.toFixed(1)} estimated minutes saved per target offer.`} ${b.chanceGain===null?'':`${(b.chanceGain*100).toFixed(2)} percentage-point change in target chance.`}</p><p class="small muted">Compared with your recorded actual list, using the same methods and policy. Full funded hunts require simulation.</p>`;
 }
 export function renderTaskHistory(data:Catalogue,p:Profile):string{

@@ -1,4 +1,4 @@
-import type {Catalogue,HuntPreset,Profile,TaskRecord} from '../domain/types';
+import type {Catalogue,HuntPreset,Profile,TaskRecord,Row} from '../domain/types';
 import {clone,validateProfile} from './profiles';
 import {prepareRows} from '../analysis/planner';
 import {complete,ledger,pay,modifierKinds,rangeValues,pointRewardUnknown} from '../rules/points';
@@ -19,13 +19,13 @@ export function loadHunt(data:Catalogue,p:Profile,id:string):{profile:Profile;ma
 }
 export interface TaskInput {masterId:string;assignmentId:string;action:'complete'|'skip';modifier:string;modifierPoints:number;combatMinutes:number|null;kills:number|null}
 /** Applies a reviewed observation, never inferred completion or future rewards. */
-export function recordTask(data:Catalogue,p:Profile,input:TaskInput,at:string,id:string):Profile{
+export function recordTask(data:Catalogue,p:Profile,input:TaskInput,at:string,id:string,preparedRow?:Row):Profile{
   const q=clone(p),m=data.masters.find(m=>m.id===input.masterId);
   if(!m)throw Error('Choose a valid master.');
   const access=masterEligibility(m,q);
   if(access.failed.length||access.unknown.length&&!q.assumeUnknown)throw Error('Confirm master access before recording: '+[...access.failed,...access.unknown].join(', '));
-  const row=prepareRows(data,m,q).find(r=>r.id===input.assignmentId);
-  if(!row||row.reason)throw Error('This assignment is not eligible for the chosen master.');
+  const row=preparedRow||prepareRows(data,m,q).find(r=>r.id===input.assignmentId);
+  if(!row||row.id!==input.assignmentId||!m.tasks.some(t=>t.id===row.id)||row.reason)throw Error('This assignment is not eligible for the chosen master.');
   if(input.action==='complete'&&row.methodReason)throw Error('Select the actual available completion method first: '+row.methodReason);
   if(input.action!=='complete'&&input.action!=='skip')throw Error('Choose complete or skip.');
   if(q.streaks[m.streakGroup]===null||q.streaks[m.streakGroup]===undefined)throw Error('Enter the current streak before recording a task.');
