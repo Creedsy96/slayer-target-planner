@@ -20,24 +20,34 @@ assert.equal(asar.extractFile(archive,'web/style.css').toString(),offline.offlin
 for(const file of ['main.cjs','preload.cjs','navigation.cjs','hiscores.cjs','compact.cjs','character-exports.cjs','updates.cjs','update-feed.cjs','apply-update.ps1'])assert.deepEqual(asar.extractFile(archive,file),fs.readFileSync(path.join(root,'desktop',file)),file);
 assert.deepEqual(JSON.parse(fs.readFileSync(path.join(folder,'resources/update-manifest.json'),'utf8')),{schema:1,version:pkg.version,platform:'win32',arch:'x64',repository:'Lolager23/slayer-target-planner'});
 assert.ok(asar.listPackage(archive).every(name=>!/(\.git|profile|credential|fixture|hosting\.json)/i.test(name)));
-const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
-assert.ok(fs.readFileSync(path.join(folder,'documentation/SOURCE-REVISION.txt'),'utf8').includes(revision));
-const files=execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
-for(const name of files){
- const original=fs.readFileSync(path.join(root,name)),shipped=fs.readFileSync(path.join(folder,'source',name));
- const normalize=value=>Buffer.from(value.toString('latin1').replace(/\r\n/g,'\n'),'latin1');
- if(/\.(png|ico)$/.test(name))assert.deepEqual(shipped,original,name);else assert.deepEqual(normalize(shipped),normalize(original),name);
-}
+const sourceRecord=fs.readFileSync(path.join(folder,'documentation/SOURCE-REVISION.txt'),'utf8');
+const revision=/^Git commit: ([a-f0-9]{40})$/m.exec(sourceRecord.replace(/\r/g,''))?.[1];assert.ok(revision,'Missing source revision');
+// Verify the recorded release, even when the checkout has later tooling fixes.
+const sourceCheck=String.raw`import io,subprocess,sys,tarfile
+from pathlib import Path
+root,folder,revision=sys.argv[1:]
+archive=subprocess.check_output(['git','archive','--format=tar',revision],cwd=root)
+count=0
+with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+ for entry in tar:
+  if not entry.isfile():continue
+  target=Path(folder)/'source'/entry.name
+  assert target.resolve().is_relative_to((Path(folder)/'source').resolve()),entry.name
+  assert target.read_bytes()==tar.extractfile(entry).read(),entry.name
+  count+=1
+print(count)
+`;
+const fileCount=Number(execFileSync('python',['-c',sourceCheck,root,folder,revision],{encoding:'utf8'}).trim());assert.ok(fileCount>0);
 for(const file of ['documentation/COPYING-GPL-3.txt','documentation/THIRD_PARTY_NOTICES.txt','documentation/electron/LICENSE','documentation/electron/LICENSES.chromium.html','documentation/dependency-licences/axios-LICENSE','source/node_modules/d3-array/LICENSE','source/node_modules/lodash.mergewith/LICENSE','source/vendor/osrs-dps/source/src/lib/PlayerVsNPCCalc.ts'])assert.ok(fs.statSync(path.join(folder,file)).size,file);
 const ui=asar.extractFile(archive,'web/planner.js').toString();
 for(const value of ['GitHub homepage','Give feedback','https://github.com/Lolager23/slayer-target-planner/issues/new'])assert.ok(ui.includes(value),value);
 const sums=path.join(folder,'resources/SHA256SUMS.txt');
 if(fs.existsSync(sums)){
- let count=0;for(const line of fs.readFileSync(sums,'utf8').trim().split('\n')){
+ let count=0;for(const line of fs.readFileSync(sums,'utf8').trim().split(/\r?\n/)){
   const match=/^([a-f0-9]{64})  (.+)$/.exec(line);assert.ok(match,'Malformed checksum');
   const file=path.resolve(folder,match[2]);assert.ok(file.startsWith(folder+path.sep));
   assert.equal(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),match[1],match[2]);count++;
  }
  console.log(`Verified ${count} application checksums.`);
 }
-console.log(`Verified ${pkg.version}: clean root, native/web source parity, ${files.length} corresponding source files, metadata, licences and Settings links.`);
+console.log(`Verified ${pkg.version}: clean root, native/web source parity, ${fileCount} corresponding source files at ${revision}, metadata, licences and Settings links.`);
