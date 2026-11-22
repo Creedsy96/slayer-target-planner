@@ -1,5 +1,8 @@
 'use strict';
 const fs=require('node:fs');
+// Electron's node:fs presents app.asar as a virtual directory. Validate the
+// physical archive, while retaining virtual fs reads for our bundled helper.
+const physicalFs=process.versions.electron?require('original-fs'):fs;
 const fsp=require('node:fs/promises');
 const path=require('node:path');
 const {randomUUID}=require('node:crypto');
@@ -17,7 +20,9 @@ function installLocation(executable,userData){
  const root=noLinks(path.dirname(executable)),data=noLinks(userData),prefix=path.sep;
  const critical=[path.parse(root).root,os.homedir(),...['Desktop','Documents','Downloads'].map(name=>path.join(os.homedir(),name)),process.env.SystemRoot,process.env.ProgramFiles,process.env.ProgramData].filter(Boolean).map(value=>path.resolve(value).toLowerCase());
  if(critical.includes(root.toLowerCase())||root===data||root.startsWith(data+prefix)||data.startsWith(root+prefix))throw Error('The app folder and character storage must be separate.');
- if(!fs.statSync(path.join(root,'resources','app.asar')).isFile())throw Error('Extract the complete Windows application folder before updating.');
+ const archive=path.join(root,'resources','app.asar');
+ if(physicalFs.lstatSync(archive).isSymbolicLink())throw Error('Linked application archives are not supported.');
+ if(!physicalFs.statSync(archive).isFile())throw Error('The application archive resources/app.asar is missing or incomplete. Keep the complete extracted folder together.');
  return root;
 }
 async function atomicJson(file,value){const temporary=file+'.'+randomUUID()+'.tmp';await fsp.writeFile(temporary,JSON.stringify(value),{flag:'wx'});await fsp.rename(temporary,file);}
@@ -75,6 +80,7 @@ class PortableUpdater{
  async performCheck(){
   this.abort=new AbortController();this.publish({phase:'checking',progress:0,message:'Checking the latest stable GitHub release…'});
   try{
+   installLocation(this.options.executable,this.options.userData);
    const release=await (this.options.latest||feed.latest)(this.options.version,this.options.fetcher,this.abort.signal);
    if(this.abort.signal.aborted)throw Error('Update check cancelled.');
    if(!release){this.publish({phase:'up-to-date',message:'This version is up to date.'});return this.snapshot();}
