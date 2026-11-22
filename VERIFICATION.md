@@ -19,8 +19,19 @@
 - The broader review of every guide location/travel route remains pending outside
   this bugfix; generic/unreviewed routes are not relabelled as reviewed.
 
-Package, publication and Desktop installation evidence is recorded after those
-operations complete. No interactive UI acceptance is inferred from automated tests.
+Publication passed: GitHub v4.0.2 targets cb675b610d0bedc3f29fdb42b6ecc3cc14b0611b;
+its latest stable ZIP digest matches
+`bdecf9c81bca4a29a6b47bacae4a1f1b9dcc7a56583ed11dea6a4c786acf5222`.
+The 172.9 MiB ZIP passed CRC and all 1,482 application checksums; the clean
+distribution includes 950 corresponding source files matching that revision.
+The packaged updater was loaded from the actual release ASAR in the real pinned
+Electron runtime against disposable data, selected the live 4.0.2 feed/digest
+for 4.0.1, and reported up to date for 4.0.2 without the false extraction error.
+This check did not download/install a future version or interact with live characters.
+The owner-only private Site deployment succeeded for the same release revision
+(deployment appgdep_6b03602a28b08191b059534bd310671d). Desktop replacement is waiting
+for the running 4.0.1 app to close. No interactive UI acceptance is inferred from
+automated tests.
 
 ## 4.0.1 release — 22 November 2026
 
