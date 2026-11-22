@@ -22,8 +22,25 @@
   in-game route acceptance. Temporary boosts, supplies, untracked destination
   steps and special encounters retain the qualifications in the source notes.
 
-Packaging, publication and Desktop replacement results are recorded after those
-operations finish. [Scope and maintenance](docs/features/location-route-reviews.md).
+Publication and Desktop replacement passed. GitHub v4.1.0 targets
+`265f32fcf33696fc40da7953f6e41f0c3bf4a51e`. The 174.4 MiB ZIP passed CRC,
+all 1,811 application file hashes and parity with 1,279 corresponding source
+files. The verified local/published ZIP SHA-256 is
+`f577be28ab6848ad2383cc356a2ca08d68e9a057d5411ce7b8435b8b4a54fd29`.
+The owner-only private Site deployed the same release revision successfully
+(deployment `appgdep_6b0368ca76788191b35e4db9953818e6`).
+
+After the user closed 4.0.1, the verified package was moved to the Desktop as
+`Slayer Target Planner 4.1.0 - Windows`, with the exact published ZIP/checksum
+under `share/`. Installed hashes, source parity and EXE product version passed.
+The packaged updater was loaded from that actual Desktop ASAR in the pinned
+Electron runtime with disposable data. It selected live v4.1.0 and its digest for
+4.0.2, and reported up to date for 4.1.0 without the extraction error. This did
+not download or install a future version and did not run the main user window.
+The superseded 4.0.1 Desktop folder and duplicate 4.0.2 packaging artifacts were
+removed; live character storage was neither copied nor replaced. One Slayer
+application folder remains on the Desktop.
+[Scope and maintenance](docs/features/location-route-reviews.md).
 
 ## 4.0.2 release — 22 November 2026
 
