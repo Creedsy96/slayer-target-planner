@@ -104,7 +104,7 @@ def build():
     for task, record in result.items():
         for variant in record['variants']:
             writer.writerow([task,variant['name'],len(variant['locations']),len(record['locations']),'; '.join(variant['locations']) or variant['note']])
-    (ROOT/'docs/konar-location-audit.csv').write_text(buffer.getvalue(),encoding='utf-8',newline='')
+    (ROOT/'docs/reference/konar-location-audit.csv').write_text(buffer.getvalue(),encoding='utf-8',newline='')
     print('Audited',len(result),'assignments;',sum(len(r['variants']) for r in result.values()),'assignment/variant pairs.')
 
 if __name__=='__main__':
