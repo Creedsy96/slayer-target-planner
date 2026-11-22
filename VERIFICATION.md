@@ -1,5 +1,26 @@
 # Verification
 
+## 4.0.1 release — 22 November 2026
+
+- Production build and TypeScript checks: passed.
+- Full suite: 530 tests passed, none failed or skipped. This includes the new
+  cache-stall, late-response, cancellation, stalled-write, progress coalescing,
+  prepared task-recording and worker block-review regressions.
+- The prior focused browser check recovered from a deliberately stalled database
+  while the all-gear calculation ran, and navigation/block explanations remained
+  interactive. See [the feature record](docs/features/ui-responsiveness.md).
+- Worker calculation fingerprints invalidate the old plan shape once; the version
+  bump alone does not change the worker fingerprint. Character storage and schema
+  stay unchanged.
+- The Windows distribution uses the clean runtime/documentation/source/share
+  layout introduced in 4.0.0. Release packaging verifies corresponding source,
+  native/browser asset parity, all file hashes, ZIP CRC and the published digest.
+
+Native production-upgrade acceptance is checked after publishing the matching ZIP;
+its outcome is reported separately from synthetic helper tests. No production
+character database is replaced during the Desktop update.
+
+
 ## 4.0.0 release — 22 November 2026
 
 - Production build and TypeScript checks: passed.

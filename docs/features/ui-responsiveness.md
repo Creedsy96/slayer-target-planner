@@ -1,4 +1,4 @@
-# UI responsiveness — unreleased
+# UI responsiveness — 4.0.1
 
 The 4.0.0 renderer called `blockImpacts` every time it drew the selected master,
 including while the explanation was collapsed. Each impact called `evaluate`
@@ -43,5 +43,5 @@ animation frame. User actions retain their immediate rendering path.
 
 The reported native character database was not modified or diagnosed directly.
 The screenshot's cache-wait state is consistent with the unbounded storage wait;
-the synthetic test proves recovery from that failure mode. These source changes
-are queued for the next release; the published/Desktop 4.0.0 package is unchanged.
+the synthetic test proves recovery from that failure mode. These fixes are included in 4.0.1. See the current verification record for the
+complete release checks and packaged/native acceptance.
