@@ -8,6 +8,7 @@ const {allowedExternal, sameDocument} = require('./navigation.cjs');
 app.setName('Slayer Target Planner');
 app.setAppUserModelId('OwenWelch.SlayerTargetPlanner');
 let mainWindow;
+let updater;
 let normalWindowState=null;
 const {compactWindow}=require('./compact.cjs');
 ipcMain.handle('compact-mode',(event,enabled,pin)=>{
@@ -29,6 +30,15 @@ ipcMain.handle('public-hiscores',async(event,name)=>{
   const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
   if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected))throw Error('Unknown request source.');
   return lookup(name);
+});
+ipcMain.handle('app-update',async(event,action,value)=>{
+  const expected=pathToFileURL(path.join(__dirname,'web','index.html')).href;
+  if(!mainWindow||event.sender!==mainWindow.webContents||!sameDocument(event.senderFrame.url,expected)||!updater)throw Error('Unknown request source.');
+  if(action==='state')return updater.snapshot();
+  if(action==='check')return updater.check(true);
+  if(action==='enabled')return updater.setEnabled(value);
+  if(action==='restart'){await updater.install(true);app.quit();return updater.snapshot();}
+  throw Error('Unknown update action.');
 });
 
 function openSource(url) {
@@ -60,7 +70,7 @@ function createWindow() {
   mainWindow.webContents.on('did-fail-load', (_event, code) => {
     if (code !== -3) dialog.showErrorBox('Planner could not load', 'Extract the entire ZIP into a folder, then run Slayer Target Planner.exe from that folder.');
   });
-  mainWindow.once('ready-to-show', () => mainWindow.show());
+  mainWindow.once('ready-to-show', () => {mainWindow.show();void updater.healthy(process.argv);});
   mainWindow.on('closed', () => { mainWindow = null; });
   mainWindow.loadFile(documentPath);
 }
@@ -76,7 +86,14 @@ if (!app.requestSingleInstanceLock()) {
   app.whenReady().then(() => {
     session.defaultSession.setPermissionRequestHandler((_contents, _permission, callback) => callback(false));
     session.defaultSession.setPermissionCheckHandler(() => false);
+    const {PortableUpdater}=require('./updates.cjs');
+    updater=new PortableUpdater({version:app.getVersion(),platform:process.platform,packaged:app.isPackaged,userData:app.getPath('userData'),executable:process.execPath,notify:state=>{if(mainWindow&&!mainWindow.isDestroyed())mainWindow.webContents.send('app-update-state',state);}});
     createWindow();
+    void updater.initialize().then(()=>updater.check());
+  });
+  app.on('before-quit',event=>{
+    if(!updater?.shouldInstallOnQuit())return;
+    event.preventDefault();updater.install(false).then(()=>app.quit(),()=>app.quit());
   });
   app.on('window-all-closed', () => app.quit());
 }

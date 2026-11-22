@@ -1,12 +1,18 @@
-# Slayer Target Planner 3.0.27
+# Slayer Target Planner 4.0.0 (unreleased)
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
+This checkout prepares 4.0.0. The last published Windows release remains 3.0.27 until a release is requested.
+
 Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.27 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
+
+## Unreleased 4.0.0: automatic Windows updates
+
+The portable Windows app checks the latest stable GitHub release at startup, downloads and verifies a newer Windows ZIP, and installs it after the app closes. Choose **Restart and update** to install immediately. Settings includes the automatic-update switch, status and **Check for updates**. The previous application copy is retained, and character/calculation storage keeps its existing location. Existing 3.x copies need one manual upgrade to the first published 4.0.0 build. [Behaviour, recovery and focused verification](docs/automatic-updates.md).
 
 ## Unreleased: saved calculations
 

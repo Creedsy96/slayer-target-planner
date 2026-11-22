@@ -197,3 +197,5 @@ button.character-delete{color:var(--red);border-color:var(--error-border)}
 .character-delete-dialog{width:min(500px,calc(100vw - 32px))}.character-delete-dialog .tools{justify-content:flex-end;margin-top:22px}
 
 .pvp-warning{color:var(--red);border-color:var(--red);background:var(--error-bg)}.location-travel-options{margin:18px 0}.location-travel-options ol{display:grid;gap:12px;padding-left:22px}.location-travel-options li{padding:10px;border:1px solid var(--line);border-radius:10px}.location-travel-options p{margin:5px 0}.location-travel-options a{margin-left:10px}.travel-missing{opacity:.85}.travel-choice{display:grid;gap:6px}.travel-choice .fact-card{height:100%}
+
+.desktop-update{margin:0 0 1rem}.desktop-update progress{width:min(420px,80%);height:12px;accent-color:var(--gold);margin-right:12px}.desktop-update small{display:block;margin-top:12px}.desktop-update-settings .update-error{color:var(--red)}
