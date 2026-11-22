@@ -2,9 +2,10 @@ import type {Catalogue,Profile,Method} from '../domain/types';
 import {combatIdentity} from './cache';
 import {configuredMethod} from './priority';
 import {withCalculatedTiming} from './timing';
+import {travelIdentity} from '../state/travel';
 
 export function methodPreviewKey(p:Profile,assignment:string,method:Method):string{
- return JSON.stringify([p.id,combatIdentity(p),p.gearOverrides?.[method.variantId],assignment,method]);
+ return JSON.stringify([p.id,combatIdentity(p),travelIdentity(p),p.gearOverrides?.[method.variantId],assignment,method]);
 }
 /** Resolve the editor selection directly; planner rows can use other variants. */
 export function calculateMethodPreview(data:Catalogue,p:Profile,assignment:string,variantId:string):Method{

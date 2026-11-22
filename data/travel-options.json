@@ -1,0 +1,450 @@
+{
+  "version": "2026-11-22.1",
+  "teleports": [
+    {
+      "id": "fairy-rings",
+      "name": "Fairy rings",
+      "kind": "permanent",
+      "quest": "Fairytale II - Cure a Queen",
+      "questGrant": true,
+      "items": [],
+      "note": "Completion proves network access; confirm manually if you reached the unlock during the quest. Bring a dramen/lunar staff unless exempt.",
+      "source": "Fairy rings",
+      "partialQuest": true
+    },
+    {
+      "id": "spirit-trees",
+      "name": "Spirit tree network",
+      "kind": "permanent",
+      "quest": "Tree Gnome Village",
+      "questGrant": true,
+      "items": [],
+      "note": "Individual quest or planted-tree destinations retain their own requirements.",
+      "source": "Spirit tree"
+    },
+    {
+      "id": "gliders",
+      "name": "Gnome gliders",
+      "kind": "permanent",
+      "quest": "The Grand Tree",
+      "questGrant": true,
+      "items": [],
+      "note": "Use the destination closest to the route; quest-specific stops remain separate.",
+      "source": "Gnome glider"
+    },
+    {
+      "id": "seed-pod",
+      "name": "Royal seed pod",
+      "kind": "permanent",
+      "quest": "Monkey Madness II",
+      "questGrant": true,
+      "items": [
+        19564
+      ],
+      "note": "Unlimited Grand Tree teleport; the quest reward is reclaimable.",
+      "source": "Royal seed pod"
+    },
+    {
+      "id": "eternal-crystal",
+      "name": "Eternal teleport crystal",
+      "kind": "permanent",
+      "quest": "Song of the Elves",
+      "items": [
+        23946
+      ],
+      "note": "Unlimited crystal teleports. Prifddinas requires Song of the Elves; quest completion alone does not grant the eternal item.",
+      "source": "Eternal teleport crystal"
+    },
+    {
+      "id": "crystal",
+      "name": "Charged teleport crystals / rechargeable seeds",
+      "kind": "consumable",
+      "quest": "Song of the Elves",
+      "items": [
+        6099,
+        6100,
+        6101,
+        6102,
+        6103,
+        13102
+      ],
+      "note": "Prifddinas destination requires Song of the Elves. Seeds require recharging before travel; charges and fees are not simulated.",
+      "source": "Teleport crystal"
+    },
+    {
+      "id": "slayer-eternal",
+      "name": "Eternal Slayer ring",
+      "kind": "permanent",
+      "items": [
+        21268
+      ],
+      "note": "Unlimited ring destinations; individual dungeon access requirements remain.",
+      "source": "Slayer ring (eternal)"
+    },
+    {
+      "id": "slayer-ring",
+      "name": "Charged Slayer rings",
+      "kind": "consumable",
+      "items": [
+        11866,
+        11867,
+        11868,
+        11869,
+        11870,
+        11871,
+        11872,
+        11873
+      ],
+      "note": "One ring charge per teleport; the Eternal ring is recorded separately.",
+      "source": "Slayer ring"
+    },
+    {
+      "id": "mythical-cape",
+      "name": "Mythical cape",
+      "kind": "permanent",
+      "quest": "Dragon Slayer II",
+      "questGrant": true,
+      "items": [
+        22114
+      ],
+      "note": "Reclaimable unlimited teleport to the Myths' Guild.",
+      "source": "Mythical cape"
+    },
+    {
+      "id": "drakan",
+      "name": "Drakan's medallion",
+      "kind": "consumable",
+      "quest": "The Branches of Darkmeyer",
+      "questGrant": true,
+      "items": [
+        22400
+      ],
+      "note": "Rechargeable medallion; Darkmeyer still requires Sins of the Father. Remote use and charge rules apply.",
+      "source": "Drakan's medallion"
+    },
+    {
+      "id": "lyre-infinite",
+      "name": "Enchanted lyre (i)",
+      "kind": "permanent",
+      "quest": "The Fremennik Trials",
+      "items": [
+        23458
+      ],
+      "note": "Unlimited lyre teleport to Rellekka; other destinations need their diary unlocks.",
+      "source": "Enchanted lyre (i)"
+    },
+    {
+      "id": "lyre",
+      "name": "Charged enchanted lyre",
+      "kind": "consumable",
+      "quest": "The Fremennik Trials",
+      "items": [
+        3690,
+        3691,
+        6125,
+        6126,
+        6127,
+        13079
+      ],
+      "note": "Rellekka destination. Confirm charges before the trip.",
+      "source": "Enchanted lyre"
+    },
+    {
+      "id": "xeric",
+      "name": "Charged Xeric's talisman",
+      "kind": "consumable",
+      "items": [
+        13393
+      ],
+      "note": "Lookout/Glade/Inferno destinations; Xeric's Heart needs Architectural Alliance, recorded separately. Inert talismans do not count.",
+      "source": "Xeric's talisman"
+    },
+    {
+      "id": "xeric-heart",
+      "name": "Xeric's Heart destination",
+      "kind": "permanent",
+      "quest": "Architectural Alliance",
+      "questGrant": true,
+      "items": [],
+      "note": "Destination unlock only; also needs a charged or mounted talisman.",
+      "source": "Architectural Alliance"
+    },
+    {
+      "id": "mounted-xeric",
+      "name": "Mounted Xeric's talisman",
+      "kind": "permanent",
+      "items": [],
+      "note": "Confirm your own accessible POH installation; a banked talisman does not prove a mounted one.",
+      "source": "Mounted xeric's talisman"
+    },
+    {
+      "id": "digsite",
+      "name": "Charged Digsite pendants",
+      "kind": "consumable",
+      "items": [
+        11190,
+        11191,
+        11192,
+        11193,
+        11194
+      ],
+      "note": "Base Digsite destination; Fossil Island and Lithkren need separate destination unlocks.",
+      "source": "Digsite pendant"
+    },
+    {
+      "id": "digsite-island",
+      "name": "Digsite pendant: Fossil Island destination",
+      "kind": "permanent",
+      "quest": "Bone Voyage",
+      "items": [],
+      "note": "Confirm visiting the House on the Hill machinery; quest completion alone does not prove this destination.",
+      "source": "Digsite pendant"
+    },
+    {
+      "id": "digsite-lithkren",
+      "name": "Digsite pendant: Lithkren destination",
+      "kind": "permanent",
+      "quest": "Dragon Slayer II",
+      "items": [],
+      "note": "Confirm using the pendant on the strange machine after the quest.",
+      "source": "Digsite pendant"
+    },
+    {
+      "id": "dueling",
+      "name": "Rings of dueling",
+      "kind": "consumable",
+      "items": [
+        2552,
+        2554,
+        2556,
+        2558,
+        2560,
+        2562,
+        2564,
+        2566
+      ],
+      "note": "Castle Wars / Ferox Enclave destinations; one charge per teleport.",
+      "source": "Ring of dueling"
+    },
+    {
+      "id": "games",
+      "name": "Games necklaces",
+      "kind": "consumable",
+      "items": [
+        3853,
+        3855,
+        3857,
+        3859,
+        3861,
+        3863,
+        3865,
+        3867
+      ],
+      "note": "Burthorpe and Barbarian Outpost routes; one charge per teleport.",
+      "source": "Games necklace"
+    },
+    {
+      "id": "glory",
+      "name": "Charged amulets of glory",
+      "kind": "consumable",
+      "items": [
+        1706,
+        1708,
+        1710,
+        1712,
+        11976,
+        11978,
+        10354,
+        10356,
+        10358,
+        10360,
+        11964,
+        11966
+      ],
+      "note": "Al Kharid, Draynor, Karamja and Edgeville routes; uncharged amulets do not prove teleport stock.",
+      "source": "Amulet of glory"
+    },
+    {
+      "id": "skills",
+      "name": "Charged skills necklaces",
+      "kind": "consumable",
+      "items": [
+        11105,
+        11107,
+        11109,
+        11111,
+        11968,
+        11970
+      ],
+      "note": "Guild destinations retain any entrance or quest requirements.",
+      "source": "Skills necklace"
+    },
+    {
+      "id": "passage",
+      "name": "Necklaces of passage",
+      "kind": "consumable",
+      "items": [
+        21146,
+        21149,
+        21151,
+        21153,
+        21155
+      ],
+      "note": "Useful for Jorral's outpost and the desert eagle route.",
+      "source": "Necklace of passage"
+    },
+    {
+      "id": "key-master",
+      "name": "Key master teleports",
+      "kind": "consumable",
+      "items": [
+        13249
+      ],
+      "note": "Direct Cerberus approach; requires the matching Slayer level/task.",
+      "source": "Key master teleport"
+    },
+    {
+      "id": "moth",
+      "name": "Calcified moths",
+      "kind": "consumable",
+      "items": [
+        29090
+      ],
+      "note": "Cam Torum teleport; local dungeon requirements remain.",
+      "source": "Calcified moth"
+    },
+    {
+      "id": "piscatoris",
+      "name": "Piscatoris teleport scrolls",
+      "kind": "consumable",
+      "items": [
+        12408
+      ],
+      "note": "Scroll to the colony area, then travel to the cove.",
+      "source": "Piscatoris teleport"
+    },
+    {
+      "id": "mos-le-harmless",
+      "name": "Mos le'harmless teleport scrolls",
+      "kind": "consumable",
+      "quest": "Cabin Fever",
+      "items": [
+        12411
+      ],
+      "note": "Scroll consumed on use; bring cave supplies for cave horrors.",
+      "source": "Mos le'harmless teleport"
+    },
+    {
+      "id": "guthixian",
+      "name": "Guthixian temple teleports",
+      "kind": "consumable",
+      "quest": "While Guthix Sleeps",
+      "items": [
+        29684
+      ],
+      "note": "Temple entrance route; Tormented demon encounter preparation remains.",
+      "source": "Guthixian temple teleport"
+    },
+    {
+      "id": "nardah",
+      "name": "Nardah teleport scrolls",
+      "kind": "consumable",
+      "items": [
+        12402
+      ],
+      "note": "Nardah arrival; desert travel and local entrances remain separate.",
+      "source": "Nardah teleport"
+    },
+    {
+      "id": "lumbridge",
+      "name": "Lumbridge teleport tablets",
+      "kind": "consumable",
+      "items": [
+        8008
+      ],
+      "note": "Tablet consumed on use; no spellbook requirement.",
+      "source": "Lumbridge teleport"
+    },
+    {
+      "id": "falador",
+      "name": "Falador teleport tablets",
+      "kind": "consumable",
+      "items": [
+        8009
+      ],
+      "note": "Tablet consumed on use; no spellbook requirement.",
+      "source": "Falador teleport"
+    },
+    {
+      "id": "camelot",
+      "name": "Camelot teleport tablets",
+      "kind": "consumable",
+      "items": [
+        8010
+      ],
+      "note": "Tablet consumed on use; no spellbook requirement.",
+      "source": "Camelot teleport"
+    },
+    {
+      "id": "kourend",
+      "name": "Kourend Castle teleport tablets",
+      "kind": "consumable",
+      "items": [
+        28790
+      ],
+      "note": "Confirm the tablet's requirements and destination; one tablet per trip.",
+      "source": "Kourend castle teleport"
+    },
+    {
+      "id": "salve",
+      "name": "Salve graveyard teleport tablets",
+      "kind": "consumable",
+      "quest": "Priest in Peril",
+      "items": [
+        19619
+      ],
+      "note": "Short walk to fairy ring CKS or Canifis; tablet consumed.",
+      "source": "Salve graveyard teleport"
+    },
+    {
+      "id": "desert-amulet",
+      "name": "Desert amulet 4",
+      "kind": "permanent",
+      "items": [
+        13136
+      ],
+      "note": "Unlimited teleport directly to the Kalphite Cave. The elite diary reward item proves this capability.",
+      "source": "Desert amulet 4"
+    },
+    {
+      "id": "fairy-bjq",
+      "name": "Fairy ring BJQ repaired",
+      "kind": "permanent",
+      "items": [],
+      "note": "Confirm repairing the Ancient Cavern fairy ring. General fairy-ring access alone does not prove this.",
+      "source": "Ancient Cavern",
+      "quest": "Fairytale II - Cure a Queen",
+      "partialQuest": true
+    },
+    {
+      "id": "fairy-cis",
+      "name": "Fairy ring CIS unlocked",
+      "kind": "permanent",
+      "items": [],
+      "note": "Confirm paying to activate the Arceuus fairy ring.",
+      "source": "Fairy rings",
+      "quest": "Fairytale II - Cure a Queen",
+      "partialQuest": true
+    },
+    {
+      "id": "fairy-dlp",
+      "name": "Fairy ring DLP unlocked",
+      "kind": "permanent",
+      "items": [],
+      "note": "Confirm first mooring at Grimstone; general fairy-ring access does not prove the destination.",
+      "source": "Grimstone Dungeon",
+      "quest": "Fairytale II - Cure a Queen",
+      "partialQuest": true
+    }
+  ]
+}

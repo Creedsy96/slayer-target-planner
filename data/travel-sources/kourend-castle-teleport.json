@@ -1,0 +1,19 @@
+{
+  "pageid": 68397,
+  "ns": 0,
+  "title": "Kourend Castle Teleport",
+  "revisions": [
+    {
+      "revid": 15311656,
+      "parentid": 14918403,
+      "timestamp": "2026-08-20T00:33:04Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Otheruses|the teleport spell|the teleport tablet|Kourend castle teleport (tablet)}}\n{{Infobox Spell\n|name = Kourend Castle Teleport\n|image = [[File:Kourend Castle Teleport.png]]\n|release = [[7 January]] [[2016]]\n|update = Zeah: Great Kourend\n|members = Yes\n|level = 48\n|spellbook = Normal\n|type = Teleport\n|exp = 58\n|cost = {{RuneReq|Law=2|Water=1|Fire=1}}\n|speed = 4 ticks\n|quest = [[Client of Kourend]]\n|lectern = [[Teak eagle lectern|Teak eagle]]\n|description = Teleports you to Kourend Castle\n|anim = [[File:Teleport.gif]]\n|sound = [[File:Teleport.ogg]]\n}}\n[[File:Kourend Castle Teleport icon (mobile).png|left|class=pageimage]]\n'''Kourend Castle Teleport''' teleports the player to the [[Kourend Castle]] courtyard, by the [[Statue (King Rada I)|statue of King Rada I]]. Completion of [[Client of Kourend]] is required to cast the spell.\n\n==Cost==\n{{Spell cost table\n|Rune1 = law\n|Rune1num = 2\n|Rune2 = water\n|Rune2num = 1\n|Rune3 = fire\n|Rune3num = 1\n}}\n\n==Destination==\n{{Map|1639,3676|1644,3676|1644,3671|1639,3671|mtype=polygon|align=left}}{{clear|left}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 10 January 2024\n|update = Children of the Sun\n|poll = Varlamore Activities & Kourend Changes\n|change = \n* The spell is now unlocked by completing [[Client of Kourend]], rather than through reading [[transportation Incantations]].\n* The Magic level required has been reduced from 69 to 48.\n* The experience gained has been reduced from 81.5 to 58.\n* The runes required have been changed; previously, it required 5 fire, 4 water, 2 soul, and 2 law runes.\n* The ability to craft [[magic tablet]]s for this spell has been added.\n* Players will no longer chant the incantation {{overhead|Thadior Agrula Elevo|color=yellow}} when using the teleport.\n}}\n{{Subject changes\n|date = 10 January 2019\n|update = The Kebos Lowlands\n|change = Spell name changed from \"Teleport to Kourend\" to \"Kourend Castle Teleport\".\n}}\n{{Subject changes footer}}\n{{Standard spellbook}}\n{{Teleport spells}}"
+        }
+      }
+    }
+  ]
+}

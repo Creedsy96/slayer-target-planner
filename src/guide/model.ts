@@ -1,3 +1,4 @@
+import {locationTravel} from './travel';
 import raw from '../../data/creature-guide.json';
 import type {Source,Profile} from '../domain/types';
 import {locationAccess} from '../rules/location-pool';
@@ -68,28 +69,30 @@ export function rankLocations(record:GuideRecord,form:GuideForm,state:GuideState
     const wilderness=/wilderness/i.test(loc.region||'')||/wilderness|revenant|callisto|artio|vet[’']ion|calvar|venenatis|spindel|scorpia|web chasm|skeletal tomb|hunter.?s end|king black dragon|bone yard|demonic ruins|lava maze|resource area|dark warriors.? fortress|frozen waste|mage arena/i.test(loc.name);
     const riskKnown=wilderness||!!loc.region||!!meta;
     const limited=loc.limited||/quest encounter|random spawn|trap spawn|boss summon|summoned/i.test(loc.name);
-    const available=!limited&&(!loc.taskOnly||state.onTask);
+    const access=p?locationAccess(loc.name,p,loc.page):null;
+    const available=!limited&&(!loc.taskOnly||state.onTask)&&access?.value!==0;
     const immune=/^yes\b/i.test(form.immunecannon||'');
     const cannon=immune?false:meta?.cannon??null,multi=meta?.multi??null;
     const reasons:string[]=[];
     let score=25+(wilderness?-25:riskKnown?20:0)+(meta?.convenience??2)*3;
-    if(wilderness)reasons.push('Wilderness/PvP or dangerous approach lowers the default ranking.');else reasons.push(riskKnown?'No Wilderness PvP flag in this listed route.':'PvP status is unconfirmed; do not treat this as a reviewed safe route.');
+    if(wilderness)reasons.push('Wilderness PvP risk on this location or its approach.');
     if(meta){reasons.push(meta.note||'Reviewed route and access caveats are available.');}else reasons.push('Route not reviewed: the ranking uses limited source information.');
-    if(state.fastTravel&&meta?.fast){score+=12;reasons.push('Listed fast travel is assumed unlocked.');}
+    const routes=p?locationTravel(loc.name,p,meta?.travel||['Reach the named region','Use the entrance described by the location source',loc.name],loc.page||loc.name):[];
+    if(routes.some(r=>r.available&&r.methods.length)){score+=12;reasons.push('A recorded teleport route is available for this character.');}
     if(state.priority==='cannon'){if(cannon===true){score+=35;reasons.push('Confirmed cannon placement for this route and a cannon-susceptible creature.');}else score-=15;}
     if(state.priority==='barrage'){if(multi===true){score+=35;reasons.push('Multi-combat is useful for stacking where the room permits.');}else score-=15;}
     if(state.priority==='access'){score-=Math.min(25,(meta?.requires?.length||0)*6);if(!meta)score-=12;reasons.push('Lower-requirement routes are favoured; unknown access is not assumed free.');}
     if(!available){score-=120;reasons.push(limited?'Quest, summoned, trap or non-repeatable appearance: not a normal farming route.':'Task-only room: off-task access is not assumed.');}
-    const requires=[...(meta?.requires||[])];if(loc.caveat)requires.push(loc.caveat);if(loc.taskOnly)requires.push('A matching Slayer task is required in this room.');
+    const requires=[...(meta?.requires||[])];if(access?.value===0)requires.push(access.reason);if(loc.caveat)requires.push(loc.caveat);if(loc.taskOnly)requires.push('A matching Slayer task is required in this room.');
     if(['calvar-ion','spindel'].includes(record.id))requires.push('Hard Wilderness diary OR the specific matching boss Slayer task; an ordinary skeleton/spider task does not bypass the diary rule.');
     if(loc.name.includes('King Black Dragon'))requires.push('The lair itself is outside PvP; the approach crosses the Wilderness.');
-    return {...loc,limited,available,score,reasons,requires,cannon,multi,wilderness,riskKnown,reviewed:!!meta,
+    return {...loc,travelOptions:routes,accessBlocked:access?.value===0,limited,available,score,reasons,requires,cannon,multi,wilderness,riskKnown,reviewed:!!meta,
       travel:meta?.travel||['Reach the named region','Check the entrance on the source page',loc.name],fastRoute:meta?.fast||null,
       sourceUrl:loc.page?'https://oldschool.runescape.wiki/w/'+encodeURIComponent(loc.page.replaceAll(' ','_')):record.source.url};
   }).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
 }
 export function selectedLocation(record:GuideRecord,form:GuideForm,state:GuideState,p?:Profile):LocationPlan|undefined{
-  const ranked=rankLocations(record,form,state,p);return ranked.find(loc=>loc.name===state.location)||ranked.find(loc=>loc.available)||ranked[0];
+  const ranked=rankLocations(record,form,state,p).filter(loc=>!loc.accessBlocked);return ranked.find(loc=>loc.name===state.location)||ranked.find(loc=>loc.available)||ranked[0];
 }
 export function guideSources(record:GuideRecord):Source[]{
   const sources=[record.source,GUIDE.strategySources['slayer training']];

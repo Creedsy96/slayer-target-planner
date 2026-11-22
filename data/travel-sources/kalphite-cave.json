@@ -1,0 +1,19 @@
+{
+  "pageid": 13789,
+  "ns": 0,
+  "title": "Kalphite Cave",
+  "revisions": [
+    {
+      "revid": 15320730,
+      "parentid": 15252214,
+      "timestamp": "2026-08-26T13:12:16Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{confuse|Kalphite Lair}}\n{{Infobox Location\n|name = Kalphite Cave\n|image = [[File:Kalphite Cave.png|300px]]\n|release = [[27 April]] [[2017]]\n|update = Diverse Dungeons\n|members = Yes\n|floors = 1\n|location = [[Kharidian Desert]]\n|race = [[Kalphites]]\n|music = [[Insect Queen]]\n|map = [[File:Kalphite Cave map.png|250px]]\n|type = dungeon\n|leagueRegion = Desert\n}}\nThe '''Kalphite Cave''' is a [[dungeons|dungeon]] located east of the [[Shantay Pass]], housing [[kalphites]] that can only be killed while on a [[Slayer task]]. The centre of the cave contains [[kalphite larva]]e. Unlike the [[Kalphite Lair]], a [[rope]] is '''not''' required to access the cave.\n\nPlayers may enter without a Slayer task, but upon attacking any monster inside the dungeon, [[Buggie]] will stop them from doing so, claiming that they are not assigned to kill them.\n\nA [[dwarf multicannon]] '''can''' be used here, and it is a [[multi-combat area]]. The player does not suffer from [[desert heat]] while within the cave.\n\n{{Map|caption=The entrance to the cave.|x=3320|y=3122|r=4|mtype=square|align=left}}\n\n==Transportation==\n*Using a [[desert amulet 4]] teleports the player directly there.\n*Using an [[achievement diary cape]] to teleport to the [[Shantay Pass]].\n*[[Minigame Teleport|Minigame teleport]] to [[Sorceress's Garden]]\n*Using an [[amulet of glory]] to teleport to [[Al Kharid]], then running south.\n*Using [[fairy ring]] {{Fairycode|biq}} to teleport to the [[Kalphite Lair]], then run <!-- Note: This is for the cave, not the lair. The cave is north-east and the lair is north-west of the fairy ring. -->north-east.\n*Teleporting to the player's [[house]] in [[Pollnivneach]] (or using a [[Pollnivneach teleport]]) and taking the [[magic carpet]] to [[Shantay Pass]].\n*Teleport to the [[Emir's Arena]], then run south.\n*Using a [[necklace of passage]] to teleport to Eagle's Eyrie, running south to the bridge, and then running north-west.\n\n==Monsters==\n{{LocationMonsterTableHead|showslayer=yes}}\n{{LocationMonsterTableLine|name=Kalphite Worker|levels=28|slayerlevel=1|slayerxp=40|spawns=18}}\n{{LocationMonsterTableLine|name=Kalphite Soldier|levels=85|slayerlevel=1|slayerxp=90|spawns=20}}\n{{LocationMonsterTableLine|name=Kalphite Guardian|levels=141|slayerlevel=1|slayerxp=170|spawns=5}}\n{{LocationMonsterTableBottom}}\n\n==Trivia==\n*There is no presence of a queen in the cave, despite the fact that kalphites must always have a queen; if there is no queen in a hive, a larvae would quickly develop into one to fill this role.{{CiteNPC|npc=Kalphite Queen head (mounted)|quote=Yes, you killed this queen, but by now another will have risen up! One kalphite may die but the hive goes on!}} This may be due to how the cave was created unnaturally by the [[Entomologist]], and is colder than the [[Kalphite Lair]].\n\n==References==\n{{Reflist}}\n\n{{Slayer locations}}\n{{Kalphite}}\n{{Dungeons}}\n\n[[Category:Kharidian Desert]]"
+        }
+      }
+    }
+  ]
+}

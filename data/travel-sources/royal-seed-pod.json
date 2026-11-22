@@ -1,0 +1,19 @@
+{
+  "pageid": 72458,
+  "ns": 0,
+  "title": "Royal seed pod",
+  "revisions": [
+    {
+      "revid": 15372791,
+      "parentid": 15360632,
+      "timestamp": "2026-10-15T02:12:18Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Confuse|Grand seed pod}}\n{{Infobox Item\n|name = Royal seed pod\n|image = [[File:Royal seed pod.png]]\n|release = [[6 May]] [[2016]]\n|update = Monkey Madness II\n|members = Yes\n|quest = [[Monkey Madness II]]\n|tradeable = No\n|equipable = No\n|stackable = No\n|noteable = No\n|options = Commune, Destroy\n|destroy = You can get a replacement from King Narnode at the Grand Tree.\n|examine = King Narnode's personal seed pod, for travelling to the Grand Tree.\n|value = 20\n|weight = 0.005\n|id = 19564\n}}\n[[File:Royal seed pod detail.png|left|150x150px]]\nThe '''royal seed pod''' is rewarded to the player by [[King Narnode Shareen]] after completing [[Monkey Madness II]]. Like the [[grand seed pod]], this item can be used to teleport the player to the [[Grand Tree]]. Unlike the [[grand seed pod]], the royal seed pod is not consumed upon use and never runs out of charges. When successfully teleporting with the royal seed pod, the message {{Mes|The Royal seed pod teleports you to the Grand Tree.}} will be displayed. \n[[File:Squash Grand seed pod.gif|left|thumb|150px|A player communes with the seed pod.]]\nThe royal seed pod can teleport up to '''level 30 wilderness''' and is among the [[Wilderness#Member teleportation up to level 30 Wilderness|few items]] that are able to do so. Being an easily replaceable item with a one-click teleport, many players prefer the royal seed pod for emergency escape. A 3-tick teleport delay is applied in the [[Revenant Caves]] and [[Wilderness boss lair|Wilderness boss lairs]] before completion of the [[Wilderness hard diary]]. \n\nAdditional pods may be purchased from [[King Narnode Shareen]] for 2 coins each.\n\nFor players on PvP worlds, be aware that the royal seed pod will not teleport you to a safe location.\n\n==Shop locations==\n{{Store locations list|Royal seed pod}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 12 May 2016\n|update = Necromancy Teleport Tablets\n|change = It is now possible to use the Grand Tree seed pods without emptying your hands.\n}}\n{{Subject changes footer}}\n\n{{Monkey Madness II}}\n[[Category:Transportation]]\n{{Teleportation items}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-import {Calc,bonuses,speed,styles,spells,monsters,monsterInputs,PotionMap,ammoApplicability,AmmoApplicability} from '../../vendor/osrs-dps/runtime.js';
+import {Calc,bonuses,speed,styles,spells,monsters,monsterInputs,PotionMap,ammoApplicability,AmmoApplicability,BurnImmunity,burnImmuneIds} from '../../vendor/osrs-dps/runtime.js';
+import {eclipseBurnDps,eclipseKillTime} from './eclipse';
 import {isBlowpipe,usableAmmo} from './ranged';
 import type {Profile} from '../domain/types';
 import type {GuideRecord,GuideForm,Family} from '../guide/types';
@@ -76,9 +77,12 @@ export function calculateCombat(p:Profile,record:GuideRecord,form:GuideForm,load
  const player:any={uuid:'planner',name:'Planner',skills,boosts,equipment,style,prayers,spell:spellName?spells.find(s=>s.name===spellName)||null:null,attackSpeed:4,buffs:{potions:[],onSlayerTask:onTask,inWilderness:wilderness,forinthrySurge:false,soulreaperStacks:0,baAttackerLevel:0,chinchompaDistance:4,kandarinDiary:false,chargeSpell:false,markOfDarknessSpell:config.markOfDarkness===true&&skills.magic>=59,usingSunfireRunes:false,fragmentOfWind:false,fragmentOfWater:false,fragmentOfEarth:false,fragmentOfFire:false}};
  Object.assign(player,bonuses(player,monster));player.attackSpeed=speed(player,monster);
  try{
-  const calc=new Calc(player,monster),dps=calc.getDps(),issues=calc.userIssues.filter(issue=>!issue.type.endsWith('_unsupported_spec')).map(issue=>issue.type);
+  const calc=new Calc(player,monster),eclipse=family==='ranged'&&['Eclipse Moon helm','Eclipse Moon chestplate','Eclipse Moon tassets','Eclipse atlatl'].every(name=>Object.values(equipment).some(item=>item?.name===name));
+  const immune=[BurnImmunity.NORMAL,BurnImmunity.STRONG].includes(monster.immunities.burn)||burnImmuneIds.includes(monster.id);
+  let dps=calc.getDps();
+  const issues=calc.userIssues.filter(issue=>!issue.type.endsWith('_unsupported_spec')&&!(eclipse&&issue.type==='equipment_slot_body_unsupported_set_effect')).map(issue=>issue.type);
   const invalid=issues.some(n=>/ammo_missing|ammo_wrong|spell_wrong|weapon_wrong|unsupported_effect|unsupported_set_effect/.test(n));
-  if(!Number.isFinite(dps)||dps<=0||invalid)return emptyCombat(invalid?(calc.userIssues.find(issue=>/ammo_missing|ammo_wrong|spell_wrong|weapon_wrong|unsupported_effect|unsupported_set_effect/.test(issue.type))?.message||'The engine reports incompatible or unsupported equipment/ammunition.'):'This setup cannot damage the selected creature.',loadout);
+  if(!Number.isFinite(dps)||dps<=0||invalid)return emptyCombat(invalid?(calc.userIssues.find(issue=>issues.includes(issue.type)&&/ammo_missing|ammo_wrong|spell_wrong|weapon_wrong|unsupported_effect|unsupported_set_effect/.test(issue.type))?.message||'The engine reports incompatible or unsupported equipment/ammunition.'):'This setup cannot damage the selected creature.',loadout);
   if(!Number.isFinite(calc.getHitChance())||calc.getHitChance()<0||calc.getHitChance()>1||!Number.isFinite(calc.getMax())||calc.getMax()<0||!Number.isFinite(calc.getExpectedAttackSpeed())||calc.getExpectedAttackSpeed()<=0)return emptyCombat('DPS sanity check failed: invalid hit chance, max hit or attack speed.',loadout);
   const hpDependent=calc.distIsCurrentHpDependent(player,monster);
   let ttk=full?calc.getTtk():0;
@@ -88,8 +92,16 @@ export function calculateCombat(p:Profile,record:GuideRecord,form:GuideForm,load
   }
   if(full&&(!Number.isFinite(ttk)||ttk<=0))return emptyCombat('The engine could not produce a finite kill time.',loadout);
   const notes:string[]=issues.map(code=>/recoil/.test(code)?'Recoil damage is not included.':/monster/.test(code)?'The creature has encounter mechanics beyond a stationary attack calculation.':'The engine reports an additional equipment-effect limitation.');
+  let burn:CombatResult['burn'];
+  if(eclipse){
+   const ticks=calc.getExpectedAttackSpeed(),outcomes=calc.getDistribution().dists[0].hits.map(hit=>({damage:hit.getSum(),probability:hit.probability,accurate:hit.anyAccurate()}));
+   const accuracy=outcomes.reduce((n,h)=>n+(h.accurate?h.probability:0),0),extra=immune?0:eclipseBurnDps(Math.min(1,accuracy),ticks);
+   const estimate=full&&!immune?eclipseKillTime(form.hitpoints!,ticks,outcomes,ttk):null;
+   if(estimate)ttk=estimate.seconds;dps+=extra;burn={dps:extra,trials:estimate?2048:0,ttkError:estimate?.error??0};
+   notes.push(immune?'Eclipse burn: this target is immune; direct-hit DPS and kill time are retained.':'Eclipse burn included: 20% per accurate attack, up to five independent 40-tick stacks, 1 damage every 4 ticks. Sustained DPS uses the capped steady-state proc rate. Finite-fight kill time uses 2,048 paired seeded trials; burns stop at death and reset for each creature.'+(estimate?' Kill-time standard error: '+estimate.error.toFixed(3)+' s.':''));
+  }
   if(hpDependent)notes.push('DPS is measured at full NPC HP. Kill time recalculates HP-dependent effects after every hit.');
-  return {dps,ttk,maxHit:calc.getMax(),hitChance:calc.getHitChance(),attackSeconds:calc.getExpectedAttackSpeed()*.6,style,spell:spellName,loadout:{...loadout},notes,supported:true,reason:'',source:'bank',family,hpDependent};
+  return {dps,ttk,maxHit:calc.getMax(),hitChance:calc.getHitChance(),attackSeconds:calc.getExpectedAttackSpeed()*.6,style,spell:spellName,loadout:{...loadout},notes,supported:true,reason:'',source:'bank',family,hpDependent,...(burn?{burn}:{})};
  }catch(error){return emptyCombat('DPS engine could not evaluate this combination: '+(error instanceof Error?error.message:'invalid inputs'),loadout);}
 }
 

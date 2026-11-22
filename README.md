@@ -8,6 +8,16 @@ Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.27 - Windows
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
 
+## Unreleased: saved calculations
+
+Completed calculations now persist locally between sessions and are reused when their inputs and calculation version match. Setup, equipment, method and game-rule changes invalidate the relevant results; appearance and export timestamps do not. [Storage behaviour and development workflow](docs/calculation-persistence.md).
+
+## Unreleased: Eclipse burn and character travel
+
+The full Eclipse Moon set and atlatl now include capped burn damage, target immunity and a finite-fight kill-time estimate. Owned-gear search considers the full-set benefit, and the resulting kill time feeds calculated hunter methods. Sustained DPS and estimated kill time are labelled separately.
+
+Settings and character setup now include Travel options: quest/bank detection, hidden confirmed unlimited teleports and persistent consumable toggles. Location cards rank available routes first and link missing travel to Settings. Quest/skill facts own gated entrance access; known locked areas stay out of setup. Only actual Wilderness/PvP locations or approaches show a red PvP warning. [Mechanics, coverage, migration and verification](docs/eclipse-travel-options.md).
+
 ## Reviewed Moon gear and equipment requirements in 3.0.27
 
 All Moon armour, usable degraded versions and weapons now have verified skill requirements, so Eclipse Moon tassets and the other sets no longer require accepting unknown requirements. The audit also reviews newer combat gear and restores requirements for equivalent ornament/charge variants. Missing ordinary combat entries fell from 318 to 159; remaining gaps stay flagged. [Source details, remaining gaps and verification](docs/equipment-requirement-audit.md).
@@ -349,3 +359,7 @@ python tools/package_share.py <distribution-folder> <new-zip-path>
 `src/domain`, `src/rules` and `src/analysis` provide the typed shared model. `src/state` validates and migrates profiles. `src/ui` owns one application state and cancellable offline workers; generated browser assets are in `dist`. Historical v1 engines/fixtures live under `tests/fixtures/v1` and are not deployed. `desktop` contains the isolated Electron shell and a narrow, validated public-hiscores bridge. The package uses an explicit allowlist and includes no personal profiles, credentials or hosting metadata.
 
 See [the implementation plan](docs/implementation-plan.md), [glossary](CONTEXT.md) and [release verification](docs/v2-verification.md). This implementation branch builds on the existing Windows packaging and plan commits without rewriting their history.
+
+## Development checks and releases
+
+During ordinary changes, run focused tests for affected behaviour and build/type checks as needed. Run the full suite only when preparing a requested release. Batch changes locally until a release is requested.

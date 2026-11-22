@@ -1,3 +1,4 @@
+import type {TravelRoute} from './travel';
 import type {Requirement,Source} from '../domain/types';
 
 export interface GuideForm {
@@ -25,4 +26,4 @@ export interface FightPlan {family:Family;defence:'tank'|'prayer';attack:Attack;
 export interface GearSlot {slot:string;item:string;note?:string}
 export interface GearSet {tier:'mid'|'max';title:string;offence:string;slots:GearSlot[];notes:string[];switches:string[]}
 export interface Supply {item:string;purpose:string;kind:'protection'|'prayer'|'boost'|'utility';essential:boolean}
-export interface LocationPlan extends GuideLocation {score:number;reasons:string[];travel:string[];fastRoute:string|null;requires:string[];cannon:boolean|null;multi:boolean|null;wilderness:boolean;riskKnown:boolean;reviewed:boolean;sourceUrl:string;available:boolean}
+export interface LocationPlan extends GuideLocation {accessBlocked?:boolean;travelOptions?:TravelRoute[];score:number;reasons:string[];travel:string[];fastRoute:string|null;requires:string[];cannon:boolean|null;multi:boolean|null;wilderness:boolean;riskKnown:boolean;reviewed:boolean;sourceUrl:string;available:boolean}

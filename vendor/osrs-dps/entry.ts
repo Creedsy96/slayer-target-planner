@@ -6,3 +6,5 @@ export {getCombatStylesForCategory as styles} from './source/src/utils';
 export {spells} from './source/src/types/Spell';
 export {PotionMap} from './source/src/utils';
 export {Prayer} from './source/src/enums/Prayer';
+export {BurnImmunity} from './source/src/types/Monster';
+export {IMMUNE_TO_BURN_DAMAGE_NPC_IDS as burnImmuneIds} from './source/src/lib/constants';

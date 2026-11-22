@@ -19,7 +19,7 @@ test('missing master, quest, variant and location requirements are not relabelle
  let p=fixture();p.levels.slayer=80;p.levels.combat=3;
  assert.equal(ui.canShowAvailableMaster(d,c.evaluate(d,master('duradel'),p,[]),p),false);
  p=fixture();p.quests['The Fremennik Exiles']=0;assert.deepEqual(c.requiredTargetUnlocks(d,c.evaluate(d,master('duradel'),p,[]),p),[]);
- p=fixture();p.methods.basilisks={...c.defaultMethod(d,p,'basilisks'),variantId:'basilisk-knight',location:"Jormungand's Prison"};p.access["location:Jormungand's Prison"]=0;
+ p=fixture();p.methods.basilisks={...c.defaultMethod(d,p,'basilisks'),variantId:'basilisk-knight',location:"Jormungand's Prison"};p.access["location:Jormungand's Prison"]=0;p.restrictBasicAccess=true;
  assert.deepEqual(c.requiredTargetUnlocks(d,c.evaluate(d,master('konar'),p,[]),p),[]);
  p=fixture();for(const id of ['krystilia','turael'])assert.equal(ui.canShowAvailableMaster(d,c.evaluate(d,master(id),p,[]),p),false);
 });

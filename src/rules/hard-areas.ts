@@ -1,5 +1,7 @@
 import type {Profile,Source} from '../domain/types';
 export const HARD_AREAS=[
+ {key:'location:Grimstone',name:'Grimstone',skills:{sailing:87},confirmation:'',proof:[],source:{title:'Grimstone',url:'https://oldschool.runescape.wiki/w/Grimstone',revision:null}},
+ {key:'location:Grimstone Dungeon',name:'Grimstone Dungeon',skills:{sailing:87},confirmation:'',proof:[],source:{title:'Grimstone Dungeon',url:'https://oldschool.runescape.wiki/w/Grimstone_Dungeon',revision:null}},
  {key:'location:Troll Stronghold (location)',name:'Troll Stronghold',skills:{agility:15},quest:'Troll Stronghold',confirmation:'Partial Troll Stronghold (defeat Dad); completion proves this quest stage',proof:[],source:{title:'Troll Stronghold',url:'https://oldschool.runescape.wiki/w/Troll_Stronghold',revision:null}},
  {key:'location:Ancient Cavern',name:'Ancient Cavern',skills:{firemaking:35},confirmation:'Barbarian Training: learned pyre-ship burning from Otto',proof:['Barbarian Training','Dragon Slayer II'],source:{title:'Ancient Cavern',url:'https://oldschool.runescape.wiki/w/Ancient_Cavern',revision:15358063}},
  {key:'location:Charred Dungeon',name:'Charred Dungeon',skills:{sailing:60},confirmation:'',proof:[],source:{title:'Charred Dungeon',url:'https://oldschool.runescape.wiki/w/Charred_Dungeon',revision:null}},

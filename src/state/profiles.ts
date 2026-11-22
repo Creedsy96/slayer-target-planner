@@ -1,3 +1,4 @@
+import {validateTravel} from './travel';
 import {EQUIPMENT_SLOTS} from '../combat/types';
 import {equipmentItem} from '../combat/equipment';
 import {AREA_VERSION} from '../rules/access';
@@ -121,8 +122,8 @@ export function validateProfile(data:Catalogue,value:unknown):Profile{
   if(p.bank!==undefined)p.bank=validateBank(p.bank);
   if(p.combat!==undefined)p.combat=validateCombat(p.combat);
   if(p.restrictBasicAccess!==undefined&&typeof p.restrictBasicAccess!=='boolean')throw Error('Invalid access restriction mode.');
-  if(p.setup!==undefined){const v=p.setup;if(!v||v.version!==1||!Number.isInteger(v.step)||v.step<0||v.step>5||typeof v.complete!=='boolean'||!['pending','skipped','complete'].includes(v.tutorial)||!Array.isArray(v.imports)||v.imports.length>7||v.imports.some(n=>!['character.json','bank.json','inventory.json','equipment.json','group_storage.json','quests.json','diaries.json'].includes(n)))throw Error('Invalid character setup progress.');p.setup={version:1,step:v.step,complete:v.complete,imports:[...new Set(v.imports)],tutorial:v.tutorial};}
-  validateHuntExtras(data,p);
+  if(p.setup!==undefined){const v=p.setup;if(!v||![1,2].includes(v.version)||!Number.isInteger(v.step)||v.step<0||v.step>(v.version===1?5:6)||typeof v.complete!=='boolean'||!['pending','skipped','complete'].includes(v.tutorial)||!Array.isArray(v.imports)||v.imports.length>7||v.imports.some(n=>!['character.json','bank.json','inventory.json','equipment.json','group_storage.json','quests.json','diaries.json'].includes(n)))throw Error('Invalid character setup progress.');p.setup={version:2,step:v.version===1&&v.complete?6:v.step,complete:v.complete,imports:[...new Set(v.imports)],tutorial:v.tutorial};}
+  validateTravel(p);validateHuntExtras(data,p);
   return p;
 }
 function validateMethod(data:Catalogue,m:Method,aid?:string):void{

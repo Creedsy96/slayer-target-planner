@@ -1,3 +1,4 @@
+import {learnImportedTeleports} from './travel';
 import type {Catalogue,Profile} from '../domain/types';
 import {parseBankImport,parseCharacterLevels,applyBankSnapshots,type BankPreview} from './bank';
 import {parseQuestImport,applyQuestImport,type QuestPreview} from './quest-import';
@@ -51,5 +52,5 @@ export function applyAccountExports(data:Catalogue,p:Profile,preview:AccountExpo
  let copy=applyBankSnapshots(p,preview.containers,preview.levels,preview.account,p.combat?.enabled===true||preview.containers.length>0);
  if(preview.quests)copy=applyQuestImport(data,copy,preview.quests,true,now);
  for(const [key,value]of Object.entries(preview.diaries))if(copy.diaries[key as keyof Profile['diaries']]==null)copy.diaries[key as keyof Profile['diaries']]=value;
- return copy;
+ learnImportedTeleports(copy);return copy;
 }

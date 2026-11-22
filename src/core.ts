@@ -75,3 +75,7 @@ export {strictGearUpgrade,filterStrictUpgrades,compareGearRows} from './combat/s
 export {hasCombatImpact,combatCandidate} from './combat/combat-impact';
 
 export {removeCharacter,persistCharacterRemoval} from './state/character-removal';
+
+export {eclipseBurnDps,eclipseKillTime} from './combat/eclipse';
+export {TELEPORTS,teleportState,setTeleport,travelStock,learnImportedTeleports} from './state/travel';
+export {isDerivedArea} from './rules/access';

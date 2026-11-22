@@ -25,7 +25,7 @@ export function withCalculatedTiming(p:Profile,v:Variant,method:Method):Method{
   state.formId=match.id;
  }
  const form=guideForm(record,state),location=selectedLocation(record,form,state,p),recommended=fightPlan(record,form,{...state,approach:'auto'},location).defence;
- if(p.restrictBasicAccess&&!location)return {...method,combatNote:'No available location remains for this creature; review the character location pool.'};
+ if(!location&&record.locations.length>0)return {...method,combatNote:'No available location remains for this creature; review the character location pool.'};
  const result=bestOwnedGear(p,record,form,state,location,method.combatDefence??recommended);
  if(!result.supported)return {...method,combatNote:result.reason+' Using configured timing.'};
  return {...method,calculated:{ttk:(result.effectiveTtk??result.ttk)/(config.uptime/100),batchTtk:result.ttk/(config.uptime/100),targets:result.targets||1,dps:result.aggregateDps??result.dps,weaponId:result.loadout.weapon||0},combatNote:'Owned-gear '+result.family+' DPS'+((result.targets||1)>1?' · '+result.targets+'-target stack estimate':'')+' at '+(location?.name||'default location')+' / '+(result.armourPriority==='prayer'?'prayer':'tank')+' armour fallback and expected hits-to-kill; '+config.uptime+'% attack uptime. Legacy creature DPS multipliers are not applied.'};

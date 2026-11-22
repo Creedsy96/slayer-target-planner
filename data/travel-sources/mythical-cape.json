@@ -1,0 +1,19 @@
+{
+  "pageid": 107311,
+  "ns": 0,
+  "title": "Mythical cape",
+  "revisions": [
+    {
+      "revid": 15366320,
+      "parentid": 15364762,
+      "timestamp": "2026-10-05T22:39:19Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Otheruses|the POH furniture|Mythical cape (mounted)|def=no}}\n{{Infobox Item\n|name = Mythical cape\n|image = [[File:Mythical cape.png]]\n|release = [[4 January]] [[2018]]\n|update = Dragon Slayer II\n|aka = Myth cape\n|members = Yes\n|quest = No\n|tradeable = No\n|equipable = Yes\n|stackable = No\n|noteable = No\n|options = Wear, Teleport, Drop\n|wornoptions = Teleport\n|examine = The cape worn by members of the Myths' Guild.\n|value = 10000\n|weight = 1.814\n|id = 22114\n|leagueRegion = Kandarin\n}}\n[[File:Mythical cape detail.png|left|140px]]\nThe '''mythical cape''' is a cape that can only be worn by those who have completed the [[Dragon Slayer II]] [[quest]].\n\nIt can be purchased from [[Jack]] at the [[Mythical Cape Store]] on the top floor of the [[Myths' Guild]] for {{NoCoins|10000|c}}. The cape provides unlimited free teleports to the guild. The mythical cape has the highest crush attack bonus of any [[cape slot]] item in ''Old School RuneScape'', providing a +6 bonus.\n\n{{Costume storage|cape rack}} It may also be [[Mythical cape (mounted)|mounted]] in the [[Quest Hall]] in the [[Guild trophy space]], or the [[cape hanger]] in the [[Achievement Gallery]], of a [[player-owned house]]. While mounted, the player can use it to teleport to the Myths' Guild.\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 6\n|amagic = 0\n|arange = 0\n|dstab = 8\n|dslash = 8\n|dcrush = 8\n|dmagic = 8\n|drange = 8\n|str = 1\n|rstr = 0\n|mdmg = 0\n|prayer = 1\n|slot = cape\n|image = [[File:Mythical cape equipped.png|130px]]\n|altimage = [[File:Mythical cape equipped female.png|130px]]\n}}\n\n==Teleport destination==\n{{Map|2457,2850|mtype=square|r=1.5|align=left|zoom=3}}{{clear|left}}\n\n==Products==\n{{Uses material list|Mythical cape}}\n\n==Shop locations==\n{{Store locations list|Mythical cape}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Mythical cape}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 9 July 2020\n|update = Grotesque Guardian Changes and Monkey Backpacks\n|poll =\n|change = Some stretching on the mythical cape has been fixed.\n}}\n{{Subject changes\n|date = 15 August 2019\n|update = Small Game Updates and Betas\n|change = The Chronicle book no longer stretches when worn with the Mythical cape.\n}}\n{{Subject changes\n|date = 25 January 2018\n|update = Barbarian Assault Ranged Rework\n|change = The Mythical cape and Verac's plateskirt are no longer attached when equipped together on a male character.\n}}\n{{Subject changes footer}}\n\n==Trivia==\n[[File:Buffs, Deadman and Mythical Cape Designs (5).png|thumb|250px|The candidates in the mythical cape design poll along with their artists]]\n* The design of the cape was the result of a [[Update:Dragon Slayer II Dev Update, Design Competition & Changes|design contest]], followed by the [[Poll:Mythical Cape|Mythical Cape poll]], in which a design submitted by ''JackScape'' won.\n* The cape could be seen being worn by [[Alec Kincade]] and [[Ponts the Bridgemaster]] following an [[Update:The Corsair Curse and Wilderness Chaos Altar|update]] around a month prior to release.\n\n{{Myths' Guild}}\n{{Teleportation items}}\n{{Cape}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {TRAVEL_ITEM_IDS,learnImportedTeleports} from './travel';
 import type {BankKind,BankSnapshot,BankState,CombatSettings} from '../combat/types';
 import {canonicalInventoryId,isPlaceholderId,isGearId} from '../combat/item-ids';
 import type {Profile} from '../domain/types';
@@ -20,13 +21,19 @@ export function validateQuantities(value:unknown):Record<string,number>{
  for(const [id,quantity]of Object.entries(value)){if(!/^\d{1,6}$/.test(id)||Number(id)<1||!Number.isSafeInteger(quantity)||(quantity as number)<0||(quantity as number)>2147483647)throw Error('Invalid item ID or quantity.');if(isGearId(Number(id)))result[id]=quantity as number;}
  return result;
 }
+export function validateTravelStock(value:unknown):Record<string,number>{
+ if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length>1000)throw Error('Invalid teleport item quantities.');
+ const result:Record<string,number>={};
+ for(const [id,n]of Object.entries(value)){if(!TRAVEL_ITEM_IDS.has(Number(id))||!Number.isSafeInteger(n)||(n as number)<0||(n as number)>2147483647)throw Error('Invalid teleport item quantity.');result[id]=n as number;}
+ return result;
+}
 export function validateBank(value:unknown):BankState{
  const v=value as BankState;if(!v||v.version!==1||!v.snapshots||typeof v.snapshots!=='object'||Array.isArray(v.snapshots)||typeof v.includeGroup!=='boolean')throw Error('Invalid bank data.');
  if(v.account!==null&&(typeof v.account!=='string'||v.account.length>30))throw Error('Invalid bank account.');
  const result=emptyBank();result.account=v.account;result.includeGroup=v.includeGroup;result.manual=validateQuantities(v.manual);result.groupManual=validateQuantities(v.groupManual);
  for(const [kind,snapshot]of Object.entries(v.snapshots)){
   if(!kinds.includes(kind)||!snapshot||typeof snapshot.label!=='string'||snapshot.label.length>100||snapshot.account!==null&&(typeof snapshot.account!=='string'||snapshot.account.length>30)||snapshot.at!==null&&(typeof snapshot.at!=='string'||!Number.isFinite(Date.parse(snapshot.at))))throw Error('Invalid bank snapshot.');
-  result.snapshots[kind as BankKind]={items:validateQuantities(snapshot.items),label:snapshot.label,account:snapshot.account,at:snapshot.at};
+  result.snapshots[kind as BankKind]={items:validateQuantities(snapshot.items),...(snapshot.travelItems?{travelItems:validateTravelStock(snapshot.travelItems)}:{}),label:snapshot.label,account:snapshot.account,at:snapshot.at};
  }return result;
 }
 export interface BankPreview {kind:BankKind;snapshot:BankSnapshot;rows:number;warnings:string[]}
@@ -38,7 +45,7 @@ export function applyBankSnapshots(p:Profile,previews:BankPreview[],levels:Recor
  if(new Set(previews.map(preview=>preview.kind)).size!==previews.length)throw Error('Choose one snapshot for each container.');
  copy.bank.account=account||personal.find(preview=>preview.snapshot.account)?.snapshot.account||copy.bank.account;
  for(const preview of previews)copy.bank.snapshots[preview.kind]=structuredClone(preview.snapshot);
- copy.bank=validateBank(copy.bank);
+ copy.bank=validateBank(copy.bank);learnImportedTeleports(copy);
  if(levels){
   for(const [key,n]of Object.entries(levels))if(!/^[a-z]+$/.test(key)||!Number.isInteger(n)||n<1||n>99)throw Error('Invalid imported base skill.');
   if(['attack','strength','defence','hitpoints','ranged','magic','prayer'].some(key=>!levels[key]))throw Error('Missing imported combat skill.');
@@ -51,19 +58,20 @@ export function parseBankImport(text:string,kindOverride?:BankKind):BankPreview{
  const value=JSON.parse(text.replace(/^\uFEFF/,''));safe(value);
  if(!value||typeof value!=='object'||!Array.isArray(value.items)||value.items.length>10000)throw Error('Choose a Character Export container JSON with an items array.');
  const kind=kindOverride??value.kind;if(!kinds.includes(kind))throw Error('Select Bank, Inventory, Equipment or Group Storage as the source.');
- const items:Record<string,number>={};let omitted=0;
+ const items:Record<string,number>={},travelItems:Record<string,number>={};let omitted=0;
  for(const row of value.items){
   if(!row||!Number.isInteger(row.id)||row.id<1||row.id>999999||!Number.isSafeInteger(row.quantity)||row.quantity<0||row.quantity>2147483647)throw Error('Each item needs a valid ID and quantity.');
   if(row.placeholder===true||row.isPlaceholder===true||row.quantity===0||isPlaceholderId(row.id))continue;
+  if(TRAVEL_ITEM_IDS.has(row.id)){travelItems[row.id]=(travelItems[row.id]||0)+row.quantity;if(travelItems[row.id]>2147483647)throw Error('Combined teleport quantity is too large.');}
   const id=canonicalInventoryId(row.id);if(!isGearId(id)){omitted++;continue;}items[id]=(items[id]||0)+row.quantity;if(items[id]>2147483647)throw Error('Combined item quantity is too large.');
  }
  const account=typeof value.player?.username==='string'?value.player.username:typeof value.account_name==='string'?value.account_name:typeof value.player_name==='string'?value.player_name:typeof value.accountName==='string'?value.accountName:null;
  const date=value.exported_at??value.lastUpdated;
  const at=typeof date==='string'&&Number.isFinite(Date.parse(date))?new Date(date).toISOString():null;
- const warnings=[`${omitted} non-equipment or unmodelled item rows omitted; only recognised wearable gear/ammunition is imported.`,'Import replaces only this container snapshot. Manual item quantities stay in effect.'];
+ const warnings=[`${omitted} non-equipment or unmodelled item rows omitted; wearable gear/ammunition and a separate teleport-stock allowlist are retained.`,'Import replaces only this container snapshot. Manual item quantities stay in effect.'];
  if(!account)warnings.push('This export does not name the account; verify its character folder.');
  if(kind==='group_storage')warnings.push('Group items are shared; include them only if you can use them. Character Export does not currently export this container.');
- return {kind,snapshot:{items,account,at,label:kind},rows:value.items.length,warnings};
+ return {kind,snapshot:{items,...(Object.keys(travelItems).length?{travelItems}:{}),account,at,label:kind},rows:value.items.length,warnings};
 }
 export function ownedQuantities(bank:BankState):Record<string,number>{
  const personal:Record<string,number>={},group:Record<string,number>={};

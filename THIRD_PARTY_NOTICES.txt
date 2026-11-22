@@ -11,7 +11,8 @@ Pinned commit: 3da927f4280c73154fa59e4e90eb374af5123d32.
 Copyright and contributor details are retained in vendor/osrs-dps/source and
 vendor/osrs-dps/LICENSE. The distribution's source/ directory includes the
 application, engine source, pinned datasets and reproducible build scripts.
-Alias indexing and UI-image stripping are documented in PROVENANCE.md.
+Alias indexing, UI-image stripping and the separate planner Eclipse burn adapter
+are documented in PROVENANCE.md.
 
 Equipment skill requirements, noted IDs and placeholder IDs are extracted from
 osrsbox/osrsbox-db (GPL-3.0), commit dae12e3400add0c71465f07a334f9d8f86bebce8:
@@ -90,3 +91,8 @@ and RuneLite Quest enum names: https://github.com/runelite/runelite .
 The RuneLite Quest.java BSD-2-Clause copyright and licence are retained in
 source/data/quest-point-sources/Quest.java. Reward data retains the Wiki terms
 above. The offline generator records the table capture and its qualifications.
+
+Travel capability definitions and Eclipse burn mechanics are adapted from the
+Old School RuneScape Wiki under the same CC BY-NC-SA 3.0 terms. Public retained
+page revisions are in data/travel-sources/. Source links appear beside travel
+controls/routes; docs/eclipse-travel-options.md records the calculation model.

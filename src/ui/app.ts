@@ -1,3 +1,6 @@
+import {CalculationWorker} from './calculation-worker';
+import {calculationCache} from '../state/calculation-cache';
+import {setTeleport,TELEPORTS,teleportState,travelIdentity} from '../state/travel';
 import {requestCharacterDeletion} from './character-delete';
 import {persistCharacterRemoval} from '../state/character-removal';
 import {enhanceSelectionSurfaces,installSelectionSurfaces} from './selection-surfaces';
@@ -70,7 +73,7 @@ const options=(values:[string,string][],value:unknown)=>values.map(([key,label])
 const select=(path:string,label:string,values:[string,string][],value:unknown,kind?:'assignment'|'variant')=>`<label>${esc(label)}<select data-setting="${esc(path)}" ${kind?'data-creature-picker':''}>${kind?creatureOptions(data,kind,values,value):options(values,value)}</select></label>`;
 const input=(path:string,label:string,value:unknown,min=0,max=1e9,step='1')=>`<label>${esc(label)}<input data-setting="${esc(path)}" type="number" min="${min}" max="${max}" step="${step}" value="${value??''}"></label>`;
 const bool=(path:string,label:string,value:boolean)=>`<label class="check toggle-card"><input type="checkbox" data-setting="${esc(path)}" ${value?'checked':''}>${esc(label)}</label>`;
-const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,profile.assumeAllGear===true,profile.bank,profile.levels,profile.combat,profile.diaries,profile.quests,profile.questImport?.states,profile.gearOverrides?.[guide.variantId],guide]);
+const gearSignature=(profile:Profile,guide:GuideState)=>JSON.stringify([profile.id,combatIdentity(profile),travelIdentity(profile),profile.gearOverrides?.[guide.variantId],guide]);
 const routes:[string,string][]=[['plan','Hunt planner'],['guide','Creature guide'],['bank','Bank & gear'],['settings','Settings'],['account','Account & access'],['tasks','Tasks & blocks'],['methods','Combat methods'],['compare','Compare characters'],['data','Data & sources']];
 class AppState{
   exportDiscovery:ExportDiscoveryView={busy:false,message:'',folders:[]};exportFolders:Record<string,File[]>={};exportSearched=new Set<string>();
@@ -78,11 +81,11 @@ class AppState{
   tutorialStep=0;tutorialProfile:Profile|undefined;tutorialPlans:Plan[]=[];tutorialMaster='duradel';guideBeforeTutorial:GuideState|undefined;
 
   gearPlanOverrides=new Map<string,Plan|undefined>();gearPendingVariants=new Set<string>();
-  combatCache=new CombatCacheStore();reusedCombat=false;
+  combatCache=new CombatCacheStore(5000);reusedCombat=false;restoredCalculations=false;
   gearResults:GuideCombat|undefined;gearKey='';
   display=loadDisplay();bankView:BankView={query:'',previews:[],levels:null,account:null,kind:'auto',group:false};bankPreviewProfile='';bankRequest=0;
   history=new History<{profiles:Profile[];activeId:string}>();compact=false;pin=false;huntSearch='';selectedPresetId='';
-  showUnavailable=loadShowUnavailable();questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route=({'#creature-guide':'guide','#bank':'bank','#settings':'settings'} as Record<string,string>)[window.location.hash]||'plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';restrictedAreaQuery='';message='';saveError='';busy:Record<string,{done:number;total:number;current?:string}>={};workers=new Map<string,Worker>();sequence=0;simulations=new Map<string,Simulation>();
+  showUnavailable=loadShowUnavailable();questRequest=0;questDraft='';questPreview:QuestPreview|null=null;preserveQuestOverrides=true;theme=loadTheme();profiles:Profile[]=[];activeId='';route=({'#creature-guide':'guide','#bank':'bank','#settings':'settings'} as Record<string,string>)[window.location.hash]||'plan';plans:Plan[]=[];selected='';simulation:Simulation|null=null;comparison:Plan[]=[];comparisonId='';taskMaster='nieve';taskSearch='';methodAssignment='basilisks';accessSearch='';restrictedAreaQuery='';message='';saveError='';busy:Record<string,{done:number;total:number;current?:string}>={};workers=new Map<string,CalculationWorker>();sequence=0;simulations=new Map<string,Simulation>();
   get profile():Profile{return this.profiles.find(p=>p.id===this.activeId)!;}
   strategyResults:{strategy:string;result?:Simulation;error?:string}[]=[];
   constructor(){
@@ -106,12 +109,13 @@ class AppState{
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
   run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear'|'gear-selection',profile:Profile,masterId?:string,guide?:GuideState,origin?:ActionOrigin):void{
     const requestedPlan=this.plans.find(plan=>plan.master.id===masterId);
-    this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,blob=new Blob([WORKER_SOURCE],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);
-    this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:combatCache.entries.length?(kind==='plans'?'Updating hunt odds / reusing completed combat results':'Reusing completed combat results'):'Starting calculation'};
+    this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,worker=new CalculationWorker(WORKER_SOURCE);
+    this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:calculationCache.available?'Checking saved calculations':combatCache.entries.length?(kind==='plans'?'Updating hunt odds / reusing completed combat results':'Reusing completed combat results'):'Starting calculation'};
     worker.onmessage=event=>{
       if(this.workers.get(channel)!==worker||event.data.id!==id)return;
       const result=event.data;
       if(result.kind==='combat-cache'){this.combatCache.put(identity,result.key,result.result);return;}
+      if(result.fromCache)this.restoredCalculations=true;
       if(result.kind==='progress'){this.busy[channel]={done:result.done,total:result.total,current:result.current||'Calculating'};renderStatus();return;}
       if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderContent();}return;}
       if(result.kind==='plan-ready'){
@@ -128,20 +132,36 @@ class AppState{
       if(result.kind==='error'){renderContent();reportActionError(result.message,origin||null,requestedPlan);renderStatus();return;}
       if(channel==='gear')this.gearResults=result.result;
       else if(channel==='plans'){
-        this.reusedCombat=result.combatRestored>0;
+        this.reusedCombat=result.fromCache||result.combatRestored>0;
         this.plans=[...result.plans.filter((plan:Plan)=>!this.gearPlanOverrides.has(plan.master.id)),...[...this.gearPlanOverrides.values()].filter((plan):plan is Plan=>!!plan)].sort((a:Plan,b:Plan)=>a.objectiveValue-b.objectiveValue||a.master.name.localeCompare(b.master.name));
         if(!this.plans.some(p=>p.master.id===this.selected&&(this.showUnavailable||canShowAvailableMaster(data,p,profile))))this.selected=this.plans.find(plan=>canRankPlan(plan,profile))?.master.id||this.plans.find(plan=>canShowAvailableMaster(data,plan,profile))?.master.id||this.plans[0]?.master.id||'';
-      }else if(channel==='gear-selection'){this.gearPendingVariants.clear();this.reusedCombat=true;}else if(channel==='compare')this.comparison=result.plans;
+      }else if(channel==='gear-selection'){
+        this.gearPendingVariants.clear();this.reusedCombat=true;
+        if(this.plans.length===data.masters.length&&!this.busy.plans)void calculationCache.save({id,kind:'plans',profile:clone(profile)},[{id,kind:'plans',plans:this.plans}]);
+      }else if(channel==='compare')this.comparison=result.plans;
       else if(channel==='strategies'){
         this.strategyResults=result.results;
         const failures=this.strategyResults.filter(r=>r.error);
         if(failures.length){this.message=failures[0].error!;displayedMessage='';renderMessage(failures.length===this.strategyResults.length?'error':'warning',origin||null,requestedPlan);}
       }
       else {if(result.plan){this.plans=this.plans.map(p=>p.master.id===result.masterId?result.plan:p);}this.simulation=result.result;this.simulations.set(result.masterId,result.result);}
+      if(channel==='plans'&&this.route==='guide'&&!this.gearResults&&!this.workers.has('gear'))this.run('gear','gear',this.profile,undefined,guideState);
+      if(channel==='plans')void this.restoreSelectedResults();
       renderContent();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);reportActionError('Calculation worker failed. Reload or export the character before trying again.',origin||null);renderStatus();};
     worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,variantId:requestedGuide.variantId,variantIds:[...this.gearPendingVariants],blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
+  }
+  async restoreSelectedResults():Promise<void>{
+    const profile=this.profile,masterId=this.selected,plan=this.plans.find(p=>p.master.id===masterId);if(!plan)return;
+    const [simulation,strategies]=await Promise.all([
+      calculationCache.load({id:0,kind:'simulation',profile,masterId,blocks:plan.blocks}),
+      calculationCache.load({id:0,kind:'strategies',profile,masterId}),
+    ]);
+    if(this.profile!==profile||this.selected!==masterId)return;
+    if(simulation&&!this.workers.has('sim')){this.simulation=simulation.at(-1)!.result;this.simulations.set(masterId,this.simulation!);}
+    if(strategies&&!this.workers.has('strategies'))this.strategyResults=strategies.at(-1)!.results;
+    if(simulation||strategies){renderContent();renderStatus();}
   }
   gearChanged(variantId:string):void{
     methodPreview.deactivate();this.gearPendingVariants.add(variantId);
@@ -153,7 +173,7 @@ class AppState{
     this.run('gear-selection','gear-selection',this.profile,undefined,guideState);renderContent();renderStatus();
   }
   changed(record=true,key=''):void{
-    this.gearPlanOverrides.clear();this.gearPendingVariants.clear();
+    this.gearPlanOverrides.clear();this.gearPendingVariants.clear();this.restoredCalculations=false;
     methodPreview.deactivate();
     if(this.route==='setup'&&!this.profile.setup)this.route='account';
     if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);
@@ -215,7 +235,8 @@ function openFeedbackFix(fix:FeedbackFix):void{
 function renderStatus():void{
   if(state.route==='setup'){ $('status').textContent='Character setup · hunt calculations start when you finish or exit';return;}
   if(state.route==='tutorial'){ $('status').textContent='Practice scenario';return;}
-  $('status').innerHTML=Object.keys(state.busy).length?`<span>${Object.entries(state.busy).map(([k,v])=>`${k==='gear-selection'?'Creature gear & affected masters':esc(k)}: ${Math.min(100,Math.floor(v.done/Math.max(1,v.total)*100))}% - ${esc(v.current||'Calculating')}`).join(' · ')}</span><button data-action="cancel">Cancel calculations</button>`:`<span>${state.plans.length} master plans${state.reusedCombat?' · Reused combat results':''} · ${p().assumeUnknown?'Conditional assumptions enabled':'Confirmed facts required'}</span><button data-action="recalculate">Recalculate</button>`;
+  $('status').innerHTML=Object.keys(state.busy).length?`<span>${Object.entries(state.busy).map(([k,v])=>`${k==='gear-selection'?'Creature gear & affected masters':esc(k)}: ${Math.min(100,Math.floor(v.done/Math.max(1,v.total)*100))}% - ${esc(v.current||'Calculating')}`).join(' · ')}</span><button data-action="cancel">Cancel calculations</button>`:`<span>${state.plans.length} master plans${state.restoredCalculations?' · Saved calculations restored':state.reusedCombat?' · Reused combat results':''} · ${p().assumeUnknown?'Conditional assumptions enabled':'Confirmed facts required'}</span><button data-action="recalculate">Check calculations</button>`;
+  if(calculationCache.warning)$('status').insertAdjacentHTML('beforeend','<span class="small muted">'+esc(calculationCache.warning)+'</span>');
 }
 function renderContent():void{
   const restore=preserveView();
@@ -348,6 +369,7 @@ async function deleteActiveCharacter():Promise<void>{
   if(!await requestCharacterDeletion(target))return;
   if(state.activeId!==target.id)throw Error('The active character changed. Select the intended character and try again.');
   const next=persistCharacterRemoval({profiles:state.profiles,activeId:state.activeId},target.id,localStorage);
+  state.cancel();await calculationCache.removeCharacter(target.id);
   state.history.record({profiles:state.profiles,activeId:state.activeId});
   resetExportDiscovery();state.exportSearched.delete(target.id);state.bankRequest++;state.questRequest++;
   state.bankView={query:'',previews:[],levels:null,account:null,kind:'auto',group:false};state.bankPreviewProfile='';state.questDraft='';state.questPreview=null;
@@ -438,7 +460,7 @@ function scrollSection(id:string):void{
   window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
 }
 function selectMaster(id:string):void{
-  state.selected=id;state.simulation=state.simulations.get(id)||null;state.strategyResults=[];renderContent();scrollSection('selected-plan');
+  state.selected=id;state.simulation=state.simulations.get(id)||null;state.strategyResults=[];renderContent();void state.restoreSelectedResults();scrollSection('selected-plan');
 }
 function restoreHistory(redo=false):void{
   resetExportDiscovery();
@@ -503,6 +525,8 @@ document.addEventListener('click',event=>{
   if(button.dataset.setupStep!==undefined){update(q=>q.setup!.step=Number(button.dataset.setupStep));return;}
   if(button.dataset.tutorialMaster){state.tutorialMaster=button.dataset.tutorialMaster;renderContent();return;}
   if(button.dataset.tutorialStrategy){state.tutorialProfile!.strategy=button.dataset.tutorialStrategy as Profile['strategy'];state.tutorialPlans=practicePlans(data,state.tutorialProfile!);renderContent();return;}
+  if(button.dataset.teleportToggle){update(q=>{const id=button.dataset.teleportToggle!;const t=TELEPORTS.find(t=>t.id===id)!;setTeleport(q,id,!teleportState(q,t).enabled);});return;}
+  if(button.dataset.teleportAuto){update(q=>{if(q.travel)delete q.travel.overrides[button.dataset.teleportAuto!];});return;}
   if(button.dataset.extensionToggle){update(q=>setTaskExtension(q,button.dataset.extensionToggle!,button.dataset.extensionEnabled==='true'));return;}
   if(button.dataset.locationParent){state.restrictedAreaQuery='';state.accessSearch='';renderContent();const target=document.querySelector<HTMLElement>('[data-fact-toggle="access"][data-key="'+CSS.escape(button.dataset.locationParent)+'"]');if(target)focusCorrection(target);return;}
   if(button.dataset.factToggle){const kind=button.dataset.factToggle as 'access'|'unlocks',key=button.dataset.key!;update(q=>{if(kind==='access'&&key.startsWith('location:'))setLocationAccess(q,key,(q.restrictBasicAccess?locationAccess(key,q):resolveAccess(key,q)).value!==1);else q[kind][key]=(kind==='access'?resolveAccess(key,q).value:q.unlocks[key])===1?0:1;});return;}
@@ -546,6 +570,7 @@ function changeInput(event:Event):void{
   if(element.id==='theme-select'){state.theme=themeId(element.value);applyTheme(state.theme);if(!saveTheme(state.theme)){state.message='Theme applied for this session. Browser storage is unavailable.';renderMessage();}return;}
   if(element.id==='preserve-quest-overrides'){state.preserveQuestOverrides=(element as HTMLInputElement).checked;renderContent();return;}
   if(element.id==='quest-file-import'){readQuestFile(element as HTMLInputElement).catch(error=>reportActionError(error,origin));return;}
+  if(element.id==='show-travel-completed'){state.display.showCompletedAccess=(element as HTMLInputElement).checked;saveDisplay(state.display);renderContent();return;}
   if(element.id==='profile-select'){resetExportDiscovery();if(state.route==='tutorial')endTutorial('skipped');if(state.route==='setup')state.route='account';state.exportRequest++;state.exportPreview=null;state.bankRequest++;state.bankView.previews=[];state.bankView.levels=null;state.questRequest++;state.questDraft='';state.questPreview=null;state.activeId=element.value;state.selected='';state.changed();return;}
   if(element.id==='task-master'){state.taskMaster=element.value;renderContent();return;}
   if(element.id==='method-assignment'){state.methodAssignment=element.value;methodVariant='';renderContent();return;}
@@ -715,14 +740,14 @@ function endTutorial(status:'complete'|'skipped'):void{
 }
 async function onboardingAction(name:string):Promise<boolean>{
  if(name==='refresh-access-checks'){resetAccessChecklist();renderContent();return true;}
- if(name==='resume-setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:1,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
+ if(name==='resume-setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:2,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
  if(name==='pause-setup'){state.route='account';state.changed(false);return true;}
- if(name==='find-account-exports'){if(state.route!=='setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.route='setup';update(q=>{q.setup??={version:1,step:1,complete:false,imports:[],tutorial:'pending'};q.setup.step=1;q.setup.complete=false;});if(!window.slayerDesktop?.characterExports)($('account-folder-import')as HTMLInputElement).click();}else void findAccountExports('auto');return true;}
+ if(name==='find-account-exports'){if(state.route!=='setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.route='setup';update(q=>{q.setup??={version:2,step:1,complete:false,imports:[],tutorial:'pending'};q.setup.step=1;q.setup.complete=false;});if(!window.slayerDesktop?.characterExports)($('account-folder-import')as HTMLInputElement).click();}else void findAccountExports('auto');return true;}
  if(name==='choose-account-folder'){if(window.slayerDesktop?.characterExports)void findAccountExports('choose');else ($('account-folder-import')as HTMLInputElement).click();return true;}
  if(name==='choose-account-exports'){($('account-file-import')as HTMLInputElement).click();return true;}
  if(name==='cancel-account-exports'){resetExportDiscovery();state.exportDiscovery.message='Review cancelled. Choose a folder or search again.';renderContent();return true;}
  if(name==='apply-account-exports'&&state.exportPreview){const preview=state.exportPreview;const applied=update(q=>{Object.assign(q,applyAccountExports(data,q,preview,new Date().toISOString()));if(q.setup)q.setup.imports=[...new Set([...q.setup.imports,...preview.files])];});if(applied){state.exportPreview=null;state.message='Character exports imported. Manual overrides and owned-item edits were preserved.';renderContent();renderMessage();}return true;}
- if(name==='setup-next'||name==='setup-back'){update(q=>{if(name==='setup-next'){if(q.setup!.step===2)acceptSetupDefaults(data,q,'combat');if(q.setup!.step===3)acceptSetupDefaults(data,q,'rewards');}q.setup!.step=Math.max(0,Math.min(5,q.setup!.step+(name==='setup-next'?1:-1)));});return true;}
+ if(name==='setup-next'||name==='setup-back'){update(q=>{if(name==='setup-next'){if(q.setup!.step===2)acceptSetupDefaults(data,q,'combat');if(q.setup!.step===3)acceptSetupDefaults(data,q,'rewards');}q.setup!.step=Math.max(0,Math.min(6,q.setup!.step+(name==='setup-next'?1:-1)));});return true;}
  if(name==='finish-setup'){if(update(q=>{q.setup!.complete=true;q.setup!.tutorial='pending';}))startTutorial();return true;}
  if(name==='start-tutorial'){startTutorial();return true;}
  if(name==='skip-tutorial'||name==='finish-tutorial'||name==='apply-tutorial-hunt'){

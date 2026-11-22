@@ -1,6 +1,6 @@
 import type {Catalogue,Plan,Profile,Requirement,Source,Row} from '../domain/types';
 import {check,masterRequirements} from '../rules/eligibility';
-import {resolveAccess} from '../rules/access';
+import {resolveAccess,accessFactFilter} from '../rules/access';
 import {firstDisabledLocation} from '../rules/location-pool';
 
 export interface PlanIssue {
@@ -19,7 +19,7 @@ export function explainPlanIssues(data:Catalogue,plan:Plan,p:Profile):PlanIssue[
         r.kind==='quest'?`Required quest stage: ${(r.min??1)>=2?'completed':'started'}. Import quests or update the manual stage.`:
         r.kind==='skill'?`Required level: ${r.min??1}. Check the recorded level or choose another target.`:
         r.kind==='access'?'Confirm this access requirement or choose another method.':'At least one listed alternative requirement must be satisfied.';
-      add({title:r.label,detail:`${context}: ${state.unknown.length?'unknown':'not satisfied'}. ${instruction}`,route:'account',action:'Review account requirement',source,filter:r.kind==='skill'||r.kind==='any'?'':r.kind==='unlock'?r.label:r.key});
+      add({title:r.label,detail:`${context}: ${state.unknown.length?'unknown':'not satisfied'}. ${instruction}`,route:'account',action:'Review account requirement',source,filter:r.kind==='skill'||r.kind==='any'?'':r.kind==='unlock'?r.label:r.kind==='access'?accessFactFilter(r.key||'',p):r.key});
     }
   };
   facts(masterRequirements(plan.master,p),plan.master.source,plan.master.name);
@@ -49,17 +49,17 @@ export function explainPlanIssues(data:Catalogue,plan:Plan,p:Profile):PlanIssue[
 
 function locationIssues(row:Row,p:Profile,add:(issue:PlanIssue)=>void):void{
   const all=row.entry.locations||[];
-  if(all.length&&all.every(loc=>resolveAccess('location:'+loc,p).value===0))add({title:`${row.name}: every assigned area is marked inaccessible`,detail:`All locations in Konar's pool are closed: ${all.join(', ')}. Review the area confirmations or choose another target.`,route:'account',action:'Review area access',source:row.entry.source,filter:all[0],assignmentId:row.id});
+  if(all.length&&all.every(loc=>resolveAccess('location:'+loc,p).value===0))add({title:`${row.name}: every assigned area is marked inaccessible`,detail:`All locations in Konar's pool are closed: ${all.join(', ')}. Review the quest, skill or special entrance requirements, or choose another target.`,route:'account',action:'Review access requirements',source:row.entry.source,filter:accessFactFilter('location:'+all[0],p),assignmentId:row.id});
   if(row.method.location){
     const access=resolveAccess('location:'+row.method.location,p);
-    if(access.value===0)add({title:`${row.method.location}: access is off`,detail:access.reason+' Review the area override or choose another method location.',route:'account',action:'Review area access',source:access.source??row.entry.source,filter:row.method.location,assignmentId:row.id});
+    if(access.value===0)add({title:`${row.method.location}: access is off`,detail:access.reason+' Review the owning quest, skill or entrance fact, or choose another method location.',route:'account',action:'Review access requirements',source:access.source??row.entry.source,filter:accessFactFilter('location:'+row.method.location,p),assignmentId:row.id});
   }
   const messages=row.unknown.filter(s=>/Konar|compatibility/i.test(s));
   for(const message of messages){
     const access=message.includes('access requires confirmation');
     const locations=(row.entry.locations||[]).filter(loc=>resolveAccess('location:'+loc,p).value===null);
     add({title:message,detail:access?`${row.name}: confirm access to ${locations.join(', ')}.`:
-      `${row.name} → ${row.variant.name}: compatible locations are not fully verified, or a custom probability is being used. Review the assigned-location source and enter a supported exact location or a measured compatibility probability. Custom probabilities remain conditional assumptions.`,route:access?'account':'methods',action:access?'Review area access':'Review Konar compatibility',source:row.entry.source,assignmentId:row.id,variantId:row.variant.id,field:access?undefined:'locationChance',filter:access?locations[0]:undefined});
+      `${row.name} → ${row.variant.name}: compatible locations are not fully verified, or a custom probability is being used. Review the assigned-location source and enter a supported exact location or a measured compatibility probability. Custom probabilities remain conditional assumptions.`,route:access?'account':'methods',action:access?'Review area access':'Review Konar compatibility',source:row.entry.source,assignmentId:row.id,variantId:row.variant.id,field:access?undefined:'locationChance',filter:access?accessFactFilter('location:'+locations[0],p):undefined});
   }
   if(row.targetFraction===0&&!row.methodReason&&!row.reason)add({title:`${row.name}: no compatible Konar location`,detail:`The selected ${row.variant.name} method does not match any accessible location in this task's pool: ${(row.entry.locations||[]).join(', ')}. Review its location or choose a different variant.`,route:'methods',action:'Review method location',source:row.entry.source,assignmentId:row.id,variantId:row.variant.id,field:'location'});
 }

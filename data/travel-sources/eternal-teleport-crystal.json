@@ -1,0 +1,19 @@
+{
+  "pageid": 226089,
+  "ns": 0,
+  "title": "Eternal teleport crystal",
+  "revisions": [
+    {
+      "revid": 15261005,
+      "parentid": 15189386,
+      "timestamp": "2026-07-11T12:18:47Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{external|rs=Attuned crystal teleport seed}}\n{{Infobox Item\n|name = Eternal teleport crystal\n|image = [[File:Eternal teleport crystal.png]]\n|release = [[25 July]] [[2019]]\n|update = Song of the Elves\n|members = Yes\n|quest = No\n|tradeable = No\n|equipable = No\n|stackable = No\n|noteable = No\n|options = Lletya, Prifddinas, Toggle, Drop\n|examine = A powerful teleportation crystal.\n|value = 500\n|weight = 0.001\n|id = 23946\n}}\n[[File:Eternal teleport crystal detail.png|left|100px]]\nThe '''eternal teleport crystal''' is an item that can be used to teleport to [[Lletya]] and [[Prifddinas]], in a similar fashion to the [[teleport crystal]], but with infinite charges. You cannot obtain it before completing [[Song of the Elves]].\n\nPlayers can create an eternal teleport crystal via a [[singing bowl]] by combining an [[enhanced crystal teleport seed]] and 100 [[crystal shard]]s. Doing so requires level 80 [[Smithing]] and [[Crafting]] to [[crystal singing|sing]] the crystal (the levels can be [[Temporary skill boost|boosted]]), and grants 5,000 experience in both skills. If the player does not meet the Smithing and Crafting requirements, they can have [[Conwenna]] or [[Reese]] sing the crystal for them for an extra 50 crystal shards, for a total of 150, you are also not granted the experience if made for you.\n\n==Creation==\n{{#vardefine:crystalshardvalue|{{#ifexpr:{{#vardefineecho:seedvalue|{{GEP|Enhanced crystal teleport seed}} / 150 round 0}} > {{#vardefineecho:divinesupercombatvalue|({{GEP|Divine super combat potion(4)}} - {{GEP|Super combat potion(4)}}) / 0.4}} | {{#var:seedvalue}} | {{#var:divinesupercombatvalue}}}}}}\n{{Recipe\n|skill1 = Smithing\n|skill1lvl = 80\n|skill1boostable = Yes\n|skill1exp = 5,000\n|skill2 = Crafting\n|skill2lvl = 80\n|skill2boostable = Yes\n|skill2exp = 5,000\n|members = Yes\n|ticks = 3\n|ticksnote = Takes 3 ticks to create an entire inventory\n|facilities = Singing bowl\n|mat1 = Enhanced crystal teleport seed\n|mat2 = Crystal shard\n|mat2quantity = 100\n|mat2cost = {{#var:crystalshardvalue}}\n|mat2itemnote = Value based on {{#ifexpr:{{#var:seedvalue}} > {{#var:divinesupercombatvalue}} | the cost of obtaining by exchanging [[enhanced crystal teleport seed]]s with [[Amrod]] | the potential profit of using the crystal shards to create [[divine super combat potion]]s}}\n|output1 = Eternal teleport crystal\n|output1cost = No\n}}\n\n==Teleportation options==\n{{TeleportLocationTableHead}}\n{{TeleportLocationLine|name=[[Lletya]]|x=2328|y=3170}}\n{{TeleportLocationLine|name=[[Prifddinas]]|x=3265|y=6067|mapID=29}}\n{{TableBottom}}\n{{Notelist|group=L}}\n\n==Changes==\n{{Subject changes header}}\n{{Subject changes\n|date = 23 May 2024\n|update = Minigame Tweaks, Skilling Adjustments & more!\n|change = The left-click option on elven teleport crystals can now be toggled between [[Lletya]] and [[Prifddinas]].\n}}\n{{Subject changes\n|date = 2 April 2020\n|update = Easter Event (2 April 2020)\n|change = Eternal teleport crystals are now prioritised over a greater selection of other items upon death.\n}}\n{{Subject changes footer}}\n{{Crystal items}}\n{{Teleportation items}}"
+        }
+      }
+    }
+  ]
+}

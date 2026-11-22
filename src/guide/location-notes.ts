@@ -3,6 +3,8 @@ export interface LocationNote {match:RegExp;travel:string[];fast?:string;require
 /** Reviewed route summaries. Unknown locations retain their source wording and
  * an explicit unreviewed route rather than inheriting a made-up teleport. */
 export const LOCATION_NOTES:LocationNote[]=[
+  {match:/Kalphite Cave/i,travel:['Al Kharid / Shantay Pass','Run east into the desert','Enter the Kalphite Cave'],requires:['Matching Slayer task to attack the monsters'],cannon:true,multi:true,convenience:7},
+  {match:/Kalphite Lair/i,travel:['Fairy ring BIQ or Shantay Pass','Run north-west from BIQ','Enter the Kalphite Lair'],requires:['Bring entry ropes unless the applicable diary permanently secures them','Queen shortcut has separate diary and Agility requirements'],convenience:6},
   {match:/Canifis/i,travel:['Morytania access route','Canifis','Attack townsfolk to reveal werewolves'],fast:'Kharyrll portal or another unlocked Canifis teleport; requires the destination/spell.',requires:['Priest in Peril / Morytania access','Wolfbane prevents the transformation'],convenience:7},
   {match:/Jormungand|Island of Stone/i,travel:['Rellekka north-west docks','Haskell’s boat to the Island of Stone','Jormungand’s Prison'],fast:'Enchanted lyre or Fremennik sea boots to Rellekka; requires that teleport and its unlock.',requires:['The Fremennik Exiles completed','Mirror shield or V’s shield'],cannon:false,multi:false,convenience:7},
   {match:/Cerberus.*Lair/i,travel:['Taverley','Taverley Dungeon hellhound area','Cerberus’ Lair'],fast:'Key master teleport directly to the lair approach; requires the consumable teleport.',requires:['91 Slayer and a suitable task','70/80 Agility shortcuts, or a dusty-key route through the dungeon'],cannon:false,multi:false,convenience:6},

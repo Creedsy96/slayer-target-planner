@@ -2,6 +2,12 @@
 
 Implemented and checked on 21 November 2026.
 
+## Unreleased update
+
+Setup now has seven steps, inserting Travel options after Access & quests. Existing setup progress migrates without changing saved character facts: completed setups stay complete, and an unfinished final step opens travel review. Recognised teleport stock is retained separately from gear. Completed quest/skill gates derive area access directly; known-unmet areas and quest-locked travel are omitted from setup. Partial steps and alternate routes retain manual confirmation. [Current behaviour and validation](eclipse-travel-options.md).
+
+The original 3.0.0 record below describes that release; its manual area override and non-gear filtering statements are superseded by the changes above.
+
 ## Behaviour
 
 Fresh storage opens a choice of a first character or Maxed. Existing v1/v2 storage avoids that modal. New-character creation offers a checked Character Setup Wizard box. Backups retain schema 2 and internal `profiles` fields; visible terminology is characters.

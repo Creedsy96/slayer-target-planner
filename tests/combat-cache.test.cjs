@@ -51,7 +51,7 @@ test('inventory and skill changes reject old snapshots and agree with a cold cal
 
 test('combat settings, relevant diaries and quest imports change cache identity while hunt-only settings do not',()=>{
  const p=profile(),identity=c.combatIdentity(p);
- for(const mutate of [q=>q.combat.spellbook='standard',q=>q.combat.potions='standard',q=>q.combat.prayer='standard',q=>q.diaries.kourend=0,q=>q.quests['Desert Treasure I']=0,q=>q.questImport={states:{'Desert Treasure I':0}}]){
+ for(const mutate of [q=>q.combat.spellbook='standard',q=>q.combat.potions='standard',q=>q.combat.prayer='standard',q=>q.diaries.kourend=0,q=>q.quests['Desert Treasure I']=0,q=>{delete q.quests['Desert Treasure I'];q.questImport={states:{'Desert Treasure I':0}}}]){
   const q=structuredClone(p);mutate(q);assert.notEqual(c.combatIdentity(q),identity);
  }
  const q=structuredClone(p);q.points=100;q.strategy='funded';q.methods.hellhounds={...c.defaultMethod(d,q,'hellhounds'),combatStyle:'melee'};q.goal.quantity=30;q.name='Renamed';assert.equal(c.combatIdentity(q),identity);

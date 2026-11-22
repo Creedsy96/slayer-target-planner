@@ -9,8 +9,11 @@ export function canonicalId(id:number):number;
 export function styles(category:string):CombatStyle[];
 export function bonuses(player:unknown,monster:unknown):Record<string,any>;
 export function speed(player:unknown,monster:unknown):number;
-type DelayedHit=[{getSum():number;probability:number},number];
-export class Calc {constructor(player:any,monster:any,opts?:Record<string,unknown>);getDps():number;getTtk():number;getMax():number;getHitChance():number;getExpectedAttackSpeed():number;userIssues:{type:string;message?:string}[];distIsCurrentHpDependent(player:unknown,monster:unknown):boolean;getDistribution():{singleHitsplat:{withProbabilisticDelays(provider:unknown):DelayedHit[]}};getWeaponDelayProvider():unknown;distAtHp(base:DelayedHit[],hp:number):DelayedHit[]}
+type DelayedHit=[{getSum():number;anyAccurate():boolean;probability:number},number];
+export class Calc {constructor(player:any,monster:any,opts?:Record<string,unknown>);getDps():number;getTtk():number;getMax():number;getHitChance():number;getExpectedAttackSpeed():number;userIssues:{type:string;message?:string}[];distIsCurrentHpDependent(player:unknown,monster:unknown):boolean;getDistribution():{dists:{hits:{getSum():number;anyAccurate():boolean;probability:number}[]}[];singleHitsplat:{withProbabilisticDelays(provider:unknown):DelayedHit[]}};getWeaponDelayProvider():unknown;distAtHp(base:DelayedHit[],hp:number):DelayedHit[]}
 
 export enum AmmoApplicability {INCLUDED,ALLOWED,INVALID}
 export function ammoApplicability(weaponId?:number,ammoId?:number):AmmoApplicability;
+
+export enum BurnImmunity {WEAK="Weak",NORMAL="Normal",STRONG="Strong"}
+export const burnImmuneIds:number[];

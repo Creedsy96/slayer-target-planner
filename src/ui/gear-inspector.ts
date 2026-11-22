@@ -1,3 +1,4 @@
+import {CalculationWorker} from './calculation-worker';
 import {enhanceSelectionSurfaces} from './selection-surfaces';
 import type {GearSelection} from '../combat/gear-selection';
 import type {CombatResult,EquipmentSlot} from '../combat/types';
@@ -26,7 +27,7 @@ interface InspectorContext {profile:Profile;guide:GuideState;results?:GuideComba
 /** Lazy, cancellable comparisons avoid adding every owned item to initial work. */
 export class GearInspector {
  private panel=document.createElement('section');private anchor:HTMLElement|null=null;
- private worker?:Worker;private cache=new Map<string,GearComparison>();private contextKey='';private sequence=0;
+ private worker?:CalculationWorker;private cache=new Map<string,GearComparison>();private contextKey='';private sequence=0;
  private selectionContext?:{context:InspectorContext;result:CombatResult;family:Family;slot:EquipmentSlot;selectable:boolean};
  private closeTimer?:ReturnType<typeof setTimeout>;private pinned=false;private restoringFocus=false;
  constructor(private source:string,private context:()=>InspectorContext,private select?:(choice:GearSelection,context:InspectorContext,result:CombatResult)=>void){
@@ -74,7 +75,7 @@ export class GearInspector {
   this.panel.innerHTML=`<header><h3>${slotNames[slot]} · ${esc(family)} gear choice</h3><button data-gear-close aria-label="Close gear comparison">×</button></header><div class="gear-comparison-body" aria-live="polite"><p>Comparing available ${slotNames[slot].toLowerCase()} items…</p></div>`;
   this.panel.showPopover();this.position();
   const key=(tier||'owned')+'|'+family+'|'+slot,saved=this.cache.get(key);if(saved){this.show(saved);return;}
-  const blob=new Blob([this.source],{type:'text/javascript'}),url=URL.createObjectURL(blob),worker=new Worker(url);URL.revokeObjectURL(url);this.worker=worker;
+  const worker=new CalculationWorker(this.source);this.worker=worker;
   const id=++this.sequence;
   worker.onmessage=event=>{
    if(this.worker!==worker||event.data.id!==id)return;

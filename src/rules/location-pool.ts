@@ -1,6 +1,6 @@
 import raw from '../../data/creature-guide.json';
 import type {Catalogue,Profile} from '../domain/types';
-import {AREA_RULES,OPEN_AREAS,knownAccessKeys,resolveAccess} from './access';
+import {AREA_RULES,OPEN_AREAS,knownAccessKeys,resolveAccess,isDerivedArea} from './access';
 import {HARD_AREAS} from './hard-areas';
 import {EXTRA_LOCATIONS} from '../guide/location-notes';
 
@@ -37,6 +37,8 @@ export function locationAccess(name:string,p:Profile,page?:string|null){
  return denied>=0?{...results[denied],blockedBy:keys[denied]}:{...(results.find(r=>r.value===null)||results[0]),blockedBy:undefined};
 }
 export function setLocationAccess(p:Profile,key:string,enabled:boolean):void{
+ const fact=resolveAccess(key,{...p,restrictBasicAccess:false});
+ if(enabled&&(isDerivedArea(key)&&fact.value!==1||fact.origin==='quest'&&fact.value===0))throw Error('Update the quest or skill requirement before enabling this location.');
  clearLocationAccess(p,key);
  p.access[locationControlKey(key)]=enabled?1:0;
 }

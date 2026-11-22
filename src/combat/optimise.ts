@@ -57,6 +57,7 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
  add([helmet,'Elite void top','Elite void robe','Void knight gloves']);
  if(/Bow of faerdhinen|Crystal bow/i.test(weapon.name))add(['Crystal helm','Crystal body','Crystal legs']);
  if(family==='melee')add(['Obsidian helmet','Obsidian platebody','Obsidian platelegs','Berserker necklace']);
+ if(weapon.name==='Eclipse atlatl')add(['Eclipse Moon helm','Eclipse Moon chestplate','Eclipse Moon tassets']);
  return result;
 }
 export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{

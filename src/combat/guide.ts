@@ -19,7 +19,7 @@ export function exampleCombat(p:Profile,record:GuideRecord,form:GuideForm,state:
 }
 export function calculateGuideCombat(p:Profile,state:GuideState,progress?:(done:number,current:string)=>void):GuideCombat{
  const record=GUIDE.records[state.variantId],form=guideForm(record,state),location=selectedLocation(record,form,state,p),plan=fightPlan(record,form,state,location);
- if(p.restrictBasicAccess&&!location){
+ if(!location&&record.locations.length>0){
   const unavailable=()=>emptyCombat('No available location remains for this form. Review this character’s location pool in Settings.');
   return {mid:unavailable(),max:unavailable(),styles:{melee:unavailable(),ranged:unavailable(),magic:unavailable()}};
  }

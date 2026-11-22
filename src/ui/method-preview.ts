@@ -1,3 +1,4 @@
+import {CalculationWorker} from './calculation-worker';
 import type {Profile,Method,Variant} from '../domain/types';
 import {combatIdentity,CombatCacheStore} from '../combat/cache';
 import {methodPreviewKey} from '../combat/method-preview';
@@ -6,7 +7,7 @@ import {configuredTimingReason} from '../combat/timing';
 export interface MethodPreviewState {pending:boolean;percent:number;current:string;resolved?:Method;error?:string}
 /** One cancellable editor request, independent of hunt and guide selections. */
 export class MethodPreview {
- private worker?:Worker;private key='';private sequence=0;
+ private worker?:CalculationWorker;private key='';private sequence=0;
  private cache=new Map<string,Method>();
  private view:MethodPreviewState={pending:false,percent:0,current:''};
  constructor(private source:string,private changed:()=>void,private combatCache:CombatCacheStore){}
@@ -25,8 +26,7 @@ export class MethodPreview {
  cancel():void{if(!this.worker)return;const key=this.key;this.deactivate();this.key=key;this.view={...this.view,pending:false,error:'Calculation cancelled. Retry when ready.'};}
  private start(p:Profile,assignmentId:string,variantId:string):void{
   const identity=combatIdentity(p),key=this.key,id=++this.sequence;
-  const url=URL.createObjectURL(new Blob([this.source],{type:'text/javascript'}));
-  let worker:Worker;try{worker=new Worker(url);}finally{URL.revokeObjectURL(url);}
+  const worker=new CalculationWorker(this.source);
   this.worker=worker;
   worker.onmessage=event=>{
    if(this.worker!==worker||event.data.id!==id||this.key!==key)return;

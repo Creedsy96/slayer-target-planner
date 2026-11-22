@@ -1,15 +1,19 @@
 import type {Profile} from '../domain/types';
 import type {CombatResult} from './types';
+import {ownedQuantities,defaultCombat} from '../state/bank';
 
 export interface CombatCacheSnapshot {identity:string;entries:[string,CombatResult][]}
 /** Hunt goals/method preferences do not change the underlying combat inputs. */
 export function combatIdentity(p:Profile):string{
- return JSON.stringify([p.assumeAllGear===true,p.bank,p.levels,p.combat,p.diaries.kourend,p.quests,p.questImport?.states,p.restrictBasicAccess===true,p.restrictBasicAccess?p.access:undefined]);
+ const gear=p.bank?ownedQuantities(p.bank):{},questKeys=new Set([...Object.keys(p.quests),...Object.keys(p.questImport?.states||{})]);
+ const sorted=(value:Record<string,unknown>)=>Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)));
+ const quests=Object.fromEntries([...questKeys].sort().map(key=>[key,p.quests[key]??p.questImport?.states[key]??null]));
+ return JSON.stringify([p.assumeAllGear===true,p.assumeAllGear?[]:Object.keys(gear).filter(id=>gear[id]>0).sort(),sorted(p.levels),sorted({...defaultCombat(),...p.combat}),p.diaries.kourend,quests,p.restrictBasicAccess===true,sorted(p.access)]);
 }
-/** Session-only LRU storage; never part of a saved/exported profile. */
+/** In-memory LRU, restored from disposable calculation storage by UI workers. */
 export class CombatCacheStore {
  private contexts=new Map<string,Map<string,CombatResult>>();
- constructor(private entryLimit=500,private contextLimit=3){}
+ constructor(private entryLimit=5000,private contextLimit=3){}
  get(identity:string,key:string):CombatResult|undefined{
   const entries=this.contexts.get(identity),value=entries?.get(key);if(!value)return;
   entries!.delete(key);entries!.set(key,value);this.touch(identity,entries!);return structuredClone(value);
