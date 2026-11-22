@@ -17,8 +17,11 @@ if archive.exists() or folder in archive.parents:
 files = sorted(p for p in folder.rglob("*") if p.is_file())
 if any(p.is_symlink() or p.is_junction() for p in folder.rglob("*")):
     raise SystemExit("Distribution must contain ordinary copied files only.")
-expected = {p.relative_to(folder).as_posix(): digest(p) for p in files if p.name != "SHA256SUMS.txt"}
-checksums = folder / "SHA256SUMS.txt"
+if (folder / "share").exists():
+    raise SystemExit("Create the ZIP before adding its share/ copy; do not include nested archives.")
+manifest_name = "resources/SHA256SUMS.txt"
+expected = {p.relative_to(folder).as_posix(): digest(p) for p in files if p.relative_to(folder).as_posix() != manifest_name}
+checksums = folder / manifest_name
 checksums.write_text("".join(f"{sha}  {name}\n" for name, sha in expected.items()), encoding="utf-8")
 with ZipFile(archive, "x", compression=ZIP_DEFLATED, compresslevel=6) as output:
     for path in sorted(p for p in folder.rglob("*") if p.is_file()):

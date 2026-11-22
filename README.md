@@ -1,76 +1,82 @@
-# Slayer Target Planner 4.0.0 (unreleased)
+# Slayer Target Planner 4.0.0
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
 ## Start
 
-This checkout prepares 4.0.0. The last published Windows release remains 3.0.27 until a release is requested.
+[Download the Windows release](https://github.com/Lolager23/slayer-target-planner/releases/tag/v4.0.0). The portable app checks for future stable releases at startup.
 
-Open `Slayer Target Planner.exe` in the **Slayer Target Planner 3.0.27 - Windows** folder on the Desktop. The matching ZIP is inside that folder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
+Open `Slayer Target Planner.exe` in the **Slayer Target Planner 4.0.0 - Windows** folder on the Desktop. The matching ZIP is in its `share/` subfolder; extract the complete archive before running the shared EXE. No installation, administrator access, Node.js or site login is needed. The Windows x64 binary is unsigned.
 
 For the browser copy, open `Open Planner.cmd` or `dist/index.html`. The private site is [Slayer Target Planner](https://slayer-target-planner-owen.heaaga.chatgpt.site). Web, local-file and desktop storage are independent; use character JSON export/import to transfer plans.
 
-## Unreleased 4.0.0: automatic Windows updates
+## Clean folders and one default character
 
-The portable Windows app checks the latest stable GitHub release at startup, downloads and verifies a newer Windows ZIP, and installs it after the app closes. Choose **Restart and update** to install immediately. Settings includes the automatic-update switch, status and **Check for updates**. The previous application copy is retained, and character/calculation storage keeps its existing location. Existing 3.x copies need one manual upgrade to the first published 4.0.0 build. [Behaviour, recovery and focused verification](docs/automatic-updates.md).
+The Desktop folder keeps the EXE, launch readme and required runtime files at the top level. Licences and notices live under `documentation/`, corresponding source/data under `source/`, internal update metadata under `resources/`, and the sharing ZIP/checksum under `share/`. The source project groups feature notes and historical verification under `docs/`, with release tools in `tools/release/`. [Folder layout](docs/features/folder-layout.md).
 
-## Unreleased: saved calculations
+Maxed is the only supplied default character. The legacy Default workbook starter (including its unchanged v1 migration named Imported workbook profile) is removed on startup; custom characters, renamed workbook hunts and explicit imports are preserved. Settings includes **GitHub homepage** and **Give feedback** links.
 
-Completed calculations now persist locally between sessions and are reused when their inputs and calculation version match. Setup, equipment, method and game-rule changes invalidate the relevant results; appearance and export timestamps do not. [Storage behaviour and development workflow](docs/calculation-persistence.md).
+## Automatic Windows updates in 4.0.0
 
-## Unreleased: Eclipse burn and character travel
+The portable Windows app checks the latest stable GitHub release at startup, downloads and verifies a newer Windows ZIP, and installs it after the app closes. Choose **Restart and update** to install immediately. Settings includes the automatic-update switch, status and **Check for updates**. The previous application copy is retained, and character/calculation storage keeps its existing location. Existing 3.x copies need one manual upgrade to the first published 4.0.0 build. [Behaviour, recovery and focused verification](docs/features/automatic-updates.md).
+
+## Saved calculations in 4.0.0
+
+Completed calculations now persist locally between sessions and are reused when their inputs and calculation version match. Setup, equipment, method and game-rule changes invalidate the relevant results; appearance and export timestamps do not. [Storage behaviour and development workflow](docs/features/calculation-persistence.md).
+
+## Eclipse burn and character travel in 4.0.0
 
 The full Eclipse Moon set and atlatl now include capped burn damage, target immunity and a finite-fight kill-time estimate. Owned-gear search considers the full-set benefit, and the resulting kill time feeds calculated hunter methods. Sustained DPS and estimated kill time are labelled separately.
 
-Settings and character setup now include Travel options: quest/bank detection, hidden confirmed unlimited teleports and persistent consumable toggles. Location cards rank available routes first and link missing travel to Settings. Quest/skill facts own gated entrance access; known locked areas stay out of setup. Only actual Wilderness/PvP locations or approaches show a red PvP warning. [Mechanics, coverage, migration and verification](docs/eclipse-travel-options.md).
+Settings and character setup now include Travel options: quest/bank detection, hidden confirmed unlimited teleports and persistent consumable toggles. Location cards rank available routes first and link missing travel to Settings. Quest/skill facts own gated entrance access; known locked areas stay out of setup. Only actual Wilderness/PvP locations or approaches show a red PvP warning. [Mechanics, coverage, migration and verification](docs/features/eclipse-travel-options.md).
 
 ## Reviewed Moon gear and equipment requirements in 3.0.27
 
-All Moon armour, usable degraded versions and weapons now have verified skill requirements, so Eclipse Moon tassets and the other sets no longer require accepting unknown requirements. The audit also reviews newer combat gear and restores requirements for equivalent ornament/charge variants. Missing ordinary combat entries fell from 318 to 159; remaining gaps stay flagged. [Source details, remaining gaps and verification](docs/equipment-requirement-audit.md).
+All Moon armour, usable degraded versions and weapons now have verified skill requirements, so Eclipse Moon tassets and the other sets no longer require accepting unknown requirements. The audit also reviews newer combat gear and restores requirements for equivalent ornament/charge variants. Missing ordinary combat entries fell from 318 to 159; remaining gaps stay flagged. [Source details, remaining gaps and verification](docs/features/equipment-requirement-audit.md).
 
 ## Descriptive Slayer unlocks in 3.0.26
 
-Every modeled Slayer unlock now shows its point cost and effect directly in the two-column rewards list, in both Account & access and the setup wizard. Descriptions identify affected masters and distinguish task unlocks, free toggles, task removal and increased assignment weight. Filter by reward name or description, including creature or master names. These controls record in-game ownership without spending points. [Source and verification](docs/slayer-unlock-descriptions.md).
+Every modeled Slayer unlock now shows its point cost and effect directly in the two-column rewards list, in both Account & access and the setup wizard. Descriptions identify affected masters and distinguish task unlocks, free toggles, task removal and increased assignment weight. Filter by reward name or description, including creature or master names. These controls record in-game ownership without spending points. [Source and verification](docs/features/slayer-unlock-descriptions.md).
 
 ## Delete saved characters in 3.0.26
 
-Select a custom character and choose **Delete** in the sidebar. Confirm the named character to remove its app-local account, bank/gear and hunt settings. Cancel keeps it; Undo restores it during the session. After a reload, recovery needs an existing exported backup. The built-in Maxed character is protected, and other characters/RuneLite files are unaffected. [Behaviour and verification](docs/character-deletion.md).
+Select a custom character and choose **Delete** in the sidebar. Confirm the named character to remove its app-local account, bank/gear and hunt settings. Cancel keeps it; Undo restores it during the session. After a reload, recovery needs an existing exported backup. The built-in Maxed character is protected, and other characters/RuneLite files are unaffected. [Behaviour and verification](docs/features/character-deletion.md).
 
 ## Consistent guide sidebar in 3.0.25
 
-The Creature guide now keeps the same character selector, actions, navigation spacing and saved-state indicator as the other pages. Quick setup follows its existing display setting. Desktop and mobile use the shared sidebar rules; the guide’s separate print layout remains available. [Fix and verification](docs/guide-sidebar-consistency.md).
+The Creature guide now keeps the same character selector, actions, navigation spacing and saved-state indicator as the other pages. Quick setup follows its existing display setting. Desktop and mobile use the shared sidebar rules; the guide’s separate print layout remains available. [Fix and verification](docs/features/guide-sidebar-consistency.md).
 
 ## Whole-box selection in 3.0.24
 
-Click anywhere on a gear comparison row, master row, guide location card or individual equipment slot to use its single selection action. Wizard step boxes work the same way. Cards with multiple selection options retain their separate controls. Links, disclosures, input fields and secondary buttons keep their own actions; native selection buttons remain keyboard accessible. [Behaviour and verification](docs/whole-box-selection.md).
+Click anywhere on a gear comparison row, master row, guide location card or individual equipment slot to use its single selection action. Wizard step boxes work the same way. Cards with multiple selection options retain their separate controls. Links, disclosures, input fields and secondary buttons keep their own actions; native selection buttons remain keyboard accessible. [Behaviour and verification](docs/features/whole-box-selection.md).
 
 ## Combat-only equipment candidates in 3.0.23
 
-Automatic recommendations and slot comparisons omit cosmetic/skilling-only gear with no beneficial combat bonuses or reviewed combat effect. Prayer-only and defensive gear still count. Slayer protection, task bracelets and useful zero-stat effects remain eligible. Bank records stay intact. Old cosmetic slot overrides are ignored with an explanation, preserving calculated timing and the original saved record. [Behaviour and verification](docs/combat-only-gear.md).
+Automatic recommendations and slot comparisons omit cosmetic/skilling-only gear with no beneficial combat bonuses or reviewed combat effect. Prayer-only and defensive gear still count. Slayer protection, task bracelets and useful zero-stat effects remain eligible. Bank records stay intact. Old cosmetic slot overrides are ignored with an explanation, preserving calculated timing and the original saved record. [Behaviour and verification](docs/features/combat-only-gear.md).
 
 ## Cleaner gear comparisons in 3.0.22
 
-Slot comparisons hide permanent stat gear when another available item is strictly no worse in every attack, strength, prayer and defence bonus, speed, weight and setup DPS, with at least one improvement. Charged/degradable/consumable items, unknown special utility, stat trade-offs and your shown item remain visible. Expand **Show strictly outclassed items** to inspect or deliberately select a hidden downgrade. Alternatives sort by DPS, then prayer, then average defence against the creature’s listed attack types. [Behaviour and verification](docs/strict-gear-upgrades.md).
+Slot comparisons hide permanent stat gear when another available item is strictly no worse in every attack, strength, prayer and defence bonus, speed, weight and setup DPS, with at least one improvement. Charged/degradable/consumable items, unknown special utility, stat trade-offs and your shown item remain visible. Expand **Show strictly outclassed items** to inspect or deliberately select a hidden downgrade. Alternatives sort by DPS, then prayer, then average defence against the creature’s listed attack types. [Behaviour and verification](docs/features/strict-gear-upgrades.md).
 
 ## Selectable creature gear in 3.0.21
 
-Open a slot comparison with ⓘ and choose **Use item** to save that gear for the creature and combat style. Choices can upgrade or downgrade the setup; required protection and compatible ammunition remain enforced. Other slots stay automatic. Each style has **Reset gear choices**. Only that creature’s combat cache and associated master plans refresh, including reset/boost filler dependencies; unrelated results stay reusable. Selecting gear opts only this creature’s completion methods into calculated timing without enabling a character-wide rebalance. [Behaviour and verification](docs/creature-gear-selection.md).
+Open a slot comparison with ⓘ and choose **Use item** to save that gear for the creature and combat style. Choices can upgrade or downgrade the setup; required protection and compatible ammunition remain enforced. Other slots stay automatic. Each style has **Reset gear choices**. Only that creature’s combat cache and associated master plans refresh, including reset/boost filler dependencies; unrelated results stay reusable. Selecting gear opts only this creature’s completion methods into calculated timing without enabling a character-wide rebalance. [Behaviour and verification](docs/features/creature-gear-selection.md).
 
 ## Calculated DPS in Completion methods in 3.0.20
 
-The edited assignment/variant now gets an independent background DPS calculation, even when the hunt planner uses a different variant. The method card shows DPS, kill time, weapon and its own loading/cancel/retry state. Measured/manual/disabled and equipment/encounter fallbacks give their actual reasons, with a Use calculated DPS action where appropriate. Manual fallback values and other methods are preserved. [Behaviour and verification](docs/selected-method-dps.md).
+The edited assignment/variant now gets an independent background DPS calculation, even when the hunt planner uses a different variant. The method card shows DPS, kill time, weapon and its own loading/cancel/retry state. Measured/manual/disabled and equipment/encounter fallbacks give their actual reasons, with a Use calculated DPS action where appropriate. Manual fallback values and other methods are preserved. [Behaviour and verification](docs/features/selected-method-dps.md).
 
 ## Weapon comparisons by style in 3.0.19
 
-Each setup now lists weapon alternatives from its own combat style. Generic manual casting no longer puts swords, bows or darts in magic lists, and incidental staff-bashing attacks do not put plain staves in melee lists. Genuine hybrids remain in applicable styles. Automatic setup selection uses the same filter; crossbow/bolt and blowpipe/dart combinations are preserved. [Behaviour and verification](docs/weapon-family-filter.md).
+Each setup now lists weapon alternatives from its own combat style. Generic manual casting no longer puts swords, bows or darts in magic lists, and incidental staff-bashing attacks do not put plain staves in melee lists. Genuine hybrids remain in applicable styles. Automatic setup selection uses the same filter; crossbow/bolt and blowpipe/dart combinations are preserved. [Behaviour and verification](docs/features/weapon-family-filter.md).
 
 ## Ranged weapon and ammo accuracy in 3.0.18
 
-Crossbows stay in the DPS search and comparison list: the best usable ordinary tier through Rune, Dragon/higher crossbows and distinct ammunition families. Each uses the strongest compatible non-enchanted bolt plus every available compatible enchanted bolt, shown as separate linked/icon rows. Blowpipes load compatible owned darts correctly and no longer lose dart strength through slot filtering. Empty/missing-dart setups stay unavailable, required shields remain mandatory, and reviewed crossbow/blowpipe skill requirements are enforced. [Rules, sources and verification](docs/ranged-ammunition.md).
+Crossbows stay in the DPS search and comparison list: the best usable ordinary tier through Rune, Dragon/higher crossbows and distinct ammunition families. Each uses the strongest compatible non-enchanted bolt plus every available compatible enchanted bolt, shown as separate linked/icon rows. Blowpipes load compatible owned darts correctly and no longer lose dart strength through slot filtering. Empty/missing-dart setups stay unavailable, required shields remain mandatory, and reviewed crossbow/blowpipe skill requirements are enforced. [Rules, sources and verification](docs/features/ranged-ammunition.md).
 
 ## Simulation workload totals in 3.0.17
 
-Full-hunt simulations now show average total assigned kills, actual creatures killed, completed tasks and skipped tasks, including boosting/reset fillers. Paid skips and resets are split out; partial goal tasks are handled separately from completed tasks. The strategy comparison includes workload columns, and the example trace/JSON export retain exact trial totals. [Counting rules and verification](docs/simulation-workload-totals.md).
+Full-hunt simulations now show average total assigned kills, actual creatures killed, completed tasks and skipped tasks, including boosting/reset fillers. Paid skips and resets are split out; partial goal tasks are handled separately from completed tasks. The strategy comparison includes workload columns, and the example trace/JSON export retain exact trial totals. [Counting rules and verification](docs/features/simulation-workload-totals.md).
 
 ## Session-hour validation in 3.0.16
 
@@ -78,23 +84,23 @@ Both session-hours editors accept whole and fractional hours within the existing
 
 ## Editable restricted-account pool in 3.0.15
 
-Enabling manual location restrictions now opens the full searchable pool directly in Settings and keeps every location editable in Account & access/setup, including already-completed access. Guide areas and saved custom locations are included. Disabled areas are excluded from guide choices, automatic combat timing and compatible hunt methods; Konar checks the rooms inside each roll. Saved restrictions survive reload/import, and cache invalidation prevents stale location DPS. [Behaviour and verification](docs/restricted-location-pool.md).
+Enabling manual location restrictions now opens the full searchable pool directly in Settings and keeps every location editable in Account & access/setup, including already-completed access. Guide areas and saved custom locations are included. Disabled areas are excluded from guide choices, automatic combat timing and compatible hunt methods; Konar checks the rooms inside each roll. Saved restrictions survive reload/import, and cache invalidation prevents stale location DPS. [Behaviour and verification](docs/features/restricted-location-pool.md).
 
 ## Extension reward list in 3.0.14
 
-Character setup and Account & access now list all 29 supported task extensions like the Slayer Rewards **Extend** tab: in-game reward names/order, creature icons, point costs and extended quantities. They use the unlock list’s two columns (one on narrow screens), highlight recorded purchases and share the existing extension settings with Hunt setup and Combat methods. Filter by reward or creature name. Recording a purchase does not spend points or grant an unlock. [Behaviour, source and verification](docs/extension-rewards.md).
+Character setup and Account & access now list all 29 supported task extensions like the Slayer Rewards **Extend** tab: in-game reward names/order, creature icons, point costs and extended quantities. They use the unlock list’s two columns (one on narrow screens), highlight recorded purchases and share the existing extension settings with Hunt setup and Combat methods. Filter by reward or creature name. Recording a purchase does not spend points or grant an unlock. [Behaviour, source and verification](docs/features/extension-rewards.md).
 
 ## Action feedback in 3.0.13
 
-Failed actions now show a floating banner beside the button or field that triggered them. Each banner has a correction link, which opens the relevant page, expands hidden sections and focuses the control to fix. Simulation without a point balance immediately offers **Enter current points** beside Simulate. Streak, task-state, account/method, import and typed-value errors use the same pattern; delayed calculation errors retain their initiating control across renders. Banners stay until dismissed or a successful edit, with keyboard, narrow-screen and reduced-motion support. See [feedback behavior and verification](docs/action-feedback.md).
+Failed actions now show a floating banner beside the button or field that triggered them. Each banner has a correction link, which opens the relevant page, expands hidden sections and focuses the control to fix. Simulation without a point balance immediately offers **Enter current points** beside Simulate. Streak, task-state, account/method, import and typed-value errors use the same pattern; delayed calculation errors retain their initiating control across renders. Banners stay until dismissed or a successful edit, with keyboard, narrow-screen and reduced-motion support. See [feedback behavior and verification](docs/features/action-feedback.md).
 
 ## Konar location audit in 3.0.12
 
-Konar now rolls uniformly across the available locations for each creature assignment, then checks whether the selected variant exists there. Basilisk Knights therefore have 1/2 compatible basilisk locations when both areas are accessible; ordinary basilisks have 2/2. Each location uses its own legal completion creature and timing for skips, resets, boosting, point rates and target kills per hour. The selected plan shows the complete location breakdown and actions. All 39 assignments were audited; the aggregate boss task retains its separate specific-boss limitation. Four missing area-specific creature options were added. See [the model, full audit and verification](docs/konar-locations.md).
+Konar now rolls uniformly across the available locations for each creature assignment, then checks whether the selected variant exists there. Basilisk Knights therefore have 1/2 compatible basilisk locations when both areas are accessible; ordinary basilisks have 2/2. Each location uses its own legal completion creature and timing for skips, resets, boosting, point rates and target kills per hour. The selected plan shows the complete location breakdown and actions. All 39 assignments were audited; the aggregate boss task retains its separate specific-boss limitation. Four missing area-specific creature options were added. See [the model, full audit and verification](docs/features/konar-locations.md).
 
 ## Available masters and unlock warnings in 3.0.11
 
-Masters that can offer a selected creature after a purchased Slayer unlock stay visible and selectable, even when unavailable masters are hidden. An upfront **Requires Basilocked** (or the relevant reward) warning opens and focuses its setting. Locked target calculations stay pending until ownership is recorded; rewards are never enabled automatically. See [availability rules and verification](docs/master-unlock-warnings.md).
+Masters that can offer a selected creature after a purchased Slayer unlock stay visible and selectable, even when unavailable masters are hidden. An upfront **Requires Basilocked** (or the relevant reward) warning opens and focuses its setting. Locked target calculations stay pending until ownership is recorded; rewards are never enabled automatically. See [availability rules and verification](docs/features/master-unlock-warnings.md).
 
 ## Creature icon alignment in 3.0.10
 
@@ -102,27 +108,27 @@ Creature names now keep the same text baseline as surrounding headings and sente
 
 ## Automatic quest points in 3.0.9
 
-Quest points now derive from recognised completed quests and Recipe for Disaster subquests. Full quest exports supply an exact total; incomplete lists supply a confirmed minimum. These points determine ordinary block slots and therefore affect optimisation and KPH. Existing entered totals remain manual overrides; clear one with **Use quest-derived total**. See [the calculation, compatibility and verification](docs/quest-points.md).
+Quest points now derive from recognised completed quests and Recipe for Disaster subquests. Full quest exports supply an exact total; incomplete lists supply a confirmed minimum. These points determine ordinary block slots and therefore affect optimisation and KPH. Existing entered totals remain manual overrides; clear one with **Use quest-derived total**. See [the calculation, compatibility and verification](docs/features/quest-points.md).
 
 ## Task extension comparisons in 3.0.8
 
-Record **Extended / Not extended** directly in Hunt setup. Target KPH comparisons show normal versus extended rates, the absolute/percentage gain, and a recommendation when extending improves the rate. Purchases apply to every variant and master for that assignment; marking them never spends points in the app. Comparisons hold blocks/gear fixed, then your actual selection reruns the optimiser. See [extension settings and verification](docs/target-extensions.md).
+Record **Extended / Not extended** directly in Hunt setup. Target KPH comparisons show normal versus extended rates, the absolute/percentage gain, and a recommendation when extending improves the rate. Purchases apply to every variant and master for that assignment; marking them never spends points in the app. Comparisons hold blocks/gear fixed, then your actual selection reruns the optimiser. See [extension settings and verification](docs/features/target-extensions.md).
 
 ## Rank by target kills per hour in 3.0.7
 
-Choose **Rank plans by → Highest target kills per hour** to recommend the best supported master for killing your selected creatures over full task cycles. The block search optimises the same rate, and the recommendation card highlights it. Unsupported rates stay inspectable without becoming recommendations. The option is retained in saved hunts and character exports. See [the ranking model and verification](docs/target-rate-ranking.md).
+Choose **Rank plans by → Highest target kills per hour** to recommend the best supported master for killing your selected creatures over full task cycles. The block search optimises the same rate, and the recommendation card highlights it. Unsupported rates stay inspectable without becoming recommendations. The option is retained in saved hunts and character exports. See [the ranking model and verification](docs/features/target-rate-ranking.md).
 
 ## Maxed gear assumption in 3.0.6
 
-Maxed now assumes all modelled ordinary-game gear is available, without importing or filling a bank, and uses equipment-based kill times by default. Existing Maxed characters upgrade once while preserving saved data and Slayer purchases. The guide and item comparisons label the assumption; Settings lets you disable it. New custom characters continue to use imported/manual gear. Seasonal, temporary and unobtainable equipment is excluded from the assumed pool. See [the implementation and verification](docs/maxed-gear-assumption.md).
+Maxed now assumes all modelled ordinary-game gear is available, without importing or filling a bank, and uses equipment-based kill times by default. Existing Maxed characters upgrade once while preserving saved data and Slayer purchases. The guide and item comparisons label the assumption; Settings lets you disable it. New custom characters continue to use imported/manual gear. Seasonal, temporary and unobtainable equipment is excluded from the assumed pool. See [the implementation and verification](docs/features/maxed-gear-assumption.md).
 
 ## Target kill-rate comparison in 3.0.5
 
-The hunt planner now shows **Target kills / h** for each master: estimated selected target creatures killed over repeated full task cycles, including requests, intervening tasks, skips/resets, travel and target combat. Boosting counts both filler and milestone masters. The hover text explains assumptions and unavailable estimates; funded strategies are labelled as unlimited-funds benchmarks. Comparison CSV exports include the number and its calculation basis. See [the rate calculation and verification](docs/target-kill-rate.md).
+The hunt planner now shows **Target kills / h** for each master: estimated selected target creatures killed over repeated full task cycles, including requests, intervening tasks, skips/resets, travel and target combat. Boosting counts both filler and milestone masters. The hover text explains assumptions and unavailable estimates; funded strategies are labelled as unlimited-funds benchmarks. Comparison CSV exports include the number and its calculation basis. See [the rate calculation and verification](docs/features/target-kill-rate.md).
 
 ## Variant coverage in 3.0.4
 
-Regular Blue dragon is now selectable alongside baby and brutal blues, and Vorkath. The same audit restores 27 choices, including regular red and steel dragons, spiritual rangers/mages, warped terrorbirds, black bears, rats and spiders. The importer now reads numbered combat/Slayer fields and prefers listed regular spawns over quest-only forms. Special alternatives retain access and method checks; boss hunts retain configured full-fight timing. See [the coverage audit and verification](docs/variant-coverage.md).
+Regular Blue dragon is now selectable alongside baby and brutal blues, and Vorkath. The same audit restores 27 choices, including regular red and steel dragons, spiritual rangers/mages, warped terrorbirds, black bears, rats and spiders. The importer now reads numbered combat/Slayer fields and prefers listed regular spawns over quest-only forms. Special alternatives retain access and method checks; boss hunts retain configured full-fight timing. See [the coverage audit and verification](docs/features/variant-coverage.md).
 
 ## Explicit creature icons in 3.0.3
 
@@ -140,7 +146,7 @@ The Windows Character Setup Wizard searches `%USERPROFILE%/.runelite/character-e
 
 The website cannot search your local disk automatically. Its folder picker accepts either one character folder or the export directory; if you select the latter with multiple characters, choose one inside the app. Only that character’s six supported files are read. Individual file selection remains available. Discovery reads local snapshots and never applies them until **Import reviewed files** is selected; it does not watch RuneLite continuously.
 
-See [discovery verification and limits](docs/export-discovery.md).
+See [discovery verification and limits](docs/features/export-discovery.md).
 
 ## Character onboarding in 3.0.0
 
@@ -152,7 +158,7 @@ The remaining steps cover points/streaks, purchased Slayer rewards and unresolve
 
 A skippable practice tutorial follows setup (and the first Maxed choice): Basilisk Knight target selection, real analytical master estimates, all six strategy types, a Duradel Waterfiends skip, then a Basilisks task and the creature guide. Its 500 → 470 point example does not alter real points, facts, bank or hunt. Applying the example hunt is an explicit final option that copies only target and strategy. Replay from **Settings → First hunt tutorial**.
 
-Other exports were reviewed: collection-log discoveries do not prove ownership; seed-vault items are not gear; Character Export 0.6.0 has a reported combat-achievement mapping defect, so none grant automatic unlocks. See [onboarding verification, sources and limits](docs/character-onboarding.md).
+Other exports were reviewed: collection-log discoveries do not prove ownership; seed-vault items are not gear; Character Export 0.6.0 has a reported combat-achievement mapping defect, so none grant automatic unlocks. See [onboarding verification, sources and limits](docs/features/character-onboarding.md).
 
 ## Custom-account planning fixes in 2.9.5
 
@@ -160,13 +166,13 @@ A zero-block plan no longer requires confirmation of the account's maximum block
 
 Automatic non-target completion methods favour a confirmed usable ordinary creature over an unconfirmed specialist spawn. Explicit method choices retain their requirements. Missing quests, unlock purchases and unsupported methods remain unknown rather than being granted automatically.
 
-If every master is unavailable and the table hides them, **What needs attention** now shows named requirements for a relevant master, account-review links and sources. See [verification and limits](docs/custom-profile-planning.md).
+If every master is unavailable and the table hides them, **What needs attention** now shows named requirements for a relevant master, account-review links and sources. See [verification and limits](docs/features/custom-profile-planning.md).
 
 ## Reusing combat results in 2.9.4
 
 Switching hunt targets updates hunt odds, skips and master rankings using completed combat results from the current session. It does not restart every owned-gear search or blank the unchanged guide cards. Only newly needed creature/form/location/style combinations need fresh gear work. Completion shows **Reused combat results** when saved results were supplied.
 
-Completed gear results are retained as they arrive, so cancelling or replacing a calculation preserves finished work. Bank, combat skill, combat-setting, relevant diary and quest changes use a different cache context. The cache is bounded, lives only in memory and is absent from profile backups; restarting the app starts a fresh session. See [regression evidence and limits](docs/target-calculation-cache.md).
+Completed gear results are retained as they arrive, so cancelling or replacing a calculation preserves finished work. Bank, combat skill, combat-setting, relevant diary and quest changes use a different cache context. The cache is bounded, lives only in memory and is absent from profile backups; restarting the app starts a fresh session. See [regression evidence and limits](docs/features/target-calculation-cache.md).
 
 ## Gear comparisons and calculation priority in 2.9.3
 
@@ -174,7 +180,7 @@ Hover or focus a gear item, or choose its **ⓘ** button, to see why it was sele
 
 Comparisons run on demand in a cancellable worker and are cached until the profile or guide choices change. They hold other slots fixed; weapon swaps can choose another supported attack/spell within the same combat family. They are not full replacement-loadout searches or an incoming-damage simulation.
 
-New profiles, imports and recalculations prepare the selected hunt creatures and guide creature before other work. The active guide is prepared first when it is open; otherwise hunt targets go first. Selected hunt assignments and masters offering them are processed first, and completed master plans appear while the remaining calculations continue. Percentages include priority preparation. See [verification and limits](docs/gear-comparisons-priority.md).
+New profiles, imports and recalculations prepare the selected hunt creatures and guide creature before other work. The active guide is prepared first when it is open; otherwise hunt targets go first. Selected hunt assignments and masters offering them are processed first, and completed master plans appear while the remaining calculations continue. Percentages include priority preparation. See [verification and limits](docs/features/gear-comparisons-priority.md).
 
 ## Body and leg armour fallbacks in 2.9.2
 
@@ -182,7 +188,7 @@ Owned loadouts fill body and leg slots even when the available armour is not a D
 
 Mandatory equipment, usable quantities, skill requirements, full-set/autocast dependencies and two-handed restrictions remain enforced. A slot stays empty only when no compatible usable owned piece can be selected, with an explanation in the gear notes and empty-slot tooltip. Defensive ranking compares equipment bonuses; it is not an exact incoming-damage or survivability simulation.
 
-The recommended tank/prayer approach now applies consistently to all three owned style cards and hunter timing. Choosing a style saves its armour priority too. **Combat methods > Armour fallback priority** can select the recommended protection plan, Defence first or Prayer bonus first. Existing profiles inherit the recommendation. See [fallback verification](docs/armour-fallback.md).
+The recommended tank/prayer approach now applies consistently to all three owned style cards and hunter timing. Choosing a style saves its armour priority too. **Combat methods > Armour fallback priority** can select the recommended protection plan, Defence first or Prayer bonus first. Existing profiles inherit the recommendation. See [fallback verification](docs/features/armour-fallback.md).
 
 ## DPS sanity fixes in 2.9.1
 
@@ -194,7 +200,7 @@ The engine considers demonbane effects, with reviewed skill requirements for Emb
 
 Multi-target spells show **single-target DPS**, the unchanged **one-creature kill time**, and separate **aggregate DPS**. Dust devils default to eight targets in the Catacombs pod and nine in the Wilderness Slayer Cave; smoke devils use nine in their multi-combat dungeon. Other rooms default to one unless a 1–9 pod is specified. Single-combat rooms and powered staves never gain this multiplier. Hunter estimates and simulations charge complete batches, including for a one-kill goal. These are idealised stacked-throughput estimates: use uptime, delay and travel for gathering, respawns and imperfect stacking, rather than treating them as measured rates.
 
-Gear calculations now run in cancellable background workers. Hunt optimisation reuses prepared completion rows rather than repeating equipment searches for every block candidate. Progress names the current creature, master or block candidate and shows a completion percentage. **Recalculate** retries a cancelled/failed run. Kourend & Kebos Elite removes Karuulm hazard boots from owned and example sets. See [sanity verification](docs/gear-dps-sanity.md).
+Gear calculations now run in cancellable background workers. Hunt optimisation reuses prepared completion rows rather than repeating equipment searches for every block candidate. Progress names the current creature, master or block candidate and shows a completion percentage. **Recalculate** retries a cancelled/failed run. Kourend & Kebos Elite removes Karuulm hazard boots from owned and example sets. See [sanity verification](docs/features/gear-dps-sanity.md).
 
 ## Owned gear, DPS and Settings in 2.9.0
 
@@ -212,7 +218,7 @@ Measured kills/hour and full task-duration methods retain priority. Boss/phase/s
 
 **Settings** also owns themes, animation control, optional guide sections, sidebar Quick setup and secondary navigation. Twenty reviewed ordinary entrances (21 access flags) default to Yes and are hidden from Account & access. This refers to normal members-world entrances, not every room, creature, teleport or activity. Money, tools, task and combat requirements still apply. **Restricted accounts and Leagues** exposes the original pickers and stored overrides; quest/skill-gated locations retain their usual controls. Sources and entrance caveats are listed there.
 
-Everything works offline after loading. Item art and equipment metadata are bundled; guide selection and calculations make no Wiki requests. The new entrance review used four bounded API requests, at least eight seconds apart. See [implementation, verification and limits](docs/bank-dps-implementation.md). Application/DPS code is GPL-3.0 with corresponding source in the Windows `source/` folder; Wiki data and game artwork retain the separate terms in `THIRD_PARTY_NOTICES.txt`.
+Everything works offline after loading. Item art and equipment metadata are bundled; guide selection and calculations make no Wiki requests. The new entrance review used four bounded API requests, at least eight seconds apart. See [implementation, verification and limits](docs/features/bank-dps-implementation.md). Application/DPS code is GPL-3.0 with corresponding source in the Windows `source/` folder; Wiki data and game artwork retain the separate terms in `THIRD_PARTY_NOTICES.txt`.
 
 ## Item icons and links in 2.8.1
 
@@ -226,7 +232,7 @@ Each selection offers an approximate fighting style and protection plan, mid-lev
 
 Ranked location cards show basic travel diagrams, optional faster teleports with unlock caveats, cannon/multi-combat status and Wilderness risk. Change the ranking priority or select a location to update location-dependent equipment. Unknown routes and room rules remain explicitly unreviewed. Potion and trip-kit checkboxes serve as a temporary packing list; quantities depend on your trip. Guide selections persist separately from hunter profiles and do not alter targets, blocks, methods, balances or undo history.
 
-The guide reuses existing revisioned creature captures offline. Eleven specialist pages were captured in five bounded API requests, eight seconds apart. Selection and ordinary builds make no Wiki requests. See [guide verification and limits](docs/creature-guide-verification.md). Regenerate its dataset with `python tools/build_creature_guide.py`; deliberate specialist refreshes require the explicit `--fetch` option in `tools/capture_guide_sources.py`.
+The guide reuses existing revisioned creature captures offline. Eleven specialist pages were captured in five bounded API requests, eight seconds apart. Selection and ordinary builds make no Wiki requests. See [guide verification and limits](docs/verification/creature-guide-verification.md). Regenerate its dataset with `python tools/build_creature_guide.py`; deliberate specialist refreshes require the explicit `--fetch` option in `tools/capture_guide_sources.py`.
 
 ## Creature artwork and interface refresh in 2.7.0
 
@@ -236,7 +242,7 @@ Creature selectors open an illustrated search dialog. Type part of a name, brows
 
 The six themes share updated navigation icons, target portraits, consistent controls, clearer setup/recommendation cards and improved block/skip presentation. **Saved hunts** is grouped in the hunt toolbar. Short view, dialog and hover transitions respect the system's reduced-motion preference. Compact hunt keeps the same creature badges and controls.
 
-See [interface verification](docs/ui-refresh-verification.md) for checks and limits. Artwork is credited in `THIRD_PARTY_NOTICES.txt`; recalculating or rebuilding the app does not fetch artwork. To deliberately refresh artwork, run `python tools/build_creature_art.py` with Pillow installed, review the changed sources/assets, then rebuild.
+See [interface verification](docs/verification/ui-refresh-verification.md) for checks and limits. Artwork is credited in `THIRD_PARTY_NOTICES.txt`; recalculating or rebuilding the app does not fetch artwork. To deliberately refresh artwork, run `python tools/build_creature_art.py` with Pillow installed, review the changed sources/assets, then rebuild.
 
 ## Strategy and reward audit in 2.6.2
 
@@ -250,7 +256,7 @@ Fillers use recorded actual blocks. Shared block groups use the proposed list wi
 
 Pending offers use their actual master even when off the boost schedule. Under **Current assignment and cape state**, confirm partial Konar compatibility and the actual previous master when needed. Cape repeats use the last assigned task, including after a paid skip, and only the same master can repeat it. The checkbox models always accepting repeats; optimal accept/decline decisions and Mortimer cape choices remain unsupported. Existing profiles still load; missing master/location details are requested before relevant simulations.
 
-See the [strategy audit and verification](docs/strategy-reward-audit.md) for the mathematics, sources and limits.
+See the [strategy audit and verification](docs/features/strategy-reward-audit.md) for the mathematics, sources and limits.
 
 ## Turael reset estimates in 2.6.1
 
@@ -258,7 +264,7 @@ The master table now includes the time to reset and complete a Turael replacemen
 
 Reset replacements use the recorded **actual** beginner block list. Automatic/proposed Turael blocks are not free purchases. Blocking a task with Turael also permits resetting that assignment from another eligible master, as described on the [Wiki](https://oldschool.runescape.wiki/w/Turael). Compatible targets and keep/protect preferences remain protected; incompatible Konar locations can be reset, and Mortimer tasks cannot be replaced. Configure fast replacement methods and travel/banking to match your route, and include reset/contact travel under seconds per reset and minutes per request.
 
-Point rates are withheld when resets change streaks; use simulation for actual point balances, paid skips and rewards. An already-assigned resettable task is now replaced immediately in simulation. Cancelling a Wilderness task resets the Wilderness streak; the Turael completion advances the separate normal streak. See [reset math and verification](docs/turael-reset-verification.md).
+Point rates are withheld when resets change streaks; use simulation for actual point balances, paid skips and rewards. An already-assigned resettable task is now replaced immediately in simulation. Cancelling a Wilderness task resets the Wilderness streak; the Turael completion advances the separate normal streak. See [reset math and verification](docs/verification/turael-reset-verification.md).
 
 ## Hunt tools in 2.6
 
@@ -278,7 +284,7 @@ Task lookup offers **Record completed task** and **Record paid skip**. Review th
 
 After recording actual kills and combat minutes, **Combat methods** offers a measured kills/hour suggestion for that assignment and variant. It uses total kills divided by total combat time, excludes travel/banking, and requires review before changing the method. Check that sampled equipment and locations match the method you intend to use. No RuneLite task telemetry or game account mutation is performed. Profile JSON imports retain their existing 2 MB limit; undo history is not exported.
 
-See [implementation and verification](docs/hunt-quality-of-life.md).
+See [implementation and verification](docs/features/hunt-quality-of-life.md).
 
 ## Maxed profile
 
@@ -298,7 +304,7 @@ The review shows old/imported/resulting states and manual conflicts. Existing ma
 
 The **Area access** table explains automatic results for 20 sourced area rules. Completion can prove access; for areas unlocked partway through a quest, an in-progress state remains unknown because RuneLite exports only three quest states. Areas without a reviewed rule also remain unknown. Set **Yes / No — manual** to override an area, or **Auto** to restore derivation. Existing area overrides are preserved. These results feed Konar's eligible location pool and explicit method-location checks; they do not remove a receivable assignment merely because your chosen monster method is unavailable.
 
-Area rule version `2026-11-19.1` is recorded separately from the original catalogue. Existing profile files remain supported; imports using a different recorded area-rule version require explicit rebasing. See [quest/area verification](docs/quest-import-verification.md) for pinned exporter formats, rule sources and test evidence.
+Area rule version `2026-11-19.1` is recorded separately from the original catalogue. Existing profile files remain supported; imports using a different recorded area-rule version require explicit rebasing. See [quest/area verification](docs/verification/quest-import-verification.md) for pinned exporter formats, rule sources and test evidence.
 
 ## Appearance
 
@@ -335,7 +341,7 @@ Mortimer milestones, guaranteed modifiers and equal unlocked-type chances are so
 
 ## Data and attribution
 
-Data snapshot: `2026-11-19.2`. `data/catalogue.json` is generated from revisioned Wiki captures in `data/sources/`, with the supplied workbook retained as `data/legacy.json`. Source revisions, conditional rules and qualifications are visible in the app. Wiki text is parsed as data; no Lua or spreadsheet code is executed. See `THIRD_PARTY_NOTICES.txt` and [verification](docs/v2-verification.md).
+Data snapshot: `2026-11-19.2`. `data/catalogue.json` is generated from revisioned Wiki captures in `data/sources/`, with the supplied workbook retained as `data/legacy.json`. Source revisions, conditional rules and qualifications are visible in the app. Wiki text is parsed as data; no Lua or spreadsheet code is executed. See `THIRD_PARTY_NOTICES.txt` and [verification](docs/verification/v2-verification.md).
 
 Refresh into a new candidate directory without changing active data:
 
@@ -358,13 +364,14 @@ npm run typecheck
 npm test
 npm start
 npm run package:windows -- <new-output-directory>
-python tools/assemble_windows_share.py <distribution-folder>
-python tools/package_share.py <distribution-folder> <new-zip-path>
+python tools/release/assemble_windows_share.py <distribution-folder>
+node tools/release/verify-windows-share.cjs <distribution-folder>
+python tools/release/package_share.py <distribution-folder> <new-zip-path>
 ```
 
 `src/domain`, `src/rules` and `src/analysis` provide the typed shared model. `src/state` validates and migrates profiles. `src/ui` owns one application state and cancellable offline workers; generated browser assets are in `dist`. Historical v1 engines/fixtures live under `tests/fixtures/v1` and are not deployed. `desktop` contains the isolated Electron shell and a narrow, validated public-hiscores bridge. The package uses an explicit allowlist and includes no personal profiles, credentials or hosting metadata.
 
-See [the implementation plan](docs/implementation-plan.md), [glossary](CONTEXT.md) and [release verification](docs/v2-verification.md). This implementation branch builds on the existing Windows packaging and plan commits without rewriting their history.
+See the [documentation index](docs/README.md), [current verification](VERIFICATION.md), [the implementation plan](docs/design/implementation-plan.md), [glossary](CONTEXT.md) and [release verification](docs/verification/v2-verification.md). This implementation branch builds on the existing Windows packaging and plan commits without rewriting their history.
 
 ## Development checks and releases
 

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node tools/build.mjs && node --test",
     "start": "node tools/serve.cjs",
-    "package:windows": "node tools/package-windows.mjs",
+    "package:windows": "node tools/release/package-windows.mjs",
     "build:data": "python tools/build_catalogue.py",
     "typecheck": "tsc --noEmit",
     "build": "node tools/build.mjs"

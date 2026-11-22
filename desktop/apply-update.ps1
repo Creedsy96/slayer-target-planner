@@ -69,16 +69,16 @@ try{
    }finally{$inputStream.Dispose();$outputStream.Dispose()}
   }
  }finally{$archive.Dispose()}
- $manifest=Get-Content -LiteralPath (Join-Path $stage 'update-manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+ $manifest=Get-Content -LiteralPath (Join-Path $stage 'resources\update-manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
  if($manifest.schema -ne 1 -or $manifest.version -cne $config.version -or $manifest.platform -cne 'win32' -or $manifest.arch -cne 'x64' -or $manifest.repository -cne 'Lolager23/slayer-target-planner'){throw 'The downloaded package has the wrong version or platform.'}
- foreach($required in @('Slayer Target Planner.exe','resources\app.asar','update-manifest.json')){if(-not(Test-Path -LiteralPath (Join-Path $stage $required) -PathType Leaf)){throw 'The downloaded application is incomplete.'}}
+ foreach($required in @('Slayer Target Planner.exe','resources\app.asar','resources\update-manifest.json')){if(-not(Test-Path -LiteralPath (Join-Path $stage $required) -PathType Leaf)){throw 'The downloaded application is incomplete.'}}
  $hashes=@{}
- foreach($line in Get-Content -LiteralPath (Join-Path $stage 'SHA256SUMS.txt') -Encoding UTF8){
+ foreach($line in Get-Content -LiteralPath (Join-Path $stage 'resources\SHA256SUMS.txt') -Encoding UTF8){
   if($line -notmatch '^([a-f0-9]{64})  (.+)$'){throw 'Invalid application checksum manifest.'}
   $sha=$Matches[1];$relative=SafeRelative $Matches[2];if($hashes.ContainsKey($relative)){throw 'Duplicate application checksum.'}
   $target=NormalPath (Join-Path $stage $relative.Replace('/','\'));if(-not(Below $stage $target) -or -not(Test-Path -LiteralPath $target -PathType Leaf) -or (FileHash $target) -ne $sha){throw 'An application file failed checksum verification.'};$hashes[$relative]=$sha
  }
- foreach($file in $files){if($file.relative -ne 'SHA256SUMS.txt' -and -not $hashes.ContainsKey($file.relative)){throw 'An application file is missing from the checksum manifest.'}}
+ foreach($file in $files){if($file.relative -ne 'resources/SHA256SUMS.txt' -and -not $hashes.ContainsKey($file.relative)){throw 'An application file is missing from the checksum manifest.'}}
  $deadline=[DateTime]::UtcNow.AddSeconds(120)
  while((Get-Process -Id $config.parentPid -ErrorAction SilentlyContinue) -or (RunningInstall)){
   if([DateTime]::UtcNow -gt $deadline){throw 'The app is still running. The update was not installed.'};Start-Sleep -Milliseconds 250
@@ -86,9 +86,11 @@ try{
  AssertNoLinks $install;AssertNoLinks $stage;AssertNoLinks $backup
  Move-Item -LiteralPath $install -Destination $backup;$oldMoved=$true
  Move-Item -LiteralPath $stage -Destination $install;$newMoved=$true
- # Keep the latest verified ZIP beside the app so this portable copy can be shared.
+ # Keep sharing files out of the launcher's top-level runtime files.
  $shareName='Slayer Target Planner '+$config.version+' - Windows.zip'
- $shareZip=NormalPath (Join-Path $install $shareName)
+ $shareRoot=Join-Path $install 'share'
+ [void][IO.Directory]::CreateDirectory($shareRoot)
+ $shareZip=NormalPath (Join-Path $shareRoot $shareName)
  if(-not(Below $install $shareZip) -or (Test-Path -LiteralPath $shareZip)){throw 'Unexpected sharing ZIP destination.'}
  [IO.File]::Copy($archivePath,$shareZip,$false)
  [IO.File]::WriteAllText(($shareZip+'.sha256.txt'),($config.sha256+'  '+$shareName+[Environment]::NewLine))

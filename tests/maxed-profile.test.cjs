@@ -60,6 +60,22 @@ test('fresh setups select Maxed; upgrades retain the selected profile and add it
   assert.equal(again.profiles.length,2);assert.equal(again.profiles[1],builtIn);
   assert.equal(again.profiles[1].levels.slayer,95);
 });
+test('the legacy Default workbook character is retired and Maxed becomes its replacement',()=>{
+  const workbook=c.newProfile(d,'Default workbook'),custom=c.newProfile(d,'My character');
+  custom.bank=c.emptyBank();custom.bank.manual[4151]=1;const before=JSON.stringify(custom);
+  const next=c.withDefaultMaxedProfile(d,[workbook,custom],workbook.id);
+  assert.equal(next.activeId,c.MAXED_PROFILE_ID);assert.equal(next.profiles.length,2);
+  assert.ok(!next.profiles.some(p=>p.id===workbook.id));assert.equal(JSON.stringify(custom),before);
+  assert.equal(c.withDefaultMaxedProfile(d,next.profiles,custom.id).activeId,custom.id);
+  const imported=c.newProfile(d,'Imported workbook profile');
+  assert.ok(c.withDefaultMaxedProfile(d,[imported],imported.id).profiles.includes(imported));
+  const migrated=c.migrateV1(d,{settings:{level:87}});
+  const migratedNext=c.withDefaultMaxedProfile(d,[migrated,custom],migrated.id);
+  assert.equal(migratedNext.activeId,c.MAXED_PROFILE_ID);assert.equal(migratedNext.profiles.length,2);
+  migrated.name='My saved workbook hunt';
+  assert.ok(c.withDefaultMaxedProfile(d,[migrated],migrated.id).profiles.includes(migrated));
+  assert.equal(c.withDefaultMaxedProfile(d,next.profiles,next.activeId).profiles,next.profiles);
+});
 
 test('full legacy profile lists gain Maxed without losing profiles or breaking round trips',()=>{
   const original=Array.from({length:50},(_,i)=>({...c.newProfile(d),id:'custom-'+i}));

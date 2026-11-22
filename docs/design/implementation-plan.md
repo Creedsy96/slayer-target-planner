@@ -1,6 +1,6 @@
 # Slayer Target Planner implementation plan
 
-Status: implementation authorised by the user and delivered as version 2 with explicit supported-model limits. See [verification](v2-verification.md) for checks and unverified areas.
+Status: implementation authorised by the user and delivered as version 2 with explicit supported-model limits. See [verification](../verification/v2-verification.md) for checks and unverified areas.
 Prepared: 19 November 2026.
 Scope: the zero-block assumption fix, monster variant accuracy, and research recommendations 1–13. Recommendation 14 (general XP, profit and Ironman outputs) is excluded. Goal-specific drop probabilities remain included under recommendation 11.
 
@@ -46,7 +46,7 @@ Confirmed limitations from source inspection:
 
 ## Design decisions for implementation
 
-Use the vocabulary in [CONTEXT.md](../CONTEXT.md). In particular, keep assignment eligibility, variant eligibility and a player's preference separate. Removing a desired variant must not silently remove a still-assignable task from the denominator.
+Use the vocabulary in [CONTEXT.md](../../CONTEXT.md). In particular, keep assignment eligibility, variant eligibility and a player's preference separate. Removing a desired variant must not silently remove a still-assignable task from the denominator.
 
 Keep one application state owner and a pure, shared calculation core. Introduce a small TypeScript compilation/bundling step for typed records and generated browser assets; avoid a server or UI-framework rewrite. Proposed source responsibilities:
 

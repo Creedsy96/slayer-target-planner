@@ -70,10 +70,10 @@ function applyFixture(scenario){
 from pathlib import Path
 from zipfile import ZipFile,ZipInfo
 job=Path(sys.argv[1]);scenario=sys.argv[2];root='Slayer Target Planner 4.0.1 - Windows/'
-files={'Slayer Target Planner.exe':b'new-exe','resources/app.asar':b'new-app','update-manifest.json':json.dumps({'schema':1,'version':'4.0.1' if scenario!='wrong-version' else '9.0.0','platform':'win32','arch':'x64','repository':'Lolager23/slayer-target-planner'}).encode()}
+files={'Slayer Target Planner.exe':b'new-exe','resources/app.asar':b'new-app','resources/update-manifest.json':json.dumps({'schema':1,'version':'4.0.1' if scenario!='wrong-version' else '9.0.0','platform':'win32','arch':'x64','repository':'Lolager23/slayer-target-planner'}).encode()}
 sums=''.join(hashlib.sha256(value).hexdigest()+'  '+name+'\n' for name,value in files.items()).encode()
 if scenario=='file-corrupt':files['resources/app.asar']=b'bad-app'
-files['SHA256SUMS.txt']=sums
+files['resources/SHA256SUMS.txt']=sums
 with ZipFile(job/'package.zip','w') as z:
  for name,value in files.items():z.writestr(root+name,value)
  if scenario=='traversal':z.writestr(root+'../escape.txt',b'no')
@@ -95,7 +95,7 @@ function apply(job,prefix='',interrupt=false){
 
 test('Windows helper installs a complete checksum-verified fixture and retains old app, extra files and character storage',{skip:process.platform!=='win32'},()=>{
  const f=applyFixture('good'),out=apply(f);assert.equal(out.result.status,0,JSON.stringify(out));assert.equal(out.status.status,'installed');assert.equal(fs.readFileSync(path.join(f.install,'resources/app.asar'),'utf8'),'new-app');assert.equal(fs.readFileSync(path.join(f.job,'previous','my-notes.txt'),'utf8'),'keep this');assert.equal(fs.readFileSync(path.join(f.data,'character-backup.json'),'utf8'),'private fixture facts');
- const zip=path.join(f.install,'Slayer Target Planner 4.0.1 - Windows.zip');assert.equal(crypto.createHash('sha256').update(fs.readFileSync(zip)).digest('hex'),f.config.sha256);assert.ok(fs.readFileSync(zip+'.sha256.txt','utf8').startsWith(f.config.sha256));
+ const zip=path.join(f.install,'share','Slayer Target Planner 4.0.1 - Windows.zip');assert.equal(crypto.createHash('sha256').update(fs.readFileSync(zip)).digest('hex'),f.config.sha256);assert.ok(fs.readFileSync(zip+'.sha256.txt','utf8').startsWith(f.config.sha256));assert.equal(fs.existsSync(path.join(f.install,path.basename(zip))),false);
 });
 test('Windows helper refuses corrupt ZIP/files, wrong version, traversal, duplicates, symlinks and unlisted files before replacing anything',{skip:process.platform!=='win32'},()=>{
  const expected={'zip-corrupt':/SHA-256/,'file-corrupt':/checksum/,'wrong-version':/wrong version/,'traversal':/Unsafe archive/,'duplicate':/Duplicate archive/,'symlink':/Links are not allowed/,'unlisted':/missing from the checksum/};

@@ -38,6 +38,14 @@ export function maxedProfile(data:Catalogue):Profile{
 }
 
 export function withDefaultMaxedProfile(data:Catalogue,profiles:Profile[]=[],activeId=''):{profiles:Profile[];activeId:string}{
+  // Retire the old automatically supplied workbook example. Explicit imports
+  // and renamed/custom characters keep their own identities and saved facts.
+  const retained=profiles.filter(p=>{
+    const name=p.name.trim().toLowerCase();
+    const migratedStarter=name==='imported workbook profile'&&p.legacyOverrides!==undefined&&p.notes.some(note=>note.startsWith('v1 backup retained.'));
+    return name!=='default workbook'&&!migratedStarter;
+  });
+  if(retained.length!==profiles.length)profiles=retained;
   if(customProfileCount(profiles)>MAX_CUSTOM_PROFILES)throw Error('Maximum of 50 custom profiles.');
   const current=profiles.find(p=>p.id===MAXED_PROFILE_ID);
   let next=profiles;
@@ -57,5 +65,5 @@ export function withDefaultMaxedProfile(data:Catalogue,profiles:Profile[]=[],act
     const updated=clone(gearPreset);updated.assumeAllGear=true;updated.combat={...defaultCombat(),...updated.combat,enabled:true};updated.notes.push(gearNote);
     next=next.map(p=>p===gearPreset?updated:p);
   }
-  return {profiles:next,activeId:next.some(p=>p.id===activeId)?activeId:next[0].id};
+  return {profiles:next,activeId:next.some(p=>p.id===activeId)?activeId:MAXED_PROFILE_ID};
 }

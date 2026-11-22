@@ -69,6 +69,10 @@ test('pool changes invalidate combat context only when restrictions are active',
  const p=profile();p.restrictBasicAccess=false;const normal=c.combatIdentity(p);p.access['location:Taverley Dungeon']=0;assert.equal(c.combatIdentity(p),normal);
  p.restrictBasicAccess=true;const restricted=c.combatIdentity(p);assert.notEqual(restricted,normal);p.access['location:Taverley Dungeon']=1;assert.notEqual(c.combatIdentity(p),restricted);
 });
+test('special access confirmations invalidate combat even with ordinary-area restrictions off',()=>{
+ const p=profile();p.restrictBasicAccess=false;const before=c.combatIdentity(p);
+ p.access['repeatable-special-method']=0;assert.notEqual(c.combatIdentity(p),before);
+});
 test('parent-disabled cards link to the parent instead of offering an ineffective child toggle',()=>{
  const p=profile();p.access['location:Waterbirth Island']=0;
  const html=account.renderAreaAccess(p,['location:Waterbirth Island','location:Waterbirth Island Dungeon'],'',false);

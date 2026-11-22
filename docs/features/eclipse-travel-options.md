@@ -1,4 +1,4 @@
-# Eclipse Moon burn and travel options — unreleased
+# Eclipse Moon burn and travel options — 4.0.0
 
 Implemented locally on 22 November 2026. No desktop package, GitHub release or website publication was made for these changes.
 
@@ -28,4 +28,4 @@ Setup progress accepts both the old six-step and new seven-step records. Complet
 
 ## Verification
 
-The original burn/travel implementation passed 491 tests and browser checks before the user changed the verification policy. Subsequent changes use focused checks only; full-suite testing is reserved for a requested release. Focused coverage includes full/partial sets, accuracy flags, immune targets, finite-fight truncation, hunter timing, stock filtering, group exclusion, manual overrides, quest gates, route/PvP output and setup migration. Build and TypeScript checks pass. Browser QA used disposable localhost characters and confirmed full-set DPS/TTK, imported crystal detection, immediate unlimited-item hiding and consumable persistence after reload. The running desktop remains the previous published 3.0.27.
+The original burn/travel implementation passed 491 tests and browser checks before the user changed the verification policy. Subsequent changes use focused checks only; full-suite testing is reserved for a requested release. Focused coverage includes full/partial sets, accuracy flags, immune targets, finite-fight truncation, hunter timing, stock filtering, group exclusion, manual overrides, quest gates, route/PvP output and setup migration. Build and TypeScript checks pass. Browser QA used disposable localhost characters and confirmed full-set DPS/TTK, imported crystal detection, immediate unlimited-item hiding and consumable persistence after reload. Included in the 4.0.0 release; see the current verification record.

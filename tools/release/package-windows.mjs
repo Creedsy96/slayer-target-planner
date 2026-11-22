@@ -2,9 +2,9 @@ import {packager} from '@electron/packager';
 import {mkdir, readFile, writeFile, copyFile, access,rename} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import offline from '../desktop/offline-style.cjs';
+import offline from '../../desktop/offline-style.cjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const output = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, '.desktop-build', 'output');
 const stage = path.join(root, '.desktop-build', 'app-v2');
 const manifest = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
@@ -40,6 +40,6 @@ const folders=[];
 for(const folder of packaged){
   const versioned=path.join(output,'Slayer Target Planner '+manifest.version+' - Windows');
   await rename(folder,versioned);folders.push(versioned);
-  await writeFile(path.join(versioned,'update-manifest.json'),JSON.stringify({schema:1,version:manifest.version,platform:'win32',arch:'x64',repository:'Lolager23/slayer-target-planner'},null,2));
+  await writeFile(path.join(versioned,'resources','update-manifest.json'),JSON.stringify({schema:1,version:manifest.version,platform:'win32',arch:'x64',repository:'Lolager23/slayer-target-planner'},null,2));
 }
 console.log(JSON.stringify({folders, electron:manifest.devDependencies.electron, version:manifest.version}));

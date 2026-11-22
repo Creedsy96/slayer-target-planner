@@ -1,4 +1,4 @@
-"""Add data, notices and corresponding source to an already packaged Windows app.
+"""Add notices and corresponding source to an already packaged Windows app.
 
 Run from a committed checkout, before package_share.py. No profiles, credentials,
 Git metadata or local test artifacts are copied. Existing source is never replaced.
@@ -11,7 +11,7 @@ import subprocess
 import tarfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def assemble(folder: Path) -> None:
@@ -27,13 +27,16 @@ def assemble(folder: Path) -> None:
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
     version = json.loads((ROOT / "package.json").read_text())["version"]
-    for name in ["travel-options", "equipment-requirement-reviews", "equipment-requirement-audit", "slayer-unlocks", "slayer-extensions", "konar-locations", "catalogue", "area-access", "mortimer-modifiers", "variant-additions",
-                 "creature-guide", "equipment-requirements", "item-names", "open-areas", "quest-points"]:
-        shutil.copy2(ROOT / "data" / f"{name}.json", folder)
-    for name in ["creature-art", "item-art", "owned-art"]:
-        shutil.copy2(ROOT / "src/ui" / f"{name}.json", folder)
-    shutil.copy2(ROOT / "THIRD_PARTY_NOTICES.txt", folder)
-    shutil.copy2(ROOT / "LICENSE", folder / "COPYING-GPL-3.txt")
+    # Runtime data is bundled into app.asar. Its original JSON/art metadata is
+    # already included under source/, so do not duplicate it beside the EXE.
+    documentation = folder / "documentation"
+    documentation.mkdir()
+    shutil.copy2(ROOT / "THIRD_PARTY_NOTICES.txt", documentation)
+    shutil.copy2(ROOT / "LICENSE", documentation / "COPYING-GPL-3.txt")
+    electron_notices = documentation / "electron"
+    electron_notices.mkdir()
+    for name in ["LICENSE", "LICENSES.chromium.html", "version"]:
+        shutil.move(str(folder / name), electron_notices / name)
     archive = subprocess.check_output(["git", "archive", "--format=tar", revision], cwd=ROOT)
     source.mkdir()
     with tarfile.open(fileobj=io.BytesIO(archive)) as output:
@@ -41,7 +44,7 @@ def assemble(folder: Path) -> None:
     # Include the installed sources of all production npm dependencies, including
     # statically bundled dependencies, rather than only links to package registries.
     lock = json.loads((ROOT / "package-lock.json").read_text())
-    licences = folder / "dependency-licences"
+    licences = documentation / "dependency-licences"
     licences.mkdir()
     for relative, record in lock["packages"].items():
         if not relative.startswith("node_modules/") or record.get("dev"):
@@ -58,10 +61,10 @@ def assemble(folder: Path) -> None:
             if notice.is_file() and notice.name.upper().startswith(("LICEN", "COPYING")):
                 name = relative.removeprefix("node_modules/").replace("/", "_")
                 shutil.copy2(notice, licences / f"{name}-{notice.name}")
-    (folder / "SOURCE-REVISION.txt").write_text(
+    (documentation / "SOURCE-REVISION.txt").write_text(
         f"Slayer Target Planner {version}\nGit commit: {revision}\n"
         "https://github.com/Lolager23/slayer-target-planner\n"
-        "Corresponding application, engine and production dependency source: source/\n",
+        "Corresponding application, engine and production dependency source: ../source/\n",
         encoding="utf-8",
     )
     (folder / "READ ME.txt").write_text(
@@ -89,13 +92,17 @@ def assemble(folder: Path) -> None:
         "Characters stay local in the application's user-data folder, outside this\n"
         "distribution. Export character JSON backups to transfer your plans.\n"
         "The private website and local application have separate character storage.\n\n"
-        "Application/DPS code: GPL-3.0, no warranty. See COPYING-GPL-3.txt,\n"
-        "THIRD_PARTY_NOTICES.txt, dependency-licences/ and source/README.md.\n"
-        "Wiki data and Jagex artwork retain separate terms. SOURCE-REVISION.txt\n"
-        "identifies the exact source. SHA256SUMS.txt verifies distribution files.\n",
+        "Folder layout: source/ contains the complete corresponding application,\n"
+        "engine, data and dependency sources; documentation/ contains licences,\n"
+        "third-party notices and SOURCE-REVISION.txt. Runtime files beside the\n"
+        "EXE, resources/ and locales/ are required by Electron; keep them together.\n\n"
+        "Application/DPS code: GPL-3.0, no warranty. See documentation/ and\n"
+        "source/README.md. Wiki data and Jagex artwork retain separate terms.\n"
+        "resources/SHA256SUMS.txt verifies distribution files. The share/ folder\n"
+        "contains the matching ZIP and its checksum for passing to someone else.\n",
         encoding="utf-8",
     )
-    print(f"Assembled {version} data, notices and source at {folder}")
+    print(f"Assembled {version} documentation and corresponding source at {folder}")
 
 
 if __name__ == "__main__":

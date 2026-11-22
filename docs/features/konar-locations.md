@@ -8,7 +8,7 @@ With both basilisk locations available, Basilisk Knights match Jormungand’s Pr
 
 ## Complete audit
 
-[The generated CSV](konar-location-audit.csv) records all 115 assignment/variant pairs across all 39 tasks. The 38 fixed location pools are modelled explicitly. The aggregate boss task retains its separate specific-boss roll limitation; it is not given an invented uniform boss/location distribution.
+[The generated CSV](../reference/konar-location-audit.csv) records all 115 assignment/variant pairs across all 39 tasks. The 38 fixed location pools are modelled explicitly. The aggregate boss task retains its separate specific-boss roll limitation; it is not given an invented uniform boss/location distribution.
 
 Representative all-access cases include:
 
