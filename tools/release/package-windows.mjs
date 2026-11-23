@@ -40,6 +40,6 @@ const folders=[];
 for(const folder of packaged){
   const versioned=path.join(output,'Slayer Target Planner '+manifest.version+' - Windows');
   await rename(folder,versioned);folders.push(versioned);
-  await writeFile(path.join(versioned,'resources','update-manifest.json'),JSON.stringify({schema:1,version:manifest.version,platform:'win32',arch:'x64',repository:'Lolager23/slayer-target-planner'},null,2));
+  await writeFile(path.join(versioned,'resources','update-manifest.json'),JSON.stringify({schema:1,version:manifest.version,platform:'win32',arch:'x64',repository:'Creedsy96/slayer-target-planner'},null,2));
 }
 console.log(JSON.stringify({folders, electron:manifest.devDependencies.electron, version:manifest.version}));

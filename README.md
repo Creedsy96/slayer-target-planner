@@ -2,6 +2,12 @@
 
 An offline-capable creature hunt planner for the private website, local browser and portable Windows app.
 
+## About this fork
+
+This is Creedsy96's fork of [Owen Welch's Slayer Target Planner](https://github.com/Lolager23/slayer-target-planner), used under the GPL-3.0 licence. Owen wrote the original application and all releases up to 4.1.1.
+
+From 4.2.0 the portable app checks this fork's [GitHub releases](https://github.com/Creedsy96/slayer-target-planner/releases) instead of Owen's. A copy installed from Owen's releases only trusts Owen's repository, so it needs one manual install of this fork's first release; after that it updates itself. Characters and saved calculations stay in the same Windows user-data folder, so switching keeps them. Upstream changes are merged in from Owen's repository when wanted.
+
 ## Start
 
 Version 4.1.1 adds conservative imported-account defaults, background

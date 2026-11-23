@@ -18,7 +18,7 @@ for(const file of ['planner.js','data-manifest.json','creatures.png','items.png'
 const offline=require('../../desktop/offline-style.cjs');
 assert.equal(asar.extractFile(archive,'web/style.css').toString(),offline.offlineStyle(fs.readFileSync(path.join(root,'dist/style.css'),'utf8')));
 for(const file of ['main.cjs','preload.cjs','navigation.cjs','hiscores.cjs','compact.cjs','character-exports.cjs','updates.cjs','update-feed.cjs','apply-update.ps1'])assert.deepEqual(asar.extractFile(archive,file),fs.readFileSync(path.join(root,'desktop',file)),file);
-assert.deepEqual(JSON.parse(fs.readFileSync(path.join(folder,'resources/update-manifest.json'),'utf8')),{schema:1,version:pkg.version,platform:'win32',arch:'x64',repository:'Lolager23/slayer-target-planner'});
+assert.deepEqual(JSON.parse(fs.readFileSync(path.join(folder,'resources/update-manifest.json'),'utf8')),{schema:1,version:pkg.version,platform:'win32',arch:'x64',repository:'Creedsy96/slayer-target-planner'});
 assert.ok(asar.listPackage(archive).every(name=>!/(\.git|profile|credential|fixture|hosting\.json)/i.test(name)));
 const sourceRecord=fs.readFileSync(path.join(folder,'documentation/SOURCE-REVISION.txt'),'utf8');
 const revision=/^Git commit: ([a-f0-9]{40})$/m.exec(sourceRecord.replace(/\r/g,''))?.[1];assert.ok(revision,'Missing source revision');
@@ -40,7 +40,7 @@ print(count)
 const fileCount=Number(execFileSync('python',['-c',sourceCheck,root,folder,revision],{encoding:'utf8'}).trim());assert.ok(fileCount>0);
 for(const file of ['documentation/COPYING-GPL-3.txt','documentation/THIRD_PARTY_NOTICES.txt','documentation/electron/LICENSE','documentation/electron/LICENSES.chromium.html','documentation/dependency-licences/axios-LICENSE','source/node_modules/d3-array/LICENSE','source/node_modules/lodash.mergewith/LICENSE','source/vendor/osrs-dps/source/src/lib/PlayerVsNPCCalc.ts'])assert.ok(fs.statSync(path.join(folder,file)).size,file);
 const ui=asar.extractFile(archive,'web/planner.js').toString();
-for(const value of ['GitHub homepage','Give feedback','https://github.com/Lolager23/slayer-target-planner/issues/new'])assert.ok(ui.includes(value),value);
+for(const value of ['GitHub homepage','Give feedback','https://github.com/Creedsy96/slayer-target-planner/issues/new'])assert.ok(ui.includes(value),value);
 const sums=path.join(folder,'resources/SHA256SUMS.txt');
 if(fs.existsSync(sums)){
  let count=0;for(const line of fs.readFileSync(sums,'utf8').trim().split(/\r?\n/)){

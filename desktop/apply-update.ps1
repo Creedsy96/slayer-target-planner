@@ -70,7 +70,7 @@ try{
   }
  }finally{$archive.Dispose()}
  $manifest=Get-Content -LiteralPath (Join-Path $stage 'resources\update-manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
- if($manifest.schema -ne 1 -or $manifest.version -cne $config.version -or $manifest.platform -cne 'win32' -or $manifest.arch -cne 'x64' -or $manifest.repository -cne 'Lolager23/slayer-target-planner'){throw 'The downloaded package has the wrong version or platform.'}
+ if($manifest.schema -ne 1 -or $manifest.version -cne $config.version -or $manifest.platform -cne 'win32' -or $manifest.arch -cne 'x64' -or $manifest.repository -cne 'Creedsy96/slayer-target-planner'){throw 'The downloaded package has the wrong version or platform.'}
  foreach($required in @('Slayer Target Planner.exe','resources\app.asar','resources\update-manifest.json')){if(-not(Test-Path -LiteralPath (Join-Path $stage $required) -PathType Leaf)){throw 'The downloaded application is incomplete.'}}
  $hashes=@{}
  foreach($line in Get-Content -LiteralPath (Join-Path $stage 'resources\SHA256SUMS.txt') -Encoding UTF8){

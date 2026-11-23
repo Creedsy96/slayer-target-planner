@@ -63,7 +63,7 @@ def assemble(folder: Path) -> None:
                 shutil.copy2(notice, licences / f"{name}-{notice.name}")
     (documentation / "SOURCE-REVISION.txt").write_text(
         f"Slayer Target Planner {version}\nGit commit: {revision}\n"
-        "https://github.com/Lolager23/slayer-target-planner\n"
+        "https://github.com/Creedsy96/slayer-target-planner\n"
         "Corresponding application, engine and production dependency source: ../source/\n",
         encoding="utf-8",
     )

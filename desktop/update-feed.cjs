@@ -1,7 +1,7 @@
 'use strict';
 const {createHash}=require('node:crypto');
 const fs=require('node:fs/promises');
-const REPOSITORY='Lolager23/slayer-target-planner';
+const REPOSITORY='Creedsy96/slayer-target-planner';
 const RELEASES='https://github.com/'+REPOSITORY+'/releases';
 const FEED='https://api.github.com/repos/'+REPOSITORY+'/releases/latest';
 const MAX_ARCHIVE=512*1024*1024;
