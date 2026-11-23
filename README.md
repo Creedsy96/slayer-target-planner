@@ -399,4 +399,10 @@ See the [documentation index](docs/README.md), [current verification](VERIFICATI
 
 ## Development checks and releases
 
+### GitHub automation (this fork)
+
+- **Test** (`.github/workflows/test.yml`): every pull request and push to `main` runs `npm ci`, the type check and the full suite on Windows.
+- **Release** (`.github/workflows/release.yml`): bump `version` in `package.json` and `package-lock.json`, merge, then push a matching tag (for example `git tag v4.2.0` then `git push origin v4.2.0`). The workflow re-runs the checks, packages the Windows app, assembles source and notices, verifies it, creates the ZIP and its checksum, and publishes a GitHub release. Installed copies find it at their next startup.
+
+
 During ordinary changes, run focused tests for affected behaviour and build/type checks as needed. Run the full suite only when preparing a requested release. Batch changes locally until a release is requested.
