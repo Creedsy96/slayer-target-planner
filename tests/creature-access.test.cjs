@@ -5,7 +5,7 @@ function moduleAt(file){const m={exports:{}},code=buildSync({entryPoints:[file],
 test('every generated confirmation is audited from retained sources and regenerates deterministically',()=>{
  const keys=d.variants.filter(v=>v.requirements.some(r=>r.key==='variant:'+v.id)).map(v=>v.id).sort();assert.equal(keys.length,167);assert.deepEqual(Object.keys(c.CREATURE_ACCESS).sort(),keys);
  for(const [id,r]of Object.entries(c.CREATURE_ACCESS)){assert.ok(r.source.revision,id);assert.ok(r.note,id);if(r.mode==='derived')assert.ok(r.locations.length,id);}
- const output='.desktop-build/verification/creature-access-check.json';cp.execFileSync('python',['tools/build_creature_access.py','--output',output]);assert.deepEqual(JSON.parse(fs.readFileSync(output)),require('../data/creature-access.json'));
+ const output='.desktop-build/verification/creature-access-check.json';fs.mkdirSync('.desktop-build/verification',{recursive:true});cp.execFileSync('python',['tools/build_creature_access.py','--output',output]);assert.deepEqual(JSON.parse(fs.readFileSync(output)),require('../data/creature-access.json'));
 });
 test('Deviant spectres no longer make an unrelated strict Konar hunt unavailable',()=>{
  const p=profile();p.goal.targets=[{assignmentId:'cave kraken',variantId:'cave-kraken',priority:1}];delete p.access['variant:deviant-spectre'];
