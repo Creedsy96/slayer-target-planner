@@ -1,16 +1,16 @@
 {
-  "version": "2026-11-21.1",
+  "version": "2026-11-23.1",
   "engineCommit": "3da927f4280c73154fa59e4e90eb374af5123d32",
   "scope": "Skill requirements only. Ordinary combat candidates use the existing activity/seasonal exclusions and engine alias deduplication. Quest, diary, boss-kill, charge and acquisition checks are separate.",
   "allUsableCombat": {
     "items": 3056,
-    "reviewed": 2816,
-    "unreviewed": 240
+    "reviewed": 2817,
+    "unreviewed": 239
   },
   "ordinaryCombat": {
     "items": 2232,
-    "reviewed": 2073,
-    "unreviewed": 159
+    "reviewed": 2074,
+    "unreviewed": 158
   },
   "ordinaryUnreviewed": [
     {
@@ -240,12 +240,6 @@
       "name": "Dragon felling axe",
       "version": "",
       "slot": "weapon"
-    },
-    {
-      "id": 34428,
-      "name": "Elemental amulet",
-      "version": "",
-      "slot": "neck"
     },
     {
       "id": 29560,
@@ -1388,12 +1382,6 @@
       "name": "Drygore blowpipe",
       "version": "Charged",
       "slot": "weapon"
-    },
-    {
-      "id": 34428,
-      "name": "Elemental amulet",
-      "version": "",
-      "slot": "neck"
     },
     {
       "id": 29560,

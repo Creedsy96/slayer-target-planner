@@ -3,6 +3,7 @@ import {KONAR_AUDIT,konarPool,konarVariantAvailableAt,sameKonarLocation} from '.
 import {questPointAllowance} from './quest-points';
 import {questState,resolveAccess} from './access';
 import {allVariantLocationsDisabled,locationAccess} from './location-pool';
+import {negativeUnknowns} from './unknown-policy';
 export function check(requirements:Requirement[],p:Profile):Eligibility{
   const result:Eligibility={eligible:true,unknown:[],failed:[]};
   for(const r of requirements){
@@ -15,7 +16,7 @@ export function check(requirements:Requirement[],p:Profile):Eligibility{
     }
     const group=r.kind==='skill'?p.levels:r.kind==='quest'?p.quests:r.kind==='unlock'?p.unlocks:p.access;
     const access=r.kind==='access'?resolveAccess(r.key!,p):undefined;
-    const n=r.kind==='quest'?questState(p,r.key!):access?access.value:group[r.key!];
+    const n=r.kind==='quest'?questState(p,r.key!):access?access.value:group[r.key!]??(negativeUnknowns(p)?0:null);
     const label=r.key?.startsWith('variant:')&&access?access.reason:r.label;
     if(n===null||n===undefined){result.unknown.push(label);continue;}
     if(r.kind==='unlock'&&r.min===0?n!==0:n<(r.min??1))result.failed.push(`${label}${r.min&&r.min>2?' '+r.min:''}`);
@@ -32,7 +33,7 @@ export function blockSlots(master:Master,p:Profile):{slots:number;unknown:boolea
   if(master.id==='mortimer')return {slots:2,unknown:false};
   if(p.blockLimit!==null)return {slots:p.blockLimit,unknown:false};
   const points=questPointAllowance(p);
-  return {slots:Math.min(6,Math.floor(points.minimum/50))+(p.diaries.lumbridge===1?1:0),unknown:(!points.complete&&points.minimum<300)||p.diaries.lumbridge===null};
+  return {slots:Math.min(6,Math.floor(points.minimum/50))+(p.diaries.lumbridge===1?1:0),unknown:!negativeUnknowns(p)&&((!points.complete&&points.minimum<300)||p.diaries.lumbridge===null)};
 }
 export function variantEligibility(v:Variant,p:Profile,master:Master,assignmentId?:string):Eligibility{
   const status=check(v.requirements,p);

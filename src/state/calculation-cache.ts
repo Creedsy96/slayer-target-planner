@@ -19,7 +19,7 @@ export function canonical(value:unknown):string{
  return '{'+Object.entries(value).filter(([,v])=>v!==undefined).sort(([a],[b])=>a.localeCompare(b)).map(([k,v])=>JSON.stringify(k)+':'+canonical(v)).join(',')+'}';
 }
 export function calculationInputs(request:CalculationRequest):unknown{
- const {id,combatCache,guideFirst,profile,guide,...settings}=request;
+ const {id,combatCache,guideFirst,provisionalCombat,profile,guide,...settings}=request;
  const {name,notes,setup,huntPresets,taskHistory,questImport,bank,...facts}=profile;
  const combat={id:profile.id,combat:combatIdentity(profile),access:profile.access,travel:travelIdentity(profile)};
  if(request.kind==='method-timing')return [settings,{...combat,gear:profile.gearOverrides?.[request.variantId]},configuredMethod(catalogue as Catalogue,profile,request.assignmentId,request.variantId)];

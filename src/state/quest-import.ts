@@ -18,7 +18,7 @@ function safe(value:unknown,depth=0):void {
 export function parseQuestImport(data:Catalogue,text:string):QuestPreview {
   if(text.length>2_000_000)throw Error('Quest file exceeds 2 MB.');
   const value=JSON.parse(text.replace(/^\uFEFF/,''));safe(value);
-  if(!value||typeof value!=='object'||!Array.isArray(value.quests)||!value.quests.length||value.quests.length>1000)throw Error('Choose a RuneLite quest export containing a non-empty quests array.');
+  if(!value||typeof value!=='object'||!Array.isArray(value.quests)||value.quests.length>1000)throw Error('Choose a RuneLite quest export containing a quests array.');
   if(value.schemaVersion!==undefined&&value.schemaVersion!==1)throw Error('Unsupported RuneLite export schema version.');
   const names=new Map(relevantQuests(data).map(name=>[normal(name),name]));
   const pointStates:Record<string,number>={},unknownPointQuests:string[]=[];
@@ -37,12 +37,13 @@ export function parseQuestImport(data:Catalogue,text:string):QuestPreview {
     if(name){if(Object.hasOwn(states,name)&&states[name]!==state)throw Error(`Conflicting aliases for ${name}.`);states[name]=state;}
     else if(!ignored.includes(title))ignored.push(title);
   }
-  if(!Object.keys(states).length&&!Object.keys(pointStates).length)throw Error('No quests in this file match the planner requirements.');
+  if(value.quests.length&&!Object.keys(states).length&&!Object.keys(pointStates).length)throw Error('No quests in this file match the planner requirements.');
   const playerName=typeof value.player?.username==='string'?value.player.username.replace(/\u00a0/g,' ').trim():null;
   if(playerName!==null&&!/^[A-Za-z0-9 _-]{1,12}$/.test(playerName))throw Error('Invalid account name in quest export.');
   const rawDate=value.exported_at??value.lastUpdated;
   const exportedAt=typeof rawDate==='string'&&Number.isFinite(Date.parse(rawDate))?new Date(rawDate).toISOString():null;
   const warnings:string[]=[];
+  warnings.push('Quest requirements omitted from this export are treated as not started. Existing manual quest overrides are preserved when selected.');
   if(!playerName)warnings.push('This export does not identify the account. Check that you chose the correct character folder.');
   if(!exportedAt)warnings.push('The export has no valid timestamp; its age is unknown.');
   return {format:value.exported_at!==undefined?'Character Export':value.player?.username&&value.schemaVersion===1?'OSRS MCP Companion':'RuneLite quest JSON',playerName,exportedAt,importedAt:null,states,pointStates,unknownPointQuests,ignored,total:value.quests.length,warnings};
@@ -54,6 +55,7 @@ export function questOverridesAfterImport(p:Profile,preview:QuestPreview,preserv
 export function applyQuestImport(data:Catalogue,p:Profile,preview:QuestPreview,preserveOverrides:boolean,now:string):Profile {
   if(!Number.isFinite(Date.parse(now)))throw Error('Invalid import timestamp.');
   const copy=clone(p);
+  copy.negativeUnknowns=true;copy.assumeUnknown=false;
   copy.questImport={format:preview.format,playerName:preview.playerName,exportedAt:preview.exportedAt,importedAt:now,states:clone(preview.states),pointStates:clone(preview.pointStates||{}),unknownPointQuests:clone(preview.unknownPointQuests||[])};
   copy.quests=questOverridesAfterImport(p,preview,preserveOverrides);
   return validateProfile(data,copy);

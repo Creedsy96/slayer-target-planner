@@ -1,4 +1,5 @@
 import {workerPublisher} from './worker-messages';
+import {deferCombatTiming} from './combat/timing';
 import {withPlanReview} from './analysis/plan-review';
 import {gearAffectedMasters} from './combat/gear-selection';
 import {calculateGuideCombat} from './combat/guide';
@@ -15,12 +16,21 @@ import type {Profile} from './domain/types';
 self.onmessage=(event:MessageEvent)=>{
   const publish=workerPublisher(message=>self.postMessage(message));
   const reviewed=(plan:ReturnType<typeof evaluate>,p:Profile)=>withPlanReview(catalogue,withExtensionComparisons(catalogue,plan,p),p);
-  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId,variantIds}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string;variantIds?:string[]};
+  const {id,kind,profile,masterId,blocks,guide,guideFirst,combat,slot,combatCache,assignmentId,variantId,variantIds,provisionalCombat}=event.data as {id:number;kind:string;profile:Profile;masterId?:string;blocks?:string[];guide?:GuideState;guideFirst?:boolean;combat?:CombatResult;slot?:EquipmentSlot;combatCache?:CombatCacheSnapshot;assignmentId?:string;variantId?:string;variantIds?:string[];provisionalCombat?:boolean};
   try{
     restoreCombatCache(profile,combatCache);
+    deferCombatTiming(provisionalCombat===true);
     const identity=combatIdentity(profile);let calculated=0;
     observeCombatCache((signature,key,result)=>{if(signature===identity){calculated++;publish({id,kind:'combat-cache',key,result});}});
-    if(kind==='method-timing'){
+    if(kind==='combat-warmup'){
+      const offset=preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>publish({id,kind:'progress',done,total:total+catalogue.masters.reduce((n,m)=>n+m.tasks.length,0),current}),result=>publish({id,kind:'priority-gear',result}));
+      const total=offset+catalogue.masters.reduce((n,m)=>n+m.tasks.length,0);let done=offset;
+      for(const master of prioritisedMasters(catalogue,profile)){
+        prepareRows(catalogue,master,profile,(n,count,current)=>publish({id,kind:'progress',done:done+master.tasks.length*n/Math.max(1,count),total,current:'Background DPS / '+master.name+' / '+current}));
+        done+=master.tasks.length;
+      }
+      publish({id,kind,combatCalculated:calculated});
+    }else if(kind==='method-timing'){
       const name=catalogue.variants.find(v=>v.id===variantId)?.name||'selected method';
       publish({id,kind:'progress',done:0,total:1,current:'Calculating '+name+' / selected completion method'});
       const result=calculateMethodPreview(catalogue,profile,assignmentId!,variantId!);
@@ -44,7 +54,7 @@ self.onmessage=(event:MessageEvent)=>{
       }
       publish({id,kind,plans,combatCalculated:calculated});
     }else if(kind==='plans'){
-      const offset=preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>publish({id,kind:'progress',done,total,current}),result=>publish({id,kind:'priority-gear',result}));
+      const offset=provisionalCombat?0:preparePriorityCombat(catalogue,profile,guide,guideFirst===true,(done,total,current)=>publish({id,kind:'progress',done,total,current}),result=>publish({id,kind:'priority-gear',result}));
       const plans=[],total=offset+catalogue.masters.length;
       for(const [index,master]of prioritisedMasters(catalogue,profile).entries()){
         publish({id,kind:'progress',done:offset+index,total,current:master.name+' / preparing methods'});
@@ -73,5 +83,5 @@ self.onmessage=(event:MessageEvent)=>{
       publish({id,kind:'simulation',result,masterId});
     }
   }catch(error){publish({id,kind:'error',message:error instanceof Error?error.message:String(error)});}
-  finally{observeCombatCache(undefined);}
+  finally{observeCombatCache(undefined);deferCombatTiming(false);}
 };

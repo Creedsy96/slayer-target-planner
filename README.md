@@ -4,6 +4,11 @@ An offline-capable creature hunt planner for the private website, local browser 
 
 ## Start
 
+Unreleased source changes add conservative imported-account defaults, background
+DPS during setup, provisional hunt tables and a clickable current-hunt creature
+selector. [Behaviour and focused verification](docs/features/import-progressive-planning.md).
+The published and Desktop versions remain 4.1.0.
+
 Version 4.1.0 reviews all 375 canonical guide locations, adds revisioned entrance
 and transport notes, corrects Stalker Den, Tonali Cavern and Shaman Caves, and
 checks known entrance facts before recommending travel.

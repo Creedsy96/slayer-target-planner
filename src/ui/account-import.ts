@@ -47,7 +47,7 @@ export function renderSpecialAccess(data:Catalogue,p:Profile,keys:string[],query
   const autoProfile={...p,restrictBasicAccess:false,access:{...p.access}};delete autoProfile.access[key];
   const baseline=resolveAccess(key,autoProfile);
   const automatic=(isDerivedCreature(key)||result.origin==='quest')&&!p.restrictBasicAccess;
-  const gated=rule&&(baseline.value===0||rule.mode==='derived'&&baseline.value!==1);
+  const gated=rule&&(baseline.value===0&&baseline.origin!=='unknown'||rule.mode==='derived'&&baseline.value!==1);
   return `<div class="access-fact">${factCard(label(key),result.value,`data-fact-toggle="access" data-key="${esc(key)}" ${automatic||gated?'disabled':''}`,interfaceIcon('guide'),rule?result.reason:'Confirm this specific completion method. Known creature and area requirements still apply.')}${p.access[key]!=null?`<button class="text-button" data-creature-access-auto="${esc(key)}">Use known requirements</button>`:''}</div>`;
  }).join('');
 }

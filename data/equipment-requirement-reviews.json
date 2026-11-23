@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-21.1",
+  "version": "2026-11-23.1",
   "engineCommit": "3da927f4280c73154fa59e4e90eb374af5123d32",
   "reviews": [
     {
@@ -1123,6 +1123,22 @@
         "title": "Keris partisan of amascut",
         "revision": 15399221,
         "url": "https://oldschool.runescape.wiki/w/Keris_partisan_of_amascut"
+      }
+    },
+    {
+      "names": [
+        "Elemental amulet"
+      ],
+      "ids": [
+        34428
+      ],
+      "requirements": {
+        "magic": 59
+      },
+      "source": {
+        "title": "Elemental amulet",
+        "revision": 15405702,
+        "url": "https://oldschool.runescape.wiki/w/Elemental_amulet"
       }
     }
   ]

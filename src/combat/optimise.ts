@@ -60,12 +60,18 @@ function setSeeds(base:Loadout,owned:EquipmentItem[],required:Partial<Record<Equ
  if(weapon.name==='Eclipse atlatl')add(['Eclipse Moon helm','Eclipse Moon chestplate','Eclipse Moon tassets']);
  return result;
 }
-export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
- const signature=combatIdentity(p),mode=priority??fightPlan(record,form,state,location).defence;
+function ownedCacheKey(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):string{
+ const mode=priority??fightPlan(record,form,state,location).defence;
  const family=state.approach==='auto'?'auto':state.approach.split('-')[0];
- const key=JSON.stringify([record.id,form.id,family,mode,state.onTask,location?.name,state.stackSize,family==='auto'?p.gearOverrides?.[record.id]:p.gearOverrides?.[record.id]?.[family as Family]]);
+ return JSON.stringify([record.id,form.id,family,mode,state.onTask,location?.name,state.stackSize,family==='auto'?p.gearOverrides?.[record.id]:p.gearOverrides?.[record.id]?.[family as Family]]);
+}
+export function cachedOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult|undefined{
+ return cache.get(combatIdentity(p),ownedCacheKey(p,record,form,state,location,priority));
+}
+export function bestOwnedGear(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
+ const signature=combatIdentity(p),key=ownedCacheKey(p,record,form,state,location,priority);
  const saved=cache.get(signature,key);if(saved)return saved;
- const result=search(p,record,form,state,location,mode);cache.put(signature,key,result);cacheObserver?.(signature,key,structuredClone(result));return structuredClone(result);
+ const result=search(p,record,form,state,location,priority);cache.put(signature,key,result);cacheObserver?.(signature,key,structuredClone(result));return structuredClone(result);
 }
 function search(p:Profile,record:GuideRecord,form:GuideForm,state:GuideState,location?:LocationPlan,priority?:ArmourPriority):CombatResult{
  if(!p.bank&&!p.assumeAllGear)return emptyCombat('Import bank/equipment files or add your owned gear first.');

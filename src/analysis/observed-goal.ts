@@ -2,6 +2,7 @@ import {emptyWorkload} from './workload';
 import type {Catalogue,Profile,Simulation} from '../domain/types';
 import {actualTargetCompatibility} from '../rules/task-policy';
 import {prepareRows} from './planner';
+import {negativeUnknowns} from '../rules/unknown-policy';
 
 /** An already-observed compatible offer satisfies an offer goal before any
  * new block purchase or request. It does not earn a future combat reward. */
@@ -11,7 +12,7 @@ export function observedOfferGoal(data:Catalogue,p:Profile):Simulation|null{
   const rows=prepareRows(data,master,p);
   const offered=p.current.kind==='offer'?p.current.options||[]:[{assignmentId:p.current.assignmentId,target:p.current.targetCompatible}];
   const hit=offered.some(option=>{
-    const row=rows.find(r=>r.id===option.assignmentId);if(!row||row.reason||row.methodReason||!p.assumeUnknown&&row.unknown.length)return false;
+    const row=rows.find(r=>r.id===option.assignmentId);if(!row||row.reason||row.methodReason||!p.assumeUnknown&&!negativeUnknowns(p)&&row.unknown.length)return false;
     return actualTargetCompatibility(row,option.target,'actual');
   });
   if(!hit)return null;

@@ -1,0 +1,19 @@
+{
+  "pageid": 678425,
+  "ns": 0,
+  "title": "Elemental amulet",
+  "revisions": [
+    {
+      "revid": 15405702,
+      "parentid": 15405701,
+      "timestamp": "2026-11-18T16:42:30Z",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Otheruses|the Elemental amulet|other elemental amulets|Elemental amulets}}\n{{Infobox Item\n|name = Elemental amulet\n|image = [[File:Elemental amulet.png]]\n|release = [[2 September]] [[2026]]\n|update = Summer Sweep Up Miscellaneous\n|members = Yes\n|quest = No\n|tradeable = Yes\n|equipable = Yes\n|stackable = No\n|noteable = Yes\n|options = Wear, Drop\n|examine = Water, earth, fire, air. The four elements living together in harmony.\n|value = 84000\n|weight = 0.007\n|exchange = Yes\n|id = 34428\n}}\n[[File:Elemental amulet detail.png|left|120px]]\nThe '''elemental amulet''' is an amulet requiring level 59 [[Magic]] to equip. It is made by combining the [[Amulet of air|amulets of air]], [[Amulet of water|water]], [[Amulet of earth|earth]], and [[Amulet of fire|fire]] at any [[Runic_altar#Elemental|elemental runic altar]]. Doing so requires level 30 [[Runecraft]] and 500 of each elemental [[Runes|rune]], granting 175 experience. It can also be created when accessing the altars via [[Guardians of the Rift]], as they are the same altars as outside the minigame.\n\nCreating each of the aforementioned amulets requires 100 runes of the corresponding element and its associated [[elemental gem]] ([[air diamond]], [[water sapphire]], [[earth emerald]], or [[fire ruby]]) to be brought to their respective elemental runic altars.\n\nThe elemental amulet combines the effects of all four amulets, adding a max-hit bonus of +2 to all [[elemental spells]], which is added before [[magic damage]] and [[elemental weakness]] modifiers are applied, and therefore scales with both. This bonus stacks additively with the +2 bonus of elemental fragments from [[The Fractured Archive#Rewards|the Fractured Archive]], for a total max-hit bonus of +4. It also stacks additively with the +3 max-hit bonus of [[chaos gauntlets]], for a maximum possible bonus of +7 to [[bolt spells]].\n\n==Combat stats==\n{{Infobox Bonuses\n|astab = 0\n|aslash = 0\n|acrush = 0\n|amagic = +10\n|arange = 0\n|dstab = 0\n|dslash = 0\n|dcrush = 0\n|dmagic = 0\n|drange = 0\n|str = 0\n|rstr = 0\n|mdmg = 0\n|prayer = 0\n|slot = neck\n|image = [[File:Elemental amulet equipped male.png]]\n|altimage = [[File:Elemental amulet equipped female.png]]\n}}\n\n==Creation==\n[[File:Creating elemental amulet.webp|right|thumb|A player creating the elemental amulet.]]\nIf creating from scratch, the elemental amulet requires 600 fire runes, 600 air runes, 600 earth runes, 600 water runes, 4 amulets of magic, and access to each elemental runic altar.\n{{Recipe\n|skill1 = Runecraft\n|skill1lvl = 30\n|skill1boostable = Yes\n|skill1exp = 175\n|members = Yes\n|ticks = 3\n|mat1 = Amulet of air\n|mat2 = Amulet of fire\n|mat3 = Amulet of earth\n|mat4 = Amulet of water\n|output1 = Elemental amulet\n|mat5 = Air rune\n|mat5quantity = 500\n|mat6 = Fire rune\n|mat6quantity = 500\n|mat7 = Earth rune\n|mat7quantity = 500\n|mat8 = Water rune\n|mat8quantity = 500\n|facilities = Runic Altar\n}}\n\n==Used in recommended equipment==\n{{Used in recommended equipment|Elemental amulet}}\n\n==Trivia==\n* This item's examine text is a reference to the opening sequence of ''{{wp|Avatar: The Last Airbender}}'': \"Water. Earth. Fire. Air. Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked.\"\n\n{{Amulets}}"
+        }
+      }
+    }
+  ]
+}

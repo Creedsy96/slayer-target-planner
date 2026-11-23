@@ -42,15 +42,22 @@ export function parseAccountExports(data:Catalogue,files:ExportFile[]):AccountEx
  if(result.account&&result.quests&&!result.quests.playerName)result.quests.playerName=result.account;
  if(!result.account)result.notes.push('No account name supplied. Verify every file came from the same character folder.');
  if(!result.levels)result.notes.push('Character levels were not selected; existing levels will be preserved.');
- if(!result.quests)result.notes.push('Quest states were not selected. Unanswered quest requirements stay unknown.');
- result.notes.push('Quest points are derived from recognised quest rewards; incomplete quest exports supply a confirmed minimum. Manual quest-point totals are preserved. Slayer points/streaks, purchased rewards, prayer unlocks and partial miniquest steps are not supplied by these exports.');
+ if(!result.quests)result.notes.push('Quest states were not selected. Unanswered quest requirements will be treated as not completed, with a warning.');
+ result.notes.push('Quests omitted from the export are treated as not started. Manual facts are preserved. Unsupported access, diaries, purchased rewards and prayer unlocks default off; remaining unknowns warn and are treated as unavailable rather than blocking a hunt. Slayer points and streaks are not exported.');
  return result;
 }
 export function applyAccountExports(data:Catalogue,p:Profile,preview:AccountExportPreview,now:string):Profile{
  const accounts=[p.bank?.account,p.questImport?.playerName,preview.account].filter((s):s is string=>!!s);
  if(new Set(accounts.map(accountKey)).size>1)throw Error('These exports belong to another character. Create a separate character first.');
  let copy=applyBankSnapshots(p,preview.containers,preview.levels,preview.account,p.combat?.enabled===true||preview.containers.length>0);
+ copy.negativeUnknowns=true;copy.assumeUnknown=false;
  if(preview.quests)copy=applyQuestImport(data,copy,preview.quests,true,now);
  for(const [key,value]of Object.entries(preview.diaries))if(copy.diaries[key as keyof Profile['diaries']]==null)copy.diaries[key as keyof Profile['diaries']]=value;
+ for(const key of ['lumbridge','kourend','western'] as const)copy.diaries[key]??=0;
+ for(const key of Object.keys(data.unlocks))copy.unlocks[key]??=0;
+ copy.points??=0;copy.mortimerTasks??=0;
+ for(const key of Object.keys(copy.streaks))copy.streaks[key]??=0;
+ const defaults='Unexported points, streaks, rewards, diaries and special access use conservative defaults. Review real balances before spending Slayer points.';
+ if(!copy.notes.includes(defaults))copy.notes.push(defaults);
  learnImportedTeleports(copy);return copy;
 }

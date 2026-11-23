@@ -3,6 +3,7 @@ import guide from '../../data/creature-guide.json';
 import type {Catalogue,Entry,Profile,Requirement,Variant} from '../domain/types';
 import {resolveAccess} from './access';
 import {locationAccess} from './location-pool';
+import {negativeUnknowns} from './unknown-policy';
 
 interface LocationAudit {locations:string[];requirements:Record<string,Requirement[]>;variants:{id:string;locations:string[];note?:string}[];mode:string;note:string}
 export const KONAR_VERSION=raw.version;
@@ -33,8 +34,8 @@ export function konarPool(entry:Entry,p:Profile):{locations:string[];unknown:str
   const locations=pool.filter(location=>{
     const access=konarLocationAccess(location,p),requirements=audit?.requirements[location]||[];
     const rooms=p.restrictBasicAccess?audit?.variants.flatMap(v=>variantRooms(v.id,location))||[]:[];
-    const locked=access.value===0||rooms.length>0&&rooms.every(l=>locationAccess(l.name,p,l.page).value===0)||requirements.some(r=>(p.levels[r.key!]??Infinity)<(r.min??1));
-    if(locked){excluded.push(location);return false;}
+    const locked=access.value===0||rooms.length>0&&rooms.every(l=>locationAccess(l.name,p,l.page).value===0)||requirements.some(r=>(p.levels[r.key!]??(negativeUnknowns(p)?0:Infinity))<(r.min??1));
+    if(locked){excluded.push(location);if(access.origin==='unknown')unknown.push(location+': '+access.reason);return false;}
     if(!audit?.locations.some(l=>sameKonarLocation(l,location)))unknown.push('Konar location not reviewed: '+location);
     if(access.value===null||requirements.some(r=>p.levels[r.key!]==null))unknown.push('Konar location access: '+location);
     return true;

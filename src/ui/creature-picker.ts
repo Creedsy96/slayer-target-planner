@@ -30,7 +30,7 @@ export function enhanceCreaturePickers(root:ParentNode):void{
   });
 }
 
-function openPicker(select:HTMLSelectElement,trigger:HTMLButtonElement,label:string,key:string):void{
+export function openPicker(select:HTMLSelectElement,trigger:HTMLButtonElement,label:string,key:string):void{
   const dialog=document.createElement('dialog');dialog.className='creature-dialog';
   const id='creature-options-'+(++sequence);dialog.setAttribute('aria-label','Choose '+label.toLowerCase());
   const heading=document.createElement('h2');heading.textContent='Choose '+label.toLowerCase();

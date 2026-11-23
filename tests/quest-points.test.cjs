@@ -8,13 +8,13 @@ const apply=(p,rows,preserve=true)=>c.applyQuestImport(d,p,c.parseQuestImport(d,
 const full=(state='NOT_STARTED')=>metadata.quests.map(q=>row(q.aliases.find(a=>a.includes(' '))||q.name,state));
 const uiCode=buildSync({entryPoints:['src/ui/quest-points.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,ui={exports:{}};
 new Function('module','exports',uiCode)(ui,ui.exports);
-test('quest points include non-access quests, count only completed standard rewards and retain partial uncertainty',()=>{
+test('quest points include non-access quests, count only completed standard rewards and treat omitted quests as not started',()=>{
  const p=apply(fresh(),[row("Cook's Assistant"),row('Demon Slayer'),row("Doric's Quest",'IN_PROGRESS'),row('Romeo & Juliet','NOT_STARTED')]),result=c.derivedQuestPoints(p);
- assert.equal(result.minimum,4);assert.equal(result.complete,false);assert.equal(p.questImport.states["Cook's Assistant"],undefined);assert.equal(p.questImport.pointStates["Cook's Assistant"],2);
- assert.match(ui.exports.questPointSummary(p),/At least 4 confirmed quest points/);
+ assert.equal(result.minimum,4);assert.equal(result.complete,true);assert.equal(p.questImport.states["Cook's Assistant"],undefined);assert.equal(p.questImport.pointStates["Cook's Assistant"],2);
+ assert.match(ui.exports.questPointSummary(p),/4 quest points from completed quests/);
 });
 test('complete quest snapshots derive a total, including a true zero, and exports round-trip reward states',()=>{
- let p=apply(fresh(),full());assert.deepEqual(c.blockSlots(main,p),{slots:0,unknown:true}); // Diary is still unknown.
+ let p=apply(fresh(),full());assert.deepEqual(c.blockSlots(main,p),{slots:0,unknown:false}); // Unconfirmed diary is treated as not complete after import.
  p.diaries.lumbridge=0;assert.deepEqual(c.blockSlots(main,p),{slots:0,unknown:false});assert.equal(c.derivedQuestPoints(p).complete,true);
  p=apply(fresh(),full('FINISHED'));assert.equal(c.derivedQuestPoints(p).minimum,metadata.maximum);assert.equal(c.derivedQuestPoints(p).complete,true);
  assert.deepEqual(c.importProfiles(d,c.exportProfiles([p],p.id)).profiles[0],p);
@@ -22,7 +22,7 @@ test('complete quest snapshots derive a total, including a true zero, and export
 test('Recipe for Disaster awards partial subquests and never double-counts its parent',()=>{
  let rows=full().filter(r=>!r.name.startsWith('Recipe for Disaster'));
  rows.push(row('RECIPE_FOR_DISASTER','IN_PROGRESS'),row('RECIPE_FOR_DISASTER__ANOTHER_COOKS_QUEST'),row('Recipe for Disaster - Wartface & Bentnoze'));
- let p=apply(fresh(),rows);assert.equal(c.derivedQuestPoints(p).minimum,2);assert.equal(c.derivedQuestPoints(p).complete,false);
+ let p=apply(fresh(),rows);assert.equal(c.derivedQuestPoints(p).minimum,2);assert.equal(c.derivedQuestPoints(p).complete,true);
  p=apply(fresh(),full().map(r=>r.name.startsWith('Recipe for Disaster')?row(r.name):r));assert.equal(c.derivedQuestPoints(p).minimum,10);assert.equal(c.derivedQuestPoints(p).complete,true);
  p=apply(fresh(),full().map(r=>r.name==='Recipe for Disaster'?row(r.name):r));assert.equal(c.derivedQuestPoints(p).minimum,10);
 });
@@ -32,11 +32,11 @@ test('manual quest overrides affect totals, while a manual total remains authori
  p.questPoints=null;assert.equal(c.questPointAllowance(p).minimum,3);p=apply(p,[row("Cook's Assistant"),row('Demon Slayer')],false);assert.equal(c.derivedQuestPoints(p).minimum,4);
  assert.equal(p.quests["Cook's Assistant"],undefined);
 });
-test('partial lists grant only confirmed block slots, and complete or capped totals remove QP uncertainty',()=>{
+test('imported lists count completed quests and omitted quests add no block slots',()=>{
  let p=fresh();p.diaries.lumbridge=0;
  const ones=metadata.quests.filter(q=>q.points===1&&!q.part&&q.name!=='Recipe for Disaster').slice(0,50);assert.equal(ones.length,50);
- p=apply(p,ones.map(q=>row(q.name)));assert.deepEqual(c.blockSlots(main,p),{slots:1,unknown:true});
- p.diaries.lumbridge=1;assert.deepEqual(c.blockSlots(main,p),{slots:2,unknown:true});assert.deepEqual(c.blockSlots(mortimer,p),{slots:2,unknown:false});
+ p=apply(p,ones.map(q=>row(q.name)));assert.deepEqual(c.blockSlots(main,p),{slots:1,unknown:false});
+ p.diaries.lumbridge=1;assert.deepEqual(c.blockSlots(main,p),{slots:2,unknown:false});assert.deepEqual(c.blockSlots(mortimer,p),{slots:2,unknown:false});
  p.blockLimit=4;assert.deepEqual(c.blockSlots(main,p),{slots:4,unknown:false});p.blockLimit=null;
  p=apply(p,full('FINISHED'));assert.deepEqual(c.blockSlots(main,p),{slots:7,unknown:false});
 });
@@ -45,9 +45,9 @@ test('unknown started/completed quests prevent exact totals; miniquests contribu
  p=apply(fresh(),[...full(),row('Future reward quest','NOT_STARTED')]);assert.equal(c.derivedQuestPoints(p).complete,true);assert.equal(c.derivedQuestPoints(p).minimum,0);
  p=apply(fresh(),[row('Mage Arena I'),row('Enter the Abyss')]);assert.equal(c.derivedQuestPoints(p).minimum,0);
 });
-test('legacy filtered imports stay usable as incomplete data and malformed reward facts are rejected',()=>{
+test('legacy filtered imports default omitted quests to not started and malformed reward facts are rejected',()=>{
  const p=fresh();p.questImport={format:'Legacy',playerName:null,exportedAt:null,importedAt:null,states:{'Bone Voyage':2}};
- assert.equal(c.derivedQuestPoints(p).minimum,1);assert.equal(c.derivedQuestPoints(p).complete,false);assert.equal(c.validateProfile(d,p).questImport.pointStates,undefined);
+ assert.equal(c.derivedQuestPoints(p).minimum,1);assert.equal(c.derivedQuestPoints(p).complete,true);assert.equal(c.validateProfile(d,p).questImport.pointStates,undefined);
  for(const pointStates of [null,[],{"Cook's Assistant":1.5}])assert.throws(()=>c.validateProfile(d,{...p,questImport:{...p.questImport,pointStates}}),/quest point states/);
  assert.throws(()=>c.parseQuestImport(d,text([row("Cook's Assistant"),row('COOKS_ASSISTANT','NOT_STARTED')])) ,/Conflicting/);
 });

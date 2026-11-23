@@ -1,3 +1,4 @@
+import {renderHuntPicker,openHuntPicker,setHuntCreature} from './hunt-picker';
 import {version as APP_VERSION} from '../../package.json';
 import {DesktopUpdates,renderUpdateBanner,renderUpdateSettings,type UpdateBridge} from './updates';
 import {CalculationWorker} from './calculation-worker';
@@ -83,6 +84,7 @@ class AppState{
 
   gearPlanOverrides=new Map<string,Plan|undefined>();gearPendingVariants=new Set<string>();
   combatCache=new CombatCacheStore(5000);reusedCombat=false;restoredCalculations=false;
+  combatWorkIdentity='';combatCompleteIdentity='';combatRefreshTimer:ReturnType<typeof setTimeout>|undefined;
   gearResults:GuideCombat|undefined;gearKey='';
   display=loadDisplay();bankView:BankView={query:'',previews:[],levels:null,account:null,kind:'auto',group:false};bankPreviewProfile='';bankRequest=0;
   history=new History<{profiles:Profile[];activeId:string}>();compact=false;pin=false;huntSearch='';selectedPresetId='';
@@ -108,14 +110,28 @@ class AppState{
   }
   persist():void{try{if(!this.saveError)localStorage.setItem(STORAGE,exportProfiles(this.profiles,this.activeId));}catch{this.saveError='Storage unavailable. Export your character to keep changes.';}}
   cancel(channel?:string):void{for(const [key,w]of this.workers)if(!channel||key===channel){w.terminate();this.workers.delete(key);delete this.busy[key];}}
-  run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear'|'gear-selection',profile:Profile,masterId?:string,guide?:GuideState,origin?:ActionOrigin):void{
+  warmCombat():void{
+    const profile=this.profile,identity=combatIdentity(profile);
+    if(!profile.combat?.enabled||!profile.bank&&!profile.assumeAllGear)return;
+    if(this.combatCompleteIdentity===identity||this.workers.has('combat')&&this.combatWorkIdentity===identity)return;
+    this.cancel('combat');this.combatWorkIdentity=identity;this.run('combat','combat-warmup',profile);
+  }
+  refreshCombatPlans():void{
+    if(this.combatRefreshTimer)return;
+    this.combatRefreshTimer=setTimeout(()=>{
+      this.combatRefreshTimer=undefined;
+      if(this.route==='setup'||this.route==='tutorial'||this.workers.has('plans'))return;
+      this.run('plans','plans',this.profile);renderStatus();
+    },1500);
+  }
+  run(channel:string,kind:'plans'|'simulation'|'strategies'|'hunt'|'gear'|'gear-selection'|'combat-warmup',profile:Profile,masterId?:string,guide?:GuideState,origin?:ActionOrigin):void{
     const requestedPlan=this.plans.find(plan=>plan.master.id===masterId);
     this.cancel(channel);const requestedGuide=guide||guideState,requestedGuideKey=gearSignature(profile,requestedGuide),identity=combatIdentity(profile),combatCache=this.combatCache.snapshot(identity);const id=++this.sequence,worker=new CalculationWorker(WORKER_SOURCE);
     this.workers.set(channel,worker);this.busy[channel]={done:0,total:kind==='plans'?data.masters.length:kind==='gear'?5:kind==='strategies'?6:profile.simulation.trials,current:calculationCache.available?'Checking saved calculations':combatCache.entries.length?(kind==='plans'?'Updating hunt odds / reusing completed combat results':'Reusing completed combat results'):'Starting calculation'};
     worker.onmessage=event=>{
       if(this.workers.get(channel)!==worker||event.data.id!==id)return;
       const result=event.data;
-      if(result.kind==='combat-cache'){this.combatCache.put(identity,result.key,result.result);return;}
+      if(result.kind==='combat-cache'){this.combatCache.put(identity,result.key,result.result);if(channel==='combat')this.refreshCombatPlans();return;}
       if(result.fromCache)this.restoredCalculations=true;
       if(result.kind==='progress'){this.busy[channel]={done:result.done,total:result.total,current:result.current||'Calculating'};renderStatus();return;}
       if(result.kind==='priority-gear'){if(this.gearKey===requestedGuideKey){this.gearResults=result.result;if(this.route==='guide')renderBackground();}return;}
@@ -131,6 +147,12 @@ class AppState{
       }
       this.cancel(channel);
       if(result.kind==='error'){renderContent();reportActionError(result.message,origin||null,requestedPlan);renderStatus();return;}
+      if(channel==='combat'){
+        this.combatCompleteIdentity=identity;
+        if(this.combatRefreshTimer){clearTimeout(this.combatRefreshTimer);this.combatRefreshTimer=undefined;}
+        if(this.route!=='setup'&&this.route!=='tutorial')this.run('plans','plans',this.profile);
+        renderStatus();return;
+      }
       if(channel==='gear')this.gearResults=result.result;
       else if(channel==='plans'){
         this.reusedCombat=result.fromCache||result.combatRestored>0;
@@ -151,7 +173,7 @@ class AppState{
       renderBackground();renderStatus();
     };
     worker.onerror=()=>{this.cancel(channel);reportActionError('Calculation worker failed. Reload or export the character before trying again.',origin||null);renderStatus();};
-    worker.postMessage({id,kind,profile:clone(profile),combatCache,guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,variantId:requestedGuide.variantId,variantIds:[...this.gearPendingVariants],blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
+    worker.postMessage({id,kind,profile:clone(profile),combatCache,provisionalCombat:!['combat-warmup','gear','gear-selection'].includes(kind)&&this.workers.has('combat'),guide:kind==='plans'&&(this.gearResults||this.workers.has('gear'))&&this.gearKey===requestedGuideKey?undefined:clone(requestedGuide),guideFirst:this.route==='guide',masterId,variantId:requestedGuide.variantId,variantIds:[...this.gearPendingVariants],blocks:kind==='simulation'?this.plans.find(plan=>plan.master.id===masterId)?.blocks:undefined});
   }
   async restoreSelectedResults():Promise<void>{
     const profile=this.profile,masterId=this.selected,plan=this.plans.find(p=>p.master.id===masterId);if(!plan)return;
@@ -179,9 +201,9 @@ class AppState{
     if(this.route==='setup'&&!this.profile.setup)this.route='account';
     if(record)this.history.record({profiles:this.profiles,activeId:this.activeId},key);
     const nextGearKey=gearSignature(this.profile,guideState),gearChanged=this.gearKey!==nextGearKey;
-    for(const channel of [...this.workers.keys()])if(channel!=='gear'||gearChanged)this.cancel(channel);
+    for(const channel of [...this.workers.keys()])if(channel==='combat'?this.combatWorkIdentity!==combatIdentity(this.profile):channel!=='gear'||gearChanged)this.cancel(channel);
     if(gearChanged){gearInspector.invalidate();this.gearKey=nextGearKey;this.gearResults=undefined;}
-    this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();if(this.route!=='setup'&&this.route!=='tutorial')this.run('plans','plans',this.profile);renderStatus();
+    this.simulation=null;this.strategyResults=[];this.simulations.clear();this.comparison=[];this.plans=[];this.persist();renderShell();this.warmCombat();if(this.route!=='setup'&&this.route!=='tutorial')this.run('plans','plans',this.profile);renderStatus();
   }
 }
 installSelectionSurfaces();
@@ -263,8 +285,7 @@ function renderPlan():string{
   const nav=renderHuntNav(data,p(),visiblePlans,state.selected,state.compact,state.history.canUndo,state.history.canRedo,state.selectedPresetId,!!window.slayerDesktop,state.pin);
   if(state.compact)return nav+`<p class="small muted">Hunting: ${p().goal.targets.map(t=>creatureName(t.variantId,data.variants.find(v=>v.id===t.variantId)?.name||t.variantId)).join(', ')}</p>`+(current?planDetails(current,true):'<p>Calculating hunt…</p>');
   let html='<div class="hunt-intro">'+head('THE HUNT STARTS HERE','Your next hunt','Choose a creature. Find your master. Make every task count.');
-  const targets=p().goal.targets.map(t=>data.variants.find(v=>v.id===t.variantId)).filter(v=>!!v);
-  html+=`<div class="hunt-targets" aria-label="Current hunt targets">${targets.map(v=>`<div class="target-emblem">${creatureIcon(v!.id,true)}<div><span class="eyebrow">HUNTING</span><strong>${esc(v!.name)}</strong></div></div>`).join('')}</div></div>`;
+  html+=renderHuntPicker(data,p())+'</div>';
   html+=nav+renderCombatCoverage(current);
   html+=`<div class="plan-grid"><section class="card plan-setup"><div class="section-heading">${interfaceIcon("plan")}<div><h2>Hunt setup</h2><p class="small muted">Your target, your stopping point, your strategy.</p></div></div><div class="formgrid">${select('goal.kind','Finish when…',[['offer','A compatible target task is offered'],['kills','Target kill quantity is reached'],['drop','Selected item drops']],p().goal.kind)}${select('objective','Rank plans by',[['time','Lowest estimated waiting time'],['kills-hour','Highest target kills per hour'],['chance','Highest target chance per offer'],['points','Lowest estimated points within session limit']],p().objective)}${select('strategy','Strategy',[['none','Complete tasks without skipping'],['sustainable','Sustainable skips (long-run)'],['funded','Spend available points'],['boost-turael','Turael milestone boosting'],['boost-mazchna','Mazchna milestone boosting'],['reset-turael','Turael resets (streak changes)']],p().strategy)}</div>${p().goal.targets.map((t,i)=>`<div class="targetrow"><label>Assignment<select data-creature-picker data-target="${i}" data-target-field="assignmentId">${creatureOptions(data,'assignment',data.assignments.map(a=>[a.id,a.name]),t.assignmentId)}</select></label><label>Desired monster variant<select data-creature-picker data-target="${i}" data-target-field="variantId">${creatureOptions(data,'variant',data.variants.filter(v=>v.assignmentIds.includes(t.assignmentId)).map(v=>[v.id,v.name]),t.variantId)}</select></label><label>Priority<input data-target="${i}" data-target-field="priority" type="number" min="1" max="100" value="${t.priority}"></label><button data-remove-target="${i}" ${p().goal.targets.length===1?'disabled':''}>Remove</button></div>`).join('')}<div class="tools"><button data-action="add-target">Add acceptable target</button><button class="secondary" data-action="export-results">Export comparison CSV</button></div>`;
   html+=renderTargetExtensions(data,p());
@@ -513,6 +534,7 @@ document.addEventListener('click',event=>{
   if(button.dataset.bankAction){bankAction(button.dataset.bankAction).catch(error=>reportActionError(error,origin));return;}
   if(button.dataset.bankAdd){addOwnedItem(Number(button.dataset.bankAdd));return;}
   if(button.dataset.bankClear){update(q=>{q.bank??=emptyBank();delete (state.bankView.group?q.bank.groupManual:q.bank.manual)[button.dataset.bankClear!];});return;}
+  if(button.dataset.huntPicker!==undefined){openHuntPicker(button as HTMLButtonElement);return;}
   if(button.dataset.guideLocation){chooseGuideLocation(button.dataset.guideLocation,state.route!=='tutorial',state.route==='tutorial'?state.tutorialProfile!:p());renderContent();$('guide-setup').focus({preventScroll:true});$('guide-setup').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
   if(button.dataset.issueRoute){
     state.route=button.dataset.issueRoute;
@@ -590,7 +612,7 @@ function changeInput(event:Event):void{
   if(element.dataset.offer!==undefined){update(q=>{const o=q.current.options![Number(element.dataset.offer)]as any,key=element.dataset.offerField!;o[key]=element.type==='checkbox'?(element as HTMLInputElement).checked:element.type==='number'?Number(element.value):element.value;});return;}
   if(element.dataset.target!==undefined){
     const index=Number(element.dataset.target),field=element.dataset.targetField!;
-    update(q=>{const t=q.goal.targets[index];if(field==='assignmentId'){const a=data.assignments.find(a=>a.id===element.value)!;t.assignmentId=a.id;t.variantId=a.variantIds[0];}else if(field==='variantId')t.variantId=element.value;else t.priority=Number(element.value);});return;
+    update(q=>{const t=q.goal.targets[index];if(field==='creature'){setHuntCreature(data,q,index,element.value);}else if(field==='assignmentId'){const a=data.assignments.find(a=>a.id===element.value)!;t.assignmentId=a.id;t.variantId=a.variantIds[0];}else if(field==='variantId')t.variantId=element.value;else t.priority=Number(element.value);});return;
   }
   if(element.dataset.fact){const kind=element.dataset.fact as 'quests'|'unlocks'|'access';update(q=>q[kind][element.dataset.key!]=element.value===''?null:Number(element.value));return;}
   if(element.dataset.preference){update(q=>{if(!element.value)delete q.preferences[element.dataset.preference!];else q.preferences[element.dataset.preference!]=element.value as Profile['preferences'][string];});return;}
@@ -676,20 +698,20 @@ async function bankAction(name:string):Promise<void>{
   if(state.bankPreviewProfile!==state.activeId)throw Error('Review the import again for this character.');
   const timing=($('bank-enable-timing') as HTMLInputElement).checked;
   const levels=state.bankView.levels,previews=state.bankView.previews;
-  const applied=update(q=>Object.assign(q,applyBankSnapshots(q,previews,levels,state.bankView.account,timing)));
+  const applied=update(q=>Object.assign(q,applyBankSnapshots(q,previews,levels,state.bankView.account,timing),{negativeUnknowns:true,assumeUnknown:false}));
   if(applied){state.bankView.previews=[];state.bankView.levels=null;renderContent();}
  }
 }
 function renderCombatCoverage(plan:Plan|undefined):string{
  if(!plan||!p().combat?.enabled&&!plan.rows.some(row=>row.method.useSelectedGear))return '';
  const calculated=plan.rows.filter(row=>row.method.calculated),fallback=plan.rows.filter(row=>!row.method.calculated);
- return `<section class="notice combat-coverage"><strong>Combat timing: ${calculated.length} methods from ${p().assumeAllGear?'assumed gear':'owned gear'} · ${fallback.length} configured methods</strong><p class="small muted">Expected hit-distribution kill times use your combat settings. Measured rates and boss/switch encounters retain configured timing.</p>${fallback.length?`<details><summary>Review configured timing fallbacks</summary><ul>${fallback.map(row=>`<li>${assignmentName(data,row.id,row.name)} / ${creatureName(row.variant.id,row.variant.name)}: ${esc(row.method.combatNote||'Measured or manual method.')} <button data-issue-route="methods" data-issue-assignment="${esc(row.id)}" data-issue-variant="${esc(row.variant.id)}">Review method</button></li>`).join('')}</ul></details>`:''}</section>`;
+ return `<section class="notice combat-coverage"><strong>Combat timing: ${calculated.length} methods from ${p().assumeAllGear?'assumed gear':'owned gear'} · ${fallback.length} configured methods</strong><p class="small muted">${state.busy.combat?'Background DPS is running. Unfinished automatic methods use provisional 5 DPS; tables refresh as results arrive. ':''}Expected hit-distribution kill times use your combat settings. Measured rates and boss/switch encounters retain configured timing.</p>${fallback.length?`<details><summary>Review configured timing fallbacks</summary><ul>${fallback.map(row=>`<li>${assignmentName(data,row.id,row.name)} / ${creatureName(row.variant.id,row.variant.name)}: ${esc(row.method.combatNote||'Measured or manual method.')} <button data-issue-route="methods" data-issue-assignment="${esc(row.id)}" data-issue-variant="${esc(row.variant.id)}">Review method</button></li>`).join('')}</ul></details>`:''}</section>`;
 }
 function renderMethodCombat(v:typeof data.variants[number],method:Method,assignment:string):string{
  return renderMethodCombatStatus(p(),method,methodPreview.get(p(),assignment,v,method));
 }
 
-state.gearKey=gearSignature(p(),guideState);renderShell();if(state.firstLaunch)void welcome();else if(p().setup?.complete&&p().setup?.tutorial==='pending')startTutorial();else if(state.route!=='setup'){state.run('plans','plans',p());renderStatus();}
+state.gearKey=gearSignature(p(),guideState);renderShell();state.warmCombat();if(state.firstLaunch)void welcome();else if(p().setup?.complete&&p().setup?.tutorial==='pending')startTutorial();else if(state.route!=='setup'){state.run('plans','plans',p());renderStatus();}
 
 async function createCharacter():Promise<void>{
  const result=await requestCharacter();if(!result)return;if(state.route==='tutorial')endTutorial('skipped');
@@ -742,7 +764,7 @@ async function readAccountFolder(input:HTMLInputElement):Promise<void>{
 }
 
 function startTutorial():void{
- state.cancel();state.guideBeforeTutorial=clone(guideState);state.tutorialProfile=practiceCharacter(data);state.tutorialPlans=practicePlans(data,state.tutorialProfile);state.tutorialStep=0;state.tutorialMaster='duradel';state.route='tutorial';state.message='';renderShell();
+ for(const channel of [...state.workers.keys()])if(channel!=='combat')state.cancel(channel);state.warmCombat();state.guideBeforeTutorial=clone(guideState);state.tutorialProfile=practiceCharacter(data);state.tutorialPlans=practicePlans(data,state.tutorialProfile);state.tutorialStep=0;state.tutorialMaster='duradel';state.route='tutorial';state.message='';renderShell();
 }
 function endTutorial(status:'complete'|'skipped'):void{
  if(state.guideBeforeTutorial){Object.assign(guideState,state.guideBeforeTutorial);try{localStorage.setItem(GUIDE_KEY,JSON.stringify(guideState));}catch{/* Display persistence is optional. */}state.guideBeforeTutorial=undefined;}
@@ -750,7 +772,7 @@ function endTutorial(status:'complete'|'skipped'):void{
 }
 async function onboardingAction(name:string):Promise<boolean>{
  if(name==='refresh-access-checks'){resetAccessChecklist();renderContent();return true;}
- if(name==='resume-setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.exportRequest++;state.exportPreview=null;state.cancel();state.route='setup';update(q=>{q.setup??={version:2,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
+ if(name==='resume-setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.exportRequest++;state.exportPreview=null;for(const channel of [...state.workers.keys()])if(channel!=='combat')state.cancel(channel);state.route='setup';update(q=>{q.setup??={version:2,step:0,complete:false,imports:[],tutorial:'pending'};q.setup.complete=false;});return true;}
  if(name==='pause-setup'){state.route='account';state.changed(false);return true;}
  if(name==='find-account-exports'){if(state.route!=='setup'){resetExportDiscovery();state.exportSearched.delete(state.activeId);state.route='setup';update(q=>{q.setup??={version:2,step:1,complete:false,imports:[],tutorial:'pending'};q.setup.step=1;q.setup.complete=false;});if(!window.slayerDesktop?.characterExports)($('account-folder-import')as HTMLInputElement).click();}else void findAccountExports('auto');return true;}
  if(name==='choose-account-folder'){if(window.slayerDesktop?.characterExports)void findAccountExports('choose');else ($('account-folder-import')as HTMLInputElement).click();return true;}

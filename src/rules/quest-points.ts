@@ -13,13 +13,13 @@ export function derivedQuestPoints(p:Profile):QuestPointTotal{
   }
   let minimum=0,missing=0;
   for(const q of raw.quests.filter(q=>q.points>0&&!q.part&&q.name!=='Recipe for Disaster')){
-    const state=states.get(q.name);if(state===undefined)missing++;else if(state===2)minimum+=q.points;
+    const state=states.get(q.name);if(state===undefined&&!p.questImport)missing++;else if(state===2)minimum+=q.points;
   }
   const parent=states.get('Recipe for Disaster'),parts=raw.quests.filter(q=>q.part);
   const partPoints=parts.reduce((n,q)=>n+(states.get(q.name)===2?q.points:0),0);
   if(parent===2)minimum+=10;
   else if(parent===0&&partPoints===0){/* A not-started parent establishes zero points. */}
-  else {minimum+=partPoints;missing+=parts.filter(q=>states.get(q.name)===undefined).length;}
+  else {minimum+=partPoints;if(!p.questImport)missing+=parts.filter(q=>states.get(q.name)===undefined).length;}
   const unmapped=p.questImport?.unknownPointQuests||[];
   return {minimum,complete:missing===0&&!unmapped.length,missing,unmapped};
 }

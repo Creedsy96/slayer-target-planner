@@ -4,6 +4,7 @@ import openAreas from '../../data/open-areas.json';
 import {HARD_AREAS,hardAreaState} from './hard-areas';
 import {CREATURE_ACCESS,creatureAccessRule,resolveCreatureAccess} from './creature-access';
 import {LOCATION_REVIEWS,locationReview,hasReviewedGate,derivedLocationReview,reviewedLocationState} from './reviewed-locations';
+import {negativeUnknowns} from './unknown-policy';
 import type {Catalogue,Fact,Profile,Source,Requirement} from '../domain/types';
 
 export interface AreaRule {key:string;name:string;quest:string;states:Fact[];note:string;source:Source}
@@ -37,10 +38,14 @@ export function accessFactFilter(key:string,p?:Profile):string{
 }
 
 export function questState(p:Profile,key:string):Fact {
-  return p.quests[key]??p.questImport?.states[key]??null;
+  return p.quests[key]??p.questImport?.states[key]??(negativeUnknowns(p)?0:null);
 }
 
 export function resolveAccess(key:string,p:Profile):AccessResult {
+  const result=rawAccess(key,p);
+  return result.value===null&&negativeUnknowns(p)?{...result,value:0,reason:result.reason+' Unconfirmed: assumed unavailable until enabled or verified.'}:result;
+}
+function rawAccess(key:string,p:Profile):AccessResult {
   const creature=resolveCreatureAccess(key,p,resolveAccess,questState);if(creature)return creature;
   const reviewed=key.startsWith('location:')?reviewedLocationState(key,p,q=>questState(p,q)):undefined;if(reviewed)return reviewed;
   const baseline=OPEN_AREAS.find(area=>normalArea(area.key)===normalArea(key));

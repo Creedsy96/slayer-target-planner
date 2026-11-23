@@ -9,7 +9,7 @@ class MemoryStorage{
  async removeOwner(id){for(const [key,row]of this.rows)if(row.owner===id)this.rows.delete(key);}
 }
 function fixture(kind='plans'){
- const p=c.newCharacter(d,'Cache QA',false);p.bank=c.emptyBank();p.levels={attack:70,strength:70,defence:70,ranged:70,magic:70,prayer:70,hitpoints:70,slayer:70,combat:100};
+ const p=c.newCharacter(d,'Cache QA',false);p.negativeUnknowns=true;p.bank=c.emptyBank();p.levels={attack:70,strength:70,defence:70,ranged:70,magic:70,prayer:70,hitpoints:70,slayer:70,combat:100};
  return {id:4,kind,profile:p,guide:{variantId:'hellhound',assignmentId:'hellhounds',approach:'ranged-tank',formId:'0',priority:'balanced',onTask:true,fastTravel:false,location:''},variantId:'hellhound',variantIds:[],guideFirst:false};
 }
 const planResult={id:4,kind:'plans',plans:d.masters.map(master=>({master:{id:master.id},rows:[],objectiveValue:Infinity}))};

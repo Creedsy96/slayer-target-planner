@@ -12,7 +12,7 @@ export function combatIdentity(p:Profile):string{
  // Ordinary entrance overrides are dormant outside restricted-account mode.
  // Special confirmations and gated entrances can still affect combat/location choice.
  const access=Object.fromEntries(Object.entries(p.access).filter(([key])=>p.restrictBasicAccess||!isOpenArea(key)));
- return JSON.stringify([p.assumeAllGear===true,p.assumeAllGear?[]:Object.keys(gear).filter(id=>gear[id]>0).sort(),sorted(p.levels),sorted({...defaultCombat(),...p.combat}),p.diaries.kourend,quests,p.restrictBasicAccess===true,sorted(access)]);
+ return JSON.stringify([p.assumeAllGear===true,p.assumeAllGear?[]:Object.keys(gear).filter(id=>gear[id]>0).sort(),sorted(p.levels),sorted({...defaultCombat(),...p.combat}),p.diaries.kourend,quests,p.restrictBasicAccess===true,sorted(access),p.negativeUnknowns??!!p.questImport]);
 }
 /** In-memory LRU, restored from disposable calculation storage by UI workers. */
 export class CombatCacheStore {

@@ -1,4 +1,5 @@
 import {locationAccess} from '../rules/location-pool';
+import {negativeUnknowns,unknownWarnings} from '../rules/unknown-policy';
 import {addKonarOutcomes,locationActions,assignLocationProbabilities} from './konar-outcomes';
 import {KONAR_AUDIT} from '../rules/konar-locations';
 import {withCalculatedTiming} from '../combat/timing';
@@ -99,7 +100,7 @@ export function fillerIssue(data:Catalogue,filler:Plan,p:Profile):string{
   const status=masterEligibility(filler.master,p),rows=filler.rows.filter(r=>!r.reason&&!r.blocked);
   if(status.failed.length)return filler.master.name+' access: '+status.failed.join('; ');
   if(!rows.length)return 'No eligible '+filler.master.name+' filler tasks.';
-  if(filler.unknown.length&&!p.assumeUnknown)return 'Confirm '+filler.master.name+' filler requirements: '+filler.unknown.join('; ');
+  if(filler.unknown.length&&!p.assumeUnknown&&!negativeUnknowns(p))return 'Confirm '+filler.master.name+' filler requirements: '+filler.unknown.join('; ');
   const fallback=completionFallbacks(data,filler.master,p,filler.rows);
   if(rows.some(r=>(fallback.get(r)||r).methodReason&&r.targetFraction<1&&paidSkipFraction(fallback.get(r)||r,p)<1))return 'A '+filler.master.name+' filler task has no available completion method.';
   return '';
@@ -142,7 +143,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
   for(const id of blocks)if(!(p.blocks[m.group]||[]).includes(id)&&rows.find(r=>r.id===id)?.reason)conflicts.push('Cannot newly block an ineligible assignment: '+id);
   if(!reason&&conflicts.length)reason=conflicts.join(' ');
   if(!reason&&!targetProb&&!active.some(resets)&&!boosting)reason=rows.filter(r=>r.isTarget).map(r=>r.reason||r.methodReason||'No compatible target location').join('; ')||'Cannot assign any selected target';
-  if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete requirements: '+unknown[0].slice(0,240)+(unknown.length>1?' Review the remaining requirements below.':'');
+  if(!reason&&unknown.length&&!p.assumeUnknown&&!negativeUnknowns(p))reason='Incomplete requirements: '+unknown[0].slice(0,240)+(unknown.length>1?' Review the remaining requirements below.':'');
   if(!reason&&active.some(r=>!r.isTarget&&r.methodReason&&r.skip<1&&!resets(r)))reason='A non-target assignment has no available completion method; change the method or block/skip it.';
   if(!reason&&p.cape)reason='Cape repeat policies require simulation; analytical ranking is unavailable.';
   const actual=p.blocks[m.group]||[],setupCost=blocks.filter(id=>!actual.includes(id)).length*m.blockCost;
@@ -164,7 +165,7 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
     if(!reason&&access.failed.length)reason='Turael replacement access: '+access.failed.join('; ');
     if(!reason&&filler.conflicts.some(c=>!c.startsWith('Target ')&&!c.startsWith('Protected ')))reason='Review the recorded Turael block list: '+filler.conflicts.join(' ');
     if(!reason&&available.some(r=>r.methodReason&&r.targetFraction<1&&paidSkipFraction(r,p)<1))reason='A Turael replacement task has no available completion method; review Turael methods.';
-    if(!reason&&unknown.length&&!p.assumeUnknown)reason='Incomplete Turael replacement requirements: confirm account facts or enable a conditional scenario.';
+    if(!reason&&unknown.length&&!p.assumeUnknown&&!negativeUnknowns(p))reason='Incomplete Turael replacement requirements: confirm account facts or enable a conditional scenario.';
     if(!reason&&reset.successPerCycle<=0)reason='No compatible target from this master or Turael replacements.';
     chance=reason?null:reset.successPerCycle/reset.requestsPerCycle;
     hours=reason||reset.successPerCycle<=0?null:reset.cycleMinutes/reset.successPerCycle/60;
@@ -187,12 +188,13 @@ export function evaluate(data:Catalogue,m:Master,p:Profile,blocks:string[],quali
       spend=boost.paidSkips===null?Infinity:boost.paidSkips*m.skipCost+(p.applySetup?setupCost:0);
     }
   }
-  const pointsRateReason=pointRewardUnknown(m,p).length&&!p.assumeUnknown?'Confirm the elite diary point bonus.':reset?'Reset streak rewards require simulation.':p.cape?'Cape repeat point rates require simulation.':m.id==='mortimer'?'Mortimer modifier-aware rewards require simulation.':undefined;
+  const pointsRateReason=pointRewardUnknown(m,p).length&&!p.assumeUnknown&&!negativeUnknowns(p)?'Confirm the elite diary point bonus.':reset?'Reset streak rewards require simulation.':p.cape?'Cape repeat point rates require simulation.':m.id==='mortimer'?'Mortimer modifier-aware rewards require simulation.':undefined;
   const rate=boost?boost.targetKillsPerHour:reset?reset.targetKillsPerHour:moments.full>0?moments.targetKills*60/moments.full:null;
   const targetRateReason=reason||(m.id==='mortimer'?'Mortimer quantity and combat modifiers need simulation; a base-quantity rate would be misleading.':undefined)||((rate===null||!Number.isFinite(rate)||rate<0)?'No finite full-task cycle is available for this setup.':undefined);
   const targetKillsPerHour=targetRateReason?null:rate;
   const objectiveValue=reason?Infinity:p.objective==='kills-hour'?(targetKillsPerHour!==null&&targetKillsPerHour>0?-targetKillsPerHour:Infinity):p.objective==='chance'?-(chance??0):p.objective==='points'?(hours!==null&&hours<=p.simulation.sessionHours?spend+hours*1e-9:Infinity):hours??Infinity;
-  return {targetKillsPerHour,targetRateReason,boost,simulationOnly,pointsRateReason,reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:boost&&boost.requests&&boost.paidSkips!==null?boost.paidSkips/boost.requests:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:pointsRateReason?null:boost?boost.pointsEarnedPerHour:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:pointsRateReason?null:boost?boost.pointsSpentPerHour:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown,reason,quality,objectiveValue,searchEvaluations:1,conflicts};
+  unknown.push(...unknownWarnings(p));
+  return {targetKillsPerHour,targetRateReason,boost,simulationOnly,pointsRateReason,reset,master:m,rows,blocks,setupCost,chance,hours,noSkipHours:!reason&&targetProb?(noSkip+p.requestMinutes)/targetProb/60:null,offers:chance?1/chance:null,average:kept?sum(active,r=>r.probability*(1-r.skip)*r.minutes)/kept:0,skipRate:boost&&boost.requests&&boost.paidSkips!==null?boost.paidSkips/boost.requests:reset?reset.paidSkipsPerCycle/reset.requestsPerCycle:sum(active,r=>r.probability*r.skip),pointsEarned:pointsRateReason?null:boost?boost.pointsEarnedPerHour:cycle?sum(active,r=>r.probability*(1-r.skip)*r.reward)*60/cycle:0,pointsSpent:pointsRateReason?null:boost?boost.pointsSpentPerHour:cycle?sum(active,r=>r.probability*r.skip*m.skipCost)*60/cycle:0,boundary:active.filter(r=>r.skip>1e-9&&r.skip<1-1e-9).map(r=>`${r.name}: ${(r.skip*100).toFixed(1)}%`).join(', '),unknown:[...new Set(unknown)],reason,quality,objectiveValue,searchEvaluations:1,conflicts};
 }
 export function optimise(data:Catalogue,m:Master,p:Profile,maxEvaluations=700,progress?:(fraction:number,current:string)=>void):Plan{
   const rows=prepareRows(data,m,p,(done,total,current)=>progress?.(.7*done/Math.max(1,total),'Gear / '+current)),targets=targetAssignments(data,p),slots=blockSlots(m,p).slots;

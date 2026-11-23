@@ -18,7 +18,7 @@ export class CalculationWorker {
    this.start(request);
   },this.restoreTimeout);
   try{
-  const messages=await this.cache.load(request);if(!pending||this.stopped)return;
+  const messages=request.provisionalCombat?undefined:await this.cache.load(request);if(!pending||this.stopped)return;
   if(messages){for(const message of messages){if(this.stopped)break;this.onmessage?.({data:message});}return;}
   const saved=await this.cache.combat(request.profile);if(!pending||this.stopped)return;
   if(saved){
@@ -39,7 +39,7 @@ export class CalculationWorker {
    if(message.kind==='priority-gear')retained.push(message);
    if(message.kind===request.kind){
     // Keep a priority guide only with the exact guide that produced it.
-    const saving=this.cache.available?this.cache.save(request,[...retained,message]):undefined;
+    const saving=this.cache.available&&!request.provisionalCombat?this.cache.save(request,[...retained,message]):undefined;
     this.onmessage?.({data:message});
     // Display a completed result before waiting for storage. A locked/full
     // database must not keep an otherwise finished hunt at 99% indefinitely.
