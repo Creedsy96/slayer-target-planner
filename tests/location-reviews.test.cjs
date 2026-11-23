@@ -13,7 +13,7 @@ test('every guide form, location and explicit added encounter has a revisioned r
 });
 
 test('location review generation is reproducible without network requests',()=>{
- const target='.desktop-build/verification/location-reviews-check.json';cp.execFileSync('python',['tools/build_location_reviews.py','--output',target]);assert.deepEqual(JSON.parse(fs.readFileSync(target)),require('../data/location-reviews.json'));
+ const target='.desktop-build/verification/location-reviews-check.json';fs.mkdirSync('.desktop-build/verification',{recursive:true});cp.execFileSync('python',['tools/build_location_reviews.py','--output',target]);assert.deepEqual(JSON.parse(fs.readFileSync(target)),require('../data/location-reviews.json'));
 });
 
 test('the production calculation worker excludes presentation source excerpts',()=>{

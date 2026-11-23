@@ -28,6 +28,8 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: npm ci
+      - name: Download the Electron runtime used by the desktop tests
+        run: node node_modules/electron/install.js
       - name: Type check
         run: npm run typecheck
       - name: Build and run the full test suite
