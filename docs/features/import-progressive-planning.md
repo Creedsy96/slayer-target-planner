@@ -1,7 +1,7 @@
-# Imported accounts and progressive combat timing — unreleased
+# Imported accounts and progressive combat timing — 4.1.1
 
-These changes are queued after 4.1.0. They have not been packaged, published or
-installed over the Desktop copy.
+These changes are included in 4.1.1. The existing Desktop copy is intentionally
+unchanged. Release verification is recorded in the root verification record.
 
 ## Imported facts and access
 
@@ -63,5 +63,6 @@ searches, actual background result publication and durable-cache protection.
 
 A disposable local-browser character verified the large hunt selector, changing
 to Hellhounds, continuing background progress and usable master tables before DPS
-completion. Native Windows interaction and the full release suite were not run.
+completion. Native Windows interaction was not run. These focused checks preceded
+the separately recorded full release suite.
 The user's Desktop character storage was not modified.

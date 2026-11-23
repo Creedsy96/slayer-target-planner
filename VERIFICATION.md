@@ -1,5 +1,25 @@
 # Verification
 
+## 4.1.1 release — 23 November 2026
+
+- Production build and TypeScript checks: passed.
+- Complete suite: 562 tests passed, none failed or skipped. This includes the
+  Elemental amulet's Magic 59 boundary, hunt-badge selection, complete/empty quest
+  imports, conservative defaults, preserved manual facts, Tonali and Konar skill
+  gates, non-blocking warnings, progressive worker results and durable-cache
+  protection for provisional 5 DPS tables.
+- Prior focused local-browser verification covered the large selector, changing
+  the current hunt to Hellhounds, continuing background progress and usable
+  master tables before DPS completion. Native Windows interaction was not run.
+- Character storage/schema remain unchanged. Imported characters use negative
+  assumptions for omitted quests and unresolved facts; known hard requirements
+  remain enforced. The policy is included in combat cache identity.
+- The existing Desktop application and live character storage are intentionally
+  untouched. This release is prepared separately in ignored project build space.
+- Artifact verification and publication are recorded after packaging below.
+
+[Behaviour and focused verification](docs/features/import-progressive-planning.md).
+
 ## 4.1.0 release — 22 November 2026
 
 - Production build and TypeScript checks: passed.
