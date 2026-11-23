@@ -16,7 +16,17 @@
   remain enforced. The policy is included in combat cache identity.
 - The existing Desktop application and live character storage are intentionally
   untouched. This release is prepared separately in ignored project build space.
-- Artifact verification and publication are recorded after packaging below.
+
+Publication passed: [GitHub v4.1.1](https://github.com/Lolager23/slayer-target-planner/releases/tag/v4.1.1)
+targets `fd307b058070bf0466e2a3ec82c0e33c177ccb4d`. The 174.5 MiB Windows ZIP
+passed CRC and all 1,816 application checksums. Clean-root layout, native/browser
+asset parity, all 1,284 corresponding source files, licences and EXE product/file
+version 4.1.1 passed. Local and uploaded ZIP SHA-256 match:
+`b55a3f53a443694c88eb53a22ffec6fd1481b4fe4d85af4b68933a1fa57a5274`.
+The live latest stable GitHub feed selected 4.1.1 and that digest through the
+application's update-feed parser for a 4.1.0 caller. This was a read-only feed
+check; no updater download/install, Desktop launch/replacement, private Site
+deployment or live character-storage operation was performed.
 
 [Behaviour and focused verification](docs/features/import-progressive-planning.md).
 
