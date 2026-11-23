@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),{buildSync}=require('esbuild');
 function ui(){const m={exports:{}},code=buildSync({entryPoints:['src/ui/updates.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text;new Function('module','exports',code)(m,m.exports);return m.exports;}
 const {DesktopUpdates,renderUpdateBanner,renderUpdateSettings}=ui();
-const state={phase:'ready',enabled:true,currentVersion:'4.0.0',latestVersion:'4.0.1',progress:100,message:'Verified update ready.',releaseUrl:'https://github.com/Lolager23/slayer-target-planner/releases'};
+const state={phase:'ready',enabled:true,currentVersion:'4.0.0',latestVersion:'4.0.1',progress:100,message:'Verified update ready.',releaseUrl:'https://github.com/Creedsy96/slayer-target-planner/releases'};
 
 test('update controls show progress, restart, opt-out, recovery and the installed major version',()=>{
  const settings=renderUpdateSettings(state),ready=renderUpdateBanner(state),progress=renderUpdateBanner({...state,phase:'downloading',progress:42});

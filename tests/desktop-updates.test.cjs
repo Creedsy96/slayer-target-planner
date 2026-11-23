@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const feed=require('../desktop/update-feed.cjs'),{PortableUpdater,installLocation}=require('../desktop/updates.cjs');
 const scratch=path.resolve('.desktop-build/updater-tests');fs.mkdirSync(scratch,{recursive:true});
 function fixture(){const root=fs.mkdtempSync(path.join(scratch,'case-')),install=path.join(root,'Planner'),data=path.join(root,'character-data');fs.mkdirSync(path.join(install,'resources'),{recursive:true});fs.mkdirSync(data);fs.writeFileSync(path.join(install,'Slayer Target Planner.exe'),'old-exe');fs.writeFileSync(path.join(install,'resources','app.asar'),'old-app');fs.writeFileSync(path.join(install,'my-notes.txt'),'keep this');fs.writeFileSync(path.join(data,'character-backup.json'),'private fixture facts');return {root,install,data,executable:path.join(install,'Slayer Target Planner.exe')};}
-function release(version='4.0.1',body=Buffer.from('synthetic ZIP')){return {draft:false,prerelease:false,tag_name:'v'+version,assets:[{state:'uploaded',name:'Slayer.Target.Planner.'+version+'.-.Windows.zip',browser_download_url:'https://github.com/Lolager23/slayer-target-planner/releases/download/v'+version+'/Slayer.Target.Planner.'+version+'.-.Windows.zip',digest:'sha256:'+crypto.createHash('sha256').update(body).digest('hex'),size:body.length}]};}
+function release(version='4.0.1',body=Buffer.from('synthetic ZIP')){return {draft:false,prerelease:false,tag_name:'v'+version,assets:[{state:'uploaded',name:'Slayer.Target.Planner.'+version+'.-.Windows.zip',browser_download_url:'https://github.com/Creedsy96/slayer-target-planner/releases/download/v'+version+'/Slayer.Target.Planner.'+version+'.-.Windows.zip',digest:'sha256:'+crypto.createHash('sha256').update(body).digest('hex'),size:body.length}]};}
 const choice=()=>feed.selectRelease(release(),'4.0.0');
 function updater(f,extra={}){const events=[];return {events,app:new PortableUpdater({version:'4.0.0',platform:'win32',packaged:true,userData:f.data,executable:f.executable,notify:s=>events.push(s),latest:async()=>choice(),download:async(r,file,progress)=>{await fsp.writeFile(file,'synthetic ZIP');progress(30);progress(100);},launch:async()=>{},...extra})};}
 
@@ -12,8 +12,8 @@ test('release selection orders semantic versions and ignores older, equal, draft
  assert.equal(feed.selectRelease(release('3.0.27'),'4.0.0'),null);assert.equal(feed.selectRelease({...release(),draft:true},'4.0.0'),null);assert.equal(feed.selectRelease({...release(),prerelease:true},'4.0.0'),null);assert.equal(choice().version,'4.0.1');
 });
 test('automatic updates require one exact Windows archive, official repository address, digest and bounded size',()=>{
- for(const mutate of [r=>r.assets=[],r=>r.assets.push({...r.assets[0]}),r=>r.assets[0].digest=null,r=>r.assets[0].size=feed.MAX_ARCHIVE+1,r=>r.assets[0].browser_download_url=r.assets[0].browser_download_url.replace('Lolager23/','someone/'),r=>r.assets[0].browser_download_url=r.assets[0].browser_download_url.replace('https:','http:')]){const r=release();mutate(r);assert.throws(()=>feed.selectRelease(r,'4.0.0'));}
- for(const url of ['https://github.com.evil.invalid/file','https://user:secret@github.com/file','https://release-assets.githubusercontent.com:444/file','file:///C:/file','https://api.github.com/user','https://github.com/Lolager23/other/releases/download/v4.0.1/a.zip'])assert.throws(()=>feed.trustedUrl(url));
+ for(const mutate of [r=>r.assets=[],r=>r.assets.push({...r.assets[0]}),r=>r.assets[0].digest=null,r=>r.assets[0].size=feed.MAX_ARCHIVE+1,r=>r.assets[0].browser_download_url=r.assets[0].browser_download_url.replace('Creedsy96/','someone/'),r=>r.assets[0].browser_download_url=r.assets[0].browser_download_url.replace('https:','http:')]){const r=release();mutate(r);assert.throws(()=>feed.selectRelease(r,'4.0.0'));}
+ for(const url of ['https://github.com.evil.invalid/file','https://user:secret@github.com/file','https://release-assets.githubusercontent.com:444/file','file:///C:/file','https://api.github.com/user','https://github.com/Creedsy96/other/releases/download/v4.0.1/a.zip'])assert.throws(()=>feed.trustedUrl(url));
 });
 test('feed checks use the public fixed endpoint, cap response size and handle offline/rate-limit/no-release responses',async()=>{
  let seen;const found=await feed.latest('4.0.0',async(url,options)=>{seen={url,options};return new Response(JSON.stringify(release()));});assert.equal(found.version,'4.0.1');assert.equal(seen.url,feed.FEED);assert.equal(seen.options.credentials,'omit');assert.equal(seen.options.headers.Authorization,undefined);
@@ -70,7 +70,7 @@ function applyFixture(scenario){
 from pathlib import Path
 from zipfile import ZipFile,ZipInfo
 job=Path(sys.argv[1]);scenario=sys.argv[2];root='Slayer Target Planner 4.0.1 - Windows/'
-files={'Slayer Target Planner.exe':b'new-exe','resources/app.asar':b'new-app','resources/update-manifest.json':json.dumps({'schema':1,'version':'4.0.1' if scenario!='wrong-version' else '9.0.0','platform':'win32','arch':'x64','repository':'Lolager23/slayer-target-planner'}).encode()}
+files={'Slayer Target Planner.exe':b'new-exe','resources/app.asar':b'new-app','resources/update-manifest.json':json.dumps({'schema':1,'version':'4.0.1' if scenario!='wrong-version' else '9.0.0','platform':'win32','arch':'x64','repository':'Creedsy96/slayer-target-planner'}).encode()}
 sums=''.join(hashlib.sha256(value).hexdigest()+'  '+name+'\n' for name,value in files.items()).encode()
 if scenario=='file-corrupt':files['resources/app.asar']=b'bad-app'
 files['resources/SHA256SUMS.txt']=sums

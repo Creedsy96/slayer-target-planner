@@ -8,7 +8,6 @@ calculation core and test bundles; `serve.cjs` serves a local preview.
   avoid unnecessary Wiki requests.
 - Artwork/icon builders and `audit_equipment_requirements.mjs` maintain reviewed assets/data.
 - `release/` contains Windows packaging, source/licence assembly, verification and ZIP creation.
-- `check_git_identity.py` enforces the repository's personal Git identity.
 
 Release commands are documented in the [project README](../README.md).
 Generated bundles, artwork caches and local verification output belong under the
